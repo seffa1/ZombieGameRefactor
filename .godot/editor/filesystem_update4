@@ -1,1 +1,5 @@
-res://Main/Game.tscn
+res://Player/Player.tscn
+res://Player/states/motion/motion.gd
+res://Player/states/motion/idle.gd
+res://Libraries/state.gd
+res://Player/states/motion/move.gd
