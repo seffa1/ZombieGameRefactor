@@ -3,6 +3,9 @@ extends "res://Player/states/motion/motion.gd"
 var speed = 0.0
 var velocity = Vector2()
 
+@export var MAX_WALK_SPEED: int = 500
+@export var MAX_RUN_SPEED: int = 750
+
 # Initialize the state. E.g. change the animation
 func enter():
 	speed = 0.0
