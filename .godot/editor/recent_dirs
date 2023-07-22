@@ -1,2 +1,4 @@
-res://Player/states
+res://Player/states/actions
+res://Player/states/movement
 res://Player
+res://Player/states

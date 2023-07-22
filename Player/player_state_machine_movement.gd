@@ -2,15 +2,18 @@ extends "res://Libraries/state_machine.gd"
 
 """
 This state machine handles player movement independant of the player's actions.
-This way the legs can freely move / dash / idle while the player shoots without
+This way the legs can freely move / sprint / idle while the player shoots without
 interuption.
 """
 
+
+
 func _ready():
+	super()
 	states_map = {
 		"idle": $Idle,
 		"move": $Move,
-		"dash": $Dash,
+		"sprint": $Sprint,
 		"die": $Die
 	}
 
@@ -25,12 +28,9 @@ func _change_state(state_name):
 
 func _input(event):
 	"""
-	Here we only handle input that can interrupt states, shooting in this case
+	Here we only handle input that can interrupt states.
 	otherwise we let the state node handle it
 	"""
-	if event.is_action_pressed("shoot"):
-		if current_state == $Shoot:
-			return
-		_change_state("shoot")
+	if not _active:
 		return
 	current_state.handle_input(event)

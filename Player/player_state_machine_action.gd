@@ -1,7 +1,15 @@
 extends "res://Libraries/state_machine.gd"
 
+"""
+This is the state for the 'upper body' of the player.
+While the other state machine for the 'lower body' deals
+which movement, this one deals will all the actions the player
+can perform.
+"""
+
 func _ready():
 	states_map = {
+		"idle": $Idle,
 		"shoot": $Shoot,
 		"chargeThrow": $ChargeThrow,
 		"throw": $Throw,
@@ -28,4 +36,5 @@ func _input(event):
 			return
 		_change_state("shoot")
 		return
-	current_state.handle_input(event)
+	if current_state:
+		current_state.handle_input(event)

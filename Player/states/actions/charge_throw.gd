@@ -1,4 +1,4 @@
-extends "res://Player/states/motion/motion.gd"
+extends "res://Libraries/state.gd"
 
 
 # Initialize the state. E.g. change the animation
@@ -13,7 +13,4 @@ func handle_input(event):
 	return
 
 func update(delta):
-	var input_direction = get_input_direction()
-
-func _on_animation_finished(anim_name):
 	return

@@ -8,5 +8,7 @@
 [node name="GameWorld" type="Node2D" parent="."]
 
 [node name="Player" parent="GameWorld" instance=ExtResource("1_kmip5")]
+position = Vector2(353, 151)
 
 [node name="StatesStackDiplayer" parent="GameWorld" instance=ExtResource("2_ao502")]
+top_level = true

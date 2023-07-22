@@ -1,10 +1,10 @@
-tool
+@tool
 extends Panel
 
 func _ready():
-	set_as_toplevel(true)
+	set_as_top_level(true)
 
-func _on_Player_state_changed(states_stack):
+func _on_state_machine_movement_state_changed(states_stack):
 	var states_names = ''
 	var numbers = ''
 	var index = 0
@@ -15,4 +15,3 @@ func _on_Player_state_changed(states_stack):
 
 	$States.text = states_names
 	$Numbers.text = numbers
-

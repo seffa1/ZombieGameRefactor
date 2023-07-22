@@ -1,34 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=14 format=3 uid="uid://bypyufryf0ycr"]
 
+[ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
-[ext_resource type="Script" path="res://Player/states/motion/idle.gd" id="2_tbrip"]
 [ext_resource type="Script" path="res://Player/player_state_machine_action.gd" id="3_77vex"]
-[ext_resource type="Script" path="res://Player/states/motion/move.gd" id="3_d1m3w"]
+[ext_resource type="Script" path="res://Player/states/movement/idle.gd" id="3_j8hkm"]
+[ext_resource type="Script" path="res://Player/states/movement/move.gd" id="4_hhe0o"]
+[ext_resource type="Script" path="res://Player/states/movement/sprint.gd" id="5_m0p7e"]
+[ext_resource type="Script" path="res://Player/states/movement/die.gd" id="6_1xgt3"]
+[ext_resource type="Script" path="res://Player/states/actions/idle.gd" id="6_3s4x2"]
+[ext_resource type="Script" path="res://Player/states/actions/shoot.gd" id="9_mu8s3"]
+[ext_resource type="Script" path="res://Player/states/actions/charge_throw.gd" id="10_ri4uv"]
+[ext_resource type="Script" path="res://Player/states/actions/throw.gd" id="11_83mo6"]
+[ext_resource type="Script" path="res://Player/states/actions/melee.gd" id="12_u67uk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0327"]
+radius = 42.0
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_e8yx8")
 
 [node name="StateMachineMovement" type="Node" parent="."]
 script = ExtResource("1_wjaak")
+START_STATE = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachineMovement"]
-script = ExtResource("2_tbrip")
+script = ExtResource("3_j8hkm")
 
 [node name="Move" type="Node" parent="StateMachineMovement"]
-script = ExtResource("3_d1m3w")
+script = ExtResource("4_hhe0o")
 
-[node name="Dash" type="Node" parent="StateMachineMovement"]
+[node name="Sprint" type="Node" parent="StateMachineMovement"]
+script = ExtResource("5_m0p7e")
 
 [node name="Die" type="Node" parent="StateMachineMovement"]
+script = ExtResource("6_1xgt3")
 
 [node name="StateMachineAction" type="Node" parent="."]
 script = ExtResource("3_77vex")
+START_STATE = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachineAction"]
+script = ExtResource("6_3s4x2")
 
 [node name="Shoot" type="Node" parent="StateMachineAction"]
+script = ExtResource("9_mu8s3")
 
 [node name="ChargeThrow" type="Node" parent="StateMachineAction"]
+script = ExtResource("10_ri4uv")
 
 [node name="Throw" type="Node" parent="StateMachineAction"]
+script = ExtResource("11_83mo6")
 
 [node name="Melee" type="Node" parent="StateMachineAction"]
+script = ExtResource("12_u67uk")
 
 [node name="Die" type="Node" parent="StateMachineAction"]
+
+[node name="StaminaTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j0327")

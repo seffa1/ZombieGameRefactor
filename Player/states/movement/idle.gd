@@ -1,4 +1,8 @@
-extends "res://Player/states/motion/motion.gd"
+extends "res://Player/states/movement/motion.gd"
+
+"""
+The motion parent script handles the stamina regenerations.
+"""
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -8,6 +12,8 @@ func enter():
 func update(delta):
 	# Rotate towards mouse
 	update_look_direction()
+	
+	regenerate_stamina()
 	
 	# Check if movement input, if so, change to move state
 	var input_direction = get_input_direction()
