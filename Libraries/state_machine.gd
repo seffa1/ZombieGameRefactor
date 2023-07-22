@@ -61,7 +61,6 @@ func _on_animation_finished(anim_name):
 	current_state._on_animation_finished(anim_name)
 
 func _change_state(state_name):
-	print("State machine state changed")
 	if not _active:
 		return
 	current_state.exit()

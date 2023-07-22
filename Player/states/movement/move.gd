@@ -26,15 +26,15 @@ func handle_input(event):
 		
 
 func update(delta):
-	print("Updating")
 	var input_direction = get_input_direction()
 	if not input_direction:
-		print("No input, going idle")
-		emit_signal("finished", "idle")
-	else:
-		print("Movement input: " + str(input_direction))
+		emit_signal("finished", "previous")
 	
 	regenerate_stamina()
+	
+	# move the player
+	owner.velocity = input_direction.normalized() * WALK_SPEED
+	owner.move_and_slide()
 	
 
 func _on_animation_finished(anim_name):

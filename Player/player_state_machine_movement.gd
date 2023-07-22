@@ -7,7 +7,6 @@ interuption.
 """
 
 
-
 func _ready():
 	super()
 	states_map = {
@@ -24,7 +23,8 @@ func _change_state(state_name):
 	print("Player movement state changed: " + str(state_name))
 	if not _active:
 		return
-	if state_name in ["shoot", "die"]:
+	# If we want to add state to the state-queue
+	if state_name in ["die", "move"]:
 		states_stack.push_front(states_map[state_name])
 	super(state_name)
 
