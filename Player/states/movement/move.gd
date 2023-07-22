@@ -26,6 +26,9 @@ func handle_input(event):
 		
 
 func update(delta):
+	# Rotate towards mouse
+	update_look_direction()
+	
 	var input_direction = get_input_direction()
 	if not input_direction:
 		emit_signal("finished", "previous")
