@@ -12,3 +12,7 @@ position = Vector2(353, 151)
 
 [node name="StatesStackDiplayer" parent="GameWorld" instance=ExtResource("2_ao502")]
 top_level = true
+
+[connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="GameWorld/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
+
+[editable path="GameWorld/Player"]

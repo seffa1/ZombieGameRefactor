@@ -21,10 +21,12 @@ func _change_state(state_name):
 	"""
 	The base state_machine interface this node extends does most of the work
 	"""
+	print("Player movement state changed: " + str(state_name))
 	if not _active:
 		return
 	if state_name in ["shoot", "die"]:
 		states_stack.push_front(states_map[state_name])
+	super(state_name)
 
 func _input(event):
 	"""
@@ -34,3 +36,4 @@ func _input(event):
 	if not _active:
 		return
 	current_state.handle_input(event)
+
