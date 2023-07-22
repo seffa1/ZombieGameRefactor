@@ -10,3 +10,8 @@ var MAX_STAMINA: int = 100
 			stamina = 0
 		else:
 			stamina = value
+			
+@onready var camera_transform = $CameraTransform
+
+func assign_camera(camera: Camera2D) -> void:
+	camera_transform.remote_path = camera.get_path()
