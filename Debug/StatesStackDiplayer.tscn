@@ -4,7 +4,7 @@
 
 [node name="StatesStackDiplayer" type="Panel"]
 top_level = true
-offset_right = 192.0
+offset_right = 144.0
 offset_bottom = 168.0
 script = ExtResource("1")
 
@@ -13,11 +13,11 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -96.0
-offset_right = 96.0
+offset_left = -72.0
+offset_right = 72.0
 offset_bottom = 32.0
 grow_horizontal = 2
-text = "Pushown"
+text = "Movement"
 uppercase = true
 
 [node name="States" type="Label" parent="."]

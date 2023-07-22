@@ -19,3 +19,4 @@ res://Player/states/actions/charge_throw.gd
 res://Player/states/actions/throw.gd
 res://Player/states/actions/melee.gd
 res://Debug/StatesStackDiplayer.tscn
+res://Player/states/actions/die.gd

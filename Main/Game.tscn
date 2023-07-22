@@ -12,6 +12,15 @@ position = Vector2(353, 151)
 
 [node name="StatesStackDiplayer" parent="GameWorld" instance=ExtResource("2_ao502")]
 
+[node name="StatesStackDiplayer2" parent="GameWorld" instance=ExtResource("2_ao502")]
+offset_left = 144.0
+offset_right = 288.0
+
+[node name="Title" parent="GameWorld/StatesStackDiplayer2" index="0"]
+text = "Actions"
+
 [connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="GameWorld/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
+[connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="GameWorld/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]
 
 [editable path="GameWorld/Player"]
+[editable path="GameWorld/StatesStackDiplayer2"]

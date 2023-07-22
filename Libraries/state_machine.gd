@@ -42,7 +42,8 @@ func initialize(start_state):
 	_active = true
 	states_stack.push_front(get_node(start_state))
 	current_state = states_stack[0]
-	current_state.enter()
+	emit_signal("state_changed", states_stack)
+
 
 func _input(event):
 	if not _active:
@@ -52,7 +53,6 @@ func _input(event):
 func _physics_process(delta):
 	if not _active:
 		return
-	print(current_state.state_name)
 	current_state.update(delta)
 
 func _on_animation_finished(anim_name):

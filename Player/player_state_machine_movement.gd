@@ -26,7 +26,9 @@ func _change_state(state_name):
 	# If we want to add state to the state-queue
 	if state_name in ["die", "move"]:
 		states_stack.push_front(states_map[state_name])
+	# Otherwise the base statemachine will just switch to the new state
 	super(state_name)
+		
 
 func _input(event):
 	"""

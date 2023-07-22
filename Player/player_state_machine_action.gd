@@ -8,6 +8,7 @@ can perform.
 """
 
 func _ready():
+	super()
 	states_map = {
 		"idle": $Idle,
 		"shoot": $Shoot,
@@ -23,18 +24,22 @@ func _change_state(state_name):
 	"""
 	if not _active:
 		return
+	# If we want to add state to the state-queue
 	if state_name in ["shoot", "die"]:
 		states_stack.push_front(states_map[state_name])
+	# Otherwise the base statemachine will just switch to the new state
+	super(state_name)
 
 func _input(event):
 	"""
 	Here we only handle input that can interrupt states, shooting in this case
 	otherwise we let the state node handle it
 	"""
+	if not _active:
+		return
 	if event.is_action_pressed("shoot"):
 		if current_state == $Shoot:
 			return
 		_change_state("shoot")
 		return
-	if current_state:
-		current_state.handle_input(event)
+	current_state.handle_input(event)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=15 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Player/states/actions/charge_throw.gd" id="10_ri4uv"]
 [ext_resource type="Script" path="res://Player/states/actions/throw.gd" id="11_83mo6"]
 [ext_resource type="Script" path="res://Player/states/actions/melee.gd" id="12_u67uk"]
+[ext_resource type="Script" path="res://Player/states/actions/die.gd" id="13_lfdfl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0327"]
 radius = 42.0
@@ -56,6 +57,7 @@ script = ExtResource("11_83mo6")
 script = ExtResource("12_u67uk")
 
 [node name="Die" type="Node" parent="StateMachineAction"]
+script = ExtResource("13_lfdfl")
 
 [node name="StaminaTimer" type="Timer" parent="."]
 one_shot = true
