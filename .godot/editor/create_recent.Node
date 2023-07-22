@@ -1,6 +1,8 @@
+TileMap
+Sprite2D
+CanvasLayer
 Camera2D
 RemoteTransform2D
-Sprite2D
 Node
 CollisionShape2D
 Timer

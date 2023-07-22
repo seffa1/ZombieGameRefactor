@@ -1,30 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=5 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
 [ext_resource type="PackedScene" uid="uid://bxxl6m827shqp" path="res://Debug/StatesStackDiplayer.tscn" id="2_ao502"]
+[ext_resource type="Texture2D" uid="uid://c1hksnvbiugxy" path="res://UI/images/background2.png" id="3_51h4y"]
 
 [node name="GameInitializer" type="Node"]
 script = ExtResource("1_vn005")
 
 [node name="GameWorld" type="Node2D" parent="."]
 
+[node name="placeholderBG" type="Sprite2D" parent="GameWorld"]
+texture = ExtResource("3_51h4y")
+
 [node name="Player" parent="GameWorld" instance=ExtResource("1_kmip5")]
 position = Vector2(353, 151)
 
-[node name="StatesStackDiplayer" parent="GameWorld" instance=ExtResource("2_ao502")]
+[node name="Camera" type="Camera2D" parent="GameWorld"]
 
-[node name="StatesStackDiplayer2" parent="GameWorld" instance=ExtResource("2_ao502")]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="StatesStackDiplayer" parent="UI" instance=ExtResource("2_ao502")]
+
+[node name="StatesStackDiplayer2" parent="UI" instance=ExtResource("2_ao502")]
 offset_left = 144.0
 offset_right = 288.0
 
-[node name="Title" parent="GameWorld/StatesStackDiplayer2" index="0"]
+[node name="Title" parent="UI/StatesStackDiplayer2" index="0"]
 text = "Actions"
 
-[node name="Camera" type="Camera2D" parent="GameWorld"]
-
-[connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="GameWorld/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
-[connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="GameWorld/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]
+[connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="UI/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
+[connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="UI/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]
 
 [editable path="GameWorld/Player"]
-[editable path="GameWorld/StatesStackDiplayer2"]
+[editable path="UI/StatesStackDiplayer2"]
