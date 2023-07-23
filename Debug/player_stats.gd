@@ -1,10 +1,20 @@
 @tool
 extends Panel
 
-@onready var value = $Values
+@onready var player_stamina = $Stamina
+@onready var player_rotation = $Rotation
+@onready var player_position = $Position
 
 func _ready():
 	set_as_top_level(true)
 
 func _on_player_player_stamina_change(stamina: int):
-	value.text = str(stamina)
+	player_stamina.text = str(stamina)
+
+
+func _on_player_player_rotation_change(rotation):
+	player_rotation.text = str(rotation)
+
+
+func _on_player_player_position_change(position):
+	player_position.text = str(position)

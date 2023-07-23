@@ -18,7 +18,6 @@ offset_right = 72.0
 offset_bottom = 32.0
 grow_horizontal = 2
 text = "Movement"
-uppercase = true
 
 [node name="States" type="Label" parent="."]
 layout_mode = 0

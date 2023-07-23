@@ -90,10 +90,6 @@ layer_1/tile_data = PackedInt32Array(-2, 0, 0, 917502, 0, 2, 851990, 131072, 2, 
 [node name="Player" parent="GameWorld" instance=ExtResource("1_kmip5")]
 position = Vector2(353, 151)
 
-[node name="Idle" parent="GameWorld/Player/StateMachineMovement" index="0"]
-STAMINA_TICK_RATE = null
-STAMINA_PER_TICK = null
-
 [node name="Camera" type="Camera2D" parent="GameWorld"]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
@@ -108,14 +104,21 @@ offset_left = 144.0
 offset_right = 288.0
 offset_bottom = 95.0
 
+[node name="Title" parent="UI/StatesStackDiplayer2" index="0"]
+text = "Actions"
+
 [node name="PlayerStats" parent="UI" instance=ExtResource("5_1ag6a")]
 top_level = true
 offset_left = 288.0
-offset_right = 480.0
-offset_bottom = 41.0
+offset_right = 723.0
+offset_bottom = 95.0
 
+[connection signal="player_position_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_position_change"]
+[connection signal="player_rotation_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_rotation_change"]
 [connection signal="player_stamina_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_stamina_change"]
 [connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="UI/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
 [connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="UI/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]
 
 [editable path="GameWorld/Player"]
+[editable path="UI/StatesStackDiplayer"]
+[editable path="UI/StatesStackDiplayer2"]

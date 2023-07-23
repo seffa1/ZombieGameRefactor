@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 # Signals
 signal player_stamina_change(stamina: int)
+signal player_rotation_change(rotation)
+signal player_position_change(position)
 
 # Nodes
 @onready var camera_transform = $CameraTransform
@@ -20,9 +22,11 @@ var MAX_STAMINA: int = 100
 		else:
 			new_stamina = value
 		stamina = new_stamina
-		print("Player stamina changed: " + str(new_stamina))
 		emit_signal("player_stamina_change", new_stamina)
-
 
 func assign_camera(camera: Camera2D) -> void:
 	camera_transform.remote_path = camera.get_path()
+
+func _physics_process(delta):
+	emit_signal("player_rotation_change", self.rotation)
+	emit_signal("player_position_change", self.position)

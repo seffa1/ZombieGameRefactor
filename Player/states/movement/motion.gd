@@ -25,8 +25,16 @@ func get_input_direction():
 	return input_direction
 
 func update_look_direction():
+	# TODO - replace this with a steer force. Sprinting state will have a low steer force and moving will have near-instant steer force
 	owner.look_at(owner.get_global_mouse_position())
 	
+	update_look_direction_with_steering(0.5)
+
+func update_look_direction_with_steering(steer_force: float) -> void:
+	# look_at() is equivilent to:
+	#	rotation = get_global_mouse_position().angle_to_point(position)
+	return
+
 func regenerate_stamina():
 	"""
 	Any state which in which stamina can be recovered in will call this function
