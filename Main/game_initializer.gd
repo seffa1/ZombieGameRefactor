@@ -7,3 +7,4 @@ extends Node
 func _ready():
 	Globals.player = player
 	player.assign_camera(camera)
+	

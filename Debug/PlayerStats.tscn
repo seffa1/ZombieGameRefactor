@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1w4ofsu4cj68"]
+
+[ext_resource type="Script" path="res://Debug/player_stats.gd" id="1_dyuci"]
+
+[node name="PlayerStats" type="Panel"]
+offset_right = 832.0
+offset_bottom = 40.0
+script = ExtResource("1_dyuci")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 68.0
+offset_bottom = 26.0
+text = "Stamina:"
+
+[node name="Values" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_right = 192.0
+offset_bottom = 23.0

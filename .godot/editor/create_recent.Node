@@ -1,3 +1,7 @@
+Timer
+Label
+Panel
+Control
 TileMap
 Sprite2D
 CanvasLayer
@@ -5,5 +9,4 @@ Camera2D
 RemoteTransform2D
 Node
 CollisionShape2D
-Timer
 CharacterBody2D

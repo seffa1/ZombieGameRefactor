@@ -20,11 +20,10 @@ func _change_state(state_name):
 	"""
 	The base state_machine interface this node extends does most of the work
 	"""
-	print("Player movement state changed: " + str(state_name))
 	if not _active:
 		return
 	# If we want to add state to the state-queue
-	if state_name in ["die", "move"]:
+	if state_name in ["die", "move", "sprint"]:
 		states_stack.push_front(states_map[state_name])
 	# Otherwise the base statemachine will just switch to the new state
 	super(state_name)

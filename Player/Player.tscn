@@ -28,6 +28,8 @@ START_STATE = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachineMovement"]
 script = ExtResource("3_j8hkm")
+STAMINA_TICK_RATE = null
+STAMINA_PER_TICK = null
 
 [node name="Move" type="Node" parent="StateMachineMovement"]
 script = ExtResource("4_hhe0o")
@@ -60,8 +62,10 @@ script = ExtResource("12_u67uk")
 [node name="Die" type="Node" parent="StateMachineAction"]
 script = ExtResource("13_lfdfl")
 
-[node name="StaminaTimer" type="Timer" parent="."]
+[node name="StaminaRegenTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="StaminaDepletionTimer" type="Timer" parent="."]
 
 [node name="placeholder" type="Sprite2D" parent="."]
 position = Vector2(1.19209e-07, 2.38419e-07)
