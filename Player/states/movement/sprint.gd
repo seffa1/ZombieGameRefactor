@@ -31,8 +31,11 @@ func update(delta):
 	# TODO - limit player from spinning around, prevent actions
 	deplete_stamina()
 	
-	# move the player in the same direction they were already going
-	owner.velocity = owner.velocity.normalized() * RUN_SPEED
+	# move the player
+	var input_direction = get_input_direction()
+	if not input_direction:
+		emit_signal("finished", "previous")
+	owner.velocity = input_direction.normalized() * RUN_SPEED
 	owner.move_and_slide()
 
 func _on_animation_finished(anim_name):

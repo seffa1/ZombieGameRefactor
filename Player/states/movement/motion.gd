@@ -27,13 +27,6 @@ func get_input_direction():
 func update_look_direction():
 	# TODO - replace this with a steer force. Sprinting state will have a low steer force and moving will have near-instant steer force
 	owner.look_at(owner.get_global_mouse_position())
-	
-	update_look_direction_with_steering(0.5)
-
-func update_look_direction_with_steering(steer_force: float) -> void:
-	# look_at() is equivilent to:
-	#	rotation = get_global_mouse_position().angle_to_point(position)
-	return
 
 func regenerate_stamina():
 	"""
@@ -47,5 +40,17 @@ func regenerate_stamina():
 func deplete_stamina():
 	"""
 	The sprint state calls this to deplete stamina.
+	"""
+	if stamina_depletion_timer.is_stopped():
+		stamina_depletion_timer.start(STAMINA_USE_TICK_RATE)
+		owner.stamina -= STAMINA_USE_PER_TICK
+
+func is_moving_backwards():
+	"""
+	Checks if the player is moving in the opposite direction as they
+	are looking. The movement code uses this to adjust the player velocity.
+	The player moves slower when walking and sprinting if they are moving backwards.
+	Backwards means looking more than 90 deg in either direction from
+	the vector they are moving in.
 	"""
 	return

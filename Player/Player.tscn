@@ -33,9 +33,13 @@ STAMINA_PER_TICK = null
 
 [node name="Move" type="Node" parent="StateMachineMovement"]
 script = ExtResource("4_hhe0o")
+STAMINA_REGEN_PER_TICK = 2
+STAMINA_USE_TICK_RATE = 0.025
+STAMINA_USE_PER_TICK = 2
 
 [node name="Sprint" type="Node" parent="StateMachineMovement"]
 script = ExtResource("5_m0p7e")
+STAMINA_USE_TICK_RATE = 0.025
 
 [node name="Die" type="Node" parent="StateMachineMovement"]
 script = ExtResource("6_1xgt3")
@@ -66,6 +70,7 @@ script = ExtResource("13_lfdfl")
 one_shot = true
 
 [node name="StaminaDepletionTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="placeholder" type="Sprite2D" parent="."]
 position = Vector2(1.19209e-07, 2.38419e-07)
