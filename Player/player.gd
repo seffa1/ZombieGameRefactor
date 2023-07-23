@@ -18,14 +18,18 @@ signal player_position_change(position)
 @onready var camera_transform = $CameraTransform
 
 # Constants
-var MAX_STAMINA: int = 100
+
 
 # Variables
+var max_stamina: int = 100:
+	set(value):
+		max_stamina = value
+
 @onready var stamina: int = 100:
 	set(value):
 		var new_stamina
-		if value > MAX_STAMINA:
-			new_stamina = MAX_STAMINA
+		if value > max_stamina:
+			new_stamina = max_stamina
 		elif value < 0:
 			new_stamina = 0
 		else:

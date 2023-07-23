@@ -1,3 +1,4 @@
+Sprite2D
 AnimationPlayer
 Label
 VBoxContainer
@@ -8,7 +9,6 @@ Timer
 Panel
 Control
 TileMap
-Sprite2D
 CanvasLayer
 Camera2D
 RemoteTransform2D

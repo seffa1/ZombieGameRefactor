@@ -117,6 +117,18 @@ offset_right = 723.0
 offset_bottom = 95.0
 theme = ExtResource("5_0uk56")
 
+[node name="Money" parent="UI/PlayerStats" index="2"]
+offset_top = 17.0
+offset_bottom = 41.0
+
+[node name="Rotation" parent="UI/PlayerStats" index="3"]
+offset_top = 32.0
+offset_bottom = 55.0
+
+[node name="Position" parent="UI/PlayerStats" index="4"]
+offset_top = 55.0
+offset_bottom = 78.0
+
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_nxyvm")]
 
 [connection signal="player_money_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_money_change"]
@@ -129,3 +141,4 @@ theme = ExtResource("5_0uk56")
 [editable path="GameWorld/Player"]
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]
+[editable path="UI/PlayerStats"]
