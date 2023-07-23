@@ -4,9 +4,10 @@ extends Area2D
 Base class used by all weapons/equipment/perks/traps/etc. that can be purchased by the player.
 """
 
-signal player_log(message: String)
+
 
 @export var purchasable_cost: int = 0
+@export var purchasable_name: String = ""  # Used by the interactable log
 
 func purchase_item(player: PackedScene):
 	"""
@@ -23,7 +24,7 @@ func purchase_item(player: PackedScene):
 	"""
 	
 	if player.money < purchasable_cost:
-		emit_signal("player_log", "Not enough money")
+		Events.emit_signal("player_log", "Not enough money")
 		return
 		
 	player.money -= purchasable_cost
@@ -34,5 +35,7 @@ func give_item(player: PackedScene):
 	Function which must be defined by all children classes.
 	"""
 	return
-	
+
+func get_interactable_message() -> String:
+	return "Buy " + purchasable_name + ": " + str(purchasable_cost) 
 

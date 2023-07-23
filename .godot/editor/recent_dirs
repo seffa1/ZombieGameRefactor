@@ -1,13 +1,13 @@
+res://UI/HUD
+res://Autoload
 res://UI/fonts/feast-of-flesh-bb
 res://World/purchasables/perks
 res://World/purchasables
 res://UI/themes
 res://UI/fonts/Fonts
 res://UI/fonts/the-truth-will-out
-res://UI/HUD
 res://Player
 res://Debug
-res://Autoload
 res://Player/states/actions
 res://Player/states/movement
 res://Player/states

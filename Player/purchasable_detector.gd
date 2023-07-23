@@ -1,15 +1,15 @@
 extends Area2D
 
 """
-Keeps track of all purchasables within the player's reach.
-Signals to the UI what the player can purchase. There should only be
-one purchasable at a time ( dont put two things too close together on the map. )
+Tracks the current purchasable item.
 """
 
-@onready var purchasables: Array = []
+@onready var purchasable = null
 
 func _on_body_entered(body):
-	purchasables.append(body)
+	purchasable = body
+	Events.emit_signal("update_interactable_log", body.get_interactable_message())
 
 func _on_body_exited(body):
-	purchasables.erase(body)
+	purchasable = null
+	Events.emit_signal("update_interactable_log", "")

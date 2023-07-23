@@ -9,3 +9,8 @@ res://Player/player.gd
 res://Main/Game.tscn
 res://Debug/PlayerStats.tscn
 res://UI/themes/Game.tres
+res://Main/game_initializer.gd
+res://Autoload/Events.gd
+res://UI/HUD/InteractableLog.tscn
+res://UI/HUD/interactable_log.gd
+res://Player/purchasable_detector.gd

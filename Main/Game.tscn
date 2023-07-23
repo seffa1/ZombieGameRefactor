@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=11 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
 [ext_resource type="PackedScene" uid="uid://bxxl6m827shqp" path="res://Debug/StatesStackDiplayer.tscn" id="2_ao502"]
+[ext_resource type="PackedScene" uid="uid://c0n5vlaweqcb5" path="res://World/purchasables/perks/PerkIncreaseStamina.tscn" id="2_m0mp8"]
 [ext_resource type="Texture2D" uid="uid://5kksi3jgpmqo" path="res://World/tilesets/ground_destroyed_cars/Tilelist1.png" id="3_kcb3r"]
 [ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="5_0uk56"]
 [ext_resource type="PackedScene" uid="uid://c1w4ofsu4cj68" path="res://Debug/PlayerStats.tscn" id="5_1ag6a"]
@@ -74,6 +75,11 @@ sources/0 = SubResource("TileSetAtlasSource_11j7o")
 script = ExtResource("1_vn005")
 
 [node name="GameWorld" type="Node2D" parent="."]
+
+[node name="PurchasablesContainer" type="Node" parent="GameWorld"]
+
+[node name="PerkIncreaseStamina" parent="GameWorld/PurchasablesContainer" instance=ExtResource("2_m0mp8")]
+position = Vector2(620, 151)
 
 [node name="TileMap" type="TileMap" parent="GameWorld"]
 tile_set = SubResource("TileSet_oixer")
