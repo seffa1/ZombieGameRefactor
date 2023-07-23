@@ -10,6 +10,7 @@ those modifiers to the WeaponContainer if they modify weapons.
 
 # Signals
 signal player_stamina_change(stamina: int)
+signal player_money_change(money: int)
 signal player_rotation_change(rotation)
 signal player_position_change(position)
 
@@ -31,6 +32,14 @@ var MAX_STAMINA: int = 100
 			new_stamina = value
 		stamina = new_stamina
 		emit_signal("player_stamina_change", new_stamina)
+
+@onready var money: int = 10000:
+	set(value):
+		if value < 0:
+			money = 0
+		else:
+			money = value
+		emit_signal("player_money_change", money)
 
 func assign_camera(camera: Camera2D) -> void:
 	camera_transform.remote_path = camera.get_path()

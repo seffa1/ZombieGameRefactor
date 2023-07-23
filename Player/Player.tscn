@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=19 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Player/states/actions/die.gd" id="13_lfdfl"]
 [ext_resource type="Texture2D" uid="uid://ctl65mm8ars0g" path="res://Weapons/Pistol_01/sprites/pistol_idle/Idle_gun_000.png" id="14_k6vfd"]
 [ext_resource type="Script" path="res://Player/weapon_container.gd" id="14_qrq3y"]
+[ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0327"]
 radius = 34.0588
@@ -23,6 +24,7 @@ radius = 34.0588
 radius = 39.5601
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_e8yx8")
 
@@ -80,14 +82,15 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("14_k6vfd")
 offset = Vector2(-15, 50)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j0327")
 
-[node name="InteractDetector" type="Area2D" parent="."]
+[node name="PurchasableDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("16_0vxfj")
 
-[node name="InteractionZone" type="CollisionShape2D" parent="InteractDetector"]
+[node name="InteractionZone" type="CollisionShape2D" parent="PurchasableDetector"]
 position = Vector2(26, 6)
 shape = SubResource("CircleShape2D_nlyr0")
 debug_color = Color(0.607843, 0.364706, 1, 0.419608)
@@ -99,3 +102,6 @@ one_shot = true
 one_shot = true
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]
+
+[connection signal="body_entered" from="PurchasableDetector" to="PurchasableDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="PurchasableDetector" to="PurchasableDetector" method="_on_body_exited"]

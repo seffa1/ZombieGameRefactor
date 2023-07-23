@@ -1,7 +1,9 @@
-Node
+AnimationPlayer
+Label
+VBoxContainer
 CollisionShape2D
 Area2D
-Label
+Node
 Timer
 Panel
 Control

@@ -10,3 +10,9 @@ res://Player/states/movement/motion.gd
 res://Player/states/movement/move.gd
 res://Player/player_state_machine_movement.gd
 res://Player/weapon_container.gd
+res://World/weaponBuys/weapon_buy.gd
+res://World/purchasables/Purchasable.tscn
+res://World/purchasables/purchasable.gd
+res://Player/purchasable_detector.gd
+res://UI/HUD/PlayerLog.tscn
+res://UI/HUD/player_log.gd

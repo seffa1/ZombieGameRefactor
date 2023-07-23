@@ -1,4 +1,10 @@
+res://UI/themes
+res://UI/fonts/feast-of-flesh-bb
+res://UI/fonts/Fonts
+res://UI/fonts/the-truth-will-out
+res://UI/HUD
 res://Player
+res://World/purchasables
 res://Debug
 res://Autoload
 res://Player/states/actions

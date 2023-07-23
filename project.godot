@@ -60,7 +60,7 @@ sprint={
 [layer_names]
 
 2d_physics/layer_1="player"
-2d_physics/layer_2="interactables"
+2d_physics/layer_2="purchasables"
 
 [physics]
 
