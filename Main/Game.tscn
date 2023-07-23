@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=12 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="5_0uk56"]
 [ext_resource type="PackedScene" uid="uid://c1w4ofsu4cj68" path="res://Debug/PlayerStats.tscn" id="5_1ag6a"]
 [ext_resource type="PackedScene" uid="uid://bn822g2rnel5j" path="res://UI/HUD/PlayerLog.tscn" id="6_nxyvm"]
+[ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="9_8tr1y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11j7o"]
 texture = ExtResource("3_kcb3r")
@@ -80,6 +81,7 @@ script = ExtResource("1_vn005")
 
 [node name="PerkIncreaseStamina" parent="GameWorld/PurchasablesContainer" instance=ExtResource("2_m0mp8")]
 position = Vector2(620, 151)
+purchasable_name = "Stamina Increase"
 
 [node name="TileMap" type="TileMap" parent="GameWorld"]
 tile_set = SubResource("TileSet_oixer")
@@ -136,6 +138,8 @@ offset_top = 55.0
 offset_bottom = 78.0
 
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_nxyvm")]
+
+[node name="InteractableLog" parent="UI" instance=ExtResource("9_8tr1y")]
 
 [connection signal="player_money_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_money_change"]
 [connection signal="player_position_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_position_change"]

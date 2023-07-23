@@ -4,8 +4,6 @@ extends Area2D
 Base class used by all weapons/equipment/perks/traps/etc. that can be purchased by the player.
 """
 
-
-
 @export var purchasable_cost: int = 0
 @export var purchasable_name: String = ""  # Used by the interactable log
 
