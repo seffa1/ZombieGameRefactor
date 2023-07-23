@@ -1,5 +1,13 @@
 extends CharacterBody2D
 
+"""
+This script mainly signals to the UI all player related info:
+	 stamina, health, money, debug info
+
+Also tracks all perks / power-up-modifiers the player recieves and relates
+those modifiers to the WeaponContainer if they modify weapons.
+"""
+
 # Signals
 signal player_stamina_change(stamina: int)
 signal player_rotation_change(rotation)

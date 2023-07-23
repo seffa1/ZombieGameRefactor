@@ -9,3 +9,4 @@ res://Player/states/movement/sprint.gd
 res://Player/states/movement/motion.gd
 res://Player/states/movement/move.gd
 res://Player/player_state_machine_movement.gd
+res://Player/weapon_container.gd
