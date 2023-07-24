@@ -33,6 +33,9 @@ func regenerate_stamina():
 	Any state which in which stamina can be recovered in will call this function
 	during its update.
 	"""
+	if owner.stamina == owner.max_stamina:
+		return
+	
 	if stamina_regen_timer.is_stopped():
 		stamina_regen_timer.start(STAMINA_REGEN_TICK_RATE)
 		owner.stamina += STAMINA_REGEN_PER_TICK

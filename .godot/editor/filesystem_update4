@@ -14,3 +14,5 @@ res://Autoload/Events.gd
 res://UI/HUD/InteractableLog.tscn
 res://UI/HUD/interactable_log.gd
 res://Player/purchasable_detector.gd
+res://Debug/player_stats.gd
+res://Player/states/movement/motion.gd
