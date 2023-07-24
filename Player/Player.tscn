@@ -1,34 +1,107 @@
-[gd_scene load_steps=5 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=19 format=3 uid="uid://bypyufryf0ycr"]
 
+[ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
-[ext_resource type="Script" path="res://Player/states/motion/idle.gd" id="2_tbrip"]
 [ext_resource type="Script" path="res://Player/player_state_machine_action.gd" id="3_77vex"]
-[ext_resource type="Script" path="res://Player/states/motion/move.gd" id="3_d1m3w"]
+[ext_resource type="Script" path="res://Player/states/movement/idle.gd" id="3_j8hkm"]
+[ext_resource type="Script" path="res://Player/states/movement/move.gd" id="4_hhe0o"]
+[ext_resource type="Script" path="res://Player/states/movement/sprint.gd" id="5_m0p7e"]
+[ext_resource type="Script" path="res://Player/states/movement/die.gd" id="6_1xgt3"]
+[ext_resource type="Script" path="res://Player/states/actions/idle.gd" id="6_3s4x2"]
+[ext_resource type="Script" path="res://Player/states/actions/shoot.gd" id="9_mu8s3"]
+[ext_resource type="Script" path="res://Player/states/actions/charge_throw.gd" id="10_ri4uv"]
+[ext_resource type="Script" path="res://Player/states/actions/throw.gd" id="11_83mo6"]
+[ext_resource type="Script" path="res://Player/states/actions/melee.gd" id="12_u67uk"]
+[ext_resource type="Script" path="res://Player/states/actions/die.gd" id="13_lfdfl"]
+[ext_resource type="Texture2D" uid="uid://ctl65mm8ars0g" path="res://Weapons/Pistol_01/sprites/pistol_idle/Idle_gun_000.png" id="14_k6vfd"]
+[ext_resource type="Script" path="res://Player/weapon_container.gd" id="14_qrq3y"]
+[ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0327"]
+radius = 34.0588
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nlyr0"]
+radius = 39.5601
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_e8yx8")
 
 [node name="StateMachineMovement" type="Node" parent="."]
 script = ExtResource("1_wjaak")
+START_STATE = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachineMovement"]
-script = ExtResource("2_tbrip")
+script = ExtResource("3_j8hkm")
 
 [node name="Move" type="Node" parent="StateMachineMovement"]
-script = ExtResource("3_d1m3w")
+script = ExtResource("4_hhe0o")
+STAMINA_REGEN_PER_TICK = 2
+STAMINA_USE_TICK_RATE = 0.025
+STAMINA_USE_PER_TICK = 2
 
-[node name="Dash" type="Node" parent="StateMachineMovement"]
+[node name="Sprint" type="Node" parent="StateMachineMovement"]
+script = ExtResource("5_m0p7e")
+STAMINA_USE_TICK_RATE = 0.025
 
 [node name="Die" type="Node" parent="StateMachineMovement"]
+script = ExtResource("6_1xgt3")
 
 [node name="StateMachineAction" type="Node" parent="."]
 script = ExtResource("3_77vex")
+START_STATE = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachineAction"]
+script = ExtResource("6_3s4x2")
 
 [node name="Shoot" type="Node" parent="StateMachineAction"]
+script = ExtResource("9_mu8s3")
 
 [node name="ChargeThrow" type="Node" parent="StateMachineAction"]
+script = ExtResource("10_ri4uv")
 
 [node name="Throw" type="Node" parent="StateMachineAction"]
+script = ExtResource("11_83mo6")
 
 [node name="Melee" type="Node" parent="StateMachineAction"]
+script = ExtResource("12_u67uk")
 
 [node name="Die" type="Node" parent="StateMachineAction"]
+script = ExtResource("13_lfdfl")
+
+[node name="WeaponContainer" type="Node" parent="."]
+script = ExtResource("14_qrq3y")
+
+[node name="placeholder" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, 2.38419e-07)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_k6vfd")
+offset = Vector2(-15, 50)
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j0327")
+
+[node name="PurchasableDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("16_0vxfj")
+
+[node name="InteractionZone" type="CollisionShape2D" parent="PurchasableDetector"]
+position = Vector2(26, 6)
+shape = SubResource("CircleShape2D_nlyr0")
+debug_color = Color(0.607843, 0.364706, 1, 0.419608)
+
+[node name="StaminaRegenTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StaminaDepletionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="."]
+
+[connection signal="area_entered" from="PurchasableDetector" to="PurchasableDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="PurchasableDetector" to="PurchasableDetector" method="_on_area_exited"]
+[connection signal="body_entered" from="PurchasableDetector" to="PurchasableDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="PurchasableDetector" to="PurchasableDetector" method="_on_body_exited"]

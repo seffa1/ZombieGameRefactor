@@ -3,24 +3,21 @@
 [ext_resource type="Script" path="res://debug/states-stack-displayer.gd" id="1"]
 
 [node name="StatesStackDiplayer" type="Panel"]
-offset_right = 192.0
+top_level = true
+offset_right = 144.0
 offset_bottom = 168.0
 script = ExtResource("1")
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -96.0
-offset_right = 96.0
+offset_left = -72.0
+offset_right = 72.0
 offset_bottom = 32.0
 grow_horizontal = 2
-text = "Pushown"
-uppercase = true
+text = "Movement"
 
 [node name="States" type="Label" parent="."]
 layout_mode = 0
@@ -28,13 +25,9 @@ offset_left = 24.0
 offset_top = 32.0
 offset_right = 176.0
 offset_bottom = 168.0
-text = "Jump
-Test"
 
 [node name="Numbers" type="Label" parent="."]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 168.0
 offset_bottom = 168.0
-text = "1.
-2."

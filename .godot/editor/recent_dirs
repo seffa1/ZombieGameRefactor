@@ -1,2 +1,15 @@
-res://Player/states
+res://Autoload
+res://Weapons/Bullets
+res://Weapons
+res://UI/HUD
+res://UI/fonts/feast-of-flesh-bb
+res://World/purchasables/perks
+res://World/purchasables
+res://UI/themes
+res://UI/fonts/Fonts
+res://UI/fonts/the-truth-will-out
 res://Player
+res://Debug
+res://Player/states/actions
+res://Player/states/movement
+res://Player/states

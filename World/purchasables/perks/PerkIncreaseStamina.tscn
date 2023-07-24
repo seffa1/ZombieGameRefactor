@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0n5vlaweqcb5"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_hcxpo"]
+[ext_resource type="Script" path="res://World/purchasables/perks/perk_increase_stamina.gd" id="2_ervkr"]
+[ext_resource type="Texture2D" uid="uid://c02suos0pt8ne" path="res://World/purchasables/perks/images/element_0101_Layer-103.png" id="3_c0xin"]
+
+[node name="PerkIncreaseStamina" instance=ExtResource("1_hcxpo")]
+script = ExtResource("2_ervkr")
+purchasable_cost = 100
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_c0xin")

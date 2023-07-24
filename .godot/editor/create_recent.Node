@@ -1,2 +1,17 @@
+Node2D
 Node
+CollisionShape2D
+Timer
+Sprite2D
 CharacterBody2D
+Marker2D
+Label
+AnimationPlayer
+VBoxContainer
+Area2D
+Panel
+Control
+TileMap
+CanvasLayer
+Camera2D
+RemoteTransform2D

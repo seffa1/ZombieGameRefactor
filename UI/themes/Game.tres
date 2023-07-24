@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b465nj0tesjok"]
+
+[ext_resource type="FontFile" uid="uid://cw4ox08g7nbuo" path="res://UI/fonts/feast-of-flesh-bb/fofbb_reg.otf" id="1_340fs"]
+
+[resource]
+default_font = ExtResource("1_340fs")
+default_font_size = 12

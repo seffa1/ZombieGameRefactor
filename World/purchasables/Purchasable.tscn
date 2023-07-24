@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1bl63brb88os"]
+
+[ext_resource type="Script" path="res://World/purchasables/purchasable.gd" id="1_djg1p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iv26f"]
+radius = 25.0
+height = 58.0
+
+[node name="Purchasable" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_djg1p")
+
+[node name="interactionZone" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_iv26f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

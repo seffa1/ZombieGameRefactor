@@ -3,11 +3,12 @@ Base interface for a generic state machine
 It handles initializing, setting the machine active or not
 delegating _physics_process, _input calls to the State nodes,
 and changing the current/active state.
-See the PlayerV2 scene for an example on how to use it
+See the PlayerV2 scene for an example on how to use it.
+Also uses a state stack/'push down automoton'/state queue.
 """
 extends Node
 
-signal state_changed(current_state)
+signal state_changed(state_stack)
 
 """
 You must set a starting node from the inspector or on
@@ -22,6 +23,7 @@ var states_stack = []
 var current_state = null
 var _active = false:
 	set(value):
+		print("Settings value: " + str(value))
 		_active = value
 		set_physics_process(value)
 		set_process_input(value)
@@ -30,20 +32,27 @@ var _active = false:
 			current_state = null
 
 func _ready():
+	print("Ready")
 	for child in get_children():
 		child.finished.connect(_change_state)
 	initialize(START_STATE)
 
 func initialize(start_state):
-	self._active = start_state
+	print("Initializing")
+	_active = true
 	states_stack.push_front(get_node(start_state))
 	current_state = states_stack[0]
-	current_state.enter()
+	emit_signal("state_changed", states_stack)
+
 
 func _input(event):
+	if not _active:
+		return
 	current_state.handle_input(event)
 
 func _physics_process(delta):
+	if not _active:
+		return
 	current_state.update(delta)
 
 func _on_animation_finished(anim_name):
@@ -62,7 +71,7 @@ func _change_state(state_name):
 		states_stack[0] = states_map[state_name]
 	
 	current_state = states_stack[0]
-	emit_signal("state_changed", current_state)
+	emit_signal("state_changed", states_stack)
 	
 	# We don"t want to reinitialize the state if we"re going back to the previous state
 	if state_name != "previous":
