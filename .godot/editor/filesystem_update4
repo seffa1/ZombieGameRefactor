@@ -1,7 +1,0 @@
-res://Weapons/Gun.tscn
-res://Weapons/Gun.gd
-res://Weapons/Bullets/Bullet.tscn
-res://Weapons/Bullets/bullet.gd
-res://Autoload/Events.gd
-res://Autoload/ObjectRegistry.tscn
-res://Autoload/ObjectRegistry.gd
