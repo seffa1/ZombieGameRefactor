@@ -1,5 +1,7 @@
-res://UI/HUD
 res://Autoload
+res://Weapons/Bullets
+res://Weapons
+res://UI/HUD
 res://UI/fonts/feast-of-flesh-bb
 res://World/purchasables/perks
 res://World/purchasables

@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 
 Globals="*res://Autoload/Globals.gd"
 Events="*res://Autoload/Events.gd"
+ObjectRegistry="*res://Autoload/ObjectRegistry.tscn"
 
 [display]
 
@@ -67,6 +68,9 @@ interact={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="purchasables"
+2d_physics/layer_3="bullets"
+2d_physics/layer_4="enemies"
+2d_physics/layer_5="environment"
 
 [physics]
 
