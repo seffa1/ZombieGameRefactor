@@ -17,6 +17,8 @@ Optionally i may add another position node for the shell ejection spot.
 @export var bullet: PackedScene
 @export var bullets_per_fire: int = 1
 @export var bullet_spread: float = 0.0  # if bullets_per_fire > 1, this is the angle between the bullets
+@export var bullet_speed: int = 1500
+@export var bullet_damage: int = 10
 @export var fire_rate: float = 0.2  # only applies if fire_type is automatic. Seconds per bullet fire
 @export var clip_size: int = 25
 @export var total_bullet_count: int = 500  # total bullets the gun can hold
@@ -46,8 +48,14 @@ func shoot() -> void:
 		return
 	
 	if bullets_per_fire == 1:
-		var direction = Vector2(1,0).rotated(global_rotation)
-	
+		var bullet_direction = Vector2(1,0).rotated(global_rotation)
+		var spawn_position = muzzle_position.global_position
+		
+		var bullet_instance = bullet.instance()
+		bullet_instance.init(bullet_damage, bullet_speed, owner, spawn_position, bullet_direction)
+		ObjectRegistry.register_projectile(bullet_instance)
+		fire_timer.start(fire_rate)
+
 	else:
 		for i in bullets_per_fire:
 			# TODO - use bullet spread to alter bullet direction in bullet init function
