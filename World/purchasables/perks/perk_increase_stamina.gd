@@ -13,7 +13,7 @@ func give_item(player: CharacterBody2D):
 	# Take the money, give the perk, and track the perk
 	player.money -= purchasable_cost
 	player.max_stamina = 200
-	player.perks.append(purchasable_name)
+	player.add_perk(purchasable_name)
 	
 	Events.emit_signal("player_log", "Purchased " + purchasable_name)
 

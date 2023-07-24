@@ -5,17 +5,18 @@
 [node name="PlayerStats" type="Panel"]
 top_level = true
 offset_right = 384.0
-offset_bottom = 104.0
+offset_bottom = 128.0
 script = ExtResource("1_dyuci")
 
 [node name="Labels" type="Label" parent="."]
 layout_mode = 0
 offset_right = 71.0
-offset_bottom = 104.0
+offset_bottom = 128.0
 text = "Stamina:
 Money:
 Rotation:
-Position:"
+Position:
+Perks:"
 
 [node name="Stamina" type="Label" parent="."]
 layout_mode = 0
@@ -43,3 +44,10 @@ offset_left = 72.0
 offset_top = 79.0
 offset_right = 128.0
 offset_bottom = 102.0
+
+[node name="Perks" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 102.0
+offset_right = 128.0
+offset_bottom = 125.0

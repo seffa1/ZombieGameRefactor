@@ -96,6 +96,9 @@ offset_right = 723.0
 offset_bottom = 95.0
 theme = ExtResource("5_0uk56")
 
+[node name="Labels" parent="UI/PlayerStats" index="0"]
+offset_bottom = 95.0
+
 [node name="Money" parent="UI/PlayerStats" index="2"]
 offset_top = 17.0
 offset_bottom = 41.0
@@ -107,6 +110,11 @@ offset_bottom = 55.0
 [node name="Position" parent="UI/PlayerStats" index="4"]
 offset_top = 55.0
 offset_bottom = 78.0
+
+[node name="Perks" parent="UI/PlayerStats" index="5"]
+offset_top = 70.0
+offset_right = 435.0
+offset_bottom = 93.0
 
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_nxyvm")]
 
@@ -142,6 +150,7 @@ zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
 [connection signal="player_money_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_money_change"]
+[connection signal="player_perks_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_perks_change"]
 [connection signal="player_position_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_position_change"]
 [connection signal="player_rotation_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_rotation_change"]
 [connection signal="player_stamina_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_stamina_change"]

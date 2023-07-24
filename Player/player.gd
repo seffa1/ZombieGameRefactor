@@ -16,6 +16,7 @@ signal player_stamina_change(stamina: int)
 signal player_money_change(money: int)
 signal player_rotation_change(rotation)
 signal player_position_change(position)
+signal player_perks_change(perks: Array[String])
 
 # Nodes
 @onready var camera_transform = $CameraTransform
@@ -67,3 +68,7 @@ func _ready():
 	# Call the settings to trigger change signals to update the HUD
 	money = STARTING_MONEY
 	stamina = max_stamina
+
+func add_perk(perk_name: String):
+	perks.append(perk_name)
+	emit_signal("player_perks_change", perks)
