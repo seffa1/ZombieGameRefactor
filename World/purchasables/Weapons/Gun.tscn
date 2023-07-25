@@ -6,7 +6,7 @@
 script = ExtResource("1_h4jee")
 
 [node name="MuzzlePosition" type="Marker2D" parent="."]
-position = Vector2(196, 0)
+position = Vector2(100, 2.08165e-12)
 gizmo_extents = 39.8
 
 [node name="FireRateTimer" type="Timer" parent="."]

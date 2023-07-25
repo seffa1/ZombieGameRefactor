@@ -118,7 +118,14 @@ offset_right = 435.0
 offset_bottom = 93.0
 
 [node name="Weapons" parent="UI/PlayerStats" index="7"]
-offset_right = 961.0
+offset_left = 505.0
+offset_right = 938.0
+
+[node name="Equipped" parent="UI/PlayerStats" index="8"]
+offset_left = 507.0
+offset_top = 16.0
+offset_right = 711.0
+offset_bottom = 39.0
 
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_nxyvm")]
 
@@ -166,6 +173,7 @@ position_smoothing_speed = 10.0
 [connection signal="player_stamina_change" from="GameWorld/Player" to="UI/PlayerStats" method="_on_player_player_stamina_change"]
 [connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="UI/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
 [connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="UI/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]
+[connection signal="player_equipped_change" from="GameWorld/Player/WeaponContainer" to="UI/PlayerStats" method="_on_weapon_container_player_equipped_change"]
 [connection signal="player_weapons_change" from="GameWorld/Player/WeaponContainer" to="UI/PlayerStats" method="_on_weapon_container_player_weapons_change"]
 
 [editable path="UI/StatesStackDiplayer"]

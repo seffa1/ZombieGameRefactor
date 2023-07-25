@@ -7,6 +7,7 @@ extends Panel
 @onready var player_money = $Money
 @onready var player_perks = $Perks
 @onready var player_weapons = $Weapons
+@onready var equipped = $Equipped
 
 func _ready():
 	set_as_top_level(true)
@@ -35,3 +36,7 @@ func _on_weapon_container_player_weapons_change(weapons: Array[String]):
 	for weapon in weapons:
 		weapons_text += weapon + ", "
 	player_weapons.text = weapons_text
+
+func _on_weapon_container_player_equipped_change(weapon_name: String):
+	print("player_equipped_change")
+	equipped.text = weapon_name

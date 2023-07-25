@@ -33,7 +33,6 @@ var bullets_in_clip
 # TODO - all guns need an audio node for shooting, reloading, etc.
 
 
-
 func _ready():
 	assert(fire_type != "", "Gun doesnt have a fire type selected.")
 	assert(GUN_NAME != "", "Gun doesnt have a name set.")
@@ -53,7 +52,7 @@ func shoot() -> void:
 		var bullet_direction = Vector2(1,0).rotated(global_rotation)
 		var spawn_position = muzzle_position.global_position
 		
-		var bullet_instance = bullet.instance()
+		var bullet_instance = bullet.instantiate()
 		bullet_instance.init(bullet_damage, bullet_speed, owner, spawn_position, bullet_direction)
 		ObjectRegistry.register_projectile(bullet_instance)
 		fire_timer.start(fire_rate)

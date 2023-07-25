@@ -16,7 +16,7 @@ func give_item(player: CharacterBody2D):
 	Function which must be defined by all children classes.
 	"""
 	# Check if player already has this gun
-	if !player.weapon_container.weapons.find(weapon_name) == -1:
+	if !player.weapon_container.weapon_names.find(weapon_name) == -1:
 		Events.emit_signal("player_log", "Already have " + purchasable_name)
 		return
 	

@@ -3,7 +3,7 @@ extends Node
 """
 Weapons the player gets are attached as a child to this node.
 This script handles all things weapons:
-	equiping, reloading, shooting, informing the UI, weapon modifiers
+	equipping, reloading, shooting, informing the UI, weapon modifiers, updating the player's animation tree
 
 Any number/combinations of weapons can go into the weapons array
 and the UI will programatically update. But the max number of weapons that
@@ -29,31 +29,63 @@ The shoot signal flow:
 """
 
 # Signals
-signal player_weapons_change(weapons: Array[String])
+signal player_weapons_change(weapon_names: Array[String])
+signal player_equipped_change(weapon_name: String)
 
-# Nodes
-
-# Constants
+# Reference to all weapons
+@onready var dev_canon = preload("res://World/purchasables/Weapons/DevCanon/DevCanon.tscn")
 
 # Variables
-@onready var weapons: Array[String] = []
-@onready var modifiers: Array = []
-@onready var max_weapon_count: int = 2
+var weapon_names: Array[String] = []  # This may get deleted since its redundant
+var weapon_objects: Array[Node2D] = []
+var current_weapon_index: int
+var max_weapon_count: int = 2
 
-func add_weapon(weapon: String):
-	weapons.append(weapon)
-	print(weapons)
-	emit_signal("player_weapons_change", weapons)
+var modifiers: Array[String] = []
 
-func add_modifier(modifier_name: String):
-	# TODO
-	return
+func add_weapon(weapon_name: String):
+	assert(Globals.GUN_NAMES.values().find(weapon_name) != -1, "You are adding a weapon name that isnt in the global GUN_NAMES list.")
+	
+	# The weapon buys check if we already have the same weapon before it gives it to the player.
+	# So we should never have two of the same gun.
+	assert(weapon_names.find(weapon_name) == -1, "The player got a weapon name they already had listed.")
+	
+	# Create the weapon
+	weapon_names.append(weapon_name)
+	_create_weapon(weapon_name)
+	
+	# Set it as equipped
+	var weapon_index = weapon_names.find(weapon_name)
+	_set_equipped_gun(weapon_index)
+	
+	# Info the HUD
+	emit_signal("player_weapons_change", weapon_names)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _set_equipped_gun(weapon_index: int):
+	"""
+	Changes the player's animation tree to the weapon-specific animation tree. The StateMachineAction
+	will call for the same animation name, no matter the animation tree.
+	"""
+	assert(weapon_index != -1, "You tried to set a weapon that you don't have.")
+	current_weapon_index = weapon_index
+	# TODO - update the player's animation tree
+	
+	# Inform the UI
+	emit_signal("player_equipped_change", weapon_names[current_weapon_index])
 
+func _create_weapon(weapon_name: String):
+	"""
+	Instantiates a weapons and adds it as a child. 
+	Store a reference in the weapon_objects array.
+	"""
+	# Create the correct weapon
+	var weapon_object
+	match weapon_name:
+		"Dev Canon":
+			weapon_object = dev_canon.instantiate()
+	assert(weapon_object != null, "trying to create a weapon that isnt in the match statement.")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	# Add it to the tree and store a reference
+	add_child(weapon_object)
+	weapon_objects.append(weapon_object)
+

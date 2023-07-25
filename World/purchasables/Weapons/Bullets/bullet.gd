@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
 """
-Base class for different bullets. Only inherited classes should be used by guns.
+Base class for different bullets.
 Guns are assigned a bullet as an export var. Different bullets exists only to vary
 the visual appearance/VFX's. The properties of the bullet are set by the gun when the 
 gun shoots with the init function.
+
+This class can be used as a generic bullet. If you want to make a bullet with different fx, inherit from this
+and change the fx.
 """
 
 # Variables
