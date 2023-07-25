@@ -20,6 +20,7 @@ signal player_perks_change(perks: Array[String])
 
 # Nodes
 @onready var camera_transform = $CameraTransform
+@onready var weapon_container = $WeaponContainer
 
 # Constants
 @export var STARTING_MONEY: int = 10000
@@ -72,3 +73,4 @@ func _ready():
 func add_perk(perk_name: String):
 	perks.append(perk_name)
 	emit_signal("player_perks_change", perks)
+

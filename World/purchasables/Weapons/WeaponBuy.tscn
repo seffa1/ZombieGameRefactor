@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhgffs262qhl1"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_tu3ti"]
+[ext_resource type="Script" path="res://World/purchasables/Weapons/weapon_buy.gd" id="2_3t1l0"]
+
+[node name="WeaponBuy" instance=ExtResource("1_tu3ti")]
+script = ExtResource("2_3t1l0")
+weapon_name = ""

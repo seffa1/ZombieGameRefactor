@@ -29,19 +29,21 @@ The shoot signal flow:
 """
 
 # Signals
+signal player_weapons_change(weapons: Array[String])
 
 # Nodes
 
 # Constants
 
 # Variables
-@onready var weapons: Array = []
+@onready var weapons: Array[String] = []
 @onready var modifiers: Array = []
 @onready var max_weapon_count: int = 2
 
-func add_weapons(weapon_name: String):
-	# TODO
-	return
+func add_weapon(weapon: String):
+	weapons.append(weapon)
+	print(weapons)
+	emit_signal("player_weapons_change", weapons)
 
 func add_modifier(modifier_name: String):
 	# TODO

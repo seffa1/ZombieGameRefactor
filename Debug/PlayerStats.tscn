@@ -4,7 +4,7 @@
 
 [node name="PlayerStats" type="Panel"]
 top_level = true
-offset_right = 384.0
+offset_right = 768.0
 offset_bottom = 128.0
 script = ExtResource("1_dyuci")
 
@@ -51,3 +51,19 @@ offset_left = 72.0
 offset_top = 102.0
 offset_right = 128.0
 offset_bottom = 125.0
+
+[node name="Labels2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 528.0
+offset_bottom = 128.0
+text = "Weapons:
+Equipped:
+Clip Count:
+Reserve:"
+
+[node name="Weapons" type="Label" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_right = 768.0
+offset_bottom = 23.0

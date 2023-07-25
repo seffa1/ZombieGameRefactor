@@ -20,10 +20,8 @@ func purchase_item(player: CharacterBody2D):
 	This class is also used for things the player interacts with but doesnt buy, like a power switch.
 	We treat it behind-the-scenes as 'purchasing something for $0'.
 	"""
-	
-	
+
 	if player.money < purchasable_cost:
-		print("Not enough money")
 		Events.emit_signal("player_log", "Not enough money")
 		return
 	give_item(player)
