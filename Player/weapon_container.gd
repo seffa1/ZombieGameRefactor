@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 """
 Weapons the player gets are attached as a child to this node.
@@ -88,4 +88,12 @@ func _create_weapon(weapon_name: String):
 	# Add it to the tree and store a reference
 	add_child(weapon_object)
 	weapon_objects.append(weapon_object)
+
+func has_a_gun() -> bool:
+	return len(weapon_objects) > 0
+	
+func get_equipped_gun():
+	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any.")
+	return weapon_objects[current_weapon_index]
+
 

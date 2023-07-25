@@ -13,4 +13,6 @@ func handle_input(event):
 	return
 
 func update(delta):
-	return
+	if Input.is_action_just_pressed("shoot"):
+		emit_signal("finished", "shoot")
+

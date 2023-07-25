@@ -12,7 +12,7 @@ func _ready():
 	states_map = {
 		"idle": $Idle,
 		"shoot": $Shoot,
-		"chargeThrow": $ChargeThrow,
+		"charge_throw": $ChargeThrow,
 		"throw": $Throw,
 		"melee": $Melee,
 		"die": $Die
@@ -25,7 +25,7 @@ func _change_state(state_name):
 	if not _active:
 		return
 	# If we want to add state to the state-queue
-	if state_name in ["shoot", "die"]:
+	if state_name in ["shoot", "die", "melee"]:
 		states_stack.push_front(states_map[state_name])
 	# Otherwise the base statemachine will just switch to the new state
 	super(state_name)
@@ -37,9 +37,5 @@ func _input(event):
 	"""
 	if not _active:
 		return
-	if event.is_action_pressed("shoot"):
-		if current_state == $Shoot:
-			return
-		_change_state("shoot")
-		return
+
 	current_state.handle_input(event)

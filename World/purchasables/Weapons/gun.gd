@@ -2,18 +2,22 @@
 extends Node2D
 
 """
-Base class for all guns. Has configurable settings for all gun parameters.
-The MuzzlePosition is used as a reference position to spawn bullets/particle effects.
+Base class for all guns. Its really just a bullet spawn with fx. All the gun animations
+are a part of the player's animation tree, goverened by the StateMachineAction.
+
+Has configurable settings for all bullet parameters to make all kinds of different shooting effects..
+The MuzzlePosition is used as a reference position to spawn bullets/particle effects relative to the player.
 Attachments like lasers and flashlights could also be a child of the muzzle.
 
 Each child class should adjust the muzzle position based on assets used.
-Optionally i may add another position node for the shell ejection spot.
+Optionally i may add another position node for the shell ejection spot but this
+may end up as a part of the animation tree.
 """
 
 # Exports
 @export var GUN_NAME: String
 @export_enum("Base:1", "First Upgrade:2", "Second Upgrade:3") var weapon_level: int # 'pack-a-punch' level
-@export_enum("single_fire", "automatic", "burst") var fire_type: String
+@export_enum("single_fire", "automatic", "burst") var fire_type: String  # affects how the shoot state is exited
 @export var bullet: PackedScene
 @export var bullets_per_fire: int = 1
 @export var bullet_spread: float = 0.0  # if bullets_per_fire > 1, this is the angle between the bullets
@@ -43,18 +47,18 @@ func _ready():
 func shoot() -> void:
 	"""
 	Generic function used by all children. Should not need to be re-defined.
+	The player shoot state will check 'can_shoot' before it calls this function since
+	the state will dictate the animations.
 	"""
-	
-	if !_can_shoot():
-		return
-	
+
 	if bullets_per_fire == 1:
 		var bullet_direction = Vector2(1,0).rotated(global_rotation)
 		var spawn_position = muzzle_position.global_position
 		
 		var bullet_instance = bullet.instantiate()
-		bullet_instance.init(bullet_damage, bullet_speed, owner, spawn_position, bullet_direction)
 		ObjectRegistry.register_projectile(bullet_instance)
+		bullet_instance.init(bullet_damage, owner)
+		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 		fire_timer.start(fire_rate)
 		
 		bullets_in_clip -= 1
@@ -71,7 +75,10 @@ func set_gun_level(weapon_level: int) -> void:
 	"""
 	return
 
-func _can_shoot() -> bool:
+func can_shoot() -> bool:
+	"""
+	Called by the player's shoot state to check if it should shoot.
+	"""
 	if !fire_timer.is_stopped():
 		return false
 	if bullets_in_clip == 0:
