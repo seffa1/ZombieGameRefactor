@@ -25,17 +25,17 @@ may end up as a part of the animation tree.
 @export var bullet_damage: int = 10
 @export var fire_rate: float = 0.2  # only applies if fire_type is automatic. Seconds per bullet fire
 @export var clip_size: int = 25
-@export var total_bullet_count: int = 500  # total bullets the gun can hold
+@export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
 
 # Variables
-var bullets_in_clip
+var bullets_in_clip: int
+var bullet_reserve: int
 
 # Nodes
 @onready var fire_timer: Timer = $FireRateTimer
 @onready var muzzle_position: Marker2D = $MuzzlePosition
 # TODO - all guns need an audio node for shooting, reloading, etc.
-
 
 func _ready():
 	assert(fire_type != "", "Gun doesnt have a fire type selected.")
@@ -43,6 +43,7 @@ func _ready():
 	assert(bullet, "Bullet not assigned for gun.")
 	
 	bullets_in_clip = clip_size
+	bullet_reserve = max_bullet_reserve
 
 func shoot() -> void:
 	"""
@@ -63,6 +64,9 @@ func shoot() -> void:
 		
 		fire_timer.start(fire_rate)
 		bullets_in_clip -= 1
+		
+		Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
+		Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
 	# we cannot ignore spread ( like a shot gun )
 	else:
@@ -72,12 +76,10 @@ func shoot() -> void:
 		var bullet_rotation = global_rotation + (bullet_spread / 2)
 		var spawn_position = muzzle_position.global_position
 		var rotation_direction = 1
-		print("Global Rotation: " + str(global_rotation))
 		
+		# Although we are shooting multiple bullets in one shot, we treat this as one bullet in the clip
+		# like a shotgun buck shot
 		for i in bullets_per_fire:
-			# TODO - use bullet spread to alter bullet direction in bullet init function
-			print("Shooting " + str(i+1) + " bullet. Rotation: " + str(bullet_rotation))
-			
 			var bullet_direction = Vector2(1,0).rotated(bullet_rotation)
 			
 			var bullet_instance = bullet.instantiate()
@@ -87,6 +89,10 @@ func shoot() -> void:
 			
 			rotation_direction *= -1
 			bullet_rotation += bullet_spread * (i+1) * rotation_direction
+			
+			bullets_in_clip -= 1
+			Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
+			Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
 
 func set_gun_level(weapon_level: int) -> void:
@@ -99,6 +105,9 @@ func can_shoot() -> bool:
 	"""
 	Called by the player's shoot state to check if it should shoot.
 	"""
+	# TODO - the shoot state should call these checks separetly since the fire_timer
+	# shouldnt be tied to the animation
+	# ill re-do the animation system later
 	if !fire_timer.is_stopped():
 		print("FIRE ON COOL DOWN")
 		return false

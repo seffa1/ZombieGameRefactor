@@ -18,9 +18,9 @@ name of the weapon and this class handles the rest.
 
 The shoot signal flow: 
 	1. stateMachineAction (shoot state) -> plays animation and signals to the weapons container to shoot
-	2. WeaponContainer -> check if we have a gun and it has ammo
-	3. WeaponContainer -> check if there are any modifiers to add to the gun (from perks, powerups)
-	4. WeaponContainer -> tell the gun to shoot, passing in an array of modifiers
+	2. weapon_manager -> check if we have a gun and it has ammo
+	3. weapon_manager -> check if there are any modifiers to add to the gun (from perks, powerups)
+	4. weapon_manager -> tell the gun to shoot, passing in an array of modifiers
 	5. Gun -> add modifiers to the gun, then create the bullet(s)
 	6. Gun -> check if any modifiers need to modifiy the bullet and add them (instakill)
 	7. Gun -> give bullet position / direction and add to world
@@ -29,8 +29,8 @@ The shoot signal flow:
 """
 
 # Signals
-signal player_weapons_change(weapon_names: Array[String])
-signal player_equipped_change(weapon_name: String)
+
+
 
 # Reference to all weapons
 @onready var dev_canon = preload("res://World/purchasables/Weapons/DevCanon/DevCanon.tscn")
@@ -59,7 +59,7 @@ func add_weapon(weapon_name: String):
 	_set_equipped_gun(weapon_index)
 	
 	# Info the HUD
-	emit_signal("player_weapons_change", weapon_names)
+	Events.emit_signal("player_weapons_change", weapon_names)
 
 func _set_equipped_gun(weapon_index: int):
 	"""
@@ -71,7 +71,10 @@ func _set_equipped_gun(weapon_index: int):
 	# TODO - update the player's animation tree
 	
 	# Inform the UI
-	emit_signal("player_equipped_change", weapon_names[current_weapon_index])
+	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index])
+	
+	Events.emit_signal("player_equipped_clip_count_change", get_equipped_gun().bullets_in_clip)
+	Events.emit_signal("player_equipped_reserve_count_change", get_equipped_gun().bullet_reserve)
 
 func _create_weapon(weapon_name: String):
 	"""

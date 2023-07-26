@@ -16,13 +16,13 @@ func give_item(player: CharacterBody2D):
 	Function which must be defined by all children classes.
 	"""
 	# Check if player already has this gun
-	if !player.weapon_container.weapon_names.find(weapon_name) == -1:
+	if !player.weapon_manager.weapon_names.find(weapon_name) == -1:
 		Events.emit_signal("player_log", "Already have " + purchasable_name)
 		return
 	
 	# If they dont, make the transaction and pass the gun name along
 	player.money -= purchasable_cost
 
-	player.weapon_container.add_weapon(weapon_name)
+	player.weapon_manager.add_weapon(weapon_name)
 	Events.emit_signal("player_log", "Purchased " + purchasable_name)
 

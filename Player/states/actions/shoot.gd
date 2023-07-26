@@ -1,6 +1,6 @@
 extends "res://Libraries/state.gd"
 
-@onready var weapon_container: Node = owner.find_child("WeaponContainer")
+@onready var weapon_manager: Node = owner.find_child("WeaponManager")
 var weapon_object
 var fire_type
 
@@ -8,11 +8,11 @@ var fire_type
 func enter():
 	print("Entering shoot state")
 	# Get the gun and its fire type, the type determines how we exit the state
-	if !weapon_container.has_a_gun():
+	if !weapon_manager.has_a_gun():
 		print("YOU AINT GOT NO GUN")
 		emit_signal("finished", "previous")
 		return
-	weapon_object = weapon_container.get_equipped_gun()
+	weapon_object = weapon_manager.get_equipped_gun()
 	fire_type = weapon_object.fire_type
 	
 	# Make sure the gun can fire
@@ -73,9 +73,9 @@ func _get_animation_name(weapon_object) -> String:
 func _able_to_shoot() -> bool:
 	if !weapon_object.can_shoot():
 		print("WEAPON CANNOT SHOOT")
-	if !weapon_container.has_a_gun():
+	if !weapon_manager.has_a_gun():
 		print("YOU AINT GOT NO GUN")
-	return weapon_container.has_a_gun() and weapon_object.can_shoot()
+	return weapon_manager.has_a_gun() and weapon_object.can_shoot()
 
 # Clean up the state. Reinitialize values like a timer
 func exit():

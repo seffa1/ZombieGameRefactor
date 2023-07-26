@@ -12,6 +12,7 @@ func _ready():
 	states_map = {
 		"idle": $Idle,
 		"shoot": $Shoot,
+		"reload": $Reload,
 		"charge_throw": $ChargeThrow,
 		"throw": $Throw,
 		"melee": $Melee,

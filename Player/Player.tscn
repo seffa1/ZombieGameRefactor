@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=23 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Player/states/actions/idle.gd" id="6_3s4x2"]
 [ext_resource type="Script" path="res://Player/states/actions/shoot.gd" id="9_mu8s3"]
 [ext_resource type="Script" path="res://Player/states/actions/charge_throw.gd" id="10_ri4uv"]
+[ext_resource type="Script" path="res://Player/states/actions/reload.gd" id="10_xhv8v"]
 [ext_resource type="Script" path="res://Player/states/actions/throw.gd" id="11_83mo6"]
 [ext_resource type="Script" path="res://Player/states/actions/melee.gd" id="12_u67uk"]
 [ext_resource type="Script" path="res://Player/states/actions/die.gd" id="13_lfdfl"]
@@ -114,6 +115,9 @@ script = ExtResource("6_3s4x2")
 [node name="Shoot" type="Node" parent="StateMachineAction"]
 script = ExtResource("9_mu8s3")
 
+[node name="Reload" type="Node" parent="StateMachineAction"]
+script = ExtResource("10_xhv8v")
+
 [node name="ChargeThrow" type="Node" parent="StateMachineAction"]
 script = ExtResource("10_ri4uv")
 
@@ -126,7 +130,7 @@ script = ExtResource("12_u67uk")
 [node name="Die" type="Node" parent="StateMachineAction"]
 script = ExtResource("13_lfdfl")
 
-[node name="WeaponContainer" type="Node2D" parent="."]
+[node name="WeaponManager" type="Node2D" parent="."]
 script = ExtResource("14_qrq3y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -74,3 +74,17 @@ offset_left = 528.0
 offset_top = 32.0
 offset_right = 732.0
 offset_bottom = 55.0
+
+[node name="ClipCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 55.0
+offset_right = 752.0
+offset_bottom = 78.0
+
+[node name="Reserve" type="Label" parent="."]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 83.0
+offset_right = 756.0
+offset_bottom = 106.0
