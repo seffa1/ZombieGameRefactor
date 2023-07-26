@@ -8,6 +8,10 @@ var fire_type
 func enter():
 	print("Entering shoot state")
 	# Get the gun and its fire type, the type determines how we exit the state
+	if !weapon_container.has_a_gun():
+		print("YOU AINT GOT NO GUN")
+		emit_signal("finished", "previous")
+		return
 	weapon_object = weapon_container.get_equipped_gun()
 	fire_type = weapon_object.fire_type
 	
@@ -28,6 +32,7 @@ func enter():
 	# we have to make sure the fire rate is shorter than the animation
 	assert(owner.animation_player.get_animation(animation_name).length > weapon_object.fire_rate, "Gun fire rate is faster than the shoot animation!")
 	print("Playing animation: " + animation_name)
+	owner.animation_player.stop()
 	owner.animation_player.play(animation_name)
 
 func _on_shoot_animation_finished():
