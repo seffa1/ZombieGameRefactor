@@ -29,7 +29,8 @@ func enter():
 	var animation_name = _get_animation_name(weapon_object)
 	
 	# TODO - Until the fire rate is able to dynamically change the speed of the animations
-	# we have to make sure the fire rate is shorter than the animation
+	# we have to make sure the fire rate is shorter than the animation since the animation
+	# is controlling the state in automatic firing mode
 	assert(owner.animation_player.get_animation(animation_name).length > weapon_object.fire_rate, "Gun fire rate is faster than the shoot animation!")
 	print("Playing animation: " + animation_name)
 	owner.animation_player.stop()

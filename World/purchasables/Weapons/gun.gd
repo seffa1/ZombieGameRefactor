@@ -66,9 +66,28 @@ func shoot() -> void:
 
 	# we cannot ignore spread ( like a shot gun )
 	else:
+		if bullet_spread == 0:
+			print("Spread shouldnt be zero for a gun firing multiple shots.")
+		
+		var bullet_rotation = global_rotation + (bullet_spread / 2)
+		var spawn_position = muzzle_position.global_position
+		var rotation_direction = 1
+		print("Global Rotation: " + str(global_rotation))
+		
 		for i in bullets_per_fire:
 			# TODO - use bullet spread to alter bullet direction in bullet init function
-			print("Shooting " + str(i) + " bullet")
+			print("Shooting " + str(i+1) + " bullet. Rotation: " + str(bullet_rotation))
+			
+			var bullet_direction = Vector2(1,0).rotated(bullet_rotation)
+			
+			var bullet_instance = bullet.instantiate()
+			ObjectRegistry.register_projectile(bullet_instance)
+			bullet_instance.init(bullet_damage, owner)
+			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
+			
+			rotation_direction *= -1
+			bullet_rotation += bullet_spread * (i+1) * rotation_direction
+
 
 func set_gun_level(weapon_level: int) -> void:
 	"""
