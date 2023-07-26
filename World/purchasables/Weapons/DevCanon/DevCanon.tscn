@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/Bullets/Bullet.tscn" id="2_8obux"]
 
 [node name="DevCanon" instance=ExtResource("1_o7y46")]
-GUN_NAME = "Dev Canon"
+WEAPON_NAME = "DEV_CANON"
 fire_type = "automatic"
 bullet = ExtResource("2_8obux")
-clip_size = 10000
+fire_rate = 0.1
+clip_size = 100000
+total_bullet_count = 500000
 
 [node name="MuzzlePosition" parent="." index="0"]
 position = Vector2(200, 2.08165e-12)

@@ -10,7 +10,6 @@ if called.
 func _on_area_entered(area):
 	purchasable = area
 	Events.emit_signal("update_interactable_log", area.get_interactable_message())
-	print(purchasable.get_interactable_message())
 
 func _on_area_exited(area):
 	purchasable = null

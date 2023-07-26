@@ -21,6 +21,7 @@ signal player_perks_change(perks: Array[String])
 # Nodes
 @onready var camera_transform = $CameraTransform
 @onready var weapon_container = $WeaponContainer
+@onready var animation_player = $AnimationPlayer
 
 # Constants
 @export var STARTING_MONEY: int = 10000
@@ -43,7 +44,6 @@ var max_stamina: int = 100:
 			new_stamina = value
 		stamina = new_stamina
 		emit_signal("player_stamina_change", new_stamina)
-	
 
 @onready var money: int = 0:
 	set(value):
@@ -63,7 +63,6 @@ func assign_camera(camera: Camera2D) -> void:
 func _physics_process(delta):
 	emit_signal("player_rotation_change", self.rotation)
 	emit_signal("player_position_change", self.position)
-	#emit_signal("player_money_change", money)
 
 func _ready():
 	# Call the settings to trigger change signals to update the HUD

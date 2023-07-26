@@ -2,7 +2,7 @@ extends "res://World/purchasables/purchasable.gd"
 
 """
 Generic Weapon buy used by all weapons. To use, inherit from this class,
-enter a valid weapon_name, cost, and Purchaseable Name. See Globals.GUN_NAMES for 
+enter a valid weapon_name, cost, and Purchaseable Name. See Globals.GUN_INDEX for 
 a list of valid gun names.
 
 Make the sub-resources unique and adjust the interactionZone size to fit the weapon.

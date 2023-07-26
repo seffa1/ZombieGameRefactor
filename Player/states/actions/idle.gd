@@ -14,5 +14,6 @@ func handle_input(event):
 
 func update(delta):
 	if Input.is_action_just_pressed("shoot"):
+		print("Entering shoot, from idle")
 		emit_signal("finished", "shoot")
 

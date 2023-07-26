@@ -10,6 +10,8 @@ This class can be used as a generic bullet. If you want to make a bullet with di
 and change the fx.
 """
 
+@onready var life_span: Timer = $Lifespan
+
 # Variables
 var speed: float
 var damage: int
@@ -22,9 +24,7 @@ func init(damage: int, shooter: CharacterBody2D):
 	shooter = shooter
 
 func start(position, direction, speed):
-	
 	global_position = position
-	print(position)
 	rotation = direction.angle()
 	velocity = direction * speed
 
@@ -37,8 +37,14 @@ func _physics_process(delta: float) -> void:
 	#print("speed: " + str(speed))
 	var collision := move_and_collide(motion_vector)
 	if collision:
+		# TODO - bullet collision fx
+		
 		Events.emit_signal("damaged", collision.collider, damage, shooter)
 		die()
 
 func die() -> void:
 	queue_free()
+
+
+func _on_lifespan_timeout():
+	die()

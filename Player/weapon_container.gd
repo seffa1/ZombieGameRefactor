@@ -44,7 +44,7 @@ var max_weapon_count: int = 2
 var modifiers: Array[String] = []
 
 func add_weapon(weapon_name: String):
-	assert(Globals.GUN_NAMES.values().find(weapon_name) != -1, "You are adding a weapon name that isnt in the global GUN_NAMES list.")
+	assert(Globals.GUN_INDEX.keys().find(weapon_name) != -1, "You are adding a weapon name that isnt in the global GUN_INDEX.: " + str(weapon_name))
 	
 	# The weapon buys check if we already have the same weapon before it gives it to the player.
 	# So we should never have two of the same gun.
@@ -81,7 +81,7 @@ func _create_weapon(weapon_name: String):
 	# Create the correct weapon
 	var weapon_object
 	match weapon_name:
-		"Dev Canon":
+		"DEV_CANON":
 			weapon_object = dev_canon.instantiate()
 	assert(weapon_object != null, "trying to create a weapon that isnt in the match statement.")
 

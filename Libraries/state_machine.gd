@@ -23,7 +23,6 @@ var states_stack = []
 var current_state = null
 var _active = false:
 	set(value):
-		print("Settings value: " + str(value))
 		_active = value
 		set_physics_process(value)
 		set_process_input(value)
@@ -32,13 +31,11 @@ var _active = false:
 			current_state = null
 
 func _ready():
-	print("Ready")
 	for child in get_children():
 		child.finished.connect(_change_state)
 	initialize(START_STATE)
 
 func initialize(start_state):
-	print("Initializing")
 	_active = true
 	states_stack.push_front(get_node(start_state))
 	current_state = states_stack[0]

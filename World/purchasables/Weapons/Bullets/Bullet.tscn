@@ -19,8 +19,13 @@ rotation = -1.5708
 texture = ExtResource("2_v5l5a")
 
 [node name="Lifespan" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.499992)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_u4y7u")
+
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

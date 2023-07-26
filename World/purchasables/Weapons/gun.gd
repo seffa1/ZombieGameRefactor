@@ -15,7 +15,7 @@ may end up as a part of the animation tree.
 """
 
 # Exports
-@export var GUN_NAME: String
+@export var WEAPON_NAME: String  # Must be in Globals.GUN_INDEX as a key
 @export_enum("Base:1", "First Upgrade:2", "Second Upgrade:3") var weapon_level: int # 'pack-a-punch' level
 @export_enum("single_fire", "automatic", "burst") var fire_type: String  # affects how the shoot state is exited
 @export var bullet: PackedScene
@@ -39,7 +39,7 @@ var bullets_in_clip
 
 func _ready():
 	assert(fire_type != "", "Gun doesnt have a fire type selected.")
-	assert(GUN_NAME != "", "Gun doesnt have a name set.")
+	assert(WEAPON_NAME != "", "Gun doesnt have a name set.: " + WEAPON_NAME)
 	assert(bullet, "Bullet not assigned for gun.")
 	
 	bullets_in_clip = clip_size
@@ -50,7 +50,8 @@ func shoot() -> void:
 	The player shoot state will check 'can_shoot' before it calls this function since
 	the state will dictate the animations.
 	"""
-
+	
+	# we can ignore spread
 	if bullets_per_fire == 1:
 		var bullet_direction = Vector2(1,0).rotated(global_rotation)
 		var spawn_position = muzzle_position.global_position
@@ -59,14 +60,14 @@ func shoot() -> void:
 		ObjectRegistry.register_projectile(bullet_instance)
 		bullet_instance.init(bullet_damage, owner)
 		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
-		fire_timer.start(fire_rate)
 		
+		fire_timer.start(fire_rate)
 		bullets_in_clip -= 1
 
+	# we cannot ignore spread ( like a shot gun )
 	else:
 		for i in bullets_per_fire:
 			# TODO - use bullet spread to alter bullet direction in bullet init function
-			# Then do the code above in the single fire block
 			print("Shooting " + str(i) + " bullet")
 
 func set_gun_level(weapon_level: int) -> void:
@@ -80,8 +81,10 @@ func can_shoot() -> bool:
 	Called by the player's shoot state to check if it should shoot.
 	"""
 	if !fire_timer.is_stopped():
+		print("FIRE ON COOL DOWN")
 		return false
 	if bullets_in_clip == 0:
+		print("GUN OUT OF BULLETS")
 		# TODO - play empty gun sound effect
 		return false
 	return true

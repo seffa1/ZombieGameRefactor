@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=22 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -17,13 +17,66 @@
 [ext_resource type="Texture2D" uid="uid://ctl65mm8ars0g" path="res://World/purchasables/Weapons/Pistol_01/sprites/pistol_idle/Idle_gun_000.png" id="15_jx6t7"]
 [ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
 
+[sub_resource type="Animation" id="Animation_tvp0e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("placeholder:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1lh5b"]
+resource_name = "shoot_dev_canon"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("placeholder:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachineAction/Shoot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_shoot_animation_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e50xx"]
+_data = {
+"RESET": SubResource("Animation_tvp0e"),
+"shoot_dev_canon": SubResource("Animation_1lh5b")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0327"]
 radius = 34.0588
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nlyr0"]
-radius = 39.5601
+radius = 98.0051
 
 [node name="Player" type="CharacterBody2D"]
+self_modulate = Color(0.635294, 0.419608, 0, 1)
 z_index = 3
 collision_mask = 0
 motion_mode = 1
@@ -76,6 +129,11 @@ script = ExtResource("13_lfdfl")
 [node name="WeaponContainer" type="Node2D" parent="."]
 script = ExtResource("14_qrq3y")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e50xx")
+}
+
 [node name="placeholder" type="Sprite2D" parent="."]
 position = Vector2(1.19209e-07, 2.38419e-07)
 rotation = -1.5708
@@ -92,7 +150,7 @@ collision_mask = 2
 script = ExtResource("16_0vxfj")
 
 [node name="InteractionZone" type="CollisionShape2D" parent="PurchasableDetector"]
-position = Vector2(26, 6)
+position = Vector2(21, 2)
 shape = SubResource("CircleShape2D_nlyr0")
 debug_color = Color(0.607843, 0.364706, 1, 0.419608)
 

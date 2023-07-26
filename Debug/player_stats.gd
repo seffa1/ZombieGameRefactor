@@ -31,12 +31,10 @@ func _on_player_player_perks_change(perks: Array[String]):
 	player_perks.text = perk_text
 
 func _on_weapon_container_player_weapons_change(weapons: Array[String]):
-	print("Updating weapon io")
 	var weapons_text = ""
 	for weapon in weapons:
 		weapons_text += weapon + ", "
 	player_weapons.text = weapons_text
 
 func _on_weapon_container_player_equipped_change(weapon_name: String):
-	print("player_equipped_change")
 	equipped.text = weapon_name
