@@ -7,6 +7,8 @@ which movement, this one deals will all the actions the player
 can perform.
 """
 
+@onready var weapon_manager = owner.find_child("WeaponManager")
+
 func _ready():
 	super()
 	states_map = {
@@ -25,8 +27,11 @@ func _change_state(state_name):
 	"""
 	if not _active:
 		return
+	if state_name in ["idle"]:
+		reset_stack()
+	
 	# If we want to add state to the state-queue
-	if state_name in ["shoot", "die", "melee"]:
+	if state_name in ["die", "melee"]:
 		states_stack.push_front(states_map[state_name])
 	# Otherwise the base statemachine will just switch to the new state
 	super(state_name)
@@ -38,5 +43,23 @@ func _input(event):
 	"""
 	if not _active:
 		return
-
+	
+	if event.is_action_pressed("reload"):
+		if current_state == $Reload:
+			return
+		
+		# Dont interupt state if we dont have ammo or clip is already full
+		if weapon_manager.has_a_gun():
+			var weapon_object = weapon_manager.get_equipped_gun()
+			if weapon_object.bullet_reserve == 0:
+				Events.emit_signal("player_log", "No ammo")
+				return
+			if weapon_object.bullets_in_clip == weapon_object.clip_size:
+				Events.emit_signal("player_log", "Magazine Full")
+				return
+		
+		_change_state("reload")
+		return
+		
 	current_state.handle_input(event)
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=25 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Player/weapon_container.gd" id="14_qrq3y"]
 [ext_resource type="Texture2D" uid="uid://ctl65mm8ars0g" path="res://World/purchasables/Weapons/Pistol_01/sprites/pistol_idle/Idle_gun_000.png" id="15_jx6t7"]
 [ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
+[ext_resource type="Texture2D" uid="uid://dh45736awn3dt" path="res://World/purchasables/Weapons/DevCanon/images/riffle_buy.png" id="17_hi55u"]
 
 [sub_resource type="Animation" id="Animation_tvp0e"]
 length = 0.001
@@ -31,6 +32,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gunPlaceholder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gunPlaceholder:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(87, 24)]
 }
 
 [sub_resource type="Animation" id="Animation_1lh5b"]
@@ -64,9 +89,51 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_8pi0a"]
+resource_name = "reload_dev_canon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gunPlaceholder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 2, 1, 1),
+"update": 0,
+"values": [0.0, -0.508277, -0.508277, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gunPlaceholder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 2, 1, 1),
+"update": 0,
+"values": [Vector2(87, 24), Vector2(82, 6), Vector2(82, 6), Vector2(87, 24)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachineAction/Reload")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_reload_animation_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e50xx"]
 _data = {
 "RESET": SubResource("Animation_tvp0e"),
+"reload_dev_canon": SubResource("Animation_8pi0a"),
 "shoot_dev_canon": SubResource("Animation_1lh5b")
 }
 
@@ -144,6 +211,12 @@ rotation = -1.5708
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("15_jx6t7")
 offset = Vector2(-15, 50)
+
+[node name="gunPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(87, 24)
+scale = Vector2(0.259259, 0.259259)
+texture = ExtResource("17_hi55u")
+flip_h = true
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j0327")

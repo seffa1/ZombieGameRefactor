@@ -45,6 +45,23 @@ func _ready():
 	bullets_in_clip = clip_size
 	bullet_reserve = max_bullet_reserve
 
+func reload() -> void:
+	"""
+	The weapon manager checks if the clip is full and if there is reserve ammo before
+	calling this function.
+	"""
+	var bullet_needed_to_fill_clip = clip_size - bullets_in_clip
+	
+	if bullet_reserve >= clip_size:
+		bullet_reserve -= bullet_needed_to_fill_clip
+		bullets_in_clip += bullet_needed_to_fill_clip
+	else:
+		bullets_in_clip += bullet_reserve
+		bullet_reserve = 0
+
+	Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
+	Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
+
 func shoot() -> void:
 	"""
 	Generic function used by all children. Should not need to be re-defined.
@@ -93,7 +110,6 @@ func shoot() -> void:
 			bullets_in_clip -= 1
 			Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
 			Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
-
 
 func set_gun_level(weapon_level: int) -> void:
 	"""

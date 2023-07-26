@@ -41,6 +41,13 @@ func initialize(start_state):
 	current_state = states_stack[0]
 	emit_signal("state_changed", states_stack)
 
+func reset_stack():
+	"""
+	Called by player state machine action reload state to be able to cancel other states
+	After the reload state exist, it resets the state back to idle.
+	"""
+	states_stack.clear() 
+	states_stack.push_front(get_node(START_STATE))
 
 func _input(event):
 	if not _active:
