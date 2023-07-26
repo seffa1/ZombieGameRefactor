@@ -7,6 +7,8 @@
 WEAPON_NAME = "DEV_CANON"
 fire_type = "automatic"
 bullet = ExtResource("2_8obux")
+bullets_per_fire = 10
+bullet_spread = 0.04
 bullet_speed = 3000
 fire_rate = 0.1
 max_bullet_reserve = 100

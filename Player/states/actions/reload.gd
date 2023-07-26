@@ -5,28 +5,14 @@ var weapon_object
 
 # Initialize the state. E.g. change the animation
 func enter():
-	# TODO - since the statemachine is handling this state's entering, we may not need this all here
-	
-	# Check if we have a gun to reload
-	if !weapon_manager.has_a_gun():
-		emit_signal("finished", "idle")
-		return
-		
+	"""
+	The state machine triggers this state's entrance. It checks that we have a gun, 
+	it has reserve ammo, and that the magazine is not already full. The state machine
+	does this because reloading is meant to cancel other states.
+	"""
 	# Get the gun
 	weapon_object = weapon_manager.get_equipped_gun()
-	
-	# Check if we have ammo in reserve
-	if weapon_object.bullet_reserve == 0:
-		Events.emit_signal("player_log", "No ammo")
-		emit_signal("finished", "idle")
-		return
-	
-	# Check if the clip is already full
-	if weapon_object.bullets_in_clip == weapon_object.clip_size:
-		Events.emit_signal("player_log", "Magazine Full")
-		emit_signal("finished", "idle")
-		return
-	
+
 	# Play the reload animation
 	owner.animation_player.stop()
 	owner.animation_player.play(Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["reload_animation"])
