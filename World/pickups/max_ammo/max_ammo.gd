@@ -7,5 +7,6 @@ func _trigger_pickup_effect(player: CharacterBody2D):
 	See _on_player_detector_body_entered for more information
 	on what this should do.
 	"""
-	# TODO - refill all the ammo in all the player's weapons (even the ones not equipped)
-	return
+	# Refill all the ammo in all the player's weapons (even the ones not equipped)
+	player.weapon_manager.max_ammo()
+

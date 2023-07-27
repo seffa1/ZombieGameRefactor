@@ -99,4 +99,18 @@ func get_equipped_gun():
 	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any.")
 	return weapon_objects[current_weapon_index]
 
+func max_ammo():
+	"""
+	Called by the max ammo pickup effect.
+	"""
+	for weapon in weapon_objects:
+		refill_weapon_ammo(weapon)
+
+func refill_weapon_ammo(weapon: Node2D):
+	"""
+	If a player already has a weapon from a weapon buy, the weapon buy instead 
+	sells ammo for that gun. The weapon buy calls this function during that process.
+	Called by the max_ammo() function for each weapon as well.
+	"""
+	weapon.refill_ammo()
 

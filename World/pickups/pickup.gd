@@ -12,8 +12,6 @@ The animation player controls all the audio, which is shared between all the dif
 pickups.
 """
 
-@export var sprite_texture: Texture
-
 # Nodes
 @onready var audio: AudioStreamPlayer2D = $Audio
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -22,21 +20,20 @@ pickups.
 
 func _ready():
 	animation_player.play("spawn")
-	sprite.texture = sprite_texture
 
 func _on_player_detector_body_entered(player: CharacterBody2D):
 	"""
 	The player should be the only body that triggers this.
-	This will play the pickup animation, pickup sound, then
+	This will play the pickup animation (which triggers the sound fx), then
 	call _trigger_pickup_effect(player) which will either:
 		modify the player: max_ammo, instakill
 		spawn a nuke effect: nuke
 		repair all the windows: carpenter
-		something else ???
+		other cool pickups we come up with
 		
-	The pickup animation should:
-		hide the sprite
-		wait long enough to play the pick up audio
+	The pickup animation:
+		hides the sprite
+		plays the audio
 		then call queue_free()
 	"""
 
@@ -47,7 +44,7 @@ func _on_player_detector_body_entered(player: CharacterBody2D):
 	# in this base class which will be passed to the event bus signal so it can
 	# play the correct audio annuncement
 	animation_player.play("pickup")
-	player_detector.monitoring = false
+	player_detector.set_deferred("monitorable", false)
 	_trigger_pickup_effect(player)
 
 func _trigger_pickup_effect(player: CharacterBody2D):

@@ -58,37 +58,6 @@ tracks/2/keys = {
 "values": [Vector2(87, 24)]
 }
 
-[sub_resource type="Animation" id="Animation_1lh5b"]
-resource_name = "shoot_dev_canon"
-length = 0.2
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("placeholder:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.16, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StateMachineAction/Shoot")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_shoot_animation_finished"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_8pi0a"]
 resource_name = "reload_dev_canon"
 tracks/0/type = "value"
@@ -130,6 +99,37 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_1lh5b"]
+resource_name = "shoot_dev_canon"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("placeholder:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachineAction/Shoot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_shoot_animation_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e50xx"]
 _data = {
 "RESET": SubResource("Animation_tvp0e"),
@@ -138,7 +138,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0327"]
-radius = 34.0588
+radius = 53.0094
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nlyr0"]
 radius = 98.0051
@@ -219,6 +219,7 @@ texture = ExtResource("17_hi55u")
 flip_h = true
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(8, 1)
 shape = SubResource("CircleShape2D_j0327")
 
 [node name="PurchasableDetector" type="Area2D" parent="."]

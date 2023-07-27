@@ -33,8 +33,15 @@ may end up as a part of the animation tree.
 @export var audio_shoot_gun_shot: AudioStream   # TODO - make a function that slightly alters the gun shot sounds pitch to make it varied
 
 # Variables
-var bullets_in_clip: int
-var bullet_reserve: int
+var bullets_in_clip: int:
+	set(value):
+		bullets_in_clip = value
+		Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
+		
+var bullet_reserve: int:
+	set(value):
+		bullet_reserve = value
+		Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
 # Nodes
 @onready var fire_timer: Timer = $FireRateTimer
@@ -52,6 +59,10 @@ func _ready():
 	bullets_in_clip = clip_size
 	bullet_reserve = max_bullet_reserve
 
+func refill_ammo():
+	bullets_in_clip = clip_size
+	bullet_reserve = max_bullet_reserve
+
 func start_reload():
 	"""
 	The weapon manager checks if the clip is full and if there is reserve ammo before
@@ -60,7 +71,6 @@ func start_reload():
 	_reset_audio_stream()
 	audio.stream = audio_reload_start
 	audio.play()
-	
 	# TODO - spawn a magazine object to place on the ground ( like in Heat Guardian )
 
 func finish_reload() -> void:
@@ -80,9 +90,6 @@ func finish_reload() -> void:
 	else:
 		bullets_in_clip += bullet_reserve
 		bullet_reserve = 0
-
-	Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
-	Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
 func shoot() -> void:
 	"""
@@ -108,9 +115,6 @@ func shoot() -> void:
 		bullet_instance.init(bullet_damage, owner)
 		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 
-		Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
-		Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
-
 	# we cannot ignore spread ( like a shot gun )
 	else:
 		if bullet_spread == 0:
@@ -132,9 +136,6 @@ func shoot() -> void:
 			
 			rotation_direction *= -1
 			bullet_rotation += bullet_spread * (i+1) * rotation_direction
-
-			Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
-			Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
 func set_gun_level(weapon_level: int) -> void:
 	"""
