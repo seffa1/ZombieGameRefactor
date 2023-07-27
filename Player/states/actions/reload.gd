@@ -14,11 +14,12 @@ func enter():
 	weapon_object = weapon_manager.get_equipped_gun()
 
 	# Play the reload animation
+	weapon_object.start_reload()
 	owner.animation_player.stop()
 	owner.animation_player.play(Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["reload_animation"])
 
 func _on_reload_animation_finished():
-	weapon_object.reload()
+	weapon_object.finish_reload()
 	emit_signal("finished", "idle")
 	return
 

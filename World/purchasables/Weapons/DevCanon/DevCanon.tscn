@@ -1,17 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://o0ed2wa866at"]
+[gd_scene load_steps=6 format=3 uid="uid://o0ed2wa866at"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_o7y46"]
 [ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/Bullets/Bullet.tscn" id="2_8obux"]
+[ext_resource type="AudioStream" uid="uid://b6uanjwnisybt" path="res://World/purchasables/Weapons/DevCanon/audio/dev_canon_reload_start.wav" id="3_xx2ah"]
+[ext_resource type="AudioStream" uid="uid://cbqniuf70gbb3" path="res://World/purchasables/Weapons/DevCanon/audio/dev_canon_reload_end.wav" id="4_ivyn4"]
+[ext_resource type="AudioStream" uid="uid://qb43knbw0xpn" path="res://World/purchasables/Weapons/DevCanon/audio/GunshotRevolver_BW.57316.wav" id="5_my61j"]
 
 [node name="DevCanon" instance=ExtResource("1_o7y46")]
 WEAPON_NAME = "DEV_CANON"
 fire_type = "automatic"
 bullet = ExtResource("2_8obux")
-bullets_per_fire = 10
-bullet_spread = 0.04
 bullet_speed = 3000
 fire_rate = 0.1
-max_bullet_reserve = 100
+clip_size = 10
+max_bullet_reserve = 0
+audio_reload_start = ExtResource("3_xx2ah")
+audio_reload_finished = ExtResource("4_ivyn4")
+audio_shoot_gun_shot = ExtResource("5_my61j")
 
 [node name="MuzzlePosition" parent="." index="0"]
 position = Vector2(200, 2.08165e-12)

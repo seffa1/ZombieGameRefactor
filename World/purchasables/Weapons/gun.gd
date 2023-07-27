@@ -28,6 +28,10 @@ may end up as a part of the animation tree.
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
 
+@export var audio_reload_start: AudioStream
+@export var audio_reload_finished: AudioStream
+@export var audio_shoot_gun_shot: AudioStream   # TODO - make a function that slightly alters the gun shot sounds pitch to make it varied
+
 # Variables
 var bullets_in_clip: int
 var bullet_reserve: int
@@ -35,7 +39,10 @@ var bullet_reserve: int
 # Nodes
 @onready var fire_timer: Timer = $FireRateTimer
 @onready var muzzle_position: Marker2D = $MuzzlePosition
-# TODO - all guns need an audio node for shooting, reloading, etc.
+@onready var audio = $Audio
+@onready var audio_shoot_empty_clip: AudioStream = preload("res://World/purchasables/Weapons/shared/audio/ESM_FVESK_fx_foley_ui_clip_podracer_steel_gun_empty_clip.wav")
+@onready var audio_start_volume = audio.volume_db
+@onready var audio_start_pitch = audio.pitch_scale
 
 func _ready():
 	assert(fire_type != "", "Gun doesnt have a fire type selected.")
@@ -45,11 +52,26 @@ func _ready():
 	bullets_in_clip = clip_size
 	bullet_reserve = max_bullet_reserve
 
-func reload() -> void:
+func start_reload():
 	"""
 	The weapon manager checks if the clip is full and if there is reserve ammo before
-	calling this function.
+	calling this function. This function is called when the reload animations starts.
 	"""
+	_reset_audio_stream()
+	audio.stream = audio_reload_start
+	audio.play()
+	
+	# TODO - spawn a magazine object to place on the ground ( like in Heat Guardian )
+
+func finish_reload() -> void:
+	"""
+	This function is called when the reload animations ends. See start_reload() for 
+	information on how the weapon manager calls these functions.
+	"""
+	_reset_audio_stream()
+	audio.stream = audio_reload_finished
+	audio.play()
+	
 	var bullet_needed_to_fill_clip = clip_size - bullets_in_clip
 	
 	if bullet_reserve >= clip_size:
@@ -69,6 +91,13 @@ func shoot() -> void:
 	the state will dictate the animations.
 	"""
 	
+	audio.stream = audio_shoot_gun_shot
+	_randomize_audio_stream(.04, .9)
+	audio.play()
+	
+	fire_timer.start(fire_rate)
+	bullets_in_clip -= 1
+
 	# we can ignore spread
 	if bullets_per_fire == 1:
 		var bullet_direction = Vector2(1,0).rotated(global_rotation)
@@ -78,10 +107,7 @@ func shoot() -> void:
 		ObjectRegistry.register_projectile(bullet_instance)
 		bullet_instance.init(bullet_damage, owner)
 		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
-		
-		fire_timer.start(fire_rate)
-		bullets_in_clip -= 1
-		
+
 		Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
 		Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
@@ -106,8 +132,7 @@ func shoot() -> void:
 			
 			rotation_direction *= -1
 			bullet_rotation += bullet_spread * (i+1) * rotation_direction
-			
-			bullets_in_clip -= 1
+
 			Events.emit_signal("player_equipped_clip_count_change", bullets_in_clip)
 			Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
@@ -128,7 +153,35 @@ func can_shoot() -> bool:
 		print("FIRE ON COOL DOWN")
 		return false
 	if bullets_in_clip == 0:
-		print("GUN OUT OF BULLETS")
-		# TODO - play empty gun sound effect
+		play_no_ammo_sound()
 		return false
 	return true
+
+func play_no_ammo_sound():
+	"""
+	Called by the player's action state machine on reload since that is where the check
+	for ammo is called if the player trys to reload. Its the same sound used when the gun
+	is trying to be fired with no ammo in the clip.
+	"""
+	_reset_audio_stream()
+	audio.stream = audio_shoot_empty_clip
+	audio.play()
+
+func _randomize_audio_stream(pitch_amount: float, volume_amount: float):
+	"""
+	Slightly randomizes the pitch and volume of the audio stream player to make for more 
+	varied gun shot sounds using just one audio sample. pitch_amount and volume_amount
+	is how great the range of variation is.
+	"""
+	_reset_audio_stream()
+	var pitch_variation = randf_range(-pitch_amount, pitch_amount)
+	var volume_variation = randf_range(-volume_amount, volume_amount)
+	
+	audio.pitch_scale += pitch_variation
+	audio.volume_db += volume_variation
+	print(audio.volume_db)
+
+func _reset_audio_stream():
+	audio.volume_db = audio_start_volume
+	audio.pitch_scale = audio_start_pitch
+	

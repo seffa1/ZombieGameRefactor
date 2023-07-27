@@ -37,9 +37,8 @@ func _on_shoot_animation_finished():
 	Checks if we need to exit the state (single fire/burst fire) or,for an automatic gun, 
 	replay the animation and stay in the shoot state
 	"""
-	print("Shoot animation finished")
+	
 	if fire_type == "automatic":
-		print("automatic fire rate")
 		# check if shoot Input is still held and the gun is able to shoot
 		if !Input.is_action_pressed("shoot"):
 			emit_signal("finished", "idle")

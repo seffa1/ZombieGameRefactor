@@ -22,3 +22,5 @@ position = Vector2(58, 0)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_b425l")
 debug_color = Color(0.419608, 0.603922, 0, 0.419608)
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]

@@ -28,4 +28,6 @@ position = Vector2(-0.5, -0.499992)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_u4y7u")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

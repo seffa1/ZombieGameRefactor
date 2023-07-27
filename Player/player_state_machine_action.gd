@@ -52,6 +52,7 @@ func _input(event):
 		if weapon_manager.has_a_gun():
 			var weapon_object = weapon_manager.get_equipped_gun()
 			if weapon_object.bullet_reserve == 0:
+				weapon_object.play_no_ammo_sound()
 				Events.emit_signal("player_log", "No ammo")
 				return
 			if weapon_object.bullets_in_clip == weapon_object.clip_size:

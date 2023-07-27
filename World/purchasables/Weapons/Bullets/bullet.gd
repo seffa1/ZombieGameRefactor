@@ -10,6 +10,10 @@ This class can be used as a generic bullet. If you want to make a bullet with di
 and change the fx.
 """
 
+const _IMPACT_SAMPLES = [
+ # TODO
+]
+
 @onready var life_span: Timer = $Lifespan
 
 # Variables
