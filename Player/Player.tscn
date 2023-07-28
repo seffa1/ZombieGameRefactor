@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=26 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Player/weapon_container.gd" id="14_qrq3y"]
 [ext_resource type="Texture2D" uid="uid://ctl65mm8ars0g" path="res://World/purchasables/Weapons/Pistol_01/sprites/pistol_idle/Idle_gun_000.png" id="15_jx6t7"]
 [ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
+[ext_resource type="Script" path="res://Player/perk_manager.gd" id="16_gldpa"]
 [ext_resource type="Texture2D" uid="uid://dh45736awn3dt" path="res://World/purchasables/Weapons/DevCanon/images/riffle_buy.png" id="17_hi55u"]
 
 [sub_resource type="Animation" id="Animation_tvp0e"]
@@ -199,6 +200,9 @@ script = ExtResource("13_lfdfl")
 
 [node name="WeaponManager" type="Node2D" parent="."]
 script = ExtResource("14_qrq3y")
+
+[node name="PerkManager" type="Node2D" parent="."]
+script = ExtResource("16_gldpa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

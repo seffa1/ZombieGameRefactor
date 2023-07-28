@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://mxnsjm1fxohf"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_1oea2"]
+[ext_resource type="Script" path="res://World/purchasables/Weapons/ammo_buy.gd" id="2_5o8ny"]
+[ext_resource type="AudioStream" uid="uid://c0dbdfe6fyu47" path="res://World/purchasables/Weapons/shared/audio/CashRegister_S08OF.38.wav" id="3_o45p0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_il0me"]
+radius = 51.0392
+
+[node name="AmmoBuy" instance=ExtResource("1_1oea2")]
+script = ExtResource("2_5o8ny")
+weapon_name = ""
+purchasable_cost = 500
+
+[node name="interactionZone" parent="." index="0"]
+shape = SubResource("CircleShape2D_il0me")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("3_o45p0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

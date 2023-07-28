@@ -13,3 +13,11 @@ const GUN_INDEX = {
 	}
 }
 
+# Stores all the information for all perks (should maybe turn this into resources?)
+# The key is what we consider the 'perk name' and is what must match the perks that are created
+const PERK_INDEX = {
+	"STAMINA_BOOST": {
+		"nice_name": "Stamina Boost"
+	}
+}
+

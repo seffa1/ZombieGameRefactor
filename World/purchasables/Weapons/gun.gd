@@ -189,3 +189,5 @@ func _reset_audio_stream():
 	audio.volume_db = audio_start_volume
 	audio.pitch_scale = audio_start_pitch
 	
+func is_ammo_full() -> bool:
+	return bullets_in_clip == clip_size and bullet_reserve == max_bullet_reserve

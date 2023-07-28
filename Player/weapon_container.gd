@@ -94,10 +94,22 @@ func _create_weapon(weapon_name: String):
 
 func has_a_gun() -> bool:
 	return len(weapon_objects) > 0
-	
+
+func has_gun(weapon_name: String):
+	return weapon_names.find(weapon_name) != -1
+
 func get_equipped_gun():
 	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any.")
 	return weapon_objects[current_weapon_index]
+
+func get_gun(weapon_name: String):
+	"""
+	Used by the ammo buys to refill a weapon, even if its not equipped
+	"""
+	for weapon in weapon_objects:
+		if weapon.WEAPON_NAME == weapon_name:
+			return weapon
+	assert(false, "Trying to get gun but dont have one: " + weapon_name)
 
 func max_ammo():
 	"""

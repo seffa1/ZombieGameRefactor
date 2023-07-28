@@ -1,8 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhgffs262qhl1"]
+[gd_scene load_steps=4 format=3 uid="uid://dhgffs262qhl1"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_tu3ti"]
 [ext_resource type="Script" path="res://World/purchasables/Weapons/weapon_buy.gd" id="2_3t1l0"]
+[ext_resource type="AudioStream" uid="uid://cjro8ragyyvts" path="res://World/purchasables/Weapons/shared/audio/CashRegisterOpen_SFXB.2496.wav" id="3_ixiwv"]
 
 [node name="WeaponBuy" instance=ExtResource("1_tu3ti")]
 script = ExtResource("2_3t1l0")
 weapon_name = ""
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("3_ixiwv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

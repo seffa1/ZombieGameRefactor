@@ -18,12 +18,12 @@ before we pass signals to it.
 @onready var camera_transform = $CameraTransform
 @onready var weapon_manager = $WeaponManager
 @onready var animation_player = $AnimationPlayer
+@onready var perk_manager = $PerkManager
 
 # Constants
 @export var STARTING_MONEY: int = 10000
 
 # Variables
-var perks: Array[String] = []
 
 var max_stamina: int = 100:
 	set(value):
@@ -65,7 +65,5 @@ func _ready():
 	money = STARTING_MONEY
 	stamina = max_stamina
 
-func add_perk(perk_name: String):
-	perks.append(perk_name)
-	Events.emit_signal("player_perks_change", perks)
+
 

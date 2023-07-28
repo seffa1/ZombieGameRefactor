@@ -10,7 +10,4 @@ func _ready():
 	player.assign_camera(camera)
 	
 	screen_shaker.camera = camera
-	
-	
-	
-	
+

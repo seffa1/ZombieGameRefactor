@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfeljttsg5ymp"]
+
+[ext_resource type="PackedScene" uid="uid://mxnsjm1fxohf" path="res://World/purchasables/Weapons/AmmoBuy.tscn" id="1_535uv"]
+
+[node name="AmmoBuyDevCanon" instance=ExtResource("1_535uv")]
+weapon_name = "DEV_CANON"
+purchasable_name = "Dev Canon Ammo"

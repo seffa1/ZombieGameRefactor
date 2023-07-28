@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://wu2rc4f62cfw"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_vwlyr"]
+[ext_resource type="Script" path="res://World/purchasables/perks/perk_buy.gd" id="2_si3vh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ythw6"]
+radius = 45.0
+height = 90.0
+
+[node name="PerkBuy" instance=ExtResource("1_vwlyr")]
+script = ExtResource("2_si3vh")
+perk_name = ""
+purchasable_cost = 100
+
+[node name="interactionZone" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_ythw6")
