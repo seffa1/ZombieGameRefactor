@@ -4,6 +4,10 @@ extends "res://Player/states/movement/motion.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
+	# Cancel player actions shoot state
+	if owner.state_machine_action.states_stack[0] == owner.state_machine_action.states_map["shoot"]:
+		owner.state_machine_action._change_state("idle")
+
 	# TODO - play animation
 	return
 

@@ -14,8 +14,9 @@ func handle_input(event):
 
 func update(delta):
 	if Input.is_action_just_pressed("shoot"):
+		# Cannot shoot if player's action is sprinting
+		if owner.state_machine_movement.states_stack[0] == owner.state_machine_movement.states_map["sprint"]:
+			return
 		emit_signal("finished", "shoot")
-		
-	#elif Input.is_action_just_pressed("reload"):
-	#	emit_signal("finished", "reload")
+
 

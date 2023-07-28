@@ -19,6 +19,8 @@ before we pass signals to it.
 @onready var weapon_manager = $WeaponManager
 @onready var animation_player = $AnimationPlayer
 @onready var perk_manager = $PerkManager
+@onready var state_machine_movement = $StateMachineMovement
+@onready var state_machine_action = $StateMachineAction
 
 # Constants
 @export var STARTING_MONEY: int = 10000
