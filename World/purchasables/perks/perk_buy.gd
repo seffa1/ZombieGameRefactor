@@ -7,6 +7,7 @@ happens in the player.
 """
 
 @export var perk_name: String
+@onready var audio: AudioStreamPlayer2D = $Audio
 
 func give_item(player: CharacterBody2D):
 	"""
@@ -22,6 +23,7 @@ func give_item(player: CharacterBody2D):
 		# Take the money and give the perk
 		player.money -= purchasable_cost
 		player.perk_manager.add_perk(perk_name)
+		audio.play()
 		Events.emit_signal("player_log", "Purchased " + purchasable_name)
 
 func get_interactable_message() -> String:

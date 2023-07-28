@@ -155,11 +155,11 @@ position = Vector2(255, 163)
 rotation = -0.523598
 weapon_name = "DEV_CANON"
 
-[node name="AmmoBuyDevCanon" parent="GameWorld/PurchasablesContainer" instance=ExtResource("13_ymius")]
-position = Vector2(566, 192)
-
 [node name="PerkBuyStaminaBoost" parent="GameWorld/PurchasablesContainer" instance=ExtResource("9_sm5ru")]
 position = Vector2(-43, 11)
+
+[node name="AmmoBuyDevCanon" parent="GameWorld/PurchasablesContainer" instance=ExtResource("13_ymius")]
+position = Vector2(254, 166)
 
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 
@@ -184,7 +184,6 @@ layer_1/tile_data = PackedInt32Array(-2, 0, 0, 917502, 0, 2, 851990, 131072, 2, 
 [node name="Player" parent="GameWorld" instance=ExtResource("1_kmip5")]
 position = Vector2(151, 183)
 rotation = -0.708219
-STARTING_MONEY = 10000
 
 [node name="Camera" type="Camera2D" parent="GameWorld"]
 position_smoothing_enabled = true
