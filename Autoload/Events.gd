@@ -23,3 +23,6 @@ signal player_equipped_change(weapon_name: String)
 
 # Damage
 signal damaged(target, damage, shooter)
+
+# FX
+signal shake_screen(intensity, duration)

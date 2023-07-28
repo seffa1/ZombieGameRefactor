@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=15 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="8_ock32"]
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="9_8tr1y"]
 [ext_resource type="PackedScene" uid="uid://b7yfy5h1lnwxk" path="res://World/pickups/max_ammo/MaxAmmo.tscn" id="9_vhcrc"]
+[ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="12_hte74"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11j7o"]
 texture = ExtResource("3_kcb3r")
@@ -185,6 +186,8 @@ rotation = -0.708219
 [node name="Camera" type="Camera2D" parent="GameWorld"]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="ScreenShaker" parent="." instance=ExtResource("12_hte74")]
 
 [connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="UI/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
 [connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="UI/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]

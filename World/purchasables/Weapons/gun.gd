@@ -104,6 +104,9 @@ func shoot() -> void:
 	
 	fire_timer.start(fire_rate)
 	bullets_in_clip -= 1
+	
+	# TODO - do we have more intense shake for larger guns ?
+	Events.emit_signal("shake_screen", 5, .1)
 
 	# we can ignore spread
 	if bullets_per_fire == 1:
