@@ -1,6 +1,7 @@
 extends "res://Player/states/movement/motion.gd"
 
-@export var RUN_SPEED: int = 395
+@export var SPRINT_SPEED_FORWARD: int = 500
+@export var SPRINT_SPEED_BACKWARDS: int = 250
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -39,10 +40,31 @@ func update(delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
 		emit_signal("finished", "previous")
-	owner.velocity = input_direction.normalized() * RUN_SPEED
+	
+	if _is_moving_forward(input_direction):
+		owner.velocity = input_direction.normalized() * SPRINT_SPEED_FORWARD
+	else:
+		# you cant sprint backwards
+		emit_signal("finished", "previous")
+		return
+	
 	owner.move_and_slide()
 
 func _on_animation_finished(anim_name):
 	return
 
+func _is_moving_forward(input_direction):
+	"""
+	Check if the player is moving in the same direction as they are facing.
+	This will determine the speed they are moving for both the move and sprint state.
+	"""
+	var player_rotation = rad_to_deg(owner.rotation)
+	var player_direction = rad_to_deg(input_direction.angle())
+	
+	if abs(player_rotation - player_direction) > 110:
+		Events.emit_signal("player_direction_change", "Backwards")
+		return false
+	else:
+		Events.emit_signal("player_direction_change", "Forwards")
+		return true
 

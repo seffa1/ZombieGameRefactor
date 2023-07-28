@@ -142,6 +142,12 @@ offset_top = 54.0
 offset_right = 744.0
 offset_bottom = 77.0
 
+[node name="Direction" parent="UI/PlayerStats" index="11"]
+offset_left = 512.0
+offset_top = 72.0
+offset_right = 711.0
+offset_bottom = 95.0
+
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_nxyvm")]
 
 [node name="InteractableLog" parent="UI" instance=ExtResource("9_8tr1y")]

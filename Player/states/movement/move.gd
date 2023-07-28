@@ -4,7 +4,8 @@ extends "res://Player/states/movement/motion.gd"
 The motion parent script handles the stamina regenerations.
 """
 
-@export var WALK_SPEED: int = 170
+@export var WALK_SPEED_FOWARD: int = 200
+@export var WALK_SPEED_BACKWARDS: int = 75
 @export var STAMINA_USE_RATE: float = .03  # seconds / point depleted (smaller the number, faster the depletion)
 @export var MIN_SPRINT_STAMINA_COST: int = 10 # min amount of stamina you need in order to sprint
 
@@ -34,9 +35,27 @@ func update(delta):
 	regenerate_stamina()
 	
 	# move the player
-	owner.velocity = input_direction.normalized() * WALK_SPEED
-	owner.move_and_slide()
 	
+	if _is_moving_forward(input_direction):
+		owner.velocity = input_direction.normalized() * WALK_SPEED_FOWARD
+	else:
+		owner.velocity = input_direction.normalized() * WALK_SPEED_BACKWARDS
+	owner.move_and_slide()
 
 func _on_animation_finished(anim_name):
 	return
+
+func _is_moving_forward(input_direction):
+	"""
+	Check if the player is moving in the same direction as they are facing.
+	This will determine the speed they are moving for both the move and sprint state.
+	"""
+	var player_rotation = rad_to_deg(owner.rotation)
+	var player_direction = rad_to_deg(input_direction.angle())
+	
+	if abs(player_rotation - player_direction) > 110:
+		Events.emit_signal("player_direction_change", "Backwards")
+		return false
+	else:
+		Events.emit_signal("player_direction_change", "Forwards")
+		return true

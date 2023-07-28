@@ -160,14 +160,14 @@ script = ExtResource("3_j8hkm")
 
 [node name="Move" type="Node" parent="StateMachineMovement"]
 script = ExtResource("4_hhe0o")
-WALK_SPEED = 300
+WALK_SPEED_FOWARD = 300
+WALK_SPEED_BACKWARDS = 100
 STAMINA_REGEN_PER_TICK = 2
 STAMINA_USE_TICK_RATE = 0.025
 STAMINA_USE_PER_TICK = 2
 
 [node name="Sprint" type="Node" parent="StateMachineMovement"]
 script = ExtResource("5_m0p7e")
-RUN_SPEED = 500
 STAMINA_USE_TICK_RATE = 0.025
 
 [node name="Die" type="Node" parent="StateMachineMovement"]

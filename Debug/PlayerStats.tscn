@@ -60,7 +60,8 @@ offset_bottom = 128.0
 text = "Weapons:
 Equipped:
 Clip Count:
-Reserve:"
+Reserve:
+Direction:"
 
 [node name="Weapons" type="Label" parent="."]
 layout_mode = 0
@@ -88,3 +89,10 @@ offset_left = 517.0
 offset_top = 83.0
 offset_right = 756.0
 offset_bottom = 106.0
+
+[node name="Direction" type="Label" parent="."]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 102.0
+offset_right = 732.0
+offset_bottom = 125.0

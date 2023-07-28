@@ -10,6 +10,7 @@ extends Panel
 @onready var equipped = $Equipped
 @onready var clip_count = $ClipCount
 @onready var reserve_count = $Reserve
+@onready var direction = $Direction
 
 func _ready():
 	set_as_top_level(true)
@@ -18,6 +19,7 @@ func _ready():
 	Events.player_equipped_reserve_count_change.connect(_update_equipped_reserve_count)
 	
 	Events.player_stamina_change.connect(_player_stamina_change)
+	Events.player_direction_change.connect(_player_direction_change)
 	Events.player_money_change.connect(_player_money_change)
 	Events.player_rotation_change.connect(_player_rotation_change)
 	Events.player_position_change.connect(_player_position_change)
@@ -25,7 +27,9 @@ func _ready():
 	
 	Events.player_weapons_change.connect(_on_weapon_manager_player_weapons_change)
 	Events.player_equipped_change.connect(_on_weapon_manager_player_equipped_change)
-
+	
+func _player_direction_change(direction_string: String):
+	direction.text = direction_string
 
 func _update_equipped_clip_count(count: int):
 	clip_count.text = str(count)
