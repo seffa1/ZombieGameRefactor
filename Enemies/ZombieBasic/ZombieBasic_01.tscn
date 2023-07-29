@@ -1,33 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=12 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/hurt_box_component.gd" id="1_sq77o"]
+[ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="1_wvdm7"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="2_budir"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/health_component.gd" id="2_ht2bq"]
+[ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="2_dw2ec"]
+[ext_resource type="PackedScene" uid="uid://cop7x75m0rul4" path="res://Libraries/CustomComponents/GiverComponent.tscn" id="3_456h1"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="3_555fl"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/giver_component.gd" id="3_tnupw"]
+[ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="4_505g5"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="4_d72v0"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/velocity_component.gd" id="4_yqqin"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/pathfinding_component.gd" id="5_av4is"]
+[ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="5_xohst"]
+[ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="6_ylhad"]
+[ext_resource type="PackedScene" uid="uid://cxqbjn4yia1k6" path="res://Libraries/CustomComponents/RotationComponent.tscn" id="7_po6mp"]
 
 [node name="ZombieBasic_01" type="CharacterBody2D"]
 
-[node name="HurtBoxComponent" type="Area2D" parent="."]
-script = ExtResource("1_sq77o")
+[node name="HurtBoxComponent" parent="." instance=ExtResource("1_wvdm7")]
 
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("2_ht2bq")
+[node name="HealthComponent" parent="." instance=ExtResource("2_dw2ec")]
 
-[node name="GiverComponent" type="Node2D" parent="."]
-script = ExtResource("3_tnupw")
+[node name="GiverComponent" parent="." instance=ExtResource("3_456h1")]
 
-[node name="VelocityComponent" type="Node" parent="."]
-script = ExtResource("4_yqqin")
+[node name="VelocityComponent" parent="." instance=ExtResource("4_505g5")]
 
-[node name="StatusRecieverComponent" type="Node2D" parent="."]
+[node name="StatusRecieverComponent" parent="." instance=ExtResource("5_xohst")]
 
-[node name="PathfindingComponent" type="Node2D" parent="."]
-script = ExtResource("5_av4is")
+[node name="PathfindingComponent" parent="." instance=ExtResource("6_ylhad")]
+
+[node name="RotationComponent" parent="." instance=ExtResource("7_po6mp")]
 
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("1_mmyv0")
@@ -40,5 +39,3 @@ script = ExtResource("3_555fl")
 
 [node name="Die" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("4_d72v0")
-
-[connection signal="body_entered" from="HurtBoxComponent" to="HurtBoxComponent" method="_on_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ms7gd6clccyt"]
+
+[ext_resource type="Script" path="res://Libraries/CustomComponents/pathfinding_component.gd" id="1_p76by"]
+
+[node name="PathfindingComponent" type="Node2D"]
+script = ExtResource("1_p76by")
