@@ -1,15 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=10 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/hurt_box_component.gd" id="1_sq77o"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="2_budir"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/health_component.gd" id="2_ht2bq"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="3_555fl"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/giver_component.gd" id="3_tnupw"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="4_d72v0"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/velocity_component.gd" id="4_yqqin"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/pathfinding_component.gd" id="5_av4is"]
 
 [node name="ZombieBasic_01" type="CharacterBody2D"]
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBoxComponent" type="Area2D" parent="."]
+script = ExtResource("1_sq77o")
 
-[node name="Health" type="Node2D" parent="."]
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("2_ht2bq")
+
+[node name="GiverComponent" type="Node2D" parent="."]
+script = ExtResource("3_tnupw")
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("4_yqqin")
+
+[node name="StatusRecieverComponent" type="Node2D" parent="."]
+
+[node name="PathfindingComponent" type="Node2D" parent="."]
+script = ExtResource("5_av4is")
 
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("1_mmyv0")
@@ -22,3 +40,5 @@ script = ExtResource("3_555fl")
 
 [node name="Die" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("4_d72v0")
+
+[connection signal="body_entered" from="HurtBoxComponent" to="HurtBoxComponent" method="_on_body_entered"]
