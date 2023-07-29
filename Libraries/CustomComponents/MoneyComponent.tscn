@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://btu5kv2xdnoou"]
+
+[ext_resource type="Script" path="res://Libraries/CustomComponents/money_component.gd" id="1_oj3gp"]
+
+[node name="MoneyComponent" type="Node"]
+script = ExtResource("1_oj3gp")

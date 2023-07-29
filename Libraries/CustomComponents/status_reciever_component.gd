@@ -29,4 +29,4 @@ func light_on_fire():
 	# calls the health component to do a DOT effect
 	# health_component.DOT(amount_per_tick, seconds_per_tick, total_ticks)
 	return
-	
+

@@ -11,9 +11,6 @@ Note, player should be below UI in the node tree so the UI is initialized
 before we pass signals to it.
 """
 
-# Signals
-
-
 # Nodes
 @onready var camera_transform = $CameraTransform
 @onready var weapon_manager = $WeaponManager
@@ -56,6 +53,7 @@ var max_stamina: int = 100:
 		return money
 
 func assign_camera(camera: Camera2D) -> void:
+	""" Called by the game initializer. """
 	camera_transform.remote_path = camera.get_path()
 
 func _physics_process(delta):

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bapuiseuho60g"]
+
+[ext_resource type="Script" path="res://Libraries/CustomComponents/stamina_component.gd" id="1_rch0r"]
+
+[node name="StaminaComponent" type="Node"]
+script = ExtResource("1_rch0r")
