@@ -20,6 +20,7 @@ func handle_input(event: InputEvent):
 	# if we arent holding sprint down, stop
 	if event.is_action_released("sprint"):
 		emit_signal("finished", "previous")
+		return
 
 func update(delta):
 	# Rotate towards mouse
@@ -28,10 +29,12 @@ func update(delta):
 	# Make sure we are still holding the sprint key
 	if !Input.is_action_pressed("sprint"):
 		emit_signal("finished", "previous")
+		return
 	
 	# Make sure we have the stamina
 	if owner.stamina < 1:
 		emit_signal("finished", "previous")
+		return
 	
 	# TODO - limit player from spinning around, prevent actions
 	deplete_stamina()
@@ -40,6 +43,7 @@ func update(delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
 		emit_signal("finished", "previous")
+		return
 	
 	if _is_moving_forward(input_direction):
 		owner.velocity = input_direction.normalized() * SPRINT_SPEED_FORWARD

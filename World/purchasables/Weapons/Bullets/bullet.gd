@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		# TODO - bullet collision fx
 		
-		Events.emit_signal("damaged", collision.collider, damage, shooter)
+		Events.emit_signal("damaged", collision.get_collider(), damage, shooter)
 		die()
 
 func die() -> void:

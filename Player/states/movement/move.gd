@@ -22,7 +22,8 @@ func exit():
 func handle_input(event: InputEvent):
 	if event.is_action_pressed("sprint"):
 		if owner.stamina >= MIN_SPRINT_STAMINA_COST:
-			emit_signal("finished", "sprint")	
+			emit_signal("finished", "sprint")
+			return
 
 func update(delta):
 	# Rotate towards mouse
@@ -30,7 +31,8 @@ func update(delta):
 	
 	var input_direction = get_input_direction()
 	if not input_direction:
-		emit_signal("finished", "previous")
+		emit_signal("finished", "idle")
+		return
 	
 	regenerate_stamina()
 	

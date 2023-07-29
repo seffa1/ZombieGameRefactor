@@ -8,6 +8,7 @@ var state_name = "idle"
 # Initialize the state. E.g. change the animation
 func enter():
 	# TODO - owner.get_node("AnimationPlayer").play("idle")
+	Events.emit_signal("player_direction_change", "n/a")
 	return
 
 func update(delta):
