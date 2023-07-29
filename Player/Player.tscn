@@ -147,7 +147,7 @@ radius = 98.0051
 [node name="Player" type="CharacterBody2D"]
 self_modulate = Color(0.635294, 0.419608, 0, 1)
 z_index = 3
-collision_mask = 0
+collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_e8yx8")
 
@@ -160,8 +160,6 @@ script = ExtResource("3_j8hkm")
 
 [node name="Move" type="Node" parent="StateMachineMovement"]
 script = ExtResource("4_hhe0o")
-WALK_SPEED_FOWARD = 300
-WALK_SPEED_BACKWARDS = 100
 STAMINA_REGEN_PER_TICK = 2
 STAMINA_USE_TICK_RATE = 0.025
 STAMINA_USE_PER_TICK = 2

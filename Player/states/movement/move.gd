@@ -4,8 +4,8 @@ extends "res://Player/states/movement/motion.gd"
 The motion parent script handles the stamina regenerations.
 """
 
-@export var WALK_SPEED_FOWARD: int = 200
-@export var WALK_SPEED_BACKWARDS: int = 75
+@export var WALK_SPEED_FOWARD: int = 300
+@export var WALK_SPEED_BACKWARDS: int = 300
 @export var STAMINA_USE_RATE: float = .03  # seconds / point depleted (smaller the number, faster the depletion)
 @export var MIN_SPRINT_STAMINA_COST: int = 10 # min amount of stamina you need in order to sprint
 
