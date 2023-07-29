@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg3kxoshhmjr"]
+
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="2_budir"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="3_555fl"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="4_d72v0"]
+
+[node name="ZombieBasic_01" type="CharacterBody2D"]
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="Health" type="Node2D" parent="."]
+
+[node name="ZombieStateMachine" type="Node" parent="."]
+script = ExtResource("1_mmyv0")
+
+[node name="Move" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("2_budir")
+
+[node name="Attack" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("3_555fl")
+
+[node name="Die" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("4_d72v0")

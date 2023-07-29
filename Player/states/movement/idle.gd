@@ -3,7 +3,6 @@ extends "res://Player/states/movement/motion.gd"
 """
 The motion parent script handles the stamina regenerations.
 """
-var state_name = "idle"
 
 # Initialize the state. E.g. change the animation
 func enter():

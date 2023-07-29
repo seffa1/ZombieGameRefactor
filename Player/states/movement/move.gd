@@ -9,8 +9,6 @@ The motion parent script handles the stamina regenerations.
 @export var STAMINA_USE_RATE: float = .03  # seconds / point depleted (smaller the number, faster the depletion)
 @export var MIN_SPRINT_STAMINA_COST: int = 10 # min amount of stamina you need in order to sprint
 
-var state_name = "move"
-
 # Initialize the state. E.g. change the animation
 func enter():
 	return
