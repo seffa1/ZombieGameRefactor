@@ -4,3 +4,12 @@
 
 [node name="PathfindingComponent" type="Node2D"]
 script = ExtResource("1_p76by")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+debug_path_custom_point_size = 16.05
+debug_path_custom_line_width = 6.46
+
+[node name="updatePathTimer" type="Timer" parent="."]
+one_shot = true

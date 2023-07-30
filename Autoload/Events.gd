@@ -13,7 +13,7 @@ signal player_stamina_change(stamina: int)
 signal player_direction_change(direction_string: String)
 signal player_money_change(money: int)
 signal player_rotation_change(rotation)
-signal player_position_change(position)
+signal player_position_change(position) # used by all zombies to track player, and debug UI
 signal player_perks_change(perks: Array[String])
 
 signal player_equipped_clip_count_change(count: int)  # bullets in current clip

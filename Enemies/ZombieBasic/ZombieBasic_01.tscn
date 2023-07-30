@@ -22,6 +22,8 @@ radius = 62.0081
 [node name="ZombieBasic_01" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 16
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_wcbub")
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component", "status_reciever") instance=ExtResource("1_wvdm7")]

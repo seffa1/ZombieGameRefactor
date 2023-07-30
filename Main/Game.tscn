@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=31 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
@@ -245,6 +245,11 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 13
 sources/0 = SubResource("TileSetAtlasSource_11j7o")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_w47ju"]
+vertices = PackedVector2Array(-1151, 769, -1459, 919, -1460, 477, -1151, 576, 448, -63, 298, -463, 700, -469, 639, -64, -985, 7, -596, 6, -703, 322, -896, 320, -704, 1086, -583, 1463, -972, 1467, -895, 1087, 896, -63, 780, -475, 1203, -475, 1152, -64, -1133, 768, -1131, 576, 897, -46, 1152, -46, -704, 338, -896, 340, 1453, -45, 1454, 876, -110, 878, -109, 811, 448, -44, 640, -48, -108, 599, -1132, 339, -895, 1068, -703, 1068, -1133, 1069, -468, 812, -467, 1068, -108, -44, -466, 594, -467, 339)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 0, 3, 21), PackedInt32Array(22, 16, 19, 23), PackedInt32Array(11, 10, 24, 25), PackedInt32Array(23, 26, 27, 28, 29, 22), PackedInt32Array(30, 31, 22, 29, 32), PackedInt32Array(21, 33, 25), PackedInt32Array(12, 15, 34, 35), PackedInt32Array(34, 36, 20), PackedInt32Array(37, 38, 35, 20), PackedInt32Array(32, 39, 30), PackedInt32Array(30, 4, 7, 31), PackedInt32Array(40, 32, 29, 37, 20), PackedInt32Array(24, 41, 40, 20, 21, 25), PackedInt32Array(35, 34, 20)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-108, 599, -108, -44, 448, -44, 448, -63, 298, -463, 700, -469, 639, -64, 640, -48, 897, -46, 896, -63, 780, -475, 1203, -475, 1152, -64, 1152, -46, 1453, -45, 1454, 876, -110, 878, -109, 811, -468, 812, -467, 1068, -703, 1068, -704, 1086, -583, 1463, -972, 1467, -895, 1087, -895, 1068, -1133, 1069, -1133, 768, -1151, 769, -1459, 919, -1460, 477, -1151, 576, -1131, 576, -1132, 339, -896, 340, -896, 320, -985, 7, -596, 6, -703, 322, -704, 338, -467, 339, -466, 594)])
+
 [node name="GameInitializer" type="Node"]
 script = ExtResource("1_vn005")
 
@@ -434,6 +439,9 @@ shadow_filter = 1
 shadow_filter_smooth = 6.4
 height = 0.14
 max_distance = 100000.0
+
+[node name="EnemyNavigationMesh" type="NavigationRegion2D" parent="GameWorld"]
+navigation_polygon = SubResource("NavigationPolygon_w47ju")
 
 [node name="ScreenShaker" parent="." instance=ExtResource("12_hte74")]
 

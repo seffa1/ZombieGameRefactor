@@ -17,9 +17,10 @@ func update(delta):
 	if owner.health_component.health == 0:
 		emit_signal("finished", "die")
 		return
-	
-	# TODO - Movement code
-	return
+		
+	# Move
+	owner.velocity = owner.velocity_component.velocity.normalized() * WALK_SPEED_FOWARD
+	owner.move_and_slide()
 
 func _on_animation_finished(anim_name):
 	return
