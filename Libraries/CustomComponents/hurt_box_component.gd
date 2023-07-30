@@ -14,9 +14,11 @@ Detects collisions with a body that can hurt us and triggers:
 @export var status_reciever: Node2D
 
 
-
-
-func _on_area_entered(area):
-	""" The area here is the hitbox component (thats what triggers this signal). """
+func _on_area_entered(area: Area2D):
+	""" 
+	The area here is a hitbox component which should contain all the
+	information we need to take damage, do knockbacks, trigger effects, etc.
+	"""
 	print("OUCH")
-	print(area)
+	print(area.damage)
+	print(area.shooter)

@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cxqbjn4yia1k6" path="res://Libraries/CustomComponents/RotationComponent.tscn" id="7_po6mp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqin"]
-radius = 112.112
+radius = 63.0079
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
 radius = 62.0081

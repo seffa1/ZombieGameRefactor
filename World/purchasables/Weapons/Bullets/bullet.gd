@@ -4,34 +4,21 @@ extends CharacterBody2D
 Base class for different bullets.
 Guns are assigned a bullet as an export var. Different bullets exists only to vary
 the visual appearance/VFX's. The properties of the bullet are set by the gun when the 
-gun shoots with the init function.
-
-This class can be used as a generic bullet. If you want to make a bullet with different fx, inherit from this
-and change the fx.
+gun shoots with the init function. That information is passed down to the hitboxComponent so 
+a receiving hurtbox and get the information it needs.
 """
 
 const _IMPACT_SAMPLES = [
  # TODO
 ]
 
+@onready var hit_box_component = $HitBoxComponent
 @onready var life_span: Timer = $Lifespan
 
-# Variables
-var damage: int:
-	get:
-		return damage
-	set(value):
-		damage = value
-
-var shooter: CharacterBody2D:  # reference back to the player
-	get:
-		return shooter
-	set(value):
-		shooter = value
 
 func init(bullet_damage: int, bullet_shooter: CharacterBody2D):
-	damage = bullet_damage
-	shooter = bullet_shooter
+	hit_box_component.damage = bullet_damage
+	hit_box_component.shooter = bullet_shooter
 
 func start(position, direction, speed):
 	global_position = position
@@ -46,11 +33,11 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		# TODO - bullet collision fx based on tile type it collided with
 		print("Bullet hit environment")
+	#	Events.emit_signal("damaged", collision.get_collider(), damage, shooter)
 		die()
 
 func die() -> void:
 	queue_free()
-
 
 func _on_lifespan_timeout():
 	die()
