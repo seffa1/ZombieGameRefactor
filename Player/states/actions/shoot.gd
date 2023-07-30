@@ -14,7 +14,6 @@ func enter():
 	
 	# Make sure the gun can fire
 	if !_able_to_shoot():
-		print("Cant shoot in the enter function")
 		emit_signal("finished", "idle")
 		return
 
@@ -52,7 +51,6 @@ func _on_shoot_animation_finished():
 		# re-enter the fire state
 		enter()
 	else:
-		print("Single fire weapon - Exiting state")
 		# single / burst fire weapons play one animation and go back to idle state until shoot is called again
 		emit_signal("finished", "idle")
 		return
@@ -61,10 +59,6 @@ func _get_animation_name(weapon_object) -> String:
 	return Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["shoot_animation"]
 
 func _able_to_shoot() -> bool:
-	if !weapon_object.can_shoot():
-		print("WEAPON CANNOT SHOOT")
-	if !weapon_manager.has_a_gun():
-		print("YOU AINT GOT NO GUN")
 	return weapon_manager.has_a_gun() and weapon_object.can_shoot()
 
 # Clean up the state. Reinitialize values like a timer

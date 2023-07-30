@@ -3,7 +3,6 @@ extends "res://Libraries/state.gd"
 
 @export var WALK_SPEED_FOWARD: int = 300
 
-var state_name = "move"
 
 # Initialize the state. E.g. change the animation
 func enter():

@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=15 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
+[ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
 [ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="1_wvdm7"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="2_budir"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="2_dw2ec"]
@@ -12,24 +13,51 @@
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="6_ylhad"]
 [ext_resource type="PackedScene" uid="uid://cxqbjn4yia1k6" path="res://Libraries/CustomComponents/RotationComponent.tscn" id="7_po6mp"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2eqin"]
+radius = 112.112
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
+radius = 62.0081
+
 [node name="ZombieBasic_01" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 16
 
 [node name="HurtBoxComponent" parent="." instance=ExtResource("1_wvdm7")]
+collision_mask = 256
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_dw2ec")]
+[node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBoxComponent"]
+shape = SubResource("CircleShape2D_2eqin")
+debug_color = Color(0.996078, 0, 0.164706, 0.419608)
+
+[node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sr2cp")
+
+[node name="placeholderSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_u265p")
+region_enabled = true
+region_rect = Rect2(2740, 272, 162, 149)
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("giver_component") instance=ExtResource("2_dw2ec")]
+giver_component = NodePath("../GiverComponent")
 
 [node name="GiverComponent" parent="." instance=ExtResource("3_456h1")]
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_505g5")]
 
-[node name="StatusRecieverComponent" parent="." instance=ExtResource("5_xohst")]
+[node name="StatusRecieverComponent" parent="." node_paths=PackedStringArray("velocity_component", "health_component") instance=ExtResource("5_xohst")]
+velocity_component = NodePath("../VelocityComponent")
+health_component = NodePath("../HealthComponent")
 
-[node name="PathfindingComponent" parent="." instance=ExtResource("6_ylhad")]
+[node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_ylhad")]
+velocity_component = NodePath("../VelocityComponent")
 
 [node name="RotationComponent" parent="." instance=ExtResource("7_po6mp")]
 
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("1_mmyv0")
+START_STATE = NodePath("Move")
 
 [node name="Move" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("2_budir")

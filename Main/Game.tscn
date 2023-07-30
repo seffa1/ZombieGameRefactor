@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=30 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="11_wtt1n"]
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="12_hte74"]
 [ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/DevCanon/AmmoBuyDevCanon.tscn" id="13_ymius"]
+[ext_resource type="PackedScene" uid="uid://dg3kxoshhmjr" path="res://Enemies/ZombieBasic/ZombieBasic_01.tscn" id="15_8r8rh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t0y30"]
 polygon = PackedVector2Array(-32, -32, -32, 32, -13.75, 32, -13.5, -13.5, 32, -13.5, 32, -32)
@@ -323,7 +324,6 @@ offset_bottom = 95.0
 [node name="GameWorld" type="Node2D" parent="."]
 
 [node name="Darkness" type="CanvasModulate" parent="GameWorld"]
-visible = false
 color = Color(0.203922, 0.203922, 0.203922, 0.878431)
 
 [node name="PurchasablesContainer" type="Node" parent="GameWorld"]
@@ -419,6 +419,7 @@ position = Vector2(151, 183)
 rotation = -0.708219
 
 [node name="Camera" type="Camera2D" parent="GameWorld"]
+process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -435,6 +436,9 @@ height = 0.14
 max_distance = 100000.0
 
 [node name="ScreenShaker" parent="." instance=ExtResource("12_hte74")]
+
+[node name="ZombieBasic_01" parent="." instance=ExtResource("15_8r8rh")]
+position = Vector2(782, 176)
 
 [connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="UI/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
 [connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="UI/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]

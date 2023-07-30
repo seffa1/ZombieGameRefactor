@@ -13,6 +13,10 @@ Detects collisions with a body that can hurt us and triggers:
 @export var bullet_impact_scene: PackedScene
 @export var status_reciever: Node2D
 
-func _on_body_entered(body):
-	# TODO
-	pass # Replace with function body.
+
+
+
+func _on_area_entered(area):
+	""" The area here is the hitbox component (thats what triggers this signal). """
+	print("OUCH")
+	print(area)

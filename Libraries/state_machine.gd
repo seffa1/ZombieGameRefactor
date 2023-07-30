@@ -31,6 +31,8 @@ var _active = false:
 			current_state = null
 
 func _ready():
+	assert(get_node(START_STATE), "You forgot to set the start state.")
+	
 	for child in get_children():
 		child.finished.connect(_change_state)
 	initialize(START_STATE)

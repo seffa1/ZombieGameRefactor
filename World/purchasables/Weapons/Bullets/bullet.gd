@@ -17,15 +17,21 @@ const _IMPACT_SAMPLES = [
 @onready var life_span: Timer = $Lifespan
 
 # Variables
-var speed: float
-var damage: int
-var direction: Vector2 = Vector2.ZERO
-var shooter: CharacterBody2D  # reference back to the player
+var damage: int:
+	get:
+		return damage
+	set(value):
+		damage = value
 
-func init(damage: int, shooter: CharacterBody2D):
-	damage = damage
-	speed = speed
-	shooter = shooter
+var shooter: CharacterBody2D:  # reference back to the player
+	get:
+		return shooter
+	set(value):
+		shooter = value
+
+func init(bullet_damage: int, bullet_shooter: CharacterBody2D):
+	damage = bullet_damage
+	shooter = bullet_shooter
 
 func start(position, direction, speed):
 	global_position = position
@@ -34,16 +40,12 @@ func start(position, direction, speed):
 
 func _physics_process(delta: float) -> void:
 	var motion_vector = velocity * delta
-	#print(direction.rotated(rotation))
-	#print("updated bullet: " + str(motion_vector))
-	#print("delta: " + str(delta))
-	#sprint("direction: " + str(direction))
-	#print("speed: " + str(speed))
 	var collision := move_and_collide(motion_vector)
+	
+	# Check if it collided with the environment
 	if collision:
-		# TODO - bullet collision fx
-		
-		Events.emit_signal("damaged", collision.get_collider(), damage, shooter)
+		# TODO - bullet collision fx based on tile type it collided with
+		print("Bullet hit environment")
 		die()
 
 func die() -> void:

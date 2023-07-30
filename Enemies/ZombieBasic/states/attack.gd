@@ -1,11 +1,19 @@
-extends Node
+extends "res://Libraries/state.gd"
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+# Initialize the state. E.g. change the animation
+func enter():
+	return
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+# Clean up the state. Reinitialize values like a timer
+func exit():
+	return
+
+func update(delta):
+	# TODO - Movement code
+	return
+
+func _on_animation_finished(anim_name):
+	return
+

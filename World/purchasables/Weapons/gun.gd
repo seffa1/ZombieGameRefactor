@@ -107,6 +107,12 @@ func shoot() -> void:
 	
 	# TODO - do we have more intense shake for larger guns ?
 	Events.emit_signal("shake_screen", 5, .1)
+	
+	# The parent of the gun is always the weapon manager, and the player is the owner of that
+	# Owner only gets the root parent of a node as it exists in the scene tree
+	# since the gun is not a part of the scene tree (its added via code) 
+	# we have to use get_parent() instead.
+	var shooter = get_parent().owner
 
 	# we can ignore spread
 	if bullets_per_fire == 1:
@@ -115,7 +121,7 @@ func shoot() -> void:
 		
 		var bullet_instance = bullet.instantiate()
 		ObjectRegistry.register_projectile(bullet_instance)
-		bullet_instance.init(bullet_damage, owner)
+		bullet_instance.init(bullet_damage, shooter)
 		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 
 	# we cannot ignore spread ( like a shot gun )
@@ -134,7 +140,7 @@ func shoot() -> void:
 			
 			var bullet_instance = bullet.instantiate()
 			ObjectRegistry.register_projectile(bullet_instance)
-			bullet_instance.init(bullet_damage, owner)
+			bullet_instance.init(bullet_damage, shooter)
 			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 			
 			rotation_direction *= -1
@@ -154,7 +160,6 @@ func can_shoot() -> bool:
 	# shouldnt be tied to the animation
 	# ill re-do the animation system later
 	if !fire_timer.is_stopped():
-		print("FIRE ON COOL DOWN")
 		return false
 	if bullets_in_clip == 0:
 		play_no_ammo_sound()
@@ -183,7 +188,7 @@ func _randomize_audio_stream(pitch_amount: float, volume_amount: float):
 	
 	audio.pitch_scale += pitch_variation
 	audio.volume_db += volume_variation
-	print(audio.volume_db)
+
 
 func _reset_audio_stream():
 	audio.volume_db = audio_start_volume
