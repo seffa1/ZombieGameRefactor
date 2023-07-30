@@ -21,7 +21,7 @@ func give_item(player: CharacterBody2D):
 		return
 	else:
 		# Take the money and give the perk
-		player.money -= purchasable_cost
+		player.money_component.money -= purchasable_cost
 		player.perk_manager.add_perk(perk_name)
 		audio.play()
 		Events.emit_signal("player_log", "Purchased " + purchasable_name)

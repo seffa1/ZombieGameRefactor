@@ -1,14 +1,8 @@
 extends CharacterBody2D
 
 """
-This script mainly signals to the UI all player related info:
-	 stamina, health, money, debug info
-
-Also tracks all perks / power-up-modifiers the player recieves and relates
-those modifiers to the WeaponManager if they modify weapons.
-
-Note, player should be below UI in the node tree so the UI is initialized
-before we pass signals to it.
+Holds references to the children nodes which need to be accessed by other children nodes.
+Connects to any event bus signals which need to be passed down to child nodes.
 """
 
 # Nodes
@@ -20,10 +14,9 @@ before we pass signals to it.
 @onready var state_machine_action = $StateMachineAction
 
 # Constants
-@export var STARTING_MONEY: int = 10000
+@export var money_component: Node
 
-# Variables
-
+# TODO - move all stamina logic to a stamina component
 var max_stamina: int = 100:
 	set(value):
 		max_stamina = value
@@ -40,18 +33,6 @@ var max_stamina: int = 100:
 		stamina = new_stamina
 		Events.emit_signal("player_stamina_change", new_stamina)
 
-@onready var money: int = 0:
-	set(value):
-		var new_money
-		if value < 0:
-			new_money = 0
-		else:
-			new_money = value
-		money = new_money
-		Events.emit_signal("player_money_change", money)
-	get:
-		return money
-
 func assign_camera(camera: Camera2D) -> void:
 	""" Called by the game initializer. """
 	camera_transform.remote_path = camera.get_path()
@@ -62,8 +43,12 @@ func _physics_process(delta):
 
 func _ready():
 	# Call the settings to trigger change signals to update the HUD
-	money = STARTING_MONEY
 	stamina = max_stamina
+	
+	# Connect to player interaction signals
+	Events.give_player_money.connect(_on_player_give_money)
 
-
+# Signal consumers
+func _on_player_give_money(amount: int):
+	money_component.add_money(amount)
 

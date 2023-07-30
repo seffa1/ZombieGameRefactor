@@ -25,7 +25,7 @@ func purchase_item(player: CharacterBody2D) -> void:
 	if !can_be_purchased:
 		return
 
-	if player.money < purchasable_cost:
+	if player.money_component.money < purchasable_cost:
 		Events.emit_signal("player_log", "Not enough money")
 		return
 	give_item(player)
@@ -34,7 +34,7 @@ func give_item(player: CharacterBody2D) -> void:
 	"""
 	Function which must be defined by all children classes.
 	"""
-	player.money -= purchasable_cost
+	player.money_component.money -= purchasable_cost
 	Events.emit_signal("player_log", "Purchased " + purchasable_name)
 	return
 

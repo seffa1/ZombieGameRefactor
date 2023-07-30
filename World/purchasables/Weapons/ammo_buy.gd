@@ -28,7 +28,7 @@ func give_item(player: CharacterBody2D) -> void:
 		
 		#make the transaction and pass the gun name along
 		audio.play()
-		player.money -= purchasable_cost
+		player.money_component.money -= purchasable_cost
 		
 		player.weapon_manager.refill_weapon_ammo(weapon_object)
 		Events.emit_signal("player_log", "Purchased " + purchasable_name)

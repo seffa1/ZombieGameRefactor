@@ -29,7 +29,7 @@ func _change_state(state_name):
 		return
 	if state_name in ["idle"]:
 		reset_stack()
-	
+
 	# If we want to add state to the state-queue
 	if state_name in ["die", "melee"]:
 		states_stack.push_front(states_map[state_name])

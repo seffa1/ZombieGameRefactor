@@ -22,8 +22,8 @@ signal player_equipped_reserve_count_change(count: int)  # bullets remaing
 signal player_weapons_change(weapon_names: Array[String])
 signal player_equipped_change(weapon_name: String)
 
-# Damage
-signal damaged(target, damage, shooter)
+# Player Interactions
+signal give_player_money(amount: int)
 
 # FX
 signal shake_screen(intensity, duration)

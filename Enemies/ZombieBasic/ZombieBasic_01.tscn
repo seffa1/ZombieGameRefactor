@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_01.gd" id="1_wcbub"]
 [ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="1_wvdm7"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="2_budir"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="2_dw2ec"]
-[ext_resource type="PackedScene" uid="uid://cop7x75m0rul4" path="res://Libraries/CustomComponents/GiverComponent.tscn" id="3_456h1"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="3_555fl"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="4_505g5"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="4_d72v0"]
@@ -22,9 +22,12 @@ radius = 62.0081
 [node name="ZombieBasic_01" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 16
+script = ExtResource("1_wcbub")
 
-[node name="HurtBoxComponent" parent="." instance=ExtResource("1_wvdm7")]
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component", "status_reciever") instance=ExtResource("1_wvdm7")]
 collision_mask = 256
+health_component = NodePath("../HealthComponent")
+status_reciever = NodePath("../StatusRecieverComponent")
 
 [node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBoxComponent"]
 shape = SubResource("CircleShape2D_2eqin")
@@ -39,10 +42,7 @@ texture = ExtResource("1_u265p")
 region_enabled = true
 region_rect = Rect2(2740, 272, 162, 149)
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("giver_component") instance=ExtResource("2_dw2ec")]
-giver_component = NodePath("../GiverComponent")
-
-[node name="GiverComponent" parent="." instance=ExtResource("3_456h1")]
+[node name="HealthComponent" parent="." instance=ExtResource("2_dw2ec")]
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_505g5")]
 
