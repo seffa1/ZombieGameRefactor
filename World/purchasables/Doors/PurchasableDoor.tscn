@@ -57,6 +57,8 @@ shape = SubResource("CapsuleShape2D_c8vqf")
 debug_color = Color(0.211765, 0.611765, 0.537255, 0.419608)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
+collision_layer = 16
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(-0.5, 2)
