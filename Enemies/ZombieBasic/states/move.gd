@@ -18,7 +18,9 @@ func update(delta):
 		emit_signal("finished", "die")
 		return
 		
-	# Move
+	# TODO - steering code (use rotational component)
+	
+	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity.normalized() * WALK_SPEED_FOWARD
 	owner.move_and_slide()
 

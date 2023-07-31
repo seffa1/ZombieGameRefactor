@@ -6,6 +6,12 @@
 script = ExtResource("1_p76by")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 60.0
+neighbor_distance = 200.0
+time_horizon_agents = 20.0
+time_horizon_obstacles = 20.0
+max_speed = 350.0
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 debug_path_custom_point_size = 16.05

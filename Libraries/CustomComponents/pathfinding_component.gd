@@ -2,7 +2,8 @@ extends Node2D
 
 """
 Path finding logic which updates the velocity component each tick to go towards
-the target position. The target position is supplied by the owner.
+the target position (A*), and then calculates any avoidance (context-based-steering). 
+The target position is supplied by the owner.
 """
 
 @export var velocity_component: Node
@@ -24,5 +25,8 @@ func update_target_position(position: Vector2):
 		nagivation_agent.target_position = position
 
 func _physics_process(delta):
+	if nagivation_agent.is_navigation_finished():
+		return
+	
 	movement_direction = to_local(nagivation_agent.get_next_path_position()).normalized()
 	velocity_component.accelerate_in_direction(movement_direction)

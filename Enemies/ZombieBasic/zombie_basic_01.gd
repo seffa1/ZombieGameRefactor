@@ -12,5 +12,4 @@ func _ready():
 	Events.player_position_change.connect(_on_player_position_changed)
 
 func _on_player_position_changed(player_position: Vector2):
-	print("Player position changed: " + str(player_position))
 	pathfinding_component.update_target_position(player_position)
