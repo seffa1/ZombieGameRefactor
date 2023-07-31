@@ -19,7 +19,7 @@ func purchase_item(player: CharacterBody2D) -> void:
 	etc. 
 	
 	This class is also used for things the player interacts with but doesnt buy, like 
-	a power switch. We treat it behind-the-scenes as 'purchasing something for $0'.
+	a power switch or windows. We treat it behind-the-scenes as 'purchasing something for $0'.
 	"""
 	
 	if !can_be_purchased:

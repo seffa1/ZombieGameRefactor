@@ -1,6 +1,6 @@
 extends "res://Libraries/state.gd"
 
-
+# TODO - window attacks should be a separate state so we can have a different animation
 
 # Initialize the state. E.g. change the animation
 func enter():
