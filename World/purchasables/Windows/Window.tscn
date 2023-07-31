@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://q6wx281jrsea"]
+[gd_scene load_steps=10 format=3 uid="uid://q6wx281jrsea"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_2055m"]
 [ext_resource type="Script" path="res://World/purchasables/Windows/window.gd" id="2_fdgvv"]
@@ -11,6 +11,68 @@ size = Vector2(20, 194.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11esv"]
 size = Vector2(44, 194)
 
+[sub_resource type="Animation" id="Animation_ns2yo"]
+resource_name = "window_break"
+length = 7.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Placeholder:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(-8, -96, 8, -96, 8, 96, -8, 96), PackedVector2Array(-8, -96, 8, -96, 7.99998, -55.0651, 8, -48, 7.99997, -33.3396, 8, 96, -8, 96, -8, 48, 0, 32, -8, 25.4476, -8, -76.6033, 0, -88), PackedVector2Array(-8, -96, 8, -96, 7.99998, -66.9914, 0, -56, 8, -48, 7.99997, -33.3396, 7.99998, 2.17236, 0, 8, 7.99998, 16.888, 8, 96, -8, 96, -8, 72, 0, 56, 0, 32, -8, 25.4476, -8, -8, 0, -32, -8, -43.4463, -8, -76.6033, 0, -88), PackedVector2Array(-8, -96, 8, -96, 3, -73, -2, -59, 8, -48, 7.99997, -33.3396, 7.99998, 2.17236, 0, 8, 5, 21, 5, 92, -8, 96, -8, 72, 0, 56, 0, 32, -8, 25.4476, -5, -6, 0, -32, -6, -44, -8, -76.6033, 0, -88), PackedVector2Array(-8, -96, 8, -96, -1, -73, -2, -59, 2, -45, 3, -34, 4, -7, 0, 8, 5, 21, 5, 92, -1, 92, -3, 72, 0, 56, 0, 32, -3, 22, -5, -6, 0, -32, -6, -44, -8, -76.6033, 0, -88), PackedVector2Array(-8, -96, 2, -92, -1, -73, -2, -59, 2, -45, 3, -34, 1, -7, 0, 8, 3, 23, 4, 91, -1, 92, -3, 72, 0, 56, 0, 32, -3, 22, -3, -6, 0, -32, -3, -43, -4, -76, 0, -88), PackedVector2Array(-8, -96, 2, -92, -1, -73, -2, -59, -1, -44, 2, -34, 1, -7, 0, 8, 3, 23, 0, 84, -1, 92, -3, 72, 0, 56, 0, 32, 0, 23, -3, -6, 0, -32, -3, -43, -3, -76, 0, -88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Placeholder:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lkfje"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Placeholder:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-8, -96, 8, -96, 8, 96, -8, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Placeholder:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpbwt"]
+_data = {
+"RESET": SubResource("Animation_lkfje"),
+"window_break": SubResource("Animation_ns2yo")
+}
+
 [node name="Window" instance=ExtResource("1_2055m")]
 script = ExtResource("2_fdgvv")
 window_repair_money_reward = 10
@@ -20,7 +82,7 @@ purchasable_name = "window"
 debug_color = Color(0.133333, 0.619608, 0.537255, 0.419608)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
-collision_layer = 16
+collision_layer = 2048
 collision_mask = 9
 
 [node name="CollisionShape1" type="CollisionShape2D" parent="StaticBody2D" index="0"]
@@ -28,22 +90,33 @@ position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_2oa1u")
 
 [node name="HealthComponent" parent="." index="3" instance=ExtResource("4_b0j0q")]
-max_health = 10
+max_health = 7
 death_money_reward = 0
 
 [node name="WindowHurtbox" type="Area2D" parent="." index="4" node_paths=PackedStringArray("health_component", "damage_timer")]
 collision_layer = 512
-collision_mask = 64
+collision_mask = 320
 script = ExtResource("4_2yc2s")
 health_component = NodePath("../HealthComponent")
 damage_timer = NodePath("../DamageTimer")
-damage_interval = 1
+damage_interval = 0.01
 
 [node name="CollisionHurtbox" type="CollisionShape2D" parent="WindowHurtbox" index="0"]
-position = Vector2(1, -1)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_11esv")
 debug_color = Color(0.878431, 0.164706, 0.313726, 0.419608)
 
 [node name="DamageTimer" type="Timer" parent="." index="5"]
+wait_time = 0.01
+one_shot = true
+
+[node name="AnimationPlaceholder" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_dpbwt")
+}
+
+[node name="Placeholder" type="Polygon2D" parent="." index="7"]
+color = Color(0.0392157, 0.0196078, 0.00784314, 1)
+polygon = PackedVector2Array(-8, -96, 8, -96, 8, 96, -8, 96)
 
 [connection signal="area_entered" from="WindowHurtbox" to="WindowHurtbox" method="_on_area_entered"]

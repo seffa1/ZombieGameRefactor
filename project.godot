@@ -84,6 +84,7 @@ reload={
 2d_physics/layer_9="bulletHitbox"
 2d_physics/layer_10="windowHurtbox"
 2d_physics/layer_11="enemyHitbox"
+2d_physics/layer_12="windowCollision"
 avoidance/layer_1="environment"
 
 [physics]
