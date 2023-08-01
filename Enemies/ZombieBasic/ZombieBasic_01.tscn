@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=21 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="5_xohst"]
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="6_ylhad"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="7_hhe06"]
-[ext_resource type="PackedScene" uid="uid://cxqbjn4yia1k6" path="res://Libraries/CustomComponents/RotationComponent.tscn" id="7_po6mp"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="8_s40qx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqin"]
@@ -68,18 +67,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-8, -12), Vector2(0, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("placeholderSprite:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-1.5708, -1.9984, -1.5708]
-}
 
 [sub_resource type="Animation" id="Animation_2n82s"]
 length = 0.001
@@ -118,18 +105,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("placeholderSprite:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.5708]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
@@ -226,8 +201,6 @@ path_update_interval = 0.5
 [node name="NavigationAgent2D" parent="PathfindingComponent" index="0"]
 avoidance_enabled = false
 radius = 341.51
-
-[node name="RotationComponent" parent="." instance=ExtResource("7_po6mp")]
 
 [connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]
