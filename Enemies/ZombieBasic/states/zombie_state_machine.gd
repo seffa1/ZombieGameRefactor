@@ -11,7 +11,9 @@ func _ready():
 	super()
 	states_map = {
 		"move": $Move,
-		"attack": $Attack,
+		"attack_player": $AttackPlayer,
+		"break_window": $BreakWindow,
+		"attack_player_through_window": $AttackPlayerThroughWindow,
 		"die": $Die
 	}
 
@@ -26,7 +28,7 @@ func _change_state(state_name):
 		reset_stack()
 		
 	# If we want to add state to the state-queue
-	if state_name in ["die", "move", "attack"]:
+	if state_name in ["die", "move", "attack", "break_window"]:
 		states_stack.push_front(states_map[state_name])
 	# Otherwise the base statemachine will just switch to the new state
 	super(state_name)

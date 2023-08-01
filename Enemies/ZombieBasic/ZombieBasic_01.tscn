@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=22 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -11,16 +11,132 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="4_d72v0"]
 [ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="5_xohst"]
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="6_ylhad"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="7_hhe06"]
 [ext_resource type="PackedScene" uid="uid://cxqbjn4yia1k6" path="res://Libraries/CustomComponents/RotationComponent.tscn" id="7_po6mp"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="8_s40qx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqin"]
 radius = 63.0079
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e3uxj"]
-radius = 94.0053
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ighh"]
+radius = 51.0
+height = 160.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4xnb"]
+size = Vector2(97.5, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
 radius = 62.0081
+
+[sub_resource type="Animation" id="Animation_lcroy"]
+resource_name = "break_window"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WindowHitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WindowHitbox:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("placeholderSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-8, -12), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("placeholderSprite:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.5708, -1.9984, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_2n82s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WindowHitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WindowHitbox:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("placeholderSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("placeholderSprite:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
+_data = {
+"RESET": SubResource("Animation_2n82s"),
+"break_window": SubResource("Animation_lcroy")
+}
 
 [node name="ZombieBasic_01" type="CharacterBody2D"]
 collision_layer = 8
@@ -28,6 +144,13 @@ collision_mask = 2065
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_wcbub")
+
+[node name="placeholderSprite" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_u265p")
+region_enabled = true
+region_rect = Rect2(2740, 272, 162, 149)
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component", "status_reciever") instance=ExtResource("1_wvdm7")]
 collision_mask = 256
@@ -39,21 +162,33 @@ shape = SubResource("CircleShape2D_2eqin")
 debug_color = Color(0.733333, 0, 0.109804, 0.419608)
 
 [node name="WindowDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
 
 [node name="WindowDetectionCollision" type="CollisionShape2D" parent="WindowDetector"]
-position = Vector2(31, -1)
-shape = SubResource("CircleShape2D_e3uxj")
+position = Vector2(34, -1)
+scale = Vector2(0.824292, 0.979083)
+shape = SubResource("CapsuleShape2D_2ighh")
 debug_color = Color(0.760784, 0.180392, 1, 0.419608)
 
-[node name="placeholderSprite" type="Sprite2D" parent="."]
-rotation = -1.5708
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_u265p")
-region_enabled = true
-region_rect = Rect2(2740, 272, 162, 149)
+[node name="WindowHitbox" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 512
+monitoring = false
+monitorable = false
+
+[node name="WindowHitboxCollision" type="CollisionShape2D" parent="WindowHitbox"]
+position = Vector2(67, -5)
+shape = SubResource("RectangleShape2D_y4xnb")
+debug_color = Color(0.980392, 0, 0.384314, 0.419608)
 
 [node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sr2cp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rbgnq")
+}
 
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("1_mmyv0")
@@ -63,8 +198,14 @@ START_STATE = NodePath("Move")
 script = ExtResource("2_budir")
 WALK_SPEED_FOWARD = 100
 
-[node name="Attack" type="Node" parent="ZombieStateMachine"]
+[node name="AttackPlayer" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("3_555fl")
+
+[node name="BreakWindow" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("7_hhe06")
+
+[node name="AttackPlayerThroughWindow" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("8_s40qx")
 
 [node name="Die" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("4_d72v0")
@@ -88,6 +229,8 @@ radius = 341.51
 
 [node name="RotationComponent" parent="." instance=ExtResource("7_po6mp")]
 
+[connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]
 [connection signal="velocity_computed" from="PathfindingComponent/NavigationAgent2D" to="PathfindingComponent" method="_on_navigation_agent_2d_velocity_computed"]
 
 [editable path="PathfindingComponent"]

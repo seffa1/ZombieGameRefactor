@@ -17,6 +17,12 @@ func update(delta):
 	if owner.health_component.health == 0:
 		emit_signal("finished", "die")
 		return
+	
+	# Check if theres a window to attack
+	# TODO - do we need to check if we are outside or inside?
+	if owner.window_detector.has_overlapping_areas():
+		emit_signal("finished", "break_window")
+		return
 
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity.normalized() * WALK_SPEED_FOWARD

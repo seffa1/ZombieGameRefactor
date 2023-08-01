@@ -85,6 +85,7 @@ reload={
 2d_physics/layer_10="windowHurtbox"
 2d_physics/layer_11="enemyHitbox"
 2d_physics/layer_12="windowCollision"
+2d_physics/layer_13="ZombieWindowHitbox"
 avoidance/layer_1="environment"
 
 [physics]

@@ -8,12 +8,16 @@ This should be a lightweight script which glues the different components togethe
 @onready var sprite: Sprite2D = $placeholderSprite
 @onready var hurt_box_component: Area2D = $HurtBoxComponent
 @onready var window_detector: Area2D = $WindowDetector
+@onready var window_hit_box: Area2D = $WindowHitbox
 
 # Healper nodes
 @onready var rotational_component: Node2D = $RotationComponent
 @onready var health_component: Node2D = $HealthComponent
 @onready var pathfinding_component: Node2D = $PathfindingComponent
 @onready var velocity_component: Node = $VelocityComponent
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+var attackable_window_hurt_box: Area2D
 
 func _ready():
 	Events.player_position_change.connect(_on_player_position_changed)
@@ -31,3 +35,4 @@ func update_rotation():
 	sprite.rotation = lerp_angle(sprite.rotation, angle - deg_to_rad(90), STEER_FORCE) 
 	hurt_box_component.rotation = lerp_angle(hurt_box_component.rotation, angle, STEER_FORCE) 
 	window_detector.rotation = lerp_angle(window_detector.rotation, angle, STEER_FORCE) 
+	window_hit_box.rotation = lerp_angle(window_hit_box.rotation, angle, STEER_FORCE)
