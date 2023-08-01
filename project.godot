@@ -78,6 +78,7 @@ reload={
 2d_physics/layer_3="bullets"
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="environment"
+2d_physics/layer_6="pickups"
 2d_physics/layer_7="enemyHurtbox"
 2d_physics/layer_8="playerHurtbox"
 2d_physics/layer_9="bulletHitbox"
