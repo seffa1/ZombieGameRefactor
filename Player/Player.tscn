@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=30 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
 [ext_resource type="Script" path="res://Player/perk_manager.gd" id="16_gldpa"]
 [ext_resource type="Texture2D" uid="uid://dh45736awn3dt" path="res://World/purchasables/Weapons/DevCanon/images/riffle_buy.png" id="17_hi55u"]
+[ext_resource type="Script" path="res://Player/hurtbox.gd" id="21_j3hvq"]
 
 [sub_resource type="Animation" id="Animation_tvp0e"]
 length = 0.001
@@ -143,6 +144,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0327"]
 radius = 53.0094
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymtg5"]
+radius = 55.0818
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_nlyr0"]
 radius = 98.0051
 
@@ -231,6 +235,17 @@ flip_h = true
 position = Vector2(8, 1)
 shape = SubResource("CircleShape2D_j0327")
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 1024
+script = ExtResource("21_j3hvq")
+hit_timer_interval = 0.2
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(11, 1)
+shape = SubResource("CircleShape2D_ymtg5")
+debug_color = Color(0.984314, 0, 0.360784, 0.419608)
+
 [node name="PurchasableDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -249,6 +264,10 @@ one_shot = true
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]
 
+[node name="HitTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="area_entered" from="PurchasableDetector" to="PurchasableDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="PurchasableDetector" to="PurchasableDetector" method="_on_area_exited"]
 [connection signal="body_entered" from="PurchasableDetector" to="PurchasableDetector" method="_on_body_entered"]

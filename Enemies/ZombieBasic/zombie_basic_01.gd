@@ -9,9 +9,10 @@ This should be a lightweight script which glues the different components togethe
 @onready var hurt_box_component: Area2D = $HurtBoxComponent
 @onready var window_detector: Area2D = $WindowDetector
 @onready var window_hit_box: Area2D = $WindowHitbox
+@onready var player_detector: Area2D = $PlayerDetector
+@onready var player_hit_box: Area2D = $PlayerHitbox
 
 # Healper nodes
-@onready var rotational_component: Node2D = $RotationComponent
 @onready var health_component: Node2D = $HealthComponent
 @onready var pathfinding_component: Node2D = $PathfindingComponent
 @onready var velocity_component: Node = $VelocityComponent
@@ -36,3 +37,5 @@ func update_rotation():
 	hurt_box_component.rotation = lerp_angle(hurt_box_component.rotation, angle, STEER_FORCE) 
 	window_detector.rotation = lerp_angle(window_detector.rotation, angle, STEER_FORCE) 
 	window_hit_box.rotation = lerp_angle(window_hit_box.rotation, angle, STEER_FORCE)
+	player_detector.rotation = lerp_angle(player_detector.rotation, angle, STEER_FORCE)
+	player_hit_box.rotation = lerp_angle(player_hit_box.rotation, angle, STEER_FORCE)

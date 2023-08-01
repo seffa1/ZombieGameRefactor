@@ -4,16 +4,16 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	return
+	owner.animation_player.play("attack_player")
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
-	return
+	owner.animation_player.stop()
 
 func update(delta):
-	# TODO - Movement code
-	return
+	# Check if player not in reach anymore
+	if !owner.player_detector.has_overlapping_areas():
+		emit_signal("finished", "move")
 
 func _on_animation_finished(anim_name):
 	return
-

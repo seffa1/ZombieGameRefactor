@@ -12,6 +12,7 @@ Connects to any event bus signals which need to be passed down to child nodes.
 @onready var perk_manager = $PerkManager
 @onready var state_machine_movement = $StateMachineMovement
 @onready var state_machine_action = $StateMachineAction
+@onready var hit_timer: Timer = $HitTimer
 
 # Constants
 @export var money_component: Node

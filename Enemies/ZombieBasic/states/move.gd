@@ -23,6 +23,11 @@ func update(delta):
 	if owner.window_detector.has_overlapping_areas():
 		emit_signal("finished", "break_window")
 		return
+	
+	# Check if theres a player to attack
+	elif owner.player_detector.has_overlapping_areas():
+		emit_signal("finished", "attack_player")
+		return
 
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity.normalized() * WALK_SPEED_FOWARD
