@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=16 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -15,6 +15,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqin"]
 radius = 63.0079
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e3uxj"]
+radius = 94.0053
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
 radius = 62.0081
@@ -33,16 +36,38 @@ status_reciever = NodePath("../StatusRecieverComponent")
 
 [node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBoxComponent"]
 shape = SubResource("CircleShape2D_2eqin")
-debug_color = Color(0.996078, 0, 0.164706, 0.419608)
+debug_color = Color(0.733333, 0, 0.109804, 0.419608)
 
-[node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_sr2cp")
+[node name="WindowDetector" type="Area2D" parent="."]
+
+[node name="WindowDetectionCollision" type="CollisionShape2D" parent="WindowDetector"]
+position = Vector2(31, -1)
+shape = SubResource("CircleShape2D_e3uxj")
+debug_color = Color(0.760784, 0.180392, 1, 0.419608)
 
 [node name="placeholderSprite" type="Sprite2D" parent="."]
+rotation = -1.5708
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_u265p")
 region_enabled = true
 region_rect = Rect2(2740, 272, 162, 149)
+
+[node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sr2cp")
+
+[node name="ZombieStateMachine" type="Node" parent="."]
+script = ExtResource("1_mmyv0")
+START_STATE = NodePath("Move")
+
+[node name="Move" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("2_budir")
+WALK_SPEED_FOWARD = 100
+
+[node name="Attack" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("3_555fl")
+
+[node name="Die" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("4_d72v0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_dw2ec")]
 max_health = 10
@@ -55,27 +80,13 @@ health_component = NodePath("../HealthComponent")
 
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_ylhad")]
 velocity_component = NodePath("../VelocityComponent")
+path_update_interval = 0.5
 
 [node name="NavigationAgent2D" parent="PathfindingComponent" index="0"]
 avoidance_enabled = false
 radius = 341.51
-debug_enabled = false
 
 [node name="RotationComponent" parent="." instance=ExtResource("7_po6mp")]
-
-[node name="ZombieStateMachine" type="Node" parent="."]
-script = ExtResource("1_mmyv0")
-START_STATE = NodePath("Move")
-
-[node name="Move" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("2_budir")
-WALK_SPEED_FOWARD = 150
-
-[node name="Attack" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("3_555fl")
-
-[node name="Die" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("4_d72v0")
 
 [connection signal="velocity_computed" from="PathfindingComponent/NavigationAgent2D" to="PathfindingComponent" method="_on_navigation_agent_2d_velocity_computed"]
 

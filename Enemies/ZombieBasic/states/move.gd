@@ -17,12 +17,13 @@ func update(delta):
 	if owner.health_component.health == 0:
 		emit_signal("finished", "die")
 		return
-		
-	# TODO - steering code (use rotational component)
-	
+
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity.normalized() * WALK_SPEED_FOWARD
 	owner.move_and_slide()
+	
+	# Rotate
+	owner.update_rotation()
 
 func _on_animation_finished(anim_name):
 	return

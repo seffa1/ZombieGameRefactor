@@ -8,14 +8,12 @@
 
 [node name="DevCanon" instance=ExtResource("1_o7y46")]
 WEAPON_NAME = "DEV_CANON"
-fire_type = "single_fire"
+fire_type = "automatic"
 bullet = ExtResource("2_8obux")
-bullets_per_fire = 4
-bullet_spread = 0.05
 bullet_speed = 2000
 bullet_damage = 1
 fire_rate = 0.1
-clip_size = 1
+clip_size = 10
 max_bullet_reserve = 100
 audio_reload_start = ExtResource("3_xx2ah")
 audio_reload_finished = ExtResource("4_ivyn4")
