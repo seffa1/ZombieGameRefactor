@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq47d84tq7j2k"]
+
+[ext_resource type="Script" path="res://World/infrastructure/zombie_spawner.gd" id="1_3jiqe"]
+
+[node name="ZombieSpawner" type="Node2D" groups=["ZombieSpawners"]]
+script = ExtResource("1_3jiqe")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true

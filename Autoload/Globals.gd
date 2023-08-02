@@ -21,3 +21,19 @@ const PERK_INDEX = {
 	}
 }
 
+# Stores all the information for all the different zombie types
+const ZOMBIE_INDEX = {
+}
+
+# How many enemies per wave
+# TODO - replace with a curve or equation
+const WAVE_INDEX = {
+	1: 5,
+	2: 10,
+	3: 15,
+	4: 20,
+	5: 30,
+	6: 40,
+	7: 50,
+	8: 1000
+}
