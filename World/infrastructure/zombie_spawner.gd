@@ -6,7 +6,7 @@ signal zombie_spawned  # automatically connected to the zombie manager, in zombi
 @export var spawn_interval: float = 1
 
 @onready var zombie_list = [
-	"res://Enemies/ZombieBasic/ZombieBasic_01.tscn"
+	preload("res://Enemies/ZombieBasic/ZombieBasic_01.tscn")
 ]
 
 func spawn_zombie():
@@ -21,5 +21,5 @@ func spawn_zombie():
 	spawn_timer.start(spawn_interval)
 
 func get_random_zombie():
-	var zombie_list_index = randi_range(0, len(zombie_list))
+	var zombie_list_index = randi_range(0, len(zombie_list) - 1)
 	return zombie_list[zombie_list_index]

@@ -4,7 +4,7 @@
 
 [node name="PlayerStats" type="Panel"]
 top_level = true
-offset_right = 768.0
+offset_right = 1434.0
 offset_bottom = 128.0
 script = ExtResource("1_dyuci")
 
@@ -96,3 +96,28 @@ offset_left = 533.0
 offset_top = 102.0
 offset_right = 732.0
 offset_bottom = 125.0
+
+[node name="Labels3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 1.0
+offset_right = 929.0
+offset_bottom = 129.0
+text = "WaveNumber:
+ZombiesToKill:
+ZombiesOnMap:"
+
+[node name="WaveNumber" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ZombiesToKill" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ZombiesOnMap" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

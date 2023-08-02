@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 """
 This should be a lightweight script which glues the different components together.
+
+NOTE: Make sure to add the zombie to the zombie group.
 """
 
 # Components that need to be rotated

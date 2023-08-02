@@ -11,6 +11,9 @@ extends Panel
 @onready var clip_count = $ClipCount
 @onready var reserve_count = $Reserve
 @onready var direction = $Direction
+@onready var wave_number = $WaveNumber
+@onready var zombies_to_kill = $ZombiesToKill
+@onready var zombies_on_map = $ZombiesOnMap
 
 func _ready():
 	set_as_top_level(true)
@@ -27,6 +30,19 @@ func _ready():
 	
 	Events.player_weapons_change.connect(_on_weapon_manager_player_weapons_change)
 	Events.player_equipped_change.connect(_on_weapon_manager_player_equipped_change)
+	
+	Events.wave_number_change.connect(_on_wave_number_change)
+	Events.zombies_to_kill_change.connect(_on_zombies_to_kill_change)
+	Events.zombies_on_map_change.connect(_on_zombies_on_map_change)
+
+func _on_zombies_on_map_change(quantity: int):
+	zombies_on_map.text = str(quantity)
+
+func _on_wave_number_change(wave: int):
+	wave_number.text = str(wave)
+	
+func _on_zombies_to_kill_change(number: int):
+	zombies_to_kill.text = str(number)
 	
 func _player_direction_change(direction_string: String):
 	direction.text = direction_string

@@ -14,6 +14,11 @@ func exit():
 	owner.animation_player.stop()
 
 func update(delta):
+	# Check if dead
+	if owner.health_component.health == 0:
+		emit_signal("finished", "die")
+		return
+	
 	# If theres no window detected, go back to moving
 	if !owner.window_detector.has_overlapping_areas():
 		emit_signal("finished", "move")

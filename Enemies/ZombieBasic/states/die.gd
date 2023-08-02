@@ -8,6 +8,9 @@ func enter():
 	Events.emit_signal("give_player_money", death_money_reward)
 	# TODO - death vfx
 	
+	# signal for the zombie manager
+	Events.emit_signal("zombie_death", owner)
+	
 	# die
 	owner.queue_free()
 	return

@@ -21,6 +21,7 @@ signal player_equipped_change(weapon_name: String)
 
 signal zombies_to_kill_change(amount: int)
 signal wave_number_change(wave: int)
+signal zombies_on_map_change(quantity: int)
 
 # Player Interactions
 signal give_player_money(amount: int)
@@ -30,3 +31,4 @@ signal shake_screen(intensity, duration)
 
 # Game loop
 signal wave_started(wave_number)
+signal zombie_death(zombie_id)

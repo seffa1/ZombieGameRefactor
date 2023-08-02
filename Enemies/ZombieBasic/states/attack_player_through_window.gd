@@ -14,7 +14,11 @@ func exit():
 	return
 
 func update(delta):
-	# TODO - Movement code
+	# Check if dead
+	if owner.health_component.health == 0:
+		emit_signal("finished", "die")
+		return
+	# TODO 
 	return
 
 func _on_animation_finished(anim_name):
