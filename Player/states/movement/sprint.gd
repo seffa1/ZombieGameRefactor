@@ -65,10 +65,20 @@ func _is_moving_forward(input_direction):
 	var player_rotation = rad_to_deg(owner.rotation)
 	var player_direction = rad_to_deg(input_direction.angle())
 	
-	if abs(player_rotation - player_direction) > 110:
-		Events.emit_signal("player_direction_change", "Backwards")
-		return false
+	# Special case if the player is moving left because that is where the
+	# negative sign flips
+	if abs(player_direction) > 100:
+		if abs(abs(player_rotation) - abs(player_direction)) > 90:
+			Events.emit_signal("player_direction_change", "Backwards")
+			return false
+		else:
+			Events.emit_signal("player_direction_change", "Forwards")
+			return true
 	else:
-		Events.emit_signal("player_direction_change", "Forwards")
-		return true
+		if abs(player_rotation - player_direction) > 90:
+			Events.emit_signal("player_direction_change", "Backwards")
+			return false
+		else:
+			Events.emit_signal("player_direction_change", "Forwards")
+			return true
 

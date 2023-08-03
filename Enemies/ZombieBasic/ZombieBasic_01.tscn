@@ -15,24 +15,24 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="8_s40qx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqin"]
-radius = 63.0079
+radius = 33.2415
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ighh"]
-radius = 51.0
-height = 160.0
+radius = 32.7554
+height = 132.777
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4xnb"]
 size = Vector2(97.5, 40)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvmah"]
-radius = 69.0
-height = 174.0
+radius = 47.0
+height = 126.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeile"]
-size = Vector2(79.5, 68.5)
+size = Vector2(74.75, 40.25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
-radius = 62.0081
+radius = 37.0
 
 [sub_resource type="Animation" id="Animation_2n82s"]
 length = 0.001
@@ -195,7 +195,7 @@ script = ExtResource("1_wcbub")
 
 [node name="placeholderSprite" type="Sprite2D" parent="."]
 rotation = -1.5708
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_u265p")
 region_enabled = true
 region_rect = Rect2(2740, 272, 162, 149)
@@ -206,6 +206,7 @@ health_component = NodePath("../HealthComponent")
 status_reciever = NodePath("../StatusRecieverComponent")
 
 [node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(-6, -2)
 shape = SubResource("CircleShape2D_2eqin")
 debug_color = Color(0.733333, 0, 0.109804, 0.419608)
 
@@ -214,7 +215,7 @@ collision_layer = 0
 collision_mask = 512
 
 [node name="WindowDetectionCollision" type="CollisionShape2D" parent="WindowDetector"]
-position = Vector2(34, -1)
+position = Vector2(12, -1)
 scale = Vector2(0.824292, 0.979083)
 shape = SubResource("CapsuleShape2D_2ighh")
 debug_color = Color(0.760784, 0.180392, 1, 0.419608)
@@ -226,7 +227,7 @@ monitoring = false
 monitorable = false
 
 [node name="WindowHitboxCollision" type="CollisionShape2D" parent="WindowHitbox"]
-position = Vector2(67, -5)
+position = Vector2(62, 0)
 shape = SubResource("RectangleShape2D_y4xnb")
 debug_color = Color(0.980392, 0, 0.384314, 0.419608)
 
@@ -235,7 +236,7 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="PlayerDetectorCollision" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(30, -2)
+position = Vector2(17, -1)
 shape = SubResource("CapsuleShape2D_xvmah")
 debug_color = Color(0.67451, 0.494118, 0.333333, 0.419608)
 
@@ -246,11 +247,12 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(58, -4)
+position = Vector2(42, 1)
 shape = SubResource("RectangleShape2D_jeile")
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 
 [node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
 shape = SubResource("CircleShape2D_sr2cp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -293,7 +295,10 @@ path_update_interval = 0.5
 
 [node name="NavigationAgent2D" parent="PathfindingComponent" index="0"]
 avoidance_enabled = false
-radius = 341.51
+radius = 100.0
+neighbor_distance = 5977.77
+time_horizon_agents = 7.27
+time_horizon_obstacles = 6.02
 
 [connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]
