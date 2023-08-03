@@ -23,4 +23,3 @@ func _on_area_entered(area: Area2D):
 	
 	# Take damage
 	health_component.health -= area.damage
-	print(health_component.health)

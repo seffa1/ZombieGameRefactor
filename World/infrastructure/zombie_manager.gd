@@ -7,6 +7,7 @@ Responsible for controlling and tracking the waves of zombies spawning.
 
 # Nodes
 @onready var round_start_spawn_delay: Timer = $RoundStartSpawnDelay
+@onready var zombie_container: Node = $ZombieContainer
 
 # Variables
 @export var spawn_delay_interval: float = 5
@@ -39,13 +40,9 @@ var zombies_on_map: int = 0:  # current zombies spawned on the map
 		
 # Functions
 func _ready():
-	# Connect up signals
-	Events.zombie_death.connect(_on_zombie_death)
-	for spawner in get_tree().get_nodes_in_group("ZombieSpawners"):
-		spawner.zombie_spawned.connect(_on_zombie_spawner_zombie_spawned)
-
-	# Start the wave and intialize UI
+	# Start the wave, connect signals, initialize UI
 	start_wave()
+	Events.zombie_death.connect(_on_zombie_death)
 	Events.emit_signal("wave_number_change", wave_number)
 
 # Controlling the wave ------------------------------------
@@ -61,15 +58,32 @@ func end_wave():
 func _on_spawn_delay_timer_timeout():
 	start_wave()
 
-# Tracking zombies ------------------------------------
-func _on_zombie_spawner_zombie_spawned(zombie: CharacterBody2D):
-	zombie_ids[zombie.get_instance_id()] = zombie
+# Controlling the spawns ------------------------------------
+func _process(delta):
+	"""
+	Call on zombie spawners to spawn zombies
+	"""
+	for spawner in _select_spawners():
+		if zombies_to_be_killed == 0 or zombies_on_map == MAX_ZOMBIES_ON_MAP or zombies_on_map == zombies_to_be_killed: 
+			return
+		if spawner.spawn_timer.is_stopped() and spawner.spawner_active:
+			zombies_on_map += 1
+			var zombie_instance = spawner.spawn_zombie()
+			zombie_container.add_child(zombie_instance)
+			zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
+	zombies_on_map = len(get_tree().get_nodes_in_group("Zombies"))  # This is just a safe-gaurd incase the counter gets in a bad state
 
+func _select_spawners():
+	# TODO - only select spawners close to the player, or in a room the player has opened
+	return get_tree().get_nodes_in_group("ZombieSpawners")
+
+# Tracking zombies ------------------------------------
 func _on_zombie_death(zombie: CharacterBody2D):
 	var id = zombie.get_instance_id()
 	if id in zombie_ids:
 		zombie_ids.erase(id)
 		zombies_to_be_killed -= 1
+		zombies_on_map -= 1
 		if zombies_to_be_killed == 0:
 			end_wave()
 	
@@ -77,25 +91,3 @@ func _kill_all_zombies():
 	for zombie in get_tree().get_nodes_in_group("Zombies"):
 		zombie.queue_free()
 	zombie_ids = {}
-
-# Controlling the spawns ------------------------------------
-func _process(delta):
-	"""
-	Call on zombie spawners to spawn zombies
-	"""
-	zombies_on_map = len(get_tree().get_nodes_in_group("Zombies"))
-
-	# TODO - move this logic to the spawners as the spawn signals happen AFTER we do these checks
-	# The zombie manager will just control which spawners are active and the spawners will do the rest
-	for spawner in _select_spawners():
-		if zombies_to_be_killed == 0 or zombies_on_map == MAX_ZOMBIES_ON_MAP or zombies_on_map == zombies_to_be_killed: 
-			return
-		if spawner.spawn_timer.is_stopped():
-			print("Spawning zombie")
-			print("zombies_on_map: " + str(zombies_on_map))
-			print("zombies_to_be_killed: " + str(zombies_to_be_killed))
-			spawner.spawn_zombie()
-
-func _select_spawners():
-	# TODO - only select spawners close to the player, or in a room the player has opened
-	return get_tree().get_nodes_in_group("ZombieSpawners")

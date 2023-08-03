@@ -9,4 +9,6 @@ MAX_ZOMBIES_ON_MAP = 5
 [node name="RoundStartSpawnDelay" type="Timer" parent="."]
 one_shot = true
 
+[node name="ZombieContainer" type="Node" parent="."]
+
 [connection signal="timeout" from="RoundStartSpawnDelay" to="." method="_on_spawn_delay_timer_timeout"]

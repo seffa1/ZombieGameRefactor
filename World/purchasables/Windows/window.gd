@@ -30,7 +30,6 @@ func update_animation_frame(health: int) -> void:
 	"""
 	var MAX_FRAMES_MAX_HEALTH = 7
 	var frame = MAX_FRAMES_MAX_HEALTH - health
-	print("animation update")
 	animation_player.play("window_break")
 	animation_player.seek(float(frame), true)
 	animation_player.pause()

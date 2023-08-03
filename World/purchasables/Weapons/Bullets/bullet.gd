@@ -32,8 +32,6 @@ func _physics_process(delta: float) -> void:
 	# Check if it collided with the environment
 	if collision:
 		# TODO - bullet collision fx based on tile type it collided with
-		print("Bullet hit environment")
-	#	Events.emit_signal("damaged", collision.get_collider(), damage, shooter)
 		die()
 
 func die() -> void:
