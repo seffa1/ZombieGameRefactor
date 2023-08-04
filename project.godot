@@ -96,6 +96,7 @@ toggle_debug={
 2d_physics/layer_11="ZombiePlayerHitbox"
 2d_physics/layer_12="windowCollision"
 2d_physics/layer_13="ZombieWindowHitbox"
+2d_physics/layer_14="ZombieStateTriggers"
 avoidance/layer_1="environment"
 
 [physics]

@@ -6,13 +6,14 @@ This should be a lightweight script which glues the different components togethe
 NOTE: Make sure to add the zombie to the zombie group.
 """
 
-# Components that need to be rotated
+# Components that need to be added to the rotation function
 @onready var sprite: Sprite2D = $placeholderSprite
 @onready var hurt_box_component: Area2D = $HurtBoxComponent
 @onready var window_detector: Area2D = $WindowDetector
 @onready var window_hit_box: Area2D = $WindowHitbox
 @onready var player_detector: Area2D = $PlayerDetector
 @onready var player_hit_box: Area2D = $PlayerHitbox
+@onready var trigger_detector: Area2D = $TriggerDetector
 
 # Healper nodes
 @onready var health_component: Node2D = $HealthComponent
@@ -48,4 +49,5 @@ func update_rotation():
 	window_hit_box.rotation = lerp_angle(window_hit_box.rotation, angle, STEER_FORCE)
 	player_detector.rotation = lerp_angle(player_detector.rotation, angle, STEER_FORCE)
 	player_hit_box.rotation = lerp_angle(player_hit_box.rotation, angle, STEER_FORCE)
+	trigger_detector.rotation = lerp_angle(trigger_detector.rotation, angle, STEER_FORCE)
 

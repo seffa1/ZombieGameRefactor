@@ -28,3 +28,7 @@ func play_confirm() -> void:
 func play_select() -> void:
 	self._current_sound =sound_select
 	play()
+
+func play_hide() -> void:
+	self._current_sound = sound_hide
+	play()

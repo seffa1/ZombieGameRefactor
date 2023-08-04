@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=26 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -34,6 +34,9 @@ height = 126.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeile"]
 size = Vector2(74.75, 40.25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j67cy"]
+radius = 41.0122
 
 [sub_resource type="Animation" id="Animation_2n82s"]
 length = 0.001
@@ -255,6 +258,13 @@ monitorable = false
 position = Vector2(42, 1)
 shape = SubResource("RectangleShape2D_jeile")
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
+
+[node name="TriggerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8193
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerDetector"]
+shape = SubResource("CircleShape2D_j67cy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

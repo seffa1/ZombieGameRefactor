@@ -25,11 +25,15 @@ func update(delta):
 	# Update pathfinding component target position to the window
 	owner.pathfinding_component.update_target_position(owner.target_window.global_position)
 	
-	# TODO
-	# Check if we have arrived at the window - make a new area ?, check distance to window ?
-	# Then Check if theres a window to attack
+
+	# Check if we have arrived at a window with health
 	if owner.window_detector.has_overlapping_areas():
 		emit_signal("finished", "break_window")
+		return
+	
+	# Check if weve hit a trigger
+	if owner.trigger_detector.has_overlapping_areas():
+		emit_signal("finished", "seek_player")
 		return
 		
 	# TODO - check condition for 'attack player through window' state
