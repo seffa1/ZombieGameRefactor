@@ -5,7 +5,12 @@ Autoload single that holds signals that would be hard to wire up normally.
 The game initializer instead connects things up to this signal.
 """
 
-# UI
+# Menus
+signal game_paused()
+signal game_resumed()
+signal game_quit()
+
+# HUD
 signal player_log(message: String)
 signal update_interactable_log(message: String)
 signal player_stamina_change(stamina: int)

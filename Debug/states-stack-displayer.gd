@@ -3,6 +3,7 @@ extends Panel
 
 func _ready():
 	set_as_top_level(true)
+	visible = Globals.debug_on
 
 func _on_state_machine_movement_state_changed(states_stack):
 	var states_names = ''

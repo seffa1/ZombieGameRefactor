@@ -1,10 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://bria8u1pmdf0g"]
+[gd_scene load_steps=6 format=3 uid="uid://bria8u1pmdf0g"]
 
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="1_mhl4f"]
+[ext_resource type="Texture2D" uid="uid://bfll8b6bfhomh" path="res://UI/images/backgrounds/Main.png" id="2_clhcy"]
+[ext_resource type="Texture2D" uid="uid://c1hksnvbiugxy" path="res://UI/images/backgrounds/background2.png" id="2_ou2ff"]
+[ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="5_054eb"]
+[ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="7_ub614"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_mhl4f")
+
+[node name="BackgroundFill" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ou2ff")
+expand_mode = 1
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_clhcy")
+expand_mode = 1
+
+[node name="ResumeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 370.0
+offset_right = 609.0
+offset_bottom = 421.0
+theme = ExtResource("7_ub614")
+theme_override_font_sizes/font_size = 36
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 485.0
+offset_right = 608.0
+offset_bottom = 538.0
+theme = ExtResource("7_ub614")
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+
+[node name="MenuSoundPlayer" parent="." instance=ExtResource("5_054eb")]
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

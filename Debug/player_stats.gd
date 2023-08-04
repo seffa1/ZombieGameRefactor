@@ -17,6 +17,7 @@ extends Panel
 
 func _ready():
 	set_as_top_level(true)
+	visible = Globals.debug_on
 	
 	Events.player_equipped_clip_count_change.connect(_update_equipped_clip_count)
 	Events.player_equipped_reserve_count_change.connect(_update_equipped_reserve_count)

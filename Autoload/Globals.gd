@@ -2,7 +2,7 @@ extends Node
 
 # A reference to the player assigned in GameInitializer
 var player = null
-var debugMode = false
+var debug_on = true
 
 
 # Stores all the information for all guns (should maybe turn this into resources?)
