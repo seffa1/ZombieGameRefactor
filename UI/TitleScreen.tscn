@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddgvi6w3lsyqo"]
+
+[ext_resource type="Script" path="res://UI/title_screen.gd" id="1_3h6hn"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_3h6hn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

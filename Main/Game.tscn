@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=35 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="5_0uk56"]
 [ext_resource type="PackedScene" uid="uid://c1w4ofsu4cj68" path="res://Debug/PlayerStats.tscn" id="5_1ag6a"]
 [ext_resource type="PackedScene" uid="uid://bn822g2rnel5j" path="res://UI/HUD/PlayerLog.tscn" id="6_nxyvm"]
+[ext_resource type="PackedScene" uid="uid://bria8u1pmdf0g" path="res://UI/PauseMenu.tscn" id="7_pryfu"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="8_ock32"]
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="9_8tr1y"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="9_sm5ru"]
@@ -255,6 +256,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(-77, 617, -73, -28, 462, -34, 462, -64, 119, -648, 685, -660, 628, -69, 621, -34, 916, -34, 918, -63, 756, -655, 1229, -686, 1067, -64, 1071, -31, 1437, -31, 1436, 266, 1470, 267, 1958, 129, 1963, 567, 1473, 439, 1434, 442, 1434, 864, 1141, 864, 1141, 897, 1288, 1576, 934, 1590, 964, 893, 965, 865, 301, 866, 305, 899, 399, 1780, -113, 1781, -53, 1102, 134, 901, 131, 865, -88, 867, -91, 793, -499, 793, -502, 1054, -716, 1053, -714, 1086, -433, 1906, -1216, 1961, -884, 1087, -887, 1050, -1112, 1046, -1118, 755, -1156, 754, -2025, 1075, -2016, 436, -1152, 589, -1121, 588, -1111, 350, -885, 348, -885, 319, -1123, -201, -545, -194, -717, 322, -717, 348, -485, 350, -500, 615), PackedVector2Array(436, 323, 447, 550, 826, 577, 807, 306)])
 
 [node name="GameInitializer" type="Node"]
+process_mode = 1
 script = ExtResource("1_vn005")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -351,6 +353,8 @@ offset_bottom = 58.0
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_nxyvm")]
 
 [node name="InteractableLog" parent="UI" instance=ExtResource("9_8tr1y")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("7_pryfu")]
 
 [node name="GameWorld" type="Node2D" parent="."]
 
@@ -487,7 +491,6 @@ rotation = -0.708219
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("15_isj6m")]
 position = Vector2(0, 7.62939e-06)
-scale = Vector2(1, 1)
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("16_k1jbq")]
 position = Vector2(458, -475)
