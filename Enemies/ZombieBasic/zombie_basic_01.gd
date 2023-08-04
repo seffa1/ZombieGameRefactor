@@ -19,14 +19,21 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var pathfinding_component: Node2D = $PathfindingComponent
 @onready var velocity_component: Node = $VelocityComponent
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var state_machine: Node = $ZombieStateMachine
 
-var attackable_window_hurt_box: Area2D
+var target_window: Area2D # set by zombie spawner, used by state machine to get zombie through the target window
 
 func _ready():
-	Events.player_position_change.connect(_on_player_position_changed)
+	print("Zombie reaady")
 
-func _on_player_position_changed(player_position: Vector2):
-	pathfinding_component.update_target_position(player_position)
+func init(global_position: Vector2):
+	"""
+	Called by the zombie manager in the spawn process loop
+	"""
+	print("Zombie init")
+	target_window = target_window
+	global_position = global_position
+
 
 func update_rotation():
 	"""
@@ -41,3 +48,4 @@ func update_rotation():
 	window_hit_box.rotation = lerp_angle(window_hit_box.rotation, angle, STEER_FORCE)
 	player_detector.rotation = lerp_angle(player_detector.rotation, angle, STEER_FORCE)
 	player_hit_box.rotation = lerp_angle(player_hit_box.rotation, angle, STEER_FORCE)
+

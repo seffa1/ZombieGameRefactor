@@ -41,6 +41,7 @@ func initialize(start_state):
 	_active = true
 	states_stack.push_front(get_node(start_state))
 	current_state = states_stack[0]
+	current_state.enter()
 	emit_signal("state_changed", states_stack)
 
 func reset_stack():

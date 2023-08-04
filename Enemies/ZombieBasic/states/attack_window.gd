@@ -20,7 +20,7 @@ func update(delta):
 	
 	# If theres no window detected, go back to moving
 	if !owner.window_detector.has_overlapping_areas():
-		emit_signal("finished", "move")
+		emit_signal("finished", "seek_player")
 		return
 	
 	# TODO - if player is detected, have a change to attack_player_through_window

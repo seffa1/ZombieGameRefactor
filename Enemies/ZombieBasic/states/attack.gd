@@ -18,7 +18,7 @@ func update(delta):
 		
 	# Check if player not in reach anymore
 	if !owner.player_detector.has_overlapping_areas():
-		emit_signal("finished", "move")
+		emit_signal("finished", "seek_player")
 
 func _on_animation_finished(anim_name):
 	return

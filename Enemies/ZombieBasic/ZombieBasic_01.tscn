@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=25 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -9,10 +9,14 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="3_555fl"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="4_505g5"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="4_d72v0"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="5_vcyml"]
 [ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="5_xohst"]
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="6_ylhad"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="7_hhe06"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="8_s40qx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
+radius = 37.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqin"]
 radius = 33.2415
@@ -30,9 +34,6 @@ height = 126.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeile"]
 size = Vector2(74.75, 40.25)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
-radius = 37.0
 
 [sub_resource type="Animation" id="Animation_2n82s"]
 length = 0.001
@@ -188,10 +189,14 @@ _data = {
 
 [node name="ZombieBasic_01" type="CharacterBody2D" groups=["Zombies"]]
 collision_layer = 8
-collision_mask = 2073
+collision_mask = 2065
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_wcbub")
+
+[node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("CircleShape2D_sr2cp")
 
 [node name="placeholderSprite" type="Sprite2D" parent="."]
 rotation = -1.5708
@@ -251,20 +256,31 @@ position = Vector2(42, 1)
 shape = SubResource("RectangleShape2D_jeile")
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 
-[node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
-shape = SubResource("CircleShape2D_sr2cp")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rbgnq")
 }
 
+[node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_ylhad")]
+velocity_component = NodePath("../VelocityComponent")
+path_update_interval = 0.5
+
+[node name="NavigationAgent2D" parent="PathfindingComponent" index="0"]
+avoidance_enabled = false
+radius = 100.0
+neighbor_distance = 5977.77
+time_horizon_agents = 7.27
+time_horizon_obstacles = 6.02
+
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("1_mmyv0")
-START_STATE = NodePath("Move")
+START_STATE = NodePath("SeekWindow")
 
-[node name="Move" type="Node" parent="ZombieStateMachine"]
+[node name="SeekWindow" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("5_vcyml")
+WALK_SPEED_FOWARD = 100
+
+[node name="SeekPlayer" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("2_budir")
 WALK_SPEED_FOWARD = 100
 
@@ -288,17 +304,6 @@ max_health = 10
 [node name="StatusRecieverComponent" parent="." node_paths=PackedStringArray("velocity_component", "health_component") instance=ExtResource("5_xohst")]
 velocity_component = NodePath("../VelocityComponent")
 health_component = NodePath("../HealthComponent")
-
-[node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_ylhad")]
-velocity_component = NodePath("../VelocityComponent")
-path_update_interval = 0.5
-
-[node name="NavigationAgent2D" parent="PathfindingComponent" index="0"]
-avoidance_enabled = false
-radius = 100.0
-neighbor_distance = 5977.77
-time_horizon_agents = 7.27
-time_horizon_obstacles = 6.02
 
 [connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]

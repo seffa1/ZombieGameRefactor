@@ -13,6 +13,10 @@ var _current_sound := stream:
 			_current_sound = value
 			stream = _current_sound
 
+func play_open() -> void:
+	self._current_sound = sound_open
+	play()
+
 func play_close() -> void:
 	self._current_sound = sound_close
 	play()

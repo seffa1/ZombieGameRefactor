@@ -32,12 +32,16 @@ var draw_lines = false
 
 var movement_direction
 
+
 func update_target_position(position: Vector2):
 	"""
 	Each time the player's position changes, a signal goes out. The owner of this
 	pathfinding component calls this each time is consumes the signal. An interval
 	is used for performance/debugging reasons
 	"""
+	if position == nagivation_agent.target_position:
+		return
+	
 	if path_update_timer.is_stopped():
 		path_update_timer.start(path_update_interval)
 		nagivation_agent.target_position = position

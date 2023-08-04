@@ -73,7 +73,7 @@ _data = {
 "window_break": SubResource("Animation_ns2yo")
 }
 
-[node name="Window" instance=ExtResource("1_2055m")]
+[node name="Window" groups=["Windows"] instance=ExtResource("1_2055m")]
 script = ExtResource("2_fdgvv")
 window_repair_money_reward = 10
 purchasable_name = "window"

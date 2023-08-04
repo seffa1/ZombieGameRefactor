@@ -4,9 +4,12 @@ extends "res://Libraries/state.gd"
 @export var WALK_SPEED_FOWARD: int = 300
 
 
-# Initialize the state. E.g. change the animation
 func enter():
-	return
+	# Connect to player position signal and feed that to the pathfinding component
+	Events.player_position_change.connect(_on_player_position_changed)
+
+func _on_player_position_changed(player_position: Vector2):
+	owner.pathfinding_component.update_target_position(player_position)
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
@@ -17,13 +20,7 @@ func update(delta):
 	if owner.health_component.health == 0:
 		emit_signal("finished", "die")
 		return
-	
-	# Check if theres a window to attack
-	# TODO - do we need to check if we are outside or inside?
-	if owner.window_detector.has_overlapping_areas():
-		emit_signal("finished", "break_window")
-		return
-	
+
 	# Check if theres a player to attack
 	elif owner.player_detector.has_overlapping_areas():
 		emit_signal("finished", "attack_player")

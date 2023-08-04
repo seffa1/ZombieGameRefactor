@@ -13,10 +13,23 @@ This class is a very simple zombie factory.
 	preload("res://Enemies/ZombieBasic/ZombieBasic_01.tscn")
 ]
 
-func spawn_zombie():
-	# Add the zombie as a child of the zombie manager and pass a refernce for tracking
+var target_window: Area2D
+
+func _ready():
+	# Find the closet window to set spawned zombies towards
+	var smallest_distance = INF
+	for window in get_tree().get_nodes_in_group("Windows"):
+		var distance = (global_position - window.global_position).length()
+		if distance < smallest_distance:
+			smallest_distance = distance
+			target_window = window
+	assert(target_window != null, "There are no windows for spawner to target.")
+
+func spawn_zombie() -> CharacterBody2D:
+	# Creates the zombie and sets its needed properties
 	var zombie_to_spawn = get_random_zombie()
 	var zombie_instance = zombie_to_spawn.instantiate()
+	zombie_instance.target_window = target_window
 	zombie_instance.global_position = global_position
 	
 	# Timer is checked by the spawn manager before calling this function
