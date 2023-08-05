@@ -511,6 +511,7 @@ position = Vector2(-806, 1257)
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" instance=ExtResource("16_k1jbq")]
 position = Vector2(1827, 364)
+spawner_active = false
 
 [node name="Camera" type="Camera2D" parent="GameWorld"]
 zoom = Vector2(0.5, 0.5)

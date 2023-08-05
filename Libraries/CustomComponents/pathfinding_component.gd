@@ -5,27 +5,31 @@ Path finding logic which updates the velocity component each tick to go towards
 the target position (A*), and then calculates any avoidance (context-based-steering). 
 The target position is supplied by the owner.
 """
-# CONTEXT BASED STEERING STUFF ----------------------
+
+
+
+@export var velocity_component: Node
+@onready var path_update_timer: Timer = $updatePathTimer
+@onready var nagivation_agent: NavigationAgent2D = $NavigationAgent2D
+
+# A star pathfinding variables
+@export var path_update_interval: float = 1
+var movement_direction
+
+# Context Steering Variables
+@export var use_context_steering: bool = true
 @export var draw_lines: bool = true
-var DANGER_DOT_VALUE = .7  # danger vector dot the target direction that is ignored
+var NUM_RAYS = 9  # Make this an odd number
+var LOOK_AHEAD = 150  # how far to cast the danger detection ray casts
+var DANGER_DOT_VALUE = .7  # at which angle will a danger vector be lessened (since its in the same direction as the desired path). Must be positive.
 var ZOMBIE_DANGER_WEIGHT = .7  # How much zombies avoid each other
 var ZOMBIE_DANGER_OUTSIDE_WEIGHT = .1  # How much zombies avoid each other when outside
-var LOOK_AHEAD = 150
-var NUM_RAYS = 9  # Make this an odd number
+var DANGER_PUSH_FACTOR = 2 # how much danger object 'push' the entity away
 
 var ray_directions = []
 var interest = []
 var danger = []
 var chosen_dir = Vector2.ZERO
-# ---------------------------------------------------
-
-@export var velocity_component: Node
-@export var path_update_interval: float = 1
-
-@onready var path_update_timer: Timer = $updatePathTimer
-@onready var nagivation_agent: NavigationAgent2D = $NavigationAgent2D
-
-var movement_direction
 
 
 func update_target_position(position: Vector2):
@@ -42,18 +46,18 @@ func update_target_position(position: Vector2):
 		nagivation_agent.target_position = position
 
 func _physics_process(delta):
+	# A* pathfinding velocity update
 	if nagivation_agent.is_navigation_finished():
 		return
-	
-	# A* pathfinding velocity update
 	movement_direction = to_local(nagivation_agent.get_next_path_position()).normalized()
 	velocity_component.accelerate_in_direction(movement_direction)
 	
 	# Context based steering velocity update
-	set_interest(velocity_component.velocity)
-	set_danger()
-	var chosen_direction = choose_direction()
-	velocity_component.accelerate_in_direction(chosen_direction)
+	if use_context_steering:
+		set_interest(velocity_component.velocity)
+		set_danger()
+		var chosen_direction = choose_direction()
+		velocity_component.accelerate_in_direction(chosen_direction)
 
 func _ready():
 	
@@ -68,50 +72,48 @@ func _ready():
 		ray_directions[i] = Vector2.RIGHT.rotated(angle)
 
 func set_interest(path_direction):
-	# only use vectors with position dot products (in the same direction)
+	"""
+	Based on the given desired path direction, sets the interest in each direction. If an interest
+	is in the same direction as the path, then it has a higher weight. If the interest is
+	in the opposite direction, we set that interest to 0 (dot product to desired path is negative).
+	"""
 	for i in NUM_RAYS:
 		var d = ray_directions[i].rotated(rotation).dot(path_direction)
-
-		# ignore vectors which are not pointing in the forward direction
-		interest[i] = max(0, d)
-#		print(interest)
-#		interest[i] = d
-	# used for drawing
-	queue_redraw()
+		interest[i] = max(0, d) # ignore vectors with negative dot product to desired path direction
+		# interest[i] = d  # if you didnt want to ignore these vectors do this instead
+	if draw_lines and use_context_steering:
+		queue_redraw() # call the canvas to call _draw() for the debug lines
 
 func set_danger():
-	# Cast rays to find danger directions
-	# Gets access to the physics space
-#	var query = PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(0, 100))
-#	var collision = get_world_2d().direct_space_state.intersect_ray(query)
-
+	"""
+	Cast a raycast in each direction with length equal to the LOOK_AHEAD constant.
+	If the ray doesn't collide with anything, the danger in that direction is zero.
+	
+	If a ray collides with something, we check how far away that object is, and create a 
+	weight that is larger the closer the collided object is.
+	
+	We then check if the collided object is a zombie, if so, make adjustments
+	to the weight as well. Zombies shouldnt 'push' off each other as much as they
+	'push' off of the walls.
+	"""	
+	
+	# Cast rays
 	var space_state = get_world_2d().direct_space_state
 	for i in NUM_RAYS:
+		
+		# See PhysicsRayQueryParameters2D in the docs for this example
 		var query = PhysicsRayQueryParameters2D.create(global_position, global_position + ray_directions[i].rotated(rotation) * LOOK_AHEAD, 0xFFFFFFFF, [self])
 		var collision = space_state.intersect_ray(query)
-
-	# Levels of danger:
-	# When populating the  array, don’t just use 0 or 1, but instead calculate a danger “score” 
-	# based on the distance of the object. 
-	# Then subtract that amount from the interest rather than removing it. 
-	# Far away objects will have a small impact while close ones will have more.
+		
+		# No collision means no danger in that direction
 		if !collision:
-#			print("no collision: " + str(i))
 			danger[i] = 0
 		else:
-			# TODO DEBUGGING:
-			# check what the rays are colliding with
 			
-			print("COLLISION " + str(i))
-			print(collision)
-			
+			# Create danger weight based on the inverse of the distance to the collision
 			var dangerDistance = (collision.position - global_position).length()
-			# the closer something is, the larger the danger weight
 			var dangerWeight =  1 - dangerDistance / LOOK_AHEAD
-#			print(dangerWeight)
-			# This lessens the danger amount if its colliding with a zombie instead
-			# of a wall
-			
+
 			# TODO - check using groups instead
 #			if collision["collider"] in get_tree().get_nodes_in_group("Zombies"):
 #				dangerWeight *= ZOMBIE_DANGER_WEIGHT
@@ -124,16 +126,24 @@ func set_danger():
 			danger[i] = dangerWeight
 
 func choose_direction():
-	# Eliminate interest in slots with danger
-	# Avoidance
-	# Rather than a danger item canceling the interest, it could add to the interest in the opposite direction.
+	"""
+	The final step in context based steering. We take each interest weight, and subtract
+	the corresponding direction's danger weight. When we do this we multiply the danger
+	weight by a constant 'DANGER_PUSH_FACTOR' which will control how much a danger weight
+	influences the interest weight.
+	
+	Increasing this constant increases how much danger objects 'push' the entitiy away.
+	
+	Finally, adjust the chosen direction vector by summing all the directions multiplied by the interest weight
+	in that direction.
+	"""
+	
+	# Adjust interest weights based on danger weights
 	for i in NUM_RAYS:
 		if danger[i] > 0.0:
-#			interest[i] = 0.0
-			# This number dictates how hard a danger vector "pushes" away from a wall
-			var magicDangerNumber = 2
-			interest[i] -= danger[i] * magicDangerNumber
-	# Choose direction based on remaining interest
+			interest[i] -= danger[i] * DANGER_PUSH_FACTOR # This number dictates how hard a danger vector 'pushes away'
+	
+	# Adjust chosen direction by summing all rays * interest weights
 	chosen_dir = Vector2.ZERO.rotated(rotation)
 	
 	for i in NUM_RAYS:
