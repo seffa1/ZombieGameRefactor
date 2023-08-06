@@ -15,6 +15,3 @@ script = ExtResource("2_tfu34")
 [node name="LightFlicker" parent="." instance=ExtResource("3_wq7ga")]
 position = Vector2(186, 28)
 scale = Vector2(4.7163, 1.02814)
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

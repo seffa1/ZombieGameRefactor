@@ -122,4 +122,13 @@ offset_right = 475.0
 offset_bottom = 863.0
 text = "Quit"
 
+[connection signal="mouse_entered" from="Solo" to="." method="_on_solo_mouse_entered"]
+[connection signal="pressed" from="Solo" to="." method="_on_solo_pressed"]
+[connection signal="mouse_entered" from="Multiplayer" to="." method="_on_multiplayer_mouse_entered"]
+[connection signal="mouse_entered" from="Leaderboards" to="." method="_on_leaderboards_mouse_entered"]
+[connection signal="pressed" from="Leaderboards" to="." method="_on_leaderboards_pressed"]
+[connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+
 [editable path="Solo"]

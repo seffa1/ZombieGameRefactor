@@ -6,22 +6,18 @@ The main
 
 @onready var menu_sounds = $MenuSoundPlayer
 @onready var solo: Button = $Solo
-@onready var multiplayer_button: Button = $MultiPlayer
+@onready var multiplayer_button: Button = $Multiplayer
 @onready var leaderboards: Button = $Leaderboards
 @onready var settings: Button = $Settings
-@onready var quit: Button = $Quit
-
+@onready var quit_button: Button = $Quit
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().paused = true
-	process_mode = Node.PROCESS_MODE_WHEN_PAUSED # This is how a pause menu works, see docs
-	visible = true
-	set_process_input(true)
+	solo.toggle_flicker(true)
 	
-#	for button in [solo, multiplayer_button, leaderboards, settings, quit]:
-#		button.focus_entered.connect(_on_Button_focus_entered)
+	for button in [solo, multiplayer_button, leaderboards, settings, quit_button]:
+		button.focus_entered.connect(_on_Button_focus_entered)
 
 func _on_Button_focus_entered():
 	menu_sounds.play_hide()
@@ -30,10 +26,36 @@ func _on_Button_focus_entered():
 func _process(delta):
 	pass
 
-
+# Button Press Handlers ------------------------------
 func _on_solo_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Main/Game.tscn")
 
 
 func _on_quit_pressed():
-	pass # Replace with function body.
+	get_tree().quit()
+
+
+# Button Hover VFX ------------------------------
+func _shut_all_button_flickers_off():
+	for button in [solo, multiplayer_button, leaderboards, settings, quit_button]:
+		button.toggle_flicker(false)
+
+func _on_solo_mouse_entered():
+	_shut_all_button_flickers_off()
+	solo.toggle_flicker(true)
+
+func _on_multiplayer_mouse_entered():
+	_shut_all_button_flickers_off()
+	multiplayer_button.toggle_flicker(true)
+
+func _on_leaderboards_mouse_entered():
+	_shut_all_button_flickers_off()
+	leaderboards.toggle_flicker(true)
+
+func _on_settings_mouse_entered():
+	_shut_all_button_flickers_off()
+	settings.toggle_flicker(true)
+
+func _on_quit_mouse_entered():
+	_shut_all_button_flickers_off()
+	quit_button.toggle_flicker(true)

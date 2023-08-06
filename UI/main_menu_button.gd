@@ -5,9 +5,5 @@ extends Button
 func _ready():
 	light.flicker = false
 
-func _on_mouse_entered():
-	light.flicker = true
-
-
-func _on_mouse_exited():
-	light.flicker = false
+func toggle_flicker(value: bool):
+	light.flicker = value
