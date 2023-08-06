@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjyuuxgoe10wd"]
+
+[ext_resource type="Texture2D" uid="uid://b7dfpgdd5q0ad" path="res://World/lights/spot.png" id="1_riucv"]
+[ext_resource type="Script" path="res://VFX/lights/light_flicker.gd" id="2_rtitt"]
+
+[node name="LightFlicker" type="PointLight2D"]
+position = Vector2(935, 93)
+scale = Vector2(9.17969, 2.89062)
+energy = 1.6
+texture = ExtResource("1_riucv")
+texture_scale = 1.56
+script = ExtResource("2_rtitt")
+flicker_interval = 0.01
+brightness_offset = 1.6
+brightness_multiplyer = 2.0
+
+[node name="FlickerTimer" type="Timer" parent="."]
+one_shot = true

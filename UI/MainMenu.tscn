@@ -1,0 +1,160 @@
+[gd_scene load_steps=8 format=3 uid="uid://8dugp06t3858"]
+
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_iblvn"]
+[ext_resource type="Texture2D" uid="uid://c1hksnvbiugxy" path="res://UI/images/backgrounds/background2.png" id="2_apwnh"]
+[ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="2_p1pvs"]
+[ext_resource type="Texture2D" uid="uid://dflfk4no2uw4s" path="res://UI/images/backgrounds/Skills.png" id="3_3pxqn"]
+[ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="5_6mnf0"]
+[ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="6_rwddq"]
+[ext_resource type="PackedScene" uid="uid://dhf8sa7k2idnl" path="res://VFX/LightBlinking.tscn" id="7_wl31o"]
+
+[node name="MainMenu" type="Control"]
+modulate = Color(0.415686, 0.415686, 0.415686, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iblvn")
+
+[node name="BackgroundFill" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_apwnh")
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3pxqn")
+expand_mode = 2
+
+[node name="MenuSoundPlayer" parent="." instance=ExtResource("2_p1pvs")]
+
+[node name="LightFlicker" parent="." instance=ExtResource("6_rwddq")]
+
+[node name="Solo" type="Button" parent="."]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 256.0
+offset_right = 474.0
+offset_bottom = 309.0
+theme = ExtResource("5_6mnf0")
+theme_override_font_sizes/font_size = 36
+text = "Solo"
+
+[node name="LightFlicker2" parent="Solo" instance=ExtResource("6_rwddq")]
+position = Vector2(186, 28)
+scale = Vector2(4.7163, 1.02814)
+
+[node name="MultiPlayer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 392.0
+offset_right = 474.0
+offset_bottom = 445.0
+theme = ExtResource("5_6mnf0")
+theme_override_font_sizes/font_size = 36
+text = "Multiplayer
+"
+
+[node name="LightFlicker3" parent="MultiPlayer" instance=ExtResource("6_rwddq")]
+position = Vector2(186, 27)
+scale = Vector2(4.7163, 1.02814)
+flicker = false
+
+[node name="Leaderboards" type="Button" parent="."]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 530.0
+offset_right = 474.0
+offset_bottom = 583.0
+theme = ExtResource("5_6mnf0")
+theme_override_font_sizes/font_size = 36
+text = "Leaderboards
+"
+
+[node name="LightFlicker4" parent="Leaderboards" instance=ExtResource("6_rwddq")]
+position = Vector2(185, 22)
+scale = Vector2(4.7163, 1.02814)
+flicker = false
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 671.0
+offset_right = 474.0
+offset_bottom = 724.0
+theme = ExtResource("5_6mnf0")
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+
+[node name="LightFlicker5" parent="Settings" instance=ExtResource("6_rwddq")]
+position = Vector2(187, 30)
+scale = Vector2(4.7163, 1.02814)
+flicker = false
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 810.0
+offset_right = 474.0
+offset_bottom = 863.0
+theme = ExtResource("5_6mnf0")
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+
+[node name="LightFlicker6" parent="Quit" instance=ExtResource("6_rwddq")]
+position = Vector2(185, 17)
+scale = Vector2(4.7163, 1.02814)
+flicker = false
+
+[node name="VFX" type="Node" parent="."]
+
+[node name="LightBlinking11" parent="VFX" instance=ExtResource("7_wl31o")]
+position = Vector2(189, 1010)
+scale = Vector2(0.294922, 0.256837)
+blink_interval = 0.05
+
+[node name="LightBlinking12" parent="VFX" instance=ExtResource("7_wl31o")]
+position = Vector2(256, 974)
+scale = Vector2(0.294922, 0.256837)
+blink_interval = 0.15
+
+[node name="LightBlinking" parent="VFX" instance=ExtResource("7_wl31o")]
+position = Vector2(1708, 945)
+scale = Vector2(0.5625, 0.453125)
+brightness_max = 1.5
+
+[node name="LightBlinking3" parent="VFX" instance=ExtResource("7_wl31o")]
+position = Vector2(1591, 974)
+scale = Vector2(0.343752, 0.25)
+blink_interval = 0.1
+brightness_max = 1.5
+
+[node name="LightBlinking5" parent="VFX" instance=ExtResource("7_wl31o")]
+position = Vector2(1593, 129)
+scale = Vector2(0.296874, 0.226562)
+
+[node name="LightBlinking6" parent="VFX" instance=ExtResource("7_wl31o")]
+position = Vector2(1660, 94)
+scale = Vector2(0.296874, 0.226562)
+blink_interval = 0.05
+brightness_max = 1.0
+
+[node name="LightBlinking8" parent="VFX" instance=ExtResource("7_wl31o")]
+position = Vector2(258, 130)
+scale = Vector2(0.296874, 0.226562)
+blink_interval = 1.5
+brightness_max = 1.0
+
+[node name="LightBlinking9" parent="VFX" instance=ExtResource("7_wl31o")]
+position = Vector2(141, 157)
+scale = Vector2(0.382812, 0.277344)
+blink_interval = 0.1
+brightness_max = 1.0

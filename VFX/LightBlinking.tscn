@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhf8sa7k2idnl"]
+
+[ext_resource type="Script" path="res://VFX/lights/light_blinking.gd" id="1_jtvw1"]
+[ext_resource type="Texture2D" uid="uid://b7dfpgdd5q0ad" path="res://World/lights/spot.png" id="1_ppi2r"]
+
+[node name="LightBlinking" type="PointLight2D"]
+texture = ExtResource("1_ppi2r")
+script = ExtResource("1_jtvw1")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=38 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bn822g2rnel5j" path="res://UI/HUD/PlayerLog.tscn" id="6_nxyvm"]
 [ext_resource type="PackedScene" uid="uid://bria8u1pmdf0g" path="res://UI/PauseMenu.tscn" id="7_pryfu"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="8_ock32"]
+[ext_resource type="PackedScene" uid="uid://8dugp06t3858" path="res://UI/MainMenu.tscn" id="9_7a4qy"]
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="9_8tr1y"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="9_sm5ru"]
 [ext_resource type="PackedScene" uid="uid://b7yfy5h1lnwxk" path="res://World/pickups/max_ammo/MaxAmmo.tscn" id="9_vhcrc"]
@@ -359,7 +360,8 @@ offset_bottom = 58.0
 [node name="InteractableLog" parent="UI" instance=ExtResource("9_8tr1y")]
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("7_pryfu")]
-visible = false
+
+[node name="MainMenu" parent="UI" instance=ExtResource("9_7a4qy")]
 
 [node name="GameWorld" type="Node2D" parent="."]
 

@@ -24,7 +24,6 @@ func update(delta):
 	
 	# Update pathfinding component target position to the window
 	owner.pathfinding_component.update_target_position(owner.target_window.global_position)
-	
 
 	# Check if we have arrived at a window with health
 	if owner.window_detector.has_overlapping_areas():
