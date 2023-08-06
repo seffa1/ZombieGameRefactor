@@ -28,6 +28,7 @@ may end up as a part of the animation tree.
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
 
+# TODO - move all the audio code to a separate node
 @export var audio_reload_start: AudioStream
 @export var audio_reload_finished: AudioStream
 @export var audio_shoot_gun_shot: AudioStream   # TODO - make a function that slightly alters the gun shot sounds pitch to make it varied

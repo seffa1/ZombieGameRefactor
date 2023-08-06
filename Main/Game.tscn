@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=38 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c35lvlmdtsj1k" path="res://World/infrastructure/ZombieManager.tscn" id="15_isj6m"]
 [ext_resource type="PackedScene" uid="uid://bq47d84tq7j2k" path="res://World/infrastructure/ZombieSpawner.tscn" id="16_k1jbq"]
 [ext_resource type="PackedScene" uid="uid://c4k55vme8b3ge" path="res://World/infrastructure/InsideBuildingTrigger.tscn" id="16_u6unb"]
+[ext_resource type="Script" path="res://Main/camera.gd" id="21_u7and"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t0y30"]
 polygon = PackedVector2Array(-32, -32, -32, 32, -13.75, 32, -13.5, -13.5, 32, -13.5, 32, -32)
@@ -359,6 +360,7 @@ offset_bottom = 58.0
 [node name="InteractableLog" parent="UI" instance=ExtResource("9_8tr1y")]
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("7_pryfu")]
+visible = false
 
 [node name="GameWorld" type="Node2D" parent="."]
 
@@ -513,10 +515,11 @@ position = Vector2(1827, 364)
 spawner_active = false
 
 [node name="Camera" type="Camera2D" parent="GameWorld"]
-zoom = Vector2(0.5, 0.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = ExtResource("21_u7and")
+camera_mouse_offset_ratio = 0.4
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="GameWorld"]
 position = Vector2(-1315, -313)

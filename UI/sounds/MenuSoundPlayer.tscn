@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://UI/sounds/menu_sound_player.gd" id="1_1xehn"]
 
 [node name="MenuSoundPlayer" type="AudioStreamPlayer2D"]
+bus = &"MenuFX"
 script = ExtResource("1_1xehn")
