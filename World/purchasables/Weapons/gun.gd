@@ -13,6 +13,14 @@ Each child class should adjust the muzzle position based on assets used.
 Optionally i may add another position node for the shell ejection spot but this
 may end up as a part of the animation tree.
 """
+# Nodes
+@onready var fire_timer: Timer = $FireRateTimer
+@onready var muzzle_position: Marker2D = $MuzzlePosition
+@onready var sway_timer: Timer = $SwayTimer
+@onready var audio = $Audio
+@onready var audio_shoot_empty_clip: AudioStream = preload("res://World/purchasables/Weapons/shared/audio/ESM_FVESK_fx_foley_ui_clip_podracer_steel_gun_empty_clip.wav")
+@onready var audio_start_volume = audio.volume_db
+@onready var audio_start_pitch = audio.pitch_scale
 
 # Exports
 @export var WEAPON_NAME: String  # Must be in Globals.GUN_INDEX as a key
@@ -27,6 +35,10 @@ may end up as a part of the animation tree.
 @export var clip_size: int = 25
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
+@export var weapon_sway_max: int = 100  # max radius of weapon sway
+@export var weapon_sway_min: int = 50  # min radius of weapon sway
+@export var sway_interval: float = .5  # speed in which the sway position is updated
+@export var sway_speed: float = .2	# speed weapon moves to new position
 
 # TODO - move all the audio code to a separate node
 @export var audio_reload_start: AudioStream
@@ -44,13 +56,11 @@ var bullet_reserve: int:
 		bullet_reserve = value
 		Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
-# Nodes
-@onready var fire_timer: Timer = $FireRateTimer
-@onready var muzzle_position: Marker2D = $MuzzlePosition
-@onready var audio = $Audio
-@onready var audio_shoot_empty_clip: AudioStream = preload("res://World/purchasables/Weapons/shared/audio/ESM_FVESK_fx_foley_ui_clip_podracer_steel_gun_empty_clip.wav")
-@onready var audio_start_volume = audio.volume_db
-@onready var audio_start_pitch = audio.pitch_scale
+var _noise = FastNoiseLite.new() # used for weapon sway
+var i = 0 # used for weapon sway
+var last_mouse_movement_input_position: Vector2 # used for weapon sway
+var weapon_sway_y_direction: int = 1  # flips between pos and negative based on sway_interval
+#var sway_tween
 
 func _ready():
 	assert(fire_type != "", "Gun doesnt have a fire type selected.")
@@ -59,6 +69,53 @@ func _ready():
 	
 	bullets_in_clip = clip_size
 	bullet_reserve = max_bullet_reserve
+
+func _input(event):
+	"""
+	Keeps track of the last position the player moved the mouse. We use this
+	to generate gun sway around this point.
+	"""
+	if event is InputEventMouseMotion:
+		var screen_width = get_viewport().get_visible_rect().size.x
+		var screen_height =  get_viewport().get_visible_rect().size.y
+		last_mouse_movement_input_position.x = clamp(event.position.x, 0, screen_width)
+		last_mouse_movement_input_position.y = clamp(event.position.y, 0, screen_height)
+		print(last_mouse_movement_input_position)
+
+func _process(delta):
+	# The formula for the equation of a circle is:
+	# (x-h) 2 + (y-k)2 = r2
+	# Where (h,k) is the center of the circle.
+	# r is radiu
+	
+	# weapon sway
+	_noise.noise_type = FastNoiseLite.NoiseType.TYPE_SIMPLEX_SMOOTH
+	_noise.seed = randi()
+	_noise.fractal_octaves = 4
+	_noise.frequency = 1.0 / 20.0
+	
+	# Get a new noise value
+	if sway_timer.is_stopped():
+		sway_timer.start(sway_interval)
+		weapon_sway_y_direction *= -1
+		var noise_value = abs(_noise.get_noise_1d(i) * randi_range(weapon_sway_min, weapon_sway_max))
+		i += 1
+		if i > 100:
+			i = 0
+		
+		# only move the mouse if its in the viewport
+		if get_viewport().get_mouse_position().x > get_viewport().get_visible_rect().size.x or get_viewport().get_mouse_position().x < 0:
+			return
+		if get_viewport().get_mouse_position().y > get_viewport().get_visible_rect().size.y or get_viewport().get_mouse_position().y < 0:
+			return
+		var x_direction = randi_range(-1, 1)
+		var new_pos = Vector2(last_mouse_movement_input_position.x + noise_value * x_direction, last_mouse_movement_input_position.y + noise_value * weapon_sway_y_direction)
+#		print(new_pos)
+#		var sway_tween = get_tree().create_tween()
+#		sway_tween.tween_property()
+		get_viewport().warp_mouse(new_pos)
+			
+		
 
 func refill_ammo():
 	bullets_in_clip = clip_size

@@ -7,6 +7,9 @@ height = 182.0
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_m3j5y")
+weapon_sway_max = 125
+weapon_sway_min = 0
+sway_interval = 1.0
 
 [node name="MuzzlePosition" type="Marker2D" parent="."]
 position = Vector2(100, 2.08165e-12)
@@ -25,3 +28,7 @@ debug_color = Color(0.419608, 0.603922, 0, 0.419608)
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 bus = &"GameAudio"
+
+[node name="SwayTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true

@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c35lvlmdtsj1k" path="res://World/infrastructure/ZombieManager.tscn" id="15_isj6m"]
 [ext_resource type="PackedScene" uid="uid://bq47d84tq7j2k" path="res://World/infrastructure/ZombieSpawner.tscn" id="16_k1jbq"]
 [ext_resource type="PackedScene" uid="uid://c4k55vme8b3ge" path="res://World/infrastructure/InsideBuildingTrigger.tscn" id="16_u6unb"]
-[ext_resource type="Script" path="res://Main/camera.gd" id="21_u7and"]
+[ext_resource type="PackedScene" uid="uid://ciapy12l0w3w2" path="res://Libraries/CustomComponents/CameraComponent.tscn" id="21_5xg26"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t0y30"]
 polygon = PackedVector2Array(-32, -32, -32, 32, -13.75, 32, -13.5, -13.5, 32, -13.5, 32, -32)
@@ -514,12 +514,7 @@ position = Vector2(-806, 1257)
 position = Vector2(1827, 364)
 spawner_active = false
 
-[node name="Camera" type="Camera2D" parent="GameWorld"]
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-script = ExtResource("21_u7and")
-camera_mouse_offset_ratio = 0.4
+[node name="Camera" parent="GameWorld" instance=ExtResource("21_5xg26")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="GameWorld"]
 position = Vector2(-1315, -313)
