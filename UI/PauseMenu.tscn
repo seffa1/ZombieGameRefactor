@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bria8u1pmdf0g"]
+[gd_scene load_steps=8 format=3 uid="uid://bria8u1pmdf0g"]
 
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="1_mhl4f"]
 [ext_resource type="Texture2D" uid="uid://bfll8b6bfhomh" path="res://UI/images/backgrounds/Main.png" id="2_clhcy"]
 [ext_resource type="Texture2D" uid="uid://c1hksnvbiugxy" path="res://UI/images/backgrounds/background2.png" id="2_ou2ff"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="5_054eb"]
+[ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="6_wayhj"]
+[ext_resource type="PackedScene" uid="uid://dhf8sa7k2idnl" path="res://VFX/LightBlinking.tscn" id="7_0ebtf"]
 [ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="7_ub614"]
 
 [node name="PauseMenu" type="Control"]
@@ -56,6 +58,66 @@ theme_override_font_sizes/font_size = 36
 text = "Quit"
 
 [node name="MenuSoundPlayer" parent="." instance=ExtResource("5_054eb")]
+
+[node name="VFX" type="Node" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="VFX"]
+color = Color(0.576471, 0.576471, 0.576471, 1)
+
+[node name="LightFlicker" parent="VFX" instance=ExtResource("6_wayhj")]
+position = Vector2(923, 136)
+scale = Vector2(6.34641, 0.990583)
+energy = 0.4
+
+[node name="LightFlicker2" parent="VFX" instance=ExtResource("6_wayhj")]
+position = Vector2(479, 784)
+scale = Vector2(2.31871, 0.73117)
+energy = 0.4
+
+[node name="VFX2" type="Node" parent="."]
+
+[node name="LightBlinking11" parent="VFX2" instance=ExtResource("7_0ebtf")]
+position = Vector2(190, 1012)
+scale = Vector2(0.294922, 0.256837)
+blink_interval = 0.05
+
+[node name="LightBlinking12" parent="VFX2" instance=ExtResource("7_0ebtf")]
+position = Vector2(257, 978)
+scale = Vector2(0.294922, 0.256837)
+blink_interval = 0.15
+
+[node name="LightBlinking" parent="VFX2" instance=ExtResource("7_0ebtf")]
+position = Vector2(1709, 952)
+scale = Vector2(0.5625, 0.453125)
+brightness_max = 1.5
+
+[node name="LightBlinking3" parent="VFX2" instance=ExtResource("7_0ebtf")]
+position = Vector2(1592, 979)
+scale = Vector2(0.343752, 0.25)
+blink_interval = 0.1
+brightness_max = 1.5
+
+[node name="LightBlinking5" parent="VFX2" instance=ExtResource("7_0ebtf")]
+position = Vector2(1659, 140)
+scale = Vector2(0.296874, 0.226562)
+
+[node name="LightBlinking6" parent="VFX2" instance=ExtResource("7_0ebtf")]
+position = Vector2(1710, 203)
+scale = Vector2(0.296874, 0.226562)
+blink_interval = 0.05
+brightness_max = 1.0
+
+[node name="LightBlinking8" parent="VFX2" instance=ExtResource("7_0ebtf")]
+position = Vector2(193, 142)
+scale = Vector2(0.296874, 0.226562)
+blink_interval = 1.5
+brightness_max = 1.0
+
+[node name="LightBlinking9" parent="VFX2" instance=ExtResource("7_0ebtf")]
+position = Vector2(142, 202)
+scale = Vector2(0.382812, 0.277344)
+blink_interval = 0.1
+brightness_max = 1.0
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

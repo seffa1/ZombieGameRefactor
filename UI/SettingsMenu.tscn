@@ -1,0 +1,141 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhhei8h64ber5"]
+
+[ext_resource type="Texture2D" uid="uid://c1hksnvbiugxy" path="res://UI/images/backgrounds/background2.png" id="1_hcntu"]
+[ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="2_5ac88"]
+[ext_resource type="Texture2D" uid="uid://cedl4iff3jt5p" path="res://UI/images/buttons/element_0001_Layer-3.png" id="3_6bhk7"]
+[ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="4_lle3l"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundFill" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hcntu")
+
+[node name="SoundOptions" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -517.0
+offset_top = -313.0
+offset_right = 447.0
+offset_bottom = 372.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SoundOptions"]
+offset_left = 189.0
+offset_top = 20.0
+offset_right = 862.0
+offset_bottom = 154.0
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 75
+text = "Sound"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SoundOptions"]
+offset_left = 200.0
+offset_top = 182.0
+offset_right = 337.0
+offset_bottom = 635.0
+theme_override_constants/separation = 63
+
+[node name="Master" type="Label" parent="SoundOptions/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "Master
+"
+
+[node name="Music" type="Label" parent="SoundOptions/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "Music
+"
+
+[node name="Music2" type="Label" parent="SoundOptions/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "Game fx
+"
+
+[node name="Music3" type="Label" parent="SoundOptions/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "Menu FX
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SoundOptions"]
+offset_left = 380.0
+offset_top = 136.0
+offset_right = 615.0
+offset_bottom = 372.0
+scale = Vector2(2, 2)
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="SoundOptions/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="MenuSoundsSlider" type="HSlider" parent="SoundOptions/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="GameAudioSlider" type="HSlider" parent="SoundOptions/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="MusicVolumeSlider" type="HSlider" parent="SoundOptions/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 948.0
+offset_right = 443.0
+offset_bottom = 1102.0
+texture = ExtResource("3_6bhk7")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 982.0
+offset_right = 339.0
+offset_bottom = 1033.0
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "Back"
+
+[node name="VFX" type="Node" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="VFX"]
+color = Color(0.713726, 0.713726, 0.713726, 1)
+
+[node name="LightFlicker" parent="VFX" instance=ExtResource("4_lle3l")]
+position = Vector2(948, 527)
+scale = Vector2(9.0019, 5.08113)
+color = Color(0.25098, 1, 0.262745, 1)
+
+[node name="LightFlicker2" parent="VFX" instance=ExtResource("4_lle3l")]
+position = Vector2(228, 1006)
+scale = Vector2(1.3531, 0.347807)
+energy = 0.1
