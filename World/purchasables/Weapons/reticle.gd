@@ -20,10 +20,10 @@ function should be applied when the gun shoots.
 @export var recoil_reduction_interval: float = .005 # how many seconds to lose a recoil amount
 @export var recoil_reduct_amount: int = 2 # the amount of recoil lost per interval
 
-@export var weapon_sway: bool = false  # feature toggle
+@export var weapon_sway: bool = true  # feature toggle
 @export var weapon_sway_max: int = 100  # max radius of weapon sway
 @export var weapon_sway_min: int = 50  # min radius of weapon sway
-@export var sway_interval: float = .5  # speed in which the sway position is updated
+@export var sway_interval: float = .1  # speed in which the sway position is updated
 @export var sway_speed: float = .2 # speed weapon moves to new position
 
 # Variables - recoil
@@ -57,9 +57,12 @@ func _set_reticle(offset: float):
 func apply_bullet_recoil():
 	recoil_amount += recoil_per_shot
 
+@onready var sway_vector = Vector2.RIGHT
+
 func _process(delta):
-	if Globals.mouse_on_screen():
-		global_position = get_global_mouse_position()
+	if !Globals.mouse_on_screen():
+		return
+		
 
 	# reduce your recoil over time
 	if recoil_reduction_timer.is_stopped():
@@ -69,8 +72,20 @@ func _process(delta):
 #	_set_reticle(100)
 
 #	# weapon sway
-#	if !gun_sway:
-#		return
+	if !weapon_sway:
+		global_position = get_global_mouse_position()
+	
+	else:
+		global_position = get_global_mouse_position() + sway_vector * 10
+		if sway_timer.is_stopped():
+			sway_timer.start(sway_interval)
+			i += 1
+			if i > 1000:
+				i = 1000
+			
+			sway_vector = sway_vector.rotated(sin(i))
+			
+
 #
 #	_noise.noise_type = FastNoiseLite.NoiseType.TYPE_SIMPLEX_SMOOTH
 #	_noise.seed = randi()

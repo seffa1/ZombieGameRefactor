@@ -24,14 +24,10 @@ NOTE: Make sure to add the zombie to the zombie group.
 
 var target_window: Area2D # set by zombie spawner, used by state machine to get zombie through the target window
 
-func _ready():
-	print("Zombie reaady")
-
 func init(global_position: Vector2):
 	"""
 	Called by the zombie manager in the spawn process loop
 	"""
-	print("Zombie init")
 	target_window = target_window
 	global_position = global_position
 

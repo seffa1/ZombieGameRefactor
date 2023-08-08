@@ -8,7 +8,6 @@ interuption.
 
 
 func _ready():
-	print("State machine ready")
 	super()
 	states_map = {
 		"seek_window": $SeekWindow,
