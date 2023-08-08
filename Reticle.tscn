@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://c012riui7bd3s"]
+
+[ext_resource type="Script" path="res://World/purchasables/Weapons/reticle.gd" id="1_co84u"]
+
+[node name="Reticle" type="Node2D"]
+script = ExtResource("1_co84u")
+
+[node name="RecoilReductionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SwayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReticleTop" type="Polygon2D" parent="."]
+color = Color(0, 1, 0, 1)
+polygon = PackedVector2Array(-8, 0, -8, -64, 8, -64, 8, 0)
+
+[node name="ReticleRight" type="Polygon2D" parent="."]
+rotation = 1.5708
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-8, 0, -8, -64, 8, -64, 8, 0)
+
+[node name="ReticleBottom" type="Polygon2D" parent="."]
+rotation = 3.14159
+color = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(-8, 0, -8, -64, 8, -64, 8, 0)
+
+[node name="ReticleLeft" type="Polygon2D" parent="."]
+rotation = -1.5708
+polygon = PackedVector2Array(-8, 0, -8, -64, 8, -64, 8, 0)
