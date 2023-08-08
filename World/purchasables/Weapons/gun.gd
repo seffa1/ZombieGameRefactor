@@ -92,6 +92,8 @@ func finish_reload() -> void:
 		bullets_in_clip += bullet_reserve
 		bullet_reserve = 0
 
+
+
 func shoot() -> void:
 	"""
 	Generic function used by all children. Should not need to be re-defined.
@@ -105,6 +107,9 @@ func shoot() -> void:
 	
 	fire_timer.start(fire_rate)
 	bullets_in_clip -= 1
+
+	var recoil_rotation = _calc_recoil_rotation(reticle.recoil_amount)
+#	print(recoil_rotation)
 	reticle.apply_bullet_recoil()
 	
 	# TODO - do we have more intense shake for larger guns ?
@@ -118,7 +123,7 @@ func shoot() -> void:
 
 	# we can ignore spread
 	if bullets_per_fire == 1:
-		var bullet_direction = Vector2(1,0).rotated(global_rotation)
+		var bullet_direction = Vector2(1,0).rotated(global_rotation + recoil_rotation)
 		var spawn_position = muzzle_position.global_position
 		
 		var bullet_instance = bullet.instantiate()
@@ -147,6 +152,22 @@ func shoot() -> void:
 			
 			rotation_direction *= -1
 			bullet_rotation += bullet_spread * (i+1) * rotation_direction
+
+func _calc_recoil_rotation(recoil_amount: float):
+	var vector_to_mouse = get_global_mouse_position() - global_position
+	
+	# vector pointing from mouse to edge of recoil indicator, perpendicular to player
+	# 1.57 is 90 deg in radians
+	var recoil_vector = vector_to_mouse.normalized().rotated(1.57) * recoil_amount 
+	
+	# Vector pointing from gun, to the outer edge of the recoil indicator
+	var max_recoil_vector = vector_to_mouse + recoil_vector
+	
+	# Find the angle from the mouse position, to outside of recoil indicator
+	var max_recoil_angle = vector_to_mouse.angle_to(max_recoil_vector)
+	
+	# Choose a random spot within this range on either direction
+	return randf_range(-max_recoil_angle, max_recoil_angle)
 
 func set_gun_level(weapon_level: int) -> void:
 	"""

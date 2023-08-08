@@ -17,7 +17,8 @@ function should be applied when the gun shoots.
 @export var weapon_recoil: bool = true  # feature toggle
 @export var recoil_per_shot: float = 30.0 # pixels the reticle moves per shot
 @export var recoil_max: float = 100.0
-@export var recoil_reduction_interval: float = .005 # how many seconds to lose one recoil amount
+@export var recoil_reduction_interval: float = .005 # how many seconds to lose a recoil amount
+@export var recoil_reduct_amount: int = 2 # the amount of recoil lost per interval
 
 @export var weapon_sway: bool = false  # feature toggle
 @export var weapon_sway_max: int = 100  # max radius of weapon sway
@@ -60,9 +61,10 @@ func _process(delta):
 	if mouse_on_screen():
 		global_position = get_global_mouse_position()
 
+	# reduce your recoil over time
 	if recoil_reduction_timer.is_stopped():
 		recoil_reduction_timer.start(recoil_reduction_interval)
-		recoil_amount -= 2
+		recoil_amount -= recoil_reduct_amount
 
 #	_set_reticle(100)
 
