@@ -58,7 +58,7 @@ func apply_bullet_recoil():
 	recoil_amount += recoil_per_shot
 
 func _process(delta):
-	if mouse_on_screen():
+	if Globals.mouse_on_screen():
 		global_position = get_global_mouse_position()
 
 	# reduce your recoil over time
@@ -96,9 +96,4 @@ func _process(delta):
 #		get_viewport().warp_mouse(new_pos)
 			
 
-func mouse_on_screen() -> bool:
-	if get_viewport().get_mouse_position().x > get_viewport().get_visible_rect().size.x or get_viewport().get_mouse_position().x < 0:
-		return false
-	if get_viewport().get_mouse_position().y > get_viewport().get_visible_rect().size.y or get_viewport().get_mouse_position().y < 0:
-		return false
-	return true
+

@@ -29,7 +29,7 @@ const ZOMBIE_INDEX = {
 # How many enemies per wave
 # TODO - replace with a curve or equation
 const WAVE_INDEX = {
-	1: 0,
+	1: 5,
 	2: 10,
 	3: 15,
 	4: 20,
@@ -38,3 +38,11 @@ const WAVE_INDEX = {
 	7: 50,
 	8: 1000
 }
+
+# Utils
+func mouse_on_screen() -> bool:
+	if get_viewport().get_mouse_position().x > get_viewport().get_visible_rect().size.x or get_viewport().get_mouse_position().x < 0:
+		return false
+	if get_viewport().get_mouse_position().y > get_viewport().get_visible_rect().size.y or get_viewport().get_mouse_position().y < 0:
+		return false
+	return true

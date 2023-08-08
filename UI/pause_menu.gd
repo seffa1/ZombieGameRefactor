@@ -13,12 +13,14 @@ func _ready():
 		button.focus_entered.connect(_on_Button_focus_entered)
 
 func open():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	menu_sounds.play_open()
 	show()
 	get_tree().paused = true
 	set_process_input(true)
 	
 func close():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	menu_sounds.play_close()
 	Events.emit_signal("game_resumed")
 

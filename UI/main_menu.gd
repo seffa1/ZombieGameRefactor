@@ -14,6 +14,7 @@ The main
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	solo.toggle_flicker(true)
 	
 	for button in [solo, multiplayer_button, leaderboards, settings, quit_button]:
@@ -28,6 +29,7 @@ func _process(delta):
 
 # Button Press Handlers ------------------------------
 func _on_solo_pressed():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	get_tree().change_scene_to_file("res://Main/Game.tscn")
 
 
