@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwg633shg2dh7"
-path="res://.godot/imported/man_arm_left.png-5d5d6623815fdcc5086bf1d27018386b.ctex"
+uid="uid://30ci2yutkb2b"
+path="res://.godot/imported/hand_holding_gun.png-db3b23f40b4a89d1d810967650bdeced.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/images/bodyparts/man_arm_left.png"
-dest_files=["res://.godot/imported/man_arm_left.png-5d5d6623815fdcc5086bf1d27018386b.ctex"]
+source_file="res://Player/images/survivor/bodyparts/hand_holding_gun.png"
+dest_files=["res://.godot/imported/hand_holding_gun.png-db3b23f40b4a89d1d810967650bdeced.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brxnf0tn1l4x0"
-path="res://.godot/imported/man_arm_right.png-f1136a490d053fe497a46b4c03c09120.ctex"
+uid="uid://cy5kx3e01xjem"
+path="res://.godot/imported/torso.png-60ad9879a80a743acfdd86296a69a428.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/images/bodyparts/man_arm_right.png"
-dest_files=["res://.godot/imported/man_arm_right.png-f1136a490d053fe497a46b4c03c09120.ctex"]
+source_file="res://Player/images/survivor/bodyparts/torso.png"
+dest_files=["res://.godot/imported/torso.png-60ad9879a80a743acfdd86296a69a428.ctex"]
 
 [params]
 

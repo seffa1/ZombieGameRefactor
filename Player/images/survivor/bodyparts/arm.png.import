@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t3pebwmi4636"
-path="res://.godot/imported/man_leg_right - 2.png-8a5a71003df0392ca8fda18123f1a21c.ctex"
+uid="uid://dkw74rkghj071"
+path="res://.godot/imported/arm.png-9e53d4f2ddc9baa36b7ce605553de0fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/images/bodyparts/man_leg_right - 2.png"
-dest_files=["res://.godot/imported/man_leg_right - 2.png-8a5a71003df0392ca8fda18123f1a21c.ctex"]
+source_file="res://Player/images/survivor/bodyparts/arm.png"
+dest_files=["res://.godot/imported/arm.png-9e53d4f2ddc9baa36b7ce605553de0fa.ctex"]
 
 [params]
 

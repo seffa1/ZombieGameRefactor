@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://k10lunx5rsk7"
-path="res://.godot/imported/man_shoulder_left.png-98ebf4242aed4a419f28eb662ef0e90f.ctex"
+path="res://.godot/imported/man_shoulder_left.png-440e30bc9cf444e9db008c8ce23a49ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/images/bodyparts/man_shoulder_left.png"
-dest_files=["res://.godot/imported/man_shoulder_left.png-98ebf4242aed4a419f28eb662ef0e90f.ctex"]
+source_file="res://Player/images/soldier/bodyparts/man_shoulder_left.png"
+dest_files=["res://.godot/imported/man_shoulder_left.png-440e30bc9cf444e9db008c8ce23a49ca.ctex"]
 
 [params]
 

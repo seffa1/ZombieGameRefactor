@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gtd7poiktla2"
-path="res://.godot/imported/man_head.png-c17a9d0483cc4f99bac47a4cd9c0f3a2.ctex"
+uid="uid://1gsjrifk8qky"
+path="res://.godot/imported/ammo_clip_full.png-caceec70d6ad2f2c4c1a955ed16498de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/images/bodyparts/man_head.png"
-dest_files=["res://.godot/imported/man_head.png-c17a9d0483cc4f99bac47a4cd9c0f3a2.ctex"]
+source_file="res://Player/images/survivor/bodyparts/ammo_clip_full.png"
+dest_files=["res://.godot/imported/ammo_clip_full.png-caceec70d6ad2f2c4c1a955ed16498de.ctex"]
 
 [params]
 

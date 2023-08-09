@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clec5wlhxhcdh"
-path="res://.godot/imported/man_leg_right - 1.png-001e339820e2731292737e745deba9d6.ctex"
+uid="uid://brxnf0tn1l4x0"
+path="res://.godot/imported/man_arm_right.png-ee968ed1d426b52279bcc57773c39a1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/images/bodyparts/man_leg_right - 1.png"
-dest_files=["res://.godot/imported/man_leg_right - 1.png-001e339820e2731292737e745deba9d6.ctex"]
+source_file="res://Player/images/soldier/bodyparts/man_arm_right.png"
+dest_files=["res://.godot/imported/man_arm_right.png-ee968ed1d426b52279bcc57773c39a1c.ctex"]
 
 [params]
 
