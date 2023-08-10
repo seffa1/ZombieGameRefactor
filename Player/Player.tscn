@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=37 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Player/states/movement/die.gd" id="6_1xgt3"]
 [ext_resource type="Script" path="res://Player/states/actions/idle.gd" id="6_3s4x2"]
 [ext_resource type="Texture2D" uid="uid://bwg633shg2dh7" path="res://Player/images/soldier/bodyparts/man_arm_left.png" id="6_tllls"]
+[ext_resource type="Texture2D" uid="uid://bw8m2paftm048" path="res://Player/images/survivor/guns/pistol.png" id="7_0l14n"]
 [ext_resource type="Texture2D" uid="uid://brxnf0tn1l4x0" path="res://Player/images/soldier/bodyparts/man_arm_right.png" id="7_r3wjv"]
 [ext_resource type="Texture2D" uid="uid://gtd7poiktla2" path="res://Player/images/soldier/bodyparts/man_head.png" id="8_pndn8"]
 [ext_resource type="Script" path="res://Player/states/actions/shoot.gd" id="9_mu8s3"]
@@ -204,12 +205,12 @@ polygon = PackedVector2Array(-0.201206, 13.7827, 13.3803, 6.13682, 32.6962, 2.21
 uv = PackedVector2Array(-0.201206, 13.7827, 13.3803, 6.13682, 32.6962, 2.21328, 52.0121, 1.71026, 62.7767, 12.4748, 65.996, 29.2757, 69.3159, 52.1127, 70.7243, 72.6358, 76.0563, 77.2636, 77.163, 92.8571, 77.0624, 109.557, 72.334, 114.99, 57.7465, 123.038, 45.7746, 126.559, 33.1992, 128.169, 25.2515, 123.441, 15.6942, 96.6801, 17.3038, 88.1288, 17.2032, 83.6016, 9.05433, 64.4869, 2.51509, 44.668, -0.402416, 24.0443)
 
 [node name="gun" type="Polygon2D" parent="polygons"]
-position = Vector2(24, 169)
+position = Vector2(83, 202)
 rotation = 0.179478
 scale = Vector2(1.7, 1.7)
-texture = ExtResource("3_kyaqn")
-polygon = PackedVector2Array(15.7337, 6.35401, 234.735, 9.73451, 238.053, 14.1593, 236.836, 20.1327, 229.425, 21.9027, 15.1549, 25.2212, 9.84513, 20.6858, 10.9513, 10.0664)
-uv = PackedVector2Array(15.7337, 6.35401, 234.735, 9.73451, 238.053, 14.1593, 236.836, 20.1327, 229.425, 21.9027, 15.1549, 25.2212, 9.84513, 20.6858, 10.9513, 10.0664)
+texture = ExtResource("7_0l14n")
+polygon = PackedVector2Array(22.3794, 10.5657, 80.3213, 10.5756, 85.1405, 13.9224, 84.3374, 20.4819, 79.3842, 24.6319, 23.6273, 25.4576, 20.6323, 22.5458, 20.2995, 13.228)
+uv = PackedVector2Array(22.3794, 10.5657, 80.3213, 10.5756, 85.1405, 13.9224, 84.3374, 20.4819, 79.3842, 24.6319, 23.6273, 25.4576, 20.6323, 22.5458, 20.2995, 13.228)
 
 [node name="shoulderLeft" type="Polygon2D" parent="polygons"]
 position = Vector2(76.2957, 29.2138)
@@ -255,13 +256,13 @@ position = Vector2(-75, 122)
 position = Vector2(67, 101)
 
 [node name="handRight" type="Bone2D" parent="Skeleton/torso/shoulderRight/armRight"]
-position = Vector2(123, 15)
+position = Vector2(90, 19)
 auto_calculate_length_and_angle = false
 length = 65.074
 bone_angle = -15.941
 
 [node name="gun" type="Bone2D" parent="Skeleton/torso/shoulderRight/armRight/handRight"]
-position = Vector2(34, -20)
+position = Vector2(32, -3)
 auto_calculate_length_and_angle = false
 length = 99.048
 bone_angle = 10.627
