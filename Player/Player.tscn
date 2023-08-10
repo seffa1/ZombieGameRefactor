@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=42 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -30,24 +30,51 @@
 [ext_resource type="Script" path="res://Player/perk_manager.gd" id="16_gldpa"]
 [ext_resource type="Script" path="res://Player/hurtbox.gd" id="21_j3hvq"]
 
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_jua7a"]
+target_nodepath = NodePath("../Targets/armLeftTarget")
+joint_one_bone_idx = 2
+joint_one_bone2d_node = NodePath("torso/shoulderLeft")
+joint_two_bone_idx = 3
+joint_two_bone2d_node = NodePath("torso/shoulderLeft/armLeft")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_4mtom"]
+target_nodepath = NodePath("../Targets/armRightTarget")
+flip_bend_direction = true
+joint_one_bone_idx = 4
+joint_one_bone2d_node = NodePath("torso/shoulderRight")
+joint_two_bone_idx = 5
+joint_two_bone2d_node = NodePath("torso/shoulderRight/armRight")
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_7w2ul"]
+bone_index = 1
+bone2d_node = NodePath("torso/head")
+target_nodepath = NodePath("../Targets/headTarget")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_jqo0d"]
+enabled = true
+modification_count = 3
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_jua7a")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_4mtom")
+modifications/2 = SubResource("SkeletonModification2DLookAt_7w2ul")
+
 [sub_resource type="Animation" id="Animation_tvp0e"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("placeholder:modulate")
+tracks/0/path = NodePath("SkeletonControl/Targets/armLeftTarget:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(173.858, 205.76)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("gunPlaceholder:rotation")
+tracks/1/path = NodePath("SkeletonControl/Targets/armLeftTarget:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -59,14 +86,74 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("gunPlaceholder:position")
+tracks/2/path = NodePath("SkeletonControl/Targets/armRightTarget:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(87, 24)]
+"values": [Vector2(155.902, 193.532)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Targets/armRightTarget:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33, 37)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkeletonControl/Skeleton/torso/head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0345334]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_8pi0a"]
@@ -141,9 +228,62 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_xd1y1"]
+resource_name = "idle_pistol"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(33, 37), Vector2(36.026, 29.5041), Vector2(33, 37)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Skeleton/torso/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0345334, 0.0630785, 0.0630785]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Skeleton/torso:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0181402, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e50xx"]
 _data = {
 "RESET": SubResource("Animation_tvp0e"),
+"idle_pistol": SubResource("Animation_xd1y1"),
 "reload_dev_canon": SubResource("Animation_8pi0a"),
 "shoot_dev_canon": SubResource("Animation_1lh5b")
 }
@@ -167,6 +307,7 @@ money_component = NodePath("MoneyComponent")
 metadata/_edit_vertical_guides_ = []
 
 [node name="placeholder" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-191, -1.64846e-11)
 rotation = -1.5708
 scale = Vector2(0.3, 0.3)
@@ -217,17 +358,6 @@ uv = PackedVector2Array(-0.201206, 13.7827, 13.3803, 6.13682, 32.6962, 2.21328, 
 bones = ["torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderLeft/armLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5), "torso/shoulderRight/armRight/handRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight/handRight/gun", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 metadata/_edit_lock_ = true
 
-[node name="gun" type="Polygon2D" parent="SkeletonControl/polygons"]
-position = Vector2(83, 202)
-rotation = 0.179478
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("7_0l14n")
-skeleton = NodePath("../../Skeleton")
-polygon = PackedVector2Array(22.3794, 10.5657, 80.3213, 10.5756, 85.1405, 13.9224, 84.3374, 20.4819, 79.3842, 24.6319, 23.6273, 25.4576, 20.6323, 22.5458, 20.2995, 13.228)
-uv = PackedVector2Array(22.3794, 10.5657, 80.3213, 10.5756, 85.1405, 13.9224, 84.3374, 20.4819, 79.3842, 24.6319, 23.6273, 25.4576, 20.6323, 22.5458, 20.2995, 13.228)
-bones = ["torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderLeft/armLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight/handRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight/handRight/gun", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5)]
-metadata/_edit_lock_ = true
-
 [node name="shoulderLeft" type="Polygon2D" parent="SkeletonControl/polygons"]
 position = Vector2(76.2957, 29.2138)
 rotation = -1.43235
@@ -248,6 +378,17 @@ uv = PackedVector2Array(4.52716, 13.8833, 42.1529, 7.14285, 45.5734, 10.9658, 83
 bones = ["torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderLeft/armLeft", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5), "torso/shoulderRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight/handRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight/handRight/gun", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 metadata/_edit_lock_ = true
 
+[node name="gun" type="Polygon2D" parent="SkeletonControl/polygons"]
+position = Vector2(83, 202)
+rotation = 0.179478
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("7_0l14n")
+skeleton = NodePath("../../Skeleton")
+polygon = PackedVector2Array(22.3794, 10.5657, 80.3213, 10.5756, 85.1405, 13.9224, 84.3374, 20.4819, 79.3842, 24.6319, 23.6273, 25.4576, 20.6323, 22.5458, 20.2995, 13.228)
+uv = PackedVector2Array(22.3794, 10.5657, 80.3213, 10.5756, 85.1405, 13.9224, 84.3374, 20.4819, 79.3842, 24.6319, 23.6273, 25.4576, 20.6323, 22.5458, 20.2995, 13.228)
+bones = ["torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderLeft/armLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight/handRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "torso/shoulderRight/armRight/handRight/gun", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5)]
+metadata/_edit_lock_ = true
+
 [node name="head" type="Polygon2D" parent="SkeletonControl/polygons"]
 position = Vector2(-76.7043, 44.2138)
 rotation = -0.950281
@@ -259,19 +400,27 @@ bones = ["torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 metadata/_edit_lock_ = true
 
 [node name="Skeleton" type="Skeleton2D" parent="SkeletonControl"]
+modification_stack = SubResource("SkeletonModificationStack2D_jqo0d")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
+scale = Vector2(0.999847, 0.999842)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
+editor_settings/show_bone_gizmo = false
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(33, 37)
-rotation = 0.00387419
+rotation = 0.0345334
+scale = Vector2(1.00008, 1.00004)
 rest = Transform2D(1, 0, 0, 1, 33, 37)
+editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(115, -41)
 rotation = 0.731523
 rest = Transform2D(1, 0, 0, 1, 115, -41)
+editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderLeft"]
 position = Vector2(94, 57)
@@ -281,18 +430,24 @@ rest = Transform2D(1, 0, 0, 1, 94, 57)
 auto_calculate_length_and_angle = false
 length = 110.372
 bone_angle = 63.764
+editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(-75, 122)
 rotation = -0.606037
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -75, 122)
+editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight"]
 position = Vector2(67, 101)
 rotation = 0.71527
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 67, 101)
+editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight/armRight"]
 position = Vector2(90, 19)
@@ -300,14 +455,28 @@ rest = Transform2D(1, 0, 0, 1, 90, 19)
 auto_calculate_length_and_angle = false
 length = 65.074
 bone_angle = -15.941
+editor_settings/show_bone_gizmo = false
 
 [node name="gun" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight"]
 position = Vector2(32, -3)
-rotation = 0.472082
+rotation = 0.531809
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 32, -3)
 auto_calculate_length_and_angle = false
 length = 99.048
 bone_angle = 10.627
+editor_settings/show_bone_gizmo = false
+
+[node name="Targets" type="Node2D" parent="SkeletonControl"]
+
+[node name="armLeftTarget" type="Node2D" parent="SkeletonControl/Targets"]
+position = Vector2(173.858, 205.76)
+
+[node name="armRightTarget" type="Node2D" parent="SkeletonControl/Targets"]
+position = Vector2(155.902, 193.532)
+
+[node name="headTarget" type="Node2D" parent="SkeletonControl/Targets"]
+position = Vector2(301.634, 46.2805)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
