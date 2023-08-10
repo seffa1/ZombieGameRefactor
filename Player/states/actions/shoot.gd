@@ -18,16 +18,17 @@ func enter():
 		return
 
 	# shoot the gun and play the animation
+	print("Shooting")
 	weapon_object.shoot()
 
 	# Play the shoot animation specific to the given weapon
-	var animation_name = _get_animation_name(weapon_object)
+	var animation_name = Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["shoot_animation"]
 	
 	# TODO - Until the fire rate is able to dynamically change the speed of the animations
 	# we have to make sure the fire rate is shorter than the animation since the animation
 	# is controlling the state in automatic firing mode
 	assert(owner.animation_player.get_animation(animation_name).length > weapon_object.fire_rate, "Gun fire rate is faster than the shoot animation!")
-	owner.animation_player.stop()
+	print("playing shoot animation...")
 	owner.animation_player.play(animation_name)
 
 func _on_shoot_animation_finished():
@@ -36,27 +37,37 @@ func _on_shoot_animation_finished():
 	Checks if we need to exit the state (single fire/burst fire) or,for an automatic gun, 
 	replay the animation and stay in the shoot state
 	"""
-	
+	print("ANimatinon finsihed")
+
 	if fire_type == "automatic":
 		# check if shoot Input is still held and the gun is able to shoot
 		if !Input.is_action_pressed("shoot"):
+			print("Not holding trigger, exiting....")
 			emit_signal("finished", "idle")
 			return
 		if !_able_to_shoot():
 			# TODO - if the gun's fire rate is slower than the animation, then we exit state
 			# but that is not a good way to do it. The animation should change speeds to
 			# match the fire rate.
+			print("Not able to shoot, exiting....")
 			emit_signal("finished", "idle")
 			return
 		# re-enter the fire state
+		print("Re-firing")
 		enter()
 	else:
 		# single / burst fire weapons play one animation and go back to idle state until shoot is called again
 		emit_signal("finished", "idle")
 		return
 
-func _get_animation_name(weapon_object) -> String:
-	return Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["shoot_animation"]
+#func _process(delta):
+#	if !owner.animation_player.is_playing():
+#		print("Animation NOT playing")
+#		if !Input.is_action_pressed("shoot"):
+#			emit_signal("finished", "idle")
+#			return
+#	else:
+#		print("Animation is still playing")
 
 func _able_to_shoot() -> bool:
 	return weapon_manager.has_a_gun() and weapon_object.can_shoot()
