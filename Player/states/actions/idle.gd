@@ -1,13 +1,16 @@
 extends "res://Libraries/state.gd"
 
+# Since the idle is the state on load, we cant reference the animation player from the owner
+# because it wont be ready yet
+@onready var animation_player = $"../../AnimationPlayer"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	return
+	animation_player.play("idle_pistol")
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
-	return
+	animation_player.stop()
 
 func handle_input(event):
 	return

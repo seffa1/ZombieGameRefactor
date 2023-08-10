@@ -10,7 +10,7 @@ const GUN_INDEX = {
 	"DEV_CANON": {
 		"nice_name": "Dev Canon",
 		"shoot_animation": "shoot_dev_canon",
-		"reload_animation": "reload_dev_canon"
+		"reload_animation": "reload_pistol"
 	}
 }
 
