@@ -189,6 +189,7 @@ func can_shoot() -> bool:
 		return false
 	return true
 
+
 func play_no_ammo_sound():
 	"""
 	Called by the player's action state machine on reload since that is where the check

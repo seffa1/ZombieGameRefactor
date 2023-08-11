@@ -11,14 +11,14 @@ WEAPON_NAME = "DEV_CANON"
 fire_type = "automatic"
 bullet = ExtResource("2_8obux")
 bullet_speed = 2000
-fire_rate = 0.1
+fire_rate = 0.05
 max_bullet_reserve = 100
 audio_reload_start = ExtResource("3_xx2ah")
 audio_reload_finished = ExtResource("4_ivyn4")
 audio_shoot_gun_shot = ExtResource("5_my61j")
 
 [node name="MuzzlePosition" parent="." index="0"]
-position = Vector2(200, 2.08165e-12)
+position = Vector2(106, 30)
 
 [node name="Audio" parent="." index="3"]
 volume_db = -13.85
