@@ -12,65 +12,59 @@ func enter():
 	weapon_object = weapon_manager.get_equipped_gun()
 	fire_type = weapon_object.fire_type
 	
-	# Make sure the gun can fire
-	if !_able_to_shoot():
-		emit_signal("finished", "idle")
-		return
-
-	# shoot the gun and play the animation
-	print("Shooting")
-	weapon_object.shoot()
-
-	# Play the shoot animation specific to the given weapon
-	var animation_name = Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["shoot_animation"]
+	# Handle single fire here, and automatic in _process
+	if fire_type == "single_fire":
 	
-	# TODO - Until the fire rate is able to dynamically change the speed of the animations
-	# we have to make sure the fire rate is shorter than the animation since the animation
-	# is controlling the state in automatic firing mode
-	assert(owner.animation_player.get_animation(animation_name).length > weapon_object.fire_rate, "Gun fire rate is faster than the shoot animation!")
-	print("playing shoot animation...")
-	owner.animation_player.play(animation_name)
-
-func _on_shoot_animation_finished():
-	"""
-	Called by the animation player. When the shooting animation is complete. 
-	Checks if we need to exit the state (single fire/burst fire) or,for an automatic gun, 
-	replay the animation and stay in the shoot state
-	"""
-	print("ANimatinon finsihed")
-
-	if fire_type == "automatic":
-		# check if shoot Input is still held and the gun is able to shoot
-		if !Input.is_action_pressed("shoot"):
-			print("Not holding trigger, exiting....")
-			emit_signal("finished", "idle")
-			return
+		# Make sure the gun can fire
 		if !_able_to_shoot():
-			# TODO - if the gun's fire rate is slower than the animation, then we exit state
-			# but that is not a good way to do it. The animation should change speeds to
-			# match the fire rate.
-			print("Not able to shoot, exiting....")
 			emit_signal("finished", "idle")
 			return
-		# re-enter the fire state
-		print("Re-firing")
-		enter()
-	else:
-		# single / burst fire weapons play one animation and go back to idle state until shoot is called again
-		emit_signal("finished", "idle")
-		return
 
-#func _process(delta):
-#	if !owner.animation_player.is_playing():
-#		print("Animation NOT playing")
-#		if !Input.is_action_pressed("shoot"):
-#			emit_signal("finished", "idle")
-#			return
-#	else:
-#		print("Animation is still playing")
+		# shoot the gun and play the animation
+		weapon_object.shoot()
+		var animation_name = Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["shoot_animation"]
+		owner.animation_player.play(animation_name)
 
 func _able_to_shoot() -> bool:
 	return weapon_manager.has_a_gun() and weapon_object.can_shoot()
+
+func _on_shoot_animation_finished():
+	"""
+	Handle singefire/burst fire state
+	"""
+	# Just in case we still have call method track in the animation for testing purposes
+	if fire_type == "automatic":
+		return
+
+	# single / burst fire weapons play one animation and go back to idle state until shoot is called again
+	emit_signal("finished", "idle")
+	return
+
+func _process(delta):
+	"""
+	Handling the automatic weapon shooting state
+	"""
+	await enter  # Dont process until the enter function finishes
+	
+	if !fire_type == "automatic":
+		return
+	
+	# check if shoot Input is still held and the gun is able to shoot
+	if !Input.is_action_pressed("shoot"):
+		emit_signal("finished", "idle")
+		return
+	
+	# Check that theres still bullets in the clip
+	if weapon_object.bullets_in_clip == 0:
+		emit_signal("finished", "idle")
+		return
+	
+	# If the gun's fire rate time is stopped, then shoot the gun
+	if weapon_object.fire_timer.is_stopped():
+		# Fire gun and play animation
+		weapon_object.shoot()
+		var animation_name = Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["shoot_animation"]
+		owner.animation_player.play(animation_name)
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
