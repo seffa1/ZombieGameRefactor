@@ -16,7 +16,7 @@ func give_item(player: CharacterBody2D):
 	"""
 	Function which must be defined by all children classes.
 	"""
-	assert(Globals.GUN_INDEX.keys().find(weapon_name) != -1, "Weapon name doesnt match global index")
+	assert(Globals.GUN_INDEX.keys().find(weapon_name) != -1, "Weapon name doesnt match global index " + str(weapon_name))
 	
 	# Check if player already has this gun
 	if player.weapon_manager.has_gun(weapon_name):

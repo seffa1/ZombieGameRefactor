@@ -1,6 +1,6 @@
 extends "res://Libraries/state.gd"
 
-@onready var weapon_manager: Node = owner.find_child("WeaponManager")
+@onready var weapon_manager: Node = $"../../WeaponManager"
 var weapon_object
 var fire_type
 

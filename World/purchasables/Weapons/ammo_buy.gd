@@ -26,7 +26,7 @@ func give_item(player: CharacterBody2D) -> void:
 			Events.emit_signal("player_log", "Ammo full for " + weapon_name)
 			return
 		
-		#make the transaction and pass the gun name along
+		# make the transaction and pass the gun name along
 		audio.play()
 		player.money_component.money -= purchasable_cost
 		

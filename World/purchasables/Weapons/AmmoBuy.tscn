@@ -11,6 +11,7 @@ radius = 51.0392
 script = ExtResource("2_5o8ny")
 weapon_name = ""
 purchasable_cost = 500
+can_be_purchased = false
 
 [node name="interactionZone" parent="." index="0"]
 shape = SubResource("CircleShape2D_il0me")

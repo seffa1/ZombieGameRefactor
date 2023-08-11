@@ -8,9 +8,5 @@ extends Node
 
 func _ready():
 	Globals.player = player
-#	player.assign_camera(camera)
-	
-#	camera.assign_player(player)
-	
 	screen_shaker.camera = camera
 

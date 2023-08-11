@@ -34,25 +34,36 @@ The shoot signal flow:
 
 # Reference to all weapons
 @onready var dev_canon = preload("res://World/purchasables/Weapons/DevCanon/DevCanon.tscn")
+@onready var pistol_01 = preload("res://World/purchasables/Weapons/Pistol_01/GunPistol01.tscn")
 
 # Variables
-var weapon_names: Array[String] = []  # This may get deleted since its redundant
+
+# the names and objects array should always be in the same order
+# the names array just makes looking up weapons easier so we dont have to try
+# and figure out what gun's the objects are. The weapon index sets
+# the player's current gun, and is used in both arrays to lookup the gun name
+# and weapon object when needed
+var weapon_names: Array[String] = []  #
 var weapon_objects: Array[Node2D] = []
 var current_weapon_index: int
-var max_weapon_count: int = 2
 
-var modifiers: Array[String] = []
+var max_weapon_count: int = 2  # not used yet
+
+var modifiers: Array[String] = []  # not used yet, will be used for perk bonus' (double tab, speed cola, instakill, etc.)
 
 func add_weapon(weapon_name: String):
+	"""
+	Called by the weapon buy on the purchase of a weapon.
+	"""
 	assert(Globals.GUN_INDEX.keys().find(weapon_name) != -1, "You are adding a weapon name that isnt in the global GUN_INDEX list.")
 	
 	# The weapon buys check if we already have the same weapon before it gives it to the player.
 	# So we should never have two of the same gun.
 	assert(weapon_names.find(weapon_name) == -1, "The player got a weapon name they already had listed.")
 	
-	# Create the weapon
-	weapon_names.append(weapon_name)
+	# Create the weapon and store the name
 	_create_weapon(weapon_name)
+	weapon_names.append(weapon_name)
 	
 	# Set it as equipped
 	var weapon_index = weapon_names.find(weapon_name)
@@ -61,18 +72,39 @@ func add_weapon(weapon_name: String):
 	# Info the HUD
 	Events.emit_signal("player_weapons_change", weapon_names)
 
+func _process(delta):
+	"""
+	Check for switching weapons
+	"""
+	if Input.is_action_just_pressed("next_weapon"):
+		if len(weapon_names) == 0:
+			return
+		var newIndex = current_weapon_index + 1
+		if newIndex > len(weapon_names) - 1:
+			newIndex = 0
+		_set_equipped_gun(newIndex)
+
+	if Input.is_action_just_pressed("previous_weapon"):
+		if len(weapon_names) == 0:
+			return
+		var newIndex = current_weapon_index - 1
+		if newIndex < 0:
+			newIndex = len(weapon_names) - 1
+		_set_equipped_gun(newIndex)
+
 func _set_equipped_gun(weapon_index: int):
 	"""
-	Changes the player's animation tree to the weapon-specific animation tree. The StateMachineAction
-	will call for the same animation name, no matter the animation tree.
+	Updates the current weapon index which determines which gun name / gun object is 
+	retrieved from the weapon names and weapon object arrays from the other methods.
 	"""
+	
+	# TODO - set the players animation / gun texture
+	
 	assert(weapon_index != -1, "You tried to set a weapon that you don't have.")
 	current_weapon_index = weapon_index
-	# TODO - update the player's animation tree
-	
+
 	# Inform the UI
 	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index])
-	
 	Events.emit_signal("player_equipped_clip_count_change", get_equipped_gun().bullets_in_clip)
 	Events.emit_signal("player_equipped_reserve_count_change", get_equipped_gun().bullet_reserve)
 
@@ -86,6 +118,8 @@ func _create_weapon(weapon_name: String):
 	match weapon_name:
 		"DEV_CANON":
 			weapon_object = dev_canon.instantiate()
+		"PISTOL_01":
+			weapon_object = pistol_01.instantiate()
 	assert(weapon_object != null, "trying to create a weapon that isnt in the match statement.")
 
 	# Add it to the tree and store a reference
