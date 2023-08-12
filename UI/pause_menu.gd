@@ -3,6 +3,7 @@ extends Control
 @onready var resume_button = $ResumeButton
 @onready var quit_button = $QuitButton
 @onready var menu_sounds = $MenuSoundPlayer
+@onready var settings_button = $SettingsButton
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED # This is how a pause menu works, see docs
@@ -37,3 +38,7 @@ func _input(event: InputEvent):
 
 func _on_Button_focus_entered():
 	menu_sounds.play_hide()
+
+func _on_settings_button_pressed():
+	Events.emit_signal("open_settings")
+

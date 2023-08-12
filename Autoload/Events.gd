@@ -9,6 +9,7 @@ The game initializer instead connects things up to this signal.
 signal game_paused()
 signal game_resumed()
 signal game_quit()
+signal open_settings()
 
 # HUD
 signal player_log(message: String)

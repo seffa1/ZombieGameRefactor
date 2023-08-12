@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhhei8h64ber5"]
+[gd_scene load_steps=8 format=3 uid="uid://dhhei8h64ber5"]
 
 [ext_resource type="Script" path="res://UI/settings_menu.gd" id="1_brnva"]
 [ext_resource type="Texture2D" uid="uid://c1hksnvbiugxy" path="res://UI/images/backgrounds/background2.png" id="1_hcntu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cedl4iff3jt5p" path="res://UI/images/buttons/element_0001_Layer-3.png" id="3_6bhk7"]
 [ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="4_lle3l"]
 [ext_resource type="PackedScene" uid="uid://p2ful55vrtx0" path="res://UI/components/VolumeSlider.tscn" id="4_wwbdc"]
+[ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="7_6nf74"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -121,7 +122,7 @@ offset_right = 443.0
 offset_bottom = 1102.0
 texture = ExtResource("3_6bhk7")
 
-[node name="Button" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 132.0
 offset_top = 982.0
@@ -129,20 +130,25 @@ offset_right = 339.0
 offset_bottom = 1033.0
 theme = ExtResource("2_5ac88")
 theme_override_font_sizes/font_size = 36
-text = "Back"
+text = "Exit"
 
 [node name="VFX" type="Node" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="VFX"]
-visible = false
 color = Color(0.713726, 0.713726, 0.713726, 1)
 
-[node name="LightFlicker" parent="VFX" instance=ExtResource("4_lle3l")]
+[node name="lightsContainer" type="Node" parent="VFX"]
+
+[node name="LightFlicker" parent="VFX/lightsContainer" instance=ExtResource("4_lle3l")]
 position = Vector2(948, 527)
 scale = Vector2(9.0019, 5.08113)
 color = Color(0.25098, 1, 0.262745, 1)
 
-[node name="LightFlicker2" parent="VFX" instance=ExtResource("4_lle3l")]
+[node name="LightFlicker2" parent="VFX/lightsContainer" instance=ExtResource("4_lle3l")]
 position = Vector2(228, 1006)
 scale = Vector2(1.3531, 0.347807)
 energy = 0.1
+
+[node name="MenuSoundPlayer" parent="." instance=ExtResource("7_6nf74")]
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

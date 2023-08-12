@@ -45,12 +45,23 @@ theme = ExtResource("7_ub614")
 theme_override_font_sizes/font_size = 36
 text = "Resume"
 
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 488.0
+offset_right = 607.0
+offset_bottom = 540.0
+theme = ExtResource("7_ub614")
+theme_override_font_sizes/font_size = 36
+text = "Settings
+"
+
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 330.0
-offset_top = 485.0
-offset_right = 608.0
-offset_bottom = 538.0
+offset_left = 337.0
+offset_top = 751.0
+offset_right = 596.0
+offset_bottom = 806.0
 theme = ExtResource("7_ub614")
 theme_override_font_sizes/font_size = 36
 text = "Quit"
@@ -58,4 +69,5 @@ text = "Quit"
 [node name="MenuSoundPlayer" parent="." instance=ExtResource("5_054eb")]
 
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
