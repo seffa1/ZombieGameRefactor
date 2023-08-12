@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://p2ful55vrtx0"]
+
+[ext_resource type="Script" path="res://UI/components/volume_slider.gd" id="1_m0xsx"]
+
+[node name="VolumeSlider" type="HSlider"]
+value = 100.0
+script = ExtResource("1_m0xsx")
