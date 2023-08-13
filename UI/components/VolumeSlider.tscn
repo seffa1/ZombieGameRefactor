@@ -3,5 +3,6 @@
 [ext_resource type="Script" path="res://UI/components/volume_slider.gd" id="1_m0xsx"]
 
 [node name="VolumeSlider" type="HSlider"]
-value = 100.0
+max_value = 1.0
+step = 0.01
 script = ExtResource("1_m0xsx")

@@ -100,6 +100,9 @@ alignment = 1
 
 [node name="VolumeSlider" parent="SoundOptions/Sliders" instance=ExtResource("4_wwbdc")]
 layout_mode = 2
+min_value = 2.08165e-12
+max_value = 1.0
+value = 2.08165e-12
 bus_name = "Master"
 
 [node name="VolumeSlider2" parent="SoundOptions/Sliders" instance=ExtResource("4_wwbdc")]
