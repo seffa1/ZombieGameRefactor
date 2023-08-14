@@ -7,14 +7,18 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	owner.animation_player.play("switch_weapons")
+	owner.animation_player.play(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].switch_from_animation)
+	print(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].switch_from_animation)
 
-func _on_switch_weapon_sprite():
+func _on_switch_from_animation_finished():
+	# switch guns
+	weapon_manager.next_weapon()
+	# switch textures
 	var new_texture = Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].sprite
-	#gun_polygon.texture = new_texture
 	gun_sprite.texture = new_texture
-	#gun_sprite.position = right_hand.position
-	#gun_sprite.rotation = right_hand.get_bone_angle()
+	# play animation
+	owner.animation_player.play(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].switch_to_animation)
+	print(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].switch_to_animation)
 
 func _on_switch_weapon_animation_finished():
 	emit_signal("finished", "idle")

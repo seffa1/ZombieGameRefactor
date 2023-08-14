@@ -9,16 +9,20 @@ var debug_on = true
 const GUN_INDEX = {
 	"DEV_CANON": {
 		"nice_name": "Dev Canon",
-		"idle_animation": "riffle_idle",
+		"idle_animation": "idle_riffle",
 		"shoot_animation": "shoot_pistol",
 		"reload_animation": "reload_pistol",
+		"switch_from_animation": "switch_from_riffle",
+		"switch_to_animation": "switch_to_riffle",
 		"sprite": preload("res://World/purchasables/Weapons/DevCanon/images/rifle.png")
 	},
 	"PISTOL_01": {
 		"nice_name": "Pistol 01",
-		"idle_animation": "pistol_idle",
+		"idle_animation": "idle_pistol",
 		"shoot_animation": "shoot_pistol",
 		"reload_animation": "reload_pistol",
+		"switch_from_animation": "switch_from_pistol",
+		"switch_to_animation": "switch_to_pistol",
 		"sprite": preload("res://World/purchasables/Weapons/Pistol_01/images/pistol.png")
 	}
 }

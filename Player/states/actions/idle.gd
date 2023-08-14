@@ -7,7 +7,11 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	animation_player.play("idle_pistol")
+	if !weapon_manager.has_a_gun():
+		# TODO - no weapon animation state
+		animation_player.play("idle_pistol")
+		return
+	animation_player.play(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].idle_animation)
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
@@ -25,18 +29,10 @@ func update(delta):
 		return
 		
 	# Check for switching weapons
-	if Input.is_action_just_pressed("next_weapon"):
+	if Input.is_action_just_pressed("next_weapon") or Input.is_action_just_pressed("previous_weapon"):
 		# only switch guns if we have at least two guns
 		if !weapon_manager.has_two_guns():
 			return
-		weapon_manager.next_weapon()
 		emit_signal("finished", "switch_weapons")
 		return
 
-	if Input.is_action_just_pressed("previous_weapon"):
-		# only switch guns if we have at least two guns
-		if !weapon_manager.has_two_guns():
-			return
-		weapon_manager.previous_weapon()
-		emit_signal("finished", "switch_weapons")
-		return
