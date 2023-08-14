@@ -18,7 +18,8 @@ func _ready():
 		"charge_throw": $ChargeThrow,
 		"throw": $Throw,
 		"melee": $Melee,
-		"die": $Die
+		"die": $Die,
+		"switch_weapons": $SwitchWeapons
 	}
 
 func _change_state(state_name):
@@ -38,14 +39,16 @@ func _change_state(state_name):
 
 func _input(event):
 	"""
-	Here we only handle input that can interrupt states, shooting in this case
-	otherwise we let the state node handle it
+	Here we only handle input that can interrupt states.
 	"""
 	if not _active:
 		return
 	
 	if event.is_action_pressed("reload"):
+		# Dont interrupt these states
 		if current_state == $Reload:
+			return
+		if current_state == $SwitchWeapons:
 			return
 		
 		# Dont interupt state if we dont have ammo or clip is already full

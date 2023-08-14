@@ -72,33 +72,11 @@ func add_weapon(weapon_name: String):
 	# Info the HUD
 	Events.emit_signal("player_weapons_change", weapon_names)
 
-func _process(delta):
-	"""
-	Check for switching weapons
-	"""
-	if Input.is_action_just_pressed("next_weapon"):
-		if len(weapon_names) == 0:
-			return
-		var newIndex = current_weapon_index + 1
-		if newIndex > len(weapon_names) - 1:
-			newIndex = 0
-		_set_equipped_gun(newIndex)
-
-	if Input.is_action_just_pressed("previous_weapon"):
-		if len(weapon_names) == 0:
-			return
-		var newIndex = current_weapon_index - 1
-		if newIndex < 0:
-			newIndex = len(weapon_names) - 1
-		_set_equipped_gun(newIndex)
-
 func _set_equipped_gun(weapon_index: int):
 	"""
 	Updates the current weapon index which determines which gun name / gun object is 
 	retrieved from the weapon names and weapon object arrays from the other methods.
 	"""
-	
-	# TODO - set the players animation / gun texture
 	
 	assert(weapon_index != -1, "You tried to set a weapon that you don't have.")
 	current_weapon_index = weapon_index
@@ -128,6 +106,8 @@ func _create_weapon(weapon_name: String):
 
 func has_a_gun() -> bool:
 	return len(weapon_objects) > 0
+func has_two_guns() -> bool:
+	return len(weapon_objects) > 1
 
 func has_gun(weapon_name: String):
 	return weapon_names.find(weapon_name) != -1
@@ -136,6 +116,10 @@ func get_equipped_gun():
 	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any.")
 	return weapon_objects[current_weapon_index]
 
+func get_equipped_gun_name():
+	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any.")
+	return weapon_names[current_weapon_index]
+	
 func get_gun(weapon_name: String):
 	"""
 	Used by the ammo buys to refill a weapon, even if its not equipped
@@ -160,3 +144,20 @@ func refill_weapon_ammo(weapon: Node2D):
 	"""
 	weapon.refill_ammo()
 
+func next_weapon():
+	"""Called by player action state machine idle."""
+	if len(weapon_names) == 0:
+			return
+	var newIndex = current_weapon_index + 1
+	if newIndex > len(weapon_names) - 1:
+		newIndex = 0
+	_set_equipped_gun(newIndex)
+	
+func previous_weapon():
+	"""Called by player action state machine idle."""
+	if len(weapon_names) == 0:
+			return
+	var newIndex = current_weapon_index - 1
+	if newIndex < 0:
+		newIndex = len(weapon_names) - 1
+	_set_equipped_gun(newIndex)

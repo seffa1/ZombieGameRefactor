@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwug5ah0joub1"
-path="res://.godot/imported/rifle.png-db87a373663db93652c66bf631089e4e.ctex"
+uid="uid://ipnj5e8br1hp"
+path="res://.godot/imported/shotgun.png-e2d754b3a25e1e974d22018b5c2f0fd4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/images/survivor/guns/rifle.png"
-dest_files=["res://.godot/imported/rifle.png-db87a373663db93652c66bf631089e4e.ctex"]
+source_file="res://World/purchasables/Weapons/shotgun.png"
+dest_files=["res://.godot/imported/shotgun.png-e2d754b3a25e1e974d22018b5c2f0fd4.ctex"]
 
 [params]
 
