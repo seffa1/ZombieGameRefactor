@@ -9,12 +9,14 @@ var debug_on = true
 const GUN_INDEX = {
 	"DEV_CANON": {
 		"nice_name": "Dev Canon",
+		"idle_animation": "riffle_idle",
 		"shoot_animation": "shoot_pistol",
 		"reload_animation": "reload_pistol",
 		"sprite": preload("res://World/purchasables/Weapons/DevCanon/images/rifle.png")
 	},
 	"PISTOL_01": {
 		"nice_name": "Pistol 01",
+		"idle_animation": "pistol_idle",
 		"shoot_animation": "shoot_pistol",
 		"reload_animation": "reload_pistol",
 		"sprite": preload("res://World/purchasables/Weapons/Pistol_01/images/pistol.png")
