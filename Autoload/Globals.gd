@@ -11,7 +11,7 @@ const GUN_INDEX = {
 		"nice_name": "Dev Canon",
 		"idle_animation": "idle_riffle",
 		"shoot_animation": "shoot_riffle",
-		"reload_animation": "reload_pistol",
+		"reload_animation": "reload_riffle",
 		"switch_from_animation": "switch_from_riffle",
 		"switch_to_animation": "switch_to_riffle",
 		"sprite": preload("res://World/purchasables/Weapons/DevCanon/images/rifle.png")
