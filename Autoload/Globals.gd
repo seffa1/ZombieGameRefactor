@@ -14,6 +14,8 @@ const GUN_INDEX = {
 		"reload_animation": "reload_riffle",
 		"switch_from_animation": "switch_from_riffle",
 		"switch_to_animation": "switch_to_riffle",
+		"buy_weapon_from_animation": "buy_weapon_from_riffle",
+		"buy_weapon_to_animation": "buy_weapon_to_riffle",
 		"sprite": preload("res://World/purchasables/Weapons/DevCanon/images/rifle.png")
 	},
 	"PISTOL_01": {
@@ -23,6 +25,8 @@ const GUN_INDEX = {
 		"reload_animation": "reload_pistol",
 		"switch_from_animation": "switch_from_pistol",
 		"switch_to_animation": "switch_to_pistol",
+		"buy_weapon_from_animation": "buy_weapon_from_pistol",
+		"buy_weapon_to_animation": "buy_weapon_to_pistol",
 		"sprite": preload("res://World/purchasables/Weapons/Pistol_01/images/pistol.png")
 	}
 }

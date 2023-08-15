@@ -28,15 +28,16 @@ The shoot signal flow:
 		and signal information back to the player (to gain money, etc)
 """
 
-# Signals
-
+# Nodes
+@onready var gun_sprite = $"../SkeletonControl/GunSprite"
+@onready var buy_weapon_state: Node = $"../StateMachineAction/BuyWeapon"
 
 
 # Reference to all weapons
 @onready var dev_canon = preload("res://World/purchasables/Weapons/DevCanon/DevCanon.tscn")
 @onready var pistol_01 = preload("res://World/purchasables/Weapons/Pistol_01/GunPistol01.tscn")
 
-# Variables
+
 
 # the names and objects array should always be in the same order
 # the names array just makes looking up weapons easier so we dont have to try
@@ -65,10 +66,18 @@ func add_weapon(weapon_name: String):
 	_create_weapon(weapon_name)
 	weapon_names.append(weapon_name)
 	
+	# Store the previous gun name in the buy_weapon state for animation purposes
+	buy_weapon_state.switch_from_gun_name = get_equipped_gun_name()
+	
 	# Set it as equipped
 	var weapon_index = weapon_names.find(weapon_name)
 	_set_equipped_gun(weapon_index)
 	
+	# Store the new gun name in the buy_weapon state for animation purposes
+	buy_weapon_state.switch_to_gun_name = weapon_name
+	
+	Events.emit_signal("player_buy_weapon")
+
 	# Info the HUD
 	Events.emit_signal("player_weapons_change", weapon_names)
 

@@ -13,9 +13,11 @@ Connects to any event bus signals which need to be passed down to child nodes.
 @onready var state_machine_movement = $StateMachineMovement
 @onready var state_machine_action = $StateMachineAction
 @onready var hit_timer: Timer = $HitTimer
+@onready var gun_sprite = $SkeletonControl/GunSprite
 
 # Constants
 @export var money_component: Node
+@export var starting_gun: String = "PISTOL_01"
 
 # TODO - move all stamina logic to a stamina component
 var max_stamina: int = 100:
@@ -48,6 +50,9 @@ func _ready():
 	
 	# Connect to player interaction signals
 	Events.give_player_money.connect(_on_player_give_money)
+	
+	# start the player with a pistol
+	weapon_manager.add_weapon(starting_gun)
 
 # Signal consumers
 func _on_player_give_money(amount: int):
