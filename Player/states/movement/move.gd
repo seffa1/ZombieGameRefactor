@@ -35,7 +35,6 @@ func update(delta):
 	regenerate_stamina()
 	
 	# move the player
-	
 	if _is_moving_forward(input_direction):
 		owner.velocity = input_direction.normalized() * WALK_SPEED_FOWARD
 	else:

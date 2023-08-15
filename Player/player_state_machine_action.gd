@@ -20,13 +20,18 @@ func _ready():
 		"melee": $Melee,
 		"die": $Die,
 		"switch_weapons": $SwitchWeapons,
-		"buy_weapon": $BuyWeapon
+		"buy_weapon": $BuyWeapon,
+		"sprint": $Sprint
 	}
 	
 	Events.player_buy_weapon.connect(_on_player_buy_weapon)
+	Events.player_sprinting.connect(_on_player_sprinting)
 
 func _on_player_buy_weapon():
 	_change_state("buy_weapon")
+
+func _on_player_sprinting():
+	_change_state("sprint")
 
 func _change_state(state_name):
 	"""
@@ -49,15 +54,14 @@ func _input(event):
 	"""
 	if not _active:
 		return
-	
+		
 	if event.is_action_pressed("reload"):
 		# Dont interrupt these states
 		if current_state == $Reload:
 			return
 		if current_state == $SwitchWeapons or current_state == $BuyWeapon:
 			return
-		
-		
+
 		# Dont interupt state if we dont have ammo or clip is already full
 		if !weapon_manager.has_a_gun():
 			Events.emit_signal("player_log", "No gun")

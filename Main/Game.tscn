@@ -514,7 +514,7 @@ position = Vector2(57, 278)
 rotation = -0.708219
 
 [node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
-scale = Vector2(1.00022, 0.999928)
+scale = Vector2(1.00022, 0.999929)
 
 [node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
 scale = Vector2(1, 1)

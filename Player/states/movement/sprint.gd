@@ -1,10 +1,18 @@
 extends "res://Player/states/movement/motion.gd"
 
+"""
+The sprint action state cancels all other actions and plays an animation, while
+the sprint movement state (this one) just handles player movement and leg animations/sounds.
+"""
+
 @export var SPRINT_SPEED_FORWARD: int = 500
 @export var SPRINT_SPEED_BACKWARDS: int = 250
 
 # Initialize the state. E.g. change the animation
 func enter():
+	# Emit signal for the action state to handle
+	Events.emit_signal("player_sprinting")
+	
 	# Cancel player actions shoot state
 	if owner.state_machine_action.states_stack[0] == owner.state_machine_action.states_map["shoot"]:
 		owner.state_machine_action._change_state("idle")

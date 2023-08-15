@@ -32,6 +32,7 @@ signal zombies_on_map_change(quantity: int)
 # Player Interactions
 signal give_player_money(amount: int)
 signal player_buy_weapon()
+signal player_sprinting()
 
 # FX
 signal shake_screen(intensity, duration)
