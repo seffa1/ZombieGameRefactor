@@ -24,7 +24,7 @@ var LOOK_AHEAD = 150  # how far to cast the danger detection ray casts
 var DANGER_DOT_VALUE = .7  # at which angle will a danger vector be lessened (since its in the same direction as the desired path). Must be positive.
 var ZOMBIE_DANGER_WEIGHT = .7  # How much zombies avoid each other
 var ZOMBIE_DANGER_OUTSIDE_WEIGHT = .1  # How much zombies avoid each other when outside
-var DANGER_PUSH_FACTOR = 2 # how much danger object 'push' the entity away
+var DANGER_PUSH_FACTOR = 2 # how much danger objects 'push' the entity away
 
 var ray_directions = []
 var interest = []

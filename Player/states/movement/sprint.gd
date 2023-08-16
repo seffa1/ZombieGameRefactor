@@ -8,6 +8,7 @@ the sprint movement state (this one) just handles player movement and leg animat
 @export var SPRINT_SPEED_FORWARD: int = 500
 @export var SPRINT_SPEED_BACKWARDS: int = 250
 
+
 # Initialize the state. E.g. change the animation
 func enter():
 	# Emit signal for the action state to handle
@@ -17,7 +18,7 @@ func enter():
 	if owner.state_machine_action.states_stack[0] == owner.state_machine_action.states_map["shoot"]:
 		owner.state_machine_action._change_state("idle")
 
-	# TODO - play animation
+	# TODO - play leg animations
 	return
 
 # Clean up the state. Reinitialize values like a timer
@@ -42,6 +43,7 @@ func update(delta):
 	# Make sure we have the stamina
 	if owner.stamina < 1:
 		emit_signal("finished", "previous")
+		Events.emit_signal("player_stop_sprinting")
 		return
 	
 	# TODO - limit player from spinning around, prevent actions
@@ -50,6 +52,7 @@ func update(delta):
 	# move the player
 	var input_direction = get_input_direction()
 	if not input_direction:
+		Events.emit_signal("player_stop_sprinting")
 		emit_signal("finished", "previous")
 		return
 	
@@ -57,6 +60,7 @@ func update(delta):
 		owner.velocity = input_direction.normalized() * SPRINT_SPEED_FORWARD
 	else:
 		# you cant sprint backwards
+		Events.emit_signal("player_stop_sprinting")
 		emit_signal("finished", "previous")
 		return
 	
