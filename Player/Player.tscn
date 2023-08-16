@@ -2874,7 +2874,6 @@ modification_stack = SubResource("SkeletonModificationStack2D_jqo0d")
 scale = Vector2(0.999813, 0.999828)
 skew = -4.1008e-05
 rest = Transform2D(1, 0, 0, 1, 0, 0)
-editor_settings/show_bone_gizmo = false
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(33, 37)
@@ -2882,14 +2881,13 @@ rotation = 0.0345334
 scale = Vector2(0.937209, 1.07091)
 skew = 4.30346e-05
 rest = Transform2D(1, 0, 0, 1, 33, 37)
-editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(115, -41)
-rotation = 0.731523
+rotation = 0.791466
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 115, -41)
-editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderLeft"]
@@ -2900,7 +2898,6 @@ rest = Transform2D(1, 0, 0, 1, 94, 57)
 auto_calculate_length_and_angle = false
 length = 110.372
 bone_angle = 63.764
-editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
@@ -2908,7 +2905,6 @@ position = Vector2(-75, 122)
 rotation = -0.606037
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -75, 122)
-editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight"]
@@ -2916,7 +2912,6 @@ position = Vector2(67, 101)
 rotation = 0.71527
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 67, 101)
-editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight/armRight"]
@@ -2925,7 +2920,6 @@ rest = Transform2D(1, 0, 0, 1, 90, 19)
 auto_calculate_length_and_angle = false
 length = 65.074
 bone_angle = -15.941
-editor_settings/show_bone_gizmo = false
 
 [node name="gun" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight"]
 position = Vector2(32, -3)
@@ -2935,7 +2929,6 @@ rest = Transform2D(1, 0, 0, 1, 32, -3)
 auto_calculate_length_and_angle = false
 length = 99.048
 bone_angle = 10.627
-editor_settings/show_bone_gizmo = false
 
 [node name="Targets" type="Node2D" parent="SkeletonControl"]
 
