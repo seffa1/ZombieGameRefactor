@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=40 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -6,14 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="1_wvdm7"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="2_budir"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="2_dw2ec"]
+[ext_resource type="Texture2D" uid="uid://dglepru6pu5q7" path="res://Enemies/ZombieBasic/images/components/footLeft.png" id="3_2lrwl"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="3_555fl"]
+[ext_resource type="Texture2D" uid="uid://c6lc0mr3ovnht" path="res://Enemies/ZombieBasic/images/components/torso.png" id="3_blraf"]
+[ext_resource type="Texture2D" uid="uid://bdbccodpyllpi" path="res://Enemies/ZombieBasic/images/components/legLeftLower.png" id="4_0lsyk"]
+[ext_resource type="Texture2D" uid="uid://ij6lxh1kb38a" path="res://Enemies/ZombieBasic/images/components/head.png" id="4_68ir3"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="4_505g5"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="4_d72v0"]
+[ext_resource type="Texture2D" uid="uid://b7wk8wc40qa37" path="res://Enemies/ZombieBasic/images/components/armLeftUpper.png" id="5_0182o"]
+[ext_resource type="Texture2D" uid="uid://dh2px3xffupw1" path="res://Enemies/ZombieBasic/images/components/legLeftUpper.png" id="5_jqicw"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="5_vcyml"]
 [ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="5_xohst"]
+[ext_resource type="Texture2D" uid="uid://b35xxv6x6if2c" path="res://Enemies/ZombieBasic/images/components/armLeftLower.png" id="6_hehdq"]
+[ext_resource type="Texture2D" uid="uid://lg54kwhkxom" path="res://Enemies/ZombieBasic/images/components/footRight.png" id="6_qslca"]
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="6_ylhad"]
+[ext_resource type="Texture2D" uid="uid://bj1lgk8sqa6lp" path="res://Enemies/ZombieBasic/images/components/handLeft.png" id="7_5pupx"]
+[ext_resource type="Texture2D" uid="uid://bk5hrta2d5k5x" path="res://Enemies/ZombieBasic/images/components/legRightLower.png" id="7_b4wwj"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="7_hhe06"]
+[ext_resource type="Texture2D" uid="uid://divqv2chjbqv0" path="res://Enemies/ZombieBasic/images/components/legRightUpper.png" id="8_cxwwa"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="8_s40qx"]
+[ext_resource type="Texture2D" uid="uid://r2id8v1bdnwr" path="res://Enemies/ZombieBasic/images/components/armRightUpper.png" id="13_gxv0w"]
+[ext_resource type="Texture2D" uid="uid://dpeg2wehr08cp" path="res://Enemies/ZombieBasic/images/components/armRightLower.png" id="14_3h7dl"]
+[ext_resource type="Texture2D" uid="uid://b25svr3cwkmcg" path="res://Enemies/ZombieBasic/images/components/handRight.png" id="15_5fd5k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
 radius = 37.0
@@ -197,10 +211,6 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_wcbub")
 
-[node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
-shape = SubResource("CircleShape2D_sr2cp")
-
 [node name="placeholderSprite" type="Sprite2D" parent="."]
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
@@ -208,7 +218,119 @@ texture = ExtResource("1_u265p")
 region_enabled = true
 region_rect = Rect2(2740, 272, 162, 149)
 
+[node name="SkeletonControl" type="Node2D" parent="."]
+
+[node name="Polygons" type="Node2D" parent="SkeletonControl"]
+
+[node name="FootLeft" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(197.3, -135.463)
+rotation = -1.64493
+texture = ExtResource("3_2lrwl")
+polygon = PackedVector2Array(22.0195, -0.243309, 31.8735, 0.486618, 40.5109, 7.54258, 47.3236, 20.073, 50.4866, 68.3698, 46.9586, 78.2238, 30.1703, 77.9805, 0.364964, 70.438, 0, 50.7299, 11.9221, 5.96107)
+uv = PackedVector2Array(22.0195, -0.243309, 31.8735, 0.486618, 40.5109, 7.54258, 47.3236, 20.073, 50.4866, 68.3698, 48.2968, 73.7226, 30.1703, 77.9805, 0.364964, 70.438, 0, 50.7299, 11.9221, 5.96107)
+
+[node name="LegLeftLower" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(134.3, -137.463)
+rotation = -1.61679
+scale = Vector2(1, 1)
+texture = ExtResource("4_0lsyk")
+polygon = PackedVector2Array(19.4647, 0.121655, 34.5499, 0.851582, 44.6472, 9.3674, 49.0268, 26.1557, 52.6764, 43.7956, 48.0535, 61.8005, 44.4039, 90.6326, 38.9294, 102.068, 30.0487, 106.934, 14.7202, 106.934, -0.364964, 92.3358, 5.23114, 73.601, 0.243309, 52.1898, 1.21655, 25.6691, 8.75912, 11.0706)
+uv = PackedVector2Array(19.4647, 0.121655, 34.5499, 0.851582, 44.6472, 9.3674, 49.0268, 26.1557, 52.6764, 43.7956, 48.0535, 61.8005, 44.4039, 90.6326, 38.9294, 102.068, 30.0487, 106.934, 14.7202, 106.934, -0.364964, 92.3358, 5.23114, 73.601, 0.243309, 52.1898, 1.21655, 25.6691, 8.75912, 11.0706)
+
+[node name="LegLeftUpper" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(134.3, -134.463)
+rotation = -1.5711
+texture = ExtResource("5_jqicw")
+polygon = PackedVector2Array(22.1411, 0.486618, 40.0243, 0.243309, 54.7445, 12.5304, 60.3406, 26.8856, 59.2457, 42.4574, 52.9197, 62.8954, 44.4039, 71.8978, 31.5085, 75.6691, 8.0292, 64.4769, -0.486618, 40.9976, 2.6764, 17.7616, 11.9221, 3.28467)
+uv = PackedVector2Array(22.1411, 0.486618, 40.0243, 0.243309, 54.7445, 12.5304, 60.3406, 26.8856, 59.2457, 42.4574, 52.9197, 62.8954, 44.4039, 71.8978, 31.5085, 75.6691, 8.0292, 64.4769, -0.486618, 40.9976, 2.6764, 17.7616, 11.9221, 3.28467)
+
+[node name="FootRight" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(185, -30)
+rotation = -1.52713
+scale = Vector2(1, 1)
+texture = ExtResource("6_qslca")
+polygon = PackedVector2Array(21.8978, -0.121655, 31.9951, 1.21655, 39.6594, 8.15085, 50.365, 54.3796, 50.2433, 70.3163, 38.4428, 75.0608, 6.32603, 79.1971, 0.364964, 73.3577, 0.121655, 55.9611, 4.13625, 18.1265, 13.017, 3.52798)
+uv = PackedVector2Array(21.8978, -0.121655, 31.9951, 1.21655, 39.6594, 8.15085, 50.365, 54.3796, 50.2433, 70.3163, 38.4428, 75.0608, 6.32603, 79.1971, 0.364964, 73.3577, 0.121655, 55.9611, 4.13625, 18.1265, 13.017, 3.52798)
+
+[node name="LegRightLower" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(121, -21)
+rotation = -1.56986
+texture = ExtResource("7_b4wwj")
+polygon = PackedVector2Array(20.8029, 0.121655, 35.0365, 0.364964, 49.5134, 22.1411, 51.8248, 43.1873, 52.3114, 93.0657, 35.1581, 107.908, 14.2336, 105.109, 7.42092, 90.9976, -0.121655, 61.6788, 0.243309, 35.0365, 7.42092, 8.27251)
+uv = PackedVector2Array(20.8029, 0.121655, 35.0365, 0.364964, 49.5134, 22.1411, 51.8248, 43.1873, 52.3114, 93.0657, 35.1581, 107.908, 14.2336, 105.109, 7.42092, 90.9976, -0.121655, 61.6788, 0.243309, 35.0365, 7.42092, 8.27251)
+
+[node name="LegRightUpper" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(114, -23)
+rotation = -1.53804
+scale = Vector2(1, 1)
+texture = ExtResource("8_cxwwa")
+polygon = PackedVector2Array(37.1046, 0.364964, 52.6764, 8.63747, 59.854, 36.0097, 51.3382, 63.5036, 30.6569, 75.9124, 14.3552, 71.7762, 5.3528, 59.6107, -0.608273, 33.455, 2.6764, 17.8832, 12.5304, 4.0146, 22.9927, 0)
+uv = PackedVector2Array(37.1046, 0.364964, 52.6764, 8.63747, 59.854, 36.0097, 51.3382, 63.5036, 30.6569, 75.9124, 14.3552, 71.7762, 5.3528, 59.6107, -0.608273, 33.455, 2.6764, 17.8832, 12.5304, 4.0146, 22.9927, 0)
+
+[node name="Torso" type="Polygon2D" parent="SkeletonControl/Polygons"]
+rotation = -1.56726
+texture = ExtResource("3_blraf")
+polygon = PackedVector2Array(51.8639, 11.6694, 79.0924, 4.70016, 115.073, 1.45867, 157.05, 1.62075, 190.762, 8.2658, 209.724, 17.504, 223.339, 23.987, 231.929, 26.094, 241.653, 35.0081, 248.298, 46.6775, 251.378, 67.5851, 249.919, 82.9822, 242.464, 101.783, 229.498, 117.666, 196.434, 151.053, 183.63, 159.319, 168.72, 164.506, 152.998, 164.668, 85.8995, 163.857, 70.5024, 158.995, 59.3193, 152.998, 50.8914, 145.867, 15.3971, 110.697, 4.05186, 89.9514, -0.486224, 70.5024, 1.78282, 53.3225, 11.0211, 36.3047, 23.1767, 25.1216, 37.7634, 17.9903)
+uv = PackedVector2Array(51.8639, 11.6694, 79.0924, 4.70016, 115.073, 1.45867, 157.05, 1.62075, 190.762, 8.2658, 209.724, 17.504, 223.339, 23.987, 231.929, 26.094, 241.653, 35.0081, 248.298, 46.6775, 251.378, 67.5851, 249.919, 82.9822, 242.464, 101.783, 229.498, 117.666, 196.434, 151.053, 183.63, 159.319, 168.72, 164.506, 152.998, 164.668, 85.8995, 163.857, 70.5024, 158.995, 59.3193, 152.998, 50.8914, 145.867, 15.3971, 110.697, 4.05186, 89.9514, -0.486224, 70.5024, 1.78282, 53.3225, 11.0211, 36.3047, 23.1767, 25.1216, 37.7634, 17.9903)
+
+[node name="ArmLeftUpper" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(48, -205)
+rotation = -1.48646
+texture = ExtResource("5_0182o")
+polygon = PackedVector2Array(30.9002, 0.364964, 55.4744, 3.16302, 72.2628, 18.4915, 84.7932, 42.8224, 87.7129, 65.4501, 96.5937, 85.4015, 100, 93.309, 95.7421, 109.246, 102.92, 151.582, 97.6886, 174.453, 90.2676, 178.954, 78.5888, 178.467, 60.4623, 164.964, 27.129, 151.217, 0, 75.6691, 6.20438, 27.7372, 18.3698, 8.63747)
+uv = PackedVector2Array(30.9002, 0.364964, 55.4744, 3.16302, 72.2628, 18.4915, 84.7932, 42.8224, 87.7129, 65.4501, 96.5937, 85.4015, 100, 93.309, 95.7421, 109.246, 102.92, 151.582, 97.6886, 174.453, 90.2676, 178.954, 78.5888, 178.467, 60.4623, 164.964, 27.129, 151.217, 0, 75.6691, 6.20438, 27.7372, 18.3698, 8.63747)
+
+[node name="ArmLeftLower" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(196, -249)
+rotation = -1.18388
+scale = Vector2(0.852579, 1)
+texture = ExtResource("6_hehdq")
+polygon = PackedVector2Array(5.83941, 4.37956, 26.0341, 10.5839, 45.4988, 0.243309, 51.9465, 0.243309, 60.9489, 15.6934, 63.6253, 40.0243, 59.489, 56.2044, 44.4039, 109.611, 31.7518, 116.545, 17.0316, 114.355, 10.8272, 106.448, 0.243309, 22.6277, 1.3382, 8.63747)
+uv = PackedVector2Array(5.83941, 4.37956, 26.0341, 10.5839, 45.4988, 0.243309, 51.9465, 0.243309, 60.9489, 15.6934, 63.6253, 40.0243, 59.489, 56.2044, 44.4039, 109.611, 31.7518, 116.545, 17.0316, 114.355, 10.8272, 106.448, 0.243309, 22.6277, 1.3382, 8.63747)
+
+[node name="HandLeft" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(271, -221)
+rotation = -0.866638
+texture = ExtResource("7_5pupx")
+polygon = PackedVector2Array(20.6813, 0.364964, 40.8759, 0, 52.798, 7.05596, 60.7056, 20.8029, 76.2774, 52.3114, 78.7105, 71.4112, 69.8297, 87.2263, 45.7421, 86.983, 28.8321, 81.8735, 5.3528, 64.3552, 0, 46.9586, 0.121655, 20.073, 9.48905, 5.3528)
+uv = PackedVector2Array(20.6813, 0.364964, 40.8759, 0, 52.798, 7.05596, 60.7056, 20.8029, 76.2774, 52.3114, 78.7105, 71.4112, 69.8297, 87.2263, 45.7421, 86.983, 28.8321, 81.8735, 5.3528, 64.3552, 0, 46.9586, 0.121655, 20.073, 9.48905, 5.3528)
+
+[node name="ArmRightUpper" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(34, 53)
+rotation = -1.50472
+texture = ExtResource("13_gxv0w")
+polygon = PackedVector2Array(69.8297, 0.729927, 89.781, 15.4501, 96.5937, 34.4282, 102.92, 70.8029, 101.217, 76.399, 85.8881, 88.6861, 75.4258, 150.365, 48.6618, 150.243, 40.9976, 166.18, 29.6837, 174.818, 20.3163, 179.805, 8.51581, 177.616, -0.486618, 160.219, 0.851582, 140.876, 2.6764, 90.8759, 13.2603, 69.3431, 17.5182, 43.674, 28.7105, 20.438, 46.472, 2.91971)
+uv = PackedVector2Array(69.8297, 0.729927, 89.781, 15.4501, 96.5937, 34.4282, 102.92, 70.8029, 101.217, 76.399, 85.8881, 88.6861, 75.4258, 150.365, 48.6618, 150.243, 40.9976, 166.18, 29.6837, 174.818, 20.3163, 179.805, 8.51581, 177.616, -0.486618, 160.219, 0.851582, 140.876, 2.6764, 90.8759, 13.2603, 69.3431, 17.5182, 43.674, 28.7105, 20.438, 46.472, 2.91971)
+
+[node name="ArmRightLower" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(194, 68)
+rotation = -1.46963
+scale = Vector2(0.821941, 1)
+texture = ExtResource("14_3h7dl")
+polygon = PackedVector2Array(10.8272, 0, 18.9781, 0.973236, 34.0633, 10.5839, 56.691, 3.16302, 62.5304, 10.219, 62.7737, 21.6545, 52.5547, 105.474, 48.0535, 111.071, 35.7664, 116.91, 19.0998, 111.192, 12.5304, 82.8467, 2.18978, 52.6764, -0.243309, 32.4818, 4.62287, 8.88078)
+uv = PackedVector2Array(10.8272, 0, 18.9781, 0.973236, 34.0633, 10.5839, 56.691, 3.16302, 62.5304, 10.219, 62.7737, 21.6545, 52.5547, 105.474, 48.0535, 111.071, 35.7664, 116.91, 19.0998, 111.192, 12.5304, 82.8467, 2.18978, 52.6764, -0.243309, 32.4818, 4.62287, 8.88078)
+
+[node name="HandRight" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(283, 89)
+rotation = -1.4344
+texture = ExtResource("15_5fd5k")
+polygon = PackedVector2Array(23.1144, 5.3528, 36.8613, 0, 57.2993, 0.729927, 73.1143, 8.15085, 77.6156, 20.073, 95.0122, 39.2944, 60.0973, 86.0097, 36.4963, 96.3504, 15.5718, 92.0925, 0.486618, 80.7786, 7.54258, 41.2409, 18.1265, 10.4623)
+uv = PackedVector2Array(23.1144, 5.3528, 36.8613, 0, 57.2993, 0.729927, 73.1143, 8.15085, 77.6156, 20.073, 95.0122, 39.2944, 60.0973, 86.0097, 36.4963, 96.3504, 15.5718, 92.0925, 0.486618, 80.7786, 7.54258, 41.2409, 18.1265, 10.4623)
+
+[node name="Head" type="Polygon2D" parent="SkeletonControl/Polygons"]
+position = Vector2(1, -42)
+rotation = -1.57313
+scale = Vector2(1, 1)
+texture = ExtResource("4_68ir3")
+polygon = PackedVector2Array(2.06813, 94.5255, 0, 66.0584, 15.2068, 41.8491, 30.0487, 18.3698, 60.219, -0.608273, 113.26, 5.47445, 136.74, 22.2628, 143.796, 40.8759, 148.783, 71.5328, 144.404, 103.406, 136.618, 127.737, 104.501, 176.277, 33.8199, 174.209)
+uv = PackedVector2Array(3.40633, 87.9562, 0, 66.0584, 15.2068, 41.8491, 30.0487, 18.3698, 60.219, -0.608273, 113.26, 5.47445, 136.74, 22.2628, 143.796, 40.8759, 148.783, 71.5328, 144.404, 103.406, 136.618, 127.737, 104.501, 176.277, 33.8199, 174.209)
+
+[node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("CircleShape2D_sr2cp")
+
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component", "status_reciever") instance=ExtResource("1_wvdm7")]
+visible = false
 collision_mask = 256
 health_component = NodePath("../HealthComponent")
 status_reciever = NodePath("../StatusRecieverComponent")
@@ -219,6 +341,7 @@ shape = SubResource("CircleShape2D_2eqin")
 debug_color = Color(0.733333, 0, 0.109804, 0.419608)
 
 [node name="WindowDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 512
 
@@ -229,6 +352,7 @@ shape = SubResource("CapsuleShape2D_2ighh")
 debug_color = Color(0.760784, 0.180392, 1, 0.419608)
 
 [node name="WindowHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4096
 collision_mask = 512
 monitoring = false
@@ -240,6 +364,7 @@ shape = SubResource("RectangleShape2D_y4xnb")
 debug_color = Color(0.980392, 0, 0.384314, 0.419608)
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 128
 
@@ -249,6 +374,7 @@ shape = SubResource("CapsuleShape2D_xvmah")
 debug_color = Color(0.67451, 0.494118, 0.333333, 0.419608)
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 1024
 collision_mask = 128
 monitoring = false
@@ -260,6 +386,7 @@ shape = SubResource("RectangleShape2D_jeile")
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 
 [node name="TriggerDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8193
 
