@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=43 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -36,9 +36,19 @@ joint_one_bone2d_node = NodePath("torso/armLeftUpper")
 joint_two_bone_idx = 3
 joint_two_bone2d_node = NodePath("torso/armLeftUpper/armLeftLower")
 
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_bjpac"]
+target_nodepath = NodePath("../Targets/RightArm")
+flip_bend_direction = true
+joint_one_bone_idx = 5
+joint_one_bone2d_node = NodePath("torso/armRightUpper")
+joint_two_bone_idx = 6
+joint_two_bone2d_node = NodePath("torso/armRightUpper/armRightLower")
+
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_7wep7"]
-modification_count = 1
+enabled = true
+modification_count = 2
 modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_7v7fo")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_bjpac")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
 radius = 37.0
@@ -380,22 +390,17 @@ position = Vector2(42, -125)
 rotation = 0.0634662
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 42, -125)
-auto_calculate_length_and_angle = false
-length = 0.0
-bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper"]
 position = Vector2(144, -31)
 rotation = 0.128789
 rest = Transform2D(1, 0, 0, 1, 144, -31)
-auto_calculate_length_and_angle = false
-length = 0.0
-bone_angle = -4.53304
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower"]
 position = Vector2(71, 31)
 rotation = 0.290558
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 71, 31)
 auto_calculate_length_and_angle = false
 length = 46.088
@@ -406,11 +411,13 @@ position = Vector2(35, 101)
 rotation = -0.348765
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, 35, 101)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper"]
 position = Vector2(127, 53)
 rotation = -0.128698
 rest = Transform2D(1, 0, 0, 1, 127, 53)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower"]
 position = Vector2(100, 10)
@@ -454,7 +461,10 @@ bone_angle = -2.353
 [node name="Targets" type="Node2D" parent="SkeletonControl"]
 
 [node name="LeftArm" type="Node2D" parent="SkeletonControl/Targets"]
-position = Vector2(298, -49)
+position = Vector2(229, -121)
+
+[node name="RightArm" type="Node2D" parent="SkeletonControl/Targets"]
+position = Vector2(206, 160)
 
 [node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 0)
