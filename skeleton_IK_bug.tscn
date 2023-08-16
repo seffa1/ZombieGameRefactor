@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://bongiiuhoxt8o"]
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_xsgsl"]
+target_nodepath = NodePath("../Targets/armLeftTarget")
+joint_one_bone_idx = 2
+joint_one_bone2d_node = NodePath("torso/shoulderLeft")
+joint_two_bone_idx = 3
+joint_two_bone2d_node = NodePath("torso/shoulderLeft/armLeft")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_ici67"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_xsgsl")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_hhq6j"]
+target_nodepath = NodePath("../Targets/armLeftTarget")
+joint_one_bone_idx = 2
+joint_one_bone2d_node = NodePath("torso/upper")
+joint_two_bone_idx = 3
+joint_two_bone2d_node = NodePath("torso/upper/lower")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_g8iin"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_hhq6j")
+
+[node name="skeletonTest" type="Node2D"]
+
+[node name="SkeletonControl" type="Node2D" parent="."]
+rotation = -0.762971
+scale = Vector2(0.28, 0.28)
+
+[node name="Skeleton1" type="Skeleton2D" parent="SkeletonControl"]
+position = Vector2(7.74413, 7.40434)
+modification_stack = SubResource("SkeletonModificationStack2D_ici67")
+
+[node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton1"]
+scale = Vector2(0.999813, 0.999828)
+skew = -4.1008e-05
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="head" type="Bone2D" parent="SkeletonControl/Skeleton1/torso"]
+position = Vector2(33, 37)
+rotation = 2.28509e-05
+scale = Vector2(0.93721, 1.07091)
+skew = 4.1008e-05
+rest = Transform2D(1, 0, 0, 1, 33, 37)
+
+[node name="shoulderLeft" type="Bone2D" parent="SkeletonControl/Skeleton1/torso"]
+position = Vector2(115, -41)
+rotation = 0.791466
+scale = Vector2(1, 1)
+rest = Transform2D(1, 0, 0, 1, 115, -41)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton1/torso/shoulderLeft"]
+position = Vector2(94, 57)
+rotation = 0.0443743
+scale = Vector2(1, 1)
+rest = Transform2D(1, 0, 0, 1, 94, 57)
+auto_calculate_length_and_angle = false
+length = 110.372
+bone_angle = 63.764
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Targets" type="Node2D" parent="SkeletonControl"]
+
+[node name="armLeftTarget" type="Node2D" parent="SkeletonControl/Targets"]
+position = Vector2(327.245, 174.533)
+
+[node name="SkeletonControl2" type="Node2D" parent="."]
+position = Vector2(0, 101)
+
+[node name="Targets" type="Node2D" parent="SkeletonControl2"]
+
+[node name="armLeftTarget" type="Node2D" parent="SkeletonControl2/Targets"]
+position = Vector2(137, 0)
+
+[node name="Skeleton2D" type="Skeleton2D" parent="SkeletonControl2"]
+position = Vector2(-6, -22)
+modification_stack = SubResource("SkeletonModificationStack2D_g8iin")
+
+[node name="torso" type="Bone2D" parent="SkeletonControl2/Skeleton2D"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="head" type="Bone2D" parent="SkeletonControl2/Skeleton2D/torso"]
+position = Vector2(17, 47)
+rotation = -0.307259
+scale = Vector2(0.999996, 0.999999)
+rest = Transform2D(0.953162, -0.302446, 0.302447, 0.953166, 17, 47)
+
+[node name="upper" type="Bone2D" parent="SkeletonControl2/Skeleton2D/torso"]
+position = Vector2(56, 0)
+rest = Transform2D(0.953147, -0.302441, 0.302459, 0.953142, 56, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="lower" type="Bone2D" parent="SkeletonControl2/Skeleton2D/torso/upper"]
+position = Vector2(59, 0)
+rest = Transform2D(1, 0, 0, 1, 59, 0)
+auto_calculate_length_and_angle = false
+length = 52.976
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
