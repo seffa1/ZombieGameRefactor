@@ -250,14 +250,12 @@ metadata/_local_pose_override_enabled_ = true
 [node name="shoulderLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(115, -41)
 rotation = 0.333345
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 115, -41)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderLeft"]
 position = Vector2(94, 57)
 rotation = -0.567786
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 94, 57)
 auto_calculate_length_and_angle = false
 length = 110.372
@@ -267,7 +265,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="shoulderRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(-75, 122)
 rotation = -0.535493
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -75, 122)
 metadata/_local_pose_override_enabled_ = true
 
@@ -297,13 +294,13 @@ bone_angle = 10.627
 [node name="Targets" type="Node2D" parent="SkeletonControl"]
 
 [node name="armLeftTarget" type="Node2D" parent="SkeletonControl/Targets"]
-position = Vector2(257.888, 123.042)
+position = Vector2(260.469, 125.51)
 
 [node name="armRightTarget" type="Node2D" parent="SkeletonControl/Targets"]
-position = Vector2(126.285, 224.509)
+position = Vector2(50.7689, 236.307)
 
 [node name="headTarget" type="Node2D" parent="SkeletonControl/Targets"]
-position = Vector2(272.947, 231.323)
+position = Vector2(153.661, 206.213)
 
 [node name="GunSprite" type="Sprite2D" parent="SkeletonControl"]
 position = Vector2(87, 24)
