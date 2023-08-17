@@ -33,5 +33,4 @@ func handle_input(event):
 
 func update(_delta):
 	return
-func handle_input(_event):
-	return
+

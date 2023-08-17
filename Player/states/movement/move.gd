@@ -66,3 +66,7 @@ func _is_moving_forward(input_direction):
 		else:
 			Events.emit_signal("player_direction_change", "Forwards")
 			return true
+
+
+func _on_animation_finished(anim_name):
+	return
