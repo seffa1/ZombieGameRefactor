@@ -2,11 +2,14 @@ extends "res://Libraries/state.gd"
 
 
 @export var WALK_SPEED_FOWARD: int = 300
+@onready var animation_player = $"../../AnimationPlayer"
 
-
-func enter():
+func _ready():
 	# Connect to player position signal and feed that to the pathfinding component
 	Events.player_position_change.connect(_on_player_position_changed)
+
+func enter():
+	animation_player.play("zombie_walk_basic")
 
 func _on_player_position_changed(player_position: Vector2):
 	owner.pathfinding_component.update_target_position(player_position)

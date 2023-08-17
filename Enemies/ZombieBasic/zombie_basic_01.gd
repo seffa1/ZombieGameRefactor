@@ -14,6 +14,7 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var player_detector: Area2D = $PlayerDetector
 @onready var player_hit_box: Area2D = $PlayerHitbox
 @onready var trigger_detector: Area2D = $TriggerDetector
+@onready var skeleton_control: Node2D = $SkeletonControl
 
 # Healper nodes
 @onready var health_component: Node2D = $HealthComponent
@@ -46,4 +47,4 @@ func update_rotation():
 	player_detector.rotation = lerp_angle(player_detector.rotation, angle, STEER_FORCE)
 	player_hit_box.rotation = lerp_angle(player_hit_box.rotation, angle, STEER_FORCE)
 	trigger_detector.rotation = lerp_angle(trigger_detector.rotation, angle, STEER_FORCE)
-
+	skeleton_control.rotation = lerp_angle(skeleton_control.rotation, angle, STEER_FORCE)

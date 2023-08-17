@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=46 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -334,6 +334,66 @@ tracks/22/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("HurtBoxComponent:monitoring")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("HurtBoxComponent:monitorable")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("HurtBoxComponent/HurtBoxCollision:disabled")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(54, -28)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("PlayerHitbox/CollisionShape2D:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_s0mwp"]
 resource_name = "attack_player"
@@ -663,11 +723,160 @@ tracks/19/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_6dyoi"]
+resource_name = "zombie_attack_basic"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Skeleton/torso:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.122988, -0.526748, -0.725415, 0.108372]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Targets/LeftArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(257, -155), Vector2(250, -135), Vector2(15, -330), Vector2(-90, -350), Vector2(230, -80)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Targets/LeftArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Targets/RightArm:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(244, 135), Vector2(135, 300), Vector2(330, -10), Vector2(180, -115), Vector2(210, 85)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkeletonControl/Targets/RightArm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkeletonControl/Targets/HeadLook:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(292, -25), Vector2(315, -15), Vector2(340, -65), Vector2(315, -155), Vector2(395, -65)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Targets/HeadLook:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.000295667, 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(75, 35), Vector2(74, 34), Vector2(41, 86), Vector2(87, -3), Vector2(73, -24), Vector2(46, -40), Vector2(64, 15), Vector2(68, 22), Vector2(71, 29), Vector2(74, 35)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PlayerHitbox:monitorable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PlayerHitbox:monitoring")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PlayerHitbox/CollisionShape2D:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
 _data = {
 "RESET": SubResource("Animation_2n82s"),
 "attack_player": SubResource("Animation_s0mwp"),
 "break_window": SubResource("Animation_lcroy"),
+"zombie_attack_basic": SubResource("Animation_6dyoi"),
 "zombie_walk_basic": SubResource("Animation_ufqkj")
 }
 
@@ -709,7 +918,7 @@ region_enabled = true
 region_rect = Rect2(2740, 272, 162, 149)
 
 [node name="SkeletonControl" type="Node2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.28, 0.28)
 
 [node name="Polygons" type="Node2D" parent="SkeletonControl"]
 
@@ -846,8 +1055,8 @@ modification_stack = SubResource("SkeletonModificationStack2D_7wep7")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(-24, -3)
-scale = Vector2(0.999911, 0.999906)
-skew = -8.30889e-05
+scale = Vector2(0.999837, 0.99984)
+skew = -0.000176668
 rest = Transform2D(1, 0, 0, 1, -24, -3)
 auto_calculate_length_and_angle = false
 length = 0.0
@@ -857,8 +1066,8 @@ editor_settings/show_bone_gizmo = false
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(73.9843, -7)
 rotation = -0.0619003
-scale = Vector2(0.989655, 1.01078)
-skew = 6.27041e-05
+scale = Vector2(0.989627, 1.01077)
+skew = 8.30889e-05
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -966,14 +1175,13 @@ libraries = {
 }
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 1024
 collision_mask = 128
 monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(57, -23)
+position = Vector2(54, -28)
 shape = SubResource("CircleShape2D_vviat")
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 
@@ -985,8 +1193,6 @@ shape = SubResource("CircleShape2D_sr2cp")
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component", "status_reciever") instance=ExtResource("1_wvdm7")]
 visible = false
 collision_mask = 256
-monitoring = false
-monitorable = false
 health_component = NodePath("../HealthComponent")
 status_reciever = NodePath("../StatusRecieverComponent")
 
@@ -994,7 +1200,6 @@ status_reciever = NodePath("../StatusRecieverComponent")
 position = Vector2(22, -2)
 rotation = -1.574
 shape = SubResource("CircleShape2D_bqqdt")
-disabled = true
 debug_color = Color(0.733333, 0, 0.109804, 0.419608)
 
 [node name="WindowDetector" type="Area2D" parent="."]
@@ -1009,6 +1214,7 @@ shape = SubResource("CapsuleShape2D_2ighh")
 debug_color = Color(0.760784, 0.180392, 1, 0.419608)
 
 [node name="WindowHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4096
 collision_mask = 512
 monitoring = false

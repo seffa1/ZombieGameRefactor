@@ -4,7 +4,7 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	owner.animation_player.play("attack_player")
+	owner.animation_player.play("zombie_attack_basic")
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
@@ -19,6 +19,5 @@ func update(delta):
 	# Check if player not in reach anymore
 	if !owner.player_detector.has_overlapping_areas():
 		emit_signal("finished", "seek_player")
+		return
 
-func _on_animation_finished(anim_name):
-	return

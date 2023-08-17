@@ -7,10 +7,11 @@ switched to break window state.
 """
 
 @export var WALK_SPEED_FOWARD: int = 300
+@onready var animation_player = $"../../AnimationPlayer"
 
 
 func enter():
-	return
+	animation_player.play("zombie_walk_basic")
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
