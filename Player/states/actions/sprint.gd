@@ -31,5 +31,7 @@ func handle_input(event):
 		emit_signal("finished", "idle")
 		return
 
-func update(delta):
+func update(_delta):
+	return
+func handle_input(_event):
 	return

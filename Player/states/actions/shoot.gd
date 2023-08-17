@@ -40,7 +40,7 @@ func _on_shoot_animation_finished():
 	emit_signal("finished", "idle")
 	return
 
-func _process(delta):
+func _process(_delta):
 	"""
 	Handling the automatic weapon shooting state
 	"""
@@ -71,3 +71,8 @@ func exit():
 	owner.animation_player.stop()
 	weapon_object = null
 	fire_type = null
+	
+func update(_delta):
+	return
+func handle_input(_event):
+	return

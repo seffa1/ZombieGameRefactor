@@ -40,7 +40,7 @@ func assign_camera(camera: Camera2D) -> void:
 	""" Called by the game initializer. """
 	camera_transform.remote_path = camera.get_path()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	Events.emit_signal("player_rotation_change", self.rotation)
 	Events.emit_signal("player_position_change", self.position)
 

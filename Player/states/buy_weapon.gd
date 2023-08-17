@@ -27,3 +27,7 @@ func enter():
 func exit():
 	animation_player.stop()
 
+func update(_delta):
+	return
+func handle_input(_event):
+	return

@@ -6,7 +6,7 @@ extends "res://World/purchasables/purchasable.gd"
 @onready var collision_environment: CollisionShape2D = $StaticBody2D/CollisionShape1
 @onready var window_hurt_box: Area2D = $WindowHurtbox
 
-func give_item(player: CharacterBody2D) -> void:
+func give_item(_player: CharacterBody2D) -> void:
 	"""
 	Repair the window.
 	"""

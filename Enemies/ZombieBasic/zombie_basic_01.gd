@@ -23,7 +23,15 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: Node = $ZombieStateMachine
 
+@onready var modification_stack = preload("res://Enemies/ZombieBasic/skeletonModificationStack.tres")
+
 var target_window: Area2D # set by zombie spawner, used by state machine to get zombie through the target window
+
+func _ready():
+	# We must load the modification stack AFTER the zombie is a part of the scene tree or it breaks
+	# We must also duplicate the modification resource or it gets shared between all the zombies (weird but whatever)
+	$SkeletonControl/Skeleton.set_modification_stack(modification_stack.duplicate())
+	$SkeletonControl/Skeleton.get_modification_stack().enabled = true
 
 func init(global_position: Vector2):
 	"""

@@ -59,7 +59,7 @@ func _on_spawn_delay_timer_timeout():
 	start_wave()
 
 # Controlling the spawns ------------------------------------
-func _process(delta):
+func _process(_delta):
 	"""
 	Call on zombie spawners to spawn zombies
 	"""

@@ -1,0 +1,28 @@
+[gd_resource type="SkeletonModificationStack2D" load_steps=4 format=3 uid="uid://o5lnx5eovgj4"]
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_7v7fo"]
+target_nodepath = NodePath("../Targets/LeftArm")
+joint_one_bone_idx = 2
+joint_one_bone2d_node = NodePath("torso/armLeftUpper")
+joint_two_bone_idx = 3
+joint_two_bone2d_node = NodePath("torso/armLeftUpper/armLeftLower")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_bjpac"]
+target_nodepath = NodePath("../Targets/RightArm")
+flip_bend_direction = true
+joint_one_bone_idx = 5
+joint_one_bone2d_node = NodePath("torso/armRightUpper")
+joint_two_bone_idx = 6
+joint_two_bone2d_node = NodePath("torso/armRightUpper/armRightLower")
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_m4ngo"]
+bone_index = 1
+bone2d_node = NodePath("torso/head")
+target_nodepath = NodePath("../Targets/HeadLook")
+
+[resource]
+enabled = true
+modification_count = 3
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_7v7fo")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_bjpac")
+modifications/2 = SubResource("SkeletonModification2DLookAt_m4ngo")

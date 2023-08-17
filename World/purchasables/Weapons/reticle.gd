@@ -59,7 +59,7 @@ func apply_bullet_recoil():
 
 @onready var sway_vector = Vector2.RIGHT
 
-func _process(delta):
+func _process(_delta):
 	if !Globals.mouse_on_screen():
 		return
 		

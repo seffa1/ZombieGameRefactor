@@ -10,7 +10,7 @@ func enter():
 	Events.emit_signal("player_direction_change", "n/a")
 	return
 
-func update(delta):
+func update(_delta):
 	# Rotate towards mouse
 	update_look_direction()
 	
@@ -25,5 +25,5 @@ func update(delta):
 func exit():
 	return
 
-func handle_input(event):
+func handle_input(_event):
 	return

@@ -10,7 +10,7 @@ extends Light2D
 func _ready():
 	energy = brightness_min
 
-func _process(delta):
+func _process(_delta):
 	if !blinking:
 		return
 		

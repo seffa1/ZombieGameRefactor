@@ -5,7 +5,7 @@ extends Area2D
 @export var damage_timer: Timer
 @export var damage_interval: float
 
-func _on_area_entered(area: Area2D):
+func _on_area_entered(_area: Area2D):
 	"""
 	The area here is the enemy's hitbox.
 	"""

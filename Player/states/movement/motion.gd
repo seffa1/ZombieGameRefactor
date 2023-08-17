@@ -14,7 +14,7 @@ Stamina is managed here as well.
 @export var STAMINA_USE_TICK_RATE: float = 0.1
 @export var STAMINA_USE_PER_TICK: int = 1
 
-func handle_input(event):
+func handle_input(_event):
 	# TODO - anything that should intrupt any motion states here, dashing for example 
 	return
 

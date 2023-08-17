@@ -60,11 +60,11 @@ func _player_stamina_change(stamina: int):
 func _player_money_change(money: int):
 	player_money.text = str(money)
 
-func _player_rotation_change(rotation):
-	player_rotation.text = str(rotation)
+func _player_rotation_change(_rotation):
+	player_rotation.text = str(_rotation)
 
-func _player_position_change(position):
-	player_position.text = str(position)
+func _player_position_change(_position):
+	player_position.text = str(_position)
 	
 func _player_perks_change(perks: Array[String]):
 	var perk_text = ""

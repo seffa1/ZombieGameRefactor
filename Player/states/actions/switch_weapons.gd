@@ -25,3 +25,8 @@ func _on_switch_weapon_animation_finished():
 # Clean up the state. Reinitialize values like a timer
 func exit():
 	owner.animation_player.stop()
+
+func update(_delta):
+	return
+func handle_input(_event):
+	return

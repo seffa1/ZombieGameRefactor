@@ -23,7 +23,7 @@ func handle_input(event: InputEvent):
 			emit_signal("finished", "sprint")
 			return
 
-func update(delta):
+func update(_delta):
 	# Rotate towards mouse
 	update_look_direction()
 	
@@ -41,8 +41,6 @@ func update(delta):
 		owner.velocity = input_direction.normalized() * WALK_SPEED_BACKWARDS
 	owner.move_and_slide()
 
-func _on_animation_finished(anim_name):
-	return
 
 func _is_moving_forward(input_direction):
 	"""

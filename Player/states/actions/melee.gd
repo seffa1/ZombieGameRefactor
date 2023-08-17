@@ -9,8 +9,8 @@ func enter():
 func exit():
 	return
 
-func handle_input(event):
+func handle_input(_event):
 	return
 
-func update(delta):
+func update(_delta):
 	return

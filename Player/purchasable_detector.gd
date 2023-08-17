@@ -20,7 +20,7 @@ func _on_area_exited(area):
 	purchasables.erase(area)
 	Events.emit_signal("update_interactable_log", "")
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		for purchasable in purchasables:
 			if purchasable.can_be_purchased:

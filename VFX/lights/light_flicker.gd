@@ -20,7 +20,7 @@ func _ready():
 	_noise.frequency = 1.0 / 20.0
 
 var i = 0
-func _process(delta):
+func _process(_delta):
 	if !flicker:
 		return
 	

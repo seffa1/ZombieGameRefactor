@@ -17,10 +17,8 @@ func enter():
 func exit():
 	animation_player.stop()
 
-func handle_input(event):
-	return
 
-func update(delta):
+func update(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		# Cannot shoot if player's action is sprinting
 		if owner.state_machine_movement.states_stack[0] == owner.state_machine_movement.states_map["sprint"]:
@@ -36,3 +34,5 @@ func update(delta):
 		emit_signal("finished", "switch_weapons")
 		return
 
+func handle_input(_event):
+	return

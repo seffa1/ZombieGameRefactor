@@ -7,6 +7,6 @@ This script keeps the gun sprite tracked to the skeleton's right hand positon an
 @onready var right_hand = $"../HandPosition"
 
 
-func _process(delta):
+func _process(_delta):
 	position = right_hand.position
 	rotation = right_hand.rotation

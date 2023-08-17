@@ -27,3 +27,7 @@ func exit():
 	owner.animation_player.stop()
 	weapon_object = null
 
+func update(_delta):
+	return
+func handle_input(_event):
+	return
