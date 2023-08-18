@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+"""
+Free time should be longer than the spawn animation, which is one second.
+"""
 
 @export var free_time: float
 @onready var timer: Timer = $Timer

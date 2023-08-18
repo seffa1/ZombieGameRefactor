@@ -25,7 +25,9 @@ position = Vector2(106, 30)
 volume_db = -13.85
 
 [node name="VFXSpawner" parent="." index="5"]
+position = Vector2(47, 28)
 object_to_spawn = ExtResource("6_nk80x")
+shell_ejection_speed = 600.0
 shell_ejection_speed_variance = 0.6
 shell_ejection_angle_variance = 1.0
 shell_ejection_torque = 100000.0
