@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck7yplcjt3uym"]
+
+[ext_resource type="Script" path="res://VFX/self_freeing_component.gd" id="1_rcyaj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eiwty"]
+radius = 21.0
+height = 98.0
+
+[node name="BulletShell" type="RigidBody2D"]
+collision_layer = 16384
+script = ExtResource("1_rcyaj")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_eiwty")
+debug_color = Color(0.603922, 0.537255, 0.219608, 0.760784)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

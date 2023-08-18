@@ -15,5 +15,5 @@ audio_reload_start = ExtResource("3_flal8")
 audio_reload_finished = ExtResource("4_jne3a")
 audio_shoot_gun_shot = ExtResource("5_agwfw")
 
-[node name="Audio" parent="." index="3"]
+[node name="Audio" parent="." index="4"]
 volume_db = -5.814
