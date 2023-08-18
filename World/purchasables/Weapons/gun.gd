@@ -21,6 +21,7 @@ may end up as a part of the animation tree.
 @onready var audio_start_volume = audio.volume_db
 @onready var audio_start_pitch = audio.pitch_scale
 @onready var reticle = $Reticle
+@onready var bullet_spawner = $VFXSpawner
 
 # Exports
 @export var WEAPON_NAME: String  # Must be in Globals.GUN_INDEX as a key
@@ -35,6 +36,7 @@ may end up as a part of the animation tree.
 @export var clip_size: int = 25
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
+@export_enum("on_fire", "on_reload") var shell_ejection_type: int
 
 # TODO - move all the audio code to a separate node
 @export var audio_reload_start: AudioStream
@@ -92,18 +94,20 @@ func finish_reload() -> void:
 		bullets_in_clip += bullet_reserve
 		bullet_reserve = 0
 
-
-
 func shoot() -> void:
 	"""
 	Generic function used by all children. Should not need to be re-defined.
 	The player shoot state will check 'can_shoot' before it calls this function since
 	the state will dictate the animations.
 	"""
-	
+	# Play audio
 	audio.stream = audio_shoot_gun_shot
 	_randomize_audio_stream(.04, .9)
 	audio.play()
+	
+	# Spawn vfx's
+	if shell_ejection_type == 0:  # on_shoot
+		bullet_spawner.spawn_bullet_shell(global_rotation)
 	
 	fire_timer.start(fire_rate)
 	bullets_in_clip -= 1
