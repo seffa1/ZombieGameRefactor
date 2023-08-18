@@ -1842,6 +1842,20 @@ tracks/9/keys = {
 "update": 0,
 "values": [-2.39459, -2.39459, -2.39459]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("StateMachineAction/Shoot")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_shoot_animation_finished"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_cdidv"]
 resource_name = "sprint_pistol"
@@ -2879,8 +2893,8 @@ editor_settings/show_bone_gizmo = false
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(33, 37)
 rotation = 0.0345334
-scale = Vector2(0.937209, 1.07091)
-skew = 4.30346e-05
+scale = Vector2(0.937213, 1.07091)
+skew = 4.1008e-05
 rest = Transform2D(1, 0, 0, 1, 33, 37)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true

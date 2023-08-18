@@ -1,18 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://85bf3y3ufwct"]
+[gd_scene load_steps=4 format=3 uid="uid://85bf3y3ufwct"]
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/gun.gd" id="1_m3j5y"]
 [ext_resource type="PackedScene" uid="uid://c012riui7bd3s" path="res://Reticle.tscn" id="2_iod0x"]
-[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="3_gne57"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b425l"]
 height = 182.0
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_m3j5y")
-
-[node name="MuzzlePosition" type="Marker2D" parent="."]
-position = Vector2(100, 2.08165e-12)
-gizmo_extents = 39.8
 
 [node name="FireRateTimer" type="Timer" parent="."]
 one_shot = true
@@ -29,6 +24,3 @@ debug_color = Color(0.419608, 0.603922, 0, 0.419608)
 bus = &"GameAudio"
 
 [node name="Reticle" parent="." instance=ExtResource("2_iod0x")]
-
-[node name="VFXSpawner" parent="." instance=ExtResource("3_gne57")]
-position = Vector2(127, 128)

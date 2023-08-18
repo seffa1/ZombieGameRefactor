@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://h623ic4athfc"]
+[gd_scene load_steps=8 format=3 uid="uid://h623ic4athfc"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_uohsh"]
 [ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/Bullets/Bullet.tscn" id="2_ipupn"]
 [ext_resource type="AudioStream" uid="uid://b6uanjwnisybt" path="res://World/purchasables/Weapons/DevCanon/audio/dev_canon_reload_start.wav" id="3_flal8"]
 [ext_resource type="AudioStream" uid="uid://cbqniuf70gbb3" path="res://World/purchasables/Weapons/DevCanon/audio/dev_canon_reload_end.wav" id="4_jne3a"]
 [ext_resource type="AudioStream" uid="uid://qb43knbw0xpn" path="res://World/purchasables/Weapons/DevCanon/audio/GunshotRevolver_BW.57316.wav" id="5_agwfw"]
+[ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="6_l27m1"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="6_r7j6x"]
 
 [node name="GunPistol01" instance=ExtResource("1_uohsh")]
 WEAPON_NAME = "PISTOL_01"
@@ -15,5 +17,12 @@ audio_reload_start = ExtResource("3_flal8")
 audio_reload_finished = ExtResource("4_jne3a")
 audio_shoot_gun_shot = ExtResource("5_agwfw")
 
-[node name="Audio" parent="." index="4"]
+[node name="Audio" parent="." index="2"]
 volume_db = -5.814
+
+[node name="MuzzlePosition" type="Marker2D" parent="." index="4"]
+position = Vector2(98, 8)
+
+[node name="VFXSpawner" parent="." index="5" instance=ExtResource("6_r7j6x")]
+position = Vector2(41, 21)
+object_to_spawn = ExtResource("6_l27m1")

@@ -74,6 +74,9 @@ func start_reload():
 	_reset_audio_stream()
 	audio.stream = audio_reload_start
 	audio.play()
+	
+	if shell_ejection_type == 1:  # on_reload
+		bullet_spawner.spawn_bullet_shell(global_rotation)
 	# TODO - spawn a magazine object to place on the ground ( like in Heat Guardian )
 
 func finish_reload() -> void:

@@ -8,11 +8,11 @@ Basically a little particle system that can emit objects one-by-one or set to co
 @export var object_to_spawn: PackedScene  # MUST BE A RIGID BODY!!!!
 @export var continuous: bool = false  # if set to true
 
-@export var shell_ejection_speed: float = 300.0  # impulse multiplier applied to shell on ejection
-@export var shell_ejection_speed_variance: float = .2  # percentage
-@export var shell_ejection_angle_variance: float = .2  # random rotation applied to shell on ejection
-@export var shell_ejection_torque: float = 2
-@export var shell_ejection_torque_variance: float = .5
+@export var shell_ejection_speed: float = 600.0  # impulse multiplier applied to shell on ejection
+@export var shell_ejection_speed_variance: float = .6  # percentage
+@export var shell_ejection_angle_variance: float = 1  # random rotation applied to shell on ejection
+@export var shell_ejection_torque: float = 100000
+@export var shell_ejection_torque_variance: float = 50000
 
 func spawn_bullet_shell(rotation: float):
 	"""
