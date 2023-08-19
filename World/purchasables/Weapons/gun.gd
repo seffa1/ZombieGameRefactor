@@ -21,7 +21,8 @@ may end up as a part of the animation tree.
 @onready var audio_start_volume = audio.volume_db
 @onready var audio_start_pitch = audio.pitch_scale
 @onready var reticle = $Reticle
-@onready var bullet_spawner = $VFXSpawner
+@onready var bullet_spawner = $VFXSpawnerBulletShells
+@onready var magazine_spawner = $VFXSpawnerMagazines
 
 # Exports
 @export var WEAPON_NAME: String  # Must be in Globals.GUN_INDEX as a key
@@ -37,6 +38,7 @@ may end up as a part of the animation tree.
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
 @export_enum("on_fire", "on_reload") var shell_ejection_type: int
+@export_enum("on_reload", "no_magazine") var magazine_ejection_type: int
 
 # TODO - move all the audio code to a separate node
 @export var audio_reload_start: AudioStream
@@ -71,12 +73,17 @@ func start_reload():
 	The weapon manager checks if the clip is full and if there is reserve ammo before
 	calling this function. This function is called when the reload animations starts.
 	"""
+	# Play the audio
 	_reset_audio_stream()
 	audio.stream = audio_reload_start
 	audio.play()
 	
+	# Spawn a magazine
+	if magazine_ejection_type == 0:  # spawn magazine on reload
+		magazine_spawner.spawn_item(global_rotation)
+	
 	if shell_ejection_type == 1:  # on_reload
-		bullet_spawner.spawn_bullet_shell(global_rotation)
+		bullet_spawner.spawn_item(global_rotation)
 	# TODO - spawn a magazine object to place on the ground ( like in Heat Guardian )
 
 func finish_reload() -> void:
@@ -110,7 +117,7 @@ func shoot() -> void:
 	
 	# Spawn vfx's
 	if shell_ejection_type == 0:  # on_shoot
-		bullet_spawner.spawn_bullet_shell(global_rotation)
+		bullet_spawner.spawn_item(global_rotation)
 	
 	fire_timer.start(fire_rate)
 	bullets_in_clip -= 1

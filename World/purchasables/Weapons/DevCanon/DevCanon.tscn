@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://o0ed2wa866at"]
+[gd_scene load_steps=9 format=3 uid="uid://o0ed2wa866at"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_o7y46"]
 [ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/Bullets/Bullet.tscn" id="2_8obux"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://qb43knbw0xpn" path="res://World/purchasables/Weapons/DevCanon/audio/GunshotRevolver_BW.57316.wav" id="5_my61j"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="6_goalm"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="6_nk80x"]
+[ext_resource type="PackedScene" uid="uid://3som05calmsq" path="res://VFX/magazines/MagazineRiffle.tscn" id="8_hixuv"]
 
 [node name="DevCanon" instance=ExtResource("1_o7y46")]
 WEAPON_NAME = "DEV_CANON"
@@ -25,6 +26,15 @@ volume_db = -13.85
 [node name="MuzzlePosition" type="Marker2D" parent="." index="4"]
 position = Vector2(115, 15)
 
-[node name="VFXSpawner" parent="." index="5" instance=ExtResource("6_goalm")]
+[node name="VFXSpawnerBulletShells" parent="." index="5" instance=ExtResource("6_goalm")]
 position = Vector2(32, 23)
 object_to_spawn = ExtResource("6_nk80x")
+
+[node name="VFXSpawnerMagazines" parent="." index="6" instance=ExtResource("6_goalm")]
+position = Vector2(45, 13)
+object_to_spawn = ExtResource("8_hixuv")
+item_ejection_speed = 300.0
+item_ejection_speed_variance = 0.2
+item_ejection_angle_variance = 0.1
+item_ejection_torque = 50000.0
+item_ejection_torque_variance = 20000.0
