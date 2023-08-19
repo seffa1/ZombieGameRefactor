@@ -361,6 +361,7 @@ offset_bottom = 58.0
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_nxyvm")]
 
 [node name="InteractableLog" parent="UI" instance=ExtResource("9_8tr1y")]
+visible = false
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("7_pryfu")]
 visible = false
@@ -416,7 +417,7 @@ texture = ExtResource("11_wtt1n")
 position = Vector2(-44, 14)
 scale = Vector2(0.385742, 0.385742)
 color = Color(0, 1, 0, 1)
-energy = 1.62
+energy = 0.71
 blend_mode = 2
 shadow_enabled = true
 shadow_filter = 1
@@ -447,7 +448,7 @@ texture = ExtResource("11_wtt1n")
 [node name="PointLight2D4" type="PointLight2D" parent="GameWorld/Environment/Lights"]
 position = Vector2(707, 490)
 scale = Vector2(1.60144, 1.60144)
-energy = 4.3
+energy = 1.01
 blend_mode = 2
 shadow_enabled = true
 shadow_filter = 1

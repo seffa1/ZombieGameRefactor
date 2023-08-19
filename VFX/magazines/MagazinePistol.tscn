@@ -102,10 +102,11 @@ _data = {
 
 [node name="MagazinePistol" type="RigidBody2D"]
 collision_layer = 16384
+collision_mask = 17
 linear_damp = 3.0
 angular_damp = 3.0
 script = ExtResource("1_swff3")
-free_time = 20.0
+free_time = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.57079
