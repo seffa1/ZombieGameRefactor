@@ -1,12 +1,15 @@
 extends "res://Libraries/state.gd"
 
 @export var death_money_reward: int = 100
+@onready var gore_vfx = $"../../GoreVFX"
 
 # Initialize the state. E.g. change the animation
 func enter():
 	# Give player money
 	Events.emit_signal("give_player_money", death_money_reward)
+	
 	# TODO - death vfx
+	gore_vfx.zombie_death()
 	
 	# signal for the zombie manager
 	Events.emit_signal("zombie_death", owner)

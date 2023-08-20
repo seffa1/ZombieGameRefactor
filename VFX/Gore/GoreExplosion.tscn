@@ -1,104 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4akdgdbo2bsd"]
+[gd_scene load_steps=4 format=3 uid="uid://c4akdgdbo2bsd"]
 
 [ext_resource type="Script" path="res://VFX/Gore/gore_explosion.gd" id="1_l6oq5"]
-[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_uqi0n"]
-[ext_resource type="Texture2D" uid="uid://b5bbqdivq0c5s" path="res://Enemies/ZombieBasic/images/gore/armLowerLeft.png" id="2_7xiwu"]
-[ext_resource type="Texture2D" uid="uid://dxtg1d6dlsx6o" path="res://Enemies/ZombieBasic/images/gore/armUpperLeft.png" id="3_o1ryn"]
-[ext_resource type="Texture2D" uid="uid://w4fckqnvsqrv" path="res://Enemies/ZombieBasic/images/gore/footRight.png" id="4_hvqe1"]
-[ext_resource type="Texture2D" uid="uid://cujvf534olfwd" path="res://Enemies/ZombieBasic/images/gore/torsoLower.png" id="5_5aron"]
-[ext_resource type="Texture2D" uid="uid://dj01qi676iw1v" path="res://Enemies/ZombieBasic/images/gore/head.png" id="6_mkupn"]
-[ext_resource type="Texture2D" uid="uid://bn7l7ufhx085p" path="res://Enemies/ZombieBasic/images/gore/legLowerLeft.png" id="7_lcsrq"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xpign"]
-radius = 32.0
-height = 64.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a0ime"]
-radius = 23.0
-height = 138.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqqpp"]
-radius = 23.0
-height = 172.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lubph"]
-radius = 65.0
-height = 168.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m0cvh"]
-radius = 23.0
-height = 104.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2k772"]
-radius = 23.0
-height = 84.0
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_qhdpo"]
+[ext_resource type="PackedScene" uid="uid://bifoihe0j2ej6" path="res://VFX/Gore/BodyPart.tscn" id="3_qawl7"]
 
 [node name="GoreExplosion" type="Node2D"]
 script = ExtResource("1_l6oq5")
 
 [node name="BodyPartsContainer" type="Node2D" parent="."]
 
-[node name="Head" parent="BodyPartsContainer" instance=ExtResource("1_uqi0n")]
-position = Vector2(23, -134)
-free_time = 5.0
+[node name="HeadSpawner" parent="BodyPartsContainer" instance=ExtResource("2_qhdpo")]
+object_to_spawn = ExtResource("3_qawl7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPartsContainer/Head"]
-shape = SubResource("CapsuleShape2D_xpign")
+[node name="BloodContainer" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="BodyPartsContainer/Head"]
-texture = ExtResource("6_mkupn")
-
-[node name="ArmLeftLower" parent="BodyPartsContainer" instance=ExtResource("1_uqi0n")]
-position = Vector2(120, 159)
-free_time = 5.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPartsContainer/ArmLeftLower"]
-shape = SubResource("CapsuleShape2D_a0ime")
-
-[node name="Sprite2D" type="Sprite2D" parent="BodyPartsContainer/ArmLeftLower"]
-rotation = 0.493024
-texture = ExtResource("2_7xiwu")
-
-[node name="ArmLeftUpper" parent="BodyPartsContainer" instance=ExtResource("1_uqi0n")]
-position = Vector2(110, 0)
-free_time = 5.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPartsContainer/ArmLeftUpper"]
-shape = SubResource("CapsuleShape2D_aqqpp")
-
-[node name="Sprite2D" type="Sprite2D" parent="BodyPartsContainer/ArmLeftUpper"]
-rotation = 0.523599
-texture = ExtResource("3_o1ryn")
-
-[node name="Torso" parent="BodyPartsContainer" instance=ExtResource("1_uqi0n")]
-position = Vector2(19, 2)
-free_time = 5.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPartsContainer/Torso"]
-shape = SubResource("CapsuleShape2D_lubph")
-
-[node name="Sprite2D" type="Sprite2D" parent="BodyPartsContainer/Torso"]
-texture = ExtResource("5_5aron")
-
-[node name="LegLeftLower" parent="BodyPartsContainer" instance=ExtResource("1_uqi0n")]
-position = Vector2(63, 194)
-free_time = 5.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPartsContainer/LegLeftLower"]
-shape = SubResource("CapsuleShape2D_m0cvh")
-
-[node name="Sprite2D" type="Sprite2D" parent="BodyPartsContainer/LegLeftLower"]
-rotation = 0.0738325
-texture = ExtResource("7_lcsrq")
-
-[node name="FootRight" parent="BodyPartsContainer" instance=ExtResource("1_uqi0n")]
-position = Vector2(-43, 222)
-free_time = 5.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPartsContainer/FootRight"]
-position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_2k772")
-
-[node name="Sprite2D" type="Sprite2D" parent="BodyPartsContainer/FootRight"]
-position = Vector2(-2, -7)
-texture = ExtResource("4_hvqe1")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BloodContainer"]

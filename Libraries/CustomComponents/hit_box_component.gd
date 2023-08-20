@@ -8,7 +8,9 @@ it needs here to do different things it needs to do based on the hitbox damage, 
 
 # Variables
 @export var damage: int # set by the gun shooting the bullet typically
+@export_enum("impact", "explosion") var hit_box_type  # helps the gore system choose vfxs
 var shooter: CharacterBody2D  # reference back to the player
+
 
 func _on_area_entered(_area):
 	# If the bullets hitbox hits an enemy hurtbox

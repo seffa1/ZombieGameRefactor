@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=45 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dpeg2wehr08cp" path="res://Enemies/ZombieBasic/images/components/armRightLower.png" id="14_3h7dl"]
 [ext_resource type="Texture2D" uid="uid://b25svr3cwkmcg" path="res://Enemies/ZombieBasic/images/components/handRight.png" id="15_5fd5k"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://o5lnx5eovgj4" path="res://Enemies/ZombieBasic/skeletonModificationStack.tres" id="17_wbacc"]
+[ext_resource type="PackedScene" uid="uid://c4akdgdbo2bsd" path="res://VFX/Gore/GoreExplosion.tscn" id="30_mwesq"]
 
 [sub_resource type="Animation" id="Animation_2n82s"]
 length = 0.001
@@ -1414,8 +1415,11 @@ max_health = 10
 velocity_component = NodePath("../VelocityComponent")
 health_component = NodePath("../HealthComponent")
 
+[node name="GoreVFX" parent="." instance=ExtResource("30_mwesq")]
+
 [connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]
 [connection signal="velocity_computed" from="PathfindingComponent/NavigationAgent2D" to="PathfindingComponent" method="_on_navigation_agent_2d_velocity_computed"]
 
 [editable path="PathfindingComponent"]
+[editable path="GoreVFX"]
