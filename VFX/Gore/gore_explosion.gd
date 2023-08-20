@@ -13,7 +13,7 @@ func zombie_death(velocity: Vector2):
 	VFX for a generic zombie death.
 	"""
 	
-	# Spawn gore in the direction
+	# Spawn gore in the direction of the velocity (the -90 is because the vfx spawner defaults to a vector.DOWN
 	for body_part_spawner in body_parts.get_children():
 		body_part_spawner.spawn_item(velocity.angle() - deg_to_rad(90))
 	

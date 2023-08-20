@@ -16,5 +16,3 @@ item_ejection_speed_variance = 0.1
 item_ejection_angle_variance = 0.1
 
 [node name="BloodContainer" type="Node2D" parent="."]
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="BloodContainer"]

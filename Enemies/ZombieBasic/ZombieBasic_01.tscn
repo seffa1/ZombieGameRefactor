@@ -1402,7 +1402,7 @@ script = ExtResource("8_s40qx")
 script = ExtResource("4_d72v0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_dw2ec")]
-max_health = 10
+max_health = 150
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_505g5")]
 

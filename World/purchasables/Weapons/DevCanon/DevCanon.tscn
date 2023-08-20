@@ -14,6 +14,7 @@ WEAPON_NAME = "DEV_CANON"
 fire_type = "automatic"
 bullet = ExtResource("2_8obux")
 bullet_speed = 2000
+bullet_damage = 25
 fire_rate = 0.05
 max_bullet_reserve = 100
 audio_reload_start = ExtResource("3_xx2ah")
