@@ -1,7 +1,7 @@
 extends Node2D
 
 """
-Spawns RIGID BODY packed scenes and gives thems a variable impulse to make them look realistic.
+Spawns a single RIGID BODY packed scenes and gives thems a variable impulse to make them look realistic.
 Basically a little particle system that can emit objects one-by-one or set to continuous.
 """
 

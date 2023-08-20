@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bifoihe0j2ej6"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_h1p4x"]
+[ext_resource type="Script" path="res://VFX/Gore/body_part.gd" id="2_pgctk"]
+[ext_resource type="Texture2D" uid="uid://dj01qi676iw1v" path="res://Enemies/ZombieBasic/images/gore/head.png" id="3_ykmv8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gkbvq"]
+radius = 57.1402
+
+[node name="BodyPart" instance=ExtResource("1_h1p4x")]
+script = ExtResource("2_pgctk")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+texture = ExtResource("3_ykmv8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CircleShape2D_gkbvq")
