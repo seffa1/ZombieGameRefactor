@@ -11,6 +11,9 @@ script = ExtResource("1_l6oq5")
 
 [node name="HeadSpawner" parent="BodyPartsContainer" instance=ExtResource("2_qhdpo")]
 object_to_spawn = ExtResource("3_qawl7")
+item_ejection_speed = 300.0
+item_ejection_speed_variance = 0.1
+item_ejection_angle_variance = 0.1
 
 [node name="BloodContainer" type="Node2D" parent="."]
 

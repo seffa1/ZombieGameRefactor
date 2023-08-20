@@ -21,7 +21,7 @@ spawn_direction = 0
 shape = SubResource("CircleShape2D_gkbvq")
 
 [node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_ykmv8")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
@@ -30,4 +30,4 @@ texture = ExtResource("3_ykmv8")
 final_linear_damp_value = 5
 final_angular_damp_value = 5
 hang_time = 1.0
-tween_duration = 0.1
+tween_duration = 0.05

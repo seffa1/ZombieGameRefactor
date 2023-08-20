@@ -7,10 +7,7 @@ extends "res://Libraries/state.gd"
 func enter():
 	# Give player money
 	Events.emit_signal("give_player_money", death_money_reward)
-	
-	# TODO - death vfx
-	gore_vfx.zombie_death()
-	
+
 	# signal for the zombie manager
 	Events.emit_signal("zombie_death", owner)
 	
