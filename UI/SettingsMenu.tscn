@@ -19,6 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_brnva")
 
 [node name="BackgroundFill" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,14 +193,9 @@ color = Color(0.713726, 0.713726, 0.713726, 1)
 
 [node name="lightsContainer" type="Node" parent="VFX"]
 
-[node name="LightFlicker" parent="VFX/lightsContainer" instance=ExtResource("4_lle3l")]
-position = Vector2(948, 527)
-scale = Vector2(9.0019, 5.08113)
-color = Color(0.25098, 1, 0.262745, 1)
-
 [node name="LightFlicker2" parent="VFX/lightsContainer" instance=ExtResource("4_lle3l")]
-position = Vector2(228, 1006)
-scale = Vector2(1.3531, 0.347807)
+position = Vector2(234, 999)
+scale = Vector2(2.15818, 0.593791)
 energy = 0.1
 
 [node name="MenuSoundPlayer" parent="." instance=ExtResource("7_6nf74")]

@@ -2885,8 +2885,8 @@ metadata/_edit_lock_ = true
 modification_stack = SubResource("SkeletonModificationStack2D_jqo0d")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
-scale = Vector2(0.999813, 0.999828)
-skew = -4.1008e-05
+scale = Vector2(0.999813, 0.999829)
+skew = -4.22001e-05
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 

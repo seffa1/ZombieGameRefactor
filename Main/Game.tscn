@@ -615,7 +615,6 @@ visible = false
 [node name="GameWorld" type="Node2D" parent="."]
 
 [node name="Darkness" type="CanvasModulate" parent="GameWorld"]
-visible = false
 color = Color(0.203922, 0.203922, 0.203922, 0.878431)
 
 [node name="PurchasablesContainer" type="Node" parent="GameWorld"]

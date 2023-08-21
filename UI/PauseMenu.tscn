@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_mhl4f")
 
 [node name="BackgroundFill" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +27,7 @@ texture = ExtResource("2_ou2ff")
 expand_mode = 1
 
 [node name="BackgroundImage" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

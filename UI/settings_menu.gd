@@ -13,7 +13,7 @@ func _ready():
 	visible = false
 	set_process_input(false)
 	_hide_lights()
-	Events.open_settings.connect(open)
+#	Events.open_settings.connect(open)
 
 func _hide_lights():
 	for light in lights_container.get_children():
@@ -23,7 +23,14 @@ func _show_lights():
 	for light in lights_container.get_children():
 		light.enabled = true
 
+func _input(event: InputEvent):
+	if event.is_action_pressed("pause"):
+		get_viewport().set_input_as_handled()
+		close()
+
+
 func open():
+	print("HERE")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	menu_sounds.play_open()
 	show()

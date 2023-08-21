@@ -14,7 +14,7 @@ func _ready():
 
 func _on_game_resumed():
 	print("Game Resumed")
-	pause_menu.hide()
+#	pause_menu.hide()
 	settings_menu.hide()
 	get_tree().paused = false
 
@@ -26,7 +26,7 @@ func _unhandled_input(event):
 		return
 
 	if event.is_action_pressed("pause"):
-		Events.emit_signal("game_paused")
+		settings_menu.open()
 	
 	if event.is_action_pressed("toggle_debug"):
 		states_stack_displayer_1.visible = !states_stack_displayer_1.visible
@@ -35,4 +35,5 @@ func _unhandled_input(event):
 
 func _on_game_paused():
 	print("Game pausing from UI")
-	pause_menu.open()
+#	pause_menu.open()
+	Events.emit_signal("open_settings")
