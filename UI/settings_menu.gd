@@ -3,7 +3,10 @@ extends Control
 @onready var menu_sounds = $MenuSoundPlayer
 @onready var lights_container: Node = $VFX/lightsContainer
 @onready var back_button: Button = $BackButton
-
+@onready var reset_display_settings: Button = $ResetDisplay
+@onready var reset_sound_settings: Button = $ResetSound
+@onready var sound_sliders = $SoundOptions/Sliders
+@onready var display_sliders = $DisplayOptions/Sliders
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED # This is how a pause menu works, see docs
@@ -37,3 +40,13 @@ func close():
 
 func _on_back_button_pressed():
 	close()
+
+
+func _on_reset_sound_pressed():
+	for sound_slider in sound_sliders.get_children():
+		sound_slider.reset()
+
+
+func _on_reset_display_pressed():
+	for display_slider in display_sliders.get_children():
+		display_slider.reset()

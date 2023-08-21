@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cedl4iff3jt5p" path="res://UI/images/buttons/element_0001_Layer-3.png" id="3_6bhk7"]
 [ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="4_lle3l"]
 [ext_resource type="PackedScene" uid="uid://p2ful55vrtx0" path="res://UI/components/VolumeSlider.tscn" id="4_wwbdc"]
-[ext_resource type="Script" path="res://UI/brightness_slider.gd" id="5_v7u2e"]
+[ext_resource type="PackedScene" uid="uid://i2284m66vfd2" path="res://UI/components/BrightnessSlider.tscn" id="5_tmm6r"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="7_6nf74"]
 
 [node name="SettingsMenu" type="Control"]
@@ -43,10 +43,9 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="SoundOptions"]
 layout_mode = 0
-offset_left = 189.0
-offset_top = 20.0
-offset_right = 862.0
-offset_bottom = 154.0
+offset_left = 182.0
+offset_right = 855.0
+offset_bottom = 134.0
 theme = ExtResource("2_5ac88")
 theme_override_font_sizes/font_size = 75
 text = "Sound"
@@ -56,9 +55,9 @@ vertical_alignment = 1
 [node name="Labels" type="VBoxContainer" parent="SoundOptions"]
 layout_mode = 0
 offset_left = 200.0
-offset_top = 182.0
+offset_top = 266.0
 offset_right = 337.0
-offset_bottom = 635.0
+offset_bottom = 719.0
 theme_override_constants/separation = 63
 
 [node name="Master" type="Label" parent="SoundOptions/Labels"]
@@ -92,9 +91,9 @@ text = "Menu FX
 [node name="Sliders" type="VBoxContainer" parent="SoundOptions"]
 layout_mode = 0
 offset_left = 380.0
-offset_top = 136.0
+offset_top = 220.0
 offset_right = 615.0
-offset_bottom = 372.0
+offset_bottom = 456.0
 scale = Vector2(2, 2)
 theme_override_constants/separation = 40
 alignment = 1
@@ -144,9 +143,9 @@ vertical_alignment = 1
 [node name="Labels" type="VBoxContainer" parent="DisplayOptions"]
 layout_mode = 0
 offset_left = 200.0
-offset_top = 182.0
-offset_right = 337.0
-offset_bottom = 635.0
+offset_top = 229.0
+offset_right = 377.0
+offset_bottom = 682.0
 theme_override_constants/separation = 63
 
 [node name="Master" type="Label" parent="DisplayOptions/Labels"]
@@ -159,19 +158,14 @@ text = "Brightness"
 layout_direction = 2
 layout_mode = 0
 offset_left = 440.0
-offset_top = 188.0
+offset_top = 235.0
 offset_right = 675.0
-offset_bottom = 424.0
+offset_bottom = 471.0
 scale = Vector2(2, 2)
 theme_override_constants/separation = 40
 
-[node name="BrightnessSlider" type="HSlider" parent="DisplayOptions/Sliders"]
+[node name="BrightnessSlider" parent="DisplayOptions/Sliders" instance=ExtResource("5_tmm6r")]
 layout_mode = 2
-min_value = 0.1
-max_value = 4.0
-step = 0.01
-value = 0.1
-script = ExtResource("5_v7u2e")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -210,5 +204,26 @@ energy = 0.1
 
 [node name="MenuSoundPlayer" parent="." instance=ExtResource("7_6nf74")]
 
-[connection signal="value_changed" from="DisplayOptions/Sliders/BrightnessSlider" to="DisplayOptions/Sliders/BrightnessSlider" method="_on_value_changed"]
+[node name="ResetDisplay" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 174.0
+offset_right = 1678.0
+offset_bottom = 226.0
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "RESET"
+
+[node name="ResetSound" type="Button" parent="."]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 154.0
+offset_right = 749.0
+offset_bottom = 206.0
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "RESET"
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ResetDisplay" to="." method="_on_reset_display_pressed"]
+[connection signal="pressed" from="ResetSound" to="." method="_on_reset_sound_pressed"]

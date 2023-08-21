@@ -1,10 +1,13 @@
 extends HSlider
 
-
+@export var reset_value = .5
 @export var bus_name: String
 var bus_index: int
 
+
 func _ready() -> void:
+	# TODO - load settings from player save files
+	
 	bus_index = AudioServer.get_bus_index(bus_name)
 	value_changed.connect(_on_value_changed)
 	
@@ -17,3 +20,6 @@ func _on_value_changed(_value: float) -> void:
 		bus_index,
 		linear_to_db(_value)
 	)
+
+func reset():
+	value = reset_value
