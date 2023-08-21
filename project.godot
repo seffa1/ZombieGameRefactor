@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 Globals="*res://Autoload/Globals.gd"
 Events="*res://Autoload/Events.gd"
 ObjectRegistry="*res://Autoload/ObjectRegistry.tscn"
+GlobalWorldEnvironment="*res://World/WorldEnvironment.tscn"
 
 [display]
 
