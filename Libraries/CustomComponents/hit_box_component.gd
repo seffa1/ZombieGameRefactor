@@ -6,11 +6,12 @@ When the hitbox is detected by a hurtbox, that hurt box can get all the informat
 it needs here to do different things it needs to do based on the hitbox damage, velocity, etc.
 """
 
-# Variables
-@export var damage: int # set by the gun shooting the bullet typically
-@export_enum("impact", "explosion") var hit_box_type  # helps the gore system choose vfxs
+# Variables controlled by the gun shooting
+var damage: int # set by the gun shooting the bullet typically
+var bullet_knockback
 var shooter: CharacterBody2D  # reference back to the player
 
+@export_enum("impact", "explosion") var hit_box_type  # helps the gore system choose vfxs
 
 func _on_area_entered(_area):
 	# If the bullets hitbox hits an enemy hurtbox

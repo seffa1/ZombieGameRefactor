@@ -790,6 +790,9 @@ scale = Vector2(1, 1)
 [node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
 scale = Vector2(1, 1)
 
+[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
+scale = Vector2(0.999999, 0.999999)
+
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("15_isj6m")]
 position = Vector2(0, 7.62939e-06)
 

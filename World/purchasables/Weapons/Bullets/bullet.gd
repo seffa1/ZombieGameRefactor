@@ -19,9 +19,10 @@ const _IMPACT_SAMPLES = [
 @onready var smoke_trail = preload("res://VFX/smoketrails/Smoketrail.tscn")
 var smoke_trail_object
 
-func init(bullet_damage: int, bullet_shooter: CharacterBody2D):
+func init(bullet_damage: int, bullet_shooter: CharacterBody2D, bullet_knockback: float):
 	hit_box_component.damage = bullet_damage
 	hit_box_component.shooter = bullet_shooter
+	hit_box_component.bullet_knockback = bullet_knockback
 
 func start(position, direction, speed):
 	global_position = position

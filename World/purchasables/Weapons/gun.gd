@@ -33,6 +33,7 @@ may end up as a part of the animation tree.
 @export var bullet_spread: float = 0.0  # if bullets_per_fire > 1, this is the angle between the bullets
 @export var bullet_speed: int = 1500
 @export var bullet_damage: int = 10
+@export var bullet_knockback: float = 3.0
 @export var fire_rate: float = 0.2  # only applies if fire_type is automatic. Seconds per bullet fire
 @export var clip_size: int = 25
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
@@ -141,7 +142,7 @@ func shoot() -> void:
 		
 		var bullet_instance = bullet.instantiate()
 		ObjectRegistry.register_projectile(bullet_instance)
-		bullet_instance.init(bullet_damage, shooter)
+		bullet_instance.init(bullet_damage, shooter, bullet_knockback)
 		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 
 	# we cannot ignore spread ( like a shot gun )

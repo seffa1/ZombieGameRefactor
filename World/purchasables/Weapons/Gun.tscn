@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://85bf3y3ufwct"]
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/gun.gd" id="1_m3j5y"]
-[ext_resource type="PackedScene" uid="uid://c012riui7bd3s" path="res://Reticle.tscn" id="2_iod0x"]
+[ext_resource type="PackedScene" path="res://Reticle.tscn" id="2_iod0x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b425l"]
 height = 182.0

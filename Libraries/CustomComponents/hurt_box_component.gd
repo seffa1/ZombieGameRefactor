@@ -30,10 +30,14 @@ func _on_area_entered(area: Area2D):
 	# so we can spawn VFX items in the correct position (moving away from that position)
 	gore_vfx.last_damage_position = area.global_position
 	
-	# If the area is an impact
+	# If the area is an impact (from a bullet)
 	if area.hit_box_type == 0:
 		# Spawn bullet impact
 		gore_vfx.bullet_impact(area.owner.velocity)
+		
+		# Apply knock back
+		var knock_back = area.bullet_knockback
+		print(knock_back)
 		
 		# Check if we need to spawn a death impact
 		if health_component.health <= 0:
