@@ -14,6 +14,7 @@ const _IMPACT_SAMPLES = [
 
 @onready var hit_box_component = $HitBoxComponent
 @onready var life_span: Timer = $Lifespan
+@onready var smoke_trail = $Smoketrail
 
 
 func init(bullet_damage: int, bullet_shooter: CharacterBody2D):
@@ -25,16 +26,21 @@ func start(position, direction, speed):
 	rotation = direction.angle()
 	velocity = direction * speed
 
+
 func _physics_process(delta: float) -> void:
+	# Add smoke trail point
+	smoke_trail.add_point(global_position)
+	
 	var motion_vector = velocity * delta
 	var collision := move_and_collide(motion_vector)
-	
+
 	# Check if it collided with the environment
-	if collision:
+	if collision:		
 		# TODO - bullet collision fx based on tile type it collided with
 		die()
 
 func die() -> void:
+
 	queue_free()
 
 func _on_lifespan_timeout():

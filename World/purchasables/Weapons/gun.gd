@@ -84,7 +84,6 @@ func start_reload():
 	
 	if shell_ejection_type == 1:  # on_reload
 		bullet_spawner.spawn_item(global_rotation)
-	# TODO - spawn a magazine object to place on the ground ( like in Heat Guardian )
 
 func finish_reload() -> void:
 	"""
