@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn7t7mkilellv"]
+[gd_scene load_steps=6 format=3 uid="uid://cn7t7mkilellv"]
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/Bullets/bullet.gd" id="1_g0efj"]
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_0iepx"]
 [ext_resource type="Texture2D" uid="uid://dpxu2ijho0mcb" path="res://World/purchasables/Weapons/Bullets/images/Shot.png" id="2_v5l5a"]
-[ext_resource type="PackedScene" uid="uid://ejqyuno4l2ve" path="res://VFX/smoketrails/Smoketrail.tscn" id="4_5mq6h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gg70d"]
 radius = 4.0
@@ -36,7 +35,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_v5l5a")
 
 [node name="Lifespan" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 
@@ -46,10 +45,6 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_u4y7u")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="Smoketrail" parent="." instance=ExtResource("4_5mq6h")]
-z_index = 1
-min_spawn_distance = 0.1
 
 [connection signal="area_entered" from="HitBoxComponent" to="HitBoxComponent" method="_on_area_entered"]
 [connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

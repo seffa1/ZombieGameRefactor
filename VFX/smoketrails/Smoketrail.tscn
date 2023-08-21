@@ -8,8 +8,8 @@ _data = [Vector2(0.00261877, 0.992333), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.79626,
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_e3wyy"]
-offsets = PackedFloat32Array(0, 0.73849)
-colors = PackedColorArray(0, 0, 0, 0, 0.435192, 0.435192, 0.435192, 1)
+offsets = PackedFloat32Array(0, 0.418048, 0.729282, 0.970534)
+colors = PackedColorArray(0, 0, 0, 0, 0.427451, 0.427451, 0.427451, 1, 0.427451, 0.427451, 0.427451, 1, 1, 1, 1, 1)
 
 [node name="Smoketrail" type="Line2D"]
 width = 20.0
@@ -18,4 +18,5 @@ gradient = SubResource("Gradient_e3wyy")
 texture = ExtResource("1_264ey")
 texture_mode = 2
 script = ExtResource("1_h1046")
-limited_lifetime = true
+life_time_min = 2.2
+wildness = 1.0

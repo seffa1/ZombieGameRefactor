@@ -13,9 +13,11 @@ const _IMPACT_SAMPLES = [
 ]
 
 @onready var hit_box_component = $HitBoxComponent
-@onready var life_span: Timer = $Lifespan
-@onready var smoke_trail = $Smoketrail
 
+# The smoke trails lifespan must be greater than the bullets!
+@onready var life_span: Timer = $Lifespan
+@onready var smoke_trail = preload("res://VFX/smoketrails/Smoketrail.tscn")
+var smoke_trail_object
 
 func init(bullet_damage: int, bullet_shooter: CharacterBody2D):
 	hit_box_component.damage = bullet_damage
@@ -25,12 +27,14 @@ func start(position, direction, speed):
 	global_position = position
 	rotation = direction.angle()
 	velocity = direction * speed
-
+	
+	smoke_trail_object = smoke_trail.instantiate()
+	ObjectRegistry.register_effect(smoke_trail_object)
 
 func _physics_process(delta: float) -> void:
 	# Add smoke trail point
-	smoke_trail.add_point(global_position)
-	
+	# The bullet's lifespan must be longer than the smokes or this will error out !
+	smoke_trail_object.add_point(global_position)
 	var motion_vector = velocity * delta
 	var collision := move_and_collide(motion_vector)
 
@@ -40,7 +44,6 @@ func _physics_process(delta: float) -> void:
 		die()
 
 func die() -> void:
-
 	queue_free()
 
 func _on_lifespan_timeout():

@@ -1,14 +1,17 @@
 extends Line2D
 
-@export var limited_lifetime := false
+@export var limited_lifetime := true
+# Must have a greater lifespan than the bullet!
+@export var life_time_min: float = 2.0
+@export var life_time_max: float = 3.0
 @export var tick_speed := 0.05
 @export var wildness := 3.0  # how 'wild' the line2D will be moving
+@export var wild_speed := .1
 @export var min_spawn_distance := 5.0
 
 var gravity := Vector2.UP
-var lifetime := [3, 5]
 var tick := 0.0
-var wild_speed := 0.1
+
 var point_age := [0.0]  # points increase in 'wildness' the older it is
 
 func _ready():
@@ -27,11 +30,10 @@ func stop():
 			self, 
 			"modulate:a", 
 			0.0, 
-			randf_range(lifetime[0], lifetime[1])
+			randf_range(life_time_min, life_time_max)
 		).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 
 func _process(delta):
-	print(global_position)
 	# Do this to gain more control over the rate of the line2D changes
 	if tick > tick_speed:
 		tick = 0
