@@ -4,7 +4,6 @@ extends CanvasLayer
 @onready var states_stack_displayer_1 = $StatesStackDiplayer
 @onready var states_stack_displayer_2 = $StatesStackDiplayer2
 @onready var player_stats = $PlayerStats
-@onready var pause_menu = $PauseMenu
 @onready var settings_menu = $SettingsMenu
 
 func _ready():
@@ -29,6 +28,7 @@ func _unhandled_input(event):
 		settings_menu.open()
 	
 	if event.is_action_pressed("toggle_debug"):
+		print("YERE")
 		states_stack_displayer_1.visible = !states_stack_displayer_1.visible
 		states_stack_displayer_2.visible = !states_stack_displayer_2.visible
 		player_stats.visible = !player_stats.visible

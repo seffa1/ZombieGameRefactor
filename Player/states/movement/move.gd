@@ -9,6 +9,8 @@ The motion parent script handles the stamina regenerations.
 @export var STAMINA_USE_RATE: float = .03  # seconds / point depleted (smaller the number, faster the depletion)
 @export var MIN_SPRINT_STAMINA_COST: int = 10 # min amount of stamina you need in order to sprint
 
+@onready var velocity_component = $"../../VelocityComponent"
+
 # Initialize the state. E.g. change the animation
 func enter():
 	return
@@ -23,22 +25,26 @@ func handle_input(event: InputEvent):
 			emit_signal("finished", "sprint")
 			return
 
-func update(_delta):
+func update(delta):
 	# Rotate towards mouse
 	update_look_direction()
 	
-	var input_direction = get_input_direction()
+	var input_direction = get_input_direction().normalized()
 	if not input_direction:
 		emit_signal("finished", "idle")
 		return
 	
 	regenerate_stamina()
 	
-	# move the player
+	# Update the velocity component
 	if _is_moving_forward(input_direction):
-		owner.velocity = input_direction.normalized() * WALK_SPEED_FOWARD
+		velocity_component.max_velocity = WALK_SPEED_FOWARD
 	else:
-		owner.velocity = input_direction.normalized() * WALK_SPEED_BACKWARDS
+		velocity_component.max_velocity = WALK_SPEED_BACKWARDS
+	velocity_component.accelerate_in_direction(input_direction, delta)
+	
+	# move the player
+	owner.velocity = velocity_component.velocity
 	owner.move_and_slide()
 
 

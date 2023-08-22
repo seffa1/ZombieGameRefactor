@@ -14,6 +14,7 @@ extends Panel
 @onready var wave_number = $WaveNumber
 @onready var zombies_to_kill = $ZombiesToKill
 @onready var zombies_on_map = $ZombiesOnMap
+@onready var player_velocity = $Velocity
 
 func _ready():
 	set_as_top_level(true)
@@ -24,6 +25,7 @@ func _ready():
 	
 	Events.player_stamina_change.connect(_player_stamina_change)
 	Events.player_direction_change.connect(_player_direction_change)
+	Events.player_velocity_change.connect(_player_velocity_change)
 	Events.player_money_change.connect(_player_money_change)
 	Events.player_rotation_change.connect(_player_rotation_change)
 	Events.player_position_change.connect(_player_position_change)
@@ -47,6 +49,9 @@ func _on_zombies_to_kill_change(number: int):
 	
 func _player_direction_change(direction_string: String):
 	direction.text = direction_string
+
+func _player_velocity_change(velocity: Vector2):
+	player_velocity.text = str(velocity)
 
 func _update_equipped_clip_count(count: int):
 	clip_count.text = str(count)

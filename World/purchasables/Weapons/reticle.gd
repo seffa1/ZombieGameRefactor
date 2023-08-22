@@ -39,6 +39,26 @@ var _noise = FastNoiseLite.new() # used for weapon sway
 var i = 0 # used for weapon sway
 var weapon_sway_y_direction: int = 1  # flips between pos and negative based on sway_interval
 
+func calc_recoil_rotation(gun_position: Vector2) -> float:
+	"""
+	Based on the current width of the reticle, chooses a random vector
+	within it for the gun to use to shoot in that direction.
+	"""
+	var vector_to_mouse = get_global_mouse_position() - gun_position
+	
+	# vector pointing from mouse to edge of recoil indicator, perpendicular to player
+	# 1.57 is 90 deg in radians
+	var recoil_vector = vector_to_mouse.normalized().rotated(1.57) * recoil_amount 
+	
+	# Vector pointing from gun, to the outer edge of the recoil indicator
+	var max_recoil_vector = vector_to_mouse + recoil_vector
+	
+	# Find the angle from the mouse position, to outside of recoil indicator
+	var max_recoil_angle = vector_to_mouse.angle_to(max_recoil_vector)
+	
+	# Choose a random spot within this range on either direction
+	return randf_range(-max_recoil_angle, max_recoil_angle)
+
 func _set_reticle_direction(reticle: Polygon2D, offset: float):
 	match reticle.name:
 		"ReticleTop":

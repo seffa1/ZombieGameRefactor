@@ -122,12 +122,14 @@ func shoot() -> void:
 	fire_timer.start(fire_rate)
 	bullets_in_clip -= 1
 
-	var recoil_rotation = _calc_recoil_rotation(reticle.recoil_amount)
-#	print(recoil_rotation)
+	var recoil_rotation = reticle.calc_recoil_rotation(global_position)
 	reticle.apply_bullet_recoil()
 	
-	# TODO - do we have more intense shake for larger guns ?
-	Events.emit_signal("shake_screen", 5, .1)
+	# Screen shake - The larger the recoil, the larger the screen shake
+	Events.emit_signal("shake_screen", 3 + .05 * reticle.recoil_max, .1)
+	
+	# Player knockback in the opposite direction as the bullet direction calculation, the large the recoil the larger the knockback
+	Events.emit_signal("player_knockback", Vector2(1,0).rotated(global_rotation + recoil_rotation - deg_to_rad(180)) * 1 * reticle.recoil_max)
 	
 	# The parent of the gun is always the weapon manager, and the player is the owner of that
 	# Owner only gets the root parent of a node as it exists in the scene tree
@@ -167,21 +169,7 @@ func shoot() -> void:
 			rotation_direction *= -1
 			bullet_rotation += bullet_spread * (i+1) * rotation_direction
 
-func _calc_recoil_rotation(recoil_amount: float):
-	var vector_to_mouse = get_global_mouse_position() - global_position
-	
-	# vector pointing from mouse to edge of recoil indicator, perpendicular to player
-	# 1.57 is 90 deg in radians
-	var recoil_vector = vector_to_mouse.normalized().rotated(1.57) * recoil_amount 
-	
-	# Vector pointing from gun, to the outer edge of the recoil indicator
-	var max_recoil_vector = vector_to_mouse + recoil_vector
-	
-	# Find the angle from the mouse position, to outside of recoil indicator
-	var max_recoil_angle = vector_to_mouse.angle_to(max_recoil_vector)
-	
-	# Choose a random spot within this range on either direction
-	return randf_range(-max_recoil_angle, max_recoil_angle)
+
 
 func set_gun_level(weapon_level: int) -> void:
 	"""
@@ -234,3 +222,6 @@ func _reset_audio_stream():
 	
 func is_ammo_full() -> bool:
 	return bullets_in_clip == clip_size and bullet_reserve == max_bullet_reserve
+
+func toggle_crosshairs(value: bool):
+	reticle.visible = value

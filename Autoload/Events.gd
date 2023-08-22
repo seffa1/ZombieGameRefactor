@@ -16,6 +16,7 @@ signal player_log(message: String)
 signal update_interactable_log(message: String)
 signal player_stamina_change(stamina: int)
 signal player_direction_change(direction_string: String)
+signal player_velocity_change(velocity: Vector2)
 signal player_money_change(money: int)
 signal player_rotation_change(rotation)
 signal player_position_change(position: Vector2) # used by all zombies to track player, and debug UI
@@ -34,6 +35,7 @@ signal give_player_money(amount: int)
 signal player_buy_weapon()
 signal player_sprinting()
 signal player_stop_sprinting()
+signal player_knockback(direction: Vector2)
 
 
 # FX

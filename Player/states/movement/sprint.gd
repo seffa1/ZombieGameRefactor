@@ -6,8 +6,8 @@ the sprint movement state (this one) just handles player movement and leg animat
 """
 
 @export var SPRINT_SPEED_FORWARD: int = 500
-@export var SPRINT_SPEED_BACKWARDS: int = 250
 
+@onready var velocity_component = $"../../VelocityComponent"
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -50,21 +50,23 @@ func update(delta):
 	deplete_stamina()
 	
 	# move the player
-	var input_direction = get_input_direction()
+	var input_direction = get_input_direction().normalized()
 	if not input_direction:
 		Events.emit_signal("player_stop_sprinting")
 		emit_signal("finished", "previous")
 		return
 	
 	if _is_moving_forward(input_direction):
-		owner.velocity = input_direction.normalized() * SPRINT_SPEED_FORWARD
+		# move the player
+		velocity_component.max_velocity = SPRINT_SPEED_FORWARD
+		velocity_component.accelerate_in_direction(input_direction, delta)
+		owner.velocity = velocity_component.velocity
+		owner.move_and_slide()
 	else:
 		# you cant sprint backwards
 		Events.emit_signal("player_stop_sprinting")
 		emit_signal("finished", "previous")
 		return
-	
-	owner.move_and_slide()
 
 func _on_animation_finished(anim_name):
 	return

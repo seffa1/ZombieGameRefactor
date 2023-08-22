@@ -19,7 +19,11 @@ audio_reload_finished = ExtResource("4_jne3a")
 audio_shoot_gun_shot = ExtResource("5_agwfw")
 
 [node name="Audio" parent="." index="2"]
-volume_db = -5.814
+volume_db = -8.669
+
+[node name="Reticle" parent="." index="3"]
+recoil_per_shot = 25.0
+recoil_max = 40.0
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="4"]
 position = Vector2(98, 8)

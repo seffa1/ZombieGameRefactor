@@ -105,7 +105,8 @@ offset_right = 929.0
 offset_bottom = 129.0
 text = "WaveNumber:
 ZombiesToKill:
-ZombiesOnMap:"
+ZombiesOnMap:
+Velocity:"
 
 [node name="WaveNumber" type="Label" parent="."]
 layout_mode = 0
@@ -121,3 +122,10 @@ offset_bottom = 23.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Velocity" type="Label" parent="."]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 82.0
+offset_right = 1396.0
+offset_bottom = 105.0

@@ -50,14 +50,14 @@ func _physics_process(delta):
 	if nagivation_agent.is_navigation_finished():
 		return
 	movement_direction = to_local(nagivation_agent.get_next_path_position()).normalized()
-	velocity_component.accelerate_in_direction(movement_direction)
+	velocity_component.velocity = movement_direction
 	
 	# Context based steering velocity update
 	if use_context_steering:
 		set_interest(velocity_component.velocity)
 		set_danger()
 		var chosen_direction = choose_direction()
-		velocity_component.accelerate_in_direction(chosen_direction)
+		velocity_component.velocity = chosen_direction
 
 func _ready():
 	
