@@ -108,6 +108,7 @@ linear_damp = 3.0
 angular_damp = 2.0
 script = ExtResource("1_7o38n")
 free_time = 5.0
+spawn_animation = 1
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

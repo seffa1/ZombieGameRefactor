@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca2v6t7upnt8m"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_4bqbb"]
+[ext_resource type="Script" path="res://VFX/Gore/blood_splatters/blood_splatter.gd" id="2_oyyiv"]
+[ext_resource type="Texture2D" uid="uid://brwbw6qxps3w4" path="res://VFX/Gore/blood_splatters/images/awezbloodrip/Blood01.png" id="3_57jgo"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_4h30v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmhpe"]
+
+[node name="BloodSplatter" instance=ExtResource("1_4bqbb")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_oyyiv")
+splatter_size = 100
+free_time = 20.0
+spawn_animation = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_qmhpe")
+
+[node name="Sprite" type="Sprite2D" parent="ScaleController" index="0"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_57jgo")
+
+[node name="DampAnimator" parent="." index="4" instance=ExtResource("4_4h30v")]
+final_linear_damp_value = 1000
+final_angular_damp_value = 1000
+hang_time = 0.4
+tween_duration = 0.01

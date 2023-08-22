@@ -5,6 +5,7 @@ Activates all the VFX spawns with slightly different times.
 """
 
 @onready var body_parts = $BodyPartsContainer
+@onready var blood_spawner = $BloodSpawner
 
 var last_damage_position: Vector2
 
@@ -21,5 +22,5 @@ func bullet_impact(velocity: Vector2):
 	"""
 	VFX for a bullet hit.
 	"""
-	print("bullet hit")
-	return
+	blood_spawner.spawn_item(velocity.angle()  - deg_to_rad(90))
+

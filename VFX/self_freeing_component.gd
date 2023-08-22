@@ -8,14 +8,16 @@ Free time should be longer than the spawn animation, which is one second.
 @onready var timer: Timer = $Timer
 @onready var animation_player = $AnimationPlayer
 
-@export_enum("upwards", "downwards") var spawn_direction
+@export_enum("upwards", "downwards", "splatter") var spawn_animation
 
 
 func _ready():
-	if spawn_direction == 0:
+	if spawn_animation == 0:
 		animation_player.play("spawn_upwards")
-	elif spawn_direction == 1:
+	elif spawn_animation == 1:
 		animation_player.play("spawn_downwards")
+	elif spawn_animation == 2:
+		animation_player.play("splatter")
 	
 	timer.start(free_time)
 

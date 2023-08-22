@@ -15,7 +15,7 @@ linear_damp = 1.0
 angular_damp = 10.0
 script = ExtResource("2_pgctk")
 free_time = 5.0
-spawn_direction = 0
+spawn_animation = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_gkbvq")

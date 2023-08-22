@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4akdgdbo2bsd"]
+[gd_scene load_steps=5 format=3 uid="uid://c4akdgdbo2bsd"]
 
 [ext_resource type="Script" path="res://VFX/Gore/gore_explosion.gd" id="1_l6oq5"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_qhdpo"]
 [ext_resource type="PackedScene" uid="uid://bifoihe0j2ej6" path="res://VFX/Gore/BodyPart.tscn" id="3_qawl7"]
+[ext_resource type="PackedScene" uid="uid://ca2v6t7upnt8m" path="res://VFX/Gore/blood_splatters/BloodSplatter.tscn" id="4_rwajs"]
 
 [node name="GoreExplosion" type="Node2D"]
 script = ExtResource("1_l6oq5")
@@ -15,4 +16,10 @@ item_ejection_speed = 300.0
 item_ejection_speed_variance = 0.1
 item_ejection_angle_variance = 0.1
 
-[node name="BloodContainer" type="Node2D" parent="."]
+[node name="BloodSpawner" parent="." instance=ExtResource("2_qhdpo")]
+object_to_spawn = ExtResource("4_rwajs")
+item_ejection_speed = 150.0
+item_ejection_speed_variance = 1.0
+item_rotation_variance = 3.1
+item_ejection_torque = 2.08165e-12
+item_ejection_torque_variance = 2.08165e-12

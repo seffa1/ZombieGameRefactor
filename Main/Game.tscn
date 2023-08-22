@@ -802,7 +802,7 @@ position = Vector2(0, 7.62939e-06)
 position = Vector2(116, 1439)
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" instance=ExtResource("16_k1jbq")]
-position = Vector2(1796, 357)
+position = Vector2(606, 409)
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("21_5xg26")]
 
