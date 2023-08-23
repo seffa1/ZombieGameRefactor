@@ -13,10 +13,9 @@ func enter():
 	# Give player money
 	Events.emit_signal("give_player_money", death_money_reward)
 
+func _on_death_animation_finished():
 	# signal for the zombie manager
 	Events.emit_signal("zombie_death", owner)
-
-func _on_death_animation_finished():
 	gore_vfx.zombie_death()
 	owner.queue_free()
 	return

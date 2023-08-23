@@ -17,11 +17,11 @@ func zombie_death():
 	VFX for a generic zombie death.
 	"""
 	play_splatter()
-	var angle = (last_damage_position - global_position).angle()
+	var angle = (global_position - last_damage_position).angle()
 	
 	# Spawn gore in the direction of the velocity (the -90 is because the vfx spawner defaults to a vector.DOWN
 	for body_part_spawner in body_parts.get_children():
-		body_part_spawner.spawn_item(angle - deg_to_rad(-270))
+		body_part_spawner.spawn_item(angle - deg_to_rad(90))
 
 func bullet_impact(velocity: Vector2):
 	"""

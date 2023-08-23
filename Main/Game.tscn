@@ -797,6 +797,7 @@ scale = Vector2(0.999999, 0.999999)
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("15_isj6m")]
 position = Vector2(0, 7.62939e-06)
+MAX_ZOMBIES_ON_MAP = 1
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("16_k1jbq")]
 position = Vector2(116, 1439)

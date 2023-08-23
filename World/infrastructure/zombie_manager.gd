@@ -72,6 +72,7 @@ func _process(_delta):
 			zombie_container.add_child(zombie_instance)
 			zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
 	zombies_on_map = len(get_tree().get_nodes_in_group("Zombies"))  # This is just a safe-gaurd incase the counter gets in a bad state
+	print(zombies_on_map)
 
 func _select_spawners():
 	# TODO - only select spawners close to the player, or in a room the player has opened
