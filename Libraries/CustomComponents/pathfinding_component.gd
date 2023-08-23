@@ -53,16 +53,17 @@ func _physics_process(delta):
 		velocity_component.decelerate(delta)
 		return
 	movement_direction = to_local(nagivation_agent.get_next_path_position()).normalized()
-	velocity_component.accelerate_in_direction(movement_direction, delta)
 #	velocity_component.velocity = movement_direction
 	
 	# Context based steering velocity update
 	if use_context_steering:
-		set_interest(velocity_component.velocity)
+		set_interest(movement_direction)
 		set_danger()
 		var chosen_direction = choose_direction()
 		velocity_component.accelerate_in_direction(chosen_direction, delta)
 #		velocity_component.velocity = chosen_direction
+	else:
+		velocity_component.accelerate_in_direction(movement_direction, delta)
 
 func _ready():
 	

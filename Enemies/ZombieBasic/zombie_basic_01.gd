@@ -40,9 +40,6 @@ func init(global_position: Vector2):
 	target_window = target_window
 	global_position = global_position
 
-func _process(delta):
-	print(velocity)
-
 # TODO - move this to a rotational component with an export array to drop
 # nodes in that need to be rotated
 func update_rotation():

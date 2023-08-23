@@ -10,7 +10,6 @@ The Environment must have background mode set to 'Canvas' in and have
 
 func _ready() -> void:
 	value = GlobalWorldEnvironment.get_environment().adjustment_brightness
-	value_changed.connect(_on_value_changed)
 
 func _on_value_changed(_value: float) -> void:
 	GlobalWorldEnvironment.get_environment().adjustment_brightness = _value

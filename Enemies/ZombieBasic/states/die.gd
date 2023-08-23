@@ -2,17 +2,22 @@ extends "res://Libraries/state.gd"
 
 @export var death_money_reward: int = 100
 @onready var gore_vfx = $"../../GoreVFX"
+@onready var animation_player = $"../../AnimationPlayer"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	owner.velocity_component.velocity = 0.0
+	# disable hurt box
+	owner.hurt_box_component.monitorable = false
+	owner.hurt_box_component.monitoring = false
+	animation_player.play("zombie_death")
 	# Give player money
 	Events.emit_signal("give_player_money", death_money_reward)
 
 	# signal for the zombie manager
 	Events.emit_signal("zombie_death", owner)
-	
-	# die
+
+func _on_death_animation_finished():
+	gore_vfx.zombie_death()
 	owner.queue_free()
 	return
 
@@ -21,7 +26,10 @@ func exit():
 	return
 
 func update(delta):
-	# TODO - Movement code
+	# Movement code
+	owner.velocity_component.decelerate(delta)
+	owner.velocity = owner.velocity_component.velocity
+	owner.move_and_slide()
 	return
 
 func _on_animation_finished(anim_name):

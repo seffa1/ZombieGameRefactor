@@ -41,7 +41,7 @@ func _on_area_entered(area: Area2D):
 		owner.velocity_component.impulse_in_direction(knock_back_vector)
 		owner.velocity = owner.velocity_component.velocity
 		
-		# Check if we need to spawn a death impact
+		# TODO - head shot VFX and special animation
 		if health_component.health <= 0:
-			gore_vfx.zombie_death(area.owner.velocity)
+			gore_vfx.play_splatter()
 

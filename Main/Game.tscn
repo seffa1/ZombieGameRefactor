@@ -803,7 +803,7 @@ position = Vector2(116, 1439)
 spawner_active = false
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" instance=ExtResource("16_k1jbq")]
-position = Vector2(884, 95)
+position = Vector2(1796, 353)
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("21_5xg26")]
 
