@@ -30,7 +30,8 @@ func update(delta):
 		return
 
 	# Move - velocity should be getting updated by the pathfinding component
-	owner.velocity = owner.velocity_component.velocity.normalized() * WALK_SPEED_FOWARD
+#	owner.velocity = owner.velocity_component.velocity.normalized() * WALK_SPEED_FOWARD
+	owner.velocity = owner.velocity_component.velocity
 	owner.move_and_slide()
 	
 	# Rotate

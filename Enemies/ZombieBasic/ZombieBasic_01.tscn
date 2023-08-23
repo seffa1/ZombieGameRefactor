@@ -1372,7 +1372,7 @@ debug_color = Color(0.2, 0.607843, 0.588235, 0.419608)
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_ylhad")]
 velocity_component = NodePath("../VelocityComponent")
 path_update_interval = 0.5
-draw_lines = false
+use_context_steering = false
 
 [node name="NavigationAgent2D" parent="PathfindingComponent" index="0"]
 avoidance_enabled = false
@@ -1380,7 +1380,6 @@ radius = 100.0
 neighbor_distance = 5977.77
 time_horizon_agents = 7.27
 time_horizon_obstacles = 6.02
-debug_enabled = false
 
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("1_mmyv0")
@@ -1407,9 +1406,12 @@ script = ExtResource("8_s40qx")
 script = ExtResource("4_d72v0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_dw2ec")]
-max_health = 150
+max_health = 100000
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_505g5")]
+max_velocity = 150.0
+acceleration_coefficient = 600.0
+friction = 800.0
 
 [node name="StatusRecieverComponent" parent="." node_paths=PackedStringArray("velocity_component", "health_component") instance=ExtResource("5_xohst")]
 velocity_component = NodePath("../VelocityComponent")

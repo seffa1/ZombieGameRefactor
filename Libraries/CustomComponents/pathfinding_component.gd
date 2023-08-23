@@ -6,8 +6,6 @@ the target position (A*), and then calculates any avoidance (context-based-steer
 The target position is supplied by the owner.
 """
 
-
-
 @export var velocity_component: Node
 @onready var path_update_timer: Timer = $updatePathTimer
 @onready var nagivation_agent: NavigationAgent2D = $NavigationAgent2D
@@ -34,7 +32,8 @@ var chosen_dir = Vector2.ZERO
 
 func update_target_position(position: Vector2):
 	"""
-	Each time the player's position changes, a signal goes out. The owner of this
+	When a zombie spawns the target position is a window. Once inside, each time 
+	the player's position changes, a signal goes out. The owner of this
 	pathfinding component calls this each time is consumes the signal. An interval
 	is used for performance/debugging reasons
 	"""
@@ -48,16 +47,22 @@ func update_target_position(position: Vector2):
 func _physics_process(delta):
 	# A* pathfinding velocity update
 	if nagivation_agent.is_navigation_finished():
+		velocity_component.decelerate(delta)
+		return
+	if (nagivation_agent.target_position - global_position).length() < 50:
+		velocity_component.decelerate(delta)
 		return
 	movement_direction = to_local(nagivation_agent.get_next_path_position()).normalized()
-	velocity_component.velocity = movement_direction
+	velocity_component.accelerate_in_direction(movement_direction, delta)
+#	velocity_component.velocity = movement_direction
 	
 	# Context based steering velocity update
 	if use_context_steering:
 		set_interest(velocity_component.velocity)
 		set_danger()
 		var chosen_direction = choose_direction()
-		velocity_component.velocity = chosen_direction
+		velocity_component.accelerate_in_direction(chosen_direction, delta)
+#		velocity_component.velocity = chosen_direction
 
 func _ready():
 	

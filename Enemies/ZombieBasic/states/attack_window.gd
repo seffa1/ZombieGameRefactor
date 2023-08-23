@@ -7,6 +7,7 @@ If a zombie is outside and within reach of a window, do break window animation.
 # Initialize the state. E.g. change the animation
 func enter():
 	owner.animation_player.play("zombie_break_window_basic")
+	owner.velocity_component.velocity = 0.0
 
 # Clean up the state. Reinitialize values like a timer
 func exit():

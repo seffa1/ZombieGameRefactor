@@ -37,7 +37,9 @@ func _on_area_entered(area: Area2D):
 		
 		# Apply knock back
 		var knock_back = area.bullet_knockback
-		print(knock_back)
+		var knock_back_vector = area.owner.velocity.normalized() * knock_back
+		owner.velocity_component.impulse_in_direction(knock_back_vector)
+		owner.velocity = owner.velocity_component.velocity
 		
 		# Check if we need to spawn a death impact
 		if health_component.health <= 0:

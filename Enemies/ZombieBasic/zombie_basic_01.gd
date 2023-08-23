@@ -40,13 +40,24 @@ func init(global_position: Vector2):
 	target_window = target_window
 	global_position = global_position
 
+func _process(delta):
+	print(velocity)
 
+# TODO - move this to a rotational component with an export array to drop
+# nodes in that need to be rotated
 func update_rotation():
 	"""
 	Called by the move state to update the rotation of the zombie.
 	"""
-	var STEER_FORCE = .1
+	var STEER_FORCE = 0.1
 	var angle = velocity_component.velocity.angle()
+	
+	# if the zombies velocity is in the opposite direction as the target position, instead
+	# of rotating towards the velcity, rotate towards the target position.
+	# This was put in because bullet knockbacks were causing zombies to turn towards
+	# the direction they were getting pushed back and it looked bad.
+	if velocity_component.velocity.normalized().dot(pathfinding_component.nagivation_agent.target_position.normalized()) < .2:
+		angle = (pathfinding_component.nagivation_agent.target_position - global_position).angle()
 	
 	sprite.rotation = lerp_angle(sprite.rotation, angle - deg_to_rad(90), STEER_FORCE) 
 	hurt_box_component.rotation = lerp_angle(hurt_box_component.rotation, angle, STEER_FORCE) 

@@ -5,6 +5,7 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
+	owner.velocity_component.velocity = 0.0
 	# Give player money
 	Events.emit_signal("give_player_money", death_money_reward)
 

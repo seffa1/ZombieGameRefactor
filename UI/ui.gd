@@ -28,7 +28,6 @@ func _unhandled_input(event):
 		settings_menu.open()
 	
 	if event.is_action_pressed("toggle_debug"):
-		print("YERE")
 		states_stack_displayer_1.visible = !states_stack_displayer_1.visible
 		states_stack_displayer_2.visible = !states_stack_displayer_2.visible
 		player_stats.visible = !player_stats.visible
