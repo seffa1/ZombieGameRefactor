@@ -9,7 +9,7 @@ objects that should be untied from their spawners' lifespan when freed.
 @onready var _projectiles := $Projectiles
 
 func register_effect(effect: Node) -> void:
-	_effects.add_child(effect)
+	_effects.call_deferred("add_child", effect)
 
 func register_projectile(projectile: Node) -> void:
 	_projectiles.add_child(projectile)

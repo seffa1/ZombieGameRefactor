@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4akdgdbo2bsd"]
+[gd_scene load_steps=9 format=3 uid="uid://c4akdgdbo2bsd"]
 
 [ext_resource type="Script" path="res://VFX/Gore/gore_explosion.gd" id="1_l6oq5"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_qhdpo"]
 [ext_resource type="PackedScene" uid="uid://bifoihe0j2ej6" path="res://VFX/Gore/BodyPart.tscn" id="3_qawl7"]
 [ext_resource type="PackedScene" uid="uid://ca2v6t7upnt8m" path="res://VFX/Gore/blood_splatters/BloodSplatter.tscn" id="4_rwajs"]
+[ext_resource type="PackedScene" uid="uid://dj8dsfwvk6oas" path="res://Libraries/CustomComponents/AudioRandomizer.tscn" id="5_e131a"]
+[ext_resource type="AudioStream" uid="uid://dvomjtk12mgyv" path="res://VFX/Gore/sounds/bullet_impacts/BRS_Bullet_Hit_Body_Flesh_07.wav" id="6_tenqx"]
+[ext_resource type="AudioStream" uid="uid://d0imhaniij8sw" path="res://VFX/Gore/sounds/bullet_impacts/BRS_Bullet_Hit_Body_Flesh_16.wav" id="7_0cr2r"]
+[ext_resource type="AudioStream" uid="uid://cy4dt0ytjfx67" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactBody_BW.54390.wav" id="9_ydj2t"]
 
 [node name="GoreExplosion" type="Node2D"]
 script = ExtResource("1_l6oq5")
@@ -23,3 +27,8 @@ item_ejection_speed_variance = 1.0
 item_rotation_variance = 3.1
 item_ejection_torque = 2.08165e-12
 item_ejection_torque_variance = 2.08165e-12
+
+[node name="BulletImpacts" parent="." instance=ExtResource("5_e131a")]
+volume_db = -6.0
+bus = &"GameAudio"
+audio_clips = Array[AudioStreamWAV]([ExtResource("6_tenqx"), ExtResource("7_0cr2r"), ExtResource("9_ydj2t")])

@@ -3031,7 +3031,7 @@ script = ExtResource("16_gldpa")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("16_gye32")]
 acceleration_coefficient = 600.0
-friction = 400.0
+friction = 800.0
 
 [node name="StateMachineMovement" type="Node" parent="."]
 script = ExtResource("1_wjaak")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4k55vme8b3ge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25p2i"]
-size = Vector2(85, 293)
+size = Vector2(205.5, 395.5)
 
 [node name="InsideBuildingTrigger" type="Area2D"]
 collision_layer = 8192

@@ -730,34 +730,34 @@ position = Vector2(1463, 353)
 [node name="Triggers" type="Node" parent="GameWorld/Environment"]
 
 [node name="InsideBuildingTrigger" parent="GameWorld/Environment/Triggers" instance=ExtResource("16_u6unb")]
-position = Vector2(1353, 366)
+position = Vector2(1300, 366)
 
 [node name="InsideBuildingTrigger2" parent="GameWorld/Environment/Triggers" instance=ExtResource("16_u6unb")]
-position = Vector2(1052, 803)
+position = Vector2(1062, 739)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger4" parent="GameWorld/Environment/Triggers" instance=ExtResource("16_u6unb")]
-position = Vector2(216, 779)
+position = Vector2(216, 739)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger5" parent="GameWorld/Environment/Triggers" instance=ExtResource("16_u6unb")]
-position = Vector2(968, 32)
+position = Vector2(986, 63)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger6" parent="GameWorld/Environment/Triggers" instance=ExtResource("16_u6unb")]
-position = Vector2(539, 47)
+position = Vector2(538, 72)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger7" parent="GameWorld/Environment/Triggers" instance=ExtResource("16_u6unb")]
-position = Vector2(-795, 412)
+position = Vector2(-798, 470)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger8" parent="GameWorld/Environment/Triggers" instance=ExtResource("16_u6unb")]
-position = Vector2(-1041, 688)
+position = Vector2(-996, 688)
 rotation = 3.14159
 
 [node name="InsideBuildingTrigger3" parent="GameWorld/Environment/Triggers" instance=ExtResource("16_u6unb")]
-position = Vector2(-806, 990)
+position = Vector2(-803, 918)
 rotation = 1.57079
 
 [node name="TileMap" type="TileMap" parent="GameWorld/Environment"]
@@ -802,7 +802,7 @@ position = Vector2(0, 7.62939e-06)
 position = Vector2(116, 1439)
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" instance=ExtResource("16_k1jbq")]
-position = Vector2(606, 409)
+position = Vector2(884, 95)
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("21_5xg26")]
 
