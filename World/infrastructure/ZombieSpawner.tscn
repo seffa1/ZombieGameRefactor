@@ -4,6 +4,7 @@
 
 [node name="ZombieSpawner" type="Node2D" groups=["ZombieSpawners"]]
 script = ExtResource("1_3jiqe")
+spawn_interval = 3.0
 
 [node name="SpawnTimer" type="Timer" parent="."]
 one_shot = true
