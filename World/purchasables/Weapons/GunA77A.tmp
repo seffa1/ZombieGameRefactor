@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://85bf3y3ufwct"]
+
+[ext_resource type="Script" path="res://World/purchasables/Weapons/gun.gd" id="1_m3j5y"]
+[ext_resource type="PackedScene" uid="uid://c012riui7bd3s" path="res://Reticle.tscn" id="2_iod0x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b425l"]
+height = 182.0
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_m3j5y")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="DebugShape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(58, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_b425l")
+debug_color = Color(0.419608, 0.603922, 0, 0.419608)
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+bus = &"GameAudio"
+
+[node name="Reticle" parent="." instance=ExtResource("2_iod0x")]

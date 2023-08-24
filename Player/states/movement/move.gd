@@ -13,6 +13,7 @@ The motion parent script handles the stamina regenerations.
 
 # Initialize the state. E.g. change the animation
 func enter():
+	Events.emit_signal("player_moving")
 	return
 
 # Clean up the state. Reinitialize values like a timer

@@ -10,6 +10,7 @@ The motion parent script handles the stamina regenerations.
 func enter():
 	# TODO - owner.get_node("AnimationPlayer").play("idle")
 	Events.emit_signal("player_direction_change", "n/a")
+	Events.emit_signal("player_idle")
 	return
 
 func update(delta):

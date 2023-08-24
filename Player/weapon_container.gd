@@ -38,7 +38,6 @@ The shoot signal flow:
 @onready var pistol_01 = preload("res://World/purchasables/Weapons/Pistol_01/GunPistol01.tscn")
 
 
-
 # the names and objects array should always be in the same order
 # the names array just makes looking up weapons easier so we dont have to try
 # and figure out what gun's the objects are. The weapon index sets

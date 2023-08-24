@@ -33,10 +33,13 @@ signal zombies_on_map_change(quantity: int)
 # Player Interactions
 signal give_player_money(amount: int)
 signal player_buy_weapon()
-signal player_sprinting()
 signal player_stop_sprinting()
 signal player_knockback(direction: Vector2)
 
+# Player states (used for the reticle)
+signal player_idle()
+signal player_moving()
+signal player_sprinting()
 
 # FX
 signal shake_screen(intensity, duration)
