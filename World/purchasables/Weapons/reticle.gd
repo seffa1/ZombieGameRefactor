@@ -22,8 +22,7 @@ function should be applied when the gun shoots.
 @export var recoil_per_shot: float = 30.0 # pixels the reticle moves per shot, set on a per-gun basis - should be constant
 @export var gun_recoil_max: float = 100.0 # max recoil amount which the gun hits when sprinting
 @export var gun_recoil_min: float = 0.0  # min recoil value the guns can reach during ADS. All guns should set this to 0 except shotguns typically
-@export var recoil_reduction_amount: int = 2 # the amount of recoil lost per interval 
-@export var recoil_reduction_interval: float = .005 # how many seconds to lose a recoil amount - should be constant
+@export var recoil_reduction_amount: int = 1 # the amount of recoil lost per interval 
 
 # Weapon sway
 @export var weapon_sway: bool = true  # feature toggle
@@ -106,28 +105,23 @@ func set_recoil_state(state: String):
 	# Set the current state as whatever is at the front of the queue
 	var current_state = state_stack[0]
 	
-	# Based on the state, set the parameters of the reticle
+	# Based on the state, set the reticle min and max values
 	match state_stack:
 		["aim_down_sight", "idle"]:
 			recoil_min = gun_recoil_min
 			recoil_max = gun_recoil_max * .25
-#			recoil_reduction_amount = gun_recoil_reduction_amount * 3
 		["aim_down_sight", "moving"]:
 			recoil_min = gun_recoil_min + 10.0
 			recoil_max = gun_recoil_max * .6
-#			recoil_reduction_amount = gun_recoil_reduction_amount * 3
 		["idle"]:
 			recoil_min = gun_recoil_min + 30.0
 			recoil_max = gun_recoil_max * .8
-#			recoil_reduction_amount = gun_recoil_reduction_amount * 2
 		["moving"]:
 			recoil_min = gun_recoil_min + 60.0
 			recoil_max = gun_recoil_max * 1.4
-#			recoil_reduction_amount = gun_recoil_reduction_amount * 1
 		["sprinting"]: 
 			recoil_min = gun_recoil_max * 1.9
 			recoil_max = gun_recoil_max * 2.0
-#			recoil_reduction_amount = gun_recoil_reduction_amount / 2
 		_:
 			assert("Recieved an unhandled state")
 	assert(recoil_min <= recoil_max, "recoil min greater than max, adjust values")
@@ -179,22 +173,18 @@ func _set_reticle(offset: float):
 func apply_bullet_recoil():
 	recoil_amount += recoil_per_shot
 
-
 @onready var sway_vector = Vector2.RIGHT
 
-func _process(_delta):
+func _process(delta):
 	if !Globals.mouse_on_screen():
 		return
 
-	# reduce your recoil over time
-	if recoil_reduction_timer.is_stopped():
-		recoil_reduction_timer.start(recoil_reduction_interval)
-		
-		# If the min value increases because we move, release ADS, or sprint, add to recoil amount instead of clamping it so it doesnt jump instantly
-		if recoil_amount < recoil_min:
-			recoil_amount += recoil_reduction_amount * 3.0
-		else:
-			recoil_amount -= recoil_reduction_amount
+	# reduce the recoil each frame
+	# If the min value increases because we move, release ADS, or sprint, add to recoil amount instead of clamping it so it doesnt jump instantly
+	if recoil_amount < recoil_min:
+		recoil_amount += recoil_reduction_amount * 3.0
+	else:
+		recoil_amount -= recoil_reduction_amount
 
 	# Aim down sight
 	if Input.is_action_just_pressed("aim_down_sight"):

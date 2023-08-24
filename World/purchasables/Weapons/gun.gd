@@ -169,8 +169,6 @@ func shoot() -> void:
 			rotation_direction *= -1
 			bullet_rotation += bullet_spread * (i+1) * rotation_direction
 
-
-
 func set_gun_level(weapon_level: int) -> void:
 	"""
 	Must be defined by children classes. Describes how weapon parameters are affected by upgrading.

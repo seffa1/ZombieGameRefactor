@@ -6,9 +6,6 @@
 script = ExtResource("1_co84u")
 weapon_sway = false
 
-[node name="RecoilReductionTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="SwayTimer" type="Timer" parent="."]
 one_shot = true
 
