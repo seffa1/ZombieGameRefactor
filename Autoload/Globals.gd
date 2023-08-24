@@ -48,7 +48,7 @@ const ZOMBIE_INDEX = {
 # How many enemies per wave
 # TODO - replace with a curve or equation
 const WAVE_INDEX = {
-	1: 100,
+	1: 1,
 	2: 20,
 	3: 30,
 	4: 30,

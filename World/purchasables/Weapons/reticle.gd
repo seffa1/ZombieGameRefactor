@@ -30,28 +30,39 @@ var weapon_sway_y_direction: int = 1  # flips between pos and negative based on 
  # feature toggle
 @export var weapon_recoil: bool = true 
 
-# Config values
+# GUN SPECIFIC CONFIGURATION
 @export var recoil_reduction_interval: float = .005 # how many seconds to lose a recoil amount - should be constant
-
-# Recoil control
 @export var recoil_per_shot: float = 30.0 # pixels the reticle moves per shot, set on a per-gun basis
-@export var recoil_max: float = 100.0 # max pixels the reticle moves, adjusted by the state
-@export var recoil_min: float = 0.0  # max pixels the reticle moves, adjusted by the state. All guns should set this to 0 except shotguns typically
-@export var recoil_reduct_amount: int = 2 # the amount of recoil lost per interval - adjusted by the state
+@export var recoil_reduction_amount: int = 2 # the amount of recoil lost per interval 
+@export var gun_recoil_min: float = 0.0  # min recoil value the guns can reach during ADS. All guns should set this to 0 except shotguns typically
+@export var gun_recoil_max: float = 100.0 # max recoil amount which the gun hits when sprinting
 
 
-# Variables - recoil
+# Recoil control values set by the state
+var recoil_min: float
+var recoil_max: float
+#var recoil_reduction_amount: int
+
+
+# The current recoil amount, controls reticle placement and thus bullet accuracy
 var recoil_amount: float = 0:  # tracks the current recoil value which determines cross-hair state and bullet accuracy
 	set(value):
-		recoil_amount = clamp(value, 0, recoil_max)
+		recoil_amount = clamp(value, recoil_min, recoil_max)
+		print("SHOOT")
+		print(value)
+		print(recoil_amount)
 		_set_reticle(recoil_amount)
 	get:
 		return recoil_amount
 
 func _ready():
+#	assert(gun_recoil_min * 2.0 < gun_recoil_max, " Recoil max isnt far enough away from recoil min, state machine will break.")
+#	assert(gun_recoil_max / 2.0 > gun_recoil_min,  " Recoil max isnt far enough away from recoil min, state machine will break.")
+	set_recoil_state("idle")
 	Events.player_idle.connect(_player_idle)
 	Events.player_moving.connect(_player_moving)
 	Events.player_sprinting.connect(_player_sprinting)
+	Events.player_stop_sprinting.connect(_player_stop_sprinting)
 
 # We use a state queue just for aiming down sight
 # So if you ADS, then let go and you didnt change player states, you go back to the previous state
@@ -62,8 +73,6 @@ func set_recoil_state(state: String):
 	State machine for the reticle which updates its properties based on the player's movement states.
 	In order of how accurate the reticle should be.
 	"""
-	
-	assert( !(state_stack[0] == "aim_down_sight" and state == "aim_down_sight"), "Getting ADS signal while already ADSing" )
 	
 	# If the player is ADS and they sprint, cancel the ADS
 	if state_stack[0] == "aim_down_sight" and state == "sprinting":
@@ -83,40 +92,67 @@ func set_recoil_state(state: String):
 	elif state == "release_aim_down_sight" and state_stack[0] == "sprinting":
 		state_stack = ["sprinting"]
 	
+	# If player stops sprinting
+	elif state_stack[0] == "sprinting" and state == "stopped_sprinting":
+		state_stack = ["moving"]
+	
 	# aiming down site
 	elif state == "aim_down_sight":
 		state_stack.push_front(state)
 		# ["aim_down_sight", "idle"]
 	elif state == "release_aim_down_sight":
 		state_stack.pop_front()
-		print("HERE")
 		# ["aim_down_sight", "idle"] -> relase ADS -> ["idle"]
 	else:
 		state_stack = [state]
 		# ["idle"]
 	
 	# Set the current state as whatever is at the front of the queue
-	print(state_stack)
 	var current_state = state_stack[0]
 	
 	# Based on the state, set the parameters of the reticle
-	match current_state:
-		"aim_down_sight":
-			pass
-		"idle":
-			pass
-		"moving":
-			pass
-		"sprinting":
-			pass
-
+#	@export var recoil_max: float = 100.0 # max pixels the reticle moves, adjusted by the state
+#	@export var recoil_min: float = 0.0  # max pixels the reticle moves, adjusted by the state. All guns should set this to 0 except shotguns typically
+#	@export var recoil_reduction_amount:
+	
+	match state_stack:
+		["aim_down_sight", "idle"]:
+			recoil_min = gun_recoil_min
+			recoil_max = gun_recoil_max * .25
+#			recoil_reduction_amount = gun_recoil_reduction_amount * 3
+		["aim_down_sight", "moving"]:
+			recoil_min = gun_recoil_min + 10.0
+			recoil_max = gun_recoil_max * .6
+#			recoil_reduction_amount = gun_recoil_reduction_amount * 3
+		["idle"]:
+			recoil_min = gun_recoil_min + 30.0
+			recoil_max = gun_recoil_max * .8
+#			recoil_reduction_amount = gun_recoil_reduction_amount * 2
+		["moving"]:
+			recoil_min = gun_recoil_min + 60.0
+			recoil_max = gun_recoil_max * 1.4
+#			recoil_reduction_amount = gun_recoil_reduction_amount * 1
+		["sprinting"]: 
+			recoil_min = gun_recoil_max * 1.9
+			recoil_max = gun_recoil_max * 2.0
+#			recoil_reduction_amount = gun_recoil_reduction_amount / 2
+		_:
+			assert("Recieved an unhandled state")
+	assert(recoil_min < recoil_max, "recoil min greater than max, adjust values")
+	print(state_stack)
+	print(recoil_min)
+	print(recoil_max)
+	print(recoil_reduction_amount)
+	
 func _player_idle():
 	set_recoil_state("idle")
 func _player_moving():
 	set_recoil_state("moving")
 func _player_sprinting():
 	set_recoil_state("sprinting")
-
+func _player_stop_sprinting():
+	set_recoil_state("stopped_sprinting")
+	
 func calc_recoil_rotation(gun_position: Vector2) -> float:
 	"""
 	Based on the current width of the reticle, chooses a random vector
@@ -155,6 +191,7 @@ func _set_reticle(offset: float):
 func apply_bullet_recoil():
 	recoil_amount += recoil_per_shot
 
+
 @onready var sway_vector = Vector2.RIGHT
 
 func _process(_delta):
@@ -164,7 +201,7 @@ func _process(_delta):
 	# reduce your recoil over time
 	if recoil_reduction_timer.is_stopped():
 		recoil_reduction_timer.start(recoil_reduction_interval)
-		recoil_amount -= recoil_reduct_amount
+		recoil_amount -= recoil_reduction_amount
 
 	# Aim down sight
 	if Input.is_action_just_pressed("aim_down_sight"):

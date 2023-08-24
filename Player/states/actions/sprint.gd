@@ -9,6 +9,7 @@ the sprint movement state just handles player movement and leg animations/sounds
 @onready var weapon_manager = $"../../WeaponManager"
 
 func _ready():
+	# Let the movement sprint state control the action state animation
 	Events.player_stop_sprinting.connect(_on_player_stop_sprinting) # emitted from sprint movement state
 
 # Initialize the state. E.g. change the animation

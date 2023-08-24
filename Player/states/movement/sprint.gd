@@ -21,9 +21,9 @@ func enter():
 	# TODO - play leg animations
 	return
 
-# Clean up the state. Reinitialize values like a timer
+# Clean up the state
 func exit():
-	return
+	Events.emit_signal("player_stop_sprinting")
 
 func handle_input(event: InputEvent):
 	# if we arent holding sprint down, stop
@@ -43,7 +43,6 @@ func update(delta):
 	# Make sure we have the stamina
 	if owner.stamina < 1:
 		emit_signal("finished", "previous")
-		Events.emit_signal("player_stop_sprinting")
 		return
 	
 	# TODO - limit player from spinning around, prevent actions
@@ -52,7 +51,6 @@ func update(delta):
 	# move the player
 	var input_direction = get_input_direction().normalized()
 	if not input_direction:
-		Events.emit_signal("player_stop_sprinting")
 		emit_signal("finished", "previous")
 		return
 	
@@ -64,7 +62,6 @@ func update(delta):
 		owner.move_and_slide()
 	else:
 		# you cant sprint backwards
-		Events.emit_signal("player_stop_sprinting")
 		emit_signal("finished", "previous")
 		return
 
