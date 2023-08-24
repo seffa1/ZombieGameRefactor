@@ -16,8 +16,9 @@ const _IMPACT_SAMPLES = [
 
 # The smoke trails lifespan must be greater than the bullets!
 @onready var life_span: Timer = $Lifespan
-@onready var smoke_trail = preload("res://VFX/smoketrails/Smoketrail.tscn")
-var smoke_trail_object
+@onready var smoke_trail_scene = preload("res://VFX/smoketrails/Smoketrail.tscn")
+@onready var smoke_puff_scene = preload("res://VFX/smokePuff/SmokePuff.tscn")
+var smoke_trail
 
 func init(bullet_damage: int, bullet_shooter: CharacterBody2D, bullet_knockback: float):
 	hit_box_component.damage = bullet_damage
@@ -29,19 +30,24 @@ func start(position, direction, speed):
 	rotation = direction.angle()
 	velocity = direction * speed
 	
-	smoke_trail_object = smoke_trail.instantiate()
-	ObjectRegistry.register_effect(smoke_trail_object)
+	# VFX
+	smoke_trail = smoke_trail_scene.instantiate()
+	ObjectRegistry.register_effect(smoke_trail)
 
 func _physics_process(delta: float) -> void:
 	# Add smoke trail point
 	# The bullet's lifespan must be longer than the smokes or this will error out !
-	smoke_trail_object.add_point(global_position)
+	smoke_trail.add_point(global_position)
 	var motion_vector = velocity * delta
 	var collision := move_and_collide(motion_vector)
 
 	# Check if it collided with the environment
 	if collision:		
 		# TODO - bullet collision fx based on tile type it collided with
+		var smoke_puff = smoke_puff_scene.instantiate()
+		smoke_puff.global_position = global_position
+		smoke_puff.rotation = rotation + deg_to_rad(180)
+		ObjectRegistry.register_effect(smoke_puff)
 		die()
 
 func die() -> void:

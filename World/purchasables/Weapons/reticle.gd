@@ -190,6 +190,7 @@ func _process(_delta):
 	if recoil_reduction_timer.is_stopped():
 		recoil_reduction_timer.start(recoil_reduction_interval)
 		
+		# If the min value increases because we move, release ADS, or sprint, add to recoil amount instead of clamping it so it doesnt jump instantly
 		if recoil_amount < recoil_min:
 			recoil_amount += recoil_reduction_amount * 3.0
 		else:
