@@ -37,11 +37,17 @@ func update(delta):
 	
 	regenerate_stamina()
 	
+	# adjust speed multiplier if aiming down site
+	var ADS_speed_multiplier = 1.0
+	if Input.is_action_pressed("aim_down_sight"):
+		ADS_speed_multiplier = .5
+
+	
 	# Update the velocity component
 	if _is_moving_forward(input_direction):
-		velocity_component.max_velocity = WALK_SPEED_FOWARD
+		velocity_component.max_velocity = WALK_SPEED_FOWARD * ADS_speed_multiplier
 	else:
-		velocity_component.max_velocity = WALK_SPEED_BACKWARDS
+		velocity_component.max_velocity = WALK_SPEED_BACKWARDS * ADS_speed_multiplier
 	velocity_component.accelerate_in_direction(input_direction, delta)
 	
 	# move the player
