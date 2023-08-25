@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=49 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -31,6 +31,8 @@
 [ext_resource type="SkeletonModificationStack2D" uid="uid://o5lnx5eovgj4" path="res://Enemies/ZombieBasic/skeletonModificationStack.tres" id="17_wbacc"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="23_13s1g"]
 [ext_resource type="PackedScene" uid="uid://c4akdgdbo2bsd" path="res://VFX/Gore/GoreExplosion.tscn" id="30_mwesq"]
+[ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="32_h1342"]
+[ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="33_1avxf"]
 
 [sub_resource type="Animation" id="Animation_2n82s"]
 length = 0.001
@@ -382,6 +384,42 @@ tracks/28/keys = {
 "update": 0,
 "values": [Vector2(76, 33)]
 }
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("WindowHitbox/WindowHitboxCollision:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("ObjectSpawner:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(68, 23)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("ObjectSpawner:rotation")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.06188]
+}
 
 [sub_resource type="Animation" id="Animation_s0mwp"]
 resource_name = "attack_player"
@@ -422,47 +460,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_lcroy"]
-resource_name = "break_window"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WindowHitbox:monitoring")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WindowHitbox:monitorable")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("placeholderSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-8, -12), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6dyoi"]
@@ -615,6 +612,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id="Animation_n4w1o"]
 resource_name = "zombie_break_window_basic"
+length = 1.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -623,7 +621,7 @@ tracks/0/path = NodePath("SkeletonControl/Skeleton/torso:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"times": PackedFloat32Array(0, 0.2, 0.8, 1.5, 1.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3)]
@@ -635,10 +633,10 @@ tracks/1/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"times": PackedFloat32Array(0, 0.2, 0.8, 1.5, 1.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.122988, -0.526748, -0.725415, 0.108372]
+"values": [0.0, -0.18644, 0.363033, 0.108372, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -647,10 +645,10 @@ tracks/2/path = NodePath("SkeletonControl/Targets/LeftArm:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.8, 1.5, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(257, -155), Vector2(250, -135), Vector2(15, -330), Vector2(-90, -350), Vector2(230, -80)]
+"values": [Vector2(239.286, -110.714), Vector2(217.857, -117.857), Vector2(235.714, -92.8571), Vector2(230, -80), Vector2(228.571, -100), Vector2(239.286, -110.714)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -659,10 +657,10 @@ tracks/3/path = NodePath("SkeletonControl/Targets/LeftArm:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.8, 1.5, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, 0.0, 0.0, 0.0]
+"values": [0.0, 0.0, 0.35576, 0.0, 0.0, 0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -671,10 +669,10 @@ tracks/4/path = NodePath("SkeletonControl/Targets/RightArm:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.9, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(244, 135), Vector2(135, 300), Vector2(330, -10), Vector2(180, -115), Vector2(210, 85)]
+"values": [Vector2(244, 135), Vector2(253.571, 46.4286), Vector2(328.571, 14.2857), Vector2(328.571, 14.2857), Vector2(114.286, 164.286), Vector2(89.2857, 339.286), Vector2(210, 85), Vector2(244, 135)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -683,10 +681,10 @@ tracks/5/path = NodePath("SkeletonControl/Targets/RightArm:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.9, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, 0.0, 0.0, 0.0]
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -695,10 +693,10 @@ tracks/6/path = NodePath("SkeletonControl/Targets/HeadLook:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.5, 1.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(292, -25), Vector2(315, -15), Vector2(340, -65), Vector2(315, -155), Vector2(395, -65)]
+"values": [Vector2(292, -25), Vector2(400, -46.4286), Vector2(382.143, 82.1429), Vector2(395, -65), Vector2(292, -25)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -707,7 +705,7 @@ tracks/7/path = NodePath("SkeletonControl/Targets/HeadLook:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.5, 1.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.0, 0.0, 0.0]
@@ -719,10 +717,10 @@ tracks/8/path = NodePath("WindowHitbox/WindowHitboxCollision:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(76, 33), Vector2(42, 89), Vector2(87, -4), Vector2(78, -21), Vector2(47, -37), Vector2(63, 16)]
+"values": [Vector2(76, 33), Vector2(77, 7), Vector2(75, 5), Vector2(71, 5), Vector2(71, 5), Vector2(69, 23), Vector2(36, 39), Vector2(31, 92), Vector2(63, 16), Vector2(76, 33)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -731,10 +729,10 @@ tracks/9/path = NodePath("WindowHitbox:monitorable")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.7, 0.8, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [false, true, false, false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -743,10 +741,60 @@ tracks/10/path = NodePath("WindowHitbox:monitoring")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.7, 0.8, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [false, true, false, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WindowHitbox/WindowHitboxCollision:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ObjectSpawner")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_item"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ObjectSpawner:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(68, 23)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("ObjectSpawner:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.06188]
 }
 
 [sub_resource type="Animation" id="Animation_u0mci"]
@@ -1110,11 +1158,52 @@ tracks/19/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_lcroy"]
+resource_name = "OBSOLETE_break_window"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WindowHitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WindowHitbox:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("placeholderSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-8, -12), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
 _data = {
+"OBSOLETE_break_window": SubResource("Animation_lcroy"),
 "RESET": SubResource("Animation_2n82s"),
 "attack_player": SubResource("Animation_s0mwp"),
-"break_window": SubResource("Animation_lcroy"),
 "zombie_attack_basic": SubResource("Animation_6dyoi"),
 "zombie_break_window_basic": SubResource("Animation_n4w1o"),
 "zombie_death": SubResource("Animation_u0mci"),
@@ -1133,8 +1222,8 @@ radius = 19.0066
 radius = 36.1248
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ighh"]
-radius = 50.9528
-height = 132.777
+radius = 72.7897
+height = 194.059
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvmah"]
 radius = 47.0
@@ -1296,8 +1385,8 @@ modification_stack = ExtResource("17_wbacc")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(-24, -3)
-scale = Vector2(0.999823, 0.999833)
-skew = -0.00019455
+scale = Vector2(0.999827, 0.999831)
+skew = -0.000226021
 rest = Transform2D(1, 0, 0, 1, -24, -3)
 auto_calculate_length_and_angle = false
 length = 0.0
@@ -1307,8 +1396,8 @@ editor_settings/show_bone_gizmo = false
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(73.9843, -7)
 rotation = -0.0619003
-scale = Vector2(1.01051, 0.990411)
-skew = 0.000192642
+scale = Vector2(1.0105, 0.990425)
+skew = 0.00019455
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -1456,12 +1545,11 @@ shape = SubResource("CircleShape2D_bqqdt")
 debug_color = Color(0.733333, 0, 0.109804, 0.419608)
 
 [node name="WindowDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 512
 
 [node name="WindowDetectionCollision" type="CollisionShape2D" parent="WindowDetector"]
-position = Vector2(31, -1)
+position = Vector2(43, -2)
 scale = Vector2(0.824292, 0.979083)
 shape = SubResource("CapsuleShape2D_2ighh")
 debug_color = Color(0.760784, 0.180392, 1, 0.419608)
@@ -1536,6 +1624,11 @@ velocity_component = NodePath("../VelocityComponent")
 health_component = NodePath("../HealthComponent")
 
 [node name="GoreVFX" parent="." instance=ExtResource("30_mwesq")]
+
+[node name="ObjectSpawner" parent="." instance=ExtResource("32_h1342")]
+position = Vector2(68, 23)
+rotation = 1.06188
+object_to_spawn = ExtResource("33_1avxf")
 
 [connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]

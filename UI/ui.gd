@@ -12,8 +12,6 @@ func _ready():
 	Events.game_paused.connect(_on_game_paused)
 
 func _on_game_resumed():
-	print("Game Resumed")
-#	pause_menu.hide()
 	settings_menu.hide()
 	get_tree().paused = false
 
@@ -33,6 +31,4 @@ func _unhandled_input(event):
 		player_stats.visible = !player_stats.visible
 
 func _on_game_paused():
-	print("Game pausing from UI")
-#	pause_menu.open()
 	Events.emit_signal("open_settings")

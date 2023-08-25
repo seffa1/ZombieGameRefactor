@@ -37,8 +37,6 @@ func update_target_position(position: Vector2):
 	pathfinding component calls this each time is consumes the signal. An interval
 	is used for performance/debugging reasons
 	"""
-	print("Updating position")
-	print(position)
 	if position == nagivation_agent.target_position:
 		return
 	

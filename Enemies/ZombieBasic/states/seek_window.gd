@@ -23,7 +23,6 @@ func update(delta):
 		return
 	
 	# Update pathfinding component target position to the window
-	print("Seeking window")
 	owner.pathfinding_component.update_target_position(owner.target_window.global_position)
 
 	# Check if we have arrived at a window

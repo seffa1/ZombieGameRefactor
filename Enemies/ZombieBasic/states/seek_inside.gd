@@ -22,7 +22,6 @@ func enter():
 			target_inside_trigger = trigger
 	assert(target_inside_trigger != null, "There are no windows for spawner to target.")
 	
-	print("seeking inside")
 	owner.pathfinding_component.update_target_position(target_inside_trigger.global_position)
 
 # Clean up the state. Reinitialize values like a timer
@@ -38,7 +37,6 @@ func update(delta):
 
 	# Check if weve hit a trigger
 	if owner.trigger_detector.has_overlapping_areas():
-		print("Inside triggered")
 		emit_signal("finished", "seek_player")
 		return
 

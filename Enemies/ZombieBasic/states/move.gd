@@ -15,7 +15,6 @@ func enter():
 func _on_player_position_changed(player_position: Vector2):
 	# We only consume this signal to update the pathfinding IF we are in this state
 	if is_targeting_player:
-		print("Moving state pushing target position")
 		owner.pathfinding_component.update_target_position(player_position)
 
 # Clean up the state. Reinitialize values like a timer
