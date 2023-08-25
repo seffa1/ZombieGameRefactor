@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25p2i"]
 size = Vector2(205.5, 395.5)
 
-[node name="InsideBuildingTrigger" type="Area2D"]
+[node name="InsideBuildingTrigger" type="Area2D" groups=["inside_trigger"]]
 collision_layer = 8192
 collision_mask = 0
 

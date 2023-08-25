@@ -7,12 +7,10 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	print("ENTERING IDLE ANIMATIon")
 	if !weapon_manager.has_a_gun():
 		# TODO - no weapon animation state
 		animation_player.play("idle_pistol")
 		return
-	print("playing animation")
 	animation_player.play(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].idle_animation)
 
 # Clean up the state. Reinitialize values like a timer

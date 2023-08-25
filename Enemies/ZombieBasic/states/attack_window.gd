@@ -24,10 +24,18 @@ func update(delta):
 		emit_signal("finished", "die")
 		return
 	
-	# If theres no window detected, go back to moving
-	if !owner.window_detector.has_overlapping_areas():
-		emit_signal("finished", "seek_player")
-		return
+	# We should always have an overlapping window
+	if owner.window_detector.has_overlapping_areas():
+		# Check if the window's health is down to zero
+		var window_hurtbox = owner.window_detector.get_overlapping_areas()[0]
+		# Then go inside
+		if window_hurtbox.owner.is_broken():
+			emit_signal("finished", "seek_inside")
+			return
+	else:
+		# If for some reason we lost the window overlap (cause we got knocked back for example)
+		# Go back to seeking the window
+		emit_signal("finished", "seek_window")
 	
 	# TODO - if player is detected, have a change to attack_player_through_window
 

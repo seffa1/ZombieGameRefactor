@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dg3kxoshhmjr"]
+[gd_scene load_steps=47 format=3 uid="uid://dg3kxoshhmjr"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="1_mmyv0"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="1_u265p"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dpeg2wehr08cp" path="res://Enemies/ZombieBasic/images/components/armRightLower.png" id="14_3h7dl"]
 [ext_resource type="Texture2D" uid="uid://b25svr3cwkmcg" path="res://Enemies/ZombieBasic/images/components/handRight.png" id="15_5fd5k"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://o5lnx5eovgj4" path="res://Enemies/ZombieBasic/skeletonModificationStack.tres" id="17_wbacc"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="23_13s1g"]
 [ext_resource type="PackedScene" uid="uid://c4akdgdbo2bsd" path="res://VFX/Gore/GoreExplosion.tscn" id="30_mwesq"]
 
 [sub_resource type="Animation" id="Animation_2n82s"]
@@ -1496,7 +1497,6 @@ radius = 100.0
 neighbor_distance = 5977.77
 time_horizon_agents = 7.27
 time_horizon_obstacles = 6.02
-debug_enabled = false
 
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("1_mmyv0")
@@ -1504,11 +1504,12 @@ START_STATE = NodePath("SeekWindow")
 
 [node name="SeekWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("5_vcyml")
-WALK_SPEED_FOWARD = 100
 
 [node name="SeekPlayer" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("2_budir")
-WALK_SPEED_FOWARD = 100
+
+[node name="SeekInside" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("23_13s1g")
 
 [node name="AttackPlayer" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("3_555fl")

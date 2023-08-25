@@ -12,6 +12,7 @@ func _ready():
 	states_map = {
 		"seek_window": $SeekWindow,
 		"seek_player": $SeekPlayer,
+		"seek_inside": $SeekInside,
 		"attack_player": $AttackPlayer,
 		"break_window": $BreakWindow,
 		"attack_player_through_window": $AttackPlayerThroughWindow,

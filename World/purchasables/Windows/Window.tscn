@@ -95,7 +95,7 @@ death_money_reward = 0
 
 [node name="WindowHurtbox" type="Area2D" parent="." index="4" node_paths=PackedStringArray("health_component", "damage_timer")]
 collision_layer = 512
-collision_mask = 4352
+collision_mask = 4096
 script = ExtResource("4_2yc2s")
 health_component = NodePath("../HealthComponent")
 damage_timer = NodePath("../DamageTimer")
