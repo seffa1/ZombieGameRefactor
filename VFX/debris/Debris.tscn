@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://7vw76npx58xm"]
+[gd_scene load_steps=10 format=3 uid="uid://7vw76npx58xm"]
 
 [ext_resource type="Texture2D" uid="uid://dmyb1j3ad2gnl" path="res://VFX/smokePuff/debris.png" id="1_t4pog"]
+[ext_resource type="PackedScene" uid="uid://dj8dsfwvk6oas" path="res://Libraries/CustomComponents/AudioRandomizer.tscn" id="2_88fg6"]
+[ext_resource type="AudioStream" uid="uid://c8efsi4jncwhs" path="res://World/purchasables/Windows/sounds/BRS_Wood_Splinter_Plywd_Fst_4.wav" id="3_2yfq3"]
+[ext_resource type="AudioStream" uid="uid://cmaw4k3utnytl" path="res://World/purchasables/Windows/sounds/ESM_GB_fx_foley_one_shot_woodbrk_wood_tree_explode_02_impact_destroy_scatter.wav" id="4_3b4ab"]
 
 [sub_resource type="Curve" id="Curve_j0fxa"]
 _data = [Vector2(0.00409369, 0), 0.0, 0.0, 0, 0, Vector2(0.142105, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -53,6 +56,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioRandomizer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wwf3i"]
 _data = {
@@ -89,3 +106,9 @@ autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_wwf3i")
 }
+
+[node name="AudioRandomizer" parent="." instance=ExtResource("2_88fg6")]
+position = Vector2(113.417, 1444.87)
+volume_db = -10.0
+bus = &"GameAudio"
+audio_clips = Array[AudioStreamWAV]([ExtResource("3_2yfq3"), ExtResource("4_3b4ab")])

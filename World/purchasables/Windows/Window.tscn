@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://q6wx281jrsea"]
+[gd_scene load_steps=11 format=3 uid="uid://q6wx281jrsea"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_2055m"]
 [ext_resource type="Script" path="res://World/purchasables/Windows/window.gd" id="2_fdgvv"]
 [ext_resource type="Script" path="res://World/purchasables/Windows/window_hurtbox.gd" id="4_2yc2s"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="4_b0j0q"]
+[ext_resource type="PackedScene" uid="uid://bqn6pfsyp3a6" path="res://Libraries/CustomComponents/AudioVariator.tscn" id="5_cx2ap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2oa1u"]
 size = Vector2(20, 194.5)
@@ -118,5 +119,8 @@ libraries = {
 [node name="Placeholder" type="Polygon2D" parent="." index="7"]
 color = Color(0.0392157, 0.0196078, 0.00784314, 1)
 polygon = PackedVector2Array(-8, -96, 8, -96, 8, 96, -8, 96)
+
+[node name="WindowRepair" parent="." index="8" instance=ExtResource("5_cx2ap")]
+position = Vector2(113.417, 1444.87)
 
 [connection signal="area_entered" from="WindowHurtbox" to="WindowHurtbox" method="_on_area_entered"]

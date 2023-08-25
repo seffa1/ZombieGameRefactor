@@ -12,6 +12,7 @@ But we consider it as a buy for 0, and it gives you money, and repairs the windo
 @onready var window_collision: StaticBody2D = $StaticBody2D
 @onready var window_hurt_box: Area2D = $WindowHurtbox
 
+
 func give_item(_player: CharacterBody2D) -> void:
 	"""
 	Repair the window.
