@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=61 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://Player/states/actions/switch_weapons.gd" id="26_6gqfb"]
 [ext_resource type="Script" path="res://Player/states/buy_weapon.gd" id="26_7d8j7"]
 [ext_resource type="Script" path="res://Player/states/actions/sprint.gd" id="27_o33x7"]
+[ext_resource type="Script" path="res://Player/states/actions/lower_weapon.gd" id="28_bk7pi"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_jua7a"]
 target_nodepath = NodePath("../Targets/armLeftTarget")
@@ -1278,6 +1279,157 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_a4xb6"]
+resource_name = "lower_weapon_riffle"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Targets/headTarget:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(301.634, 46.2805), Vector2(196.614, 94.1044), Vector2(214.004, 81.0842), Vector2(196.614, 94.1044)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Targets/headTarget:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Skeleton/torso:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.200945, 0.200945]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/polygons/gun:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkeletonControl/Targets/armLeftTarget:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(146.369, 219.006), Vector2(119.763, 158.979), Vector2(93.8358, 129.248), Vector2(93.8358, 129.248)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkeletonControl/Targets/armLeftTarget:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Targets/armRightTarget:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(64.4449, 170.324), Vector2(48.9566, 155.515), Vector2(46.3753, 153.047), Vector2(46.3753, 153.047)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkeletonControl/Targets/armRightTarget:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/HandPosition:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(81.835, 157.303), Vector2(74.0909, 149.899), Vector2(66.3467, 142.495), Vector2(63.7087, 137.502), Vector2(61.0707, 132.509), Vector2(61.0707, 132.509), Vector2(61.0707, 132.509)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkeletonControl/HandPosition:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-2.39459, -2.83498, -3.24928, -3.45678, -3.53629, -3.66969, -3.65017]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("StateMachineAction/LowerWeapon")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_player_lower_weapon_animation_finished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_fmp72"]
@@ -2765,6 +2917,7 @@ _data = {
 "buy_weapon_to_riffle": SubResource("Animation_50psa"),
 "idle_pistol": SubResource("Animation_xd1y1"),
 "idle_riffle": SubResource("Animation_jmwbv"),
+"lower_weapon_riffle": SubResource("Animation_a4xb6"),
 "reload_pistol": SubResource("Animation_fmp72"),
 "reload_riffle": SubResource("Animation_xtcte"),
 "shoot_pistol": SubResource("Animation_ypqj5"),
@@ -2886,7 +3039,7 @@ metadata/_edit_lock_ = true
 modification_stack = SubResource("SkeletonModificationStack2D_jqo0d")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
-scale = Vector2(0.999813, 0.999829)
+scale = Vector2(0.999818, 0.999829)
 skew = -4.22001e-05
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
@@ -2894,8 +3047,8 @@ editor_settings/show_bone_gizmo = false
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(33, 37)
 rotation = 0.0345334
-scale = Vector2(0.937213, 1.07091)
-skew = 4.1008e-05
+scale = Vector2(0.937214, 1.0709)
+skew = 4.22001e-05
 rest = Transform2D(1, 0, 0, 1, 33, 37)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -3069,6 +3222,9 @@ script = ExtResource("26_6gqfb")
 
 [node name="BuyWeapon" type="Node" parent="StateMachineAction"]
 script = ExtResource("26_7d8j7")
+
+[node name="LowerWeapon" type="Node" parent="StateMachineAction"]
+script = ExtResource("28_bk7pi")
 
 [node name="Sprint" type="Node" parent="StateMachineAction"]
 script = ExtResource("27_o33x7")

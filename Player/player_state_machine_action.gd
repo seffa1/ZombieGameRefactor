@@ -15,17 +15,22 @@ func _ready():
 		"idle": $Idle,
 		"shoot": $Shoot,
 		"reload": $Reload,
+		"switch_weapons": $SwitchWeapons,
+		"buy_weapon": $BuyWeapon,
+		"lower_weapon": $LowerWeapon,
+		"sprint": $Sprint,
 		"charge_throw": $ChargeThrow,
 		"throw": $Throw,
 		"melee": $Melee,
 		"die": $Die,
-		"switch_weapons": $SwitchWeapons,
-		"buy_weapon": $BuyWeapon,
-		"sprint": $Sprint
 	}
 	
 	Events.player_buy_weapon.connect(_on_player_buy_weapon)
 	Events.player_sprinting.connect(_on_player_sprinting)
+	Events.lower_weapon.connect(_on_player_lower_weapon)
+
+func _on_player_lower_weapon():
+	_change_state("lower_weapon")
 
 func _on_player_buy_weapon():
 	_change_state("buy_weapon")

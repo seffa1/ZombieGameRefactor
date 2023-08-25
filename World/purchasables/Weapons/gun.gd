@@ -21,6 +21,7 @@ may end up as a part of the animation tree.
 @onready var audio_start_volume = audio.volume_db
 @onready var audio_start_pitch = audio.pitch_scale
 @onready var reticle = $Reticle
+@onready var lower_weapon_ray_cast = $LowerWeaponRayCast
 @onready var bullet_spawner = $VFXSpawnerBulletShells
 @onready var magazine_spawner = $VFXSpawnerMagazines
 
@@ -221,5 +222,8 @@ func _reset_audio_stream():
 func is_ammo_full() -> bool:
 	return bullets_in_clip == clip_size and bullet_reserve == max_bullet_reserve
 
+# Controled by weapon manager when switching weapons
 func toggle_crosshairs(value: bool):
 	reticle.visible = value
+func toggle_raycast(value: bool):
+	lower_weapon_ray_cast.enabled = value

@@ -1,5 +1,11 @@
 extends "res://World/purchasables/purchasable.gd"
 
+"""
+This is using the same system as buying items, hence the "give_item" call.
+But we consider it as a buy for 0, and it gives you money, and repairs the window.
+"""
+
+
 @export var window_repair_money_reward: int = 10
 @onready var health_component: Node2D = $HealthComponent
 @onready var animation_player: AnimationPlayer = $AnimationPlaceholder

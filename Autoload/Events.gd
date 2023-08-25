@@ -35,6 +35,8 @@ signal give_player_money(amount: int)
 signal player_buy_weapon()
 signal player_stop_sprinting()
 signal player_knockback(direction: Vector2)
+signal lower_weapon()
+signal raise_weapon()
 
 # Player states (used for the reticle)
 signal player_idle()

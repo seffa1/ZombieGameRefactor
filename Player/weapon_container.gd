@@ -88,12 +88,14 @@ func _set_equipped_gun(weapon_index: int):
 	# hide the crosshairs from the gun we currently have equipped, if we have one
 	if has_a_gun():
 		get_equipped_gun().toggle_crosshairs(false)
+		get_equipped_gun().toggle_raycast(false)
 
 	assert(weapon_index != -1, "You tried to set a weapon that you don't have.")
 	current_weapon_index = weapon_index
 	
 	# Show the crosshairs on the new gun
 	get_equipped_gun().toggle_crosshairs(true)
+	get_equipped_gun().toggle_raycast(true)
 
 	# Inform the UI
 	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index])

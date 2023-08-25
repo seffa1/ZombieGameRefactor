@@ -42,3 +42,6 @@ item_ejection_speed_variance = 0.2
 item_ejection_angle_variance = 0.1
 item_ejection_torque = 50000.0
 item_ejection_torque_variance = 20000.0
+
+[node name="LowerWeaponRayCast" parent="." index="7"]
+target_position = Vector2(0, 110)

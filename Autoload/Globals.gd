@@ -1,5 +1,10 @@
 extends Node
 
+"""
+Maps each gun to animation names and other resources it needs.
+This is to inform the player states so they can choose the correct animations.
+"""
+
 # A reference to the player assigned in GameInitializer
 var player = null
 var debug_on = true
@@ -17,7 +22,8 @@ const GUN_INDEX = {
 		"buy_weapon_from_animation": "buy_weapon_from_riffle",
 		"buy_weapon_to_animation": "buy_weapon_to_riffle",
 		"sprint_animation": "sprint_riffle",
-		"sprite": preload("res://World/purchasables/Weapons/DevCanon/images/rifle.png")
+		"sprite": preload("res://World/purchasables/Weapons/DevCanon/images/rifle.png"),
+		"lower_weapon_animation": "lower_weapon_riffle"
 	},
 	"PISTOL_01": {
 		"nice_name": "Pistol 01",
@@ -29,7 +35,8 @@ const GUN_INDEX = {
 		"buy_weapon_from_animation": "buy_weapon_from_pistol",
 		"buy_weapon_to_animation": "buy_weapon_to_pistol",
 		"sprint_animation": "sprint_pistol",
-		"sprite": preload("res://World/purchasables/Weapons/Pistol_01/images/pistol.png")
+		"sprite": preload("res://World/purchasables/Weapons/Pistol_01/images/pistol.png"),
+		"lower_weapon_animation": "lower_weapon_riffle"
 	}
 }
 
@@ -48,7 +55,7 @@ const ZOMBIE_INDEX = {
 # How many enemies per wave
 # TODO - replace with a curve or equation
 const WAVE_INDEX = {
-	1: 1,
+	1: 10,
 	2: 20,
 	3: 30,
 	4: 30,

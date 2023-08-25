@@ -44,9 +44,6 @@ var recoil_max: float
 var recoil_amount: float = 0:  # tracks the current recoil value which determines cross-hair state and bullet accuracy
 	set(value):
 		recoil_amount = clampf(value, 0, recoil_max)
-		print("SHOOT")
-		print(value)
-		print(recoil_amount)
 		_set_reticle(recoil_amount)
 	get:
 		return recoil_amount
