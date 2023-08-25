@@ -44,16 +44,11 @@ func update_animation_frame(health: int) -> void:
 	if health_component.health <= 0:
 		# Disable the zombie collision layer
 		window_collision.set_collision_mask_value(4, false)
-		# window_collision.set_deferred("disabled", true)
-		# Prevent zombies from detecting windows to attack if window is broken
-#		window_hurt_box.set_deferred("monitorable", false)
-#		window_hurt_box.set_deferred("monitoring", false)
+
 	else:
 		# Enable the zombie collision layer
 		window_collision.set_collision_mask_value(4, true)
-		window_collision.set_deferred("disabled", false)
-#		window_hurt_box.set_deferred("monitorable", true)
-#		window_hurt_box.set_deferred("monitoring", true)
+
 
 func is_broken() -> bool:
 	return health_component.health <= 0
