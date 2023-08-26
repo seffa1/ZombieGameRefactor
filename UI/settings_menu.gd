@@ -13,7 +13,65 @@ func _ready():
 	visible = false
 	set_process_input(false)
 	_hide_lights()
-#	Events.open_settings.connect(open)
+
+	for button in [quit_button, reset_display_settings, reset_sound_settings]:
+		button.focus_entered.connect(_on_Button_focus_entered)
+		
+# Toggle Menu On / Off ------------------------------
+
+func open():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	menu_sounds.play_open()
+	show()
+	_show_lights()
+	get_tree().paused = true
+	set_process_input(true)
+
+# Close menu with esc key
+func _input(event: InputEvent):
+	if event.is_action_pressed("pause"):
+		get_viewport().set_input_as_handled()
+		close()
+
+func close():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	_hide_lights()
+	Events.emit_signal("game_resumed")
+
+
+
+# Button Press Handlers ------------------------------
+
+# For all buttons
+func _on_Button_focus_entered():
+	menu_sounds.play_confirm()
+
+
+func _on_quit_pressed():
+	Events.emit_signal("game_quit")
+	
+func _on_reset_sound_pressed():
+	for sound_slider in sound_sliders.get_children():
+		sound_slider.reset()
+
+func _on_reset_display_pressed():
+	for display_slider in display_sliders.get_children():
+		display_slider.reset()
+
+
+# Button Hover VFX ------------------------------
+
+func _on_quit_mouse_entered():
+	menu_sounds.play_hover()
+	
+func _on_reset_display_mouse_entered():
+	menu_sounds.play_hover()
+
+func _on_reset_sound_mouse_entered():
+	menu_sounds.play_hover()
+
+
+# VFX Toggles ------------------------------
 
 func _hide_lights():
 	for light in lights_container.get_children():
@@ -23,35 +81,11 @@ func _show_lights():
 	for light in lights_container.get_children():
 		light.enabled = true
 
-func _input(event: InputEvent):
-	if event.is_action_pressed("pause"):
-		get_viewport().set_input_as_handled()
-		close()
-
-func open():
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	menu_sounds.play_open()
-	show()
-	_show_lights()
-	get_tree().paused = true
-	set_process_input(true)
-	
-func close():
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	menu_sounds.play_close()
-	_hide_lights()
-	Events.emit_signal("game_resumed")
-
-func _on_reset_sound_pressed():
-	for sound_slider in sound_sliders.get_children():
-		sound_slider.reset()
-
-
-func _on_reset_display_pressed():
-	for display_slider in display_sliders.get_children():
-		display_slider.reset()
 
 
 
-func _on_quit_pressed():
-	Events.emit_signal("game_quit")
+
+
+
+
+

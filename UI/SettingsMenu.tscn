@@ -220,6 +220,9 @@ theme = ExtResource("2_5ac88")
 theme_override_font_sizes/font_size = 36
 text = "RESET"
 
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="ResetDisplay" to="." method="_on_reset_display_mouse_entered"]
 [connection signal="pressed" from="ResetDisplay" to="." method="_on_reset_display_pressed"]
+[connection signal="mouse_entered" from="ResetSound" to="." method="_on_reset_sound_mouse_entered"]
 [connection signal="pressed" from="ResetSound" to="." method="_on_reset_sound_pressed"]

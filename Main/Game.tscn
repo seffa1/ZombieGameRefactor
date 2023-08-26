@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bvpoticnap1q4"]
+[gd_scene load_steps=46 format=3 uid="uid://bvpoticnap1q4"]
 
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="1_kmip5"]
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_vn005"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="8_ock32"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="9_0oi6x"]
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="9_8tr1y"]
+[ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_f0qq6"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="9_sm5ru"]
 [ext_resource type="PackedScene" uid="uid://b7yfy5h1lnwxk" path="res://World/pickups/max_ammo/MaxAmmo.tscn" id="9_vhcrc"]
 [ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistol_01/WeaponBuyPistol01.tscn" id="11_w2f03"]
@@ -614,6 +615,8 @@ visible = false
 [node name="SettingsMenu" parent="UI" instance=ExtResource("9_0oi6x")]
 visible = false
 
+[node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_f0qq6")]
+
 [node name="GameWorld" type="Node2D" parent="."]
 
 [node name="Darkness" type="CanvasModulate" parent="GameWorld"]
@@ -782,22 +785,15 @@ rotation = -0.708219
 
 [node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
 scale = Vector2(1.00022, 0.999929)
-metadata/_local_pose_override_enabled_ = true
-
-[node name="shoulderLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="1"]
-metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
 scale = Vector2(1, 1)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
 scale = Vector2(1, 1)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
 scale = Vector2(0.999999, 0.999999)

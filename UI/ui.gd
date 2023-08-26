@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var states_stack_displayer_2 = $StatesStackDiplayer2
 @onready var player_stats = $PlayerStats
 @onready var settings_menu = $SettingsMenu
+@onready var menu_sounds = $MenuSoundPlayer
 
 func _ready():
 	Events.game_resumed.connect(_on_game_resumed) # emited by pause menu
@@ -14,6 +15,8 @@ func _ready():
 func _on_game_resumed():
 	settings_menu.hide()
 	get_tree().paused = false
+	menu_sounds.play_open()
+	
 
 func _on_game_quit():
 	get_tree().quit()
