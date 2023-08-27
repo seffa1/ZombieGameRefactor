@@ -20,7 +20,12 @@ func show_labs_info():
 func _on_firing_range_pressed():
 	menu_sounds.play_open()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	get_tree().change_scene_to_file("res://Main/Game.tscn")
+	get_tree().change_scene_to_file("res://Main/DevTestChamber.tscn")
+	
+func _on_labs_pressed():
+	menu_sounds.play_open()
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	get_tree().change_scene_to_file("res://Main/TheLabs.tscn")
 
 # Button hover sounds -----------------------------
 func _on_firing_range_mouse_entered():
@@ -30,3 +35,6 @@ func _on_firing_range_mouse_entered():
 func _on_labs_mouse_entered():
 	show_labs_info()
 	menu_sounds.play_hover()
+
+
+

@@ -1,0 +1,259 @@
+[gd_scene load_steps=25 format=3 uid="uid://7hhgw2axi61j"]
+
+[ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
+[ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
+[ext_resource type="PackedScene" uid="uid://bxxl6m827shqp" path="res://Debug/StatesStackDiplayer.tscn" id="3_lqrrm"]
+[ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="4_vfjop"]
+[ext_resource type="PackedScene" uid="uid://c1w4ofsu4cj68" path="res://Debug/PlayerStats.tscn" id="5_28la1"]
+[ext_resource type="PackedScene" uid="uid://bn822g2rnel5j" path="res://UI/HUD/PlayerLog.tscn" id="6_fsl8i"]
+[ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_tw0cg"]
+[ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="8_uddx1"]
+[ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ffymw"]
+[ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="10_5nexr"]
+[ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/DevCanon/AmmoBuyDevCanon.tscn" id="11_4k201"]
+[ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistol_01/WeaponBuyPistol01.tscn" id="12_k34b3"]
+[ext_resource type="PackedScene" uid="uid://b6km4xub8g4cf" path="res://World/purchasables/Weapons/Pistol_01/AmmoBuyPistol01.tscn" id="13_776dd"]
+[ext_resource type="PackedScene" uid="uid://b3o8b6cd4qnog" path="res://World/purchasables/Doors/PurchasableDoor.tscn" id="17_0ojun"]
+[ext_resource type="PackedScene" uid="uid://q6wx281jrsea" path="res://World/purchasables/Windows/Window.tscn" id="18_c6sqf"]
+[ext_resource type="Texture2D" uid="uid://ces1bp5a8xe6e" path="res://World/Der_Riese_Loading_Screen.webp" id="19_3hb0m"]
+[ext_resource type="PackedScene" uid="uid://c4k55vme8b3ge" path="res://World/infrastructure/InsideBuildingTrigger.tscn" id="19_6e2he"]
+[ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="23_12fdy"]
+[ext_resource type="PackedScene" uid="uid://c35lvlmdtsj1k" path="res://World/infrastructure/ZombieManager.tscn" id="24_ixwma"]
+[ext_resource type="PackedScene" uid="uid://bq47d84tq7j2k" path="res://World/infrastructure/ZombieSpawner.tscn" id="25_fmh0i"]
+[ext_resource type="PackedScene" uid="uid://ciapy12l0w3w2" path="res://Libraries/CustomComponents/CameraComponent.tscn" id="26_g7rwe"]
+[ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_yi02j"]
+[ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_mu5om"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_gxbqg"]
+vertices = PackedVector2Array(2857, -38, 3492, -246, 3489, 291, 2852, 161, 3397, 679, 3457, 1313, 2408, 1084, 2407, 883, -1, 1135, -480, 1308, -501, 795, 4, 923, 1567, -91, 2859, 238, 2386, 248, 1310.06, -83.3228, 17, 377, 490, -66, 2420, 1206, 1847, 1228, 1624, 1228, 944, -820, 953, -664, 122, -655, 118, -1405, -1233, 134, -1301, -1807, 123, -1845, -331, 87, 2857, -116, 12, 1259, 1550, -1431, 1254, -816, 152, -379)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 3, 13, 14, 15), PackedInt32Array(11, 16, 17, 15, 6, 18, 19, 20, 8), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(25, 26, 27, 24, 28), PackedInt32Array(12, 29, 0, 3), PackedInt32Array(20, 30, 8), PackedInt32Array(7, 6, 15, 14), PackedInt32Array(31, 12, 15, 32), PackedInt32Array(24, 31, 32, 21), PackedInt32Array(28, 24, 23), PackedInt32Array(28, 23, 33)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(17, 377, 490, -66, 1310.06, -83.3228, 1254, -816, 944, -820, 953, -664, 122, -655, 152, -379, -331, 87, -1233, 134, -1301, -1807, 123, -1845, 118, -1405, 1550, -1431, 1567, -91, 2857, -116, 2857, -38, 3492, -246, 3489, 291, 2852, 161, 2859, 238, 2386, 248, 2407, 883, 3397, 679, 3457, 1313, 2408, 1084, 2420, 1206, 1847, 1228, 1624, 1228, 12, 1259, -1, 1135, -480, 1308, -501, 795, 4, 923)])
+
+[node name="GameInitializer" type="Node"]
+process_mode = 1
+script = ExtResource("1_a2bbj")
+
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("2_0my7n")
+
+[node name="StatesStackDiplayer" parent="UI" instance=ExtResource("3_lqrrm")]
+offset_bottom = 95.0
+theme = ExtResource("4_vfjop")
+
+[node name="StatesStackDiplayer2" parent="UI" instance=ExtResource("3_lqrrm")]
+offset_left = 144.0
+offset_right = 288.0
+offset_bottom = 95.0
+theme = ExtResource("4_vfjop")
+
+[node name="Title" parent="UI/StatesStackDiplayer2" index="0"]
+text = "Actions"
+
+[node name="PlayerStats" parent="UI" instance=ExtResource("5_28la1")]
+offset_left = 288.0
+offset_right = 1280.0
+offset_bottom = 95.0
+theme = ExtResource("4_vfjop")
+
+[node name="Labels" parent="UI/PlayerStats" index="0"]
+offset_bottom = 95.0
+
+[node name="Money" parent="UI/PlayerStats" index="2"]
+offset_top = 17.0
+offset_bottom = 41.0
+
+[node name="Rotation" parent="UI/PlayerStats" index="3"]
+offset_top = 32.0
+offset_bottom = 55.0
+
+[node name="Position" parent="UI/PlayerStats" index="4"]
+offset_top = 55.0
+offset_bottom = 78.0
+
+[node name="Perks" parent="UI/PlayerStats" index="5"]
+offset_top = 70.0
+offset_right = 435.0
+offset_bottom = 93.0
+
+[node name="Weapons" parent="UI/PlayerStats" index="7"]
+offset_left = 505.0
+offset_right = 938.0
+
+[node name="Equipped" parent="UI/PlayerStats" index="8"]
+offset_left = 507.0
+offset_top = 16.0
+offset_right = 711.0
+offset_bottom = 39.0
+
+[node name="ClipCount" parent="UI/PlayerStats" index="9"]
+offset_left = 513.0
+offset_top = 33.0
+offset_right = 727.0
+offset_bottom = 56.0
+
+[node name="Reserve" parent="UI/PlayerStats" index="10"]
+offset_left = 505.0
+offset_top = 54.0
+offset_right = 744.0
+offset_bottom = 77.0
+
+[node name="Direction" parent="UI/PlayerStats" index="11"]
+offset_left = 512.0
+offset_top = 72.0
+offset_right = 711.0
+offset_bottom = 95.0
+
+[node name="Labels3" parent="UI/PlayerStats" index="12"]
+offset_left = 668.0
+offset_top = 2.0
+offset_right = 750.0
+offset_bottom = 130.0
+
+[node name="WaveNumber" parent="UI/PlayerStats" index="13"]
+offset_left = 745.0
+offset_right = 897.0
+
+[node name="ZombiesToKill" parent="UI/PlayerStats" index="14"]
+offset_left = 755.0
+offset_top = 18.0
+offset_right = 950.0
+offset_bottom = 41.0
+
+[node name="ZombiesOnMap" parent="UI/PlayerStats" index="15"]
+offset_left = 756.0
+offset_top = 35.0
+offset_right = 975.0
+offset_bottom = 58.0
+
+[node name="Velocity" parent="UI/PlayerStats" index="16"]
+offset_left = 727.0
+offset_top = 55.0
+offset_right = 959.0
+offset_bottom = 78.0
+
+[node name="PlayerLog" parent="UI" instance=ExtResource("6_fsl8i")]
+
+[node name="InteractableLog" parent="UI" instance=ExtResource("7_tw0cg")]
+visible = false
+
+[node name="SettingsMenu" parent="UI" instance=ExtResource("8_uddx1")]
+visible = false
+
+[node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ffymw")]
+
+[node name="GameWorld" type="Node2D" parent="."]
+
+[node name="Darkness" type="CanvasModulate" parent="GameWorld"]
+color = Color(0.309804, 0.309804, 0.309804, 0.878431)
+
+[node name="PurchasablesContainer" type="Node" parent="GameWorld"]
+
+[node name="Weapons" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="WeaponBuy-DevCanon" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("10_5nexr")]
+position = Vector2(254, 167)
+
+[node name="AmmoBuyDevCanon" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("11_4k201")]
+position = Vector2(254, 166)
+
+[node name="WeaponBuyPistol_01" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("12_k34b3")]
+position = Vector2(606, 181)
+
+[node name="AmmoBuyPistol01" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("13_776dd")]
+position = Vector2(605, 179)
+
+[node name="Perks" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="PickupsContainer" type="Node" parent="GameWorld"]
+
+[node name="Environment" type="Node" parent="GameWorld"]
+
+[node name="Lights" type="Node" parent="GameWorld/Environment"]
+
+[node name="Obstacles" type="Node" parent="GameWorld/Environment"]
+
+[node name="Doors" type="Node" parent="GameWorld/Environment"]
+
+[node name="PurchasableDoor" parent="GameWorld/Environment/Doors" instance=ExtResource("17_0ojun")]
+position = Vector2(1440, -91)
+rotation = 1.57079
+
+[node name="PurchasableDoor2" parent="GameWorld/Environment/Doors" instance=ExtResource("17_0ojun")]
+position = Vector2(-1230, -41)
+rotation = 3.14159
+
+[node name="Window" type="Node" parent="GameWorld/Environment"]
+
+[node name="Window" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
+position = Vector2(2410, 992)
+
+[node name="Window3" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
+position = Vector2(2852, 54)
+rotation = -3.14159
+
+[node name="Window4" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
+position = Vector2(2, 1034)
+
+[node name="Triggers" type="Node" parent="GameWorld/Environment"]
+
+[node name="InsideBuildingTrigger" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_6e2he")]
+position = Vector2(2251, 992)
+
+[node name="InsideBuildingTrigger3" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_6e2he")]
+position = Vector2(182, 1034)
+
+[node name="InsideBuildingTrigger2" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_6e2he")]
+position = Vector2(2675, 70)
+
+[node name="Walls" type="Node" parent="GameWorld/Environment"]
+
+[node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
+position = Vector2(889, 449)
+rotation = -0.708219
+
+[node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_ixwma")]
+position = Vector2(0, 7.62939e-06)
+MAX_ZOMBIES_ON_MAP = 10
+
+[node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("25_fmh0i")]
+position = Vector2(-329, 1034)
+
+[node name="ZombieSpawner2" parent="GameWorld/ZombieManager" instance=ExtResource("25_fmh0i")]
+position = Vector2(3161, 984)
+
+[node name="ZombieSpawner3" parent="GameWorld/ZombieManager" instance=ExtResource("25_fmh0i")]
+position = Vector2(3285, 2)
+
+[node name="Camera" parent="GameWorld" instance=ExtResource("26_g7rwe")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="GameWorld"]
+position = Vector2(-1315, -313)
+rotation = -0.831764
+color = Color(1, 1, 1, 0.694118)
+energy = 0.35
+shadow_enabled = true
+shadow_color = Color(0.14902, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 6.4
+height = 0.14
+max_distance = 100000.0
+
+[node name="EnemyNavigationMesh" type="NavigationRegion2D" parent="GameWorld"]
+navigation_polygon = SubResource("NavigationPolygon_gxbqg")
+
+[node name="ScreenShaker" parent="." instance=ExtResource("27_yi02j")]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("28_mu5om")]
+process_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(-1133, 1067)
+scale = Vector2(15.6127, 14.5783)
+texture = ExtResource("19_3hb0m")
+metadata/_edit_lock_ = true
+
+[editable path="UI/StatesStackDiplayer"]
+[editable path="UI/StatesStackDiplayer2"]
+[editable path="UI/PlayerStats"]

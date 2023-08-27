@@ -117,8 +117,7 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme = ExtResource("9_pj024")
 theme_override_font_sizes/font_size = 48
-text = "Firing Range
-"
+text = "Dev Test Chamber"
 
 [node name="MarginContainer2" type="MarginContainer" parent="SubScreenManager/SoloLevelSelect/VBoxContainer"]
 layout_mode = 2
@@ -183,5 +182,6 @@ sub_menu = true
 [connection signal="mouse_entered" from="SubScreenManager/SoloLevelSelect/VBoxContainer/MarginContainer/FiringRange" to="SubScreenManager/SoloLevelSelect" method="_on_firing_range_mouse_entered"]
 [connection signal="pressed" from="SubScreenManager/SoloLevelSelect/VBoxContainer/MarginContainer/FiringRange" to="SubScreenManager/SoloLevelSelect" method="_on_firing_range_pressed"]
 [connection signal="mouse_entered" from="SubScreenManager/SoloLevelSelect/VBoxContainer/MarginContainer2/Labs" to="SubScreenManager/SoloLevelSelect" method="_on_labs_mouse_entered"]
+[connection signal="pressed" from="SubScreenManager/SoloLevelSelect/VBoxContainer/MarginContainer2/Labs" to="SubScreenManager/SoloLevelSelect" method="_on_labs_pressed"]
 
 [editable path="Solo"]
