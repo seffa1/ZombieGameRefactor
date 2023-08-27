@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2rb6b1hgd3lg"]
+
+[ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="1_618ys"]
+
+[sub_resource type="Animation" id="Animation_8ki7r"]
+resource_name = "DEFAULT"
+length = 0.1
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1.27456),
+"update": 0,
+"values": [0.0, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_opeo4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i5s4r"]
+_data = {
+"DEFAULT": SubResource("Animation_8ki7r"),
+"RESET": SubResource("Animation_opeo4")
+}
+
+[node name="MuzzleFlash" type="PointLight2D"]
+color = Color(0.960784, 0.772549, 0.556863, 1)
+energy = 0.0
+texture = ExtResource("1_618ys")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "DEFAULT"
+libraries = {
+"": SubResource("AnimationLibrary_i5s4r")
+}

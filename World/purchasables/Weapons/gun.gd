@@ -24,6 +24,7 @@ may end up as a part of the animation tree.
 @onready var lower_weapon_ray_cast = $LowerWeaponRayCast
 @onready var bullet_spawner = $VFXSpawnerBulletShells
 @onready var magazine_spawner = $VFXSpawnerMagazines
+@onready var muzzle_flash_vfx = preload("res://VFX/muzzleFlash/MuzzleFlash.tscn");
 
 # Exports
 @export var WEAPON_NAME: String  # Must be in Globals.GUN_INDEX as a key
@@ -119,6 +120,9 @@ func shoot() -> void:
 	# Spawn vfx's
 	if shell_ejection_type == 0:  # on_shoot
 		bullet_spawner.spawn_item(global_rotation)
+	var muzzle_flash = muzzle_flash_vfx.instantiate()
+	muzzle_flash.global_position = muzzle_position.global_position
+	ObjectRegistry.register_effect(muzzle_flash)
 	
 	fire_timer.start(fire_rate)
 	bullets_in_clip -= 1

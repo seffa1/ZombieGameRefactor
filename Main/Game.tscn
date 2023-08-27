@@ -620,7 +620,7 @@ visible = false
 [node name="GameWorld" type="Node2D" parent="."]
 
 [node name="Darkness" type="CanvasModulate" parent="GameWorld"]
-color = Color(0.203922, 0.203922, 0.203922, 0.878431)
+color = Color(0.309804, 0.309804, 0.309804, 0.878431)
 
 [node name="PurchasablesContainer" type="Node" parent="GameWorld"]
 
@@ -653,6 +653,7 @@ position = Vector2(-83, 380)
 [node name="Lights" type="Node" parent="GameWorld/Environment"]
 
 [node name="PointLight2D" type="PointLight2D" parent="GameWorld/Environment/Lights"]
+visible = false
 position = Vector2(-788, 703)
 energy = 1.62
 blend_mode = 2
@@ -662,6 +663,7 @@ shadow_filter_smooth = 1.4
 texture = ExtResource("11_wtt1n")
 
 [node name="PointLight2D3" type="PointLight2D" parent="GameWorld/Environment/Lights"]
+visible = false
 position = Vector2(-44, 14)
 scale = Vector2(0.385742, 0.385742)
 color = Color(0, 1, 0, 1)
@@ -673,6 +675,7 @@ shadow_filter_smooth = 1.4
 texture = ExtResource("11_wtt1n")
 
 [node name="PointLight2D5" type="PointLight2D" parent="GameWorld/Environment/Lights"]
+visible = false
 position = Vector2(-66.375, 375.5)
 scale = Vector2(0.186279, 0.610352)
 color = Color(1, 0, 0, 1)
@@ -684,6 +687,7 @@ shadow_filter_smooth = 1.4
 texture = ExtResource("11_wtt1n")
 
 [node name="PointLight2D2" type="PointLight2D" parent="GameWorld/Environment/Lights"]
+visible = false
 position = Vector2(-284, 695)
 scale = Vector2(0.711914, 0.711914)
 energy = 1.62
@@ -694,6 +698,7 @@ shadow_filter_smooth = 1.4
 texture = ExtResource("11_wtt1n")
 
 [node name="PointLight2D4" type="PointLight2D" parent="GameWorld/Environment/Lights"]
+visible = false
 position = Vector2(707, 490)
 scale = Vector2(1.60144, 1.60144)
 energy = 1.3
@@ -786,13 +791,7 @@ rotation = -0.708219
 [node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
 scale = Vector2(1.00022, 0.999929)
 
-[node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
-scale = Vector2(1, 1)
-
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
-scale = Vector2(1, 1)
-
-[node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
 scale = Vector2(1, 1)
 
 [node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
