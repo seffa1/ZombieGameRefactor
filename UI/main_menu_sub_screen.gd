@@ -24,5 +24,6 @@ func show_solo_level_select():
 func show_settings():
 	hide_all_menus()
 	settings.show()
+	get_tree().paused = false
 
 

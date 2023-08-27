@@ -9,12 +9,16 @@ extends Control
 @onready var sound_sliders = $SoundOptions/Sliders
 @onready var display_sliders = $DisplayOptions/Sliders
 
-@export var show_exit_button: bool = true
+@export var sub_menu: bool = false
 
 func _ready():
-	if !show_exit_button:
-		quit_button.hide()
-	process_mode = Node.PROCESS_MODE_WHEN_PAUSED # This is how a pause menbacku works, see docs
+	# If a sub menu ( in the main menu ), then hide the quit buttons and have it process always (instead of when the game is paused)
+	if sub_menu:
+		quit_button.get_parent().hide()
+		main_menu_button.get_parent().hide()
+		process_mode = Node.PROCESS_MODE_INHERIT # Use as a normal menu within the main menu
+	else:
+		process_mode = Node.PROCESS_MODE_WHEN_PAUSED # This is how a pause menu works, see docs
 	visible = false
 	set_process_input(false)
 	_hide_lights()

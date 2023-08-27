@@ -169,7 +169,7 @@ offset_top = 24.0
 offset_right = 688.0
 offset_bottom = 317.0
 scale = Vector2(0.626694, 0.645297)
-show_exit_button = false
+sub_menu = true
 
 [connection signal="mouse_entered" from="Solo" to="." method="_on_solo_mouse_entered"]
 [connection signal="pressed" from="Solo" to="." method="_on_solo_pressed"]
