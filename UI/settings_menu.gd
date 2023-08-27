@@ -2,19 +2,24 @@ extends Control
 
 @onready var menu_sounds = $MenuSoundPlayer
 @onready var lights_container: Node = $VFX/lightsContainer
-@onready var quit_button: Button = $Quit
-@onready var reset_display_settings: Button = $ResetDisplay
-@onready var reset_sound_settings: Button = $ResetSound
+@onready var quit_button: Button = $HBoxContainer/QuitButton/Quit
+@onready var main_menu_button: Button = $HBoxContainer/BackToMain/MainMenu
+@onready var reset_display_settings: Button = $DisplayOptions/ResetDisplay
+@onready var reset_sound_settings: Button = $SoundOptions/ResetSound
 @onready var sound_sliders = $SoundOptions/Sliders
 @onready var display_sliders = $DisplayOptions/Sliders
 
+@export var show_exit_button: bool = true
+
 func _ready():
+	if !show_exit_button:
+		quit_button.hide()
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED # This is how a pause menbacku works, see docs
 	visible = false
 	set_process_input(false)
 	_hide_lights()
 
-	for button in [quit_button, reset_display_settings, reset_sound_settings]:
+	for button in [quit_button, reset_display_settings, reset_sound_settings, main_menu_button]:
 		button.focus_entered.connect(_on_Button_focus_entered)
 		
 # Toggle Menu On / Off ------------------------------
@@ -46,7 +51,6 @@ func close():
 func _on_Button_focus_entered():
 	menu_sounds.play_confirm()
 
-
 func _on_quit_pressed():
 	Events.emit_signal("game_quit")
 	
@@ -58,6 +62,8 @@ func _on_reset_display_pressed():
 	for display_slider in display_sliders.get_children():
 		display_slider.reset()
 
+func _on_main_menu_pressed():
+	Events.emit_signal("return_to_main_menu")
 
 # Button Hover VFX ------------------------------
 
@@ -68,6 +74,9 @@ func _on_reset_display_mouse_entered():
 	menu_sounds.play_hover()
 
 func _on_reset_sound_mouse_entered():
+	menu_sounds.play_hover()
+	
+func _on_main_menu_mouse_entered():
 	menu_sounds.play_hover()
 
 
@@ -80,6 +89,12 @@ func _hide_lights():
 func _show_lights():
 	for light in lights_container.get_children():
 		light.enabled = true
+
+
+
+
+
+
 
 
 

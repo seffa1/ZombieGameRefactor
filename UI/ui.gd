@@ -11,6 +11,12 @@ func _ready():
 	Events.game_resumed.connect(_on_game_resumed) # emited by pause menu
 	Events.game_quit.connect(_on_game_quit) # emited by pause menu
 	Events.game_paused.connect(_on_game_paused)
+	Events.return_to_main_menu.connect(_on_return_to_main_menu)
+
+func _on_return_to_main_menu():
+	ObjectRegistry.clear_registry()
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(load("res://UI/MainMenu.tscn"))
 
 func _on_game_resumed():
 	settings_menu.hide()

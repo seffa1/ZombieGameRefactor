@@ -13,3 +13,9 @@ func register_effect(effect: Node) -> void:
 
 func register_projectile(projectile: Node) -> void:
 	_projectiles.add_child(projectile)
+
+func clear_registry():
+	for node in _effects.get_children():
+		node.queue_free()
+	for node in _projectiles.get_children():
+		node.queue_free()

@@ -30,17 +30,9 @@ texture = ExtResource("1_hcntu")
 
 [node name="SoundOptions" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -926.0
-offset_top = -520.0
-offset_right = 38.0
-offset_bottom = 142.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 964.0
+offset_bottom = 662.0
 
 [node name="Label" type="Label" parent="SoundOptions"]
 layout_mode = 0
@@ -52,6 +44,16 @@ theme_override_font_sizes/font_size = 75
 text = "Sound"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ResetSound" type="Button" parent="SoundOptions"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 154.0
+offset_right = 749.0
+offset_bottom = 206.0
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "RESET"
 
 [node name="Labels" type="VBoxContainer" parent="SoundOptions"]
 layout_mode = 0
@@ -117,17 +119,12 @@ bus_name = "MenuFX"
 
 [node name="DisplayOptions" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 7.0
-offset_top = -520.0
-offset_right = 971.0
-offset_bottom = 142.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -964.0
+offset_bottom = 662.0
+grow_horizontal = 0
 
 [node name="Label" type="Label" parent="DisplayOptions"]
 layout_mode = 0
@@ -140,6 +137,16 @@ theme_override_font_sizes/font_size = 75
 text = "Display"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ResetDisplay" type="Button" parent="DisplayOptions"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 174.0
+offset_right = 722.0
+offset_bottom = 226.0
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "RESET"
 
 [node name="Labels" type="VBoxContainer" parent="DisplayOptions"]
 layout_mode = 0
@@ -168,23 +175,59 @@ theme_override_constants/separation = 40
 [node name="BrightnessSlider" parent="DisplayOptions/Sliders" instance=ExtResource("5_tmm6r")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 450
+
+[node name="BackToMain" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/BackToMain"]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 948.0
-offset_right = 443.0
-offset_bottom = 1102.0
+offset_left = 2.0
+offset_top = -76.0
+offset_right = 434.0
+offset_bottom = 78.0
 texture = ExtResource("3_6bhk7")
 
-[node name="Quit" type="Button" parent="."]
+[node name="MainMenu" type="Button" parent="HBoxContainer/BackToMain"]
 layout_mode = 0
-offset_left = 132.0
-offset_top = 982.0
-offset_right = 339.0
-offset_bottom = 1033.0
+offset_left = 105.0
+offset_top = -44.0
+offset_right = 323.0
+offset_bottom = 8.0
 theme = ExtResource("2_5ac88")
 theme_override_font_sizes/font_size = 36
-text = "Exit"
+text = "main menu
+"
+
+[node name="QuitButton" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/QuitButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -76.0
+offset_right = 411.0
+offset_bottom = 78.0
+texture = ExtResource("3_6bhk7")
+
+[node name="Quit" type="Button" parent="HBoxContainer/QuitButton"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -42.0
+offset_right = 307.0
+offset_bottom = 10.0
+theme = ExtResource("2_5ac88")
+theme_override_font_sizes/font_size = 36
+text = "quit"
 
 [node name="VFX" type="Node" parent="."]
 
@@ -200,29 +243,11 @@ energy = 0.1
 
 [node name="MenuSoundPlayer" parent="." instance=ExtResource("7_6nf74")]
 
-[node name="ResetDisplay" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1300.0
-offset_top = 174.0
-offset_right = 1678.0
-offset_bottom = 226.0
-theme = ExtResource("2_5ac88")
-theme_override_font_sizes/font_size = 36
-text = "RESET"
-
-[node name="ResetSound" type="Button" parent="."]
-layout_mode = 0
-offset_left = 371.0
-offset_top = 154.0
-offset_right = 749.0
-offset_bottom = 206.0
-theme = ExtResource("2_5ac88")
-theme_override_font_sizes/font_size = 36
-text = "RESET"
-
-[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-[connection signal="mouse_entered" from="ResetDisplay" to="." method="_on_reset_display_mouse_entered"]
-[connection signal="pressed" from="ResetDisplay" to="." method="_on_reset_display_pressed"]
-[connection signal="mouse_entered" from="ResetSound" to="." method="_on_reset_sound_mouse_entered"]
-[connection signal="pressed" from="ResetSound" to="." method="_on_reset_sound_pressed"]
+[connection signal="mouse_entered" from="SoundOptions/ResetSound" to="." method="_on_reset_sound_mouse_entered"]
+[connection signal="pressed" from="SoundOptions/ResetSound" to="." method="_on_reset_sound_pressed"]
+[connection signal="mouse_entered" from="DisplayOptions/ResetDisplay" to="." method="_on_reset_display_mouse_entered"]
+[connection signal="pressed" from="DisplayOptions/ResetDisplay" to="." method="_on_reset_display_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/BackToMain/MainMenu" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/BackToMain/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/QuitButton/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/QuitButton/Quit" to="." method="_on_quit_pressed"]
