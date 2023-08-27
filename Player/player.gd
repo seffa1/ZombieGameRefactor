@@ -19,6 +19,7 @@ Connects to any event bus signals which need to be passed down to child nodes.
 # Constants
 @export var money_component: Node
 @export var starting_gun: String = "PISTOL_01"
+@export var starting_money: int = 0
 
 # TODO - move all stamina logic to a stamina component
 var max_stamina: int = 100:
@@ -56,6 +57,7 @@ func _ready():
 	
 	# start the player with a pistol
 	weapon_manager.add_weapon(starting_gun)
+	money_component.money = starting_money
 
 # Signal consumers
 func _on_player_give_money(amount: int):

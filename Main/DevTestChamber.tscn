@@ -787,16 +787,27 @@ layer_1/tile_data = PackedInt32Array(-2, 0, 0, 917502, 0, 2, 851990, 131072, 2, 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(889, 449)
 rotation = -0.708219
+starting_money = 10000
 
 [node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
 scale = Vector2(1.00022, 0.999929)
 
+[node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
+scale = Vector2(1, 1)
+
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
+
+[node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
+scale = Vector2(1, 1)
+
+[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
+scale = Vector2(0.999999, 0.999999)
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
 MAX_ZOMBIES_ON_MAP = 10
+wave_spawn_type = "test_chamber"
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
 position = Vector2(116, 1439)

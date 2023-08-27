@@ -52,18 +52,6 @@ const PERK_INDEX = {
 const ZOMBIE_INDEX = {
 }
 
-# How many enemies per wave
-# TODO - replace with a curve or equation
-const WAVE_INDEX = {
-	1: 10,
-	2: 20,
-	3: 30,
-	4: 30,
-	5: 30,
-	6: 40,
-	7: 50,
-	8: 1000
-}
 
 # Utils
 func mouse_on_screen() -> bool:

@@ -10,8 +10,35 @@ Responsible for controlling and tracking the waves of zombies spawning.
 @onready var zombie_container: Node = $ZombieContainer
 
 # Variables
-@export var spawn_delay_interval: float = 5
+@export var spawn_delay_interval: float = 5  # seconds between each round of wave spawning
 @export var MAX_ZOMBIES_ON_MAP: int = 30
+@export_enum("the_labs", "test_chamber") var wave_spawn_type: String
+
+# How many enemies per wave
+# TODO - replace with a curve or equation
+const TEST_CHAMBER_ZOMBIE_COUNT_PER_WAVE = {
+	1: 10,
+	2: 20,
+	3: 30,
+	4: 30,
+	5: 30,
+	6: 40,
+	7: 50,
+	8: 1000
+}
+
+const THE_LABS_ZOMBIE_COUNT_PER_WAVE = {
+	1: 4,
+	2: 9,
+	3: 12,
+	4: 17,
+	5: 20,
+	6: 27,
+	7: 32,
+	8: 40
+}
+
+var WAVE_INDEX
 
 var wave_number: int = 1:
 	set(value):
@@ -40,15 +67,20 @@ var zombies_on_map: int = 0:  # current zombies spawned on the map
 		
 # Functions
 func _ready():
-	# Start the wave, connect signals, initialize UI
-	start_wave()
 	Events.zombie_death.connect(_on_zombie_death)
 	Events.emit_signal("wave_number_change", wave_number)
+	if wave_spawn_type == "test_chamber":
+		WAVE_INDEX = TEST_CHAMBER_ZOMBIE_COUNT_PER_WAVE
+	elif wave_spawn_type == "the_labs":
+		WAVE_INDEX = THE_LABS_ZOMBIE_COUNT_PER_WAVE
+	
+	# Start the wave, connect signals, initialize UI
+	start_wave()
 
 # Controlling the wave ------------------------------------
 func start_wave():
-	assert(Globals.WAVE_INDEX.keys().find(wave_number) != -1, "Wave Number not in global wave index")
-	zombies_to_be_killed = Globals.WAVE_INDEX[wave_number]
+	assert(WAVE_INDEX.keys().find(wave_number) != -1, "Wave Number not in global wave index")
+	zombies_to_be_killed = WAVE_INDEX[wave_number]
 
 func end_wave():
 	_kill_all_zombies()  # just to be extra sure
