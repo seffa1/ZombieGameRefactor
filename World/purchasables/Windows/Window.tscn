@@ -10,7 +10,7 @@
 size = Vector2(20, 194.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11esv"]
-size = Vector2(44, 194)
+size = Vector2(78, 194)
 
 [sub_resource type="Animation" id="Animation_lkfje"]
 length = 0.001
@@ -103,7 +103,7 @@ damage_timer = NodePath("../DamageTimer")
 damage_interval = 0.01
 
 [node name="CollisionHurtbox" type="CollisionShape2D" parent="WindowHurtbox" index="0"]
-position = Vector2(0, -8)
+position = Vector2(2, -8)
 shape = SubResource("RectangleShape2D_11esv")
 debug_color = Color(0.878431, 0.164706, 0.313726, 0.419608)
 
