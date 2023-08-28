@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=57 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_tw0cg"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="8_uddx1"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ffymw"]
+[ext_resource type="PackedScene" uid="uid://5wpk32ea7ptu" path="res://UI/HUD/HUD.tscn" id="10_4m0vi"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="10_5nexr"]
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_7kl0x"]
 [ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/DevCanon/AmmoBuyDevCanon.tscn" id="11_4k201"]
@@ -3629,116 +3630,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-77, 617, -73, -28, 462
 process_mode = 1
 script = ExtResource("1_a2bbj")
 
-[node name="UI" type="CanvasLayer" parent="."]
-process_mode = 3
-script = ExtResource("2_0my7n")
-
-[node name="StatesStackDiplayer" parent="UI" instance=ExtResource("3_lqrrm")]
-offset_bottom = 95.0
-theme = ExtResource("4_vfjop")
-
-[node name="StatesStackDiplayer2" parent="UI" instance=ExtResource("3_lqrrm")]
-offset_left = 144.0
-offset_right = 288.0
-offset_bottom = 95.0
-theme = ExtResource("4_vfjop")
-
-[node name="Title" parent="UI/StatesStackDiplayer2" index="0"]
-text = "Actions"
-
-[node name="PlayerStats" parent="UI" instance=ExtResource("5_28la1")]
-visible = false
-offset_left = 288.0
-offset_right = 1280.0
-offset_bottom = 95.0
-theme = ExtResource("4_vfjop")
-
-[node name="Labels" parent="UI/PlayerStats" index="0"]
-offset_bottom = 95.0
-
-[node name="Money" parent="UI/PlayerStats" index="2"]
-offset_top = 17.0
-offset_bottom = 41.0
-
-[node name="Rotation" parent="UI/PlayerStats" index="3"]
-offset_top = 32.0
-offset_bottom = 55.0
-
-[node name="Position" parent="UI/PlayerStats" index="4"]
-offset_top = 55.0
-offset_bottom = 78.0
-
-[node name="Perks" parent="UI/PlayerStats" index="5"]
-offset_top = 70.0
-offset_right = 435.0
-offset_bottom = 93.0
-
-[node name="Weapons" parent="UI/PlayerStats" index="7"]
-offset_left = 505.0
-offset_right = 938.0
-
-[node name="Equipped" parent="UI/PlayerStats" index="8"]
-offset_left = 507.0
-offset_top = 16.0
-offset_right = 711.0
-offset_bottom = 39.0
-
-[node name="ClipCount" parent="UI/PlayerStats" index="9"]
-offset_left = 513.0
-offset_top = 33.0
-offset_right = 727.0
-offset_bottom = 56.0
-
-[node name="Reserve" parent="UI/PlayerStats" index="10"]
-offset_left = 505.0
-offset_top = 54.0
-offset_right = 744.0
-offset_bottom = 77.0
-
-[node name="Direction" parent="UI/PlayerStats" index="11"]
-offset_left = 512.0
-offset_top = 72.0
-offset_right = 711.0
-offset_bottom = 95.0
-
-[node name="Labels3" parent="UI/PlayerStats" index="12"]
-offset_left = 668.0
-offset_top = 2.0
-offset_right = 750.0
-offset_bottom = 130.0
-
-[node name="WaveNumber" parent="UI/PlayerStats" index="13"]
-offset_left = 745.0
-offset_right = 897.0
-
-[node name="ZombiesToKill" parent="UI/PlayerStats" index="14"]
-offset_left = 755.0
-offset_top = 18.0
-offset_right = 950.0
-offset_bottom = 41.0
-
-[node name="ZombiesOnMap" parent="UI/PlayerStats" index="15"]
-offset_left = 756.0
-offset_top = 35.0
-offset_right = 975.0
-offset_bottom = 58.0
-
-[node name="Velocity" parent="UI/PlayerStats" index="16"]
-offset_left = 727.0
-offset_top = 55.0
-offset_right = 959.0
-offset_bottom = 78.0
-
-[node name="PlayerLog" parent="UI" instance=ExtResource("6_fsl8i")]
-
-[node name="InteractableLog" parent="UI" instance=ExtResource("7_tw0cg")]
-visible = false
-
-[node name="SettingsMenu" parent="UI" instance=ExtResource("8_uddx1")]
-visible = false
-
-[node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ffymw")]
-
 [node name="GameWorld" type="Node2D" parent="."]
 
 [node name="Darkness" type="CanvasModulate" parent="GameWorld"]
@@ -3965,6 +3856,118 @@ max_distance = 100000.0
 [node name="EnemyNavigationMesh" type="NavigationRegion2D" parent="GameWorld"]
 navigation_polygon = SubResource("NavigationPolygon_6uvub")
 
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("2_0my7n")
+
+[node name="StatesStackDiplayer" parent="UI" instance=ExtResource("3_lqrrm")]
+offset_bottom = 95.0
+theme = ExtResource("4_vfjop")
+
+[node name="StatesStackDiplayer2" parent="UI" instance=ExtResource("3_lqrrm")]
+offset_left = 144.0
+offset_right = 288.0
+offset_bottom = 95.0
+theme = ExtResource("4_vfjop")
+
+[node name="Title" parent="UI/StatesStackDiplayer2" index="0"]
+text = "Actions"
+
+[node name="PlayerStats" parent="UI" instance=ExtResource("5_28la1")]
+visible = false
+offset_left = 288.0
+offset_right = 1280.0
+offset_bottom = 95.0
+theme = ExtResource("4_vfjop")
+
+[node name="Labels" parent="UI/PlayerStats" index="0"]
+offset_bottom = 95.0
+
+[node name="Money" parent="UI/PlayerStats" index="2"]
+offset_top = 17.0
+offset_bottom = 41.0
+
+[node name="Rotation" parent="UI/PlayerStats" index="3"]
+offset_top = 32.0
+offset_bottom = 55.0
+
+[node name="Position" parent="UI/PlayerStats" index="4"]
+offset_top = 55.0
+offset_bottom = 78.0
+
+[node name="Perks" parent="UI/PlayerStats" index="5"]
+offset_top = 70.0
+offset_right = 435.0
+offset_bottom = 93.0
+
+[node name="Weapons" parent="UI/PlayerStats" index="7"]
+offset_left = 505.0
+offset_right = 938.0
+
+[node name="Equipped" parent="UI/PlayerStats" index="8"]
+offset_left = 507.0
+offset_top = 16.0
+offset_right = 711.0
+offset_bottom = 39.0
+
+[node name="ClipCount" parent="UI/PlayerStats" index="9"]
+offset_left = 513.0
+offset_top = 33.0
+offset_right = 727.0
+offset_bottom = 56.0
+
+[node name="Reserve" parent="UI/PlayerStats" index="10"]
+offset_left = 505.0
+offset_top = 54.0
+offset_right = 744.0
+offset_bottom = 77.0
+
+[node name="Direction" parent="UI/PlayerStats" index="11"]
+offset_left = 512.0
+offset_top = 72.0
+offset_right = 711.0
+offset_bottom = 95.0
+
+[node name="Labels3" parent="UI/PlayerStats" index="12"]
+offset_left = 668.0
+offset_top = 2.0
+offset_right = 750.0
+offset_bottom = 130.0
+
+[node name="WaveNumber" parent="UI/PlayerStats" index="13"]
+offset_left = 745.0
+offset_right = 897.0
+
+[node name="ZombiesToKill" parent="UI/PlayerStats" index="14"]
+offset_left = 755.0
+offset_top = 18.0
+offset_right = 950.0
+offset_bottom = 41.0
+
+[node name="ZombiesOnMap" parent="UI/PlayerStats" index="15"]
+offset_left = 756.0
+offset_top = 35.0
+offset_right = 975.0
+offset_bottom = 58.0
+
+[node name="Velocity" parent="UI/PlayerStats" index="16"]
+offset_left = 727.0
+offset_top = 55.0
+offset_right = 959.0
+offset_bottom = 78.0
+
+[node name="PlayerLog" parent="UI" instance=ExtResource("6_fsl8i")]
+
+[node name="InteractableLog" parent="UI" instance=ExtResource("7_tw0cg")]
+visible = false
+
+[node name="SettingsMenu" parent="UI" instance=ExtResource("8_uddx1")]
+visible = false
+
+[node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ffymw")]
+
+[node name="HUD" parent="UI" instance=ExtResource("10_4m0vi")]
+
 [node name="ScreenShaker" parent="." instance=ExtResource("27_yi02j")]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("28_mu5om")]
@@ -3978,7 +3981,7 @@ scale = Vector2(15.6127, 14.5783)
 texture = ExtResource("19_3hb0m")
 metadata/_edit_lock_ = true
 
+[editable path="GameWorld/Environment/Regions/JunkYard"]
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]
 [editable path="UI/PlayerStats"]
-[editable path="GameWorld/Environment/Regions/JunkYard"]

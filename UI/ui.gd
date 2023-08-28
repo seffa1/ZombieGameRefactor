@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var settings_menu = $SettingsMenu
 @onready var menu_sounds = $MenuSoundPlayer
 @onready var vinette = $"../GameWorld/Darkness/vinette"
+@onready var hud = $HUD
 
 
 func _ready():
@@ -26,6 +27,7 @@ func _on_game_resumed():
 	get_tree().paused = false
 	menu_sounds.play_open()
 	vinette.show()
+	hud.show()
 	
 
 func _on_game_quit():
@@ -37,6 +39,7 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed("pause"):
 		settings_menu.open()
+		hud.hide()
 		vinette.hide()
 	
 	if event.is_action_pressed("toggle_debug"):
