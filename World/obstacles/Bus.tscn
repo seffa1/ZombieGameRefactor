@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpdugakfskja8"]
+
+[ext_resource type="Texture2D" uid="uid://c7g6dekyalm4" path="res://World/tilesets/desert_ground/Objects_tilelists.png" id="1_y7dw2"]
+
+[node name="Bus" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+texture = ExtResource("1_y7dw2")
+region_enabled = true
+region_rect = Rect2(102.017, 1853.27, 801.273, 345.573)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y7dw2")
+region_enabled = true
+region_rect = Rect2(92.2745, 343.365, 839.089, 353.635)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-245, -163, -131, -147, -74, -172, 104, -145, 200, -172, 328, -146, 420, -58, 303, 141, 139, 178, 48, 108, 17, 159, -56, 122, -117, 131, -154, 97, -237, 115, -313, 93, -416, 2, -349, -85, -299, -138)

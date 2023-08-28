@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwg0h7d2lmls7"]
+
+[ext_resource type="Texture2D" uid="uid://c7g6dekyalm4" path="res://World/tilesets/desert_ground/Objects_tilelists.png" id="1_4iu81"]
+
+[node name="Rock2" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="shadow2" type="Sprite2D" parent="."]
+position = Vector2(18, 43)
+scale = Vector2(0.947982, 0.610546)
+texture = ExtResource("1_4iu81")
+region_enabled = true
+region_rect = Rect2(613.7, 3237.7, 297, 202.4)
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_4iu81")
+region_enabled = true
+region_rect = Rect2(1611.36, 1089.52, 136.342, 129.332)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-67, -22, -1, -69, 65, -19, 50, 36, -1, 62, -63, 43)

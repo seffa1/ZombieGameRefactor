@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3jkrws6wiwl6"]
+
+[ext_resource type="Texture2D" uid="uid://dv8y8wxv4i5nu" path="res://World/tilesets/ground_destroyed_cars/Tilelist6.png" id="1_puriu"]
+
+[node name="CarReck3" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_puriu")
+region_enabled = true
+region_rect = Rect2(1555.86, 1552.77, 126.873, 106.017)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-38, -44, -8, -28, 1, -46, 41, -51, 67, -30, 62, -13, 48, 13, 21, 33, -27, 51, -63, 23, -39, 1, -60, -16, -48, -35)

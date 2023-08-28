@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://tmn6r4gdfbsr"]
+
+[ext_resource type="Texture2D" uid="uid://c7g6dekyalm4" path="res://World/tilesets/desert_ground/Objects_tilelists.png" id="1_bnkgr"]
+
+[node name="FalledPillar2" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="shadow2" type="Sprite2D" parent="."]
+position = Vector2(8, 39)
+scale = Vector2(0.947982, 0.610546)
+texture = ExtResource("1_bnkgr")
+region_enabled = true
+region_rect = Rect2(1545.45, 2746.98, 507.111, 161.051)
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_bnkgr")
+region_enabled = true
+region_rect = Rect2(539.909, 1212.91, 464.546, 144.545)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-221, -18, -76, -24, 11, -3, 186, -72, 232, 18, 129, 37, 26, 72, -49, 53, -194, 53, -210, 69, -229, 69)

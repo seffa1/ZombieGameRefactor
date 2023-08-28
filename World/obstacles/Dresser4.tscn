@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6pd2tgex6h1c"]
+
+[ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="1_5t2bj"]
+
+[node name="CarReck3" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_5t2bj")
+region_enabled = true
+region_rect = Rect2(2356, 1854, 182, 151)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(92, -73, 89, 74, -88, 77, -90, -75)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bitvvj06cqpre"]
+
+[ext_resource type="Texture2D" uid="uid://c7g6dekyalm4" path="res://World/tilesets/desert_ground/Objects_tilelists.png" id="1_i85bx"]
+
+[node name="shippingContainer" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="shadow2" type="Sprite2D" parent="."]
+position = Vector2(0, 22)
+texture = ExtResource("1_i85bx")
+region_enabled = true
+region_rect = Rect2(1065.98, 2715.66, 437.576, 224.988)
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_i85bx")
+region_enabled = true
+region_rect = Rect2(1574.1, 665.09, 453.521, 211.051)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(209, -72, 60, -89, -6, -69, -177, -80, -210, -40, -222, 15, -195, 67, -134, 108, 183, 115, 209, 2)

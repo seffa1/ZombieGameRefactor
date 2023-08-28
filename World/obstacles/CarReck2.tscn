@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://df6ataktppguk"]
+
+[ext_resource type="Texture2D" uid="uid://c7g6dekyalm4" path="res://World/tilesets/desert_ground/Objects_tilelists.png" id="1_81wfu"]
+
+[node name="CarReck2" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="shadow2" type="Sprite2D" parent="."]
+position = Vector2(0, 38)
+texture = ExtResource("1_81wfu")
+region_enabled = true
+region_rect = Rect2(533.427, 2701.73, 467.048, 244.797)
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_81wfu")
+region_enabled = true
+region_rect = Rect2(3120.91, 643, 438.182, 249.091)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(172, -95, 90, -119, -192, -66, -222, 30, -179, 98, -16, 125, 199, 72, 219, -37)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=47 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_rypj4"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="8_3be8j"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ih603"]
+[ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_04yua"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="10_xnv1m"]
 [ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/DevCanon/AmmoBuyDevCanon.tscn" id="11_qq2a3"]
 [ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistol_01/WeaponBuyPistol01.tscn" id="12_0owsd"]
@@ -621,6 +622,8 @@ visible = false
 
 [node name="Darkness" type="CanvasModulate" parent="GameWorld"]
 color = Color(0.309804, 0.309804, 0.309804, 0.878431)
+
+[node name="vinette" parent="GameWorld/Darkness" instance=ExtResource("10_04yua")]
 
 [node name="PurchasablesContainer" type="Node" parent="GameWorld"]
 

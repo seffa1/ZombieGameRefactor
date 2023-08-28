@@ -6,12 +6,15 @@ extends CanvasLayer
 @onready var player_stats = $PlayerStats
 @onready var settings_menu = $SettingsMenu
 @onready var menu_sounds = $MenuSoundPlayer
+@onready var vinette = $"../GameWorld/Darkness/vinette"
+
 
 func _ready():
 	Events.game_resumed.connect(_on_game_resumed) # emited by pause menu
 	Events.game_quit.connect(_on_game_quit) # emited by pause menu
-	Events.game_paused.connect(_on_game_paused)
+#	Events.game_paused.connect(_on_game_paused)
 	Events.return_to_main_menu.connect(_on_return_to_main_menu)
+
 
 func _on_return_to_main_menu():
 	ObjectRegistry.clear_registry()
@@ -22,6 +25,7 @@ func _on_game_resumed():
 	settings_menu.hide()
 	get_tree().paused = false
 	menu_sounds.play_open()
+	vinette.show()
 	
 
 func _on_game_quit():
@@ -33,11 +37,12 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed("pause"):
 		settings_menu.open()
+		vinette.hide()
 	
 	if event.is_action_pressed("toggle_debug"):
 		states_stack_displayer_1.visible = !states_stack_displayer_1.visible
 		states_stack_displayer_2.visible = !states_stack_displayer_2.visible
 		player_stats.visible = !player_stats.visible
 
-func _on_game_paused():
-	Events.emit_signal("open_settings")
+#func _on_game_paused():
+#	Events.emit_signal("open_settings")

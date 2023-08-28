@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://07jxolhj57ny"]
+
+[ext_resource type="Texture2D" uid="uid://c7g6dekyalm4" path="res://World/tilesets/desert_ground/Objects_tilelists.png" id="1_e26sc"]
+
+[node name="DeadBushDeadBush" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="shadow2" type="Sprite2D" parent="."]
+position = Vector2(-18, 81)
+scale = Vector2(0.947982, 0.610546)
+texture = ExtResource("1_e26sc")
+region_enabled = true
+region_rect = Rect2(615.883, 3224.04, 295.851, 230.303)
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_e26sc")
+region_enabled = true
+region_rect = Rect2(1627.79, 139.72, 331.572, 235.95)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-123, -58, -93, -113, -21, -76, 52, -116, 113, -96, 140, -34, 164, 41, 88, 106, -117, 114, -160, 40, -150, 2)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://be6nr7uyox5al"]
+
+[ext_resource type="Texture2D" uid="uid://c7g6dekyalm4" path="res://World/tilesets/desert_ground/Objects_tilelists.png" id="1_ijnot"]
+
+[node name="BrokenBuilding1" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="shadow2" type="Sprite2D" parent="."]
+position = Vector2(18, 43)
+scale = Vector2(0.947982, 0.610546)
+texture = ExtResource("1_ijnot")
+region_enabled = true
+region_rect = Rect2(1227.46, 1831.14, 616.254, 417.934)
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_ijnot")
+region_enabled = true
+region_rect = Rect2(1030.69, 585.579, 498.348, 361.984)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-184, -140, 136, -185, 243, -183, 258, 7, 235, 182, -207, 176, -237, 143, -248, -17)
