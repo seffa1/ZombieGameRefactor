@@ -3959,7 +3959,6 @@ offset_bottom = 78.0
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_fsl8i")]
 
 [node name="InteractableLog" parent="UI" instance=ExtResource("7_tw0cg")]
-visible = false
 
 [node name="SettingsMenu" parent="UI" instance=ExtResource("8_uddx1")]
 visible = false
@@ -3967,6 +3966,7 @@ visible = false
 [node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ffymw")]
 
 [node name="HUD" parent="UI" instance=ExtResource("10_4m0vi")]
+visible = false
 
 [node name="ScreenShaker" parent="." instance=ExtResource("27_yi02j")]
 

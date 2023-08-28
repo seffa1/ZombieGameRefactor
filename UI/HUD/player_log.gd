@@ -7,7 +7,7 @@ Called by a signal in the Events autoload singleton.
 """
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var log_message: Label = $LogMessage
+@onready var log_message: Label = $Control/LogMessage
 
 func _ready() -> void:
 	Events.player_log.connect(show_message)

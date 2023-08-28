@@ -26,7 +26,7 @@ const GUN_INDEX = {
 		"lower_weapon_animation": "lower_weapon_riffle"
 	},
 	"PISTOL_01": {
-		"nice_name": "Pistol 01",
+		"nice_name": "Dev Pistol",
 		"idle_animation": "idle_pistol",
 		"shoot_animation": "shoot_pistol",
 		"reload_animation": "reload_pistol",

@@ -1,6 +1,6 @@
 extends Control
 
-@onready var log_message: Label = $Label
+@onready var log_message: Label = $MarginContainer/Label
 
 func _ready() -> void:
 	Events.update_interactable_log.connect(show_message)
