@@ -118,6 +118,7 @@ aim_down_sight={
 2d_physics/layer_13="ZombieWindowHitbox"
 2d_physics/layer_14="ZombieStateTriggers"
 2d_physics/layer_15="bulletShells"
+2d_physics/layer_16="region"
 avoidance/layer_1="environment"
 
 [physics]
