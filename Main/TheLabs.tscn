@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=58 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1w4ofsu4cj68" path="res://Debug/PlayerStats.tscn" id="5_28la1"]
 [ext_resource type="PackedScene" uid="uid://bn822g2rnel5j" path="res://UI/HUD/PlayerLog.tscn" id="6_fsl8i"]
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_tw0cg"]
+[ext_resource type="PackedScene" uid="uid://bgb41n3ecyxgh" path="res://World/regions/WorkShop.tscn" id="8_rbq33"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="8_uddx1"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ffymw"]
 [ext_resource type="PackedScene" uid="uid://5wpk32ea7ptu" path="res://UI/HUD/HUD.tscn" id="10_4m0vi"]
@@ -3687,6 +3688,16 @@ polygon = PackedVector2Array(52, 0, 4, 31, 0, 262, 171, 350, 923, 359, 929, -36,
 light_mask = 0
 polygon = PackedVector2Array(6.89552, -252.196, -114.269, -183.694, -47.2837, -25.8412, 0, 261, -46.2986, 305.748, -56.1493, 514.232, -185.194, 615.496, 98.5076, 628.402, 663.941, 627.41, 905.285, 630.388, 1104.27, 630.388, 1130.87, 475.514, 1124.96, 123.076, 993.942, -348.496, 410.777, -346.51)
 
+[node name="WorkShop" parent="GameWorld/Environment/Regions" instance=ExtResource("8_rbq33")]
+visible = false
+position = Vector2(-1722, -877)
+
+[node name="CollisionPolygon2D" parent="GameWorld/Environment/Regions/WorkShop" index="1"]
+polygon = PackedVector2Array(-1, -1, 4, 618, 1350, 620, 1346, 112)
+
+[node name="Polygon2D" parent="GameWorld/Environment/Regions/WorkShop" index="2"]
+polygon = PackedVector2Array(1, 1, 6.89551, 617.482, 1364.33, 628.402, 1348.57, 109.177)
+
 [node name="Lights" type="Node" parent="GameWorld/Environment"]
 
 [node name="Obstacles" type="Node" parent="GameWorld/Environment"]
@@ -3765,18 +3776,18 @@ position = Vector2(-1078, -543)
 [node name="Triggers" type="Node" parent="GameWorld/Environment"]
 
 [node name="InsideBuildingTrigger" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_6e2he")]
-position = Vector2(1280, 366)
+position = Vector2(1226, 366)
 
 [node name="InsideBuildingTrigger2" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_6e2he")]
-position = Vector2(1043, 727)
+position = Vector2(1032, 682)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger4" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_6e2he")]
-position = Vector2(216, 739)
+position = Vector2(220, 651)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger5" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_6e2he")]
-position = Vector2(990, 88)
+position = Vector2(999, 134)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger7" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_6e2he")]
@@ -3838,6 +3849,12 @@ spawn_interval = 5.0
 [node name="ZombieSpawner4" parent="GameWorld/ZombieManager" instance=ExtResource("25_fmh0i")]
 position = Vector2(967, -493)
 spawn_interval = 5.0
+
+[node name="ZombieSpawner5" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_fmh0i")]
+position = Vector2(-1538, -551)
+spawn_interval = 5.0
+spawner_active = false
+trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor4")]
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("26_g7rwe")]
 
@@ -3982,6 +3999,7 @@ texture = ExtResource("19_3hb0m")
 metadata/_edit_lock_ = true
 
 [editable path="GameWorld/Environment/Regions/JunkYard"]
+[editable path="GameWorld/Environment/Regions/WorkShop"]
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]
 [editable path="UI/PlayerStats"]

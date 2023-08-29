@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgb41n3ecyxgh"]
+
+[ext_resource type="Script" path="res://World/regions/region.gd" id="1_pu7g4"]
+
+[sub_resource type="Animation" id="Animation_ga6yo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j8kbi"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1.23114),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pb8vg"]
+_data = {
+"RESET": SubResource("Animation_ga6yo"),
+"fade_out": SubResource("Animation_j8kbi")
+}
+
+[node name="Region" type="Area2D"]
+collision_layer = 32768
+script = ExtResource("1_pu7g4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pb8vg")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1, -1, 0, 262, 332, 271, 331, -2)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+use_parent_material = true
+position = Vector2(0, 0.0290909)
+scale = Vector2(1.01515, 1.00727)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(1, 1, 0, 261, 330, 271, 330, -4)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

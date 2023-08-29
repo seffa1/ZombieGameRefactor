@@ -3,11 +3,15 @@ extends Node2D
 """
 All the checks for IF a spawner should spawn a zombie happens at the zombie manager level.
 This class is a very simple zombie factory.
+Once placed in the scene, drag the associated doors into the export 'trigger_doors'.
+If any of these doors are opened, this spawner becomes active via an emitted signal.
 """
 
 @onready var spawn_timer: Timer = $SpawnTimer
+
 @export var spawn_interval: float = 1
 @export var spawner_active: bool = true
+@export var trigger_doors: Array[Area2D]
 
 @onready var zombie_list = [
 	preload("res://Enemies/ZombieBasic/ZombieBasic_01.tscn")
@@ -24,6 +28,15 @@ func _ready():
 			smallest_distance = distance
 			target_window = window
 	assert(target_window != null, "There are no windows for spawner to target.")
+	assert(spawner_active or len(trigger_doors) > 0, "An inactive spawner has no triggers doors to activate it!")
+	
+	if len(trigger_doors) > 0:
+		for door in trigger_doors:
+			door.door_opened.connect(_on_trigger_door_opened)
+
+func _on_trigger_door_opened():
+	print("spawner active!")
+	spawner_active = true
 
 func spawn_zombie() -> CharacterBody2D:
 	# Creates the zombie and sets its needed properties

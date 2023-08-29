@@ -795,13 +795,7 @@ starting_money = 10000
 [node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
 scale = Vector2(1.00022, 0.999929)
 
-[node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
-scale = Vector2(1, 1)
-
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
-scale = Vector2(1, 1)
-
-[node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
 scale = Vector2(1, 1)
 
 [node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
