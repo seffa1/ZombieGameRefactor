@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c13ds6myhslsl"]
+
+[ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_olmgi"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_a4564"]
+[ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_e1owu"]
+[ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_spiq3"]
+
+[node name="Spas" instance=ExtResource("1_olmgi")]
+
+[node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
+position = Vector2(121, 7)
+
+[node name="VFXSpawnerBulletShells" parent="." index="6" instance=ExtResource("2_a4564")]
+position = Vector2(56, 11)
+object_to_spawn = ExtResource("3_e1owu")
+
+[node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("2_a4564")]
+object_to_spawn = ExtResource("4_spiq3")

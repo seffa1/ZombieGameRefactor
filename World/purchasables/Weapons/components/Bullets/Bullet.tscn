@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cn7t7mkilellv"]
+
+[ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/bullet.gd" id="1_g0efj"]
+[ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_0iepx"]
+[ext_resource type="Texture2D" uid="uid://dpxu2ijho0mcb" path="res://World/purchasables/Weapons/components/Bullets/images/Shot.png" id="2_v5l5a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gg70d"]
+radius = 4.0
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4y7u"]
+radius = 4.50001
+height = 57.0
+
+[node name="Bullet" type="CharacterBody2D"]
+z_index = 3
+collision_layer = 4
+collision_mask = 16
+motion_mode = 1
+script = ExtResource("1_g0efj")
+
+[node name="HitBoxComponent" parent="." instance=ExtResource("2_0iepx")]
+collision_layer = 256
+collision_mask = 64
+hit_box_type = 0
+
+[node name="CollisionShapeHitbox" type="CollisionShape2D" parent="HitBoxComponent"]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_gg70d")
+debug_color = Color(0.992157, 0.0901961, 0, 0.980392)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_v5l5a")
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShapeEnvironment" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.499992)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_u4y7u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="area_entered" from="HitBoxComponent" to="HitBoxComponent" method="_on_area_entered"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

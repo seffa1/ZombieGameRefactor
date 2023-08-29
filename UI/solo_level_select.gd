@@ -5,7 +5,7 @@ extends Control
 @onready var info_description: Label = $DescriptionBox/VBoxContainer/description
 
 @onready var labs_image = preload("res://VFX/Gore/blood_splatters/images/awezbloodrip/Blood58.png")
-@onready var firing_range_image = preload("res://World/purchasables/Weapons/Pistol_01/sprites/pistol_buy.png")
+@onready var firing_range_image = preload("res://World/purchasables/Weapons/Pistols/Pistol_01/sprites/pistol_buy.png")
 
 # Control the level description ----------------------------------
 func show_firing_range_info():

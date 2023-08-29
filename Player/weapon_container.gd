@@ -34,8 +34,8 @@ The shoot signal flow:
 
 
 # Reference to all weapons
-@onready var dev_canon = preload("res://World/purchasables/Weapons/DevCanon/DevCanon.tscn")
-@onready var pistol_01 = preload("res://World/purchasables/Weapons/Pistol_01/GunPistol01.tscn")
+@onready var dev_canon = preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/DevCanon.tscn")
+@onready var pistol_01 = preload("res://World/purchasables/Weapons/Pistols/Pistol_01/GunPistol01.tscn")
 
 
 # the names and objects array should always be in the same order

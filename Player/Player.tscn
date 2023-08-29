@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
+[ext_resource type="Texture2D" uid="uid://ctl65mm8ars0g" path="res://World/purchasables/Weapons/Pistols/Pistol_01/sprites/pistol_idle/Idle_gun_000.png" id="2_fqags"]
 [ext_resource type="PackedScene" uid="uid://bapuiseuho60g" path="res://Libraries/CustomComponents/StaminaComponent.tscn" id="2_jysyf"]
 [ext_resource type="Script" path="res://Player/player_state_machine_action.gd" id="3_77vex"]
 [ext_resource type="PackedScene" uid="uid://btu5kv2xdnoou" path="res://Libraries/CustomComponents/MoneyComponent.tscn" id="3_g8ae3"]
@@ -24,7 +25,6 @@
 [ext_resource type="Script" path="res://Player/states/actions/melee.gd" id="12_u67uk"]
 [ext_resource type="Script" path="res://Player/states/actions/die.gd" id="13_lfdfl"]
 [ext_resource type="Script" path="res://Player/weapon_container.gd" id="14_qrq3y"]
-[ext_resource type="Texture2D" uid="uid://ctl65mm8ars0g" path="res://World/purchasables/Weapons/Pistol_01/sprites/pistol_idle/Idle_gun_000.png" id="15_jx6t7"]
 [ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
 [ext_resource type="Script" path="res://Player/perk_manager.gd" id="16_gldpa"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="16_gye32"]
@@ -2956,7 +2956,7 @@ visible = false
 position = Vector2(-191, -1.64846e-11)
 rotation = -1.5708
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("15_jx6t7")
+texture = ExtResource("2_fqags")
 offset = Vector2(-15, 50)
 
 [node name="SkeletonControl" type="Node2D" parent="."]
@@ -3063,6 +3063,7 @@ editor_settings/show_bone_gizmo = false
 [node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderLeft"]
 position = Vector2(94, 57)
 rotation = -0.479865
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 94, 57)
 auto_calculate_length_and_angle = false
 length = 110.372
@@ -3079,6 +3080,7 @@ editor_settings/show_bone_gizmo = false
 [node name="armRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight"]
 position = Vector2(67, 101)
 rotation = 0.71527
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 67, 101)
 editor_settings/show_bone_gizmo = false
 

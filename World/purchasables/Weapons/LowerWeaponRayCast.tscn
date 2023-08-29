@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d28jgeuq8m0kf"]
-
-[ext_resource type="Script" path="res://World/purchasables/Weapons/lower_weapon_ray_cast.gd" id="1_uw774"]
-
-[node name="LowerWeaponRayCast" type="RayCast2D"]
-script = ExtResource("1_uw774")
