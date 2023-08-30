@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc0mqlytkjnfb"]
+[gd_scene load_steps=9 format=3 uid="uid://dc0mqlytkjnfb"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_tc0i0"]
 [ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_7sq4n"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_jo45t"]
+[ext_resource type="AudioStream" uid="uid://cvlqh41ayd1xt" path="res://World/purchasables/Weapons/Snipers/50Cal/audio/ESM_Shotgun_Chamber_Shell_9_Sound_FX_Military_Ammo.wav" id="3_fwqm7"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_hxyt8"]
-[ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_7el4y"]
+[ext_resource type="AudioStream" uid="uid://l10oodjq4hq6" path="res://World/purchasables/Weapons/Snipers/50Cal/audio/ESM_Bolt_Action_Load_Sound_FX_Military_Ammo.wav" id="4_5qfci"]
+[ext_resource type="AudioStream" uid="uid://bs25yl71sm032" path="res://World/purchasables/Weapons/Snipers/50Cal/audio/GunshotMachineGun_BW.56259.wav" id="5_goo6k"]
+[ext_resource type="PackedScene" uid="uid://3som05calmsq" path="res://VFX/magazines/MagazineRiffle.tscn" id="8_tdymk"]
 
 [node name="50Cal" instance=ExtResource("1_tc0i0")]
 WEAPON_NAME = "50_CAL"
@@ -16,6 +19,9 @@ bullet_knockback = 5.0
 fire_rate = 0.5
 clip_size = 8
 max_bullet_reserve = 80
+audio_reload_start = ExtResource("3_fwqm7")
+audio_reload_finished = ExtResource("4_5qfci")
+audio_shoot_gun_shot = ExtResource("5_goo6k")
 
 [node name="Reticle" parent="." index="3"]
 recoil_per_shot = 50.0
@@ -29,4 +35,4 @@ object_to_spawn = ExtResource("3_hxyt8")
 
 [node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("2_jo45t")]
 position = Vector2(46, -4)
-object_to_spawn = ExtResource("4_7el4y")
+object_to_spawn = ExtResource("8_tdymk")

@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://blkcrfxykghnn"]
+[gd_scene load_steps=9 format=3 uid="uid://blkcrfxykghnn"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_gegc7"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_8fosq"]
 [ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_p7xti"]
+[ext_resource type="AudioStream" uid="uid://cse0hfx8voins" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/audio/ESM_Shotgun_Chamber_Shell_9_Sound_FX_Military_Ammo.wav" id="3_rn2c8"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_wg27e"]
-[ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_liehe"]
+[ext_resource type="AudioStream" uid="uid://sw6wu7du6g8x" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/audio/ESM_Shotgun_Pump_4_Sound_FX_Military_Cock.wav" id="4_sg5oj"]
+[ext_resource type="AudioStream" uid="uid://dyxj5xxnqm6ep" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/audio/GunshotShotgun_BW.58110.wav" id="5_jdwro"]
+[ext_resource type="PackedScene" uid="uid://3som05calmsq" path="res://VFX/magazines/MagazineRiffle.tscn" id="8_852pk"]
 
 [node name="AutoShotgun" instance=ExtResource("1_gegc7")]
 WEAPON_NAME = "AUTO_SHOTGUN"
@@ -13,10 +16,13 @@ bullet = ExtResource("2_p7xti")
 bullets_per_fire = 5
 bullet_spread = 0.2
 bullet_speed = 2500
-bullet_damage = 8
-fire_rate = 0.3
+bullet_damage = 20
+fire_rate = 0.1
 clip_size = 10
 max_bullet_reserve = 80
+audio_reload_start = ExtResource("3_rn2c8")
+audio_reload_finished = ExtResource("4_sg5oj")
+audio_shoot_gun_shot = ExtResource("5_jdwro")
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
 position = Vector2(121, 7)
@@ -27,4 +33,4 @@ object_to_spawn = ExtResource("3_wg27e")
 
 [node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("2_8fosq")]
 position = Vector2(41, -6)
-object_to_spawn = ExtResource("4_liehe")
+object_to_spawn = ExtResource("8_852pk")
