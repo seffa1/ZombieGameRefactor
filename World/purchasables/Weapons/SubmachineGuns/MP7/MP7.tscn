@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://thhh5nwdtfkn"]
+
+[ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_v32af"]
+[ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_ltg8i"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_swxkm"]
+[ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_1snqi"]
+[ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_jvm5h"]
+
+[node name="MP7" instance=ExtResource("1_v32af")]
+WEAPON_NAME = "MP7"
+fire_type = "automatic"
+bullet = ExtResource("2_ltg8i")
+bullet_speed = 2500
+bullet_damage = 20
+bullet_knockback = 2.0
+fire_rate = 0.07
+max_bullet_reserve = 250
+
+[node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
+position = Vector2(121, 7)
+
+[node name="VFXSpawnerBulletShells" parent="." index="6" instance=ExtResource("2_swxkm")]
+position = Vector2(56, 11)
+object_to_spawn = ExtResource("3_1snqi")
+
+[node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("2_swxkm")]
+position = Vector2(52, -9)
+object_to_spawn = ExtResource("4_jvm5h")

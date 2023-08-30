@@ -33,9 +33,24 @@ The shoot signal flow:
 @onready var buy_weapon_state: Node = $"../StateMachineAction/BuyWeapon"
 
 
-# Reference to all weapons
-@onready var dev_canon = preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/DevCanon.tscn")
+# Reference to all weapons =========
+
+# Pistols
 @onready var pistol_01 = preload("res://World/purchasables/Weapons/Pistols/Pistol_01/GunPistol01.tscn")
+
+# Assult Riffles
+@onready var dev_canon = preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/DevCanon.tscn")
+
+# Shotguns
+@onready var spas = preload("res://World/purchasables/Weapons/Shotguns/Spas/Spas.tscn")
+@onready var auto_shotgun = preload("res://World/purchasables/Weapons/Shotguns/AutoShotgun/AutoShotgun.tscn")
+
+
+# Sniper Rifflers
+@onready var fifty_cal = preload("res://World/purchasables/Weapons/Snipers/50Cal/50Cal.tscn")
+
+# Sub Machine Guns
+@onready var mp7 = preload("res://World/purchasables/Weapons/SubmachineGuns/MP7/MP7.tscn")
 
 
 # the names and objects array should always be in the same order
@@ -110,10 +125,28 @@ func _create_weapon(weapon_name: String):
 	# Create the correct weapon
 	var weapon_object
 	match weapon_name:
-		"DEV_CANON":
-			weapon_object = dev_canon.instantiate()
+		# Pistols
 		"PISTOL_01":
 			weapon_object = pistol_01.instantiate()
+
+		# Assult riffles
+		"DEV_CANON":
+			weapon_object = dev_canon.instantiate()
+
+		# Shot guns
+		"SPAS":
+			weapon_object = spas.instantiate()
+		"AUTO_SHOTGUN":
+			weapon_object = auto_shotgun.instantiate()
+
+		# Sub machineguns
+		"MP7":
+			weapon_object = mp7.instantiate()
+		
+		# Sniper Riffles
+		"50_CAL":
+			weapon_object = fifty_cal.instantiate()
+
 	assert(weapon_object != null, "trying to create a weapon that isnt in the match statement.")
 
 	# Add it to the tree and store a reference

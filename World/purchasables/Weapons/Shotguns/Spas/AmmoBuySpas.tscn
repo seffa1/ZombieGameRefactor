@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c75o67xltbcjg"]
+
+[ext_resource type="PackedScene" uid="uid://mxnsjm1fxohf" path="res://World/purchasables/Weapons/AmmoBuy.tscn" id="1_re8cc"]
+
+[node name="AmmoBuySpas" instance=ExtResource("1_re8cc")]
+weapon_name = "SPAS"
+purchasable_name = "Spas-12 Ammo"

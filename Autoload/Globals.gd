@@ -37,6 +37,58 @@ const GUN_INDEX = {
 		"sprint_animation": "sprint_pistol",
 		"sprite": preload("res://World/purchasables/Weapons/Pistols/Pistol_01/images/pistol.png"),
 		"lower_weapon_animation": "lower_weapon_riffle"
+	},
+	"SPAS": {
+		"nice_name": "Spas 12",
+		"idle_animation": "idle_riffle",
+		"shoot_animation": "shoot_riffle",
+		"reload_animation": "reload_riffle",
+		"switch_from_animation": "switch_from_riffle",
+		"switch_to_animation": "switch_to_riffle",
+		"buy_weapon_from_animation": "buy_weapon_from_riffle",
+		"buy_weapon_to_animation": "buy_weapon_to_riffle",
+		"sprint_animation": "sprint_riffle",
+		"sprite": preload("res://World/purchasables/Weapons/Shotguns/Spas/images/shotgun.png"),
+		"lower_weapon_animation": "lower_weapon_riffle"
+	},
+	"AUTO_SHOTGUN": {
+		"nice_name": "Auto Shotgun",
+		"idle_animation": "idle_riffle",
+		"shoot_animation": "shoot_riffle",
+		"reload_animation": "reload_riffle",
+		"switch_from_animation": "switch_from_riffle",
+		"switch_to_animation": "switch_to_riffle",
+		"buy_weapon_from_animation": "buy_weapon_from_riffle",
+		"buy_weapon_to_animation": "buy_weapon_to_riffle",
+		"sprint_animation": "sprint_riffle",
+		"sprite": preload("res://World/purchasables/Weapons/Shotguns/Spas/images/shotgun.png"),
+		"lower_weapon_animation": "lower_weapon_riffle"
+	},
+	"50_CAL": {
+		"nice_name": ".50 Cal",
+		"idle_animation": "idle_riffle",
+		"shoot_animation": "shoot_riffle",
+		"reload_animation": "reload_riffle",
+		"switch_from_animation": "switch_from_riffle",
+		"switch_to_animation": "switch_to_riffle",
+		"buy_weapon_from_animation": "buy_weapon_from_riffle",
+		"buy_weapon_to_animation": "buy_weapon_to_riffle",
+		"sprint_animation": "sprint_riffle",
+		"sprite": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/rifle.png"),
+		"lower_weapon_animation": "lower_weapon_riffle"
+	},
+	"MP7": {
+		"nice_name": "MP-7",
+		"idle_animation": "idle_riffle",
+		"shoot_animation": "shoot_riffle",
+		"reload_animation": "reload_riffle",
+		"switch_from_animation": "switch_from_riffle",
+		"switch_to_animation": "switch_to_riffle",
+		"buy_weapon_from_animation": "buy_weapon_from_riffle",
+		"buy_weapon_to_animation": "buy_weapon_to_riffle",
+		"sprint_animation": "sprint_riffle",
+		"sprite": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/rifle.png"),
+		"lower_weapon_animation": "lower_weapon_riffle"
 	}
 }
 

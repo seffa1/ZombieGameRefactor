@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc0mqlytkjnfb"]
+
+[ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_tc0i0"]
+[ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_7sq4n"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_jo45t"]
+[ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_hxyt8"]
+[ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_7el4y"]
+
+[node name="50Cal" instance=ExtResource("1_tc0i0")]
+WEAPON_NAME = "50_CAL"
+fire_type = "single_fire"
+bullet = ExtResource("2_7sq4n")
+bullet_speed = 2500
+bullet_damage = 50
+bullet_knockback = 5.0
+fire_rate = 0.5
+clip_size = 8
+max_bullet_reserve = 80
+
+[node name="Reticle" parent="." index="3"]
+recoil_per_shot = 50.0
+
+[node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
+position = Vector2(121, 7)
+
+[node name="VFXSpawnerBulletShells" parent="." index="6" instance=ExtResource("2_jo45t")]
+position = Vector2(56, 11)
+object_to_spawn = ExtResource("3_hxyt8")
+
+[node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("2_jo45t")]
+position = Vector2(46, -4)
+object_to_spawn = ExtResource("4_7el4y")

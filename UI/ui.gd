@@ -26,7 +26,9 @@ func _on_game_resumed():
 	settings_menu.hide()
 	get_tree().paused = false
 	menu_sounds.play_open()
-	vinette.show()
+	
+	if !get_parent().remove_vinette:
+		vinette.show()
 	hud.show()
 	
 

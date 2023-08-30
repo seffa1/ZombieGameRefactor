@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5qbdk6v77lmc"]
+
+[ext_resource type="PackedScene" uid="uid://mxnsjm1fxohf" path="res://World/purchasables/Weapons/AmmoBuy.tscn" id="1_7vhiq"]
+
+[node name="AmmoBuyAutoShotgun" instance=ExtResource("1_7vhiq")]
+weapon_name = "AUTO_SHOTGUN"
+purchasable_name = "Auto Shotgun Ammo"

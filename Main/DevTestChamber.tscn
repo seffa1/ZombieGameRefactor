@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=56 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -9,22 +9,31 @@
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_rypj4"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="8_3be8j"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ih603"]
+[ext_resource type="PackedScene" uid="uid://5wpk32ea7ptu" path="res://UI/HUD/HUD.tscn" id="10_1jyyk"]
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_04yua"]
-[ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="10_xnv1m"]
-[ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/DevCanon/AmmoBuyDevCanon.tscn" id="11_qq2a3"]
-[ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistol_01/WeaponBuyPistol01.tscn" id="12_0owsd"]
-[ext_resource type="PackedScene" uid="uid://b6km4xub8g4cf" path="res://World/purchasables/Weapons/Pistol_01/AmmoBuyPistol01.tscn" id="13_wgco8"]
+[ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="10_xnv1m"]
+[ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/AmmoBuyDevCanon.tscn" id="11_qq2a3"]
+[ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistols/Pistol_01/WeaponBuyPistol01.tscn" id="12_0owsd"]
+[ext_resource type="PackedScene" uid="uid://b6km4xub8g4cf" path="res://World/purchasables/Weapons/Pistols/Pistol_01/AmmoBuyPistol01.tscn" id="13_wgco8"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="14_ralqs"]
 [ext_resource type="PackedScene" uid="uid://b7yfy5h1lnwxk" path="res://World/pickups/max_ammo/MaxAmmo.tscn" id="15_1qwsw"]
 [ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="16_yds3k"]
+[ext_resource type="PackedScene" uid="uid://bo2drheyfcgle" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/WeaponBuyAutoShotgun.tscn" id="17_eue48"]
 [ext_resource type="PackedScene" uid="uid://b3o8b6cd4qnog" path="res://World/purchasables/Doors/PurchasableDoor.tscn" id="17_okwvs"]
+[ext_resource type="PackedScene" uid="uid://b5qbdk6v77lmc" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/AmmoBuyAutoShotgun.tscn" id="18_8drsx"]
 [ext_resource type="PackedScene" uid="uid://q6wx281jrsea" path="res://World/purchasables/Windows/Window.tscn" id="18_uec4f"]
+[ext_resource type="PackedScene" uid="uid://d2oddfj7gwl4t" path="res://World/purchasables/Weapons/Shotguns/Spas/WeaponBuySpas.tscn" id="19_u6y5w"]
 [ext_resource type="PackedScene" uid="uid://c4k55vme8b3ge" path="res://World/infrastructure/InsideBuildingTrigger.tscn" id="19_vg3kb"]
 [ext_resource type="Texture2D" uid="uid://5kksi3jgpmqo" path="res://World/tilesets/ground_destroyed_cars/Tilelist1.png" id="20_1jdks"]
+[ext_resource type="PackedScene" uid="uid://c75o67xltbcjg" path="res://World/purchasables/Weapons/Shotguns/Spas/AmmoBuySpas.tscn" id="20_n6xnk"]
 [ext_resource type="Texture2D" uid="uid://d2845ltawrwpt" path="res://World/tilesets/objects_house/Tilelist1.png" id="21_kh116"]
+[ext_resource type="PackedScene" uid="uid://biwux6x321xd6" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/AmmoBuyMP7.tscn" id="21_q8esh"]
 [ext_resource type="Texture2D" uid="uid://hpc40ksvsyxo" path="res://World/tilesets/objects_house/Tilelist2.png" id="22_dpgeg"]
+[ext_resource type="PackedScene" uid="uid://bb1ef3n186kl8" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/WeaponBuyMP7.tscn" id="22_iks1w"]
+[ext_resource type="PackedScene" uid="uid://2nklfxfhp1w3" path="res://World/purchasables/Weapons/Snipers/50Cal/AmmoBuy50Cal.tscn" id="23_ioq0s"]
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="23_mt1io"]
 [ext_resource type="PackedScene" uid="uid://c35lvlmdtsj1k" path="res://World/infrastructure/ZombieManager.tscn" id="24_at8cq"]
+[ext_resource type="PackedScene" uid="uid://cju2hf0p32e23" path="res://World/purchasables/Weapons/Snipers/50Cal/WeaponBuy50Cal.tscn" id="24_srur5"]
 [ext_resource type="PackedScene" uid="uid://bq47d84tq7j2k" path="res://World/infrastructure/ZombieSpawner.tscn" id="25_2j7wj"]
 [ext_resource type="PackedScene" uid="uid://ciapy12l0w3w2" path="res://Libraries/CustomComponents/CameraComponent.tscn" id="26_ii3jy"]
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_4bpo3"]
@@ -508,16 +517,19 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-77, 617, -73, -28, 462
 [node name="GameInitializer" type="Node"]
 process_mode = 1
 script = ExtResource("1_436u3")
+remove_vinette = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("2_ywtrq")
 
 [node name="StatesStackDiplayer" parent="UI" instance=ExtResource("3_05d6h")]
+visible = false
 offset_bottom = 95.0
 theme = ExtResource("4_whlue")
 
 [node name="StatesStackDiplayer2" parent="UI" instance=ExtResource("3_05d6h")]
+visible = false
 offset_left = 144.0
 offset_right = 288.0
 offset_bottom = 95.0
@@ -527,6 +539,7 @@ theme = ExtResource("4_whlue")
 text = "Actions"
 
 [node name="PlayerStats" parent="UI" instance=ExtResource("5_0g3yo")]
+visible = false
 offset_left = 288.0
 offset_right = 1280.0
 offset_bottom = 95.0
@@ -618,33 +631,83 @@ visible = false
 
 [node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ih603")]
 
+[node name="HUD" parent="UI" instance=ExtResource("10_1jyyk")]
+visible = false
+
 [node name="GameWorld" type="Node2D" parent="."]
 
 [node name="Darkness" type="CanvasModulate" parent="GameWorld"]
 color = Color(0.309804, 0.309804, 0.309804, 0.878431)
 
 [node name="vinette" parent="GameWorld/Darkness" instance=ExtResource("10_04yua")]
+visible = false
 
 [node name="PurchasablesContainer" type="Node" parent="GameWorld"]
-
-[node name="Weapons" type="Node" parent="GameWorld/PurchasablesContainer"]
-
-[node name="WeaponBuy-DevCanon" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("10_xnv1m")]
-position = Vector2(254, 167)
-
-[node name="AmmoBuyDevCanon" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("11_qq2a3")]
-position = Vector2(254, 166)
-
-[node name="WeaponBuyPistol_01" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("12_0owsd")]
-position = Vector2(606, 181)
-
-[node name="AmmoBuyPistol01" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("13_wgco8")]
-position = Vector2(605, 179)
 
 [node name="Perks" type="Node" parent="GameWorld/PurchasablesContainer"]
 
 [node name="PerkBuyStaminaBoost" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("14_ralqs")]
 position = Vector2(-43, 11)
+
+[node name="Weapons" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="DevCanon" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
+
+[node name="WeaponBuy-DevCanon" parent="GameWorld/PurchasablesContainer/Weapons/DevCanon" instance=ExtResource("10_xnv1m")]
+z_index = 4
+position = Vector2(-43, 501)
+rotation = 1.57079
+
+[node name="AmmoBuyDevCanon" parent="GameWorld/PurchasablesContainer/Weapons/DevCanon" instance=ExtResource("11_qq2a3")]
+z_index = 4
+position = Vector2(-43, 500)
+rotation = 1.57079
+
+[node name="Pistol01" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
+
+[node name="WeaponBuyPistol_01" parent="GameWorld/PurchasablesContainer/Weapons/Pistol01" instance=ExtResource("12_0owsd")]
+z_index = 4
+position = Vector2(-31, 156)
+rotation = -1.57079
+
+[node name="AmmoBuyPistol01" parent="GameWorld/PurchasablesContainer/Weapons/Pistol01" instance=ExtResource("13_wgco8")]
+z_index = 4
+position = Vector2(-32, 154)
+rotation = -1.57079
+
+[node name="AutoShotgun" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
+
+[node name="WeaponBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons/AutoShotgun" instance=ExtResource("17_eue48")]
+position = Vector2(1333, 95)
+
+[node name="AmmoBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons/AutoShotgun" instance=ExtResource("18_8drsx")]
+position = Vector2(1333, 95)
+
+[node name="Spas" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
+
+[node name="WeaponBuySpas" parent="GameWorld/PurchasablesContainer/Weapons/Spas" instance=ExtResource("19_u6y5w")]
+position = Vector2(1345, 497)
+scale = Vector2(1, 1)
+
+[node name="AmmoBuySpas" parent="GameWorld/PurchasablesContainer/Weapons/Spas" instance=ExtResource("20_n6xnk")]
+position = Vector2(1346, 500)
+rotation = 0.785397
+
+[node name="MP7" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
+
+[node name="AmmoBuyMP7" parent="GameWorld/PurchasablesContainer/Weapons/MP7" instance=ExtResource("21_q8esh")]
+position = Vector2(307, 96)
+
+[node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/MP7" instance=ExtResource("22_iks1w")]
+position = Vector2(307, 93)
+
+[node name="50Cal" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
+
+[node name="AmmoBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/50Cal" instance=ExtResource("23_ioq0s")]
+position = Vector2(795, 78)
+
+[node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/50Cal" instance=ExtResource("24_srur5")]
+position = Vector2(795, 78)
 
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 
@@ -790,39 +853,46 @@ layer_1/tile_data = PackedInt32Array(-2, 0, 0, 917502, 0, 2, 851990, 131072, 2, 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(889, 449)
 rotation = -0.708219
-starting_money = 10000
 
 [node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
 scale = Vector2(1.00022, 0.999929)
 
+[node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
+scale = Vector2(1, 1)
+
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
 
-[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
-scale = Vector2(0.999999, 0.999999)
+[node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
+scale = Vector2(1, 1)
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
 MAX_ZOMBIES_ON_MAP = 10
 wave_spawn_type = "test_chamber"
 
-[node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
+[node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(116, 1439)
+trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
-[node name="ZombieSpawner2" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
+[node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1796, 353)
 spawner_active = false
+trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
-[node name="ZombieSpawner3" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
+[node name="ZombieSpawner3" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1090, 1392)
+trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
-[node name="ZombieSpawner4" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
+[node name="ZombieSpawner4" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(967, -493)
 spawner_active = false
+trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
-[node name="ZombieSpawner5" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
+[node name="ZombieSpawner5" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(443, -493)
 spawner_active = false
+trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("26_ii3jy")]
 

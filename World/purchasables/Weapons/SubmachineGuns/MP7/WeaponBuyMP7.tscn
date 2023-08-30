@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb1ef3n186kl8"]
+
+[ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_ne4qd"]
+[ext_resource type="Texture2D" uid="uid://bwug5ah0joub1" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/rifle.png" id="2_0gdx0"]
+
+[node name="WeaponBuyMP7" instance=ExtResource("1_ne4qd")]
+weapon_name = "MP7"
+purchasable_cost = 1000
+purchasable_name = "MP7 Cal"
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = -1.57486
+scale = Vector2(0.76025, 0.76025)
+texture = ExtResource("2_0gdx0")

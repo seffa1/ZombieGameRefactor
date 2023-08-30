@@ -7,10 +7,14 @@ extends Node
 @onready var vinette = $GameWorld/Darkness/vinette
 @onready var hud = $UI/HUD
 
+@export var remove_vinette: bool = false
+
 func _ready():
 	Globals.player = player
 	screen_shaker.camera = camera
-	vinette.show()
+	
+	if !remove_vinette:
+		vinette.show()
 
 	# Initialilze all HUD elements
 	hud.show()

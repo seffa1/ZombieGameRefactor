@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2oddfj7gwl4t"]
+
+[ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_k26wa"]
+[ext_resource type="Texture2D" uid="uid://ipnj5e8br1hp" path="res://World/purchasables/Weapons/Shotguns/Spas/images/shotgun.png" id="2_tgx7p"]
+
+[node name="WeaponBuySpas" instance=ExtResource("1_k26wa")]
+weapon_name = "SPAS"
+purchasable_cost = 1000
+purchasable_name = "Spas-12"
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = -1.57486
+scale = Vector2(0.76025, 0.76025)
+texture = ExtResource("2_tgx7p")
