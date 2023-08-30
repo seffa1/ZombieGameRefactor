@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://mwhossw8vvb7"]
+
+[ext_resource type="Script" path="res://World/purchasables/mysteryBox/mystery_box.gd" id="1_foegx"]
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="2_d65m3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mrsu8"]
+radius = 40.0
+height = 182.0
+
+[node name="MysteryBox" instance=ExtResource("2_d65m3")]
+script = ExtResource("1_foegx")
+number_of_switches = 6
+purchasable_cost = 950
+purchasable_name = "Mystery Box"
+
+[node name="interactionZone" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_mrsu8")
+
+[node name="gunSwitchingTimer" type="Timer" parent="." index="2"]
+one_shot = true
+
+[node name="GunSelectionSprite" type="Sprite2D" parent="." index="3"]

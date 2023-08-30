@@ -12,7 +12,6 @@ function should be applied when the gun shoots.
 @onready var reticle_right: Polygon2D = $ReticleRight
 @onready var reticle_bottom: Polygon2D = $ReticleBottom
 @onready var reticle_left: Polygon2D = $ReticleLeft
-@onready var recoil_reduction_timer: Timer = $RecoilReductionTimer
 @onready var sway_timer: Timer = $SwayTimer
 
 # feature toggle
@@ -22,7 +21,7 @@ function should be applied when the gun shoots.
 @export var recoil_per_shot: float = 30.0 # pixels the reticle moves per shot, set on a per-gun basis - should be constant
 @export var gun_recoil_max: float = 100.0 # max recoil amount which the gun hits when sprinting
 @export var gun_recoil_min: float = 0.0  # min recoil value the guns can reach during ADS. All guns should set this to 0 except shotguns typically
-@export var recoil_reduction_amount: int = 1 # the amount of recoil lost per interval 
+@export var recoil_reduction_amount: int = 1 # the amount of recoil lost per game tick
 
 # Weapon sway
 @export var weapon_sway: bool = true  # feature toggle
