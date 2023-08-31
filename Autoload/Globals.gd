@@ -23,7 +23,8 @@ const GUN_INDEX = {
 		"buy_weapon_to_animation": "buy_weapon_to_riffle",
 		"sprint_animation": "sprint_riffle",
 		"sprite": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/rifle.png"),
-		"lower_weapon_animation": "lower_weapon_riffle"
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/DevCanon.tscn")
 	},
 	"PISTOL_01": {
 		"nice_name": "Dev Pistol",
@@ -36,7 +37,8 @@ const GUN_INDEX = {
 		"buy_weapon_to_animation": "buy_weapon_to_pistol",
 		"sprint_animation": "sprint_pistol",
 		"sprite": preload("res://World/purchasables/Weapons/Pistols/Pistol_01/images/pistol.png"),
-		"lower_weapon_animation": "lower_weapon_riffle"
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/Pistols/Pistol_01/GunPistol01.tscn")
 	},
 	"SPAS": {
 		"nice_name": "Spas 12",
@@ -49,7 +51,8 @@ const GUN_INDEX = {
 		"buy_weapon_to_animation": "buy_weapon_to_riffle",
 		"sprint_animation": "sprint_riffle",
 		"sprite": preload("res://World/purchasables/Weapons/Shotguns/Spas/images/shotgun.png"),
-		"lower_weapon_animation": "lower_weapon_riffle"
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/Shotguns/Spas/Spas.tscn")
 	},
 	"AUTO_SHOTGUN": {
 		"nice_name": "Auto Shotgun",
@@ -62,7 +65,8 @@ const GUN_INDEX = {
 		"buy_weapon_to_animation": "buy_weapon_to_riffle",
 		"sprint_animation": "sprint_riffle",
 		"sprite": preload("res://World/purchasables/Weapons/Shotguns/Spas/images/shotgun.png"),
-		"lower_weapon_animation": "lower_weapon_riffle"
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/Shotguns/AutoShotgun/AutoShotgun.tscn")
 	},
 	"50_CAL": {
 		"nice_name": ".50 Cal",
@@ -75,7 +79,8 @@ const GUN_INDEX = {
 		"buy_weapon_to_animation": "buy_weapon_to_riffle",
 		"sprint_animation": "sprint_riffle",
 		"sprite": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/rifle.png"),
-		"lower_weapon_animation": "lower_weapon_riffle"
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/Snipers/50Cal/50Cal.tscn")
 	},
 	"MP7": {
 		"nice_name": "MP-7",
@@ -88,7 +93,8 @@ const GUN_INDEX = {
 		"buy_weapon_to_animation": "buy_weapon_to_riffle",
 		"sprint_animation": "sprint_riffle",
 		"sprite": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/rifle.png"),
-		"lower_weapon_animation": "lower_weapon_riffle"
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/SubmachineGuns/MP7/MP7.tscn")
 	}
 }
 

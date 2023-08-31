@@ -2,11 +2,13 @@ extends "res://World/purchasables/purchasable.gd"
 
 @onready var gun_switching_timer: Timer = $gunSwitchingTimer
 @onready var gun_sprite: Sprite2D = $GunSelectionSprite
+@onready var gun_pickup_timer: Timer = $gunPickupTimer
 
 @export var number_of_switches: int = 6  # how many guns does the box cycle through before giving you one ?
 
 
 var is_selecting: bool = false  # Is the mystery currently seleting a weapon to give the player ?
+var is_giving: bool = false  # Has the mystery box selected a weapon and is waiting for the player to pick it up ?
 var current_gun_index = 0
 var gun_selection = []
 
@@ -36,18 +38,25 @@ func give_item(player: CharacterBody2D) -> void:
 	return
 
 func _process(delta):
-	if !is_selecting:
+	if !is_selecting and !is_giving:
 		return
 	
-	if gun_switching_timer.is_stopped():
-		gun_switching_timer.start()
-		var gun_name = gun_selection[current_gun_index]
-		gun_sprite.texture = Globals.GUN_INDEX[gun_name].sprite
-		if len(gun_selection) - 1 > current_gun_index:
-			current_gun_index += 1
-		else:
-			is_selecting = false
-			end_selection()
+	if is_selecting:
+		# Cycle through the differnet guns until we get to the last one
+		if gun_switching_timer.is_stopped():
+			gun_switching_timer.start()
+			var gun_name = gun_selection[current_gun_index]
+			gun_sprite.texture = Globals.GUN_INDEX[gun_name].sprite
+			if len(gun_selection) - 1 > current_gun_index:
+				current_gun_index += 1
+			else:
+				# Then switch to the 'is giving state'
+				# TODO - instantiate a wepaon buy for the chosen weapon
+				is_selecting = false
+				end_selection()
+				
+	if is_giving:
+		return
 		
 
 func select_guns() -> Array:
@@ -87,12 +96,6 @@ func select_guns() -> Array:
 			var random_num = randf_range(0, 1)
 		
 			# If the random number is less than or equal to the weight of the current item, add it to the reservoir 
-			print(gun[0])
-			print("Random num")
-			print(random_num)
-			print("Gun weight")
-			print(gun_weight)
-			
 			if gun_weight >= random_num:
 				reservoir.append(gun[0])
 				# and remove it from the collection
@@ -117,6 +120,7 @@ func is_collection_empty(collection):
 func end_selection():
 	""" Cleans up state after selecting the weapon. """
 	is_selecting = false
+	is_giving = false
 	can_be_purchased = true
 	current_gun_index = 0
 	gun_switching_timer.stop()

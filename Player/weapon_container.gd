@@ -32,27 +32,6 @@ The shoot signal flow:
 @onready var gun_sprite = $"../SkeletonControl/GunSprite"
 @onready var buy_weapon_state: Node = $"../StateMachineAction/BuyWeapon"
 
-
-# Reference to all weapons =========
-
-# Pistols
-@onready var pistol_01 = preload("res://World/purchasables/Weapons/Pistols/Pistol_01/GunPistol01.tscn")
-
-# Assult Riffles
-@onready var dev_canon = preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/DevCanon.tscn")
-
-# Shotguns
-@onready var spas = preload("res://World/purchasables/Weapons/Shotguns/Spas/Spas.tscn")
-@onready var auto_shotgun = preload("res://World/purchasables/Weapons/Shotguns/AutoShotgun/AutoShotgun.tscn")
-
-
-# Sniper Rifflers
-@onready var fifty_cal = preload("res://World/purchasables/Weapons/Snipers/50Cal/50Cal.tscn")
-
-# Sub Machine Guns
-@onready var mp7 = preload("res://World/purchasables/Weapons/SubmachineGuns/MP7/MP7.tscn")
-
-
 # the names and objects array should always be in the same order
 # the names array just makes looking up weapons easier so we dont have to try
 # and figure out what gun's the objects are. The weapon index sets
@@ -122,32 +101,10 @@ func _create_weapon(weapon_name: String):
 	Instantiates a weapons and adds it as a child. 
 	Store a reference in the weapon_objects array.
 	"""
+	assert(Globals.GUN_INDEX.keys().find(weapon_name) != -1, "You are creating a weapon name that isnt in the global GUN_INDEX list.")
+	
 	# Create the correct weapon
-	var weapon_object
-	match weapon_name:
-		# Pistols
-		"PISTOL_01":
-			weapon_object = pistol_01.instantiate()
-
-		# Assult riffles
-		"DEV_CANON":
-			weapon_object = dev_canon.instantiate()
-
-		# Shot guns
-		"SPAS":
-			weapon_object = spas.instantiate()
-		"AUTO_SHOTGUN":
-			weapon_object = auto_shotgun.instantiate()
-
-		# Sub machineguns
-		"MP7":
-			weapon_object = mp7.instantiate()
-		
-		# Sniper Riffles
-		"50_CAL":
-			weapon_object = fifty_cal.instantiate()
-
-	assert(weapon_object != null, "trying to create a weapon that isnt in the match statement.")
+	var weapon_object = Globals.GUN_INDEX[weapon_name].scene.instantiate()
 
 	# Add it to the tree and store a reference
 	add_child(weapon_object)

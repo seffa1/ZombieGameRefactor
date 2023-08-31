@@ -4185,10 +4185,12 @@ process_mode = 3
 script = ExtResource("2_0my7n")
 
 [node name="StatesStackDiplayer" parent="UI" instance=ExtResource("3_lqrrm")]
+visible = false
 offset_bottom = 95.0
 theme = ExtResource("4_vfjop")
 
 [node name="StatesStackDiplayer2" parent="UI" instance=ExtResource("3_lqrrm")]
+visible = false
 offset_left = 144.0
 offset_right = 288.0
 offset_bottom = 95.0

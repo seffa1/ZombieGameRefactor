@@ -917,7 +917,6 @@ process_mode = 3
 
 [node name="MysteryBox" parent="." instance=ExtResource("39_fdiub")]
 position = Vector2(705, 425)
-number_of_switches = 6
 
 [connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="UI/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
 [connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="UI/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]
