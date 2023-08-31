@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=58 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://c35lvlmdtsj1k" path="res://World/infrastructure/ZombieManager.tscn" id="24_at8cq"]
 [ext_resource type="PackedScene" uid="uid://cju2hf0p32e23" path="res://World/purchasables/Weapons/Snipers/50Cal/WeaponBuy50Cal.tscn" id="24_srur5"]
 [ext_resource type="PackedScene" uid="uid://bq47d84tq7j2k" path="res://World/infrastructure/ZombieSpawner.tscn" id="25_2j7wj"]
+[ext_resource type="PackedScene" uid="uid://76s4kicryfd0" path="res://World/purchasables/mysteryBox/MysteryBoxLocation.tscn" id="25_atn32"]
 [ext_resource type="PackedScene" uid="uid://ciapy12l0w3w2" path="res://Libraries/CustomComponents/CameraComponent.tscn" id="26_ii3jy"]
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_4bpo3"]
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_b2va5"]
@@ -710,6 +711,22 @@ position = Vector2(795, 78)
 [node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/50Cal" instance=ExtResource("24_srur5")]
 position = Vector2(795, 78)
 
+[node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="MysteryBoxLocation" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
+position = Vector2(703, 422)
+
+[node name="MysteryBoxLocation2" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
+position = Vector2(-308, 206)
+rotation = 1.55572
+
+[node name="MysteryBoxLocation3" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
+position = Vector2(686, 1159)
+rotation = 3.14393
+
+[node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("39_fdiub")]
+position = Vector2(705, 425)
+
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 
 [node name="MaxAmmo" parent="GameWorld/PickupsContainer" instance=ExtResource("15_1qwsw")]
@@ -912,9 +929,6 @@ navigation_polygon = SubResource("NavigationPolygon_w47ju")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("28_b2va5")]
 process_mode = 3
-
-[node name="MysteryBox" parent="." instance=ExtResource("39_fdiub")]
-position = Vector2(705, 425)
 
 [connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="UI/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
 [connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="UI/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]

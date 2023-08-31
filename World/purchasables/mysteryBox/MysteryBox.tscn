@@ -173,6 +173,7 @@ _data = {
 size = Vector2(253, 80)
 
 [node name="MysteryBox" instance=ExtResource("2_d65m3")]
+z_index = 1
 collision_layer = 18
 script = ExtResource("1_foegx")
 number_of_switches = 4
