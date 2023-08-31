@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mwhossw8vvb7"]
+[gd_scene load_steps=12 format=3 uid="uid://mwhossw8vvb7"]
 
 [ext_resource type="Script" path="res://World/purchasables/mysteryBox/mystery_box.gd" id="1_foegx"]
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="2_d65m3"]
@@ -169,7 +169,11 @@ _data = {
 "pickup_timer": SubResource("Animation_glp1q")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xxp1"]
+size = Vector2(253, 80)
+
 [node name="MysteryBox" instance=ExtResource("2_d65m3")]
+collision_layer = 18
 script = ExtResource("1_foegx")
 number_of_switches = 4
 purchasable_cost = 950
@@ -201,21 +205,38 @@ texture = ExtResource("3_013t2")
 region_enabled = true
 region_rect = Rect2(635, 724, 273, 95)
 
-[node name="GunSelectionSprite" type="Sprite2D" parent="." index="2"]
+[node name="PlaceholderArt" type="Polygon2D" parent="." index="2"]
+color = Color(0.717647, 0.580392, 0.188235, 1)
+polygon = PackedVector2Array(-24, -36, -9, -42, 10, -43, 26, -36, 33, -22, 34, -11, 30, 3, 23, 8, 6, 9, 6, 25, -4, 25, -4, 9, -5, -4, 8, -3, 18, -9, 18, -21, 11, -31, -8, -33, -21, -29)
 
-[node name="interactionZone" parent="." index="3"]
+[node name="PlaceholderArt2" type="Polygon2D" parent="." index="3"]
+color = Color(0.717647, 0.580392, 0.188235, 1)
+polygon = PackedVector2Array(0, 31, -6, 34, -3, 41, 3, 39, 5, 34)
+
+[node name="GunSelectionSprite" type="Sprite2D" parent="." index="4"]
+
+[node name="interactionZone" parent="." index="5"]
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_epwrt")
+debug_color = Color(0.262745, 0.623529, 0.32549, 0.419608)
 
-[node name="gunSwitchingTimer" type="Timer" parent="." index="4"]
+[node name="gunSwitchingTimer" type="Timer" parent="." index="6"]
 one_shot = true
 
-[node name="gunPickupTimer" type="Timer" parent="." index="5"]
+[node name="gunPickupTimer" type="Timer" parent="." index="7"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
 libraries = {
 "": SubResource("AnimationLibrary_ndc7j")
 }
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." index="8"]
+[node name="Audio" type="AudioStreamPlayer2D" parent="." index="10"]
 script = ExtResource("4_w3mmy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="11"]
+collision_layer = 65536
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_1xxp1")

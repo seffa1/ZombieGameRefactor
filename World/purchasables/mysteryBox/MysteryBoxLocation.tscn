@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://76s4kicryfd0"]
+
+[ext_resource type="Script" path="res://World/purchasables/mysteryBox/mystery_box_location.gd" id="1_w0uqc"]
+[ext_resource type="Texture2D" uid="uid://bhtjhjv24t81o" path="res://World/tilesets/objects_house/Tilelist4.png" id="2_0a0sx"]
+
+[node name="MysteryBoxLocation" type="Node2D" groups=["mysteryBoxLocations"]]
+script = ExtResource("1_w0uqc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0a0sx")
+region_enabled = true
+region_rect = Rect2(1076, 704, 420, 140)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(11.5554, -49.8853)
+rotation = -0.684595
+color = Color(0, 0, 0, 0.396078)
+polygon = PackedVector2Array(-153, -103, -145, -106, -136, -103, -136, -98, -141, -93, -139, -87, -144, -83, -148, -94, -143, -100, -151, -98)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(11.5554, -49.8853)
+rotation = -0.684595
+color = Color(0, 0, 0, 0.396078)
+polygon = PackedVector2Array(-140, -82, -143, -80, -142, -77, -139, -78, -137, -81)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(221.887, 122.863)
+rotation = 0.648005
+color = Color(0, 0, 0, 0.396078)
+polygon = PackedVector2Array(-153, -103, -145, -106, -136, -103, -136, -98, -141, -93, -139, -87, -144, -83, -148, -94, -143, -100, -151, -98)
+
+[node name="Polygon2D4" type="Polygon2D" parent="."]
+position = Vector2(221.887, 122.863)
+rotation = 0.648005
+color = Color(0, 0, 0, 0.396078)
+polygon = PackedVector2Array(-140, -82, -143, -80, -142, -77, -139, -78, -137, -81)
+
+[node name="Polygon2D7" type="Polygon2D" parent="."]
+position = Vector2(-93.1133, 209.863)
+rotation = 0.648005
+color = Color(0, 0, 0, 0.396078)
+polygon = PackedVector2Array(-153, -103, -145, -106, -136, -103, -136, -98, -141, -93, -139, -87, -144, -83, -148, -94, -143, -100, -151, -98)
+
+[node name="Polygon2D8" type="Polygon2D" parent="."]
+position = Vector2(-93.1133, 209.863)
+rotation = 0.648005
+color = Color(0, 0, 0, 0.396078)
+polygon = PackedVector2Array(-140, -82, -143, -80, -142, -77, -139, -78, -137, -81)
+
+[node name="Polygon2D5" type="Polygon2D" parent="."]
+position = Vector2(332.126, 34.3776)
+rotation = -0.613456
+color = Color(0, 0, 0, 0.396078)
+polygon = PackedVector2Array(-153, -103, -145, -106, -136, -103, -136, -98, -141, -93, -139, -87, -144, -83, -148, -94, -143, -100, -151, -98)
+
+[node name="Polygon2D6" type="Polygon2D" parent="."]
+position = Vector2(332.126, 34.3776)
+rotation = -0.613456
+color = Color(0, 0, 0, 0.396078)
+polygon = PackedVector2Array(-140, -82, -143, -80, -142, -77, -139, -78, -137, -81)
