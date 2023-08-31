@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj7khbxqpc08w"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_e1pos"]
+[ext_resource type="Script" path="res://World/purchasables/mysteryBox/mystery_box_pickup.gd" id="2_jbfrc"]
+
+[node name="MysteryBoxPickup" instance=ExtResource("1_e1pos")]
+script = ExtResource("2_jbfrc")
+weapon_name = ""

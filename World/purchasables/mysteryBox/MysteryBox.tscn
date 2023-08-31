@@ -1,24 +1,221 @@
-[gd_scene load_steps=4 format=3 uid="uid://mwhossw8vvb7"]
+[gd_scene load_steps=11 format=3 uid="uid://mwhossw8vvb7"]
 
 [ext_resource type="Script" path="res://World/purchasables/mysteryBox/mystery_box.gd" id="1_foegx"]
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="2_d65m3"]
+[ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="3_013t2"]
+[ext_resource type="Script" path="res://World/purchasables/mysteryBox/audio_mystery_box.gd" id="4_w3mmy"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mrsu8"]
-radius = 40.0
-height = 182.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73if1"]
+bg_color = Color(0.858824, 0, 0.188235, 1)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epwrt"]
+radius = 52.0
+height = 304.0
+
+[sub_resource type="Animation" id="Animation_glp1q"]
+resource_name = "pickup_timer"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ProgressBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/ProgressBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1.4),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pickup_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_042st"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ProgressBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/ProgressBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackgroundSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5dkvp"]
+resource_name = "close"
+length = 2.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.105882), Color(1, 1, 1, 1), Color(1, 1, 1, 0.105882), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_close_animation_finished"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/ProgressBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndc7j"]
+_data = {
+"RESET": SubResource("Animation_042st"),
+"close": SubResource("Animation_5dkvp"),
+"pickup_timer": SubResource("Animation_glp1q")
+}
 
 [node name="MysteryBox" instance=ExtResource("2_d65m3")]
 script = ExtResource("1_foegx")
-number_of_switches = 6
+number_of_switches = 4
 purchasable_cost = 950
 purchasable_name = "Mystery Box"
 
-[node name="interactionZone" parent="." index="0"]
-shape = SubResource("CapsuleShape2D_mrsu8")
+[node name="Control" type="Control" parent="." index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -136.0
+offset_top = -96.0
+offset_right = -96.0
+offset_bottom = -56.0
 
-[node name="gunSwitchingTimer" type="Timer" parent="." index="2"]
+[node name="ProgressBar" type="ProgressBar" parent="Control" index="0"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 27.0
+offset_right = 273.0
+offset_bottom = 36.0
+theme_override_constants/outline_size = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_73if1")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_013t2")
+region_enabled = true
+region_rect = Rect2(635, 724, 273, 95)
+
+[node name="GunSelectionSprite" type="Sprite2D" parent="." index="2"]
+
+[node name="interactionZone" parent="." index="3"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_epwrt")
+
+[node name="gunSwitchingTimer" type="Timer" parent="." index="4"]
 one_shot = true
 
-[node name="gunPickupTimer" type="Timer" parent="." index="3"]
+[node name="gunPickupTimer" type="Timer" parent="." index="5"]
 
-[node name="GunSelectionSprite" type="Sprite2D" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+libraries = {
+"": SubResource("AnimationLibrary_ndc7j")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." index="8"]
+script = ExtResource("4_w3mmy")

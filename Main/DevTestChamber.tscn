@@ -540,7 +540,6 @@ theme = ExtResource("4_whlue")
 text = "Actions"
 
 [node name="PlayerStats" parent="UI" instance=ExtResource("5_0g3yo")]
-visible = false
 offset_left = 288.0
 offset_right = 1280.0
 offset_bottom = 95.0
@@ -596,31 +595,33 @@ offset_bottom = 95.0
 
 [node name="Labels3" parent="UI/PlayerStats" index="12"]
 offset_left = 668.0
-offset_top = 2.0
-offset_right = 750.0
-offset_bottom = 130.0
+offset_top = 23.0
+offset_right = 753.0
+offset_bottom = 151.0
 
 [node name="WaveNumber" parent="UI/PlayerStats" index="13"]
-offset_left = 745.0
-offset_right = 897.0
+offset_left = 748.0
+offset_top = 20.0
+offset_right = 900.0
+offset_bottom = 43.0
 
 [node name="ZombiesToKill" parent="UI/PlayerStats" index="14"]
-offset_left = 755.0
-offset_top = 18.0
-offset_right = 950.0
-offset_bottom = 41.0
+offset_left = 758.0
+offset_top = 38.0
+offset_right = 953.0
+offset_bottom = 61.0
 
 [node name="ZombiesOnMap" parent="UI/PlayerStats" index="15"]
-offset_left = 756.0
-offset_top = 35.0
-offset_right = 975.0
-offset_bottom = 58.0
+offset_left = 759.0
+offset_top = 55.0
+offset_right = 978.0
+offset_bottom = 78.0
 
 [node name="Velocity" parent="UI/PlayerStats" index="16"]
-offset_left = 727.0
-offset_top = 55.0
-offset_right = 959.0
-offset_bottom = 78.0
+offset_left = 730.0
+offset_top = 75.0
+offset_right = 962.0
+offset_bottom = 98.0
 
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_31fr8")]
 
@@ -859,9 +860,6 @@ scale = Vector2(1.00022, 0.999929)
 
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
-
-[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
-scale = Vector2(0.999999, 0.999999)
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
