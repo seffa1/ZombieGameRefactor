@@ -6,7 +6,6 @@
 [node name="WeaponBuySpas" instance=ExtResource("1_k26wa")]
 weapon_name = "SPAS"
 purchasable_cost = 1000
-purchasable_name = "Spas-12"
 
 [node name="Sprite2D" parent="." index="1"]
 rotation = -1.57486

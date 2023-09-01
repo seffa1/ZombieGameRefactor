@@ -9,6 +9,9 @@ This is to inform the player states so they can choose the correct animations.
 var player = null
 var debug_on = true
 
+# Globally updated variables
+var is_power_on: bool = false
+
 # Stores all the information for all guns (should maybe turn this into resources?)
 # The key is what we consider the 'weapon name' and is what must match the guns that are created
 const GUN_INDEX = {

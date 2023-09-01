@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=53 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c4k55vme8b3ge" path="res://World/infrastructure/InsideBuildingTrigger.tscn" id="19_vg3kb"]
 [ext_resource type="Texture2D" uid="uid://5kksi3jgpmqo" path="res://World/tilesets/ground_destroyed_cars/Tilelist1.png" id="20_1jdks"]
 [ext_resource type="Texture2D" uid="uid://d2845ltawrwpt" path="res://World/tilesets/objects_house/Tilelist1.png" id="21_kh116"]
+[ext_resource type="PackedScene" uid="uid://qk5muy0tpgq3" path="res://World/purchasables/powerSwitch/PowerSwitch.tscn" id="21_y5ggm"]
 [ext_resource type="Texture2D" uid="uid://hpc40ksvsyxo" path="res://World/tilesets/objects_house/Tilelist2.png" id="22_dpgeg"]
 [ext_resource type="PackedScene" uid="uid://bb1ef3n186kl8" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/WeaponBuyMP7.tscn" id="22_iks1w"]
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="23_mt1io"]
@@ -657,17 +658,14 @@ rotation = 1.57079
 z_index = 1
 position = Vector2(-31, 156)
 rotation = -1.57079
-purchasable_name = ""
 
 [node name="WeaponBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("17_eue48")]
 z_index = 1
 position = Vector2(1161, -229)
-purchasable_name = ""
 
 [node name="WeaponBuySpas" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("19_u6y5w")]
 z_index = 1
 position = Vector2(630, 778)
-purchasable_name = ""
 
 [node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("24_srur5")]
 z_index = 1
@@ -695,6 +693,11 @@ is_starting_location = true
 position = Vector2(686, 1159)
 rotation = 3.14393
 is_starting_location = true
+
+[node name="Switches" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="PowerSwitch" parent="GameWorld/PurchasablesContainer/Switches" instance=ExtResource("21_y5ggm")]
+position = Vector2(1237, -13)
 
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 

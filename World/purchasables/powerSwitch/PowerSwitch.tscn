@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://qk5muy0tpgq3"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_m8msr"]
+[ext_resource type="Script" path="res://World/purchasables/powerSwitch/power_switch.gd" id="2_kcslo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwtjn"]
+radius = 39.0
+height = 88.0
+
+[sub_resource type="Animation" id="Animation_v3kgk"]
+resource_name = "switch_on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("handle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(5.46416, 1),
+"update": 0,
+"values": [-0.674226, 0.591102]
+}
+
+[sub_resource type="Animation" id="Animation_6lwj8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("handle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.674226]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hm2wg"]
+_data = {
+"RESET": SubResource("Animation_6lwj8"),
+"switch_on": SubResource("Animation_v3kgk")
+}
+
+[node name="PowerSwitch" instance=ExtResource("1_m8msr")]
+script = ExtResource("2_kcslo")
+purchasable_name = "Turn on Power"
+
+[node name="interactionZone" parent="." index="0"]
+position = Vector2(-5, 16)
+shape = SubResource("CapsuleShape2D_xwtjn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+
+[node name="handle" type="Polygon2D" parent="." index="3"]
+position = Vector2(-4, 29)
+rotation = -0.674226
+color = Color(0, 0, 0, 1)
+offset = Vector2(4, -32)
+polygon = PackedVector2Array(-8, 32, -8, 64, 0, 64, 0, 32)
+
+[node name="switchBox" type="Polygon2D" parent="." index="4"]
+color = Color(0.137255, 0.137255, 0.137255, 1)
+polygon = PackedVector2Array(-24, -24, 16, -24, 16, 32, -24, 32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_hm2wg")
+}

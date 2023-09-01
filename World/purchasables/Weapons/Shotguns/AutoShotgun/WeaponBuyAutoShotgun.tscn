@@ -6,7 +6,6 @@
 [node name="WeaponBuyAutoShotgun" instance=ExtResource("1_i1ars")]
 weapon_name = "AUTO_SHOTGUN"
 purchasable_cost = 1000
-purchasable_name = "Auto Shotgun"
 
 [node name="Sprite2D" parent="." index="1"]
 rotation = -1.57486
