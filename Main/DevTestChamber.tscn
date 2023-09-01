@@ -657,7 +657,7 @@ position = Vector2(-43, 11)
 [node name="DevCanon" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
 
 [node name="WeaponBuy-DevCanon" parent="GameWorld/PurchasablesContainer/Weapons/DevCanon" instance=ExtResource("10_xnv1m")]
-z_index = 4
+z_index = 1
 position = Vector2(-43, 501)
 rotation = 1.57079
 
@@ -669,7 +669,7 @@ rotation = 1.57079
 [node name="Pistol01" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
 
 [node name="WeaponBuyPistol_01" parent="GameWorld/PurchasablesContainer/Weapons/Pistol01" instance=ExtResource("12_0owsd")]
-z_index = 4
+z_index = 1
 position = Vector2(-31, 156)
 rotation = -1.57079
 
@@ -681,6 +681,7 @@ rotation = -1.57079
 [node name="AutoShotgun" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
 
 [node name="WeaponBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons/AutoShotgun" instance=ExtResource("17_eue48")]
+z_index = 1
 position = Vector2(1333, 95)
 
 [node name="AmmoBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons/AutoShotgun" instance=ExtResource("18_8drsx")]
@@ -689,6 +690,7 @@ position = Vector2(1333, 95)
 [node name="Spas" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
 
 [node name="WeaponBuySpas" parent="GameWorld/PurchasablesContainer/Weapons/Spas" instance=ExtResource("19_u6y5w")]
+z_index = 1
 position = Vector2(1345, 497)
 
 [node name="AmmoBuySpas" parent="GameWorld/PurchasablesContainer/Weapons/Spas" instance=ExtResource("20_n6xnk")]
@@ -701,6 +703,7 @@ rotation = 0.785397
 position = Vector2(307, 96)
 
 [node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/MP7" instance=ExtResource("22_iks1w")]
+z_index = 1
 position = Vector2(307, 93)
 
 [node name="50Cal" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
@@ -709,9 +712,14 @@ position = Vector2(307, 93)
 position = Vector2(795, 78)
 
 [node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/50Cal" instance=ExtResource("24_srur5")]
+z_index = 1
 position = Vector2(795, 78)
 
 [node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("39_fdiub")]
+position = Vector2(-39, -175)
+mystery_box_locations = [NodePath("../MysteryBoxLocation"), NodePath("../MysteryBoxLocation2"), NodePath("../MysteryBoxLocation3")]
 
 [node name="MysteryBoxLocation" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
 position = Vector2(703, 422)
@@ -719,13 +727,12 @@ position = Vector2(703, 422)
 [node name="MysteryBoxLocation2" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
 position = Vector2(-308, 206)
 rotation = 1.55572
+is_starting_location = true
 
 [node name="MysteryBoxLocation3" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
 position = Vector2(686, 1159)
 rotation = 3.14393
-
-[node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("39_fdiub")]
-position = Vector2(705, 425)
+is_starting_location = true
 
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 
@@ -877,6 +884,9 @@ scale = Vector2(1.00022, 0.999929)
 
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
+
+[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
+scale = Vector2(0.999999, 0.999999)
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)

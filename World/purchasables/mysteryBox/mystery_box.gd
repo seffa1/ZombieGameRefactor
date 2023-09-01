@@ -1,33 +1,102 @@
 extends "res://World/purchasables/purchasable.gd"
 
+"""
+Must add mystery box locations to the scene and assign them to the export variable.
+"""
+
 @onready var gun_switching_timer: Timer = $gunSwitchingTimer
 @onready var gun_sprite: Sprite2D = $GunSelectionSprite
 @onready var gun_pickup_timer: Timer = $gunPickupTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio: AudioStreamPlayer2D = $Audio
-
 @onready var mystery_box_pickup_scene = preload("res://World/purchasables/mysteryBox/MysteryBoxPickup.tscn")
 
 @export var number_of_switches: int = 4  # how many guns does the box cycle through before giving you one ?
-
+@export var mystery_box_locations: Array[Node2D]
+@export var min_selections_until_move: int = 5  # Gaurenteed spins of the box before it has a change to move locations
+@export var max_selection_until_mov: int = 15 # most spins you get before the next spin it gaurenteed to move the box
 
 var is_selecting: bool = false  # Is the mystery currently seleting a weapon to give the player ?
-var current_gun_index = 0
-var gun_selection = []
-var mystery_box_pickup = null
-var player_buying_mystery_box = null
+var gun_selection = []  # populated by random gun selection algorithm
+var current_gun_index = 0  # used to cycle through the selected guns
+var mystery_box_pickup = null  # a refernece to the spawned in weapon pick up node
+var player_buying_mystery_box = null  # Reference to the player who bought the box, so only they can pick it up
+var selected_location  # reference to the current mystery box location
 
-# TODO - generate this from Globals.GUN_INDEX
-# Gun name, selection_weight
-var gun_collection = [
-		["DEV_CANON", 0.1],
-		["PISTOL_01", 1.0],
-		["MP7", 1.0],
-		["AUTO_SHOTGUN", 1.0],
-		["SPAS", 1.0],
-		["50_CAL", 1.0]
-	]
+func _ready():
+	# Get mystery boxes with a starting location flag set
+	var starting_locations = []
+
+	for location in mystery_box_locations:
+		if location.is_starting_location:
+			starting_locations.append(location)
 	
+	assert(len(starting_locations) > 0, "Mystery Box needs a starting location set!")
+		
+	# Set position to random starting location position
+	var random_index = randi_range(0, len(starting_locations) - 1)
+	selected_location = starting_locations[random_index]
+	global_position = selected_location.global_position
+	rotation = selected_location.rotation
+	
+	# Mark location as current and visited
+	selected_location.is_current_box_location = true
+	selected_location.visited = true
+
+func move_locations():
+	# Get loctions which have not been visited yet
+	var unvisited_locations = []
+	for location in mystery_box_locations:
+		if location.visited == false:
+			unvisited_locations.append(location)
+	
+	# Find the new location, making sure we dont visit the same location twice before visiting all, 
+	# and not the same one twice in a row
+	var new_location
+	
+	# If we still havent visited all locations
+	if len(unvisited_locations) > 0:
+		var random_index = randi_range(0, len(unvisited_locations) - 1)
+		new_location = unvisited_locations[random_index]
+	
+	# If every location has been visited,
+	else:
+		# reset all visited flags...
+		var all_locations_except_current = []
+		for location in mystery_box_locations:
+			location.visited = false
+			
+			# ...and get all locations which are NOT the current location
+			if !location.is_current_box_location:
+				all_locations_except_current.append(location)
+
+		# Then choose from among these locations
+		assert(len(all_locations_except_current) > 0, "We should never be here.....")
+		var random_index = randi_range(0, len(all_locations_except_current) - 1)
+		new_location = all_locations_except_current[random_index]
+	
+	# Reset the old location back to 'not current location'
+	selected_location.is_current_box_location = false
+	
+	# update the selected location reference to the new location
+	selected_location = new_location
+	
+	# Mark it as current
+	selected_location.is_current_box_location = true
+	
+	# Start the animation
+	animation_player.play("move_locations")
+
+func _on_move_locations_animation_finished():
+	# Update the position
+	global_position = selected_location.global_position
+	rotation = selected_location.rotation
+	
+	# Start the box arrival animation
+	animation_player.play("box_arrival")
+	
+	# Clean up the state so player can buy again
+	end_selection()
 
 func give_item(player: CharacterBody2D) -> void:
 	"""
@@ -38,9 +107,18 @@ func give_item(player: CharacterBody2D) -> void:
 	player_buying_mystery_box = player
 	
 	can_be_purchased = false
-	gun_selection = select_guns()
-	is_selecting = true
 	audio.play_buy()
+	
+	# TODO - calculate the chance this happens
+	var should_box_move = true
+	if should_box_move:
+		# Give player their money back
+		Events.emit_signal("give_player_money", purchasable_cost)
+		move_locations()
+	else:
+		gun_selection = select_guns()
+		is_selecting = true
+	
 	return
 
 func _process(delta):
@@ -93,8 +171,8 @@ func select_guns() -> Array:
 	Reservoir sampling. We are NOT doing removal, this is so the same gun and get spun multiple times, just like in COD.
 	https://saturncloud.io/blog/algorithm-for-o1-weighted-random-selection-with-removal/#:~:text=Generate%20a%20random%20number%20between,weight%20of%20the%20selected%20item.
 	"""
-	# Initialize the collection
-	var collection = gun_collection.duplicate(true)
+	# Initialize the collection (term from the sample algorithm blog post above)
+	var collection = Globals.mystery_box_spawn_weights.duplicate(true)
 	
 	# Set weight to 0 for any gun the player already has so they don't spin it again
 	for gun in collection:
@@ -104,7 +182,7 @@ func select_guns() -> Array:
 			
 	assert(!all_weights_zero(collection), "All guns weights are zero, you would go into an infinite loop!")
 
-	# Initialize reservoir
+	# Initialize reservoir (term from the sample algorithm blog post above)
 	var reservoir = []
 	
 	# Sum the weights
@@ -148,7 +226,6 @@ func end_selection():
 	gun_sprite.texture = null
 	is_selecting = false
 	can_be_purchased = true
-	animation_player.stop()
 	mystery_box_pickup = null
 	current_gun_index = 0
 	gun_switching_timer.stop()

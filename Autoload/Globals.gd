@@ -98,6 +98,17 @@ const GUN_INDEX = {
 	}
 }
 
+
+# Gun name, selection_weight
+const mystery_box_spawn_weights = [
+		["DEV_CANON", 0.1],
+		["PISTOL_01", 1.0],
+		["MP7", 1.0],
+		["AUTO_SHOTGUN", 1.0],
+		["SPAS", 1.0],
+		["50_CAL", 1.0]
+	]
+
 # Stores all the information for all perks (should maybe turn this into resources?)
 # The key is what we consider the 'perk name' and is what must match the perks that are created
 const PERK_INDEX = {

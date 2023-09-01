@@ -6,3 +6,9 @@ The box will randomly choose a location which is flagged as a "starting location
 """
 
 @export var is_starting_location: bool = false
+
+# updated via the mystery box to make sure it doesnt go to the same place twice in a row
+var is_current_box_location: bool = false 
+
+# updated via the mystery box to make sure it doesnt go to the same place twice before visited all the locations once
+var visited: bool = false
