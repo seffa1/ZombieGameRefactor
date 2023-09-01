@@ -39,7 +39,7 @@ func give_item(player: CharacterBody2D) -> void:
 	return
 
 func get_interactable_message() -> String:
-	if can_be_purchased:
+	if can_be_purchased and purchasable_name != '':
 		return "Buy " + purchasable_name + ": " + str(purchasable_cost)
 	else:
 		return ""

@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2emngbokfwop"]
 
 [ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_expu8"]
-[ext_resource type="Texture2D" uid="uid://dh45736awn3dt" path="res://World/purchasables/Weapons/DevCanon/images/riffle_buy.png" id="2_v4btv"]
+[ext_resource type="Texture2D" uid="uid://dh45736awn3dt" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/riffle_buy.png" id="2_v4btv"]
 
 [node name="WeaponBuy-DevCanon" instance=ExtResource("1_expu8")]
 weapon_name = "DEV_CANON"
+weapon_cost = 2000
 purchasable_cost = 2000
-purchasable_name = "Dev Canon"
 
 [node name="interactionZone" parent="." index="0"]
 rotation = -1.57079

@@ -120,6 +120,7 @@ aim_down_sight={
 2d_physics/layer_15="bulletShells"
 2d_physics/layer_16="region"
 2d_physics/layer_17="mysteryBox"
+2d_physics/layer_18="playerPurchasbleDetector"
 avoidance/layer_1="environment"
 
 [physics]

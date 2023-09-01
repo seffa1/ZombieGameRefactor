@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgwux2kjmj8bj"]
 
 [ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_qj5sf"]
-[ext_resource type="Texture2D" uid="uid://cqtcvp5hnaibh" path="res://World/purchasables/Weapons/Pistol_01/images/pistol_buy.png" id="2_whd7h"]
+[ext_resource type="Texture2D" uid="uid://cqtcvp5hnaibh" path="res://World/purchasables/Weapons/Pistols/Pistol_01/images/pistol_buy.png" id="2_whd7h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ypkn"]
 radius = 36.0
@@ -9,6 +9,7 @@ height = 72.0
 
 [node name="WeaponBuyPistol_01" instance=ExtResource("1_qj5sf")]
 weapon_name = "PISTOL_01"
+weapon_cost = 750
 purchasable_cost = 1000
 purchasable_name = "Pistol 01"
 

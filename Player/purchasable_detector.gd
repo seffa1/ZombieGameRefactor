@@ -1,27 +1,26 @@
 extends Area2D
 
 """
-Tracks the current purchasable items and interacts with them
-if called.
+Checks if theres a purchasble overlapping and updates the interable log if thats the case.
+If we press the intereact button it will try to purchase.
 
-Note: We should never have more than one purchasable item at a time
-EXCEPT for a weapon and its ammo. However those are setup to toggle can_be_purchased
-so the player can never purchase a weapon and ammo at the same time.
+Note: We should never have more than one purchasable item at a time or an error is asserted
 """
 
-@onready var purchasables = []
-
-func _on_area_entered(area):
-	purchasables.append(area)
-	if area.get_interactable_message() != "":
-		Events.emit_signal("update_interactable_log", area.get_interactable_message())
-
-func _on_area_exited(area):
-	purchasables.erase(area)
-	Events.emit_signal("update_interactable_log", "")
-
 func _process(_delta):
+	if has_overlapping_areas():
+		assert(len(get_overlapping_areas()) == 1, "Player has two purchasables on top of each other!")
+		
+		var purchasable_area = get_overlapping_areas()[0]
+		if purchasable_area.get_interactable_message() != '':
+			Events.emit_signal("update_interactable_log", purchasable_area.get_interactable_message())
+	else:
+		Events.emit_signal("update_interactable_log", "")
+	
 	if Input.is_action_just_pressed("interact"):
-		for purchasable in purchasables:
-			if purchasable.can_be_purchased:
-				purchasable.purchase_item(owner)
+		if len(get_overlapping_areas()) > 0:
+			assert(len(get_overlapping_areas()) == 1, "Player has two purchasbles he is trying to buy!")
+			
+			var purchasable_area = get_overlapping_areas()[0]
+			if purchasable_area.can_be_purchased:
+				purchasable_area.purchase_item(owner)

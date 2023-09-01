@@ -54,7 +54,7 @@ func add_weapon(weapon_name: String):
 	# The weapon buys check if we already have the same weapon before it gives it to the player.
 	# So we should never have two of the same gun.
 	assert(weapon_names.find(weapon_name) == -1, "The player got a weapon name they already had listed.")
-	
+
 	# Create the weapon and store the name
 	_create_weapon(weapon_name)
 	weapon_names.append(weapon_name)
@@ -62,9 +62,15 @@ func add_weapon(weapon_name: String):
 	# Store the previous gun name in the buy_weapon state for animation purposes
 	buy_weapon_state.switch_from_gun_name = get_equipped_gun_name()
 	
+	# Check if we have the max guns already
+	if number_of_guns() > max_weapon_count:
+		# Then remove the currently equipped gun before equipping the new one
+		weapon_names.remove_at(current_weapon_index)
+		weapon_objects.remove_at(current_weapon_index)
+	
 	# Set it as equipped
-	var weapon_index = weapon_names.find(weapon_name)
-	_set_equipped_gun(weapon_index)
+	var new_current_weapon_index = weapon_names.find(weapon_name)
+	_set_equipped_gun(new_current_weapon_index)
 	
 	# Store the new gun name in the buy_weapon state for animation purposes
 	buy_weapon_state.switch_to_gun_name = weapon_name
@@ -112,11 +118,15 @@ func _create_weapon(weapon_name: String):
 
 func has_a_gun() -> bool:
 	return len(weapon_objects) > 0
+
 func has_two_guns() -> bool:
 	return len(weapon_objects) > 1
 
 func has_gun(weapon_name: String):
 	return weapon_names.find(weapon_name) != -1
+
+func number_of_guns():
+	return len(weapon_names)
 
 func get_equipped_gun():
 	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any.")

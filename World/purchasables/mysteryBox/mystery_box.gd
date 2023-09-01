@@ -81,8 +81,9 @@ func move_locations():
 	# update the selected location reference to the new location
 	selected_location = new_location
 	
-	# Mark it as current
+	# Mark it as current and visited
 	selected_location.is_current_box_location = true
+	selected_location.visited = true
 	
 	# Start the animation
 	animation_player.play("move_locations")

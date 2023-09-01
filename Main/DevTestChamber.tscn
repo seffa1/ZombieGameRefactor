@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=52 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -12,25 +12,19 @@
 [ext_resource type="PackedScene" uid="uid://5wpk32ea7ptu" path="res://UI/HUD/HUD.tscn" id="10_1jyyk"]
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_04yua"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="10_xnv1m"]
-[ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/AmmoBuyDevCanon.tscn" id="11_qq2a3"]
 [ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistols/Pistol_01/WeaponBuyPistol01.tscn" id="12_0owsd"]
-[ext_resource type="PackedScene" uid="uid://b6km4xub8g4cf" path="res://World/purchasables/Weapons/Pistols/Pistol_01/AmmoBuyPistol01.tscn" id="13_wgco8"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="14_ralqs"]
 [ext_resource type="PackedScene" uid="uid://b7yfy5h1lnwxk" path="res://World/pickups/max_ammo/MaxAmmo.tscn" id="15_1qwsw"]
 [ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="16_yds3k"]
 [ext_resource type="PackedScene" uid="uid://bo2drheyfcgle" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/WeaponBuyAutoShotgun.tscn" id="17_eue48"]
 [ext_resource type="PackedScene" uid="uid://b3o8b6cd4qnog" path="res://World/purchasables/Doors/PurchasableDoor.tscn" id="17_okwvs"]
-[ext_resource type="PackedScene" uid="uid://b5qbdk6v77lmc" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/AmmoBuyAutoShotgun.tscn" id="18_8drsx"]
 [ext_resource type="PackedScene" uid="uid://q6wx281jrsea" path="res://World/purchasables/Windows/Window.tscn" id="18_uec4f"]
 [ext_resource type="PackedScene" uid="uid://d2oddfj7gwl4t" path="res://World/purchasables/Weapons/Shotguns/Spas/WeaponBuySpas.tscn" id="19_u6y5w"]
 [ext_resource type="PackedScene" uid="uid://c4k55vme8b3ge" path="res://World/infrastructure/InsideBuildingTrigger.tscn" id="19_vg3kb"]
 [ext_resource type="Texture2D" uid="uid://5kksi3jgpmqo" path="res://World/tilesets/ground_destroyed_cars/Tilelist1.png" id="20_1jdks"]
-[ext_resource type="PackedScene" uid="uid://c75o67xltbcjg" path="res://World/purchasables/Weapons/Shotguns/Spas/AmmoBuySpas.tscn" id="20_n6xnk"]
 [ext_resource type="Texture2D" uid="uid://d2845ltawrwpt" path="res://World/tilesets/objects_house/Tilelist1.png" id="21_kh116"]
-[ext_resource type="PackedScene" uid="uid://biwux6x321xd6" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/AmmoBuyMP7.tscn" id="21_q8esh"]
 [ext_resource type="Texture2D" uid="uid://hpc40ksvsyxo" path="res://World/tilesets/objects_house/Tilelist2.png" id="22_dpgeg"]
 [ext_resource type="PackedScene" uid="uid://bb1ef3n186kl8" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/WeaponBuyMP7.tscn" id="22_iks1w"]
-[ext_resource type="PackedScene" uid="uid://2nklfxfhp1w3" path="res://World/purchasables/Weapons/Snipers/50Cal/AmmoBuy50Cal.tscn" id="23_ioq0s"]
 [ext_resource type="PackedScene" uid="uid://bypyufryf0ycr" path="res://Player/Player.tscn" id="23_mt1io"]
 [ext_resource type="PackedScene" uid="uid://c35lvlmdtsj1k" path="res://World/infrastructure/ZombieManager.tscn" id="24_at8cq"]
 [ext_resource type="PackedScene" uid="uid://cju2hf0p32e23" path="res://World/purchasables/Weapons/Snipers/50Cal/WeaponBuy50Cal.tscn" id="24_srur5"]
@@ -654,66 +648,34 @@ position = Vector2(-43, 11)
 
 [node name="Weapons" type="Node" parent="GameWorld/PurchasablesContainer"]
 
-[node name="DevCanon" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
-
-[node name="WeaponBuy-DevCanon" parent="GameWorld/PurchasablesContainer/Weapons/DevCanon" instance=ExtResource("10_xnv1m")]
+[node name="WeaponBuy-DevCanon" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("10_xnv1m")]
 z_index = 1
-position = Vector2(-43, 501)
+position = Vector2(354, 198)
 rotation = 1.57079
 
-[node name="AmmoBuyDevCanon" parent="GameWorld/PurchasablesContainer/Weapons/DevCanon" instance=ExtResource("11_qq2a3")]
-z_index = 4
-position = Vector2(-43, 500)
-rotation = 1.57079
-
-[node name="Pistol01" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
-
-[node name="WeaponBuyPistol_01" parent="GameWorld/PurchasablesContainer/Weapons/Pistol01" instance=ExtResource("12_0owsd")]
+[node name="WeaponBuyPistol_01" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("12_0owsd")]
 z_index = 1
 position = Vector2(-31, 156)
 rotation = -1.57079
+purchasable_name = ""
 
-[node name="AmmoBuyPistol01" parent="GameWorld/PurchasablesContainer/Weapons/Pistol01" instance=ExtResource("13_wgco8")]
-z_index = 4
-position = Vector2(-32, 154)
-rotation = -1.57079
-
-[node name="AutoShotgun" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
-
-[node name="WeaponBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons/AutoShotgun" instance=ExtResource("17_eue48")]
+[node name="WeaponBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("17_eue48")]
 z_index = 1
-position = Vector2(1333, 95)
+position = Vector2(1161, -229)
+purchasable_name = ""
 
-[node name="AmmoBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons/AutoShotgun" instance=ExtResource("18_8drsx")]
-position = Vector2(1333, 95)
-
-[node name="Spas" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
-
-[node name="WeaponBuySpas" parent="GameWorld/PurchasablesContainer/Weapons/Spas" instance=ExtResource("19_u6y5w")]
+[node name="WeaponBuySpas" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("19_u6y5w")]
 z_index = 1
-position = Vector2(1345, 497)
+position = Vector2(630, 778)
+purchasable_name = ""
 
-[node name="AmmoBuySpas" parent="GameWorld/PurchasablesContainer/Weapons/Spas" instance=ExtResource("20_n6xnk")]
-position = Vector2(1346, 500)
-rotation = 0.785397
-
-[node name="MP7" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
-
-[node name="AmmoBuyMP7" parent="GameWorld/PurchasablesContainer/Weapons/MP7" instance=ExtResource("21_q8esh")]
-position = Vector2(307, 96)
-
-[node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/MP7" instance=ExtResource("22_iks1w")]
-z_index = 1
-position = Vector2(307, 93)
-
-[node name="50Cal" type="Node" parent="GameWorld/PurchasablesContainer/Weapons"]
-
-[node name="AmmoBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/50Cal" instance=ExtResource("23_ioq0s")]
-position = Vector2(795, 78)
-
-[node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons/50Cal" instance=ExtResource("24_srur5")]
+[node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("24_srur5")]
 z_index = 1
 position = Vector2(795, 78)
+purchasable_name = ""
+
+[node name="WeaponBuyMP7" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("22_iks1w")]
+position = Vector2(93, 415)
 
 [node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
 
@@ -884,9 +846,6 @@ scale = Vector2(1.00022, 0.999929)
 
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
-
-[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
-scale = Vector2(0.999999, 0.999999)
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)

@@ -6,7 +6,6 @@
 [node name="WeaponBuyMP7" instance=ExtResource("1_ne4qd")]
 weapon_name = "MP7"
 purchasable_cost = 1000
-purchasable_name = "MP7 Cal"
 
 [node name="Sprite2D" parent="." index="1"]
 rotation = -1.57486
