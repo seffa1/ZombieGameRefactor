@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=62 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -9,9 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_tw0cg"]
 [ext_resource type="PackedScene" uid="uid://bo2drheyfcgle" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/WeaponBuyAutoShotgun.tscn" id="7_w83lw"]
 [ext_resource type="PackedScene" uid="uid://bgb41n3ecyxgh" path="res://World/regions/WorkShop.tscn" id="8_rbq33"]
+[ext_resource type="PackedScene" uid="uid://qk5muy0tpgq3" path="res://World/purchasables/powerSwitch/PowerSwitch.tscn" id="8_ua684"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="8_uddx1"]
+[ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="9_178qv"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ffymw"]
 [ext_resource type="PackedScene" uid="uid://5wpk32ea7ptu" path="res://UI/HUD/HUD.tscn" id="10_4m0vi"]
+[ext_resource type="PackedScene" uid="uid://76s4kicryfd0" path="res://World/purchasables/mysteryBox/MysteryBoxLocation.tscn" id="10_4stfb"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="10_5nexr"]
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_7kl0x"]
 [ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistols/Pistol_01/WeaponBuyPistol01.tscn" id="12_k34b3"]
@@ -3665,6 +3668,39 @@ rotation = -0.785397
 position = Vector2(2534, 1170)
 
 [node name="Perks" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="Switches" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="PowerSwitch" parent="GameWorld/PurchasablesContainer/Switches" instance=ExtResource("8_ua684")]
+position = Vector2(-2887, 2163)
+rotation = 0.785397
+
+[node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("9_178qv")]
+position = Vector2(-39, -175)
+mystery_box_locations = [NodePath("../MysteryBoxLocation"), NodePath("../MysteryBoxLocation2"), NodePath("../MysteryBoxLocation3"), NodePath("../MysteryBoxLocation4"), NodePath("../MysteryBoxLocation5")]
+
+[node name="MysteryBoxLocation" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
+position = Vector2(144, -1172)
+is_starting_location = true
+
+[node name="MysteryBoxLocation2" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
+position = Vector2(1300, 1974)
+rotation = 1.55572
+is_starting_location = true
+
+[node name="MysteryBoxLocation3" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
+position = Vector2(651, 793)
+rotation = 3.14393
+
+[node name="MysteryBoxLocation4" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
+position = Vector2(-2198, 2552)
+rotation = 2.35619
+
+[node name="MysteryBoxLocation5" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
+position = Vector2(-4634, 313)
+rotation = 3.14159
 
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 

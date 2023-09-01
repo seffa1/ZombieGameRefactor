@@ -26,12 +26,16 @@ var selected_location  # reference to the current mystery box location
 func _ready():
 	# Get mystery boxes with a starting location flag set
 	var starting_locations = []
+	
 
+	assert(len(mystery_box_locations) > 0, "Make sure to link locations to the box via the export array!")
+	
 	for location in mystery_box_locations:
 		if location.is_starting_location:
 			starting_locations.append(location)
 	
-	assert(len(starting_locations) > 0, "Mystery Box needs a starting location set!")
+	assert(len(starting_locations) > 0, "At least one location needs to be a starting location!")
+	
 		
 	# Set position to random starting location position
 	var random_index = randi_range(0, len(starting_locations) - 1)
