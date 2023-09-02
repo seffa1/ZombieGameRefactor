@@ -666,6 +666,7 @@ position = Vector2(1161, -229)
 [node name="WeaponBuySpas" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("19_u6y5w")]
 z_index = 1
 position = Vector2(630, 778)
+rotation = -1.55665
 
 [node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("24_srur5")]
 z_index = 1
@@ -679,20 +680,15 @@ position = Vector2(93, 415)
 
 [node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("39_fdiub")]
 position = Vector2(-39, -175)
-mystery_box_locations = [NodePath("../MysteryBoxLocation"), NodePath("../MysteryBoxLocation2"), NodePath("../MysteryBoxLocation3")]
+mystery_box_locations = [NodePath("../MysteryBoxLocation"), NodePath("../MysteryBoxLocation3")]
 
 [node name="MysteryBoxLocation" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
 position = Vector2(703, 422)
-
-[node name="MysteryBoxLocation2" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
-position = Vector2(-308, 206)
-rotation = 1.55572
 is_starting_location = true
 
 [node name="MysteryBoxLocation3" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("25_atn32")]
 position = Vector2(686, 1159)
 rotation = 3.14393
-is_starting_location = true
 
 [node name="Switches" type="Node" parent="GameWorld/PurchasablesContainer"]
 

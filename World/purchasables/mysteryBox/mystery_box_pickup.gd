@@ -1,19 +1,19 @@
-extends "res://World/purchasables/Weapons/weapon_buy.gd"
+extends "res://World/purchasables/purchasable.gd"
 
 """
-The mystery box created this weapon buy, sets the exports manually, then when the player
-pickups up the gun, give the player the gun and then queue_free.
-Player should never get a mystery box spin for a weapon they already have.
+The mystery box spawns this in and sets the weapon name so the player can pick it up.
 """
+
+var weapon_name: String  # Set by mystery box
 
 signal mystery_box_weapon_picked_up
 
+func _ready():
+	purchasable_name = 'Pickup ' + weapon_name
+
 func give_item(player: CharacterBody2D):
 	assert(weapon_name != '', "You didn't set the name for the mystery box pickup")
-	assert(purchasable_cost == 0, "Mystery box pickup shouldnt cost money")
-	assert(purchasable_name != '', "You didnt set the purchase message for the mystery box.")
-	
-	player.money_component.money -= purchasable_cost
+
 	player.weapon_manager.add_weapon(weapon_name)
 	Events.emit_signal("player_log", "Picked up " + purchasable_name)
 	

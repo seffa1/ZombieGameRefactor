@@ -2,6 +2,7 @@ extends "res://World/purchasables/purchasable.gd"
 
 """
 Must add mystery box locations to the scene and assign them to the export variable.
+Buying the box is considered 'spining it'
 """
 
 @onready var gun_switching_timer: Timer = $gunSwitchingTimer
@@ -13,9 +14,10 @@ Must add mystery box locations to the scene and assign them to the export variab
 
 @export var number_of_switches: int = 4  # how many guns does the box cycle through before giving you one ?
 @export var mystery_box_locations: Array[Node2D]
-@export var min_selections_until_move: int = 5  # Gaurenteed spins of the box before it has a change to move locations
-@export var max_selection_until_mov: int = 15 # most spins you get before the next spin it gaurenteed to move the box
+@export var min_spins_until_move: float = 5.0  # Gaurenteed spins of the box before it has a change to move locations
+@export var max_spins_until_mov: float = 15.0 # most spins you get before the next spin it gaurenteed to move the box
 
+var spins_since_moving = 0
 var is_selecting: bool = false  # Is the mystery currently seleting a weapon to give the player ?
 var gun_selection = []  # populated by random gun selection algorithm
 var current_gun_index = 0  # used to cycle through the selected guns
@@ -26,7 +28,6 @@ var selected_location  # reference to the current mystery box location
 func _ready():
 	# Get mystery boxes with a starting location flag set
 	var starting_locations = []
-	
 
 	assert(len(mystery_box_locations) > 0, "Make sure to link locations to the box via the export array!")
 	
@@ -114,12 +115,27 @@ func give_item(player: CharacterBody2D) -> void:
 	can_be_purchased = false
 	audio.play_buy()
 	
-	# TODO - calculate the chance this happens
-	var should_box_move = true
+	spins_since_moving += 1
+
+	var chance_to_move
+	var should_box_move
+
+	if spins_since_moving >= max_spins_until_mov:
+		should_box_move = true
+	elif spins_since_moving < min_spins_until_move:
+		should_box_move = false
+	else:
+		# Change to move increases from 0 to 100 percent as the spins going from the min to the max
+		chance_to_move = (100.0 / (max_spins_until_mov - min_spins_until_move)) * (spins_since_moving - min_spins_until_move)
+		var random_chance = randf_range(0, 100)
+		if chance_to_move >= random_chance:
+			should_box_move = true
+	
 	if should_box_move:
 		# Give player their money back
 		Events.emit_signal("give_player_money", purchasable_cost)
 		move_locations()
+		spins_since_moving = 0
 	else:
 		gun_selection = select_guns()
 		is_selecting = true
@@ -145,8 +161,6 @@ func _process(delta):
 				mystery_box_pickup = mystery_box_pickup_scene.instantiate()
 				mystery_box_pickup.weapon_name = gun_name
 				mystery_box_pickup.rotation = rotation
-				mystery_box_pickup.purchasable_cost = 0
-				mystery_box_pickup.purchasable_name = 'Pickup ' + gun_name
 				mystery_box_pickup.mystery_box_weapon_picked_up.connect(_on_weapon_picked_up)
 				add_child(mystery_box_pickup)
 				# Then switch to the 'is giving state'

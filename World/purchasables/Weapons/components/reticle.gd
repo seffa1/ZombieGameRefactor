@@ -63,6 +63,9 @@ func set_recoil_state(state: String):
 	State machine for the reticle which updates its properties based on the player's movement states.
 	In order of how accurate the reticle should be.
 	"""
+	# I dont know how this happens but it happened once
+	if state_stack[0] == "aim_down_sight" and state == "aim_down_sight":
+		state_stack == ["aim_down_sight"]
 	assert( !(state_stack[0] == "aim_down_sight" and state == "aim_down_sight"), "Getting ADS signal while already ADSing" )
 	
 	# If the player is ADS and they sprint, cancel the ADS
@@ -98,6 +101,10 @@ func set_recoil_state(state: String):
 		state_stack = [state]
 		# ["idle"]
 	
+	# I dont know why this happens but sometimes it does
+	if state_stack == []:
+		state_stack = ["idle"]
+
 	# Set the current state as whatever is at the front of the queue
 	var current_state = state_stack[0]
 	

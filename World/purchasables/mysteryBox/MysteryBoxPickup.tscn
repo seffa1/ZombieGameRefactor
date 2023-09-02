@@ -5,4 +5,3 @@
 
 [node name="MysteryBoxPickup" instance=ExtResource("1_e1pos")]
 script = ExtResource("2_jbfrc")
-weapon_name = ""
