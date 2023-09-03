@@ -18,7 +18,7 @@ func _process(_delta):
 			if area.can_be_purchased:
 				num_of_purchasables += 1
 
-				var message = area.get_interactable_message()
+				var message = area.get_interactable_message(owner)
 				if message != '':
 					Events.emit_signal("update_interactable_log", message)
 	

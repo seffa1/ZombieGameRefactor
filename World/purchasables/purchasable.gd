@@ -38,7 +38,7 @@ func give_item(player: CharacterBody2D) -> void:
 	Events.emit_signal("player_log", "Purchased " + purchasable_name)
 	return
 
-func get_interactable_message() -> String:
+func get_interactable_message(player: CharacterBody2D) -> String:
 	if can_be_purchased and purchasable_name != '':
 		return "Buy " + purchasable_name + ": " + str(purchasable_cost)
 	else:

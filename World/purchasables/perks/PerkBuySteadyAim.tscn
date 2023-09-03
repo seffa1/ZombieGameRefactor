@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxwt5d0a8v8bs"]
+
+[ext_resource type="PackedScene" uid="uid://wu2rc4f62cfw" path="res://World/purchasables/perks/PerkBuy.tscn" id="1_vyl8r"]
+[ext_resource type="Texture2D" uid="uid://bw4at5u5a8yrl" path="res://UI/images/HUD/element_0005_Layer-7.png" id="2_gasa3"]
+
+[node name="PerkBuySteadyName" instance=ExtResource("1_vyl8r")]
+perk_name = "STEADY_AIM"
+purchasable_cost = 1500
+purchasable_name = "Steady Aim"
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(4.76837e-07, -4.76837e-07)
+scale = Vector2(0.511589, 0.511589)
+texture = ExtResource("2_gasa3")

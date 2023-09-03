@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckfv1wtlmvqoy"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_32fw4"]
+[ext_resource type="Script" path="res://World/purchasables/perks/perk_buy.gd" id="2_8gv61"]
+[ext_resource type="AudioStream" uid="uid://blkticcpqlj0e" path="res://World/purchasables/perks/audio/ESM_Power_Up_Potion_3_Mobile_App_Game_FX_Sound_Magic_Fantasy.wav" id="3_3k5h6"]
+[ext_resource type="Texture2D" uid="uid://cy22w3epri6ne" path="res://World/purchasables/perks/images/element_0100_Layer-102.png" id="3_d7iuw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ythw6"]
+radius = 45.0
+height = 90.0
+
+[node name="PerkBuyDoubleTap" instance=ExtResource("1_32fw4")]
+script = ExtResource("2_8gv61")
+perk_name = "DOUBLE_TAP"
+purchasable_cost = 3000
+purchasable_name = "Double Tap"
+
+[node name="interactionZone" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_ythw6")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_d7iuw")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("3_3k5h6")

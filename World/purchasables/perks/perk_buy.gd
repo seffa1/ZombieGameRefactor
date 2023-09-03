@@ -50,8 +50,12 @@ func give_item(player: CharacterBody2D):
 		audio.play()
 		Events.emit_signal("player_log", "Purchased " + purchasable_name)
 
-func get_interactable_message() -> String:
-	if is_power_on:
-		return "Buy " + purchasable_name + ": " + str(purchasable_cost)
-	else:
+func get_interactable_message(player: CharacterBody2D) -> String:
+	if !is_power_on:
 		return "Must turn on the power!"
+	
+	# Check if player already has the perk
+	if !player.perk_manager.perks.find(perk_name) == -1:
+		return "Already have " + str(purchasable_name)
+	else:
+		return "Buy " + purchasable_name + ": " + str(purchasable_cost)

@@ -117,6 +117,18 @@ const mystery_box_spawn_weights = [
 const PERK_INDEX = {
 	"STAMINA_BOOST": {
 		"nice_name": "Stamina Boost"
+	},
+	"DOUBLE_TAP": {
+		"nice_name": "Double Tap"
+	},
+	"HEALTH_BOOST": {
+		"nice_name": "Health Boost"
+	},
+	"QUICK_RELOAD": {
+		"nice_name": "Quick Reload"
+	},
+	"STEADY_AIM": {
+		"nice name": "Steady Aim"
 	}
 }
 

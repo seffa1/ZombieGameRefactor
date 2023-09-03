@@ -14,7 +14,7 @@ func give_item(player: CharacterBody2D) -> void:
 	animation_player.play("switch_on")
 	return
 
-func get_interactable_message() -> String:
+func get_interactable_message(player: CharacterBody2D) -> String:
 	if can_be_purchased:
 		return "Activate power"
 	else:

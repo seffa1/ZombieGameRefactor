@@ -24,7 +24,7 @@ func give_item(_player: CharacterBody2D) -> void:
 	update_animation_frame(health_component.health)
 	return
 
-func get_interactable_message() -> String:
+func get_interactable_message(player: CharacterBody2D) -> String:
 	if can_be_purchased:
 		return "Repair " + purchasable_name
 	else:
