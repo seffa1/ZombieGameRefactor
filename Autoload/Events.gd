@@ -50,3 +50,6 @@ signal shake_screen(intensity, duration)
 # Game loop
 signal wave_started(wave_number)
 signal zombie_death(zombie: CharacterBody2D)
+
+# Gameplay events
+signal power_activated

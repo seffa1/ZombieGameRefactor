@@ -3680,8 +3680,6 @@ rotation = 0.785397
 [node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("9_178qv")]
 position = Vector2(-39, -175)
 mystery_box_locations = [NodePath("../MysteryBoxLocation"), NodePath("../MysteryBoxLocation2"), NodePath("../MysteryBoxLocation3"), NodePath("../MysteryBoxLocation4"), NodePath("../MysteryBoxLocation5")]
-min_spins_until_move = 5.0
-max_spins_until_mov = 15.0
 
 [node name="MysteryBoxLocation" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
 position = Vector2(144, -1172)

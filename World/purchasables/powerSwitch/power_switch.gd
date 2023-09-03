@@ -9,6 +9,7 @@ func give_item(player: CharacterBody2D) -> void:
 	player.money_component.money -= purchasable_cost
 	Events.emit_signal("player_log", "Power activated")
 	Globals.is_power_on = true
+	Events.emit_signal("power_activated")
 	can_be_purchased = false
 	animation_player.play("switch_on")
 	return
