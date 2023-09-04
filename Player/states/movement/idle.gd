@@ -15,8 +15,7 @@ func enter():
 
 func update(delta):
 	update_look_direction() # Rotate towards mouse
-	regenerate_stamina()
-	
+
 	# decelerate
 	velocity_component.decelerate(delta)
 	owner.velocity = velocity_component.velocity

@@ -3167,8 +3167,6 @@ script = ExtResource("14_qrq3y")
 script = ExtResource("16_gldpa")
 
 [node name="StaminaComponent" parent="." instance=ExtResource("2_jysyf")]
-STAMINA_REGEN_PER_TICK = 0.3
-STAMINA_USE_PER_TICK = 0.7
 
 [node name="MoneyComponent" parent="." instance=ExtResource("3_g8ae3")]
 

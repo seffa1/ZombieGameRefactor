@@ -1,15 +1,15 @@
 extends "res://Player/states/movement/motion.gd"
 
 """
-The motion parent script handles the stamina regenerations.
+
 """
 
 @export var WALK_SPEED_FOWARD: int = 300
 @export var WALK_SPEED_BACKWARDS: int = 300
-@export var STAMINA_USE_RATE: float = .03  # seconds / point depleted (smaller the number, faster the depletion)
 @export var MIN_SPRINT_STAMINA_COST: int = 10 # min amount of stamina you need in order to sprint
 
 @onready var velocity_component = $"../../VelocityComponent"
+@onready var stamina_component = $"../../StaminaComponent"
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -22,7 +22,7 @@ func exit():
 
 func handle_input(event: InputEvent):
 	if event.is_action_pressed("sprint"):
-		if owner.stamina >= MIN_SPRINT_STAMINA_COST:
+		if stamina_component.stamina >= MIN_SPRINT_STAMINA_COST:
 			emit_signal("finished", "sprint")
 			return
 
@@ -34,9 +34,7 @@ func update(delta):
 	if not input_direction:
 		emit_signal("finished", "idle")
 		return
-	
-	regenerate_stamina()
-	
+
 	# adjust speed multiplier if aiming down site
 	var ADS_speed_multiplier = 1.0
 	if Input.is_action_pressed("aim_down_sight"):

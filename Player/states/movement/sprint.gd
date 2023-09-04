@@ -5,14 +5,17 @@ The sprint action state cancels all other actions and plays an animation, while
 the sprint movement state (this one) just handles player movement and leg animations/sounds.
 """
 
-@export var SPRINT_SPEED_FORWARD: int = 500
-
 @onready var velocity_component = $"../../VelocityComponent"
+@onready var stamina_component = $"../../StaminaComponent"
+
+@export var SPRINT_SPEED_FORWARD: int = 500
 
 # Initialize the state. E.g. change the animation
 func enter():
 	# Emit signal for the action state to handle
 	Events.emit_signal("player_sprinting")
+
+	stamina_component.is_stamina_depleting = true
 	
 	# Cancel player actions shoot state
 	if owner.state_machine_action.states_stack[0] == owner.state_machine_action.states_map["shoot"]:
@@ -23,6 +26,7 @@ func enter():
 
 # Clean up the state
 func exit():
+	stamina_component.is_stamina_depleting = false
 	Events.emit_signal("player_stop_sprinting")
 
 func handle_input(event: InputEvent):
@@ -41,12 +45,12 @@ func update(delta):
 		return
 	
 	# Make sure we have the stamina
-	if owner.stamina < 1:
+	if stamina_component.stamina < 1:
 		emit_signal("finished", "previous")
 		return
 	
 	# TODO - limit player from spinning around, prevent actions
-	deplete_stamina()
+	
 	
 	# move the player
 	var input_direction = get_input_direction().normalized()

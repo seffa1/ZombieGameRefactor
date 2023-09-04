@@ -713,8 +713,6 @@ rotation = 3.14393
 [node name="PowerSwitch" parent="GameWorld/PurchasablesContainer/Switches" instance=ExtResource("21_y5ggm")]
 position = Vector2(1412, 38)
 rotation = 1.57079
-purchasable_cost = null
-can_be_purchased = null
 
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 
@@ -793,36 +791,21 @@ purchasable_cost = 0
 
 [node name="Window" parent="GameWorld/Environment/Window" instance=ExtResource("18_uec4f")]
 position = Vector2(-1145, 673)
-window_repair_money_reward = null
-purchasable_cost = null
-can_be_purchased = null
 
 [node name="Window3" parent="GameWorld/Environment/Window" instance=ExtResource("18_uec4f")]
 position = Vector2(-800, 329)
 rotation = -1.57079
-window_repair_money_reward = null
-purchasable_cost = null
-can_be_purchased = null
 
 [node name="Window6" parent="GameWorld/Environment/Window" instance=ExtResource("18_uec4f")]
 position = Vector2(1055, 887)
 rotation = -1.57079
-window_repair_money_reward = null
-purchasable_cost = null
-can_be_purchased = null
 
 [node name="Window7" parent="GameWorld/Environment/Window" instance=ExtResource("18_uec4f")]
 position = Vector2(222, 889)
 rotation = -1.57079
-window_repair_money_reward = null
-purchasable_cost = null
-can_be_purchased = null
 
 [node name="Window8" parent="GameWorld/Environment/Window" instance=ExtResource("18_uec4f")]
 position = Vector2(1463, 353)
-window_repair_money_reward = null
-purchasable_cost = null
-can_be_purchased = null
 
 [node name="Triggers" type="Node" parent="GameWorld/Environment"]
 
@@ -880,13 +863,7 @@ rotation = -0.708219
 [node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
 scale = Vector2(1.00022, 0.999929)
 
-[node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
-scale = Vector2(1, 1)
-
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
-scale = Vector2(1, 1)
-
-[node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
 scale = Vector2(1, 1)
 
 [node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]

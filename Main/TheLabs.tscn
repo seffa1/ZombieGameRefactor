@@ -3694,8 +3694,6 @@ position = Vector2(3038, 1616)
 [node name="PowerSwitch" parent="GameWorld/PurchasablesContainer/Switches" instance=ExtResource("8_ua684")]
 position = Vector2(-2887, 2163)
 rotation = 0.785397
-purchasable_cost = null
-can_be_purchased = null
 
 [node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
 
@@ -3853,149 +3851,83 @@ purchasable_cost = 1250
 [node name="Window6" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(1055, 887)
 rotation = -1.57079
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window7" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(222, 880)
 rotation = 1.57079
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window9" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(996, -53)
 rotation = -1.57079
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window8" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(1463, 353)
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window11" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(2627, 793)
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window12" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(3252, 2273)
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window13" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(3321, 3681)
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window14" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(1613, 4012)
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window15" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(865, 2552)
 rotation = 1.57079
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window16" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-858, 2353)
 rotation = 1.83259
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window17" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-2558, 3094)
 rotation = 0.785397
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window18" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-3729, 2290)
 rotation = 0.785397
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window19" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-3455, 3231)
 rotation = 2.35619
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window20" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-4194, 435)
 rotation = 1.57079
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window21" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-4255, -950)
 rotation = 1.57079
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window22" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-4918, -164)
 rotation = 3.14159
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window23" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-2055, -165)
 rotation = 4.71238
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window24" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-924, -2145)
 rotation = 4.97418
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window26" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(288, -3063)
 rotation = 4.71238
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window25" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(1412, -2017)
 rotation = 6.02138
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window10" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-118, 288)
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Window2" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(-1078, -543)
-purchasable_cost = null
-can_be_purchased = null
-window_repair_money_reward = null
 
 [node name="Triggers" type="Node" parent="GameWorld/Environment"]
 
