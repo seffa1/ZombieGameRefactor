@@ -66,7 +66,7 @@ func set_recoil_state(state: String):
 	# I dont know how this happens but it happened once
 	if state_stack[0] == "aim_down_sight" and state == "aim_down_sight":
 		state_stack == ["aim_down_sight"]
-	assert( !(state_stack[0] == "aim_down_sight" and state == "aim_down_sight"), "Getting ADS signal while already ADSing" )
+
 	
 	# If the player is ADS and they sprint, cancel the ADS
 	if state_stack[0] == "aim_down_sight" and state == "sprinting":

@@ -37,6 +37,7 @@ func _on_reload_animation_finished():
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
+	animation_player.speed_scale = 1.0
 	animation_player.stop()
 	weapon_object = null
 

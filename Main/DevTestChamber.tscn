@@ -13,11 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_04yua"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="10_xnv1m"]
 [ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistols/Pistol_01/WeaponBuyPistol01.tscn" id="12_0owsd"]
-[ext_resource type="PackedScene" uid="uid://ckfv1wtlmvqoy" path="res://World/purchasables/perks/PerkBuyDoubleTap.tscn" id="13_myik1"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="14_ralqs"]
 [ext_resource type="PackedScene" uid="uid://bugjbduk2yeae" path="res://World/purchasables/perks/PerkBuyHealthBoost.tscn" id="14_smj05"]
 [ext_resource type="PackedScene" uid="uid://b7yfy5h1lnwxk" path="res://World/pickups/max_ammo/MaxAmmo.tscn" id="15_1qwsw"]
 [ext_resource type="PackedScene" uid="uid://dew3qrg0ysy7e" path="res://World/purchasables/perks/PerkBuyQuickReload.tscn" id="15_cjy05"]
+[ext_resource type="PackedScene" uid="uid://ckfv1wtlmvqoy" path="res://World/purchasables/perks/PerkBuyRapidFire.tscn" id="16_roldk"]
 [ext_resource type="PackedScene" uid="uid://bxwt5d0a8v8bs" path="res://World/purchasables/perks/PerkBuySteadyAim.tscn" id="16_xt7na"]
 [ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="16_yds3k"]
 [ext_resource type="PackedScene" uid="uid://bo2drheyfcgle" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/WeaponBuyAutoShotgun.tscn" id="17_eue48"]
@@ -655,9 +655,6 @@ visible = false
 [node name="PerkBuyStaminaBoost" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("14_ralqs")]
 position = Vector2(100, 191)
 
-[node name="PerkBuyDoubleTap" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("13_myik1")]
-position = Vector2(360, 191)
-
 [node name="PerkBuyHealthBoost" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("14_smj05")]
 position = Vector2(640, 191)
 
@@ -667,6 +664,9 @@ purchasable_name = "Quick Reload"
 
 [node name="PerkBuySteadyName" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("16_xt7na")]
 position = Vector2(1188, 191)
+
+[node name="PerkBuyRapidFire" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("16_roldk")]
+position = Vector2(363, 190)
 
 [node name="Weapons" type="Node" parent="GameWorld/PurchasablesContainer"]
 
@@ -870,6 +870,9 @@ scale = Vector2(1.00022, 0.999929)
 
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
+
+[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
+scale = Vector2(0.999999, 0.999999)
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)

@@ -31,7 +31,7 @@ func apply_perk(perk_name: String):
 		"QUICK_RELOAD":
 			reload_state.has_quick_reload = true
 		"HEALTH_BOOST":
-			health_component.max_health = health_component.starting_max_health * 2
+			health_component.max_health = 60.0
 		"STEADY_AIM":
 			weapon_manager.add_modifier("STEADY_AIM")
 			

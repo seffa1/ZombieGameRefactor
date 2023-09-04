@@ -4,3 +4,6 @@
 
 [node name="HealthComponent" type="Node2D"]
 script = ExtResource("1_tdyaf")
+
+[node name="regenWaitTime" type="Timer" parent="."]
+one_shot = true

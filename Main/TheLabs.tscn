@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_tw0cg"]
 [ext_resource type="PackedScene" uid="uid://bo2drheyfcgle" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/WeaponBuyAutoShotgun.tscn" id="7_w83lw"]
 [ext_resource type="PackedScene" uid="uid://bgb41n3ecyxgh" path="res://World/regions/WorkShop.tscn" id="8_rbq33"]
-[ext_resource type="PackedScene" uid="uid://ckfv1wtlmvqoy" path="res://World/purchasables/perks/PerkBuyDoubleTap.tscn" id="8_ry1ca"]
+[ext_resource type="PackedScene" uid="uid://ckfv1wtlmvqoy" path="res://World/purchasables/perks/PerkBuyRapidFire.tscn" id="8_ry1ca"]
 [ext_resource type="PackedScene" uid="uid://qk5muy0tpgq3" path="res://World/purchasables/powerSwitch/PowerSwitch.tscn" id="8_ua684"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="8_uddx1"]
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="9_178qv"]
@@ -3674,9 +3674,6 @@ position = Vector2(2534, 1170)
 
 [node name="Perks" type="Node" parent="GameWorld/PurchasablesContainer"]
 
-[node name="PerkBuyDoubleTap" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("8_ry1ca")]
-position = Vector2(-1369, 829)
-
 [node name="PerkBuyHealthBoost" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("9_wgtcj")]
 position = Vector2(-18, 582)
 
@@ -3688,6 +3685,9 @@ position = Vector2(-3692, -174)
 
 [node name="PerkBuySteadyName" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("12_o5ggv")]
 position = Vector2(3038, 1616)
+
+[node name="PerkBuyRapidFire" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("8_ry1ca")]
+position = Vector2(-1344, 940)
 
 [node name="Switches" type="Node" parent="GameWorld/PurchasablesContainer"]
 
