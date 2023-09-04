@@ -879,22 +879,15 @@ rotation = -0.708219
 
 [node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
 scale = Vector2(1.00022, 0.999929)
-metadata/_local_pose_override_enabled_ = true
-
-[node name="shoulderLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="1"]
-metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
 scale = Vector2(1, 1)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
 scale = Vector2(1, 1)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
 scale = Vector2(0.999999, 0.999999)
@@ -905,27 +898,20 @@ MAX_ZOMBIES_ON_MAP = 10
 wave_spawn_type = "test_chamber"
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(116, 1439)
+position = Vector2(105, 1439)
+spawn_interval = 1.0
 spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1796, 353)
+spawn_interval = 1.0
 spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner3" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1090, 1392)
-spawner_active = false
-trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
-
-[node name="ZombieSpawner4" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(967, -493)
-spawner_active = false
-trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
-
-[node name="ZombieSpawner5" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(443, -493)
+spawn_interval = 1.0
 spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
