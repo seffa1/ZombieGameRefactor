@@ -18,10 +18,10 @@ function should be applied when the gun shoots.
 @export var weapon_recoil: bool = true 
 
 # GUN SPECIFIC CONFIGURATION
-@export var recoil_per_shot: float = 30.0 # pixels the reticle moves per shot, set on a per-gun basis - should be constant
-@export var gun_recoil_max: float = 100.0 # max recoil amount which the gun hits when sprinting
+@export var recoil_per_shot: float = 30.0 # pixels the reticle moves per shot, set on a per-gun basis - should be constant UNLESS changed by gun modifiers (steady aim)
+@export var gun_recoil_max: float = 100.0 # max recoil amount which the gun hits when sprinting - affected by gun modifiers (STEADY_AIM)
 @export var gun_recoil_min: float = 0.0  # min recoil value the guns can reach during ADS. All guns should set this to 0 except shotguns typically
-@export var recoil_reduction_amount: int = 1 # the amount of recoil lost per game tick
+@export var recoil_reduction_amount: int = 1 # how fast the recoil returns back to zero when you stop shooting - dont change this
 
 # Weapon sway
 @export var weapon_sway: bool = true  # feature toggle

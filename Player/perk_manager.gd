@@ -1,5 +1,10 @@
 extends Node2D
 
+@onready var stamina_component = $"../StaminaComponent"
+@onready var weapon_manager = $"../WeaponManager"
+@onready var reload_state = $"../StateMachineAction/Reload"
+@onready var health_component = $"../HealthComponent"
+
 var perks: Array[String] = []
 
 func add_perk(perk_name: String):
@@ -10,24 +15,24 @@ func add_perk(perk_name: String):
 	"""
 	assert(perks.find(perk_name) == -1, "Adding perk we already have!")
 
-	
 	perks.append(perk_name)
 	Events.emit_signal("player_perks_change", perks)
 	apply_perk(perk_name)
 
 func apply_perk(perk_name: String):
 	assert(Globals.PERK_INDEX.keys().find(perk_name) != -1, "Perk name doesnt match global index: " + perk_name)
-	
+
 	match perk_name:
 		"STAMINA_BOOST":
-			owner.max_stamina = 200
-		"DOUBLE_TAP":
-			pass
+			stamina_component.max_stamina = stamina_component.starting_max_stamina * 2.0
+			stamina_component.stamina_regen_per_tick = stamina_component.starting_regen_per_tick * 1.5
+		"RAPID_FIRE":
+			weapon_manager.add_modifier("RAPID_FIRE")
 		"QUICK_RELOAD":
-			pass
+			reload_state.has_quick_reload = true
 		"HEALTH_BOOST":
-			pass
+			health_component.max_health = health_component.starting_max_health * 2
 		"STEADY_AIM":
-			pass
+			weapon_manager.add_modifier("STEADY_AIM")
 			
 

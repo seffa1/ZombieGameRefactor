@@ -15,6 +15,7 @@ extends Panel
 @onready var zombies_to_kill = $ZombiesToKill
 @onready var zombies_on_map = $ZombiesOnMap
 @onready var player_velocity = $Velocity
+@onready var health_label = $Health
 
 func _ready():
 	set_as_top_level(true)
@@ -24,6 +25,7 @@ func _ready():
 	Events.player_equipped_reserve_count_change.connect(_update_equipped_reserve_count)
 	
 	Events.player_stamina_change.connect(_player_stamina_change)
+	Events.player_health_change.connect(_player_health_change)
 	Events.player_direction_change.connect(_player_direction_change)
 	Events.player_velocity_change.connect(_player_velocity_change)
 	Events.player_money_change.connect(_player_money_change)
@@ -85,3 +87,6 @@ func _on_weapon_manager_player_weapons_change(weapons: Array[String]):
 
 func _on_weapon_manager_player_equipped_change(weapon_name: String):
 	equipped.text = weapon_name
+
+func _player_health_change(health: int):
+	health_label.text = str(health)

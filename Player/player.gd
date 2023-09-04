@@ -15,13 +15,12 @@ Connects to any event bus signals which need to be passed down to child nodes.
 @onready var hit_timer: Timer = $HitTimer
 @onready var gun_sprite = $SkeletonControl/GunSprite
 @onready var velocity_component = $VelocityComponent
+@onready var health_component = $HealthComponent
 
 # Constants
 @export var money_component: Node
 @export var starting_gun: String = "PISTOL_01"
 @export var starting_money: int = 0
-
-
 
 func assign_camera(camera: Camera2D) -> void:
 	""" Called by the game initializer. """
@@ -31,6 +30,7 @@ func _physics_process(_delta):
 	Events.emit_signal("player_rotation_change", self.rotation)
 	Events.emit_signal("player_position_change", self.position)
 	Events.emit_signal("player_velocity_change", self.velocity)
+	Events.emit_signal("player_health_change", health_component.health)
 
 func _ready():
 	# Connect to player interaction signals

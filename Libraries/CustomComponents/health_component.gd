@@ -7,7 +7,8 @@ player or enemy could use.
 """
 
 @export var max_health: int = 50
-@export var death_money_reward: int = 100
+
+var starting_max_health: int  # set in ready, tracked in case max health is modified
 
 var health:
 	get:
@@ -22,3 +23,4 @@ var health:
 
 func _ready():
 	health = max_health
+	starting_max_health = max_health

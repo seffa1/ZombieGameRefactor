@@ -101,7 +101,6 @@ const GUN_INDEX = {
 	}
 }
 
-
 # Gun name, selection_weight
 const mystery_box_spawn_weights = [
 		["DEV_CANON", 0.1],
@@ -118,8 +117,8 @@ const PERK_INDEX = {
 	"STAMINA_BOOST": {
 		"nice_name": "Stamina Boost"
 	},
-	"DOUBLE_TAP": {
-		"nice_name": "Double Tap"
+	"RAPID_FIRE": {
+		"nice_name": "Rapid Fire"
 	},
 	"HEALTH_BOOST": {
 		"nice_name": "Health Boost"

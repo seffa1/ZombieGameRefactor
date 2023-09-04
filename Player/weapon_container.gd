@@ -40,10 +40,17 @@ The shoot signal flow:
 var weapon_names: Array[String] = []  #
 var weapon_objects: Array[Node2D] = []
 var current_weapon_index: int
+var max_weapon_count: int = 2
 
-var max_weapon_count: int = 2  # not used yet
+# Set by perk manager. Used for perk bonus' (double tab, speed cola, instakill, etc.)
+# This array is passed to a gun when its equipped OR when a new modified is added, and cleared from that gun if its unequipped
+var modifiers: Array[String] = []  
 
-var modifiers: Array[String] = []  # not used yet, will be used for perk bonus' (double tab, speed cola, instakill, etc.)
+func add_modifier(modifier: String):
+	# TODO - this might break if we use this system for power up drops (instakill)
+	assert(!modifier.find(modifier) == -1, "You are adding a modifier that you already have!")
+	modifiers.append(modifier)
+	get_equipped_gun().set_modifiers(modifiers)
 
 func add_weapon(weapon_name: String):
 	"""
@@ -85,17 +92,19 @@ func _set_equipped_gun(weapon_index: int):
 	Updates the current weapon index which determines which gun name / gun object is 
 	retrieved from the weapon names and weapon object arrays from the other methods.
 	"""
-	# hide the crosshairs from the gun we currently have equipped, if we have one
+	# disable any components from the gun we are un-equipping
 	if has_a_gun():
 		get_equipped_gun().toggle_crosshairs(false)
 		get_equipped_gun().toggle_raycast(false)
+		get_equipped_gun().clear_modifiers()
 
 	assert(weapon_index != -1, "You tried to set a weapon that you don't have.")
 	current_weapon_index = weapon_index
 	
-	# Show the crosshairs on the new gun
+	# Enable any components from the gun we are equipping
 	get_equipped_gun().toggle_crosshairs(true)
 	get_equipped_gun().toggle_raycast(true)
+	get_equipped_gun().set_modifiers(modifiers)
 
 	# Inform the UI
 	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index])

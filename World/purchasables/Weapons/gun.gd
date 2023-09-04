@@ -59,6 +59,11 @@ var bullet_reserve: int:
 		bullet_reserve = value
 		Events.emit_signal("player_equipped_reserve_count_change", bullet_reserve)
 
+var starting_fire_rate: float  # Set in ready function, needed so we can reset fire rate if its changed by a perk (double tap)
+var starting_recoil_per_shot: float  # Set in ready function, needed so we can reset fire rate if its changed by a perk (steady aim)
+var starting_max_recoil: float
+var starting_recoil_reduction_amount: int
+
 func _ready():
 	assert(fire_type != "", "Gun doesnt have a fire type selected.")
 	assert(WEAPON_NAME != "", "Gun doesnt have a name set.: " + WEAPON_NAME)
@@ -66,6 +71,26 @@ func _ready():
 	
 	bullets_in_clip = clip_size
 	bullet_reserve = max_bullet_reserve
+	
+	# Track starting values for when they are modified
+	starting_fire_rate = fire_rate
+	starting_recoil_per_shot = reticle.recoil_per_shot
+	starting_max_recoil = reticle.gun_recoil_max
+
+func clear_modifiers():
+	fire_rate = starting_fire_rate
+	reticle.recoil_per_shot = starting_recoil_per_shot
+
+func set_modifiers(modifiers: Array):
+	for modifier in modifiers:
+		match modifier:
+			"RAPID_FIRE":
+				fire_rate = starting_fire_rate * 0.5  # doubles the fire rate ( by halving the fire rate COOLDOWN )
+			"STEADY_AIM":
+				reticle.recoil_per_shot = starting_recoil_per_shot * 0.5  # how much recoil increases per shot
+				reticle.gun_recoil_max = starting_max_recoil / 2  # max recoil
+			_:
+				assert(false, "Adding a modifier that isnt handled in this match statement: " + modifier)
 
 func refill_ammo():
 	bullets_in_clip = clip_size
