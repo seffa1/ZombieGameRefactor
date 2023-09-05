@@ -39,5 +39,5 @@ func _player_perks_change(perks: Array[String]):
 #		perk_text += perk + ", "
 #	player_perks.text = perk_text
 
-func _on_weapon_manager_player_equipped_change(weapon_name: String):
-	equipped.text = weapon_name
+func _on_weapon_manager_player_equipped_change(weapon_name: String, weapon_level: int):
+	equipped.text = weapon_name + " - " + str(weapon_level)

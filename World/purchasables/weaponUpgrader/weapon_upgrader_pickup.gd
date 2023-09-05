@@ -14,10 +14,16 @@ func _ready():
 	purchasable_name = 'Pickup ' + weapon_name
 
 func give_item(player: CharacterBody2D):
-	assert(weapon_name != '', "You didn't set the name for the mystery box pickup")
+	assert(weapon_name != '', "You didn't set the name for the weapon upgrader pickup")
+	assert(weapon_level > 0, "You didnt set the weapon level, cant upgrade to level 0!")
+	assert(Globals.GUN_INDEX.keys().find(weapon_name) != -1, "You are creating a weapon name that isnt in the global GUN_INDEX list.")
+	
+	# Create the weapon
+	var weapon_object = Globals.GUN_INDEX[weapon_name].scene.instantiate()
+	weapon_object.weapon_level = weapon_level
+	print("Weapon level: " + str(weapon_level))
 
-	player.weapon_manager.add_weapon(weapon_name)
-	player.weapon_manager.get_equipped_gun().weapon_level = weapon_level
+	player.weapon_manager.add_weapon_object(weapon_object)
 	Events.emit_signal("player_log", "Picked up " + purchasable_name)
 	
 	# Let the mystery box know the weapons been picked up

@@ -54,7 +54,7 @@ func give_item(player: CharacterBody2D) -> void:
 	level_upgrading_to = weapon.weapon_level + 1
 	
 	# Remove gun from player
-	player.weapon_manager.remove_equipped_gun()
+	player.weapon_manager.put_gun_in_upgraded()
 	
 	# Set the selection sprite
 	# TODO - we probably want the 'upgraded looking sprite' presented to the player to pickup here
@@ -85,6 +85,13 @@ func _on_weapon_picked_up():
 	animation_player.stop()
 	audio.play_gun_pickup()
 	gun_selection_sprite.texture = null
+	animation_player.play("reset_upgrader")
+
+func _on_reset_upgrader_animation_finished():
+	"""
+	This short animation is needed so when the player pickups the gun they dont 
+	automatically upgrade the gun again at the same time.
+	"""
 	reset_upgrader()
 
 func reset_upgrader():

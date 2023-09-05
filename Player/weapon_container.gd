@@ -46,6 +46,10 @@ var max_weapon_count: int = 2
 # This array is passed to a gun when its equipped OR when a new modified is added, and cleared from that gun if its unequipped
 var modifiers: Array[String] = []  
 
+func _process(delta):
+	if has_a_gun():
+		print(get_equipped_gun().weapon_level)
+
 func add_modifier(modifier: String):
 	# TODO - this might break if we use this system for power up drops (instakill)
 	assert(!modifier.find(modifier) == -1, "You are adding a modifier that you already have!")
@@ -72,7 +76,8 @@ func add_weapon(weapon_name: String):
 	# Check if we have the max guns already
 	if number_of_guns() > max_weapon_count:
 		# Then remove the currently equipped gun before equipping the new one
-		remove_equipped_gun()
+		weapon_names.remove_at(current_weapon_index)
+		weapon_objects.remove_at(current_weapon_index)
 	
 	# Set it as equipped
 	var new_current_weapon_index = weapon_names.find(weapon_name)
@@ -86,7 +91,43 @@ func add_weapon(weapon_name: String):
 	# Info the HUD
 	Events.emit_signal("player_weapons_change", weapon_names)
 
-func remove_equipped_gun():
+func add_weapon_object(weapon_object):
+	"""
+	Used by the pack a punch machine which needs to create and modify the weapon
+	object BEFORE passing it to the player.
+	"""
+	var weapon_name = weapon_object.WEAPON_NAME
+	
+	# Add it to the tree and store a reference
+	add_child(weapon_object)
+	weapon_objects.append(weapon_object)
+	weapon_names.append(weapon_name)
+	
+	# Store the previous gun name in the buy_weapon state for animation purposes
+	buy_weapon_state.switch_from_gun_name = get_equipped_gun_name()
+	
+	# Check if we have the max guns already
+	if number_of_guns() > max_weapon_count:
+		# Then remove the currently equipped gun before equipping the new one
+		weapon_names.remove_at(current_weapon_index)
+		weapon_objects.remove_at(current_weapon_index)
+		
+	# Set it as equipped
+	var new_current_weapon_index = weapon_names.find(weapon_name)
+	_set_equipped_gun(new_current_weapon_index)
+	
+	# Store the new gun name in the buy_weapon state for animation purposes
+	buy_weapon_state.switch_to_gun_name = weapon_name
+	
+	Events.emit_signal("player_buy_weapon")
+
+	# Info the HUD
+	Events.emit_signal("player_weapons_change", weapon_names)
+
+func put_gun_in_upgraded():
+	"""
+	Called by weapon upgraded
+	"""
 	# Remove the current gun
 	weapon_names.remove_at(current_weapon_index)
 	weapon_objects.remove_at(current_weapon_index)
@@ -116,7 +157,7 @@ func _set_equipped_gun(weapon_index: int):
 	get_equipped_gun().set_modifiers(modifiers)
 
 	# Inform the UI
-	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index])
+	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index], get_equipped_gun().weapon_level)
 	Events.emit_signal("player_equipped_clip_count_change", get_equipped_gun().bullets_in_clip)
 	Events.emit_signal("player_equipped_reserve_count_change", get_equipped_gun().bullet_reserve)
 

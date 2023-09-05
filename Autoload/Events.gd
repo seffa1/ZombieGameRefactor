@@ -26,7 +26,7 @@ signal player_perks_change(perks: Array[String])
 signal player_equipped_clip_count_change(count: int)  # bullets in current clip
 signal player_equipped_reserve_count_change(count: int)  # bullets remaing
 signal player_weapons_change(weapon_names: Array[String])
-signal player_equipped_change(weapon_name: String)
+signal player_equipped_change(weapon_name: String, weapon_level: int)
 
 signal zombies_to_kill_change(amount: int)
 signal wave_number_change(wave: int)

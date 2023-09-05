@@ -22,7 +22,7 @@ func _ready():
 	var nice_weapon_name =  Globals.GUN_INDEX[player_gun.WEAPON_NAME].nice_name
 	Events.emit_signal("player_equipped_clip_count_change", player_gun.bullets_in_clip)
 	Events.emit_signal("player_equipped_reserve_count_change", player_gun.bullet_reserve)
-	Events.emit_signal("player_equipped_change", nice_weapon_name)
+	Events.emit_signal("player_equipped_change", nice_weapon_name, player_gun.weapon_level)
 	Events.emit_signal("player_money_change", player.money_component.money)
 	
 	
