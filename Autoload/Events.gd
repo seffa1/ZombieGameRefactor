@@ -44,6 +44,7 @@ signal raise_weapon()
 signal player_idle()
 signal player_moving()
 signal player_sprinting()
+signal player_switch_weapons()
 
 # FX
 signal shake_screen(intensity, duration)

@@ -7,7 +7,6 @@ Buying the box is considered 'spining it'
 
 @onready var gun_switching_timer: Timer = $gunSwitchingTimer
 @onready var gun_sprite: Sprite2D = $GunSelectionSprite
-@onready var gun_pickup_timer: Timer = $gunPickupTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio: AudioStreamPlayer2D = $Audio
 @onready var mystery_box_pickup_scene = preload("res://World/purchasables/mysteryBox/MysteryBoxPickup.tscn")

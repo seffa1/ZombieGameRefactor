@@ -72,8 +72,7 @@ func add_weapon(weapon_name: String):
 	# Check if we have the max guns already
 	if number_of_guns() > max_weapon_count:
 		# Then remove the currently equipped gun before equipping the new one
-		weapon_names.remove_at(current_weapon_index)
-		weapon_objects.remove_at(current_weapon_index)
+		remove_equipped_gun()
 	
 	# Set it as equipped
 	var new_current_weapon_index = weapon_names.find(weapon_name)
@@ -86,6 +85,16 @@ func add_weapon(weapon_name: String):
 
 	# Info the HUD
 	Events.emit_signal("player_weapons_change", weapon_names)
+
+func remove_equipped_gun():
+	# Remove the current gun
+	weapon_names.remove_at(current_weapon_index)
+	weapon_objects.remove_at(current_weapon_index)
+	
+	# If we have another gun, switch to it
+	if has_a_gun():
+		current_weapon_index = 0
+		Events.emit_signal("player_switch_weapons")
 
 func _set_equipped_gun(weapon_index: int):
 	"""
@@ -142,7 +151,7 @@ func get_equipped_gun():
 	return weapon_objects[current_weapon_index]
 
 func get_equipped_gun_name():
-	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any.")
+	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any: " + str(weapon_names))
 	return weapon_names[current_weapon_index]
 	
 func get_gun(weapon_name: String):

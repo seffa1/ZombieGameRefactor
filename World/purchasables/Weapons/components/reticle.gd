@@ -37,6 +37,7 @@ var weapon_sway_y_direction: int = 1  # flips between pos and negative based on 
 
 # Recoil control values set by the state
 var recoil_min: float
+var recoil_min_increase_factor: float = 10.0  # how much min value increases when moving, affected by STEADY AIM perk
 var recoil_max: float
 
 # The current recoil amount, controls reticle placement and thus bullet accuracy
@@ -114,20 +115,20 @@ func set_recoil_state(state: String):
 			recoil_min = gun_recoil_min
 			recoil_max = gun_recoil_max * .25
 		["aim_down_sight", "moving"]:
-			recoil_min = gun_recoil_min + 10.0
+			recoil_min = gun_recoil_min + recoil_min_increase_factor
 			recoil_max = gun_recoil_max * .6
 		["idle"]:
-			recoil_min = gun_recoil_min + 30.0
+			recoil_min = gun_recoil_min + (3.0 * recoil_min_increase_factor)
 			recoil_max = gun_recoil_max * .8
 		["moving"]:
-			recoil_min = gun_recoil_min + 60.0
+			recoil_min = gun_recoil_min + (6.0 * recoil_min_increase_factor)
 			recoil_max = gun_recoil_max * 1.4
 		["sprinting"]: 
 			recoil_min = gun_recoil_max * 1.9
 			recoil_max = gun_recoil_max * 2.0
 		_:
 			assert("Recieved an unhandled state")
-	assert(recoil_min <= recoil_max, "recoil min greater than max, adjust values")
+	assert(recoil_min <= recoil_max, "recoil min greater than max, adjust values:")
 
 func _player_idle():
 	set_recoil_state("idle")

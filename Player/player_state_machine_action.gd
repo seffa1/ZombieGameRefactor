@@ -28,6 +28,10 @@ func _ready():
 	Events.player_buy_weapon.connect(_on_player_buy_weapon)
 	Events.player_sprinting.connect(_on_player_sprinting)
 	Events.lower_weapon.connect(_on_player_lower_weapon)
+	Events.player_switch_weapons.connect(_on_player_switch_weapons) # called via weapon manager when a gun is removed via pack a punch
+
+func _on_player_switch_weapons():
+	_change_state("switch_weapons")
 
 func _on_player_lower_weapon():
 	_change_state("lower_weapon")

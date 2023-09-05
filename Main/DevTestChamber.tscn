@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=58 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://cju2hf0p32e23" path="res://World/purchasables/Weapons/Snipers/50Cal/WeaponBuy50Cal.tscn" id="24_srur5"]
 [ext_resource type="PackedScene" uid="uid://bq47d84tq7j2k" path="res://World/infrastructure/ZombieSpawner.tscn" id="25_2j7wj"]
 [ext_resource type="PackedScene" uid="uid://76s4kicryfd0" path="res://World/purchasables/mysteryBox/MysteryBoxLocation.tscn" id="25_atn32"]
+[ext_resource type="PackedScene" uid="uid://cdx6tkvpkamvh" path="res://World/purchasables/weaponUpgrader/WeaponUpgrader.tscn" id="26_ap0nb"]
 [ext_resource type="PackedScene" uid="uid://ciapy12l0w3w2" path="res://Libraries/CustomComponents/CameraComponent.tscn" id="26_ii3jy"]
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_4bpo3"]
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_b2va5"]
@@ -718,6 +719,11 @@ rotation = 3.14393
 [node name="PowerSwitch" parent="GameWorld/PurchasablesContainer/Switches" instance=ExtResource("21_y5ggm")]
 position = Vector2(1412, 38)
 rotation = 1.57079
+
+[node name="PackAPunch" type="Node" parent="GameWorld/PurchasablesContainer"]
+
+[node name="WeaponUpgrader" parent="GameWorld/PurchasablesContainer/PackAPunch" instance=ExtResource("26_ap0nb")]
+position = Vector2(611, 678)
 
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 

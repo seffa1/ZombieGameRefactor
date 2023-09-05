@@ -29,7 +29,6 @@ var health: float:
 			health = value
 
 func _ready():
-	print(max_health)
 	health = max_health
 	starting_max_health = max_health
 	regen_wait_timer.start(health_regeneration_wait_time)

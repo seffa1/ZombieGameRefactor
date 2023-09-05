@@ -62,6 +62,7 @@ var bullet_reserve: int:
 var starting_fire_rate: float  # Set in ready function, needed so we can reset fire rate if its changed by a perk (double tap)
 var starting_recoil_per_shot: float  # Set in ready function, needed so we can reset fire rate if its changed by a perk (steady aim)
 var starting_max_recoil: float
+var starting_recoil_min_increase_factor
 var starting_recoil_reduction_amount: int
 
 func _ready():
@@ -76,6 +77,7 @@ func _ready():
 	starting_fire_rate = fire_rate
 	starting_recoil_per_shot = reticle.recoil_per_shot
 	starting_max_recoil = reticle.gun_recoil_max
+	starting_recoil_min_increase_factor = reticle.recoil_min_increase_factor
 
 func clear_modifiers():
 	fire_rate = starting_fire_rate
@@ -89,6 +91,7 @@ func set_modifiers(modifiers: Array):
 			"STEADY_AIM":
 				reticle.recoil_per_shot = starting_recoil_per_shot * 0.5  # how much recoil increases per shot
 				reticle.gun_recoil_max = starting_max_recoil / 2  # max recoil
+				reticle.recoil_min_increase_factor = starting_recoil_min_increase_factor / 2.0  # how much min value increases when moving
 			_:
 				assert(false, "Adding a modifier that isnt handled in this match statement: " + modifier)
 

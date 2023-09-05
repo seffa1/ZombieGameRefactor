@@ -1,0 +1,295 @@
+[gd_scene load_steps=16 format=3 uid="uid://cdx6tkvpkamvh"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_3ow3n"]
+[ext_resource type="Script" path="res://World/purchasables/weaponUpgrader/weapon_upgrader.gd" id="2_go3sm"]
+[ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="3_px4yx"]
+[ext_resource type="Texture2D" uid="uid://ipnj5e8br1hp" path="res://World/purchasables/Weapons/Shotguns/Spas/images/shotgun.png" id="4_cksrc"]
+[ext_resource type="AudioStream" uid="uid://bj05srfovdppt" path="res://UI/sounds/button_clicks/ESM_Powerful_Dash_4_Mobile_App_Game_FX_Sound_Magic_Fantasy_Touch_Accent_Stab_Transition_Movement_Whoosh.wav" id="5_kdwbc"]
+[ext_resource type="Script" path="res://World/purchasables/weaponUpgrader/weapon_upgrader_audio.gd" id="5_nflue"]
+[ext_resource type="AudioStream" uid="uid://c561smucnx1j" path="res://UI/sounds/button_clicks/GLTCH_SFX_LatchImpact6.wav" id="6_jjea6"]
+[ext_resource type="AudioStream" uid="uid://lur2yk6m0gvj" path="res://UI/sounds/button_clicks/FF_CA_60_foley_ticking_clock_fast_subtle.wav" id="7_jtw5j"]
+[ext_resource type="AudioStream" uid="uid://dyjyet54hgpk5" path="res://UI/sounds/button_clicks/ESM_Holographic_Achivement_with_Ring_Out_1_Game_UI_Futuristic_Alien_Menu_Button.wav" id="8_yvxxg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ysu88"]
+radius = 96.9986
+height = 322.033
+
+[sub_resource type="Animation" id="Animation_vmi7b"]
+resource_name = "upgrade"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunSelectionSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -82), Vector2(0, 0), Vector2(0, 0), Vector2(0, -94)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunSelectionSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("placeHolderArt:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.4, 1.8, 2.2, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.0356283, 0.107543, -0.0898829, 0.0760343, -0.154153, 0.0347491, -0.0678129, 0.0347491, -0.0678129, 0.0347491, -0.0678129, 0.0]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_kdwbc")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_jjea6")
+}, {
+"end_offset": 1.41241,
+"start_offset": 0.0,
+"stream": ExtResource("7_jtw5j")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_jjea6")
+}, {
+"end_offset": 1.83,
+"start_offset": 0.0,
+"stream": ExtResource("8_yvxxg")
+}],
+"times": PackedFloat32Array(0, 1, 1.4, 4, 4.8)
+}
+tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_upgrade_animation_complete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qh45g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunSelectionSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -82)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunSelectionSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("placeHolderArt:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/ProgressBar:value")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/ProgressBar:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/ProgressBar:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_brvm0"]
+resource_name = "pickup"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ProgressBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/ProgressBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1.4),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_pickup_animation_complete"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dy4kn"]
+_data = {
+"RESET": SubResource("Animation_qh45g"),
+"pickup": SubResource("Animation_brvm0"),
+"upgrade": SubResource("Animation_vmi7b")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viy5n"]
+bg_color = Color(0.858824, 0, 0.188235, 1)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[node name="WeaponUpgrader" instance=ExtResource("1_3ow3n")]
+script = ExtResource("2_go3sm")
+first_upgrade_cost = 5000
+second_upgrade_cost = 15000
+third_upgrade_cost = 30000
+
+[node name="interactionZone" parent="." index="0"]
+rotation = -1.57209
+shape = SubResource("CapsuleShape2D_ysu88")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_px4yx")
+region_enabled = true
+region_rect = Rect2(1125, 1192, 321, 188)
+
+[node name="GunSelectionSprite" type="Sprite2D" parent="." index="2"]
+position = Vector2(0, -82)
+texture = ExtResource("4_cksrc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_dy4kn")
+}
+
+[node name="placeHolderArt" type="Sprite2D" parent="." index="4"]
+position = Vector2(0, 30)
+scale = Vector2(1.06553, 0.800299)
+texture = ExtResource("3_px4yx")
+region_enabled = true
+region_rect = Rect2(118, 1213, 279, 141)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]
+script = ExtResource("5_nflue")
+
+[node name="Control" type="Control" parent="." index="6"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -142.0
+offset_top = -168.0
+offset_right = -102.0
+offset_bottom = -128.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" index="0"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 27.0
+offset_right = 273.0
+offset_bottom = 36.0
+theme_override_constants/outline_size = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_viy5n")
+step = 1.0
+value = 100.0
+show_percentage = false

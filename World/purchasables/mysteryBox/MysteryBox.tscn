@@ -371,17 +371,15 @@ debug_color = Color(0.262745, 0.623529, 0.32549, 0.419608)
 [node name="gunSwitchingTimer" type="Timer" parent="." index="6"]
 one_shot = true
 
-[node name="gunPickupTimer" type="Timer" parent="." index="7"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 libraries = {
 "": SubResource("AnimationLibrary_ndc7j")
 }
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." index="10"]
+[node name="Audio" type="AudioStreamPlayer2D" parent="." index="9"]
 script = ExtResource("4_w3mmy")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="11"]
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="10"]
 collision_layer = 65536
 collision_mask = 9
 
