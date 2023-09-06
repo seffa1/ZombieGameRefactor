@@ -21,7 +21,6 @@ func give_item(player: CharacterBody2D):
 	# Create the weapon
 	var weapon_object = Globals.GUN_INDEX[weapon_name].scene.instantiate()
 	weapon_object.weapon_level = weapon_level
-	print("Weapon level: " + str(weapon_level))
 
 	player.weapon_manager.add_weapon_object(weapon_object)
 	Events.emit_signal("player_log", "Picked up " + purchasable_name)

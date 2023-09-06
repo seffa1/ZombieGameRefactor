@@ -7,9 +7,9 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
+	print("ENTER")
 	if !weapon_manager.has_a_gun():
-		# TODO - no weapon animation state
-		animation_player.play("idle_pistol")
+		animation_player.play("idle_noWeapon")
 		return
 	animation_player.play(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].idle_animation)
 
@@ -17,9 +17,8 @@ func enter():
 func exit():
 	animation_player.stop()
 
-
 func update(_delta):
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and weapon_manager.has_a_gun():
 		# Cannot shoot if player's action is sprinting
 		if owner.state_machine_movement.states_stack[0] == owner.state_machine_movement.states_map["sprint"]:
 			return

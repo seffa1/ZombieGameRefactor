@@ -40,11 +40,14 @@ signal player_knockback(direction: Vector2)
 signal lower_weapon()
 signal raise_weapon()
 
-# Player states (used for the reticle)
+# Player movement states (used for the reticle)
 signal player_idle()
 signal player_moving()
 signal player_sprinting()
+
+# Player actions states - for when states need to be triggers 
 signal player_switch_weapons()
+signal player_action_idle()
 
 # FX
 signal shake_screen(intensity, duration)

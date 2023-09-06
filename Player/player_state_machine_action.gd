@@ -29,11 +29,17 @@ func _ready():
 	Events.player_sprinting.connect(_on_player_sprinting)
 	Events.lower_weapon.connect(_on_player_lower_weapon)
 	Events.player_switch_weapons.connect(_on_player_switch_weapons) # called via weapon manager when a gun is removed via pack a punch
+	Events.player_action_idle.connect(_on_player_action_idle)
+
+func _on_player_action_idle():
+	_change_state("idle")
 
 func _on_player_switch_weapons():
 	_change_state("switch_weapons")
 
 func _on_player_lower_weapon():
+	if !weapon_manager.has_a_gun():
+		return
 	_change_state("lower_weapon")
 
 func _on_player_buy_weapon():

@@ -128,7 +128,7 @@ func set_recoil_state(state: String):
 			recoil_max = gun_recoil_max * 2.0
 		_:
 			assert("Recieved an unhandled state")
-	assert(recoil_min <= recoil_max, "recoil min greater than max, adjust values:")
+	assert(recoil_min <= recoil_max, "recoil min greater than max, adjust values: " + str(recoil_min) + " - " + str(recoil_max) + str(state_stack) + str(gun_recoil_max))
 
 func _player_idle():
 	set_recoil_state("idle")

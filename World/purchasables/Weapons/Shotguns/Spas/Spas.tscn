@@ -26,7 +26,8 @@ audio_reload_finished = ExtResource("4_mq04u")
 audio_shoot_gun_shot = ExtResource("5_li255")
 
 [node name="Reticle" parent="." index="3"]
-gun_recoil_min = 20.0
+weapon_sway_max = 150
+weapon_sway_min = 0
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
 position = Vector2(121, 7)

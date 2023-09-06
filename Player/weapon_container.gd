@@ -46,15 +46,12 @@ var max_weapon_count: int = 2
 # This array is passed to a gun when its equipped OR when a new modified is added, and cleared from that gun if its unequipped
 var modifiers: Array[String] = []  
 
-func _process(delta):
-	if has_a_gun():
-		print(get_equipped_gun().weapon_level)
-
 func add_modifier(modifier: String):
 	# TODO - this might break if we use this system for power up drops (instakill)
 	assert(!modifier.find(modifier) == -1, "You are adding a modifier that you already have!")
 	modifiers.append(modifier)
-	get_equipped_gun().set_modifiers(modifiers)
+	if has_a_gun():
+		get_equipped_gun().set_modifiers(modifiers)
 
 func add_weapon(weapon_name: String):
 	"""
@@ -131,11 +128,16 @@ func put_gun_in_upgraded():
 	# Remove the current gun
 	weapon_names.remove_at(current_weapon_index)
 	weapon_objects.remove_at(current_weapon_index)
+	current_weapon_index = 0
 	
 	# If we have another gun, switch to it
 	if has_a_gun():
-		current_weapon_index = 0
 		Events.emit_signal("player_switch_weapons")
+	
+	# If we DONT have anyother gun, call the idle state again which will switch to an 'idle_noWeapon' animation
+	else:
+		print("NO GUN")
+		Events.emit_signal("player_action_idle")
 
 func _set_equipped_gun(weapon_index: int):
 	"""

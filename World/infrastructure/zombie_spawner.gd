@@ -35,7 +35,6 @@ func _ready():
 			door.door_opened.connect(_on_trigger_door_opened)
 
 func _on_trigger_door_opened():
-	print("spawner active!")
 	spawner_active = true
 
 func spawn_zombie() -> CharacterBody2D:

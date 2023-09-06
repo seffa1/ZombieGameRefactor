@@ -14,9 +14,12 @@ func _ready():
 
 # Initialize the state. E.g. change the animation
 func enter():
+	if !weapon_manager.has_a_gun():
+		animation_player.play("sprint_noWeapon")
+		return
+
 	var animation_name = Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].sprint_animation
 	animation_player.play(animation_name)
-	
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
