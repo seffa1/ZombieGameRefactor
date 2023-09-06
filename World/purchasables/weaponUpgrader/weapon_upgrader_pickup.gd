@@ -21,7 +21,13 @@ func give_item(player: CharacterBody2D):
 	# Create the weapon
 	var weapon_object = Globals.GUN_INDEX[weapon_name].scene.instantiate()
 	weapon_object.weapon_level = weapon_level
+	
+	# Check if player already has this weapon and remove it 
+	# (cause they put the gun in the upgrader, then bought it, and then picked it up from the upgrader)
+	if player.weapon_manager.has_gun(weapon_name):
+		player.weapon_manager.remove_gun(weapon_name)
 
+	# Give the player the weapon
 	player.weapon_manager.add_weapon_object(weapon_object)
 	Events.emit_signal("player_log", "Picked up " + purchasable_name)
 	

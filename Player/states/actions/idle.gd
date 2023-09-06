@@ -7,7 +7,6 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	print("ENTER")
 	if !weapon_manager.has_a_gun():
 		animation_player.play("idle_noWeapon")
 		return

@@ -183,8 +183,31 @@ func has_a_gun() -> bool:
 func has_two_guns() -> bool:
 	return len(weapon_objects) > 1
 
-func has_gun(weapon_name: String):
+func has_gun(weapon_name: String) -> bool:
 	return weapon_names.find(weapon_name) != -1
+
+func remove_gun(weapon_name: String):
+	"""
+	Called by weaponUpgrader pickup if we happen to have a the same gun 
+	that we are already picking up. Should only happen if we put a gun in the upgrader,
+	then buy it before picking it up again.
+	"""
+	var index = weapon_names.find(weapon_name)
+	if index == -1:
+		return
+	weapon_names.remove_at(index)
+	weapon_objects.remove_at(index)
+	current_weapon_index = 0
+	
+	# If we have another gun, switch to it
+	if has_a_gun():
+		Events.emit_signal("player_switch_weapons")
+	
+	# If we DONT have anyother gun, call the idle state again which will switch to an 'idle_noWeapon' animation
+	else:
+		print("NO GUN")
+		Events.emit_signal("player_action_idle")
+	
 
 func number_of_guns():
 	return len(weapon_names)
