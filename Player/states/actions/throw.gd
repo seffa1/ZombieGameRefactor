@@ -29,11 +29,7 @@ func _on_throw_animation_complete():
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
-	if weapon_manager.has_a_gun():
-		gun_sprite.texture = Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].sprite
-	else:
-		gun_sprite.texture = null
-	gun_sprite.show()
+	return
 
 func handle_input(_event):
 	return

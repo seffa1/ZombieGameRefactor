@@ -9,9 +9,14 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
+	# Make sure the weapon sprite is showing
 	if !weapon_manager.has_a_gun():
 		animation_player.play("idle_noWeapon")
+		gun_sprite.texture = null
 		return
+	else:
+		gun_sprite.texture = Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].sprite
+	gun_sprite.show()
 	animation_player.play(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].idle_animation)
 
 # Clean up the state. Reinitialize values like a timer

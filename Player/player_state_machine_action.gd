@@ -78,6 +78,8 @@ func _input(event):
 			return
 		if current_state == $LowerWeapon:
 			return
+		if current_state == $ChargeThrow or current_state == $Throw:
+			return
 
 		# Dont interupt state if we dont have ammo or clip is already full
 		if !weapon_manager.has_a_gun():

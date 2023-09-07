@@ -17,7 +17,9 @@ Detects collisions with a body that can hurt us and triggers:
 func _on_area_entered(area: Area2D):
 	""" 
 	The area here is a hitbox component which should contain all the
-	information we need to take damage, do knockbacks, trigger effects, etc.
+	information we need to take damage, do knockbacks, trigger effects, etc
+	from bullets, explosions, or anything else we can take damage from.
+	
 	"""
 	# Player gets 10 points for each bullet that hits
 	Events.emit_signal("give_player_money", 10)
@@ -44,4 +46,8 @@ func _on_area_entered(area: Area2D):
 		# TODO - head shot VFX and special animation
 		if health_component.health <= 0:
 			gore_vfx.play_splatter()
+	
+	# If the area
+	elif area.hit_box_type == 1:
+		return
 

@@ -140,6 +140,7 @@ _data = {
 }
 
 [node name="Explosion" type="Node2D"]
+z_index = 4
 script = ExtResource("1_up6te")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -150,10 +151,12 @@ frame_progress = 1.0
 offset = Vector2(-10, 0)
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_0fc26")]
-collision_layer = 4
+collision_layer = 256
 collision_mask = 64
 monitoring = false
 monitorable = false
+damage = 300
+bullet_knockback = 30.0
 hit_box_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]

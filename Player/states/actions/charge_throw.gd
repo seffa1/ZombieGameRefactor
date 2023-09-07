@@ -24,6 +24,8 @@ func update(delta):
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
+	# If we cancel out of this state
+	gun_sprite.hide()
 	return
 
 func handle_input(event):
