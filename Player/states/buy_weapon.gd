@@ -5,7 +5,7 @@ When you buy a weapon it plays a short animation to transition to that gun.
 This state is for that animation.
 """
 
-@onready var gun_sprite = $"../../SkeletonControl/GunSprite"
+@onready var gun_sprite = $"../../SkeletonControl/HandPosition/GunSprite"
 @onready var animation_player = $"../../AnimationPlayer"
 
 # Both are set by the weapon manager when a player gets a new gun

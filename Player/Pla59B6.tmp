@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=66 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://gtd7poiktla2" path="res://Player/images/soldier/bodyparts/man_head.png" id="8_pndn8"]
 [ext_resource type="Script" path="res://Player/states/actions/shoot.gd" id="9_mu8s3"]
 [ext_resource type="Script" path="res://Player/states/actions/charge_throw.gd" id="10_ri4uv"]
+[ext_resource type="Script" path="res://Player/gun_sprite.gd" id="10_ropoc"]
 [ext_resource type="Script" path="res://Player/states/actions/reload.gd" id="10_xhv8v"]
 [ext_resource type="Script" path="res://Player/states/actions/throw.gd" id="11_83mo6"]
 [ext_resource type="Script" path="res://Player/states/actions/melee.gd" id="12_u67uk"]
@@ -3410,8 +3411,10 @@ rotation = -2.39634
 gizmo_extents = 69.0
 
 [node name="GunSprite" type="Sprite2D" parent="SkeletonControl/HandPosition"]
+rotation = 2.39634
 scale = Vector2(1.66547, 1.66547)
 flip_h = true
+script = ExtResource("10_ropoc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

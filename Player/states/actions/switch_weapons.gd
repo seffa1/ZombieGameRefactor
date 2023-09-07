@@ -2,7 +2,7 @@ extends "res://Libraries/state.gd"
 
 @onready var gun_polygon: Polygon2D = $"../../SkeletonControl/polygons/gun"
 @onready var weapon_manager = $"../../WeaponManager"
-@onready var gun_sprite = $"../../SkeletonControl/GunSprite"
+@onready var gun_sprite = $"../../SkeletonControl/HandPosition/GunSprite"
 @onready var right_hand = $"../../SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight"
 
 # Initialize the state. E.g. change the animation

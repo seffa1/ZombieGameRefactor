@@ -8,18 +8,20 @@ Connects to any event bus signals which need to be passed down to child nodes.
 # Nodes
 @onready var camera_transform = $CameraTransform
 @onready var weapon_manager = $WeaponManager
+@onready var equipment_manager = $EquipmentManager
 @onready var animation_player = $AnimationPlayer
 @onready var perk_manager = $PerkManager
 @onready var state_machine_movement = $StateMachineMovement
 @onready var state_machine_action = $StateMachineAction
 @onready var hit_timer: Timer = $HitTimer
-@onready var gun_sprite = $SkeletonControl/GunSprite
+@onready var gun_sprite = $SkeletonControl/HandPosition/GunSprite
 @onready var velocity_component = $VelocityComponent
 @onready var health_component = $HealthComponent
 
 # Constants
 @export var money_component: Node
 @export var starting_gun: String = "PISTOL_01"
+@export var starting_equipment: String = "GRENADE"
 @export var starting_money: int = 0
 
 func assign_camera(camera: Camera2D) -> void:
@@ -39,6 +41,7 @@ func _ready():
 	
 	# start the player with a pistol
 	weapon_manager.add_weapon(starting_gun)
+	equipment_manager.current_equipment = starting_equipment
 	money_component.money = starting_money
 
 # Signal consumers

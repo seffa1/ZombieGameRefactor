@@ -4219,6 +4219,18 @@ theme = ExtResource("4_vfjop")
 [node name="Title" parent="UI/StatesStackDiplayer2" index="0"]
 text = "Actions"
 
+[node name="PlayerLog" parent="UI" instance=ExtResource("6_fsl8i")]
+
+[node name="InteractableLog" parent="UI" instance=ExtResource("7_tw0cg")]
+
+[node name="SettingsMenu" parent="UI" instance=ExtResource("8_uddx1")]
+visible = false
+
+[node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ffymw")]
+
+[node name="HUD" parent="UI" instance=ExtResource("10_4m0vi")]
+visible = false
+
 [node name="PlayerStats" parent="UI" instance=ExtResource("5_28la1")]
 visible = false
 offset_left = 288.0
@@ -4310,17 +4322,11 @@ offset_top = 75.0
 offset_right = 962.0
 offset_bottom = 98.0
 
-[node name="PlayerLog" parent="UI" instance=ExtResource("6_fsl8i")]
-
-[node name="InteractableLog" parent="UI" instance=ExtResource("7_tw0cg")]
-
-[node name="SettingsMenu" parent="UI" instance=ExtResource("8_uddx1")]
-visible = false
-
-[node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ffymw")]
-
-[node name="HUD" parent="UI" instance=ExtResource("10_4m0vi")]
-visible = false
+[node name="Equipment" parent="UI/PlayerStats" index="18"]
+offset_left = 735.0
+offset_top = 90.0
+offset_right = 1198.0
+offset_bottom = 113.0
 
 [node name="ScreenShaker" parent="." instance=ExtResource("27_yi02j")]
 

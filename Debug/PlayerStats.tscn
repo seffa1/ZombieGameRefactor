@@ -107,33 +107,47 @@ offset_bottom = 125.0
 
 [node name="Labels3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 852.0
-offset_top = 1.0
-offset_right = 929.0
-offset_bottom = 129.0
+offset_left = 851.0
+offset_top = 33.0
+offset_right = 978.0
+offset_bottom = 161.0
 text = "WaveNumber:
 ZombiesToKill:
 ZombiesOnMap:
-Velocity:"
+Velocity:
+Equipment:"
 
 [node name="WaveNumber" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -1.0
+offset_top = 32.0
+offset_right = 39.0
+offset_bottom = 55.0
 
 [node name="ZombiesToKill" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -1.0
+offset_top = 32.0
+offset_right = 39.0
+offset_bottom = 55.0
 
 [node name="ZombiesOnMap" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -1.0
+offset_top = 32.0
+offset_right = 39.0
+offset_bottom = 55.0
 
 [node name="Velocity" type="Label" parent="."]
 layout_mode = 0
-offset_left = 933.0
-offset_top = 82.0
-offset_right = 1396.0
-offset_bottom = 105.0
+offset_left = 932.0
+offset_top = 114.0
+offset_right = 1395.0
+offset_bottom = 137.0
+
+[node name="Equipment" type="Label" parent="."]
+layout_mode = 0
+offset_left = 947.0
+offset_top = 139.0
+offset_right = 1410.0
+offset_bottom = 162.0

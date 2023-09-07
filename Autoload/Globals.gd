@@ -101,6 +101,13 @@ const GUN_INDEX = {
 	}
 }
 
+const EQUIPMENT_INDEX = {
+	"GRENADE": {
+		"nice name": "Grenade",
+		"scene": preload("res://World/throwables/ThrowableGrenade.tscn")
+	}
+}
+
 # Gun name, selection_weight
 const mystery_box_spawn_weights = [
 		["DEV_CANON", 0.1],

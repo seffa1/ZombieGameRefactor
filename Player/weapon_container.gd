@@ -29,7 +29,7 @@ The shoot signal flow:
 """
 
 # Nodes
-@onready var gun_sprite = $"../SkeletonControl/GunSprite"
+@onready var gun_sprite = $"../SkeletonControl/HandPosition/GunSprite"
 @onready var buy_weapon_state: Node = $"../StateMachineAction/BuyWeapon"
 
 # the names and objects array should always be in the same order

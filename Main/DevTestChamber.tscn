@@ -526,10 +526,12 @@ process_mode = 3
 script = ExtResource("2_ywtrq")
 
 [node name="StatesStackDiplayer" parent="UI" instance=ExtResource("3_05d6h")]
+visible = false
 offset_bottom = 109.0
 theme = ExtResource("4_whlue")
 
 [node name="StatesStackDiplayer2" parent="UI" instance=ExtResource("3_05d6h")]
+visible = false
 offset_left = 144.0
 offset_right = 288.0
 offset_bottom = 109.0
@@ -539,12 +541,14 @@ theme = ExtResource("4_whlue")
 text = "Actions"
 
 [node name="PlayerStats" parent="UI" instance=ExtResource("5_0g3yo")]
+visible = false
 offset_left = 288.0
 offset_right = 1280.0
 offset_bottom = 109.0
 theme = ExtResource("4_whlue")
 
 [node name="Labels" parent="UI/PlayerStats" index="0"]
+visible = false
 offset_bottom = 95.0
 
 [node name="Money" parent="UI/PlayerStats" index="2"]
@@ -627,6 +631,12 @@ offset_left = 730.0
 offset_top = 75.0
 offset_right = 962.0
 offset_bottom = 98.0
+
+[node name="Equipment" parent="UI/PlayerStats" index="18"]
+offset_left = 731.0
+offset_top = 96.0
+offset_right = 1194.0
+offset_bottom = 119.0
 
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_31fr8")]
 
@@ -831,14 +841,6 @@ rotation = 1.57079
 position = Vector2(216, 739)
 rotation = 1.57079
 
-[node name="InsideBuildingTrigger5" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
-position = Vector2(986, 63)
-rotation = 1.57079
-
-[node name="InsideBuildingTrigger6" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
-position = Vector2(538, 72)
-rotation = 1.57079
-
 [node name="InsideBuildingTrigger7" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
 position = Vector2(-798, 470)
 rotation = 1.57079
@@ -876,9 +878,6 @@ scale = Vector2(1.00022, 0.999929)
 
 [node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
 scale = Vector2(1, 1)
-
-[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
-scale = Vector2(0.999999, 0.999999)
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
