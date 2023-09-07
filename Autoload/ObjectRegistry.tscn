@@ -8,3 +8,5 @@ script = ExtResource("1_opq81")
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Effects" type="Node2D" parent="."]
+
+[node name="Equipment" type="Node2D" parent="."]

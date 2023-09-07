@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://4gpkqemjx0m5"]
+[gd_scene load_steps=16 format=3 uid="uid://4gpkqemjx0m5"]
 
 [ext_resource type="Texture2D" uid="uid://crqlqtncd2s88" path="res://VFX/explosions/images/explosion_1.png" id="1_antor"]
+[ext_resource type="Script" path="res://VFX/explosions/explosion.gd" id="1_up6te"]
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_0fc26"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sy5w2"]
@@ -63,6 +64,33 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gujk"]
 radius = 159.013
 
+[sub_resource type="Animation" id="Animation_gdr4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBoxComponent:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBoxComponent:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_nx6k1"]
 resource_name = "explode"
 step = 0.01
@@ -105,33 +133,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_gdr4u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBoxComponent:monitoring")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HitBoxComponent:monitorable")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xvlcv"]
 _data = {
 "RESET": SubResource("Animation_gdr4u"),
@@ -139,6 +140,7 @@ _data = {
 }
 
 [node name="Explosion" type="Node2D"]
+script = ExtResource("1_up6te")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6lqpi")
