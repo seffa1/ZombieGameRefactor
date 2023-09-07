@@ -104,7 +104,8 @@ const GUN_INDEX = {
 const EQUIPMENT_INDEX = {
 	"GRENADE": {
 		"nice name": "Grenade",
-		"scene": preload("res://World/throwables/ThrowableGrenade.tscn")
+		"scene": preload("res://World/throwables/ThrowableGrenade.tscn"),
+		"sprite": preload("res://World/throwables/grenade2.png")
 	}
 }
 

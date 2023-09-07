@@ -2,22 +2,18 @@ extends "res://Libraries/state.gd"
 
 @onready var equipment_manager = $"../../EquipmentManager"
 @onready var gun_sprite = $"../../SkeletonControl/HandPosition/GunSprite"
-@onready var equipment_container = $"../../SkeletonControl/HandPosition/EquipmentContainer"
 @onready var animation_player = $"../../AnimationPlayer"
-
-var equipment_object  # reference to the instantiated equipment
 
 # Initialize the state. E.g. change the animation
 func enter():
-	# Spawn in the equipment and add it to the hand position so it stays attached to it
-	equipment_object = Globals.EQUIPMENT_INDEX[equipment_manager.current_equipment].scene.instantiate()
-	equipment_container.add_child(equipment_object)
-	
+	# Set the gun sprite to the equipment sprite
+	gun_sprite.show()  # if we have no gun, we need this
+	var equipment_sprite: CompressedTexture2D = Globals.EQUIPMENT_INDEX[equipment_manager.current_equipment].sprite
+	gun_sprite.texture = equipment_sprite
+
 	# Player the animation
 	animation_player.play("charge_throw")
 
-	# Hide the gun sprite
-	gun_sprite.hide()
 	return
 
 func update(delta):
@@ -28,7 +24,6 @@ func update(delta):
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
-	equipment_object = null
 	return
 
 func handle_input(event):

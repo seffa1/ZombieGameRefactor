@@ -12,7 +12,6 @@ func enter():
 	if !weapon_manager.has_a_gun():
 		animation_player.play("idle_noWeapon")
 		return
-	gun_sprite.show()  # Just in case it didnt get reset for some reason
 	animation_player.play(Globals.GUN_INDEX[weapon_manager.get_equipped_gun_name()].idle_animation)
 
 # Clean up the state. Reinitialize values like a timer

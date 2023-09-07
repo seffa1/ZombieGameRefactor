@@ -50,7 +50,6 @@ func _on_throw_animation_complete():
 	tween2.tween_property(owner, "angular_damp", final_angular_damp_value, tween_duration)
 
 func _on_timer_timeout():
-	print("HERE!")
 	# Spawn effect and get removed
 	var explosion = explosion_to_spawn.instantiate()
 	explosion.global_position = global_position
