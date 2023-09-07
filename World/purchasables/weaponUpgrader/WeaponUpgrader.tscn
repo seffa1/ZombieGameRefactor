@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdx6tkvpkamvh"]
+[gd_scene load_steps=17 format=3 uid="uid://cdx6tkvpkamvh"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_3ow3n"]
 [ext_resource type="Script" path="res://World/purchasables/weaponUpgrader/weapon_upgrader.gd" id="2_go3sm"]
@@ -257,6 +257,9 @@ bg_color = Color(0.858824, 0, 0.188235, 1)
 shadow_size = 2
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxsgf"]
+size = Vector2(292, 108)
+
 [node name="WeaponUpgrader" instance=ExtResource("1_3ow3n")]
 script = ExtResource("2_go3sm")
 first_upgrade_cost = 5000
@@ -268,6 +271,7 @@ rotation = -1.57209
 shape = SubResource("CapsuleShape2D_ysu88")
 
 [node name="Sprite2D" parent="." index="1"]
+z_index = -1
 texture = ExtResource("3_px4yx")
 region_enabled = true
 region_rect = Rect2(1125, 1192, 321, 188)
@@ -309,3 +313,11 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_viy5n")
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="7"]
+collision_layer = 16
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, 31)
+shape = SubResource("RectangleShape2D_kxsgf")

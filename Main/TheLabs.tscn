@@ -3643,7 +3643,7 @@ script = ExtResource("1_a2bbj")
 [node name="GameWorld" type="Node2D" parent="."]
 
 [node name="Darkness" type="CanvasModulate" parent="GameWorld"]
-color = Color(0.235294, 0.235294, 0.235294, 0.878431)
+color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [node name="vinette" parent="GameWorld/Darkness" instance=ExtResource("10_7kl0x")]
 visible = false
