@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://8nbdkg5flsvx"]
+[gd_scene load_steps=7 format=3 uid="uid://8nbdkg5flsvx"]
 
 [ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_27vei"]
 [ext_resource type="Script" path="res://VFX/Gore/body_part.gd" id="2_v0snu"]
 [ext_resource type="Texture2D" uid="uid://wu644e4al8ii" path="res://Enemies/ZombieBasic/images/gore/footLeft.png" id="3_nlrr4"]
 [ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_3m7tu"]
+[ext_resource type="PackedScene" uid="uid://b3vqlc4bkf8ru" path="res://VFX/Gore/blood_emitters/BloodEmitter_1.tscn" id="5_dec80"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hwr2i"]
 radius = 13.1529
@@ -31,3 +32,5 @@ final_linear_damp_value = 5
 final_angular_damp_value = 5
 hang_time = 1.0
 tween_duration = 0.05
+
+[node name="BloodEmitter" parent="." index="6" instance=ExtResource("5_dec80")]
