@@ -37,7 +37,9 @@ func explosion_death(zombie_position: Vector2, explosion_position: Vector2):
 	var angle = (zombie_position - explosion_position).angle()
 	
 	for body_part_spawner in body_parts.get_children():
-		body_part_spawner.spawn_item(angle - deg_to_rad(90))
+		# 50% chance to spawn a body part to add visual variance
+		if randf_range(0, 100) > 50:
+			body_part_spawner.spawn_item(angle - deg_to_rad(90))
 
 func play_splatter():
 	splatter_audio.play_random()
