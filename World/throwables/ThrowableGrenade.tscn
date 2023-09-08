@@ -15,9 +15,6 @@ final_angular_damp_value = 3
 hang_time = 0.7
 tween_duration = 0.1
 
-[node name="ScaleController" parent="." index="2"]
-z_index = 4
-
 [node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
 scale = Vector2(0.0760869, 0.0760869)
 texture = ExtResource("3_otpw0")

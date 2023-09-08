@@ -1,65 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://4gpkqemjx0m5"]
+[gd_scene load_steps=8 format=3 uid="uid://4gpkqemjx0m5"]
 
-[ext_resource type="Texture2D" uid="uid://crqlqtncd2s88" path="res://VFX/explosions/images/explosion_1.png" id="1_antor"]
 [ext_resource type="Script" path="res://VFX/explosions/explosion.gd" id="1_up6te"]
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_0fc26"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sy5w2"]
-atlas = ExtResource("1_antor")
-region = Rect2(0, 0, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jt1to"]
-atlas = ExtResource("1_antor")
-region = Rect2(190, 0, 347, 365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0jfmf"]
-atlas = ExtResource("1_antor")
-region = Rect2(541, 0, 369, 365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8kh1s"]
-atlas = ExtResource("1_antor")
-region = Rect2(910, 0, 369, 365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oasqh"]
-atlas = ExtResource("1_antor")
-region = Rect2(1275, 0, 320, 365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lddwu"]
-atlas = ExtResource("1_antor")
-region = Rect2(1595, 0, 320, 365)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wntg"]
-atlas = ExtResource("1_antor")
-region = Rect2(0, 322, 240, 34)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6lqpi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sy5w2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jt1to")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0jfmf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8kh1s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oasqh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lddwu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8wntg")
-}],
-"loop": false,
-"name": &"default",
-"speed": 10.0
-}]
+[ext_resource type="PackedScene" uid="uid://bowni3afivbi3" path="res://VFX/explosions/SmokeyExplosions.tscn" id="14_kya4b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gujk"]
 radius = 159.013
@@ -143,12 +86,10 @@ _data = {
 z_index = 4
 script = ExtResource("1_up6te")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_6lqpi")
-autoplay = "default"
-frame = 6
-frame_progress = 1.0
-offset = Vector2(-10, 0)
+[node name="AnimatedSprite2D2" parent="." instance=ExtResource("14_kya4b")]
+animation = &"new_animation_8"
+autoplay = "new_animation_8"
+frame_progress = 0.905296
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_0fc26")]
 collision_layer = 256
