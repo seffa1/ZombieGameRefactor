@@ -21,7 +21,6 @@ func _throw_equipment():
 	# TODO - variable hangtime base on charge up time
 	var charge_time = 3.0
 	var direction_vector = Vector2.RIGHT.rotated(owner.rotation) *  charge_time * 100
-	print(direction_vector)
 	equipment_object.apply_impulse(direction_vector)
 	
 func _on_throw_animation_complete():

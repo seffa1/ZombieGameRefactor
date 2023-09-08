@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://8nbdkg5flsvx"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_27vei"]
+[ext_resource type="Script" path="res://VFX/Gore/body_part.gd" id="2_v0snu"]
+[ext_resource type="Texture2D" uid="uid://wu644e4al8ii" path="res://Enemies/ZombieBasic/images/gore/footLeft.png" id="3_nlrr4"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_3m7tu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hwr2i"]
+radius = 13.1529
+
+[node name="BodyPart-Foot" instance=ExtResource("1_27vei")]
+collision_layer = 16384
+collision_mask = 17
+linear_damp = 1.0
+angular_damp = 10.0
+script = ExtResource("2_v0snu")
+free_time = 5.0
+spawn_animation = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_hwr2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_nlrr4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+
+[node name="DampAnimator" parent="." index="5" instance=ExtResource("4_3m7tu")]
+final_linear_damp_value = 5
+final_angular_damp_value = 5
+hang_time = 1.0
+tween_duration = 0.05

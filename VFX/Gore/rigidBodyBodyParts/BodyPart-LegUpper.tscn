@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://0fat25cy1dwr"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_cqgix"]
+[ext_resource type="Script" path="res://VFX/Gore/body_part.gd" id="2_jpqf0"]
+[ext_resource type="Texture2D" uid="uid://cgu1a12keio5t" path="res://Enemies/ZombieBasic/images/gore/legUpperLeft.png" id="3_mvjno"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_vax08"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8s2q"]
+height = 82.0
+
+[node name="BodyPart-LegUpper" instance=ExtResource("1_cqgix")]
+collision_layer = 16384
+collision_mask = 17
+linear_damp = 1.0
+angular_damp = 10.0
+script = ExtResource("2_jpqf0")
+free_time = 5.0
+spawn_animation = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+rotation = -0.115509
+shape = SubResource("CapsuleShape2D_e8s2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_mvjno")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+
+[node name="DampAnimator" parent="." index="5" instance=ExtResource("4_vax08")]
+final_linear_damp_value = 5
+final_angular_damp_value = 5
+hang_time = 1.0
+tween_duration = 0.05

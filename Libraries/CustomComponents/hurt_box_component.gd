@@ -49,5 +49,21 @@ func _on_area_entered(area: Area2D):
 	
 	# If the area
 	elif area.hit_box_type == 1:
-		return
-
+		# Apply knock back
+		var knock_back = area.bullet_knockback
+		var knock_back_vector = (area.global_position - global_position).normalized() * knock_back
+		owner.velocity_component.impulse_in_direction(knock_back_vector)
+		owner.velocity = owner.velocity_component.velocity
+		
+		# Spawn blood vfx
+		gore_vfx.play_splatter()
+		gore_vfx.bullet_impact(knock_back_vector)
+		
+		# If an explosion kills, then send body parts flying and instantly remove the zombie with no death animation
+		if health_component.health <= 0:
+			print("HERE")
+			gore_vfx.explosion_death(global_position, area.global_position)
+			Events.emit_signal("zombie_death", owner)
+			owner.queue_free()
+		
+		

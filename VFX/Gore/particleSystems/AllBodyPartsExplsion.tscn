@@ -1,0 +1,512 @@
+[gd_scene load_steps=18 format=3 uid="uid://dka71f00n5cjx"]
+
+[ext_resource type="PackedScene" uid="uid://dqt6emnebkmck" path="res://VFX/Gore/particleSystems/BodyPartParticle-ArmLowerLeft.tscn" id="1_jdcy6"]
+[ext_resource type="PackedScene" uid="uid://dms5vsghrm20o" path="res://VFX/Gore/particleSystems/BodyPartParticle-ArmLowerRIght.tscn" id="2_mis43"]
+[ext_resource type="PackedScene" uid="uid://bogkvd4eqg0aa" path="res://VFX/Gore/particleSystems/BodyPartParticle-ArmUpperLeft.tscn" id="3_2c4bw"]
+[ext_resource type="PackedScene" uid="uid://bxhetv62fltmq" path="res://VFX/Gore/particleSystems/BodyPartParticle-ArmUpperRight.tscn" id="4_u06ue"]
+[ext_resource type="PackedScene" uid="uid://b1sgse0vylwb0" path="res://VFX/Gore/particleSystems/BodyPartParticle-FootLeft.tscn" id="5_knu20"]
+[ext_resource type="PackedScene" uid="uid://bv6iflvmidfue" path="res://VFX/Gore/particleSystems/BodyPartParticle-FootRight.tscn" id="6_5hyjo"]
+[ext_resource type="PackedScene" uid="uid://dcqnfcit5y7d2" path="res://VFX/Gore/particleSystems/BodyPartParticle-HandLeft.tscn" id="7_fefer"]
+[ext_resource type="PackedScene" uid="uid://cg046ifd85t03" path="res://VFX/Gore/particleSystems/BodyPartParticle-Head.tscn" id="9_dgkbo"]
+[ext_resource type="PackedScene" uid="uid://dj2he5g7tbkch" path="res://VFX/Gore/particleSystems/BodyPartParticle-LegLowerRight.tscn" id="11_ug8vd"]
+[ext_resource type="PackedScene" uid="uid://gw8w13llhwcb" path="res://VFX/Gore/particleSystems/BodyPartParticle-LegUpperLeft.tscn" id="12_4lj17"]
+[ext_resource type="PackedScene" uid="uid://bxtv18j0rqnys" path="res://VFX/Gore/particleSystems/BodyPartParticle-LegUpperRight.tscn" id="13_7w1m0"]
+[ext_resource type="PackedScene" uid="uid://dcsmobyjx5xa6" path="res://VFX/Gore/particleSystems/BodyPartParticle-TorsoLower.tscn" id="14_66eht"]
+[ext_resource type="PackedScene" uid="uid://cmfgljkobi26d" path="res://VFX/Gore/particleSystems/BodyPartParticle-TorsoUpper.tscn" id="15_s3mu0"]
+
+[sub_resource type="Gradient" id="Gradient_mfrox"]
+offsets = PackedFloat32Array(0, 0.555328, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_spbev"]
+resource_name = "DEFAULT"
+length = 3.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPartParticle-ArmLowerLeft:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyPartParticle-ArmLowerRight:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyPartParticle-ArmUpperLeft:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodyPartParticle-ArmUpperRight:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BodyPartParticle-FootLeft:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BodyPartParticle-FootRight:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BodyPartParticle-HandRight:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BodyPartParticle-LegLowerLeg:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BodyPartParticle-LegLowerRight:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BodyPartParticle-LetUpperLeft:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BodyPartParticle-LetUpperRight:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BodyPartParticle-torsoLower:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("BodyPartParticle-torsoUpper:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_l01ut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPartParticle-ArmLowerLeft:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyPartParticle-ArmLowerRight:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyPartParticle-ArmUpperLeft:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodyPartParticle-ArmUpperRight:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BodyPartParticle-FootLeft:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BodyPartParticle-FootRight:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BodyPartParticle-HandRight:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BodyPartParticle-LegLowerLeg:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BodyPartParticle-LegLowerRight:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BodyPartParticle-LetUpperLeft:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BodyPartParticle-LetUpperRight:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BodyPartParticle-torsoLower:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("BodyPartParticle-torsoUpper:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1llhm"]
+_data = {
+"DEFAULT": SubResource("Animation_spbev"),
+"RESET": SubResource("Animation_l01ut")
+}
+
+[node name="BodyPartParticleExplosion" type="Node2D"]
+
+[node name="BodyPartParticle-ArmLowerLeft" parent="." instance=ExtResource("1_jdcy6")]
+emitting = true
+lifetime = 3.0
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-ArmLowerRight" parent="." instance=ExtResource("2_mis43")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-ArmUpperLeft" parent="." instance=ExtResource("3_2c4bw")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-ArmUpperRight" parent="." instance=ExtResource("4_u06ue")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-FootLeft" parent="." instance=ExtResource("5_knu20")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-FootRight" parent="." instance=ExtResource("6_5hyjo")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-HandRight" parent="." instance=ExtResource("7_fefer")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-LegLowerLeg" parent="." instance=ExtResource("9_dgkbo")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-LegLowerRight" parent="." instance=ExtResource("11_ug8vd")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-LetUpperLeft" parent="." instance=ExtResource("12_4lj17")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-LetUpperRight" parent="." instance=ExtResource("13_7w1m0")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-torsoLower" parent="." instance=ExtResource("14_66eht")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="BodyPartParticle-torsoUpper" parent="." instance=ExtResource("15_s3mu0")]
+lifetime = 3.0
+one_shot = true
+randomness = 1.0
+lifetime_randomness = 0.87
+initial_velocity_min = 144.51
+initial_velocity_max = 427.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_mfrox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "DEFAULT"
+libraries = {
+"": SubResource("AnimationLibrary_1llhm")
+}
+
+[editable path="BodyPartParticle-ArmLowerLeft"]

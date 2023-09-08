@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxhetv62fltmq"]
+
+[ext_resource type="Texture2D" uid="uid://cas10ll40ot2s" path="res://Enemies/ZombieBasic/images/gore/armUpperRight.png" id="1_yso2b"]
+
+[node name="BodyPartParticle-ArmUpperRight" type="CPUParticles2D"]
+amount = 1
+explosiveness = 0.83
+local_coords = true
+texture = ExtResource("1_yso2b")
+gravity = Vector2(0, 0)
+initial_velocity_min = 271.85
+initial_velocity_max = 947.6
+angular_velocity_min = 20.75
+angular_velocity_max = 398.23
+damping_min = 19.417
+damping_max = 19.417
+angle_min = -706.0
+angle_max = 720.0

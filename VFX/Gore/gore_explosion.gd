@@ -9,6 +9,8 @@ Activates all the VFX spawns with slightly different times.
 @onready var impact_audio = $BulletImpacts
 @onready var splatter_audio = $BloodSplatters
 
+@onready var body_part_explosion = preload("res://VFX/Gore/particleSystems/AllBodyPartsExplsion.tscn")
+
 # Last global position of the object that damaged the zombie
 var last_damage_position: Vector2
 
@@ -29,6 +31,13 @@ func bullet_impact(velocity: Vector2):
 	"""
 	blood_spawner.spawn_item(velocity.angle()  - deg_to_rad(90))
 	impact_audio.play_random()
+
+func explosion_death(zombie_position: Vector2, explosion_position: Vector2):
+	var direction_vector = (zombie_position - explosion_position).normalized()
+	var body_part_explosion_vfx = body_part_explosion.instantiate()
+	body_part_explosion_vfx.global_position = zombie_position
+	body_part_explosion_vfx.rotation = direction_vector.angle()
+	ObjectRegistry.register_effect(body_part_explosion_vfx)
 
 func play_splatter():
 	splatter_audio.play_random()
