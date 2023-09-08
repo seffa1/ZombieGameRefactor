@@ -10,7 +10,7 @@ extends "res://Libraries/state.gd"
 func enter():
 	animation_player.play("throw")
 
-func _on_throw_animation_complete():
+func _throw_equipment():
 	# Create a new instance and attach to the global registry
 	var equipment_object = Globals.EQUIPMENT_INDEX[equipment_manager.current_equipment].scene.instantiate()
 	equipment_object.global_position = hand_position.global_position
@@ -23,7 +23,8 @@ func _on_throw_animation_complete():
 	var direction_vector = Vector2.RIGHT.rotated(owner.rotation) *  charge_time * 100
 	print(direction_vector)
 	equipment_object.apply_impulse(direction_vector)
-
+	
+func _on_throw_animation_complete():
 	emit_signal("finished", "idle")
 	return
 

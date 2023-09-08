@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bowni3afivbi3" path="res://VFX/explosions/SmokeyExplosions.tscn" id="14_kya4b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gujk"]
-radius = 159.013
+radius = 198.01
 
 [sub_resource type="Animation" id="Animation_gdr4u"]
 length = 0.001
@@ -87,9 +87,11 @@ z_index = 4
 script = ExtResource("1_up6te")
 
 [node name="AnimatedSprite2D2" parent="." instance=ExtResource("14_kya4b")]
+position = Vector2(-0.999996, -0.999992)
+scale = Vector2(2.0202, 2.0202)
 animation = &"new_animation_8"
 autoplay = "new_animation_8"
-frame_progress = 0.905296
+frame_progress = 0.531441
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_0fc26")]
 collision_layer = 256
