@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bo2drheyfcgle"]
 
 [ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_i1ars"]
-[ext_resource type="Texture2D" uid="uid://ipnj5e8br1hp" path="res://World/purchasables/Weapons/Shotguns/Spas/images/shotgun.png" id="2_ym70y"]
+[ext_resource type="Texture2D" uid="uid://2goe0bawgtb1" path="res://World/purchasables/Weapons/shared/images/weapon_pack/weapons_pack_0009_shotgun_2.png" id="2_pkdrt"]
 
 [node name="WeaponBuyAutoShotgun" instance=ExtResource("1_i1ars")]
 weapon_name = "AUTO_SHOTGUN"
@@ -9,5 +9,5 @@ purchasable_cost = 1000
 
 [node name="Sprite2D" parent="." index="1"]
 rotation = -1.57486
-scale = Vector2(0.76025, 0.76025)
-texture = ExtResource("2_ym70y")
+scale = Vector2(0.683258, 0.683258)
+texture = ExtResource("2_pkdrt")

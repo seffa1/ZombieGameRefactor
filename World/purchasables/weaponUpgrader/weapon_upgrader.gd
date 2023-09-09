@@ -58,7 +58,7 @@ func give_item(player: CharacterBody2D) -> void:
 	
 	# Set the selection sprite
 	# TODO - we probably want the 'upgraded looking sprite' presented to the player to pickup here
-	gun_selection_sprite.texture = Globals.GUN_INDEX[weapon_to_upgrade].sprite
+	gun_selection_sprite.texture = Globals.GUN_INDEX[weapon_to_upgrade].pickup_sprite
 	
 	# Start the animation
 	animation_player.play("upgrade")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cju2hf0p32e23"]
 
 [ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_t7iof"]
-[ext_resource type="Texture2D" uid="uid://bwug5ah0joub1" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/rifle.png" id="2_v6nij"]
+[ext_resource type="Texture2D" uid="uid://bsanmsvn7o5u0" path="res://World/purchasables/Weapons/shared/images/weapon_pack/weapons_pack_0015_sniper-rifle_2.png" id="2_cyex3"]
 
 [node name="WeaponBuy50Cal" instance=ExtResource("1_t7iof")]
 weapon_name = "50_CAL"
@@ -10,5 +10,5 @@ purchasable_name = ".50 Cal"
 
 [node name="Sprite2D" parent="." index="1"]
 rotation = -1.57486
-scale = Vector2(0.76025, 0.76025)
-texture = ExtResource("2_v6nij")
+scale = Vector2(0.593115, 0.593115)
+texture = ExtResource("2_cyex3")

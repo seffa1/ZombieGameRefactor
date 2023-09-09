@@ -150,7 +150,7 @@ func _process(delta):
 		if gun_switching_timer.is_stopped():
 			gun_switching_timer.start()
 			var gun_name = gun_selection[current_gun_index]
-			gun_sprite.texture = Globals.GUN_INDEX[gun_name].sprite
+			gun_sprite.texture = Globals.GUN_INDEX[gun_name].pickup_sprite
 			if len(gun_selection) - 1 > current_gun_index:
 				audio.play_gun_switch()
 				current_gun_index += 1
