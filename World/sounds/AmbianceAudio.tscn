@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dymwmm6dngnlt"]
+
+[ext_resource type="Script" path="res://World/sounds/ambiance_audio.gd" id="1_2k7mf"]
+
+[node name="AmbianceAudio" type="AudioStreamPlayer"]
+max_polyphony = 3
+script = ExtResource("1_2k7mf")

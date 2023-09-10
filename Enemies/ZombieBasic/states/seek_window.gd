@@ -7,13 +7,18 @@ switched to break window state.
 """
 
 @onready var animation_player = $"../../AnimationPlayer"
+@onready var groan_timer: Timer = $"../../GroanTimer"
+@onready var zombie_groans = $"../../ZombieGroans-Audio"
 
+@export var groan_interval = 3  # min seconds between random groans
 
 func enter():
 	animation_player.play("zombie_walk_basic")
+	groan_timer.start(groan_interval + randf_range(0, 15))
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
+	groan_timer.stop()
 	return
 
 func update(delta):
@@ -21,6 +26,11 @@ func update(delta):
 	if owner.health_component.health == 0:
 		emit_signal("finished", "die")
 		return
+		
+	# Check if we should do a random groan
+	if groan_timer.is_stopped():
+		zombie_groans.play_long()
+		groan_timer.start(groan_interval + randf_range(0, 10))
 	
 	# Update pathfinding component target position to the window
 	owner.pathfinding_component.update_target_position(owner.target_window.global_position)

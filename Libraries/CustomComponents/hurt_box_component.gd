@@ -13,6 +13,7 @@ Detects collisions with a body that can hurt us and triggers:
 @export var status_reciever: Node2D
 
 @onready var gore_vfx = $"../GoreVFX"
+@onready var zombie_groan_audio = $"../ZombieGroans-Audio"
 
 func _on_area_entered(area: Area2D):
 	""" 
@@ -43,8 +44,13 @@ func _on_area_entered(area: Area2D):
 		owner.velocity_component.impulse_in_direction(knock_back_vector)
 		owner.velocity = owner.velocity_component.velocity
 		
+		# 10% Chance to play a hurt sound
+		if randf_range(0, 100) > 90:
+			zombie_groan_audio.play_short()
+		
 		# TODO - head shot VFX and special animation
 		if health_component.health <= 0:
+			zombie_groan_audio.play_death()
 			gore_vfx.play_splatter()
 	
 	# If the area
@@ -61,7 +67,6 @@ func _on_area_entered(area: Area2D):
 		
 		# If an explosion kills, then send body parts flying and instantly remove the zombie with no death animation
 		if health_component.health <= 0:
-			print("HERE")
 			gore_vfx.explosion_death(global_position, area.global_position)
 			Events.emit_signal("zombie_death", owner)
 			owner.queue_free()

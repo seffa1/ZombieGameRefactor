@@ -6,7 +6,8 @@ This is for looping music, looping ambiance, global sound effects.
 """
 
 @onready var sound_map = {
-	"piano_loop": preload("res://World/sounds/music/BO_HWD_140_Keys_Loop_Piano_High_Ching_Em.wav"),
+	"zombie_ambiance": preload("res://World/sounds/ambiance/FF_HFFX_sfx_creature_zombie_hoard_purple.wav"),
+	"thunder_ambiance": preload("res://World/sounds/ambiance/FF_HFFX_atmosphere_thunder_dark_sky.wav")
 }
 
 var _current_sound := stream:

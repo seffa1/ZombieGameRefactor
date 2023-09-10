@@ -1,12 +1,12 @@
 extends "res://Libraries/state.gd"
 
-# TODO - window attacks should be a separate state so we can have a different animation
+@onready var zombie_groans = $"../../ZombieGroans-Audio"
 
 
 # Initialize the state. E.g. change the animation
 func enter():
 	owner.animation_player.play("zombie_attack_basic")
-	
+	zombie_groans.play_attack()
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
