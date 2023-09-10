@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddrcl4xqul8l6"]
+[gd_scene load_steps=6 format=3 uid="uid://ddrcl4xqul8l6"]
 
 [ext_resource type="PackedScene" uid="uid://cesbyk4vgali5" path="res://World/throwables/Throwable.tscn" id="1_llh3v"]
 [ext_resource type="PackedScene" uid="uid://4gpkqemjx0m5" path="res://VFX/explosions/Explosion.tscn" id="2_ynqt1"]
 [ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="3_k2gcg"]
 [ext_resource type="Texture2D" uid="uid://57i3mteqcq4v" path="res://World/throwables/grenade2.png" id="3_otpw0"]
+[ext_resource type="AudioStream" uid="uid://c1qc0e2ve87h1" path="res://World/throwables/sounds/grenade_land.wav" id="3_wkwb7"]
 
 [node name="ThrowableGrenade" groups=["throwable_equipment"] instance=ExtResource("1_llh3v")]
 free_time = 3.0
 explosion_to_spawn = ExtResource("2_ynqt1")
+ground_hit_audio = ExtResource("3_wkwb7")
 
 [node name="DampAnimator" parent="." index="0" instance=ExtResource("3_k2gcg")]
 final_linear_damp_value = 3

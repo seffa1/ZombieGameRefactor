@@ -5,6 +5,7 @@ extends "res://Libraries/state.gd"
 @onready var equipment_manager = $"../../EquipmentManager"
 @onready var weapon_manager = $"../../WeaponManager"
 @onready var gun_sprite = $"../../SkeletonControl/HandPosition/GunSprite"
+@onready var action_sound_player = $"../../ActionSoundPlayer"
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -22,6 +23,11 @@ func _throw_equipment():
 	var charge_time = 3.0
 	var direction_vector = Vector2.RIGHT.rotated(owner.rotation) *  charge_time * 100
 	equipment_object.apply_impulse(direction_vector)
+	
+	# play the equipment throw audio
+	var audio = Globals.EQUIPMENT_INDEX[equipment_manager.current_equipment].throw_audio
+	action_sound_player.stream = audio
+	action_sound_player.play()
 	
 func _on_throw_animation_complete():
 	emit_signal("finished", "idle")

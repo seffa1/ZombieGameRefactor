@@ -10,16 +10,17 @@ Needs an VFX scene to spawn when it dies. The VFX scene should handle hit boxes 
 
 @onready var explode_timer: Timer = $ExplodeTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio = $AudioStreamPlayer2D
 
 @export var free_time: float
 @export var explosion_to_spawn: PackedScene
+@export var ground_hit_audio: AudioStream
 
 var player  # store a reference to player so they can get money back
 var has_been_thrown: bool = false  # if we are throwing an equipment which already an another instace that was throw, this helps us track which one has NOT been thrown already in the groups
 
 func _ready():
 	# Star the throw animation on the equipment
-	print("THROWING")
 	throw()
 
 
@@ -31,9 +32,15 @@ func throw():
 	# Set values
 	has_been_thrown = true
 	player = player
+	
 	# Start the throwing animation
 	animation_player.play("throw")
 	explode_timer.start(free_time)
+
+func _on_throw_animation_compete():
+	audio.stream = ground_hit_audio
+	audio.play()
+	
 
 func _on_timer_timeout():
 	# Spawn effect and get removed

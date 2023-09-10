@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://4gpkqemjx0m5"]
+[gd_scene load_steps=9 format=3 uid="uid://4gpkqemjx0m5"]
 
 [ext_resource type="Script" path="res://VFX/explosions/explosion.gd" id="1_up6te"]
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_0fc26"]
+[ext_resource type="AudioStream" uid="uid://cyos0233ngcyj" path="res://World/throwables/sounds/GrenadeExplosion_S08WA.219.wav" id="4_8me7w"]
 [ext_resource type="PackedScene" uid="uid://bowni3afivbi3" path="res://VFX/explosions/SmokeyExplosions.tscn" id="14_kya4b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gujk"]
@@ -36,7 +37,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_nx6k1"]
 resource_name = "explode"
-step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,6 +75,21 @@ tracks/2/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_8me7w")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xvlcv"]
 _data = {
@@ -111,3 +126,6 @@ autoplay = "explode"
 libraries = {
 "": SubResource("AnimationLibrary_xvlcv")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"GameAudio"

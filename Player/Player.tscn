@@ -3803,6 +3803,10 @@ texture = ExtResource("34_6mf4n")
 max_health = 30.0
 health_regeneration = true
 
+[node name="ActionSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 6
+bus = &"GameAudio"
+
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="area_entered" from="PurchasableDetector" to="PurchasableDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="PurchasableDetector" to="PurchasableDetector" method="_on_area_exited"]

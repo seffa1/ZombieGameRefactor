@@ -3,6 +3,7 @@ extends "res://Libraries/state.gd"
 @onready var equipment_manager = $"../../EquipmentManager"
 @onready var gun_sprite = $"../../SkeletonControl/HandPosition/GunSprite"
 @onready var animation_player = $"../../AnimationPlayer"
+@onready var action_sound_player = $"../../ActionSoundPlayer"
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -13,6 +14,11 @@ func enter():
 
 	# Player the animation
 	animation_player.play("charge_throw")
+	
+	# play the equipment charge audio
+	var audio = Globals.EQUIPMENT_INDEX[equipment_manager.current_equipment].charge_audio
+	action_sound_player.stream = audio
+	action_sound_player.play()
 
 	return
 

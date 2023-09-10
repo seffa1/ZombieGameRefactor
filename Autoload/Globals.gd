@@ -111,7 +111,10 @@ const EQUIPMENT_INDEX = {
 	"GRENADE": {
 		"nice name": "Grenade",
 		"scene": preload("res://World/throwables/ThrowableGrenade.tscn"),
-		"sprite": preload("res://World/throwables/grenade2-small2.png")
+		"sprite": preload("res://World/throwables/grenade2-small2.png"),
+		"charge_audio": preload("res://World/throwables/sounds/ESM_GW_explosion_one_shot_grenade_remove_safety_bomb_safety_hold_grenade_1.wav"),
+		"throw_audio": preload("res://World/throwables/sounds/throw_woosh.wav"),
+		"hit_ground_audio": preload("res://World/throwables/sounds/grenade_land.wav")
 	}
 }
 
