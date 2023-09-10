@@ -123,13 +123,13 @@ func _process(delta):
 		var weapon_object = player.weapon_manager.get_equipped_gun()
 		purchasable_name = Globals.GUN_INDEX[weapon_object.WEAPON_NAME].nice_name
 		match weapon_object.weapon_level:
-			0:
+			0:  # First upgrade
 				purchasable_cost = first_upgrade_cost
 				interactable_message =  "Upgrade " + purchasable_name + ": " + str(purchasable_cost)
-			1:
+			1:  # Second upgrade
 				purchasable_cost = second_upgrade_cost
 				interactable_message =  "Upgrade " + purchasable_name + ": " + str(purchasable_cost)
-			2:
+			2:  # Third Upgrade
 				purchasable_cost = third_upgrade_cost
 				interactable_message =  "Upgrade " + purchasable_name + ": " + str(purchasable_cost)
 			3:
