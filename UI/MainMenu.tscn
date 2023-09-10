@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8dugp06t3858"]
+[gd_scene load_steps=14 format=3 uid="uid://8dugp06t3858"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_iblvn"]
 [ext_resource type="Texture2D" uid="uid://c1hksnvbiugxy" path="res://UI/images/backgrounds/background2.png" id="2_apwnh"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="9_ek6oc"]
 [ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="9_pj024"]
 [ext_resource type="Script" path="res://UI/solo_level_select.gd" id="9_whb5c"]
-[ext_resource type="PackedScene" uid="uid://brxddtye33te3" path="res://World/WorldAudio.tscn" id="12_fvu8y"]
+[ext_resource type="PackedScene" uid="uid://brxddtye33te3" path="res://World/MusicAudio.tscn" id="12_fvu8y"]
+[ext_resource type="PackedScene" uid="uid://bulp62n3s0i7l" path="res://World/sounds/VFXAudio.tscn" id="13_asspo"]
 
 [node name="MainMenu" type="Control"]
 modulate = Color(0.415686, 0.415686, 0.415686, 1)
@@ -171,7 +172,11 @@ offset_bottom = 317.0
 scale = Vector2(0.626694, 0.645297)
 sub_menu = true
 
-[node name="WorldAudio" parent="." instance=ExtResource("12_fvu8y")]
+[node name="MusicAudio" parent="." instance=ExtResource("12_fvu8y")]
+bus = &"Music"
+
+[node name="VFXAudio" parent="." instance=ExtResource("13_asspo")]
+bus = &"GameAudio"
 
 [connection signal="mouse_entered" from="Solo" to="." method="_on_solo_mouse_entered"]
 [connection signal="pressed" from="Solo" to="." method="_on_solo_pressed"]

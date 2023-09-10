@@ -32,3 +32,4 @@ func play_select() -> void:
 func play_hover() -> void:
 	self._current_sound = sound_hover
 	play()
+

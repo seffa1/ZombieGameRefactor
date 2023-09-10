@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bulp62n3s0i7l"]
+
+[ext_resource type="Script" path="res://World/sounds/vfx_audio.gd" id="13_xwamt"]
+
+[node name="VFXAudio" type="AudioStreamPlayer"]
+script = ExtResource("13_xwamt")

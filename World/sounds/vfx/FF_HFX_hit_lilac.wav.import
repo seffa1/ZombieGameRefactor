@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bnm31548vslcb"
-path="res://.godot/imported/FF_HFX_hit_lilac.wav-833d83a91827b95b83452f983d8195f4.sample"
+path="res://.godot/imported/FF_HFX_hit_lilac.wav-dcf05a78a4bc14f7bccc88245e9a4486.sample"
 
 [deps]
 
-source_file="res://World/sounds/ambiance/FF_HFX_hit_lilac.wav"
-dest_files=["res://.godot/imported/FF_HFX_hit_lilac.wav-833d83a91827b95b83452f983d8195f4.sample"]
+source_file="res://World/sounds/vfx/FF_HFX_hit_lilac.wav"
+dest_files=["res://.godot/imported/FF_HFX_hit_lilac.wav-dcf05a78a4bc14f7bccc88245e9a4486.sample"]
 
 [params]
 

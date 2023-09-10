@@ -3,6 +3,7 @@ extends Control
 @onready var menu_sounds = $"../../MenuSoundPlayer"
 @onready var info_sprite: TextureRect = $DescriptionBox/VBoxContainer/TextureRect
 @onready var info_description: Label = $DescriptionBox/VBoxContainer/description
+@onready var world_audio = $"../../WorldAudio"
 
 @onready var labs_image = preload("res://VFX/Gore/blood_splatters/images/awezbloodrip/Blood58.png")
 @onready var firing_range_image = preload("res://World/purchasables/Weapons/Pistols/Pistol_01/sprites/pistol_buy.png")
@@ -19,11 +20,13 @@ func show_labs_info():
 # Button press handlers ----------------------------------
 func _on_firing_range_pressed():
 	menu_sounds.play_open()
+	world_audio.play_sound("sub_hit")
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	get_tree().change_scene_to_file("res://Main/DevTestChamber.tscn")
 	
 func _on_labs_pressed():
 	menu_sounds.play_open()
+	world_audio.play_sound("sub_hit")
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	get_tree().change_scene_to_file("res://Main/TheLabs.tscn")
 

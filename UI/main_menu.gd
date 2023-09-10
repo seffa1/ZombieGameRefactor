@@ -5,6 +5,9 @@ The main
 """
 
 @onready var menu_sounds = $MenuSoundPlayer
+@onready var music_audio = $MusicAudio
+@onready var vfx_audio = $VFXAudio
+
 @onready var solo: Button = $Solo
 @onready var multiplayer_button: Button = $Multiplayer
 @onready var leaderboards: Button = $Leaderboards
@@ -13,18 +16,16 @@ The main
 @onready var sub_screen = $SubScreenManager
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("READY!")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	solo.toggle_flicker(true)
-	
+	print("READY - SETTING SUB HIT")
+	vfx_audio.play_sound("sub_hit")
+	music_audio.play_sound("piano_loop")
 	for button in [solo, multiplayer_button, leaderboards, settings, quit_button]:
 		button.focus_entered.connect(_on_Button_focus_entered)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 # Button Press Handlers ------------------------------
 

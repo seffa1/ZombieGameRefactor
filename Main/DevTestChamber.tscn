@@ -871,21 +871,6 @@ layer_1/tile_data = PackedInt32Array(917502, 0, 2, 851990, 131072, 2, -65515, 19
 position = Vector2(23.0001, 677)
 rotation = -0.708219
 
-[node name="head" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="0"]
-scale = Vector2(1.00022, 0.999929)
-
-[node name="armLeft" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderLeft" index="0"]
-scale = Vector2(1, 1)
-
-[node name="shoulderRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso" index="2"]
-scale = Vector2(1, 1)
-
-[node name="armRight" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight" index="0"]
-scale = Vector2(1, 1)
-
-[node name="gun" parent="GameWorld/Player/SkeletonControl/Skeleton/torso/shoulderRight/armRight/handRight" index="0"]
-scale = Vector2(0.999999, 0.999999)
-
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
 MAX_ZOMBIES_ON_MAP = 10
@@ -931,10 +916,6 @@ navigation_polygon = SubResource("NavigationPolygon_w47ju")
 [node name="WorldEnvironment" parent="." instance=ExtResource("28_b2va5")]
 process_mode = 3
 
-[connection signal="state_changed" from="GameWorld/Player/StateMachineMovement" to="UI/StatesStackDiplayer" method="_on_state_machine_movement_state_changed"]
-[connection signal="state_changed" from="GameWorld/Player/StateMachineAction" to="UI/StatesStackDiplayer2" method="_on_state_machine_action_state_changed"]
-
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]
 [editable path="UI/PlayerStats"]
-[editable path="GameWorld/Player"]
