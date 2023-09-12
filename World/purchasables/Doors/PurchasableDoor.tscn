@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3o8b6cd4qnog"]
+[gd_scene load_steps=9 format=3 uid="uid://b3o8b6cd4qnog"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_qb6s1"]
 [ext_resource type="Script" path="res://World/purchasables/Doors/purchasable_door.gd" id="2_key0h"]
+[ext_resource type="AudioStream" uid="uid://c7s1b7qturd1x" path="res://World/purchasables/Windows/sounds/DungeonDoorOpen_HV.209.wav" id="3_uxj14"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8vqf"]
 radius = 57.0
@@ -27,7 +28,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dpfsy"]
 resource_name = "open"
-length = 0.7
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -35,11 +36,26 @@ tracks/0/path = NodePath("Polygon2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 2.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -0.898949), Vector2(2.08165e-12, -240)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_uxj14")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qr3a4"]
 _data = {
@@ -74,3 +90,6 @@ position = Vector2(0, -0.898949)
 scale = Vector2(1, 0.398955)
 color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 polygon = PackedVector2Array(-10, -286, 10, -286, 10, 287, -10, 288)
+
+[node name="DoorAudio" type="AudioStreamPlayer2D" parent="." index="5"]
+bus = &"GameAudio"
