@@ -6,8 +6,6 @@ which should interupt movement can also go here.
 Stamina is managed here as well.
 """
 
-
-
 func handle_input(_event):
 	# TODO - anything that should intrupt any motion states here, dashing for example 
 	return
@@ -20,6 +18,7 @@ func get_input_direction():
 
 func update_look_direction():
 	# TODO - replace this with a steer force. Sprinting state will have a low steer force and moving will have near-instant steer force
-	owner.look_at(owner.get_global_mouse_position())
+#	owner.look_at(owner.get_global_mouse_position())
+	owner.update_rotation()
 
 

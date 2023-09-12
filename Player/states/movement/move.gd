@@ -10,10 +10,18 @@ extends "res://Player/states/movement/motion.gd"
 
 @onready var velocity_component = $"../../VelocityComponent"
 @onready var stamina_component = $"../../StaminaComponent"
+@onready var leg_animation_player = $"../../LegAnimation"
+
+var is_moving_forward: bool  # Used to track which animation we should be playing (forward or backwards)
 
 # Initialize the state. E.g. change the animation
 func enter():
 	Events.emit_signal("player_moving")
+	is_moving_forward = true
+	leg_animation_player.play("walkForward")
+	
+	# Reset speed since sprint state will increase it
+	leg_animation_player.speed_scale = 1
 	return
 
 # Clean up the state. Reinitialize values like a timer
@@ -34,18 +42,31 @@ func update(delta):
 	if not input_direction:
 		emit_signal("finished", "idle")
 		return
+		
+	# Set leg animation direction
+	_get_walk_direction(input_direction)
 
 	# adjust speed multiplier if aiming down site
 	var ADS_speed_multiplier = 1.0
 	if Input.is_action_pressed("aim_down_sight"):
 		ADS_speed_multiplier = .5
 
-	
-	# Update the velocity component
+	# Update velocity and animation based on movement direction relative to player direction (forward or backwards)
 	if _is_moving_forward(input_direction):
+		# Set velocity for fowards
 		velocity_component.max_velocity = WALK_SPEED_FOWARD * ADS_speed_multiplier
+		# Update animation ONLY if we are just switching to foward from backwards
+		if !is_moving_forward:
+			is_moving_forward = true
+			leg_animation_player.play("walkForward")
 	else:
+		# Set velocity for backwards
 		velocity_component.max_velocity = WALK_SPEED_BACKWARDS * ADS_speed_multiplier
+		if is_moving_forward:
+			is_moving_forward = false
+			leg_animation_player.play("walkBackwards")
+	
+	# update velocity
 	velocity_component.accelerate_in_direction(input_direction, delta)
 	
 	# move the player
@@ -61,8 +82,7 @@ func _is_moving_forward(input_direction):
 	var player_rotation = rad_to_deg(owner.rotation)
 	var player_direction = rad_to_deg(input_direction.angle())
 	
-	# Special case if the player is moving left because that is where the
-	# negative sign flips
+	# Case if the player if moving left because that is where the negative sign flips
 	if abs(player_direction) > 100:
 		if abs(abs(player_rotation) - abs(player_direction)) > 90:
 			Events.emit_signal("player_direction_change", "Backwards")
@@ -70,6 +90,7 @@ func _is_moving_forward(input_direction):
 		else:
 			Events.emit_signal("player_direction_change", "Forwards")
 			return true
+	# Case if the player if moving right because that is where the negative sign flips
 	else:
 		if abs(player_rotation - player_direction) > 90:
 			Events.emit_signal("player_direction_change", "Backwards")
@@ -77,6 +98,43 @@ func _is_moving_forward(input_direction):
 		else:
 			Events.emit_signal("player_direction_change", "Forwards")
 			return true
+
+func _get_walk_direction(input_direction):
+	var player_rotation = rad_to_deg(owner.rotation)
+	var player_direction = rad_to_deg(input_direction.angle())
+	print("Rotation")
+	print(player_rotation)
+	print("Direction")
+	print(player_direction)
+	
+	# Case if the player if moving left because that is where the negative sign flips
+	if abs(player_direction) > 100:
+		if abs(abs(player_rotation) - abs(player_direction)) > 90:
+			print("Backwards moving left")
+		else:
+			print("Fowards moving left")
+	# Case if the player if moving right, up, or down (because godot rounding makes up/down slightly more right)
+	else:
+		if abs(player_rotation - player_direction) > 225:
+			if abs(player_rotation) > 134:
+				print("right3")
+			else:
+				print("left3")
+		elif abs(player_rotation - player_direction) > 135:
+			print("Backwards")
+		elif abs(player_rotation - player_direction) > 45:
+			if (player_rotation > 90):
+				if player_direction > 0:
+					print("left1")
+				else:
+					print("right1")
+			else:
+				if abs(player_rotation) > 134:
+					print("right2")
+				else:
+					print("left2")
+		else:
+			print("Fowards")
 
 
 func _on_animation_finished(anim_name):

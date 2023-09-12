@@ -6,8 +6,16 @@ Connects to any event bus signals which need to be passed down to child nodes.
 """
 
 # Nodes
-@onready var camera_transform = $CameraTransform
+
+# Rotating Nodes
 @onready var weapon_manager = $WeaponManager
+@onready var skeletonc_control = $SkeletonControl
+@onready var collision = $PlayerCollision
+@onready var hurtbox = $Hurtbox
+@onready var purchasable_detectory = $PurchasableDetector
+@onready var flash_light = $PointLight2D
+
+@onready var camera_transform = $CameraTransform
 @onready var equipment_manager = $EquipmentManager
 @onready var animation_player = $AnimationPlayer
 @onready var perk_manager = $PerkManager
@@ -59,3 +67,9 @@ func _on_player_knockback(direction: Vector2):
 	
 	velocity_component.impulse_in_direction(direction)
 	velocity = velocity_component.velocity
+
+func update_rotation():
+	look_at(get_global_mouse_position())
+#	for node in [weapon_manager, skeletonc_control, collision, hurtbox, purchasable_detectory, flash_light]:
+#		node.look_at(get_global_mouse_position())
+

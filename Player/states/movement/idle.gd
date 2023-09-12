@@ -5,12 +5,14 @@ The motion parent script handles the stamina regenerations.
 """
 
 @onready var velocity_component = $"../../VelocityComponent"
+@onready var leg_animation_player = $"../../LegAnimation"
 
 # Initialize the state. E.g. change the animation
 func enter():
 	# TODO - owner.get_node("AnimationPlayer").play("idle")
 	Events.emit_signal("player_direction_change", "n/a")
 	Events.emit_signal("player_idle")
+	leg_animation_player.play("RESET")
 	return
 
 func update(delta):
