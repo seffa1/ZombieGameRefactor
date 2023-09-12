@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=71 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -17,11 +17,15 @@
 [ext_resource type="Texture2D" uid="uid://bwg633shg2dh7" path="res://Player/images/soldier/bodyparts/man_arm_left.png" id="6_tllls"]
 [ext_resource type="Texture2D" uid="uid://brxnf0tn1l4x0" path="res://Player/images/soldier/bodyparts/man_arm_right.png" id="7_r3wjv"]
 [ext_resource type="Texture2D" uid="uid://gtd7poiktla2" path="res://Player/images/soldier/bodyparts/man_head.png" id="8_pndn8"]
+[ext_resource type="Texture2D" uid="uid://bub2w3gpabbx5" path="res://Player/images/soldier/bodyparts/man_leg_left - 2.png" id="9_32h4o"]
 [ext_resource type="Script" path="res://Player/states/actions/shoot.gd" id="9_mu8s3"]
+[ext_resource type="Texture2D" uid="uid://cfl0brxhculxf" path="res://Player/images/soldier/bodyparts/man_leg_left - 1.png" id="10_hh44v"]
 [ext_resource type="Script" path="res://Player/states/actions/charge_throw.gd" id="10_ri4uv"]
 [ext_resource type="Script" path="res://Player/states/actions/reload.gd" id="10_xhv8v"]
 [ext_resource type="Script" path="res://Player/states/actions/throw.gd" id="11_83mo6"]
+[ext_resource type="Texture2D" uid="uid://t3pebwmi4636" path="res://Player/images/soldier/bodyparts/man_leg_right - 2.png" id="11_i6v8g"]
 [ext_resource type="Script" path="res://Player/states/actions/melee.gd" id="12_u67uk"]
+[ext_resource type="Texture2D" uid="uid://clec5wlhxhcdh" path="res://Player/images/soldier/bodyparts/man_leg_right - 1.png" id="12_ye5ef"]
 [ext_resource type="Script" path="res://Player/equipment_manager.gd" id="13_8ktub"]
 [ext_resource type="Script" path="res://Player/states/actions/die.gd" id="13_lfdfl"]
 [ext_resource type="Script" path="res://Player/weapon_container.gd" id="14_qrq3y"]
@@ -3370,6 +3374,50 @@ position = Vector2(0, -1.52588e-05)
 [node name="GunSprite" type="Sprite2D" parent="SkeletonControl/HandPosition"]
 scale = Vector2(1.66547, 1.66547)
 flip_h = true
+
+[node name="LegControl" type="Node2D" parent="."]
+
+[node name="Polygons" type="Node2D" parent="LegControl"]
+
+[node name="leftLower" type="Polygon2D" parent="LegControl/Polygons"]
+position = Vector2(213, -2)
+rotation = -1.57654
+texture = ExtResource("9_32h4o")
+polygon = PackedVector2Array(27.6471, 0.196077, 48.2353, 0.196077, 66.0784, 7.45098, 77.2549, 20.1961, 84.5098, 43.7255, 85.2941, 61.5686, 84.902, 73.9216, 94.5098, 76.2745, 96.0784, 108.627, 83.5294, 132.745, 77.5401, 133.512, 76.4706, 155.437, 72.9055, 170.232, 75.4011, 176.471, 73.262, 184.848, 78.9661, 202.139, 69.3405, 218.36, 61.1408, 227.629, 35.8289, 228.342, 18.8948, 212.478, 16.7558, 201.07, 21.3904, 186.988, 16.9341, 181.64, 19.2513, 172.906, 13.9037, 165.062, 15.508, 150.802, -0.713013, 72.0143, -0.53476, 37.2549, 3.56506, 20.8556, 14.2602, 6.59537)
+uv = PackedVector2Array(27.6471, 0.196077, 48.2353, 0.196077, 66.0784, 7.45098, 77.2549, 20.1961, 84.5098, 43.7255, 85.2941, 61.5686, 84.902, 73.9216, 94.5098, 76.2745, 96.0784, 108.627, 83.5294, 132.745, 77.5401, 133.512, 76.4706, 155.437, 72.9055, 170.232, 75.4011, 176.471, 73.262, 184.848, 78.9661, 202.139, 69.3405, 218.36, 61.1408, 227.629, 35.8289, 228.342, 18.8948, 212.478, 16.7558, 201.07, 21.3904, 186.988, 16.9341, 181.64, 19.2513, 172.906, 13.9037, 165.062, 15.508, 150.802, -0.713013, 72.0143, -0.53476, 37.2549, 3.56506, 20.8556, 14.2602, 6.59537)
+
+[node name="leftUpper" type="Polygon2D" parent="LegControl/Polygons"]
+position = Vector2(231, -7)
+rotation = -1.57224
+texture = ExtResource("10_hh44v")
+polygon = PackedVector2Array(27.6292, 0, 55.615, -0.178253, 74.8663, 13.369, 83.4225, 37.6114, 84.6702, 48.6631, 95.1872, 56.5062, 99.4652, 98.2175, 93.0481, 111.943, 78.9661, 119.073, 77.1836, 127.807, 69.5187, 140.642, 59.18, 152.585, 34.0463, 154.011, 26.025, 149.198, 18.8948, 131.373, -0.53476, 45.098, -0.53476, 26.9162, 10.6952, 9.26916)
+uv = PackedVector2Array(27.6292, 0, 55.615, -0.178253, 74.8663, 13.369, 83.4225, 37.6114, 84.6702, 48.6631, 95.1872, 56.5062, 99.4652, 98.2175, 93.0481, 111.943, 78.9661, 119.073, 77.1836, 127.807, 69.5187, 140.642, 59.18, 152.585, 34.0463, 154.011, 26.025, 149.198, 18.8948, 131.373, -0.53476, 45.098, -0.53476, 26.9162, 10.6952, 9.26916)
+
+[node name="rightLower" type="Polygon2D" parent="LegControl/Polygons"]
+position = Vector2(205, 109)
+rotation = -1.57079
+texture = ExtResource("11_i6v8g")
+polygon = PackedVector2Array(70.5882, 0.588236, 46.0784, 0.196078, 28.2353, 9.21569, 15.8824, 28.0392, 9.80392, 46.6667, 10.5882, 74.7059, 2.35294, 77.2549, 0.392159, 107.843, 13.3333, 133.725, 22.7451, 170.196, 19.8039, 179.412, 23.1373, 183.922, 17.0588, 201.176, 23.7255, 215.098, 35.2941, 227.843, 60.9804, 227.255, 73.5294, 216.863, 79.6078, 203.529, 74.3137, 187.647, 79.8039, 182.745, 75.8824, 174.314, 82.1569, 166.078, 80.3922, 150, 95.8824, 74.3137, 96.6667, 37.2549, 90.9804, 16.8627, 82.7451, 5.88235)
+uv = PackedVector2Array(70.5882, 0.588236, 46.0784, 0.196078, 28.2353, 9.21569, 15.8824, 28.0392, 9.80392, 46.6667, 10.5882, 74.7059, 2.35294, 77.2549, 0.392159, 107.843, 13.3333, 133.725, 22.7451, 170.196, 19.8039, 179.412, 23.1373, 183.922, 17.0588, 201.176, 23.7255, 215.098, 35.2941, 227.843, 60.9804, 227.255, 73.5294, 216.863, 79.6078, 203.529, 74.3137, 187.647, 79.8039, 182.745, 75.8824, 174.314, 82.1569, 166.078, 80.3922, 150, 95.8824, 74.3137, 96.6667, 37.2549, 90.9804, 16.8627, 82.7451, 5.88235)
+
+[node name="rightUpper" type="Polygon2D" parent="LegControl/Polygons"]
+position = Vector2(213, 110)
+rotation = -1.57079
+texture = ExtResource("12_ye5ef")
+polygon = PackedVector2Array(44.5098, 0.196079, 70.9804, 0.392157, 87.2549, 7.64706, 99.0196, 28.6275, 98.8235, 49.4118, 81.3726, 121.961, 81.1765, 129.02, 70.7843, 151.373, 64.902, 153.922, 46.8628, 153.137, 35.4902, 149.608, 22.549, 130.98, 19.8039, 119.804, 4.90196, 110.784, -0.980392, 96.2745, 0.392159, 67.8431, 5.4902, 54.1177, 11.5686, 49.2157, 15.098, 40.5882, 20, 23.3333, 31.3726, 5.88235)
+uv = PackedVector2Array(44.5098, 0.196079, 70.9804, 0.392157, 87.2549, 7.64706, 99.0196, 28.6275, 98.8235, 49.4118, 81.3726, 121.961, 81.1765, 129.02, 70.7843, 151.373, 64.902, 153.922, 46.8628, 153.137, 35.4902, 149.608, 22.549, 130.98, 19.8039, 119.804, 4.90196, 110.784, -0.980392, 96.2745, 0.392159, 67.8431, 5.4902, 54.1177, 11.5686, 49.2157, 15.098, 40.5882, 20, 23.3333, 31.3726, 5.88235)
+
+[node name="Skeleton2D" type="Skeleton2D" parent="LegControl"]
+
+[node name="hip" type="Bone2D" parent="LegControl/Skeleton2D"]
+
+[node name="leftUpper" type="Bone2D" parent="LegControl/Skeleton2D/hip"]
+
+[node name="leftLower" type="Bone2D" parent="LegControl/Skeleton2D/hip/leftUpper"]
+
+[node name="rightUpper" type="Bone2D" parent="LegControl/Skeleton2D/hip"]
+
+[node name="rightLower" type="Bone2D" parent="LegControl/Skeleton2D/hip/rightUpper"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
