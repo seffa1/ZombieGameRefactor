@@ -3857,6 +3857,9 @@ script = ExtResource("3_j8hkm")
 
 [node name="Move" type="Node" parent="StateMachineMovement"]
 script = ExtResource("4_hhe0o")
+WALK_SPEED_FOWARD = null
+WALK_SPEED_BACKWARDS = null
+MIN_SPRINT_STAMINA_COST = null
 
 [node name="Sprint" type="Node" parent="StateMachineMovement"]
 script = ExtResource("5_m0p7e")

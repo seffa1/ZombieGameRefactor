@@ -7,8 +7,11 @@ the sprint movement state (this one) just handles player movement and leg animat
 
 @onready var velocity_component = $"../../VelocityComponent"
 @onready var stamina_component = $"../../StaminaComponent"
+@onready var leg_control = $"../../LegControl"
+@onready var leg_animation_player = $"../../LegAnimation"
 
 @export var SPRINT_SPEED_FORWARD: int = 500
+
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -22,11 +25,15 @@ func enter():
 		owner.state_machine_action._change_state("idle")
 
 	# TODO - play leg animations
-	return
+	leg_animation_player.play("walkForward")
+	leg_animation_player.speed_scale = 2
 
 # Clean up the state
 func exit():
 	stamina_component.is_stamina_depleting = false
+	leg_animation_player.speed_scale = 1
+	leg_control.rotation = 0
+	leg_control.global_rotation = owner.global_rotation
 	Events.emit_signal("player_stop_sprinting")
 
 func handle_input(event: InputEvent):
@@ -50,8 +57,7 @@ func update(delta):
 		return
 	
 	# TODO - limit player from spinning around, prevent actions
-	
-	
+
 	# move the player
 	var input_direction = get_input_direction().normalized()
 	if not input_direction:
@@ -59,6 +65,9 @@ func update(delta):
 		return
 	
 	if _is_moving_forward(input_direction):
+		# rotate the legs
+		leg_control.global_rotation = input_direction.angle()
+
 		# move the player
 		velocity_component.max_velocity = SPRINT_SPEED_FORWARD
 		velocity_component.accelerate_in_direction(input_direction, delta)

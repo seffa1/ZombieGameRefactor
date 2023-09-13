@@ -11,14 +11,11 @@ extends "res://Player/states/movement/motion.gd"
 @onready var velocity_component = $"../../VelocityComponent"
 @onready var stamina_component = $"../../StaminaComponent"
 @onready var leg_animation_player = $"../../LegAnimation"
-
-var is_moving_forward: bool  # Used to track which animation we should be playing (forward or backwards)
+@onready var leg_control = $"../../LegControl"
 
 # Initialize the state. E.g. change the animation
 func enter():
 	Events.emit_signal("player_moving")
-	is_moving_forward = true
-	leg_animation_player.play("walkForward")
 	
 	# Reset speed since sprint state will increase it
 	leg_animation_player.speed_scale = 1
@@ -26,6 +23,8 @@ func enter():
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
+	leg_control.rotation = 0
+	leg_control.global_rotation = owner.global_rotation
 	return
 
 func handle_input(event: InputEvent):
@@ -42,30 +41,42 @@ func update(delta):
 	if not input_direction:
 		emit_signal("finished", "idle")
 		return
-		
-	# Set leg animation direction
-	_get_walk_direction(input_direction)
-
+	
 	# adjust speed multiplier if aiming down site
 	var ADS_speed_multiplier = 1.0
 	if Input.is_action_pressed("aim_down_sight"):
 		ADS_speed_multiplier = .5
-
+	
 	# Update velocity and animation based on movement direction relative to player direction (forward or backwards)
 	if _is_moving_forward(input_direction):
 		# Set velocity for fowards
 		velocity_component.max_velocity = WALK_SPEED_FOWARD * ADS_speed_multiplier
-		# Update animation ONLY if we are just switching to foward from backwards
-		if !is_moving_forward:
-			is_moving_forward = true
-			leg_animation_player.play("walkForward")
+		leg_animation_player.play("walkForward")
+		leg_control.global_rotation = input_direction.angle()
 	else:
 		# Set velocity for backwards
 		velocity_component.max_velocity = WALK_SPEED_BACKWARDS * ADS_speed_multiplier
-		if is_moving_forward:
-			is_moving_forward = false
-			leg_animation_player.play("walkBackwards")
-	
+		leg_animation_player.play("walkBackwards")
+		leg_control.global_rotation = 3.14 + input_direction.angle()
+
+	# Override forward / backward animation with left / right animation
+#	direction_check = _get_walk_direction(input_direction)
+#	if direction_check == "left":
+#		if leg_animation_direction != "left":
+#			leg_animation_direction = "left"
+#			print("Play left")
+#			leg_animation_player.play("walkLeft")
+#
+#	elif direction_check == "right":
+#		if leg_animation_direction != "right":
+#			leg_animation_direction = "right"
+#			print("Play right")
+#			leg_animation_player.play("walkRight")
+#
+#	else:
+#		leg_animation_direction = ""
+
+
 	# update velocity
 	velocity_component.accelerate_in_direction(input_direction, delta)
 	
@@ -99,42 +110,73 @@ func _is_moving_forward(input_direction):
 			Events.emit_signal("player_direction_change", "Forwards")
 			return true
 
-func _get_walk_direction(input_direction):
+func _get_walk_direction(input_direction) -> String:
+	"""
+	Forwards, backwards, left, or right
+	"""
 	var player_rotation = rad_to_deg(owner.rotation)
 	var player_direction = rad_to_deg(input_direction.angle())
-	print("Rotation")
-	print(player_rotation)
-	print("Direction")
-	print(player_direction)
 	
-	# Case if the player if moving left because that is where the negative sign flips
-	if abs(player_direction) > 100:
-		if abs(abs(player_rotation) - abs(player_direction)) > 90:
-			print("Backwards moving left")
-		else:
-			print("Fowards moving left")
-	# Case if the player if moving right, up, or down (because godot rounding makes up/down slightly more right)
-	else:
-		if abs(player_rotation - player_direction) > 225:
-			if abs(player_rotation) > 134:
-				print("right3")
-			else:
-				print("left3")
-		elif abs(player_rotation - player_direction) > 135:
-			print("Backwards")
-		elif abs(player_rotation - player_direction) > 45:
-			if (player_rotation > 90):
-				if player_direction > 0:
-					print("left1")
-				else:
-					print("right1")
-			else:
-				if abs(player_rotation) > 134:
-					print("right2")
-				else:
-					print("left2")
-		else:
-			print("Fowards")
+	# Standardize direction to 0-360 deg
+	var standardized_direction = player_direction
+	if standardized_direction < 0:
+		standardized_direction = 360 + standardized_direction
+	
+	# Standardize rotation to 0-360 deg
+	var standardized_rotation = player_rotation
+	if standardized_rotation < 0:
+		standardized_rotation = 360 + standardized_rotation
+
+	# Case for the each of the 8 directions of movement
+	# Right
+	if standardized_direction > 338 or standardized_direction < 22.5:
+		if standardized_rotation > 247.5 and standardized_rotation < 292.5:
+			return "right"
+		if standardized_rotation > 67.5 and standardized_rotation < 112.5:
+			return "left"
+	# Down - right
+	elif standardized_direction < 67.5:
+		if standardized_rotation > 292.5 and standardized_rotation < 337.5:
+			return "right"
+		if standardized_rotation > 112.5 and standardized_rotation < 157.5:
+			return "left"
+	# Down
+	elif standardized_direction < 112.5 :
+		if standardized_rotation > 338 or standardized_rotation < 22.5:
+			return "right"
+		if standardized_rotation > 157.5 and standardized_rotation < 202.5:
+			return "left"
+	# Down - left
+	elif standardized_direction < 157.5 :
+		if standardized_rotation > 22.5 and standardized_rotation < 67.5:
+			return "right"
+		if standardized_rotation > 202.5 and standardized_rotation < 247.5:
+			return "left"
+	# Left
+	elif standardized_direction < 202.5:
+		if standardized_rotation > 67.5 and standardized_rotation < 112.5:
+			return "right"
+		if standardized_rotation > 247.5 and standardized_rotation < 295.5:
+			return "left"
+	# Up - left
+	elif standardized_direction < 247.5:
+		if standardized_rotation > 112.5 and standardized_rotation < 157.5:
+			return "right"
+		if standardized_rotation > 292.5 and standardized_rotation < 337.5:
+			return "left"
+	# Up
+	elif standardized_direction < 292.5:
+		if standardized_rotation > 157.5 and standardized_rotation < 202.5:
+			return "right"
+		if standardized_rotation > 338 or standardized_rotation < 22.5:
+			return "left"
+	# Up - right
+	elif standardized_direction < 338:
+		if standardized_rotation > 202.5 and standardized_rotation < 247.5:
+			return "right"
+		if standardized_rotation > 22.5 and standardized_rotation < 67.5:
+			return "left"
+	return ""
 
 
 func _on_animation_finished(anim_name):
