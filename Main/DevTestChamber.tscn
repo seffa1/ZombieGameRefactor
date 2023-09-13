@@ -522,7 +522,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-77, 617, -73, -28, -54
 [node name="GameInitializer" type="Node"]
 process_mode = 1
 script = ExtResource("1_436u3")
-remove_vinette = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -804,7 +803,7 @@ texture = ExtResource("16_yds3k")
 [node name="Obstacles" type="Node" parent="GameWorld/Environment"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
-position = Vector2(-1075, -1244)
+position = Vector2(-1085, -1211)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D"]
@@ -812,7 +811,7 @@ position = Vector2(520, 331)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
-position = Vector2(-1092, -1083)
+position = Vector2(-1102, -1050)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
@@ -820,7 +819,7 @@ position = Vector2(520, 331)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
-position = Vector2(-402, -1359)
+position = Vector2(-412, -1326)
 rotation = 1.57079
 collision_layer = 16
 
@@ -829,7 +828,7 @@ position = Vector2(520, 331)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
-position = Vector2(-15, -1325)
+position = Vector2(-25, -1292)
 rotation = 1.57079
 collision_layer = 16
 

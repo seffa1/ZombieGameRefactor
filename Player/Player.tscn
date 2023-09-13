@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=78 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://Player/states/actions/melee.gd" id="12_u67uk"]
 [ext_resource type="Texture2D" uid="uid://clec5wlhxhcdh" path="res://Player/images/soldier/bodyparts/man_leg_right - 1.png" id="12_ye5ef"]
 [ext_resource type="Script" path="res://Player/equipment_manager.gd" id="13_8ktub"]
+[ext_resource type="AudioStream" uid="uid://dmq3c5lkyv30v" path="res://Player/sounds/footsteps/ESM_GF_fx_wood_one_shots_footstep_sneakers_walking_slowly_dry_punchy_interior_29.wav" id="13_hpacd"]
 [ext_resource type="Script" path="res://Player/states/actions/die.gd" id="13_lfdfl"]
 [ext_resource type="Script" path="res://Player/weapon_container.gd" id="14_qrq3y"]
 [ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
@@ -218,6 +219,25 @@ tracks/5/keys = {
 "update": 1,
 "values": [ExtResource("12_ye5ef"), ExtResource("12_ye5ef"), ExtResource("11_i6v8g"), ExtResource("12_ye5ef")]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MovementSoundPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.52943,
+"start_offset": 0.0,
+"stream": ExtResource("13_hpacd")
+}, {
+"end_offset": 0.495526,
+"start_offset": 0.0,
+"stream": ExtResource("13_hpacd")
+}],
+"times": PackedFloat32Array(0.15, 0.55)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_yh5t1"]
 resource_name = "walkForward"
@@ -296,6 +316,25 @@ tracks/5/keys = {
 "update": 1,
 "values": [ExtResource("12_ye5ef"), ExtResource("12_ye5ef"), ExtResource("11_i6v8g"), ExtResource("11_i6v8g"), ExtResource("12_ye5ef")]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MovementSoundPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.52943,
+"start_offset": 0.0,
+"stream": ExtResource("13_hpacd")
+}, {
+"end_offset": 0.495526,
+"start_offset": 0.0,
+"stream": ExtResource("13_hpacd")
+}],
+"times": PackedFloat32Array(0.15, 0.55)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ufbny"]
 resource_name = "walkLeft"
@@ -3913,6 +3952,11 @@ health_regeneration = true
 
 [node name="ActionSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 6
+bus = &"GameAudio"
+
+[node name="MovementSoundPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0
+max_polyphony = 4
 bus = &"GameAudio"
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

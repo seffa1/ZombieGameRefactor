@@ -24,7 +24,7 @@ func enter():
 	if owner.state_machine_action.states_stack[0] == owner.state_machine_action.states_map["shoot"]:
 		owner.state_machine_action._change_state("idle")
 
-	# TODO - play leg animations
+	# Play leg animations
 	leg_animation_player.play("walkForward")
 	leg_animation_player.speed_scale = 2
 
