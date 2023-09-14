@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://pkbv6t66nte"]
+
+[ext_resource type="Texture2D" uid="uid://q0sk8n5le6r7" path="res://Player/images/bloody_footprint4.png" id="1_se1ph"]
+
+[sub_resource type="Animation" id="Animation_mkqy6"]
+resource_name = "DEFAULT"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uxuu6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eeis7"]
+_data = {
+"DEFAULT": SubResource("Animation_mkqy6"),
+"RESET": SubResource("Animation_uxuu6")
+}
+
+[node name="Footprint" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+rotation = 1.57079
+scale = Vector2(0.119447, 0.119447)
+texture = ExtResource("1_se1ph")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "DEFAULT"
+libraries = {
+"": SubResource("AnimationLibrary_eeis7")
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=81 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
 [ext_resource type="Script" path="res://Player/perk_manager.gd" id="16_gldpa"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="16_gye32"]
+[ext_resource type="Script" path="res://Player/blood_puddle_detector.gd" id="19_445ke"]
 [ext_resource type="Script" path="res://Player/hurtbox.gd" id="21_j3hvq"]
 [ext_resource type="Script" path="res://Player/states/actions/switch_weapons.gd" id="26_6gqfb"]
 [ext_resource type="Script" path="res://Player/states/buy_weapon.gd" id="26_7d8j7"]
@@ -3621,6 +3622,9 @@ radius = 37.0135
 [sub_resource type="CircleShape2D" id="CircleShape2D_nlyr0"]
 radius = 52.2398
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xau0s"]
+radius = 19.0
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("money_component")]
 self_modulate = Color(0.635294, 0.419608, 0, 1)
 z_index = 3
@@ -3836,6 +3840,19 @@ rotation = -0.261799
 shape = SubResource("CircleShape2D_j0327")
 debug_color = Color(0.596078, 0.545098, 0.133333, 0.419608)
 
+[node name="WeaponManager" type="Node2D" parent="."]
+script = ExtResource("14_qrq3y")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(13.7457, 2.31131)
+rotation = 3.14159
+scale = Vector2(1.07697, -0.720563)
+texture = ExtResource("34_6mf4n")
+offset = Vector2(-169.229, 20.385)
+
+[node name="ChargeIndicator" parent="." instance=ExtResource("41_x214t")]
+position = Vector2(76, 15)
+
 [node name="Hurtbox" type="Area2D" parent="."]
 visible = false
 position = Vector2(14, 2)
@@ -3860,13 +3877,19 @@ script = ExtResource("16_0vxfj")
 shape = SubResource("CircleShape2D_nlyr0")
 debug_color = Color(0, 1, 0, 0.0313726)
 
-[node name="CameraTransform" type="RemoteTransform2D" parent="."]
+[node name="BloodPuddleDetector" type="Area2D" parent="."]
+position = Vector2(14, 2)
+collision_mask = 262144
+script = ExtResource("19_445ke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BloodPuddleDetector"]
+shape = SubResource("CircleShape2D_xau0s")
+
+[node name="BloodyFootstepTimer" type="Timer" parent="BloodPuddleDetector"]
+one_shot = true
 
 [node name="HitTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="WeaponManager" type="Node2D" parent="."]
-script = ExtResource("14_qrq3y")
 
 [node name="EquipmentManager" type="Node" parent="."]
 script = ExtResource("13_8ktub")
@@ -3936,12 +3959,6 @@ script = ExtResource("12_u67uk")
 [node name="Die" type="Node" parent="StateMachineAction"]
 script = ExtResource("13_lfdfl")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(13.7457, 2.31131)
-scale = Vector2(-1.07697, 0.720563)
-texture = ExtResource("34_6mf4n")
-offset = Vector2(-169.229, 20.385)
-
 [node name="HealthComponent" parent="." instance=ExtResource("35_5mvoc")]
 max_health = 30.0
 health_regeneration = true
@@ -3955,11 +3972,11 @@ volume_db = -30.0
 max_polyphony = 4
 bus = &"GameAudio"
 
-[node name="ChargeIndicator" parent="." instance=ExtResource("41_x214t")]
-position = Vector2(76, 15)
+[node name="CameraTransform" type="RemoteTransform2D" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="area_entered" from="PurchasableDetector" to="PurchasableDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="PurchasableDetector" to="PurchasableDetector" method="_on_area_exited"]
 [connection signal="body_entered" from="PurchasableDetector" to="PurchasableDetector" method="_on_body_entered"]
 [connection signal="body_exited" from="PurchasableDetector" to="PurchasableDetector" method="_on_body_exited"]
+[connection signal="area_entered" from="BloodPuddleDetector" to="BloodPuddleDetector" method="_on_area_entered"]

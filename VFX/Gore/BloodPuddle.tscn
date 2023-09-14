@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkx7jpbf0cjcy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7oat8"]
+radius = 35.1283
+
+[node name="BloodPuddle" type="Area2D"]
+collision_layer = 262144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7oat8")
+debug_color = Color(0.945098, 0, 0.6, 0.419608)
