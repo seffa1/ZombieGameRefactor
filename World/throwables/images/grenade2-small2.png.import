@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rmohx2tnse4s"
-path="res://.godot/imported/grenade.jpg-d57ad0c37139bfb44dbad652e9445af8.ctex"
+uid="uid://brpcpaw7dvoib"
+path="res://.godot/imported/grenade2-small2.png-f598dd44516069fc0ff62bd52e33ce4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/throwables/grenade.jpg"
-dest_files=["res://.godot/imported/grenade.jpg-d57ad0c37139bfb44dbad652e9445af8.ctex"]
+source_file="res://World/throwables/images/grenade2-small2.png"
+dest_files=["res://.godot/imported/grenade2-small2.png-f598dd44516069fc0ff62bd52e33ce4d.ctex"]
 
 [params]
 

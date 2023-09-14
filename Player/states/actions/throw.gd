@@ -6,6 +6,10 @@ extends "res://Libraries/state.gd"
 @onready var weapon_manager = $"../../WeaponManager"
 @onready var gun_sprite = $"../../SkeletonControl/HandPosition/GunSprite"
 @onready var action_sound_player = $"../../ActionSoundPlayer"
+@onready var charge_state = $"../ChargeThrow"
+
+var item_ejection_torque: float = 20000  # angular momentum applied to item on ejection
+var item_ejection_torque_variance: float = 18000
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -20,9 +24,12 @@ func _throw_equipment():
 	
 	# Apply the impulse
 	# TODO - variable hangtime base on charge up time
-	var charge_time = 3.0
-	var direction_vector = Vector2.RIGHT.rotated(owner.rotation) *  charge_time * 100
+	var charge_value = charge_state.charge_value
+	var direction_vector = Vector2.RIGHT.rotated(owner.rotation) *  charge_value * 200
 	equipment_object.apply_impulse(direction_vector)
+	
+	# Give it some random torque
+	equipment_object.apply_torque(item_ejection_torque + randf_range(-item_ejection_torque_variance, item_ejection_torque_variance))
 	
 	# play the equipment throw audio
 	var audio = Globals.EQUIPMENT_INDEX[equipment_manager.current_equipment].throw_audio

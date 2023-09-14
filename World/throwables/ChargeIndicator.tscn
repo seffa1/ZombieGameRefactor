@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://drmqk73ge4okn"]
+
+[ext_resource type="Script" path="res://World/throwables/charge_indicator.gd" id="1_so4gg"]
+[ext_resource type="Texture2D" uid="uid://qefbn6t514wp" path="res://World/throwables/images/red_gradient.png" id="2_66pch"]
+
+[sub_resource type="Animation" id="Animation_6xtuc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4.76837e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.725, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ysi6f"]
+resource_name = "charge"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 4.76837e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.323438, 0.1875), Vector2(1.725, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ix2py"]
+_data = {
+"RESET": SubResource("Animation_6xtuc"),
+"charge": SubResource("Animation_ysi6f")
+}
+
+[node name="ChargeIndicator" type="Node2D"]
+script = ExtResource("1_so4gg")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(1.725, 1)
+texture = ExtResource("2_66pch")
+texture_scale = Vector2(10, 10)
+polygon = PackedVector2Array(0, 0, 72, 8, 80, 0, 72, -8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ix2py")
+}

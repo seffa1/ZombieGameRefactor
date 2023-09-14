@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://57i3mteqcq4v"
-path="res://.godot/imported/grenade2.png-9d2620ce2b3551aacbbf6f09970be365.ctex"
+uid="uid://qefbn6t514wp"
+path="res://.godot/imported/red_gradient.png-535cc6a4c4c0404da632805d57630313.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/throwables/grenade2.png"
-dest_files=["res://.godot/imported/grenade2.png-9d2620ce2b3551aacbbf6f09970be365.ctex"]
+source_file="res://World/throwables/images/red_gradient.png"
+dest_files=["res://.godot/imported/red_gradient.png-535cc6a4c4c0404da632805d57630313.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

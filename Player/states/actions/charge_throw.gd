@@ -4,6 +4,10 @@ extends "res://Libraries/state.gd"
 @onready var gun_sprite = $"../../SkeletonControl/HandPosition/GunSprite"
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var action_sound_player = $"../../ActionSoundPlayer"
+@onready var charge_indicator = $"../../ChargeIndicator"
+
+var max_charge_value: float = 3.0
+var charge_value: float  # tracks how long we charged the grenade for
 
 # Initialize the state. E.g. change the animation
 func enter():
@@ -19,8 +23,12 @@ func enter():
 	var audio = Globals.EQUIPMENT_INDEX[equipment_manager.current_equipment].charge_audio
 	action_sound_player.stream = audio
 	action_sound_player.play()
+	
+	# Initialize charge indicator and value
+	charge_value = 0.0
+	charge_indicator.show()
+	charge_indicator.play()
 
-	return
 
 func update(delta):
 	# If we stop holding the equipment button, go to throw state
@@ -28,10 +36,13 @@ func update(delta):
 		emit_signal("finished", "throw")
 		return
 
+	charge_value = clampf(charge_value + delta * 2.0, 0, max_charge_value)
+
 # Clean up the state. Reinitialize values like a timer
 func exit():
 	# If we cancel out of this state
 	gun_sprite.hide()
+	charge_indicator.hide()
 	return
 
 func handle_input(event):

@@ -25,6 +25,7 @@ Connects to any event bus signals which need to be passed down to child nodes.
 @onready var gun_sprite = $SkeletonControl/HandPosition/GunSprite
 @onready var velocity_component = $VelocityComponent
 @onready var health_component = $HealthComponent
+@onready var charge_indicator = $ChargeIndicator
 
 # Constants
 @export var money_component: Node
@@ -51,6 +52,9 @@ func _ready():
 	weapon_manager.add_weapon(starting_gun)
 	equipment_manager.current_equipment = starting_equipment
 	money_component.money = starting_money
+	
+	# Hide nodes
+	charge_indicator.hide()
 
 # Signal consumers
 func _on_player_give_money(amount: int):
