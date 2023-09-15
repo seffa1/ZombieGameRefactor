@@ -7,11 +7,16 @@ But we consider it as a buy for 0, and it gives you money, and repairs the windo
 
 
 @export var window_repair_money_reward: int = 10
+@export var starting_health: int = 7
+
 @onready var health_component: Node2D = $HealthComponent
 @onready var animation_player: AnimationPlayer = $AnimationPlaceholder
 @onready var window_collision: StaticBody2D = $StaticBody2D
 @onready var window_hurt_box: Area2D = $WindowHurtbox
 
+func ready():
+	health_component.health = starting_health
+	update_animation_frame(health_component.health)
 
 func give_item(_player: CharacterBody2D) -> void:
 	"""

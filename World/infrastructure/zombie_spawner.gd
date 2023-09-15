@@ -14,7 +14,7 @@ If any of these doors are opened, this spawner becomes active via an emitted sig
 @export var trigger_doors: Array[Area2D]
 
 @onready var zombie_list = [
-	preload("res://Enemies/ZombieBasic/ZombieBasic_01.tscn")
+	preload("res://Enemies/ZombieBasic/ZombieBasic_02.tscn")
 ]
 
 var target_window: Area2D

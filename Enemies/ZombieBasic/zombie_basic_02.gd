@@ -8,7 +8,6 @@ NOTE: Make sure to add the zombie to the zombie group.
 
 # Components that need to be added to the rotation function
 @onready var sprite: Sprite2D = $placeholderSprite
-@onready var hurt_box_component: Area2D = $HurtBoxComponent
 @onready var window_detector: Area2D = $WindowDetector
 @onready var window_hit_box: Area2D = $WindowHitbox
 @onready var player_detector: Area2D = $PlayerDetector
@@ -55,7 +54,6 @@ func update_rotation():
 		angle = (pathfinding_component.nagivation_agent.target_position - global_position).angle()
 	
 	sprite.rotation = lerp_angle(sprite.rotation, angle - deg_to_rad(90), STEER_FORCE) 
-	hurt_box_component.rotation = lerp_angle(hurt_box_component.rotation, angle, STEER_FORCE) 
 	window_detector.rotation = lerp_angle(window_detector.rotation, angle, STEER_FORCE) 
 	window_hit_box.rotation = lerp_angle(window_hit_box.rotation, angle, STEER_FORCE)
 	player_detector.rotation = lerp_angle(player_detector.rotation, angle, STEER_FORCE)

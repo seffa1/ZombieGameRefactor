@@ -16,7 +16,8 @@ func _ready():
 		"attack_player": $AttackPlayer,
 		"break_window": $BreakWindow,
 		"attack_player_through_window": $AttackPlayerThroughWindow,
-		"die": $Die
+		"die": $Die,
+		"stand_still": $StandStill
 	}
 
 func _change_state(state_name):
