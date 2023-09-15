@@ -34,7 +34,6 @@ func _on_area_entered(area):
 	is_bloody = true
 	footstep_timer.start(moving_footstep_interval)  # Start with a delay so the first step doesnt look like it happened before we stepped in the puddle
 	steps_emitted = 0
-	print("BLOODY")
 
 func _process(delta):
 	if !is_bloody or player_state == 'idle':

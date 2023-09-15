@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://qk5muy0tpgq3"]
+[gd_scene load_steps=9 format=3 uid="uid://qk5muy0tpgq3"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_m8msr"]
 [ext_resource type="Script" path="res://World/purchasables/powerSwitch/power_switch.gd" id="2_kcslo"]
+[ext_resource type="AudioStream" uid="uid://c3fuvsg32bre6" path="res://UnusedSounds/LightSwitchOn_BW.60414.wav" id="3_kev2m"]
+[ext_resource type="AudioStream" uid="uid://djybv0pbpeh6d" path="res://World/purchasables/powerSwitch/sounds/ESM_FVESK_cinematic_fx_science_fiction_engine_power_on_mothership_argo_1_clicky_textured_turning_knob_ui_alert_glitchy_responses.wav" id="3_y2nb3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwtjn"]
 radius = 39.0
@@ -24,6 +26,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_v3kgk"]
 resource_name = "switch_on"
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,6 +39,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [-0.674226, 0.591102]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.740234,
+"start_offset": 0.0514876,
+"stream": ExtResource("3_kev2m")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.45,
+"stream": ExtResource("3_y2nb3")
+}],
+"times": PackedFloat32Array(0, 0.45)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hm2wg"]
 _data = {
@@ -52,6 +74,7 @@ position = Vector2(-5, 16)
 shape = SubResource("CapsuleShape2D_xwtjn")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+bus = &"GameAudio"
 
 [node name="handle" type="Polygon2D" parent="." index="3"]
 position = Vector2(-4, 29)
