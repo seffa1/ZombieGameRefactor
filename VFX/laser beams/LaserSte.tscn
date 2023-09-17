@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlk7v8ai0g0t3"]
+
+[ext_resource type="Script" path="res://VFX/laser beams/LaserSite.gd" id="1_g64ww"]
+
+[sub_resource type="Gradient" id="Gradient_6wuim"]
+colors = PackedColorArray(0.964706, 0, 0, 1, 1, 1, 1, 0)
+
+[node name="LaserSite" type="RayCast2D"]
+script = ExtResource("1_g64ww")
+
+[node name="FillLine2D" type="Line2D" parent="."]
+modulate = Color(0.909804, 0, 0.203922, 0.341176)
+show_behind_parent = true
+points = PackedVector2Array(0, 0, 100, 0)
+width = 0.1
+default_color = Color(0.988235, 0.0980392, 0, 1)
+gradient = SubResource("Gradient_6wuim")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 8.0
