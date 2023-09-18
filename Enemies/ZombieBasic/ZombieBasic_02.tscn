@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://chbm4wqyr2ec5"]
+[gd_scene load_steps=64 format=3 uid="uid://chbm4wqyr2ec5"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_02.gd" id="1_owmnw"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="2_p30iu"]
@@ -21,7 +21,6 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="20_2qam5"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="21_fq27d"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_head.gd" id="21_yoed2"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_back.gd" id="22_xce3e"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="22_ytv8d"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_left_upper.gd" id="23_p7sme"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="23_q2i5y"]
@@ -38,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://c4akdgdbo2bsd" path="res://VFX/Gore/GoreExplosion.tscn" id="31_ja008"]
 [ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="32_y2oq4"]
 [ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="33_6wr2m"]
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="34_jhgc6"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="34_phdnq"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/stand_still.gd" id="35_vsobx"]
 
@@ -59,10 +59,6 @@ height = 114.792
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_acqr5"]
 radius = 26.4453
 height = 116.93
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gg1ui"]
-radius = 17.6085
-height = 140.868
 
 [sub_resource type="Animation" id="Animation_s0mwp"]
 resource_name = "OBSOLETE_attack_player"
@@ -1380,6 +1376,528 @@ tracks/17/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_61oaq"]
+resource_name = "zombie_headless_death"
+length = 2.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Targets/LeftArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(257, -155), Vector2(270, -120), Vector2(345, -100), Vector2(270, -120), Vector2(240, -135), Vector2(225, -145), Vector2(100, -271.429)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Targets/LeftArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Targets/RightArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(244, 135), Vector2(225, 105), Vector2(195, 155), Vector2(220, 125), Vector2(244, 135), Vector2(255, 85), Vector2(71.4286, 292.857)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Targets/RightArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Targets/HeadLook:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(292, -25), Vector2(292, -25), Vector2(320, 25), Vector2(292, -25), Vector2(292, -25), Vector2(292, -25)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkeletonControl/Targets/HeadLook:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3), Vector2(-24, -3), Vector2(-139.286, -14.2857)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.190907, 0.435437, 0.190907, 0.0, -0.104972, -0.104972]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(56, -46), Vector2(56, -46), Vector2(56, -46), Vector2(56, -46), Vector2(56, -46), Vector2(98.9316, -41.8647), Vector2(107.148, -28.222)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0541667, 0.0541667, 0.0541667, 0.0541667, 0.0541667, 0.0541667, 0.0541667]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper/legLeftLower:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10.0936, -1.45566), Vector2(-10.0936, -1.45566), Vector2(-10.0936, -1.45566), Vector2(-10.0936, -1.45566), Vector2(-10.0936, -1.45566), Vector2(-10.0936, -1.45566), Vector2(78.6648, 0.422888)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper/legLeftLower:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(66, 35), Vector2(120.088, 20.5874), Vector2(103.051, 10.5136), Vector2(120.088, 20.5874), Vector2(66, 35), Vector2(66, 35), Vector2(111.418, 33.291)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.0851483, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-35, 8), Vector2(-35, 8), Vector2(33.5277, 0.946091), Vector2(-35, 8), Vector2(-35, 8), Vector2(-35, 8), Vector2(53.2878, 5.6146)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.3, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0975767]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PlayerHitbox:monitorable")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("PlayerHitbox:monitoring")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(73.9843, -7.00003), Vector2(-5.97021, -11.3031)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("SkeletonControl/Skeleton/torso/head:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-5.81145e-07, 0.166651]
+}
+tracks/20/type = "method"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("ZombieStateMachine/HeadlessDeath")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop_moving"
+}, {
+"args": [],
+"method": &"_on_headless_death_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_om8mc"]
+resource_name = "zombie_headless_death_2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Targets/LeftArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(225, -145), Vector2(100, -271.429)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Targets/LeftArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Targets/RightArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(255, 85), Vector2(71.4286, 292.857)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Targets/RightArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Targets/HeadLook:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(292, -25)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkeletonControl/Targets/HeadLook:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-24, -3), Vector2(-139.286, -14.2857)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.104972, -0.104972]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(98.9316, -41.8647), Vector2(107.148, -28.222)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0541667, 0.0541667]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper/legLeftLower:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10.0936, -1.45566), Vector2(78.6648, 0.422888)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper/legLeftLower:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(66, 35), Vector2(111.418, 33.291)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-35, 8), Vector2(53.2878, 5.6146)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0975767]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PlayerHitbox:monitorable")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("PlayerHitbox:monitoring")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5.97021, -11.3031)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("SkeletonControl/Skeleton/torso/head:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.166651]
+}
+tracks/20/type = "method"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("ZombieStateMachine/HeadlessDeath")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop_moving"
+}, {
+"args": [],
+"method": &"_on_headless_death_animation_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
 _data = {
 "OBSOLETE_attack_player": SubResource("Animation_s0mwp"),
@@ -1390,6 +1908,8 @@ _data = {
 "zombie_attack_basic": SubResource("Animation_6dyoi"),
 "zombie_break_window_basic": SubResource("Animation_n4w1o"),
 "zombie_death": SubResource("Animation_u0mci"),
+"zombie_headless_death": SubResource("Animation_61oaq"),
+"zombie_headless_death_2": SubResource("Animation_om8mc"),
 "zombie_walk_basic": SubResource("Animation_ufqkj")
 }
 
@@ -1565,8 +2085,8 @@ modification_stack = ExtResource("17_1dk30")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(-24, -3)
-scale = Vector2(0.999822, 0.999826)
-skew = -0.000379086
+scale = Vector2(0.999824, 0.999834)
+skew = -0.000395656
 rest = Transform2D(1, 0, 0, 1, -24, -3)
 auto_calculate_length_and_angle = false
 length = 0.0
@@ -1576,8 +2096,8 @@ editor_settings/show_bone_gizmo = false
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(73.9843, -7)
 rotation = -0.0619003
-scale = Vector2(0.932366, 1.07407)
-skew = 0.000376463
+scale = Vector2(0.967932, 1.0352)
+skew = 0.000377178
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -1736,12 +2256,13 @@ editor_settings/show_bone_gizmo = false
 
 [node name="legRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(66, 35)
-scale = Vector2(0.999935, 0.999949)
+scale = Vector2(0.999925, 0.99994)
 rest = Transform2D(1, 0, 0, 1, 99, 56)
 editor_settings/show_bone_gizmo = false
 
 [node name="legRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/legRightUpper"]
 position = Vector2(-35, 8)
+scale = Vector2(0.999983, 0.999983)
 rest = Transform2D(1, 0, 0, 1, 42, 7)
 editor_settings/show_bone_gizmo = false
 
@@ -1752,22 +2273,6 @@ auto_calculate_length_and_angle = false
 length = 36.059
 bone_angle = -2.353
 editor_settings/show_bone_gizmo = false
-
-[node name="HurtBox-Back" type="Area2D" parent="SkeletonControl/Skeleton/torso" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio")]
-position = Vector2(-11.7124, -14.8597)
-scale = Vector2(1.62287, 1.62288)
-skew = 0.000264406
-collision_layer = 64
-collision_mask = 256
-script = ExtResource("22_xce3e")
-health_component = NodePath("../../../../HealthComponents/HealthComponent - Back")
-status_reciever = NodePath("../../../../StatusRecieverComponent")
-gore_vfx = NodePath("../../../../GoreVFX")
-zombie_groan_audio = NodePath("../../../../ZombieGroans-Audio")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SkeletonControl/Skeleton/torso/HurtBox-Back"]
-shape = SubResource("CapsuleShape2D_gg1ui")
-debug_color = Color(0.976471, 0, 0.411765, 0.419608)
 
 [node name="Targets" type="Node2D" parent="SkeletonControl"]
 
@@ -1872,9 +2377,12 @@ script = ExtResource("25_tx3an")
 [node name="AttackPlayerThroughWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("26_7txat")
 
+[node name="HeadlessDeath" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("34_jhgc6")
+
 [node name="Die" type="Node" parent="ZombieStateMachine" node_paths=PackedStringArray("hurtboxes")]
 script = ExtResource("27_bn7mh")
-hurtboxes = [NodePath("../../SkeletonControl/Skeleton/torso/head/HurtBox-Head"), NodePath("../../SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower"), NodePath("../../SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper"), NodePath("../../SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower"), NodePath("../../SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper"), NodePath("../../SkeletonControl/Skeleton/torso/HurtBox-Back")]
+hurtboxes = [NodePath("../../SkeletonControl/Skeleton/torso/head/HurtBox-Head"), NodePath("../../SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower"), NodePath("../../SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper"), NodePath("../../SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower"), NodePath("../../SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper"), NodePath("")]
 
 [node name="StandStill" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("35_vsobx")
@@ -1934,7 +2442,6 @@ one_shot = true
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" to="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" method="_on_area_entered"]
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower" to="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower" method="_on_area_entered"]
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper" to="SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper" method="_on_area_entered"]
-[connection signal="area_entered" from="SkeletonControl/Skeleton/torso/HurtBox-Back" to="SkeletonControl/Skeleton/torso/HurtBox-Back" method="_on_area_entered"]
 [connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]
 [connection signal="velocity_computed" from="PathfindingComponent/NavigationAgent2D" to="PathfindingComponent" method="_on_navigation_agent_2d_velocity_computed"]

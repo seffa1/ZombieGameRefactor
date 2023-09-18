@@ -4,6 +4,8 @@ extends "res://Libraries/CustomComponents/hurt_box_component.gd"
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 var is_dead: bool = false
 
+signal headless_death
+
 func bullet_impact_effect(area: Area2D):
 	"""
 	Defined for each child class, determines what happens when struck by a bullet.
@@ -67,3 +69,5 @@ func death_effect():
 	collision_shape.disabled = true
 	head_polygon.hide()
 	gore_vfx.play_splatter()
+	# Transition states
+	emit_signal("headless_death")

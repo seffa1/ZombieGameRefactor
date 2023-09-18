@@ -6,6 +6,7 @@ This way the legs can freely move / sprint / idle while the player shoots withou
 interuption.
 """
 
+@onready var hurtbox_head = $"../SkeletonControl/Skeleton/torso/head/HurtBox-Head"
 
 func _ready():
 	super()
@@ -17,8 +18,14 @@ func _ready():
 		"break_window": $BreakWindow,
 		"attack_player_through_window": $AttackPlayerThroughWindow,
 		"die": $Die,
-		"stand_still": $StandStill
+		"stand_still": $StandStill,
+		"headless_death": $HeadlessDeath
 	}
+	
+	hurtbox_head.headless_death.connect(_on_headless_death)
+
+func _on_headless_death():
+	_change_state("headless_death")
 
 func _change_state(state_name):
 	"""
