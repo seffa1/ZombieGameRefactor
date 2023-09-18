@@ -1,5 +1,9 @@
 extends "res://Libraries/CustomComponents/hurt_box_component.gd"
 
+@onready var head_polygon: Polygon2D = $"../../../../Polygons/Head"
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+var is_dead: bool = false
+
 func bullet_impact_effect(area: Area2D):
 	"""
 	Defined for each child class, determines what happens when struck by a bullet.
@@ -8,8 +12,9 @@ func bullet_impact_effect(area: Area2D):
 	information we need to take damage, do knockbacks, trigger effects, etc
 	from bullets, explosions, or anything else we can take damage from.
 	"""
-	print("Head Bullet hit!")
-	
+	if is_dead:
+		return
+
 	# Spawn bullet impact
 	gore_vfx.bullet_impact(area.owner.velocity)
 	
@@ -23,10 +28,9 @@ func bullet_impact_effect(area: Area2D):
 	if randf_range(0, 100) > 90:
 		zombie_groan_audio.play_short()
 	
-	# TODO - head shot VFX and special animation
 	if health_component.health <= 0:
-		zombie_groan_audio.play_death()
-		gore_vfx.play_splatter()
+		# TODO - spawn blood particle emitter on head
+		death_effect()
 
 func explosion_impact_effect(area: Area2D):
 	"""
@@ -36,6 +40,9 @@ func explosion_impact_effect(area: Area2D):
 	information we need to take damage, do knockbacks, trigger effects, etc
 	from bullets, explosions, or anything else we can take damage from.
 	"""
+	if is_dead:
+		return
+
 	# Apply knock back
 	var knock_back = area.bullet_knockback
 	var knock_back_vector = (area.global_position - global_position).normalized() * knock_back
@@ -49,5 +56,14 @@ func explosion_impact_effect(area: Area2D):
 	# If an explosion kills, then send body parts flying and instantly remove the zombie with no death animation
 	if health_component.health <= 0:
 		gore_vfx.explosion_death(global_position, area.global_position)
+		# TODO - spawn a head body part and send it flying
 		Events.emit_signal("zombie_death", owner)
 		owner.queue_free()
+
+func death_effect():
+	is_dead = true
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)
+	collision_shape.disabled = true
+	head_polygon.hide()
+	gore_vfx.play_splatter()

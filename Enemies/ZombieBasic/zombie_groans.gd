@@ -9,7 +9,6 @@ func play_short():
 	short_groans.play_random()
 	
 func play_long():
-	print(long_groans)
 	long_groans.play_random()
 
 func play_attack():

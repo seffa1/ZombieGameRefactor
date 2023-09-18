@@ -8,7 +8,6 @@ func bullet_impact_effect(area: Area2D):
 	information we need to take damage, do knockbacks, trigger effects, etc
 	from bullets, explosions, or anything else we can take damage from.
 	"""
-	print("Back Bullet hit!")
 	
 	# Spawn bullet impact
 	gore_vfx.bullet_impact(area.owner.velocity)

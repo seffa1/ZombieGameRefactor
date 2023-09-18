@@ -1588,7 +1588,7 @@ scale = Vector2(1.78076, 1.47727)
 collision_layer = 64
 collision_mask = 256
 script = ExtResource("21_yoed2")
-health_component = NodePath("../../../../../HealthComponent")
+health_component = NodePath("../../../../../HealthComponents/HealthComponent - Head")
 status_reciever = NodePath("../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../ZombieGroans-Audio")
@@ -1630,7 +1630,7 @@ skew = -0.000264406
 collision_layer = 64
 collision_mask = 256
 script = ExtResource("24_dlk4c")
-health_component = NodePath("../../../../../../HealthComponent")
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftLower")
 status_reciever = NodePath("../../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
@@ -1648,7 +1648,7 @@ skew = -0.000259042
 collision_layer = 64
 collision_mask = 256
 script = ExtResource("23_p7sme")
-health_component = NodePath("../../../../../HealthComponent")
+health_component = NodePath("../../../../../HealthComponents/HealthComponent - LeftUpper")
 status_reciever = NodePath("../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../ZombieGroans-Audio")
@@ -1689,7 +1689,7 @@ skew = -0.000261903
 collision_layer = 64
 collision_mask = 256
 script = ExtResource("26_gs7t0")
-health_component = NodePath("../../../../../../HealthComponent")
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - RightLower")
 status_reciever = NodePath("../../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
@@ -1706,7 +1706,7 @@ skew = -0.000211477
 collision_layer = 64
 collision_mask = 256
 script = ExtResource("25_y6kl4")
-health_component = NodePath("../../../../../HealthComponent")
+health_component = NodePath("../../../../../HealthComponents/HealthComponent - RightUpper")
 status_reciever = NodePath("../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../ZombieGroans-Audio")
@@ -1760,7 +1760,7 @@ skew = 0.000264406
 collision_layer = 64
 collision_mask = 256
 script = ExtResource("22_xce3e")
-health_component = NodePath("../../../../HealthComponent")
+health_component = NodePath("../../../../HealthComponents/HealthComponent - Back")
 status_reciever = NodePath("../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../ZombieGroans-Audio")
@@ -1797,7 +1797,6 @@ shape = SubResource("CircleShape2D_vviat")
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 
 [node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(6, -2)
 shape = SubResource("CircleShape2D_sr2cp")
 
@@ -1853,7 +1852,7 @@ debug_color = Color(0.2, 0.607843, 0.588235, 0.419608)
 
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("20_2qam5")
-START_STATE = NodePath("StandStill")
+START_STATE = NodePath("SeekWindow")
 
 [node name="SeekWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("21_fq27d")
@@ -1879,6 +1878,26 @@ hurtboxes = [NodePath("../../SkeletonControl/Skeleton/torso/head/HurtBox-Head"),
 
 [node name="StandStill" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("35_vsobx")
+
+[node name="HealthComponents" type="Node" parent="."]
+
+[node name="HealthComponent - Head" parent="HealthComponents" instance=ExtResource("28_p3tbj")]
+max_health = 125.0
+
+[node name="HealthComponent - Back" parent="HealthComponents" instance=ExtResource("28_p3tbj")]
+max_health = 250.0
+
+[node name="HealthComponent - LeftUpper" parent="HealthComponents" instance=ExtResource("28_p3tbj")]
+max_health = 150.0
+
+[node name="HealthComponent - RightUpper" parent="HealthComponents" instance=ExtResource("28_p3tbj")]
+max_health = 150.0
+
+[node name="HealthComponent - LeftLower" parent="HealthComponents" instance=ExtResource("28_p3tbj")]
+max_health = 100.0
+
+[node name="HealthComponent - RightLower" parent="HealthComponents" instance=ExtResource("28_p3tbj")]
+max_health = 100.0
 
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("19_8kjpw")]
 velocity_component = NodePath("../VelocityComponent")
