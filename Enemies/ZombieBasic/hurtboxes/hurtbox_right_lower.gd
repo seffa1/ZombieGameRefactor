@@ -60,7 +60,7 @@ func death_effect():
 	# TODO - spawn a decaying blood particle vfx
 	set_deferred("monitorable", false)
 	set_deferred("monitoring", false)
-	collision_shape.disabled = true
+	collision_shape.set_deferred("disabled", true)
 	gore_vfx.play_splatter()
 	right_hand_polygon.hide()
 	right_arm_lower.hide()

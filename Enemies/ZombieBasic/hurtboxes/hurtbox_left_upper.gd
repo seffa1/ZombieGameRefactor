@@ -70,12 +70,12 @@ func death_effect():
 	# Disable Upper
 	set_deferred("monitorable", false)
 	set_deferred("monitoring", false)
-	collision_shape.disabled = true
+	collision_shape.set_deferred("disabled", true)
 	left_upper_polygon.hide()
 	
 	# Disable Lower
 	left_lower_hitbox.set_deferred("monitorable", false)
 	left_lower_hitbox.set_deferred("monitoring", false)
-	left_lower_collision.disabled = true
+	left_lower_collision.set_deferred("disabled", true)
 	left_hand_polygon.hide()
 	left_arm_lower.hide()

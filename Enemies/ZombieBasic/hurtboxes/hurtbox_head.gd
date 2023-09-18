@@ -66,7 +66,7 @@ func death_effect():
 	is_dead = true
 	set_deferred("monitorable", false)
 	set_deferred("monitoring", false)
-	collision_shape.disabled = true
+	collision_shape.set_deferred("disabled", true)
 	head_polygon.hide()
 	gore_vfx.play_splatter()
 	# Transition states
