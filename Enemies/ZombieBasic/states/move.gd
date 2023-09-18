@@ -14,7 +14,10 @@ func _ready():
 
 func enter():
 	is_targeting_player = true
-	animation_player.play("zombie_walk_basic")
+	if randi_range(0, 1) == 1:
+		animation_player.play("zombie_walk_basic")
+	else:
+		animation_player.play("zombie_walk_basic_2")
 	groan_timer.start(groan_interval + randf_range(0, 10))
 
 func _on_player_position_changed(player_position: Vector2):
