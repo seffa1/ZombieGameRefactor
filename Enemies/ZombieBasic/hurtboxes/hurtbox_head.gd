@@ -4,6 +4,8 @@ extends "res://Libraries/CustomComponents/hurt_box_component.gd"
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 var is_dead: bool = false
 
+@onready var blood_emitter: CPUParticles2D = $"../BloodEmitterNoAnimation"
+
 signal headless_death
 
 func bullet_impact_effect(area: Area2D):
@@ -31,7 +33,8 @@ func bullet_impact_effect(area: Area2D):
 		zombie_groan_audio.play_short()
 	
 	if health_component.health <= 0:
-		# TODO - spawn blood particle emitter on head
+		# Blood particle emitter on head
+		blood_emitter.emitting = true
 		death_effect()
 
 func explosion_impact_effect(area: Area2D):

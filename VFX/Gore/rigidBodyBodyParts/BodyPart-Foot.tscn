@@ -34,3 +34,4 @@ hang_time = 1.0
 tween_duration = 0.05
 
 [node name="BloodEmitter" parent="." index="6" instance=ExtResource("5_dec80")]
+emitting = false

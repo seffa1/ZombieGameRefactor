@@ -734,7 +734,8 @@ rotation = -1.57079
 [node name="PackAPunch" type="Node" parent="GameWorld/PurchasablesContainer"]
 
 [node name="WeaponUpgrader" parent="GameWorld/PurchasablesContainer/PackAPunch" instance=ExtResource("26_ap0nb")]
-position = Vector2(611, 678)
+position = Vector2(-37, -183)
+rotation = 1.57079
 
 [node name="PickupsContainer" type="Node" parent="GameWorld"]
 
@@ -867,26 +868,26 @@ starting_health = 0
 [node name="Triggers" type="Node" parent="GameWorld/Environment"]
 
 [node name="InsideBuildingTrigger" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
-position = Vector2(1300, 366)
+position = Vector2(1226, 366)
 
 [node name="InsideBuildingTrigger2" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
-position = Vector2(1043, 727)
+position = Vector2(1032, 682)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger4" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
-position = Vector2(216, 739)
+position = Vector2(219, 688)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger7" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
-position = Vector2(-798, 470)
+position = Vector2(-801, 577)
 rotation = 1.57079
 
 [node name="InsideBuildingTrigger8" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
-position = Vector2(-996, 688)
+position = Vector2(-885, 692)
 rotation = 3.14159
 
 [node name="InsideBuildingTrigger3" parent="GameWorld/Environment/Triggers" instance=ExtResource("19_vg3kb")]
-position = Vector2(-803, 918)
+position = Vector2(-805, 869)
 rotation = 1.57079
 
 [node name="TileMap" type="TileMap" parent="GameWorld/Environment"]
@@ -912,11 +913,11 @@ rotation = -0.708219
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
 spawn_delay_interval = 2.0
-MAX_ZOMBIES_ON_MAP = 20
+MAX_ZOMBIES_ON_MAP = 30
 wave_spawn_type = "test_chamber"
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(-820, 0)
+position = Vector2(-912, -7.62939e-06)
 spawn_interval = 1.0
 spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
@@ -934,7 +935,7 @@ spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner4" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
-position = Vector2(182, 1439)
+position = Vector2(153, 1597)
 spawn_interval = 1.0
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("26_ii3jy")]

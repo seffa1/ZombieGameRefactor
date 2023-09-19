@@ -3,6 +3,9 @@ extends "res://Libraries/CustomComponents/hurt_box_component.gd"
 @onready var right_hand_polygon: Polygon2D = $"../../../../../Polygons/HandRight"
 @onready var right_arm_lower: Polygon2D = $"../../../../../Polygons/ArmRightLower"
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+@onready var lower_arm_body_part = preload("res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmLowerWithHand.tscn")
+
 var is_dead: bool = false
 
 func bullet_impact_effect(area: Area2D):
@@ -29,6 +32,12 @@ func bullet_impact_effect(area: Area2D):
 		zombie_groan_audio.play_short()
 
 	if health_component.health <= 0:
+		# Spawn a lower arm/hand body part on ground
+		var part = lower_arm_body_part.instantiate()
+		part.spawn_animation = 1
+		part.global_position = global_position
+		part.global_rotation = global_rotation - deg_to_rad(180)
+		ObjectRegistry.register_effect(part)
 		death_effect()
 
 func explosion_impact_effect(area: Area2D):

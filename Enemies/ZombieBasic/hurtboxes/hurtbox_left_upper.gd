@@ -6,6 +6,9 @@ extends "res://Libraries/CustomComponents/hurt_box_component.gd"
 @onready var left_lower_hitbox: Area2D = $"../armLeftLower/HurtBox-LeftLower/"
 @onready var left_lower_collision: CollisionShape2D = $"../armLeftLower/HurtBox-LeftLower/CollisionShape2D"
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+@onready var lower_arm_body_part = preload("res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmLowerWithHand.tscn")
+@onready var upper_arm_body_part = preload("res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmUpper.tscn")
 var is_dead: bool = false
 
 func bullet_impact_effect(area: Area2D):
@@ -33,8 +36,22 @@ func bullet_impact_effect(area: Area2D):
 		zombie_groan_audio.play_short()
 	
 	if health_component.health <= 0:
+		# Spawn a lower arm body part if we still have one
+		if left_arm_lower.visible:
+			var part = lower_arm_body_part.instantiate()
+			part.spawn_animation = 1
+			part.global_position = global_position
+			part.global_rotation = global_rotation - deg_to_rad(180)
+			ObjectRegistry.register_effect(part)
+
+		# Spawn an upper piece
+		var part_upper = upper_arm_body_part.instantiate()
+		part_upper.spawn_animation = 1
+		part_upper.global_position = global_position
+		part_upper.global_rotation = global_rotation - deg_to_rad(180)
+		ObjectRegistry.register_effect(part_upper)
+
 		death_effect()
-		# TODO - spawn a lower arm/hand body part on ground
 
 func explosion_impact_effect(area: Area2D):
 	"""

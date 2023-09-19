@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://chbm4wqyr2ec5"]
+[gd_scene load_steps=66 format=3 uid="uid://chbm4wqyr2ec5"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_02.gd" id="1_owmnw"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="2_p30iu"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ij6lxh1kb38a" path="res://Enemies/ZombieBasic/images/components/head.png" id="16_0ht8s"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://o5lnx5eovgj4" path="res://Enemies/ZombieBasic/skeletonModificationStack.tres" id="17_1dk30"]
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="19_8kjpw"]
+[ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="19_o8bpu"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="20_2qam5"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="21_fq27d"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_head.gd" id="21_yoed2"]
@@ -2307,8 +2308,8 @@ modification_stack = ExtResource("17_1dk30")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(-24, -3)
-scale = Vector2(0.999823, 0.999836)
-skew = -0.000410438
+scale = Vector2(0.999822, 0.999836)
+skew = -0.000410795
 rest = Transform2D(1, 0, 0, 1, -24, -3)
 auto_calculate_length_and_angle = false
 length = 0.0
@@ -2318,8 +2319,8 @@ editor_settings/show_bone_gizmo = false
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(73.9843, -7)
 rotation = -0.0619003
-scale = Vector2(0.967932, 1.0352)
-skew = 0.000377178
+scale = Vector2(0.96796, 1.03517)
+skew = 0.00039196
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -2339,6 +2340,10 @@ zombie_groan_audio = NodePath("../../../../../ZombieGroans-Audio")
 position = Vector2(8.80424, 0)
 shape = SubResource("CircleShape2D_kxfru")
 debug_color = Color(0.937255, 0.141176, 0.529412, 0.419608)
+
+[node name="BloodEmitterNoAnimation" parent="SkeletonControl/Skeleton/torso/head" instance=ExtResource("19_o8bpu")]
+rotation = 0.418582
+emitting = false
 
 [node name="armLeftUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(42, -125)

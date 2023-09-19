@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b3vqlc4bkf8ru" path="res://VFX/Gore/blood_emitters/BloodEmitter_1.tscn" id="5_0pasl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64qhg"]
-height = 38.533
+radius = 8.20757
+height = 55.641
 
 [node name="BodyPart-ArmLower" instance=ExtResource("1_i4rty")]
 collision_layer = 16384
@@ -35,3 +36,4 @@ hang_time = 1.0
 tween_duration = 0.05
 
 [node name="BloodEmitter" parent="." index="6" instance=ExtResource("5_0pasl")]
+emitting = false

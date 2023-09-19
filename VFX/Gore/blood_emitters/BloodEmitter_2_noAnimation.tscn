@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4br30mrh144q"]
+
+[ext_resource type="Texture2D" uid="uid://bcbhx5e7btjsn" path="res://VFX/Gore/blood_splatters/images/pngwing/pngwing.com (3).png" id="1_kh0bu"]
+
+[sub_resource type="Curve" id="Curve_60x1j"]
+_data = [Vector2(0, 0.0129609), 0.0, 0.0, 0, 0, Vector2(0.962451, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BloodEmitterNoAnimation" type="CPUParticles2D"]
+amount = 20
+lifetime = 3.0
+speed_scale = 3.18
+randomness = 0.78
+lifetime_randomness = 0.18
+texture = ExtResource("1_kh0bu")
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 38.87
+initial_velocity_max = 102.85
+angular_velocity_min = -537.37
+angular_velocity_max = 572.49
+scale_amount_curve = SubResource("Curve_60x1j")
