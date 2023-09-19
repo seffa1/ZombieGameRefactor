@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4c4ipr4ti5vy"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_wh46w"]
+[ext_resource type="Script" path="res://VFX/Gore/body_part.gd" id="2_iiviu"]
+[ext_resource type="Texture2D" uid="uid://c6lc0mr3ovnht" path="res://Enemies/ZombieBasic/images/components/torso.png" id="3_wpdra"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_yi6y0"]
+[ext_resource type="PackedScene" uid="uid://b3vqlc4bkf8ru" path="res://VFX/Gore/blood_emitters/BloodEmitter_1.tscn" id="5_mwm2m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gkbvq"]
+radius = 25.0
+
+[node name="BodyPart-TorsoUpperTopDown" instance=ExtResource("1_wh46w")]
+collision_layer = 16384
+collision_mask = 17
+linear_damp = 1.0
+angular_damp = 10.0
+script = ExtResource("2_iiviu")
+free_time = 5.0
+spawn_animation = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_gkbvq")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_wpdra")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+
+[node name="DampAnimator" parent="." index="5" instance=ExtResource("4_yi6y0")]
+final_linear_damp_value = 5
+final_angular_damp_value = 5
+hang_time = 1.0
+tween_duration = 0.05
+
+[node name="BloodEmitter" parent="." index="6" instance=ExtResource("5_mwm2m")]
+emitting = false

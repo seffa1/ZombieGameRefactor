@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://qtburq86gqxq"]
+
+[ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_fall_apart.gd" id="1_31lpn"]
+[ext_resource type="PackedScene" uid="uid://dquqk80emmcv3" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-LegLower.tscn" id="2_sri72"]
+[ext_resource type="PackedScene" uid="uid://0fat25cy1dwr" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-LegUpper.tscn" id="3_h8qll"]
+[ext_resource type="PackedScene" uid="uid://b4c4ipr4ti5vy" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-TorsoUpperTopDown.tscn" id="4_rucbi"]
+[ext_resource type="PackedScene" uid="uid://qohny3bq4kam" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmLowerRightWithHand.tscn" id="5_wm825"]
+[ext_resource type="PackedScene" uid="uid://8i1we2cbhjgy" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmLowerWithHand.tscn" id="6_6awpo"]
+[ext_resource type="PackedScene" uid="uid://clbcj6xejpb7s" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmUpper.tscn" id="7_38naw"]
+[ext_resource type="PackedScene" uid="uid://dnngxhao8s4ec" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmUpperRight.tscn" id="8_o761r"]
+
+[node name="ZombieFallApart" type="Node2D"]
+script = ExtResource("1_31lpn")
+
+[node name="BodyPart-LegLower" parent="." instance=ExtResource("2_sri72")]
+
+[node name="BodyPart-LegUpper" parent="." instance=ExtResource("3_h8qll")]
+position = Vector2(9, -7.15256e-07)
+rotation = 1.68564
+
+[node name="BodyPart-TorsoUpperTopDown" parent="." instance=ExtResource("4_rucbi")]
+
+[node name="BodyPart-ArmLowerRightWithHand" parent="." instance=ExtResource("5_wm825")]
+position = Vector2(-40, 60)
+rotation = -0.135347
+
+[node name="BodyPart-ArmLowerWithHand" parent="." instance=ExtResource("6_6awpo")]
+position = Vector2(60, 45)
+rotation = 0.599231
+
+[node name="BodyPart-ArmUpperLeft" parent="." instance=ExtResource("7_38naw")]
+position = Vector2(52, 10)
+
+[node name="BodyPart-ArmUpperRight" parent="." instance=ExtResource("8_o761r")]
+position = Vector2(-42, 18)
+rotation = 0.51419

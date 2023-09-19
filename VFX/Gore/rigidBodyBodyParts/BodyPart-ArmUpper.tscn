@@ -9,7 +9,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxq1y"]
 height = 52.0
 
-[node name="BodyPart-ArmUpper" instance=ExtResource("1_1ust2")]
+[node name="BodyPart-ArmUpperLeft" instance=ExtResource("1_1ust2")]
 collision_layer = 16384
 collision_mask = 17
 linear_damp = 1.0

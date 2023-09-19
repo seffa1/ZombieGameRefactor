@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_5ydmo"]
 [ext_resource type="PackedScene" uid="uid://b3vqlc4bkf8ru" path="res://VFX/Gore/blood_emitters/BloodEmitter_1.tscn" id="5_aa31v"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_64qhg"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfp3g"]
 radius = 8.20757
-height = 55.641
+height = 61.9654
 
 [node name="BodyPart-ArmLowerWithHand" instance=ExtResource("1_alnml")]
 collision_layer = 16384
@@ -23,7 +23,7 @@ spawn_animation = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(4, 8)
 rotation = -0.316129
-shape = SubResource("CapsuleShape2D_64qhg")
+shape = SubResource("CapsuleShape2D_mfp3g")
 
 [node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
 scale = Vector2(0.3, 0.3)

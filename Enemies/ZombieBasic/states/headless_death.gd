@@ -2,6 +2,8 @@ extends "res://Libraries/state.gd"
 
 @onready var animation_player = $"../../AnimationPlayer"
 
+@onready var fall_apart_scene = preload("res://Enemies/ZombieBasic/ZombieFallApart.tscn")
+
 var is_falling_over: bool = false
 var is_targeting_player = false
 
@@ -39,9 +41,14 @@ func update(delta):
 	owner.update_rotation()
 
 func _on_headless_death_animation_finished():
-	owner.queue_free()
+	# TODO - Body should fall apart on death
+	var scene = fall_apart_scene.instantiate()
+	scene.global_position = owner.global_position
+	scene.global_rotation = owner.velocity_component.velocity.angle()
+	ObjectRegistry.register_effect(scene)
+	
 	Events.emit_signal("zombie_death", owner)
-	# TODO - spawn a death zombie body with the correct body parts attached
+	owner.queue_free()
 
 func stop_moving():
 	"""
