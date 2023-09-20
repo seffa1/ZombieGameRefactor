@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qtburq86gqxq"]
+[gd_scene load_steps=10 format=3 uid="uid://qtburq86gqxq"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_fall_apart.gd" id="1_31lpn"]
 [ext_resource type="PackedScene" uid="uid://dquqk80emmcv3" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-LegLower.tscn" id="2_sri72"]
@@ -8,29 +8,41 @@
 [ext_resource type="PackedScene" uid="uid://8i1we2cbhjgy" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmLowerWithHand.tscn" id="6_6awpo"]
 [ext_resource type="PackedScene" uid="uid://clbcj6xejpb7s" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmUpper.tscn" id="7_38naw"]
 [ext_resource type="PackedScene" uid="uid://dnngxhao8s4ec" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmUpperRight.tscn" id="8_o761r"]
+[ext_resource type="PackedScene" uid="uid://ca2v6t7upnt8m" path="res://VFX/Gore/blood_splatters/BloodSplatter.tscn" id="9_d5vgy"]
 
 [node name="ZombieFallApart" type="Node2D"]
 script = ExtResource("1_31lpn")
 
 [node name="BodyPart-LegLower" parent="." instance=ExtResource("2_sri72")]
+position = Vector2(0.999996, -10)
+rotation = -1.32458
+spawn_animation = 1
 
 [node name="BodyPart-LegUpper" parent="." instance=ExtResource("3_h8qll")]
-position = Vector2(9, -7.15256e-07)
-rotation = 1.68564
+position = Vector2(-3.99998, 8.00001)
+rotation = -0.221074
+spawn_animation = 1
 
 [node name="BodyPart-TorsoUpperTopDown" parent="." instance=ExtResource("4_rucbi")]
+rotation = -1.57079
+spawn_animation = 1
 
 [node name="BodyPart-ArmLowerRightWithHand" parent="." instance=ExtResource("5_wm825")]
-position = Vector2(-40, 60)
-rotation = -0.135347
+position = Vector2(49, 38)
+rotation = -1.88435
 
 [node name="BodyPart-ArmLowerWithHand" parent="." instance=ExtResource("6_6awpo")]
-position = Vector2(60, 45)
-rotation = 0.599231
+position = Vector2(51, -42)
+rotation = -0.53286
 
 [node name="BodyPart-ArmUpperLeft" parent="." instance=ExtResource("7_38naw")]
-position = Vector2(52, 10)
+position = Vector2(15, -47)
+rotation = -1.25584
+spawn_animation = 1
 
 [node name="BodyPart-ArmUpperRight" parent="." instance=ExtResource("8_o761r")]
-position = Vector2(-42, 18)
-rotation = 0.51419
+position = Vector2(15, 43)
+rotation = -1.0472
+spawn_animation = 1
+
+[node name="BloodSplatter" parent="." instance=ExtResource("9_d5vgy")]
