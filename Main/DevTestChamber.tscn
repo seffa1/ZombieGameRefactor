@@ -913,7 +913,7 @@ rotation = -1.57079
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
 spawn_delay_interval = 2.0
-MAX_ZOMBIES_ON_MAP = 1
+MAX_ZOMBIES_ON_MAP = 30
 wave_spawn_type = "test_chamber"
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
