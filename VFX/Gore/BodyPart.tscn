@@ -34,6 +34,3 @@ hang_time = 1.0
 tween_duration = 0.05
 
 [node name="BloodEmitter" parent="." index="6" instance=ExtResource("5_5jb4n")]
-speed_scale = 3.18
-initial_velocity_min = 38.87
-initial_velocity_max = 102.85

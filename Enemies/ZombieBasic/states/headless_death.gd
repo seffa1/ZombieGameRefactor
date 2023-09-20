@@ -4,7 +4,6 @@ extends "res://Libraries/state.gd"
 
 @onready var fall_apart_scene = preload("res://Enemies/ZombieBasic/ZombieFallApart.tscn")
 
-var is_falling_over: bool = false
 var is_targeting_player = false
 
 func _ready():
@@ -29,10 +28,6 @@ func exit():
 	return
 
 func update(delta):
-	# Dont move if playing falling over part of animation
-	if is_falling_over:
-		return
-
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity
 	owner.move_and_slide()
@@ -50,12 +45,6 @@ func _on_headless_death_animation_finished():
 	Events.emit_signal("zombie_death", owner)
 	owner.queue_free()
 
-func stop_moving():
-	"""
-	Called by animation player right when the animation stops walking. So the
-	zombie can stop moving.
-	"""
-	is_falling_over = true
 
 func _on_animation_finished(anim_name):
 	return

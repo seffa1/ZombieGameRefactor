@@ -27,3 +27,9 @@ func _on_timer_timeout():
 	
 func _on_fade_out_end():
 	queue_free()
+
+func _on_animation_finished():
+	"""
+	Defined for child classes if they need to do something unique.
+	"""
+	return

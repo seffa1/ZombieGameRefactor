@@ -8,3 +8,9 @@ func _ready():
 	if randi_range(0, 4) == 4:
 		$BloodEmitter.emitting = true
 	super()
+
+func _on_animation_finished():
+	"""
+	Defined for child classes if they need to do something unique.
+	"""
+	$ScaleController.z_index = 1
