@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl5wdttpxydsv"]
+
+[ext_resource type="Texture2D" uid="uid://b7dfpgdd5q0ad" path="res://World/lights/spot.png" id="1_yynbt"]
+[ext_resource type="Script" path="res://VFX/lights/chargable_light_flicker.gd" id="2_dgug7"]
+
+[node name="ChargableLightFlicker" type="PointLight2D"]
+position = Vector2(935, 93)
+scale = Vector2(9.17969, 2.89062)
+energy = 1.6
+texture = ExtResource("1_yynbt")
+texture_scale = 1.56
+script = ExtResource("2_dgug7")
+flicker_interval = 0.01
+
+[node name="FlickerTimer" type="Timer" parent="."]
+one_shot = true

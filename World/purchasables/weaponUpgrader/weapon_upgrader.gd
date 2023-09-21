@@ -9,6 +9,8 @@ extends "res://World/purchasables/purchasable.gd"
 @export var second_upgrade_cost: int = 15000
 @export var third_upgrade_cost: int = 30000
 
+var is_activated: bool = false  # can the player use the weapon upgrader?
+
 var interactable_message: String  # set in process function
 var weapon_to_upgrade: String  # store the name of the weapon we are upgrading
 var level_upgrading_to: int  # store the NEW level of the gun we are upgrading

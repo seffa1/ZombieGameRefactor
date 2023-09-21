@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://hkwukd3bresb"]
+
+[ext_resource type="Script" path="res://World/objectives/VesselCharge/vessel_charge.gd" id="1_gtw7i"]
+[ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="2_khqas"]
+[ext_resource type="Texture2D" uid="uid://bco2hv7tpkfic" path="res://UI/images/buttons/element_0069_Layer-71.png" id="3_7ngg7"]
+[ext_resource type="PackedScene" uid="uid://bl5wdttpxydsv" path="res://VFX/ChargableLightFlicker.tscn" id="4_4a14k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anym3"]
+radius = 402.906
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umbwf"]
+size = Vector2(342, 64)
+
+[node name="VesselCharge" type="Node2D"]
+script = ExtResource("1_gtw7i")
+
+[node name="ZombieDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZombieDetector"]
+shape = SubResource("CircleShape2D_anym3")
+debug_color = Color(0.835294, 0.156863, 0.862745, 0.419608)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, -5)
+shape = SubResource("RectangleShape2D_umbwf")
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(0.714039, 0.714039)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(1.08603, -6.74477)
+texture = ExtResource("3_7ngg7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
+position = Vector2(217.327, -7.06048)
+rotation = 1.5708
+scale = Vector2(1.05984, 0.830401)
+texture = ExtResource("2_khqas")
+region_enabled = true
+region_rect = Rect2(1830, 2223, 88, 61)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D"]
+position = Vector2(-210.072, -7.00241)
+rotation = -1.5708
+scale = Vector2(1.05984, 0.830401)
+texture = ExtResource("2_khqas")
+region_enabled = true
+region_rect = Rect2(1830, 2223, 88, 61)
+
+[node name="ChargableLightFlicker" parent="." instance=ExtResource("4_4a14k")]
+position = Vector2(0, -5)
+scale = Vector2(1.19244, 0.37549)
+energy = 0.49

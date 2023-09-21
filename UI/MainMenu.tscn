@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bulp62n3s0i7l" path="res://World/sounds/VFXAudio.tscn" id="13_asspo"]
 
 [node name="MainMenu" type="Control"]
-modulate = Color(0.415686, 0.415686, 0.415686, 1)
+modulate = Color(0.427451, 0.427451, 0.427451, 1)
+self_modulate = Color(0.129412, 0.129412, 0.129412, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

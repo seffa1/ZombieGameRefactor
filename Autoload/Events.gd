@@ -29,10 +29,6 @@ signal player_weapons_change(weapon_names: Array[String])
 signal player_equipped_change(weapon_name: String, weapon_level: int)
 signal player_equipment_change(name: String, count: int)
 
-signal zombies_to_kill_change(amount: int)
-signal wave_number_change(wave: int)
-signal zombies_on_map_change(quantity: int)
-
 # Player Interactions
 signal give_player_money(amount: int)
 signal player_buy_weapon()
@@ -54,8 +50,12 @@ signal player_action_idle()
 signal shake_screen(intensity, duration)
 
 # Game loop
+signal zombies_to_kill_change(amount: int)
+signal wave_number_change(wave: int)
+signal zombies_on_map_change(quantity: int)
 signal wave_started(wave_number)
 signal zombie_death(zombie: CharacterBody2D)
 
 # Gameplay events
 signal power_activated
+signal vessel_charged(zombie_soul: Node2D)
