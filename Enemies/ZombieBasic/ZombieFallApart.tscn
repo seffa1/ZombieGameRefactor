@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ca2v6t7upnt8m" path="res://VFX/Gore/blood_splatters/BloodSplatter.tscn" id="9_d5vgy"]
 
 [node name="ZombieFallApart" type="Node2D"]
-scale = Vector2(0.8, 0.8)
 script = ExtResource("1_31lpn")
 
 [node name="BodyPart-LegLower" parent="." instance=ExtResource("2_sri72")]

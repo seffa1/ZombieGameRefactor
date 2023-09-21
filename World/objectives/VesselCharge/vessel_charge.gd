@@ -3,6 +3,8 @@ extends Node2D
 @onready var zombie_detector: Area2D = $ZombieDetector
 @onready var zombie_soul_scene = preload("res://World/objectives/VesselCharge/ZombieSoul.tscn")
 @onready var chargable_light_flicker: Light2D = $ChargableLightFlicker
+@onready var loop_audio: AudioStreamPlayer2D = $Looping
+@onready var animation_player = $AnimationPlayer
 @export var souls_needed_to_charge: float = 50.0
 
 var max_light_energy: float = 0.7
@@ -37,4 +39,7 @@ func spawn_zombie_soul(spawn_location: Vector2):
 	
 func complete_charging():
 	zombie_detector.monitoring = false
-	# TODO - add animation
+	animation_player.play("finish_charge")
+
+func _on_charge_animation_complete():
+	loop_audio.play()
