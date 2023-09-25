@@ -5,9 +5,13 @@ All the checks for IF a spawner should spawn a zombie happens at the zombie mana
 This class is a very simple zombie factory.
 Once placed in the scene, drag the associated doors into the export 'trigger_doors'.
 If any of these doors are opened, this spawner becomes active via an emitted signal.
+
+The play has a spawner detector that detects the spawner's area 2D. The zombie manager checks
+for collisions there to determine it a spawner should be on or not.
 """
 
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var player_spawn_detector = $Area2D
 
 @export var spawn_interval: float = 1
 @export var spawner_active: bool = true
@@ -51,3 +55,9 @@ func spawn_zombie() -> CharacterBody2D:
 func get_random_zombie():
 	var zombie_list_index = randi_range(0, len(zombie_list) - 1)
 	return zombie_list[zombie_list_index]
+
+func in_range_to_spawn() -> bool:
+	return player_spawn_detector.has_overlapping_areas()
+	
+func call_timer():
+	spawn_timer.start(spawn_interval)

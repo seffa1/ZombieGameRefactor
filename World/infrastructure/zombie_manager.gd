@@ -95,18 +95,40 @@ func _process(_delta):
 	"""
 	Call on zombie spawners to spawn zombies
 	"""
+	var spawners_in_range = 0
 	for spawner in _select_spawners():
-		if zombies_to_be_killed == 0 or zombies_on_map == MAX_ZOMBIES_ON_MAP or zombies_on_map == zombies_to_be_killed: 
+		if !spawner.in_range_to_spawn():
+			continue  # skip spawners that arent in range
+		spawners_in_range += 1
+		if zombies_to_be_killed == 0 or zombies_on_map >= MAX_ZOMBIES_ON_MAP or zombies_on_map >= zombies_to_be_killed: 
 			return
-		if spawner.spawn_timer.is_stopped() and spawner.spawner_active:
+		if spawner.spawn_timer.is_stopped() and spawner.spawner_active and spawner.in_range_to_spawn():
 			zombies_on_map += 1
 			var zombie_instance = spawner.spawn_zombie()
 			zombie_container.add_child(zombie_instance)
 			zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
+	
 	zombies_on_map = len(get_tree().get_nodes_in_group("Zombies"))  # This is just a safe-gaurd incase the counter gets in a bad state
 
+	# If no spawners are in range to spawn a zombie but zombies need to be spawned, go through the spawn checks
+	# again without checking for the spawner range
+	if spawners_in_range == 0:
+		print("L:ALALA")
+		for spawner in _select_spawners():
+			if zombies_to_be_killed == 0 or zombies_on_map >= MAX_ZOMBIES_ON_MAP or zombies_on_map >= zombies_to_be_killed: 
+				print("HERE")
+				return
+			print("timer")
+			print( spawner.spawn_timer.is_stopped())
+			print("active")
+			print(spawner.spawner_active)
+			if spawner.spawn_timer.is_stopped() and spawner.spawner_active:
+				zombies_on_map += 1
+				var zombie_instance = spawner.spawn_zombie()
+				zombie_container.add_child(zombie_instance)
+				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
+
 func _select_spawners():
-	# TODO - only select spawners close to the player, or in a room the player has opened
 	return get_tree().get_nodes_in_group("ZombieSpawners")
 
 # Tracking zombies ------------------------------------

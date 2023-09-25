@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq47d84tq7j2k"]
+[gd_scene load_steps=3 format=3 uid="uid://bq47d84tq7j2k"]
 
 [ext_resource type="Script" path="res://World/infrastructure/zombie_spawner.gd" id="1_3jiqe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i40iu"]
+radius = 10.0499
 
 [node name="ZombieSpawner" type="Node2D" groups=["ZombieSpawners"]]
 script = ExtResource("1_3jiqe")
@@ -8,3 +11,11 @@ spawn_interval = 3.0
 
 [node name="SpawnTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i40iu")
+debug_color = Color(0.780392, 0.396078, 0.486275, 0.419608)

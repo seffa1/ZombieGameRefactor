@@ -128,6 +128,7 @@ equipment={
 2d_physics/layer_17="mysteryBox"
 2d_physics/layer_18="playerPurchasbleDetector"
 2d_physics/layer_19="bloodPuddle"
+2d_physics/layer_20="playerSpawnDetector"
 avoidance/layer_1="environment"
 
 [physics]
