@@ -2659,6 +2659,10 @@ health_component = NodePath("../HealthComponent")
 [node name="GroanTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DistanceCheckTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/head/HurtBox-Head" to="SkeletonControl/Skeleton/torso/head/HurtBox-Head" method="_on_area_entered"]
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" to="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" method="_on_area_entered"]
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" to="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" method="_on_area_entered"]

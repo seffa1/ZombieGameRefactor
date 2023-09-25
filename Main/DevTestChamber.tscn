@@ -822,7 +822,7 @@ position = Vector2(520, 331)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
-position = Vector2(-412, -1326)
+position = Vector2(2050, -139)
 rotation = 1.57079
 collision_layer = 16
 

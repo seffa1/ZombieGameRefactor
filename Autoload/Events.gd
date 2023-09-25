@@ -55,6 +55,7 @@ signal wave_number_change(wave: int)
 signal zombies_on_map_change(quantity: int)
 signal wave_started(wave_number)
 signal zombie_death(zombie: CharacterBody2D)
+signal zombie_despawn(zombie: CharacterBody2D)
 
 # Gameplay events
 signal power_activated

@@ -68,6 +68,7 @@ var zombies_on_map: int = 0:  # current zombies spawned on the map
 # Functions
 func _ready():
 	Events.zombie_death.connect(_on_zombie_death)
+	Events.zombie_despawn.connect(_on_zombie_despawn)
 	Events.emit_signal("wave_number_change", wave_number)
 	if wave_spawn_type == "test_chamber":
 		WAVE_INDEX = TEST_CHAMBER_ZOMBIE_COUNT_PER_WAVE
@@ -113,15 +114,9 @@ func _process(_delta):
 	# If no spawners are in range to spawn a zombie but zombies need to be spawned, go through the spawn checks
 	# again without checking for the spawner range
 	if spawners_in_range == 0:
-		print("L:ALALA")
 		for spawner in _select_spawners():
 			if zombies_to_be_killed == 0 or zombies_on_map >= MAX_ZOMBIES_ON_MAP or zombies_on_map >= zombies_to_be_killed: 
-				print("HERE")
 				return
-			print("timer")
-			print( spawner.spawn_timer.is_stopped())
-			print("active")
-			print(spawner.spawner_active)
 			if spawner.spawn_timer.is_stopped() and spawner.spawner_active:
 				zombies_on_map += 1
 				var zombie_instance = spawner.spawn_zombie()
@@ -140,7 +135,18 @@ func _on_zombie_death(zombie: CharacterBody2D):
 		zombies_on_map -= 1
 		if zombies_to_be_killed == 0:
 			end_wave()
-	
+
+func _on_zombie_despawn(zombie: CharacterBody2D):
+	"""
+	Zombies despawn if they get too far from the player or get stuck.
+	These zombie dont count towards the zombies required to kill for the next
+	wave to start.
+	"""
+	var id = zombie.get_instance_id()
+	if id in zombie_ids:
+		zombie_ids.erase(id)
+		zombies_on_map -= 1
+		
 func _kill_all_zombies():
 	for zombie in get_tree().get_nodes_in_group("Zombies"):
 		zombie.queue_free()

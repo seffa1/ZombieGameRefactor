@@ -9,12 +9,17 @@ switched to break window state.
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var groan_timer: Timer = $"../../GroanTimer"
 @onready var zombie_groans = $"../../ZombieGroans-Audio"
+@onready var distance_check_timer: Timer = $"../../DistanceCheckTimer"
 
 @export var groan_interval = 3  # min seconds between random groans
+
+var previous_position: Vector2
 
 func enter():
 	animation_player.play("zombie_walk_basic")
 	groan_timer.start(groan_interval + randf_range(0, 15))
+	distance_check_timer.start()
+	previous_position = owner.global_position
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
@@ -31,6 +36,16 @@ func update(delta):
 	if groan_timer.is_stopped():
 		zombie_groans.play_long()
 		groan_timer.start(groan_interval + randf_range(0, 10))
+		
+	# Track the distance we travel to make sure we arent getting stuck
+	if distance_check_timer.is_stopped():
+		var distance_traveled = (owner.global_position - previous_position).length()
+		if distance_traveled <= 50:
+			print("DESPAWNING")
+			owner.despawn()
+		else:
+			previous_position = owner.global_position
+			distance_check_timer.start()
 	
 	# Update pathfinding component target position to the window
 	owner.pathfinding_component.update_target_position(owner.target_window.global_position)

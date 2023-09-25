@@ -25,6 +25,8 @@ NOTE: Make sure to add the zombie to the zombie group.
 
 @onready var modification_stack = preload("res://Enemies/ZombieBasic/skeletonModificationStack.tres")
 
+var ZOMBIE_DESPAWN_DISTANCE = 4000  # if a zombie gets this far from the player, despawn them
+
 var target_window: Area2D # set by zombie spawner, used by state machine to get zombie through the target window
 
 func _ready():
@@ -32,6 +34,7 @@ func _ready():
 	# We must also duplicate the modification resource or it gets shared between all the zombies (weird but whatever)
 	$SkeletonControl/Skeleton.set_modification_stack(modification_stack.duplicate())
 	$SkeletonControl/Skeleton.get_modification_stack().enabled = true
+	Events.player_position_change.connect(_on_player_position_changed)
 
 func init(global_position: Vector2):
 	"""
@@ -39,6 +42,23 @@ func init(global_position: Vector2):
 	"""
 	target_window = target_window
 	global_position = global_position
+
+func _on_player_position_changed(player_position: Vector2):
+	check_despawn(player_position)
+
+func check_despawn(player_position: Vector2):
+	"""
+	Check if the player got too far from the zombie, then despawn the zombie.
+	"""
+	if (player_position - global_position).length() >= ZOMBIE_DESPAWN_DISTANCE:
+		despawn()
+
+func despawn():
+	"""
+	Called also by the move state if a zombie gets stuck.
+	"""
+	Events.emit_signal("zombie_despawn", self)
+	queue_free()
 
 func update_rotation():
 	"""
