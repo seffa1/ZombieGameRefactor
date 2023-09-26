@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c13ds6myhslsl"]
+[gd_scene load_steps=10 format=3 uid="uid://c13ds6myhslsl"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_olmgi"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_a4564"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://6xe3qvfubw7a" path="res://World/purchasables/Weapons/Shotguns/Spas/audio/ESM_Shotgun_Pump_22_Sound_FX_Military_Cock.wav" id="4_mq04u"]
 [ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_spiq3"]
 [ext_resource type="AudioStream" uid="uid://b1tkm7jpnk4dc" path="res://World/purchasables/Weapons/Shotguns/Spas/audio/GunshotShotgun_BW.58086.wav" id="5_li255"]
+[ext_resource type="AudioStream" uid="uid://dj662s2xtqc42" path="res://World/purchasables/Weapons/shared/audio/laserShots/ESM_Laser_Gun_Shot_12_Sound_FX_Military_Gun.wav" id="6_ganyg"]
 
 [node name="Spas" instance=ExtResource("1_olmgi")]
 WEAPON_NAME = "SPAS"
@@ -21,13 +22,16 @@ clip_size = 8
 max_bullet_reserve = 60
 shell_ejection_type = 1
 magazine_ejection_type = 1
+
+[node name="Reticle" parent="." index="2"]
+weapon_sway_max = 150
+weapon_sway_min = 0
+
+[node name="GunAudio" parent="." index="4"]
 audio_reload_start = ExtResource("3_35td5")
 audio_reload_finished = ExtResource("4_mq04u")
 audio_shoot_gun_shot = ExtResource("5_li255")
-
-[node name="Reticle" parent="." index="3"]
-weapon_sway_max = 150
-weapon_sway_min = 0
+audio_shoot_gun_shot_level_up = ExtResource("6_ganyg")
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
 position = Vector2(121, 7)

@@ -73,8 +73,10 @@ func add_weapon(weapon_name: String):
 	# Check if we have the max guns already
 	if number_of_guns() > max_weapon_count:
 		# Then remove the currently equipped gun before equipping the new one
+		var gun_to_remove = weapon_objects[current_weapon_index]
 		weapon_names.remove_at(current_weapon_index)
 		weapon_objects.remove_at(current_weapon_index)
+		remove_child(gun_to_remove)
 	
 	# Set it as equipped
 	var new_current_weapon_index = weapon_names.find(weapon_name)
@@ -120,14 +122,17 @@ func add_weapon_object(weapon_object):
 
 	# Info the HUD
 	Events.emit_signal("player_weapons_change", weapon_names)
+	Events.emit_signal("player_equipped_change", weapon_object.WEAPON_NAME, weapon_object.weapon_level)
 
 func put_gun_in_upgraded():
 	"""
 	Called by weapon upgraded
 	"""
 	# Remove the current gun
+	var current_gun = weapon_objects[current_weapon_index]
 	weapon_names.remove_at(current_weapon_index)
 	weapon_objects.remove_at(current_weapon_index)
+	remove_child(current_gun)
 	current_weapon_index = 0
 	
 	# If we have another gun, switch to it
@@ -137,6 +142,10 @@ func put_gun_in_upgraded():
 	# If we DONT have anyother gun, call the idle state again which will switch to an 'idle_noWeapon' animation
 	else:
 		Events.emit_signal("player_action_idle")
+	
+	# Inform HUD
+	Events.emit_signal("player_weapons_change", weapon_names)
+
 
 func _set_equipped_gun(weapon_index: int):
 	"""
@@ -194,8 +203,10 @@ func remove_gun(weapon_name: String):
 	var index = weapon_names.find(weapon_name)
 	if index == -1:
 		return
+	var gun_to_remove = weapon_objects[index]
 	weapon_names.remove_at(index)
 	weapon_objects.remove_at(index)
+	remove_child(gun_to_remove)
 	current_weapon_index = 0
 	
 	# If we have another gun, switch to it

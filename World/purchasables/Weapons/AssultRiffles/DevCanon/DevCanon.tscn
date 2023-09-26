@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://o0ed2wa866at"]
+[gd_scene load_steps=10 format=3 uid="uid://o0ed2wa866at"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_o7y46"]
 [ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_8obux"]
@@ -8,23 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="6_goalm"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="6_nk80x"]
 [ext_resource type="PackedScene" uid="uid://3som05calmsq" path="res://VFX/magazines/MagazineRiffle.tscn" id="8_hixuv"]
+[ext_resource type="AudioStream" uid="uid://d080uinv407qn" path="res://World/purchasables/Weapons/shared/audio/laserShots/ESM_Laser_Gun_Shot_22_Sound_FX_Military_Gun.wav" id="9_8h2sw"]
 
 [node name="DevCanon" instance=ExtResource("1_o7y46")]
 WEAPON_NAME = "DEV_CANON"
 fire_type = "automatic"
 bullet = ExtResource("2_8obux")
 bullet_speed = 3000
-bullet_damage = 25
 bullet_knockback = 50.0
 fire_rate = 0.1
 clip_size = 100
 max_bullet_reserve = 1000
-audio_reload_start = ExtResource("3_xx2ah")
-audio_reload_finished = ExtResource("4_ivyn4")
-audio_shoot_gun_shot = ExtResource("5_my61j")
 
-[node name="Audio" parent="." index="2"]
-volume_db = -13.85
+[node name="LowerWeaponRayCast" parent="." index="3"]
+target_position = Vector2(0, 110)
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="4"]
 position = Vector2(115, 15)
@@ -43,5 +40,8 @@ item_ejection_angle_variance = 0.1
 item_ejection_torque = 50000.0
 item_ejection_torque_variance = 20000.0
 
-[node name="LowerWeaponRayCast" parent="." index="7"]
-target_position = Vector2(0, 110)
+[node name="GunAudio" parent="." index="7"]
+audio_reload_start = ExtResource("3_xx2ah")
+audio_reload_finished = ExtResource("4_ivyn4")
+audio_shoot_gun_shot = ExtResource("5_my61j")
+audio_shoot_gun_shot_level_up = ExtResource("9_8h2sw")

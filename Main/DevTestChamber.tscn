@@ -910,7 +910,7 @@ layer_1/tile_data = PackedInt32Array(917502, 0, 2, 851990, 131072, 2, -65515, 19
 position = Vector2(613, 128)
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(2089, -1404)
+position = Vector2(139, -183)
 rotation = -1.57079
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
@@ -938,7 +938,6 @@ position = Vector2(3434, 449)
 position = Vector2(-2936, 549)
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("26_ii3jy")]
-zoom = Vector2(0.3, 0.3)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="GameWorld"]
 position = Vector2(-1315, -313)

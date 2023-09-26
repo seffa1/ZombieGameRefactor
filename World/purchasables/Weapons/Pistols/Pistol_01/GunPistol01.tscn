@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://h623ic4athfc"]
+[gd_scene load_steps=10 format=3 uid="uid://h623ic4athfc"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_uohsh"]
-[ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/Bullets/Bullet.tscn" id="2_ipupn"]
-[ext_resource type="AudioStream" uid="uid://b6uanjwnisybt" path="res://World/purchasables/Weapons/DevCanon/audio/dev_canon_reload_start.wav" id="3_flal8"]
-[ext_resource type="AudioStream" uid="uid://cbqniuf70gbb3" path="res://World/purchasables/Weapons/DevCanon/audio/dev_canon_reload_end.wav" id="4_jne3a"]
-[ext_resource type="AudioStream" uid="uid://qb43knbw0xpn" path="res://World/purchasables/Weapons/DevCanon/audio/GunshotRevolver_BW.57316.wav" id="5_agwfw"]
+[ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_ipupn"]
+[ext_resource type="AudioStream" uid="uid://b6uanjwnisybt" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/audio/dev_canon_reload_start.wav" id="3_flal8"]
+[ext_resource type="AudioStream" uid="uid://cbqniuf70gbb3" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/audio/dev_canon_reload_end.wav" id="4_jne3a"]
+[ext_resource type="AudioStream" uid="uid://qb43knbw0xpn" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/audio/GunshotRevolver_BW.57316.wav" id="5_agwfw"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="6_l27m1"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="6_r7j6x"]
 [ext_resource type="PackedScene" uid="uid://btsjthjq8mw5m" path="res://VFX/magazines/MagazinePistol.tscn" id="8_l53jb"]
+[ext_resource type="AudioStream" uid="uid://b8vh621kpw2jb" path="res://World/purchasables/Weapons/shared/audio/laserShots/ESM_Laser_Gun_Shot_5_Sound_FX_Military_Gun.wav" id="9_n2q1o"]
 
 [node name="GunPistol01" instance=ExtResource("1_uohsh")]
 WEAPON_NAME = "PISTOL_01"
@@ -17,16 +18,13 @@ bullet_speed = 2000
 bullet_damage = 20
 fire_rate = 0.05
 max_bullet_reserve = 250
-audio_reload_start = ExtResource("3_flal8")
-audio_reload_finished = ExtResource("4_jne3a")
-audio_shoot_gun_shot = ExtResource("5_agwfw")
 
-[node name="Audio" parent="." index="2"]
-volume_db = -8.669
-
-[node name="Reticle" parent="." index="3"]
+[node name="Reticle" parent="." index="2"]
 recoil_per_shot = 15.0
 gun_recoil_max = 80.0
+
+[node name="LowerWeaponRayCast" parent="." index="3"]
+target_position = Vector2(0, 60)
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="4"]
 position = Vector2(98, 8)
@@ -42,5 +40,8 @@ item_ejection_speed = 300.0
 item_ejection_torque = 50000.0
 item_ejection_torque_variance = 20000.0
 
-[node name="LowerWeaponRayCast" parent="." index="7"]
-target_position = Vector2(0, 60)
+[node name="GunAudio" parent="." index="7"]
+audio_reload_start = ExtResource("3_flal8")
+audio_reload_finished = ExtResource("4_jne3a")
+audio_shoot_gun_shot = ExtResource("5_agwfw")
+audio_shoot_gun_shot_level_up = ExtResource("9_n2q1o")

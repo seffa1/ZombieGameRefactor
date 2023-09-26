@@ -3755,6 +3755,7 @@ scale = Vector2(0.958775, 1.04719)
 skew = 4.673e-05
 rest = Transform2D(1, 0, 0, 1, 33, 37)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(115, -41)

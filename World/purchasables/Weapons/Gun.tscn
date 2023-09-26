@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://85bf3y3ufwct"]
+[gd_scene load_steps=7 format=3 uid="uid://85bf3y3ufwct"]
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/gun.gd" id="1_m3j5y"]
 [ext_resource type="PackedScene" uid="uid://c012riui7bd3s" path="res://World/purchasables/Weapons/components/Reticle.tscn" id="2_iod0x"]
 [ext_resource type="PackedScene" uid="uid://d28jgeuq8m0kf" path="res://World/purchasables/Weapons/components/LowerWeaponRayCast.tscn" id="3_tpqt3"]
 [ext_resource type="Script" path="res://World/purchasables/Weapons/gun_audio.gd" id="4_vbik4"]
+[ext_resource type="PackedScene" uid="uid://bqn6pfsyp3a6" path="res://Libraries/CustomComponents/AudioVariator.tscn" id="5_vr0iw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b425l"]
 height = 182.0
@@ -24,10 +25,6 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_b425l")
 debug_color = Color(0.419608, 0.603922, 0, 0.419608)
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="."]
-max_polyphony = 4
-bus = &"GameAudio"
-
 [node name="Reticle" parent="." instance=ExtResource("2_iod0x")]
 
 [node name="LowerWeaponRayCast" parent="." instance=ExtResource("3_tpqt3")]
@@ -36,5 +33,14 @@ target_position = Vector2(0, 100)
 collision_mask = 16
 hit_from_inside = true
 
-[node name="GunAudio" type="Node" parent="."]
+[node name="GunAudio" type="Node2D" parent="."]
 script = ExtResource("4_vbik4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GunAudio"]
+volume_db = -8.0
+max_polyphony = 4
+bus = &"GameAudio"
+
+[node name="AudioVariator" parent="GunAudio" instance=ExtResource("5_vr0iw")]
+volume_db = -8.0
+bus = &"GameAudio"

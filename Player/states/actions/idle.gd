@@ -12,6 +12,7 @@ func enter():
 	# Make sure the weapon sprite is showing
 	if !weapon_manager.has_a_gun():
 		animation_player.play("idle_noWeapon")
+		Events.emit_signal("player_equipped_change", "n/a", 0)
 		gun_sprite.texture = null
 		return
 	else:

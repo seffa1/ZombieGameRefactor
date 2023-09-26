@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blkcrfxykghnn"]
+[gd_scene load_steps=10 format=3 uid="uid://blkcrfxykghnn"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_gegc7"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_8fosq"]
@@ -6,7 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://cse0hfx8voins" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/audio/ESM_Shotgun_Chamber_Shell_9_Sound_FX_Military_Ammo.wav" id="3_rn2c8"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_wg27e"]
 [ext_resource type="AudioStream" uid="uid://sw6wu7du6g8x" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/audio/ESM_Shotgun_Pump_4_Sound_FX_Military_Cock.wav" id="4_sg5oj"]
-[ext_resource type="AudioStream" uid="uid://dyxj5xxnqm6ep" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/audio/GunshotShotgun_BW.58110.wav" id="5_jdwro"]
+[ext_resource type="AudioStream" uid="uid://c862iqbcrvywf" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/audio/GunshotShotgun_BW.58102.wav" id="5_6ty4y"]
+[ext_resource type="AudioStream" uid="uid://celgfwnx0lo4s" path="res://World/purchasables/Weapons/shared/audio/laserShots/ESM_Laser_Gun_Shot_8_Sound_FX_Military_Gun.wav" id="6_t1ml1"]
 [ext_resource type="PackedScene" uid="uid://3som05calmsq" path="res://VFX/magazines/MagazineRiffle.tscn" id="8_852pk"]
 
 [node name="AutoShotgun" instance=ExtResource("1_gegc7")]
@@ -20,9 +21,12 @@ bullet_damage = 20
 fire_rate = 0.1
 clip_size = 10
 max_bullet_reserve = 80
+
+[node name="GunAudio" parent="." index="4"]
 audio_reload_start = ExtResource("3_rn2c8")
 audio_reload_finished = ExtResource("4_sg5oj")
-audio_shoot_gun_shot = ExtResource("5_jdwro")
+audio_shoot_gun_shot = ExtResource("5_6ty4y")
+audio_shoot_gun_shot_level_up = ExtResource("6_t1ml1")
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
 position = Vector2(121, 7)

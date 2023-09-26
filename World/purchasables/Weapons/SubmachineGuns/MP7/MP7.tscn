@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://thhh5nwdtfkn"]
+[gd_scene load_steps=10 format=3 uid="uid://thhh5nwdtfkn"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_v32af"]
 [ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_ltg8i"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_swxkm"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_1snqi"]
-[ext_resource type="AudioStream" uid="uid://l10oodjq4hq6" path="res://World/purchasables/Weapons/Snipers/50Cal/audio/ESM_Bolt_Action_Load_Sound_FX_Military_Ammo.wav" id="3_agoxw"]
+[ext_resource type="AudioStream" uid="uid://cvlqh41ayd1xt" path="res://World/purchasables/Weapons/Snipers/50Cal/audio/ESM_Shotgun_Chamber_Shell_9_Sound_FX_Military_Ammo.wav" id="3_yk5vg"]
 [ext_resource type="AudioStream" uid="uid://bjbaest2t7kan" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/audio/ESM_Shotgun_Pump_28_Sound_FX_Military_Cock.wav" id="4_gdkr1"]
 [ext_resource type="AudioStream" uid="uid://cjkltrxchnxfi" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/audio/GunshotMachineGun_BW.56296.wav" id="5_8nnnb"]
+[ext_resource type="AudioStream" uid="uid://g0wv5i5yab21" path="res://World/purchasables/Weapons/shared/audio/laserShots/ESM_Laser_Gun_Shot_21_Sound_FX_Military_Gun.wav" id="6_36rg3"]
 [ext_resource type="PackedScene" uid="uid://btsjthjq8mw5m" path="res://VFX/magazines/MagazinePistol.tscn" id="8_cdm06"]
 
 [node name="MP7" instance=ExtResource("1_v32af")]
@@ -18,9 +19,12 @@ bullet_damage = 20
 bullet_knockback = 2.0
 fire_rate = 0.07
 max_bullet_reserve = 250
-audio_reload_start = ExtResource("3_agoxw")
+
+[node name="GunAudio" parent="." index="4"]
+audio_reload_start = ExtResource("3_yk5vg")
 audio_reload_finished = ExtResource("4_gdkr1")
 audio_shoot_gun_shot = ExtResource("5_8nnnb")
+audio_shoot_gun_shot_level_up = ExtResource("6_36rg3")
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
 position = Vector2(121, 7)
