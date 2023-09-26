@@ -48,6 +48,8 @@ may end up as a part of the animation tree.
 @export var audio_reload_finished: AudioStream
 @export var audio_shoot_gun_shot: AudioStream   # TODO - make a function that slightly alters the gun shot sounds pitch to make it varied
 
+var starting_bullet_damage: float
+
 # Variables
 var bullets_in_clip: int:
 	set(value):
@@ -74,6 +76,7 @@ func _ready():
 	bullet_reserve = max_bullet_reserve
 	
 	# Track starting values for when they are modified
+	starting_bullet_damage = bullet_damage
 	starting_fire_rate = fire_rate
 	starting_recoil_per_shot = reticle.recoil_per_shot
 	starting_max_recoil = reticle.gun_recoil_max
@@ -204,9 +207,15 @@ func shoot() -> void:
 
 func set_gun_level(weapon_level: int) -> void:
 	"""
-	Must be defined by children classes. Describes how weapon parameters are affected by upgrading.
+	Determins how each gun is affected by level ups
 	"""
-	return
+	match weapon_level:
+		1:
+			bullet_damage = starting_bullet_damage * 1.35
+		2:
+			bullet_damage += starting_bullet_damage * 1.7
+		3:
+			bullet_damage += starting_bullet_damage * 2.05
 
 func can_shoot() -> bool:
 	"""

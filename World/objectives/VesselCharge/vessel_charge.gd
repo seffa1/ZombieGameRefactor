@@ -25,8 +25,7 @@ func _on_vessel_charged(zombie_soul: Node2D):
 	souls_collected += 1
 	chargable_light_flicker.charge()
 
-	# TODO - add animation
-	print("Soul Collected: " + str(souls_collected) + " / " + str(souls_needed_to_charge))
+	# TODO - add animation + sound
 	
 	if souls_collected >= souls_needed_to_charge:
 		complete_charging()

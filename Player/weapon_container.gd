@@ -136,7 +136,6 @@ func put_gun_in_upgraded():
 	
 	# If we DONT have anyother gun, call the idle state again which will switch to an 'idle_noWeapon' animation
 	else:
-		print("NO GUN")
 		Events.emit_signal("player_action_idle")
 
 func _set_equipped_gun(weapon_index: int):
@@ -205,7 +204,6 @@ func remove_gun(weapon_name: String):
 	
 	# If we DONT have anyother gun, call the idle state again which will switch to an 'idle_noWeapon' animation
 	else:
-		print("NO GUN")
 		Events.emit_signal("player_action_idle")
 	
 

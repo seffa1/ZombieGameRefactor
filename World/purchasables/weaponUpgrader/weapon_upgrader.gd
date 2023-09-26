@@ -73,6 +73,7 @@ func _on_upgrade_animation_complete():
 	weapon_pickup.mystery_box_weapon_picked_up.connect(_on_weapon_picked_up)
 	weapon_pickup.weapon_level = level_upgrading_to
 	add_child(weapon_pickup)
+	
 	# Then switch to the 'is giving state'
 	animation_player.play("pickup")
 

@@ -41,7 +41,6 @@ func update(delta):
 	if distance_check_timer.is_stopped():
 		var distance_traveled = (owner.global_position - previous_position).length()
 		if distance_traveled <= 50:
-			print("DESPAWNING")
 			owner.despawn()
 		else:
 			previous_position = owner.global_position

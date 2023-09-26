@@ -21,7 +21,6 @@ The main
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	solo.toggle_flicker(true)
-	print("READY - SETTING SUB HIT")
 	vfx_audio.play_sound("sub_hit")
 	music_audio.play_sound("piano_loop")
 	for button in [solo, multiplayer_button, leaderboards, settings, quit_button]:
