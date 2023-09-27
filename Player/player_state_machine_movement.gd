@@ -15,6 +15,11 @@ func _ready():
 		"sprint": $Sprint,
 		"die": $Die
 	}
+	
+	Events.player_dies.connect(_on_player_death)
+
+func _on_player_death():
+	_change_state("die")
 
 func _change_state(state_name):
 	"""

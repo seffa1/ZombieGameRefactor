@@ -30,7 +30,11 @@ func _ready():
 	Events.lower_weapon.connect(_on_player_lower_weapon)
 	Events.player_switch_weapons.connect(_on_player_switch_weapons) # called via weapon manager when a gun is removed via pack a punch
 	Events.player_action_idle.connect(_on_player_action_idle)
+	Events.player_dies.connect(_on_player_death)
 
+func _on_player_death():
+	_change_state("die")
+	
 func _on_player_action_idle():
 	_change_state("idle")
 

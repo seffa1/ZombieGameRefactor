@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=86 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -42,6 +42,10 @@
 [ext_resource type="Texture2D" uid="uid://tx4fkomwsfaw" path="res://VFX/textures/spotlight_2.png" id="34_6mf4n"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="35_5mvoc"]
 [ext_resource type="PackedScene" uid="uid://drmqk73ge4okn" path="res://World/throwables/ChargeIndicator.tscn" id="41_x214t"]
+[ext_resource type="PackedScene" uid="uid://dj8dsfwvk6oas" path="res://Libraries/CustomComponents/AudioRandomizer.tscn" id="43_ggwfd"]
+[ext_resource type="AudioStream" uid="uid://cj35xg6usfpag" path="res://Player/sounds/hurt/ZombieVictimGroan_BW.13200.wav" id="44_no4ya"]
+[ext_resource type="AudioStream" uid="uid://cqmru718jeov2" path="res://Player/sounds/hurt/ZombieVictimGroan_BW.13201.wav" id="45_4gxdd"]
+[ext_resource type="AudioStream" uid="uid://cgta27q7ooqxs" path="res://Player/sounds/hurt/ZombieVictimGroan_BW.13204.wav" id="46_5roo6"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_jua7a"]
 target_nodepath = NodePath("../Targets/armLeftTarget")
@@ -3762,6 +3766,7 @@ position = Vector2(115, -41)
 rotation = 0.731523
 rest = Transform2D(1, 0, 0, 1, 115, -41)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderLeft"]
 position = Vector2(94, 57)
@@ -3771,6 +3776,7 @@ auto_calculate_length_and_angle = false
 length = 110.372
 bone_angle = 63.764
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(-75, 122)
@@ -3778,12 +3784,14 @@ rotation = -0.606037
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -75, 122)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight"]
 position = Vector2(67, 101)
 rotation = 0.71527
 rest = Transform2D(1, 0, 0, 1, 67, 101)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight/armRight"]
 position = Vector2(90, 19)
@@ -3984,6 +3992,11 @@ bus = &"GameAudio"
 volume_db = -30.0
 max_polyphony = 4
 bus = &"GameAudio"
+
+[node name="HurtSounds" parent="." instance=ExtResource("43_ggwfd")]
+volume_db = -10.0
+bus = &"GameAudio"
+audio_clips = Array[AudioStreamWAV]([ExtResource("44_no4ya"), ExtResource("45_4gxdd"), ExtResource("46_5roo6")])
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]
 

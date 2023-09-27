@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=3 uid="uid://dfry3qnty8p6q"]
+
+[ext_resource type="Script" path="res://Player/player_death_effect.gd" id="1_csxxe"]
+[ext_resource type="PackedScene" uid="uid://gg3u2enxf6hv" path="res://Player/deathEffect/Player-BodyPart-Head.tscn" id="3_q2xx8"]
+[ext_resource type="PackedScene" uid="uid://ck6pad3gxdi2h" path="res://Player/deathEffect/Player-BodyPart-LeftArm.tscn" id="4_ovuqc"]
+[ext_resource type="PackedScene" uid="uid://bapeyr284v453" path="res://Player/deathEffect/Player-BodyPart-LeftLeg.tscn" id="5_0w8o0"]
+[ext_resource type="PackedScene" uid="uid://b2mtfaw0kfqc0" path="res://Player/deathEffect/Player-BodyPart-RightArm.tscn" id="6_06xmq"]
+[ext_resource type="PackedScene" uid="uid://cylsq040kvitx" path="res://Player/deathEffect/Player-BodyPart-RightLeg.tscn" id="7_n8oe0"]
+[ext_resource type="PackedScene" uid="uid://ckeyctgwxiyqj" path="res://Player/deathEffect/Player-BodyPart-Torso.tscn" id="8_u274k"]
+[ext_resource type="PackedScene" uid="uid://ca2v6t7upnt8m" path="res://VFX/Gore/blood_splatters/BloodSplatter.tscn" id="9_beei6"]
+[ext_resource type="AudioStream" uid="uid://tbw6ch13a0ne" path="res://VFX/Gore/sounds/fleshy_mushiness/big_smashes/SplatMassiveBlood_ZA02.509.wav" id="9_pedsd"]
+[ext_resource type="AudioStream" uid="uid://b6y3i0qo1fsfi" path="res://VFX/Gore/sounds/fleshy_mushiness/big_smashes/SquishSplatBlood_SFXB.1484.wav" id="10_65318"]
+[ext_resource type="AudioStream" uid="uid://gnv1aerh85jc" path="res://VFX/Gore/sounds/fleshy_mushiness/big_smashes/ESM_Fat_Zombie_Smash_2_Wet_Smash_Liquid_Bash_Knife_Organic_Splat_Gore_Horror_Explosion.wav" id="11_ebve0"]
+
+[sub_resource type="Animation" id="Animation_2syb7"]
+resource_name = "death_effect"
+length = 4.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_pedsd")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_65318")
+}],
+"times": PackedFloat32Array(0.9)
+}
+tracks/1/use_blend = true
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_ebve0")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/2/use_blend = true
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_ebve0")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wqhi4"]
+_data = {
+"death_effect": SubResource("Animation_2syb7")
+}
+
+[node name="PlayerDeath" type="Node2D"]
+script = ExtResource("1_csxxe")
+
+[node name="BloodSplatter" parent="." instance=ExtResource("9_beei6")]
+
+[node name="Player-BodyPart-LeftArm2" parent="." instance=ExtResource("5_0w8o0")]
+position = Vector2(37, -17)
+rotation = -1.57681
+
+[node name="Player-BodyPart-RighLet" parent="." instance=ExtResource("7_n8oe0")]
+position = Vector2(34, 13)
+rotation = -1.57717
+
+[node name="Player-BodyPart-Torso" parent="." instance=ExtResource("8_u274k")]
+position = Vector2(-9, -4)
+rotation = -2.33242
+
+[node name="Player-BodyPart-LeftArm" parent="." instance=ExtResource("4_ovuqc")]
+position = Vector2(10, -45)
+rotation = -3.07872
+
+[node name="Player-BodyPart-LeftArm3" parent="." instance=ExtResource("6_06xmq")]
+position = Vector2(-0.999998, 36)
+rotation = -1.37228
+
+[node name="Player-BodyPart-Head" parent="." instance=ExtResource("3_q2xx8")]
+position = Vector2(-3, -5)
+rotation = -1.8282
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -8.0
+max_polyphony = 4
+bus = &"GameAudio"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wqhi4")
+}

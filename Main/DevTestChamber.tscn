@@ -523,6 +523,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-77, 617, -73, -28, -54
 [node name="GameInitializer" type="Node"]
 process_mode = 1
 script = ExtResource("1_436u3")
+remove_vinette = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3

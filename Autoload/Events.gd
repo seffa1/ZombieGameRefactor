@@ -41,6 +41,7 @@ signal raise_weapon()
 signal player_idle()
 signal player_moving()
 signal player_sprinting()
+signal player_dies() # used in movement and action states
 
 # Player actions states - for when states need to be triggers 
 signal player_switch_weapons()
