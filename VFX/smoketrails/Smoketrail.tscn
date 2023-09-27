@@ -4,17 +4,17 @@
 [ext_resource type="Script" path="res://VFX/smoketrails/smoke_trail.gd" id="1_h1046"]
 
 [sub_resource type="Curve" id="Curve_ea7jr"]
-_data = [Vector2(0.00261877, 0.992333), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.79626, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.79626, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_e3wyy"]
-offsets = PackedFloat32Array(0, 0.418048, 0.729282, 0.970534)
-colors = PackedColorArray(0, 0, 0, 0, 0.427451, 0.427451, 0.427451, 1, 0.427451, 0.427451, 0.427451, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_pfa68"]
+offsets = PackedFloat32Array(0, 0.424861, 0.729282, 0.970534)
+colors = PackedColorArray(0, 0, 0, 0, 0.370292, 0.368008, 0.386493, 1, 0.550257, 0.605204, 0.576117, 1, 1, 1, 1, 1)
 
 [node name="Smoketrail" type="Line2D"]
 width = 20.0
 width_curve = SubResource("Curve_ea7jr")
-gradient = SubResource("Gradient_e3wyy")
+gradient = SubResource("Gradient_pfa68")
 texture = ExtResource("1_264ey")
 texture_mode = 2
 script = ExtResource("1_h1046")

@@ -168,7 +168,7 @@ func shoot() -> void:
 		
 		var bullet_instance = bullet.instantiate()
 		ObjectRegistry.register_projectile(bullet_instance)
-		bullet_instance.init(bullet_damage, shooter, bullet_knockback)
+		bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level)
 		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 
 	# we cannot ignore spread ( like a shot gun )
@@ -187,7 +187,7 @@ func shoot() -> void:
 			
 			var bullet_instance = bullet.instantiate()
 			ObjectRegistry.register_projectile(bullet_instance)
-			bullet_instance.init(bullet_damage, shooter, bullet_knockback)
+			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level)
 			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 			
 			rotation_direction *= -1

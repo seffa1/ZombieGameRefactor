@@ -17,7 +17,6 @@ bullet = ExtResource("2_ar6er")
 bullets_per_fire = 6
 bullet_spread = 0.15
 bullet_speed = 2500
-bullet_damage = 5
 clip_size = 8
 max_bullet_reserve = 60
 shell_ejection_type = 1
