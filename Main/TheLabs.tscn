@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=71 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -51,6 +51,7 @@
 [ext_resource type="PackedScene" uid="uid://d2oddfj7gwl4t" path="res://World/purchasables/Weapons/Shotguns/Spas/WeaponBuySpas.tscn" id="40_nhfvi"]
 [ext_resource type="PackedScene" uid="uid://bb1ef3n186kl8" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/WeaponBuyMP7.tscn" id="42_l8j0f"]
 [ext_resource type="PackedScene" uid="uid://1ux02i0bfhlb" path="res://UI/DeathScreen.tscn" id="44_0cvc5"]
+[ext_resource type="Script" path="res://Main/score_tracker.gd" id="49_14auj"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t0y30"]
 polygon = PackedVector2Array(-32, -32, -32, 32, -13.75, 32, -13.5, -13.5, 32, -13.5, 32, -32)
@@ -4244,8 +4245,9 @@ text = "Actions"
 
 [node name="InteractableLog" parent="UI" instance=ExtResource("7_tw0cg")]
 
-[node name="DeathScreen" parent="UI" instance=ExtResource("44_0cvc5")]
+[node name="DeathScreen" parent="UI" node_paths=PackedStringArray("score_tracker") instance=ExtResource("44_0cvc5")]
 visible = false
+score_tracker = NodePath("../../ScoreTracker")
 
 [node name="SettingsMenu" parent="UI" instance=ExtResource("8_uddx1")]
 visible = false
@@ -4351,6 +4353,9 @@ offset_left = 735.0
 offset_top = 90.0
 offset_right = 1198.0
 offset_bottom = 113.0
+
+[node name="ScoreTracker" type="Node" parent="."]
+script = ExtResource("49_14auj")
 
 [node name="ScreenShaker" parent="." instance=ExtResource("27_yi02j")]
 

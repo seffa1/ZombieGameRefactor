@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=62 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_b2va5"]
 [ext_resource type="PackedScene" uid="uid://hkwukd3bresb" path="res://World/objectives/VesselCharge/VesselCharge.tscn" id="35_yxu8u"]
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="39_fdiub"]
+[ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
 size = Vector2(410, 20)
@@ -650,8 +651,9 @@ visible = false
 [node name="SettingsMenu" parent="UI" instance=ExtResource("8_3be8j")]
 visible = false
 
-[node name="DeathScreen" parent="UI" instance=ExtResource("9_m25pt")]
+[node name="DeathScreen" parent="UI" node_paths=PackedStringArray("score_tracker") instance=ExtResource("9_m25pt")]
 visible = false
+score_tracker = NodePath("../../ScoreTracker")
 
 [node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ih603")]
 
@@ -963,6 +965,9 @@ navigation_polygon = SubResource("NavigationPolygon_w47ju")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("28_b2va5")]
 process_mode = 3
+
+[node name="ScoreTracker" type="Node" parent="."]
+script = ExtResource("43_ou650")
 
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]

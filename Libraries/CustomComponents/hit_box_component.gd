@@ -17,7 +17,9 @@ var shooter: CharacterBody2D  # reference back to the player
 
 func _on_area_entered(_area):
 	# If the bullets hitbox hits an enemy hurtbox the bullet dies
+
+	# Track bullet
+	Events.emit_signal("bullet_hit", get_rid())
+
 	if hit_box_type == 0:
 		owner.die()
-	
-	# Explosions (hit_box_type=2) will queue_free themselves

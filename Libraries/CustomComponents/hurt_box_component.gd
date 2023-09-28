@@ -24,9 +24,6 @@ func _on_area_entered(area: Area2D):
 	from bullets, explosions, or anything else we can take damage from.
 	
 	"""
-	# Player gets 10 points for each bullet that hits
-	Events.emit_signal("give_player_money", money_reward_bullet_hit)
-	
 	# Take damage
 	health_component.health -= area.damage * damage_multiplier
 	

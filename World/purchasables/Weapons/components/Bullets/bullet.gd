@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(motion_vector)
 
 	# Check if it collided with the environment
-	if collision:		
+	if collision:
 		# TODO - bullet collision fx based on tile type it collided with
 		var smoke_puff = get_smoke_puff()
 		smoke_puff.global_position = global_position

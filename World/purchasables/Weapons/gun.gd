@@ -133,6 +133,9 @@ func shoot() -> void:
 	The player shoot state will check 'can_shoot' before it calls this function since
 	the state will dictate the animations.
 	"""
+	# Track shots
+	Events.emit_signal("bullet_fired")
+	
 	# Play audio
 	audio.play_audio_shoot_gun_shot()
 
