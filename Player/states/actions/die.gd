@@ -4,7 +4,7 @@ extends "res://Libraries/state.gd"
 
 # Initialize the state. E.g. change the animation
 func enter():
-	# Play player death visual effect
+	# Play player death visual effect which will trigger the game over state
 	var death_effect = player_death_effect.instantiate()
 	death_effect.global_position = owner.global_position
 	death_effect.global_rotation = owner.global_rotation

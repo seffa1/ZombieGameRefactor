@@ -11,6 +11,7 @@ signal game_resumed()
 signal game_quit()
 signal open_settings()
 signal return_to_main_menu()
+signal game_over()
 
 # HUD
 signal player_log(message: String)

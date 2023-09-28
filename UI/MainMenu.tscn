@@ -177,7 +177,8 @@ sub_menu = true
 bus = &"Music"
 
 [node name="VFXAudio" parent="." instance=ExtResource("13_asspo")]
-bus = &"GameAudio"
+max_polyphony = 5
+bus = &"MenuFX"
 
 [connection signal="mouse_entered" from="Solo" to="." method="_on_solo_mouse_entered"]
 [connection signal="pressed" from="Solo" to="." method="_on_solo_pressed"]

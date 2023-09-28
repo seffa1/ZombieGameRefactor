@@ -40,3 +40,6 @@ func fall_apart():
 		blood_splatter.global_position = global_position
 		ObjectRegistry.register_effect(blood_splatter)
 		blood_splatter.apply_impulse(impulse_vector)
+
+func _on_animation_finished():
+	Events.emit_signal("game_over")

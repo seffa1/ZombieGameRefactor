@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=70 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://hkwukd3bresb" path="res://World/objectives/VesselCharge/VesselCharge.tscn" id="34_81lr8"]
 [ext_resource type="PackedScene" uid="uid://d2oddfj7gwl4t" path="res://World/purchasables/Weapons/Shotguns/Spas/WeaponBuySpas.tscn" id="40_nhfvi"]
 [ext_resource type="PackedScene" uid="uid://bb1ef3n186kl8" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/WeaponBuyMP7.tscn" id="42_l8j0f"]
+[ext_resource type="PackedScene" uid="uid://1ux02i0bfhlb" path="res://UI/DeathScreen.tscn" id="44_0cvc5"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t0y30"]
 polygon = PackedVector2Array(-32, -32, -32, 32, -13.75, 32, -13.5, -13.5, 32, -13.5, 32, -32)
@@ -4073,7 +4074,6 @@ position = Vector2(2490, 3916)
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
 position = Vector2(889, 449)
 rotation = -0.708219
-starting_gun = "PISTOL_01"
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_ixwma")]
 position = Vector2(0, 7.62939e-06)
@@ -4203,7 +4203,7 @@ spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor4"), NodePath("../../Environment/Doors/PurchasableDoor5"), NodePath("../../Environment/Doors/PurchasableDoor6")]
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("26_g7rwe")]
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(1.2, 1.2)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="GameWorld"]
 position = Vector2(-1315, -313)
@@ -4243,6 +4243,9 @@ text = "Actions"
 [node name="PlayerLog" parent="UI" instance=ExtResource("6_fsl8i")]
 
 [node name="InteractableLog" parent="UI" instance=ExtResource("7_tw0cg")]
+
+[node name="DeathScreen" parent="UI" instance=ExtResource("44_0cvc5")]
+visible = false
 
 [node name="SettingsMenu" parent="UI" instance=ExtResource("8_uddx1")]
 visible = false

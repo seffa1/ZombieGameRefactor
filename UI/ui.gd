@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var menu_sounds = $MenuSoundPlayer
 @onready var vinette = $"../GameWorld/Darkness/vinette"
 @onready var hud = $HUD
+@onready var death_screen = $DeathScreen
 
 
 func _ready():
@@ -15,6 +16,7 @@ func _ready():
 	Events.game_quit.connect(_on_game_quit) # emited by pause menu
 #	Events.game_paused.connect(_on_game_paused)
 	Events.return_to_main_menu.connect(_on_return_to_main_menu)
+	Events.game_over.connect(_on_game_over)
 
 
 func _on_return_to_main_menu():
@@ -30,7 +32,11 @@ func _on_game_resumed():
 	if !get_parent().remove_vinette:
 		vinette.show()
 	hud.show()
-	
+
+func _on_game_over():
+	death_screen.open()
+	hud.hide()
+	vinette.hide()
 
 func _on_game_quit():
 	get_tree().quit()

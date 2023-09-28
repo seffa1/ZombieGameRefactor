@@ -1,0 +1,205 @@
+[gd_scene load_steps=6 format=3 uid="uid://1ux02i0bfhlb"]
+
+[ext_resource type="Script" path="res://UI/death_screen.gd" id="1_eymnc"]
+[ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="2_8d558"]
+[ext_resource type="Texture2D" uid="uid://cedl4iff3jt5p" path="res://UI/images/buttons/element_0001_Layer-3.png" id="3_7q1qk"]
+[ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="4_tc2h3"]
+[ext_resource type="PackedScene" uid="uid://bulp62n3s0i7l" path="res://World/sounds/VFXAudio.tscn" id="5_vvc8s"]
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eymnc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -639.0
+offset_right = 639.0
+offset_bottom = 214.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -591.0
+offset_top = -216.0
+offset_right = 591.0
+offset_bottom = 338.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "Wave:"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "Kills: "
+horizontal_alignment = 2
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "points earned:"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "Shots FIred:"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "Accuracy:"
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+
+[node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+offset_right = -356.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 500
+alignment = 1
+
+[node name="BackToMain" type="Control" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/BackToMain"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -76.0
+offset_right = 434.0
+offset_bottom = 78.0
+texture = ExtResource("3_7q1qk")
+
+[node name="MainMenu" type="Button" parent="HBoxContainer2/BackToMain"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = -44.0
+offset_right = 323.0
+offset_bottom = 8.0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 36
+text = "main menu
+"
+
+[node name="QuitButton" type="Control" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/QuitButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -76.0
+offset_right = 411.0
+offset_bottom = 78.0
+texture = ExtResource("3_7q1qk")
+
+[node name="Quit" type="Button" parent="HBoxContainer2/QuitButton"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -42.0
+offset_right = 307.0
+offset_bottom = 10.0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 36
+text = "quit"
+
+[node name="MenuSoundPlayer" parent="." instance=ExtResource("4_tc2h3")]
+
+[node name="VFXAudio" parent="." instance=ExtResource("5_vvc8s")]
+max_polyphony = 4
+bus = &"MenuFX"
+
+[connection signal="focus_entered" from="HBoxContainer2/BackToMain/MainMenu" to="." method="_on_Button_focus_entered"]
+[connection signal="pressed" from="HBoxContainer2/BackToMain/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="focus_entered" from="HBoxContainer2/QuitButton/Quit" to="." method="_on_Button_focus_entered"]
+[connection signal="pressed" from="HBoxContainer2/QuitButton/Quit" to="." method="_on_quit_pressed"]

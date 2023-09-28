@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=61 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_rypj4"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="8_3be8j"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ih603"]
+[ext_resource type="PackedScene" uid="uid://1ux02i0bfhlb" path="res://UI/DeathScreen.tscn" id="9_m25pt"]
 [ext_resource type="PackedScene" uid="uid://5wpk32ea7ptu" path="res://UI/HUD/HUD.tscn" id="10_1jyyk"]
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_04yua"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="10_xnv1m"]
@@ -647,6 +648,9 @@ offset_bottom = 119.0
 visible = false
 
 [node name="SettingsMenu" parent="UI" instance=ExtResource("8_3be8j")]
+visible = false
+
+[node name="DeathScreen" parent="UI" instance=ExtResource("9_m25pt")]
 visible = false
 
 [node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ih603")]

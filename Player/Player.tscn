@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=90 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -46,6 +46,10 @@
 [ext_resource type="AudioStream" uid="uid://cj35xg6usfpag" path="res://Player/sounds/hurt/ZombieVictimGroan_BW.13200.wav" id="44_no4ya"]
 [ext_resource type="AudioStream" uid="uid://cqmru718jeov2" path="res://Player/sounds/hurt/ZombieVictimGroan_BW.13201.wav" id="45_4gxdd"]
 [ext_resource type="AudioStream" uid="uid://cgta27q7ooqxs" path="res://Player/sounds/hurt/ZombieVictimGroan_BW.13204.wav" id="46_5roo6"]
+[ext_resource type="AudioStream" uid="uid://dvomjtk12mgyv" path="res://VFX/Gore/sounds/bullet_impacts/BRS_Bullet_Hit_Body_Flesh_07.wav" id="47_yprof"]
+[ext_resource type="AudioStream" uid="uid://d0imhaniij8sw" path="res://VFX/Gore/sounds/bullet_impacts/BRS_Bullet_Hit_Body_Flesh_16.wav" id="48_18u5a"]
+[ext_resource type="AudioStream" uid="uid://dnko80tokfoaf" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactBody_BW.54388.wav" id="49_e6flh"]
+[ext_resource type="AudioStream" uid="uid://cy4dt0ytjfx67" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactBody_BW.54390.wav" id="50_5a5x1"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_jua7a"]
 target_nodepath = NodePath("../Targets/armLeftTarget")
@@ -3639,8 +3643,6 @@ collision_mask = 67608
 motion_mode = 1
 script = ExtResource("1_e8yx8")
 money_component = NodePath("MoneyComponent")
-starting_gun = "DEV_CANON"
-starting_money = 100000
 metadata/_edit_vertical_guides_ = []
 
 [node name="placeholder" type="Sprite2D" parent="."]
@@ -3997,6 +3999,12 @@ bus = &"GameAudio"
 volume_db = -10.0
 bus = &"GameAudio"
 audio_clips = Array[AudioStreamWAV]([ExtResource("44_no4ya"), ExtResource("45_4gxdd"), ExtResource("46_5roo6")])
+
+[node name="HitSounds" parent="." instance=ExtResource("43_ggwfd")]
+volume_db = -6.0
+max_polyphony = 5
+bus = &"GameAudio"
+audio_clips = Array[AudioStreamWAV]([ExtResource("47_yprof"), ExtResource("48_18u5a"), ExtResource("49_e6flh"), ExtResource("50_5a5x1")])
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]
 
