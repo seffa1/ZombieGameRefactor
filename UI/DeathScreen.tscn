@@ -32,16 +32,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -591.0
-offset_top = -216.0
-offset_right = 591.0
-offset_bottom = 338.0
+layout_mode = 2
+offset_left = 369.0
+offset_top = 324.0
+offset_right = 1506.0
+offset_bottom = 795.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 200
@@ -50,6 +45,15 @@ alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+
+[node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "
+"
+horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -94,13 +98,19 @@ horizontal_alignment = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
+[node name="CurrentRound" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "this Round"
+
 [node name="waveNumber" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_8d558")
 theme_override_font_sizes/font_size = 72
 text = "0"
-horizontal_alignment = 1
 
 [node name="killCount" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -130,8 +140,52 @@ theme = ExtResource("2_8d558")
 theme_override_font_sizes/font_size = 72
 text = "0"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+
+[node name="Best Round" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "Best Round
+"
+horizontal_alignment = 1
+
+[node name="highscoreWaveNumber" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+
+[node name="highscoreKillCount" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+
+[node name="highscorePointsEarned" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+
+[node name="highscoreShotsFired" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
+
+[node name="highschoreAccuracy" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8d558")
+theme_override_font_sizes/font_size = 72
+text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 1

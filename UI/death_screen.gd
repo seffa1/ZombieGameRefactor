@@ -19,7 +19,8 @@ func open():
 	get_tree().paused = true
 	set_process_input(true)
 	vfx_audio.play_sound("sub_hit")
-	
+
+	score_tracker.updateHighScore()
 	var score = score_tracker.get_score()
 	populate_highscore(score)
 

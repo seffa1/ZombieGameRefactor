@@ -39,6 +39,9 @@ func _on_solo_pressed():
 	
 func _on_settings_pressed():
 	sub_screen.show_settings()
+	
+func _on_leaderboards_pressed():
+	sub_screen.show_leaderboards()
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -73,5 +76,8 @@ func _on_quit_mouse_entered():
 	menu_sounds.play_hover()
 	_shut_all_button_flickers_off()
 	quit_button.toggle_flicker(true)
+
+
+
 
 

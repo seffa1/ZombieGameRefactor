@@ -7,6 +7,7 @@ is responsible for its button handlers.
 
 @onready var solo_level_select: Control = $SoloLevelSelect
 @onready var settings: Control = $SettingsMenu
+@onready var leaderboards: Control = $Leaderboards
 @onready var menu_sounds: AudioStreamPlayer2D = $"../MenuSoundPlayer"
 
 # Show and hide control for all menus ----------------------------------
@@ -14,7 +15,7 @@ func _ready():
 	hide_all_menus()
 
 func hide_all_menus():
-	for menu in [solo_level_select, settings]:
+	for menu in [solo_level_select, settings, leaderboards]:
 		menu.hide()
 
 func show_solo_level_select():
@@ -26,4 +27,7 @@ func show_settings():
 	settings.show()
 	get_tree().paused = false
 
+func show_leaderboards():
+	hide_all_menus()
+	leaderboards.show()
 
