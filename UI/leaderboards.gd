@@ -41,8 +41,6 @@ func loadHighScoreData():
 			print("Error opening file:")
 			print(FileAccess.get_open_error())
 			return
-	
+
 		highscore = file.get_var()
 
-	else:
-		print("Leadboard file not found")

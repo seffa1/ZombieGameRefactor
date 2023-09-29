@@ -177,7 +177,7 @@ func shoot() -> void:
 	# we cannot ignore spread ( like a shot gun )
 	else:
 		if bullet_spread == 0:
-			print("Spread shouldnt be zero for a gun firing multiple shots.")
+			assert(false, "Spread shouldnt be zero for a gun firing multiple shots or gun will do more damage then intended.")
 		
 		var bullet_rotation = global_rotation + (bullet_spread / 2)
 		var spawn_position = muzzle_position.global_position

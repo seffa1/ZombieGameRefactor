@@ -21,7 +21,6 @@ func _ready():
 
 	# Make highscore directory if it doesn't exists
 	if !DirAccess.dir_exists_absolute(SAVE_DIR):
-		print("Highscore directory doesnt exist, creating it...")
 		DirAccess.make_dir_absolute(SAVE_DIR)
 
 func updateHighScore():
@@ -33,7 +32,6 @@ func updateHighScore():
 
 	# if there is no save file we'll assume its a new highscore
 	if !FileAccess.file_exists(save_path):
-		print("Existing highscore save file not found, assuming new highscore")
 		newHighScore = true
 
 	# If there is a save file, check if its a new highscore
@@ -45,10 +43,7 @@ func updateHighScore():
 			print(FileAccess.get_open_error())
 			return
 
-		print("high score save file found")
-
 		var oldSaveData = file.get_var()
-		print("previous high score game data loaded")
 
 		# if we got a new highest level, save current game data
 		if score["wave"] > oldSaveData["wave"]:
@@ -67,18 +62,15 @@ func updateHighScore():
 			print(FileAccess.get_open_error())
 			return
 
-		print("Saving highscore...")
 		file.store_var(score)
 
 func _on_bullet_fired():
 	score["bullets_fired"] += 1
-	print(score)
 
 var previous_RID: RID
 
 func _on_bullet_hit(bullet_RID):
 	if previous_RID != bullet_RID or !previous_RID:
-		print("BULLET HIT")
 		score["bullets_hit"] += 1
 		previous_RID = bullet_RID
 
