@@ -27,11 +27,7 @@ func exit():
 	return
 
 func update(delta):
-	# Check if dead
-	if owner.health_component.health == 0:
-		emit_signal("finished", "die")
-		return
-		
+
 	# Check if we should do a random groan
 	if groan_timer.is_stopped():
 		zombie_groans.play_long()

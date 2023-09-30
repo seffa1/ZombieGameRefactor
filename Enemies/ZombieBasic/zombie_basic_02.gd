@@ -16,12 +16,18 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var skeleton_control: Node2D = $SkeletonControl
 @onready var head_blood_emitter: CPUParticles2D = $SkeletonControl/Skeleton/torso/head/BloodEmitterNoAnimation
 
-# Healper nodes
-@onready var health_component: Node2D = $HealthComponent
+# Helper Nodes
 @onready var pathfinding_component: Node2D = $PathfindingComponent
 @onready var velocity_component: Node = $VelocityComponent
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: Node = $ZombieStateMachine
+
+# Health Nodes
+@onready var head_health: Node2D = $"HealthComponents/HealthComponent - Head"
+@onready var left_upper_health: Node2D = $"HealthComponents/HealthComponent - LeftUpper"
+@onready var left_lower_health: Node2D = $"HealthComponents/HealthComponent - LeftLower"
+@onready var right_upper_health: Node2D = $"HealthComponents/HealthComponent - RightUpper"
+@onready var right_lower_health: Node2D = $"HealthComponents/HealthComponent - RightLower"
 
 @onready var modification_stack = preload("res://Enemies/ZombieBasic/skeletonModificationStack.tres")
 
@@ -36,12 +42,24 @@ func _ready():
 	$SkeletonControl/Skeleton.get_modification_stack().enabled = true
 	Events.player_position_change.connect(_on_player_position_changed)
 
-func init(global_position: Vector2):
+func set_max_health(zombie_base_health: int):
 	"""
-	Called by the zombie manager in the spawn process loop
+	Called by zombie spawner on spawn.
+	
+	Zombies start with 150 health
+	Zombies health increases by 100 each round until they hit 950 (Round 9)
+	After this, zombie health follows this formula: health = health x 1.1
 	"""
-	target_window = target_window
-	global_position = global_position
+	head_health.set_deferred("max_health", roundi(zombie_base_health * .5))
+	head_health.fill_health()
+	left_upper_health.set_deferred("max_health", roundi(zombie_base_health * 1.5))
+	left_upper_health.fill_health()
+	right_upper_health.set_deferred("max_health", roundi(zombie_base_health * 1.5))
+	right_upper_health.fill_health()
+	left_lower_health.set_deferred("max_health", zombie_base_health)
+	left_lower_health.fill_health()
+	right_lower_health.set_deferred("max_health",zombie_base_health )
+	right_lower_health.fill_health()
 
 func _on_player_position_changed(player_position: Vector2):
 	check_despawn(player_position)

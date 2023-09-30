@@ -17,14 +17,19 @@ Responsible for controlling and tracking the waves of zombies spawning.
 # How many enemies per wave
 # TODO - replace with a curve or equation
 const TEST_CHAMBER_ZOMBIE_COUNT_PER_WAVE = {
-	1: 10,
-	2: 20,
-	3: 30,
-	4: 30,
-	5: 30,
-	6: 40,
-	7: 50,
-	8: 1000
+	1: 1,
+	2: 1,
+	3: 1,
+	4: 1,
+	5: 1,
+	6: 1,
+	7: 1,
+	8: 1,
+	9: 1,
+	10: 1,
+	11: 1,
+	12: 1,
+	13: 1
 }
 
 const THE_LABS_ZOMBIE_COUNT_PER_WAVE = {
@@ -39,6 +44,8 @@ const THE_LABS_ZOMBIE_COUNT_PER_WAVE = {
 }
 
 var WAVE_INDEX
+
+var zombie_base_health = 150
 
 var wave_number: int = 1:
 	set(value):
@@ -82,6 +89,15 @@ func _ready():
 func start_wave():
 	assert(WAVE_INDEX.keys().find(wave_number) != -1, "Wave Number not in global wave index")
 	zombies_to_be_killed = WAVE_INDEX[wave_number]
+	set_base_health()
+	
+func set_base_health():
+	if wave_number < 10:
+		zombie_base_health = 150 + ((wave_number - 1) * 100)
+
+	else:
+		zombie_base_health = zombie_base_health * 1.1
+	print("Zombie base health set - " + str(zombie_base_health))
 
 func end_wave():
 	_kill_all_zombies()  # just to be extra sure
@@ -107,6 +123,7 @@ func _process(_delta):
 			zombies_on_map += 1
 			var zombie_instance = spawner.spawn_zombie()
 			zombie_container.add_child(zombie_instance)
+			zombie_instance.set_max_health(zombie_base_health)
 			zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
 	
 	zombies_on_map = len(get_tree().get_nodes_in_group("Zombies"))  # This is just a safe-gaurd incase the counter gets in a bad state
@@ -121,6 +138,8 @@ func _process(_delta):
 				zombies_on_map += 1
 				var zombie_instance = spawner.spawn_zombie()
 				zombie_container.add_child(zombie_instance)
+				zombie_instance.set_max_health(zombie_base_health)
+				zombie_instance.fill_health()
 				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
 
 func _select_spawners():

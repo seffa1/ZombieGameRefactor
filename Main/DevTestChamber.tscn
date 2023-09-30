@@ -834,7 +834,7 @@ rotation = 1.57079
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D3"]
-position = Vector2(520, 331)
+position = Vector2(-636.018, 2843)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
@@ -922,27 +922,24 @@ rotation = -1.57079
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
-spawn_delay_interval = 2.0
+spawn_delay_interval = 0.0
 MAX_ZOMBIES_ON_MAP = 30
 wave_spawn_type = "test_chamber"
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(-912, -7.62939e-06)
+position = Vector2(153, 1215)
+spawn_interval = 1.0
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1796, 353)
+spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner3" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(1090, 1392)
+position = Vector2(1060, 1044)
+spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
-
-[node name="ZombieSpawner4" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
-position = Vector2(3434, 449)
-
-[node name="ZombieSpawner5" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
-position = Vector2(-2936, 549)
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("26_ii3jy")]
 

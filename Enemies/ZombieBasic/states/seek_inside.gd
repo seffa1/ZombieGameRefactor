@@ -30,10 +30,6 @@ func exit():
 	return
 
 func update(delta):
-	# Check if dead
-	if owner.health_component.health == 0:
-		emit_signal("finished", "die")
-		return
 
 	# Check if weve hit a trigger
 	if owner.trigger_detector.has_overlapping_areas():

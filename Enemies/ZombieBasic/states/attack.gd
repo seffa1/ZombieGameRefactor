@@ -18,11 +18,6 @@ func update(delta):
 	owner.velocity = owner.velocity_component.velocity
 	owner.move_and_slide()
 	
-	# Check if dead
-	if owner.health_component.health == 0:
-		emit_signal("finished", "die")
-		return
-		
 	# Check if player not in reach anymore
 	if !owner.player_detector.has_overlapping_areas():
 		emit_signal("finished", "seek_player")

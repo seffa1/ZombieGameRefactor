@@ -15,6 +15,7 @@ WEAPON_NAME = "PISTOL_01"
 fire_type = "single_fire"
 bullet = ExtResource("2_ipupn")
 bullet_speed = 2000
+bullet_damage = 100.0
 fire_rate = 0.05
 max_bullet_reserve = 250
 

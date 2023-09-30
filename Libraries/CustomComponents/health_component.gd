@@ -38,4 +38,6 @@ func _process(delta):
 		return
 	if regen_wait_timer.is_stopped():
 		health += health_regeneration_amount_per_tick
-	
+
+func fill_health():
+	health = max_health

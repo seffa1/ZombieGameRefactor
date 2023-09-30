@@ -19,11 +19,6 @@ func update(delta):
 	owner.velocity = owner.velocity_component.velocity
 	owner.move_and_slide()
 	
-	# Check if dead
-	if owner.health_component.health == 0:
-		emit_signal("finished", "die")
-		return
-	
 	# We should always have an overlapping window
 	if owner.window_detector.has_overlapping_areas():
 		# Check if the window's health is down to zero
