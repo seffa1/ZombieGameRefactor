@@ -15,6 +15,7 @@ WEAPON_NAME = "MP7"
 fire_type = "automatic"
 bullet = ExtResource("2_ltg8i")
 bullet_speed = 2500
+bullet_damage = 80.0
 bullet_knockback = 2.0
 fire_rate = 0.07
 max_bullet_reserve = 250

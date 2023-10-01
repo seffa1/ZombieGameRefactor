@@ -147,6 +147,7 @@ func _select_spawners():
 
 # Tracking zombies ------------------------------------
 func _on_zombie_death(zombie: CharacterBody2D):
+	Events.emit_signal("give_player_money", 150)
 	var id = zombie.get_instance_id()
 	if id in zombie_ids:
 		zombie_ids.erase(id)

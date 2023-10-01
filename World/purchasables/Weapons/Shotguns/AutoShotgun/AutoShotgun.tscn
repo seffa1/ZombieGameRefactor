@@ -17,6 +17,7 @@ bullet = ExtResource("2_p7xti")
 bullets_per_fire = 5
 bullet_spread = 0.2
 bullet_speed = 2500
+bullet_damage = 100.0
 fire_rate = 0.1
 clip_size = 10
 max_bullet_reserve = 80

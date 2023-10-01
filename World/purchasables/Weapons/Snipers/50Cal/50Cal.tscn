@@ -15,6 +15,7 @@ WEAPON_NAME = "50_CAL"
 fire_type = "single_fire"
 bullet = ExtResource("2_7sq4n")
 bullet_speed = 2500
+bullet_damage = 400.0
 bullet_knockback = 5.0
 fire_rate = 0.5
 clip_size = 8
