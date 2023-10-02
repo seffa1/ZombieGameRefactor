@@ -10,8 +10,8 @@ extends "res://Libraries/state.gd"
 func enter():
 	# disable hurt box
 	for hurtbox in hurtboxes:
-		hurtbox.monitorable = false
-		hurtbox.monitoring = false
+		hurtbox.set_deferred("monitorable", false)
+		hurtbox.set_deferred("monitoring", false)
 	animation_player.play("zombie_death")
 	# Give player money
 	Events.emit_signal("give_player_money", death_money_reward)

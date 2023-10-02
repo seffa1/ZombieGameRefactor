@@ -6,6 +6,8 @@ extends Control
 @onready var reserve_count = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/BulletsInReserve
 @onready var wave_number = $MarginContainer/VBoxContainer/Wave
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 func _ready():
 	set_as_top_level(true)
@@ -18,9 +20,12 @@ func _ready():
 	Events.player_equipped_clip_count_change.connect(_update_equipped_clip_count)
 	Events.player_equipped_reserve_count_change.connect(_update_equipped_reserve_count)
 	Events.player_equipped_change.connect(_on_weapon_manager_player_equipped_change)
+	
+	animation_player.play("start_game")
 
 func _on_wave_number_change(wave: int):
 	wave_number.text = str(wave)
+	animation_player.play("wave_start")
 	
 func _update_equipped_clip_count(count: int):
 	clip_count.text = str(count)
@@ -32,7 +37,8 @@ func _player_money_change(money: int):
 	player_money.text = str(money)
 
 func _player_perks_change(perks: Array[String]):
-	return
+	print("PERKS: ")
+	print(perks)
 # TODO
 #	var perk_text = ""
 #	for perk in perks:

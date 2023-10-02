@@ -7,6 +7,7 @@ This is for looping music, looping ambiance, global sound effects.
 
 @onready var sound_map = {
 	"sub_hit": preload("res://World/sounds/vfx/FF_HFX_hit_lilac.wav"),
+	"piano_loop": preload("res://World/sounds/music/BO_HWD_140_Keys_Loop_Piano_High_Ching_Em.wav"),
 }
 
 var _current_sound := stream:
@@ -20,3 +21,12 @@ func play_sound(sound_name: String) -> void:
 	var sound = sound_map[sound_name]
 	self._current_sound = sound
 	play()
+
+func fade_out(time: float):
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "volume_db", -100, time)
+	tween.tween_callback(reset)
+
+func reset():
+	stop()
+	volume_db = -8

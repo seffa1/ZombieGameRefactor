@@ -8,44 +8,15 @@ Responsible for controlling and tracking the waves of zombies spawning.
 # Nodes
 @onready var round_start_spawn_delay: Timer = $RoundStartSpawnDelay
 @onready var zombie_container: Node = $ZombieContainer
+@onready var vfx_audio: AudioStreamPlayer = $VFXAudio
+@onready var vfx_audio2: AudioStreamPlayer = $VFXAudio2
 
 # Variables
 @export var spawn_delay_interval: float = 5  # seconds between each round of wave spawning
 @export var MAX_ZOMBIES_ON_MAP: int = 30
 @export_enum("the_labs", "test_chamber") var wave_spawn_type: String
 
-# How many enemies per wave
-# TODO - replace with a curve or equation
-const TEST_CHAMBER_ZOMBIE_COUNT_PER_WAVE = {
-	1: 1,
-	2: 1,
-	3: 1,
-	4: 1,
-	5: 1,
-	6: 1,
-	7: 1,
-	8: 1,
-	9: 1,
-	10: 1,
-	11: 1,
-	12: 1,
-	13: 1
-}
-
-const THE_LABS_ZOMBIE_COUNT_PER_WAVE = {
-	1: 4,
-	2: 9,
-	3: 12,
-	4: 17,
-	5: 20,
-	6: 27,
-	7: 32,
-	8: 40
-}
-
-var WAVE_INDEX
-
-var zombie_base_health = 150
+var zombie_base_health = 150  # Gets adjustet each round
 
 var wave_number: int = 1:
 	set(value):
@@ -77,19 +48,26 @@ func _ready():
 	Events.zombie_death.connect(_on_zombie_death)
 	Events.zombie_despawn.connect(_on_zombie_despawn)
 	Events.emit_signal("wave_number_change", wave_number)
-	if wave_spawn_type == "test_chamber":
-		WAVE_INDEX = TEST_CHAMBER_ZOMBIE_COUNT_PER_WAVE
-	elif wave_spawn_type == "the_labs":
-		WAVE_INDEX = THE_LABS_ZOMBIE_COUNT_PER_WAVE
 	
 	# Start the wave, connect signals, initialize UI
 	start_wave()
 
 # Controlling the wave ------------------------------------
 func start_wave():
-	assert(WAVE_INDEX.keys().find(wave_number) != -1, "Wave Number not in global wave index")
-	zombies_to_be_killed = WAVE_INDEX[wave_number]
+	self.zombies_to_be_killed = get_zombie_count(wave_number)
+	Events.emit_signal("zombies_to_kill_change", zombies_to_be_killed)
 	set_base_health()
+	
+func get_zombie_count(wave_number):
+	var multiplyer
+	if wave_number < 5:
+		multiplyer = 0.2 * wave_number
+	elif wave_number < 10:
+		multiplyer = 1
+	else:
+		multiplyer = wave_number * 0.15
+	
+	return roundi(24 * multiplyer)
 	
 func set_base_health():
 	if wave_number < 10:
@@ -103,9 +81,12 @@ func end_wave():
 	_kill_all_zombies()  # just to be extra sure
 	wave_number += 1
 	round_start_spawn_delay.start(spawn_delay_interval)
+	vfx_audio2.play_sound("sub_hit")
+	vfx_audio.play_sound("piano_loop")
 	
 func _on_spawn_delay_timer_timeout():
 	start_wave()
+	vfx_audio.fade_out(5.0)
 
 # Controlling the spawns ------------------------------------
 func _process(_delta):
@@ -139,7 +120,10 @@ func _process(_delta):
 				var zombie_instance = spawner.spawn_zombie()
 				zombie_container.add_child(zombie_instance)
 				zombie_instance.set_max_health(zombie_base_health)
-				zombie_instance.fill_health()
+				
+				var error = zombie_instance.fill_health()
+				if error:
+					assert(false, "Error filling health: " + str(error))
 				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
 
 func _select_spawners():

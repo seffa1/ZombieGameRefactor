@@ -132,19 +132,24 @@ const mystery_box_spawn_weights = [
 # The key is what we consider the 'perk name' and is what must match the perks that are created
 const PERK_INDEX = {
 	"STAMINA_BOOST": {
-		"nice_name": "Stamina Boost"
+		"nice_name": "Stamina Boost",
+		"HUD_image": preload("res://World/purchasables/perks/images/element_0101_Layer-103.png")
 	},
 	"RAPID_FIRE": {
-		"nice_name": "Rapid Fire"
+		"nice_name": "Rapid Fire",
+		"HUD_image": preload("res://World/purchasables/perks/images/element_0100_Layer-102.png")
 	},
 	"HEALTH_BOOST": {
-		"nice_name": "Health Boost"
+		"nice_name": "Health Boost",
+		"HUD_image": preload("res://World/purchasables/perks/images/element_0098_Layer-100.png")
 	},
 	"QUICK_RELOAD": {
-		"nice_name": "Quick Reload"
+		"nice_name": "Quick Reload",
+		"HUD_image": preload("res://World/purchasables/perks/images/element_0099_Layer-101.png")
 	},
 	"STEADY_AIM": {
-		"nice name": "Steady Aim"
+		"nice name": "Steady Aim",
+		"HUD_image": preload("res://World/purchasables/perks/images/element_0005_Layer-7.png")
 	}
 }
 

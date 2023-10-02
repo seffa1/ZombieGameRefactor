@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bw4at5u5a8yrl"
-path="res://.godot/imported/element_0005_Layer-7.png-b0f90b4385a4b2695d4f2521956743d0.ctex"
+path="res://.godot/imported/element_0005_Layer-7.png-ac2ba9e3587913fb0d967ed95170c9ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/images/HUD/element_0005_Layer-7.png"
-dest_files=["res://.godot/imported/element_0005_Layer-7.png-b0f90b4385a4b2695d4f2521956743d0.ctex"]
+source_file="res://World/purchasables/perks/images/element_0005_Layer-7.png"
+dest_files=["res://.godot/imported/element_0005_Layer-7.png-ac2ba9e3587913fb0d967ed95170c9ca.ctex"]
 
 [params]
 
