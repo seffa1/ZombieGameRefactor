@@ -120,10 +120,6 @@ func _process(_delta):
 				var zombie_instance = spawner.spawn_zombie()
 				zombie_container.add_child(zombie_instance)
 				zombie_instance.set_max_health(zombie_base_health)
-				
-				var error = zombie_instance.fill_health()
-				if error:
-					assert(false, "Error filling health: " + str(error))
 				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
 
 func _select_spawners():
