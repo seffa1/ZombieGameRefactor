@@ -50,15 +50,15 @@ func set_max_health(zombie_base_health: int):
 	Zombies health increases by 100 each round until they hit 950 (Round 9)
 	After this, zombie health follows this formula: health = health x 1.1
 	"""
-	head_health.set_deferred("max_health", roundi(zombie_base_health * .5))
+	head_health.max_health = zombie_base_health * .5
 	head_health.fill_health()
-	left_upper_health.set_deferred("max_health", roundi(zombie_base_health * 1.5))
+	left_upper_health.max_health = zombie_base_health * 1.5
 	left_upper_health.fill_health()
-	right_upper_health.set_deferred("max_health", roundi(zombie_base_health * 1.5))
+	right_upper_health.max_health = zombie_base_health * 1.5
 	right_upper_health.fill_health()
-	left_lower_health.set_deferred("max_health", zombie_base_health)
+	left_lower_health.max_health = zombie_base_health
 	left_lower_health.fill_health()
-	right_lower_health.set_deferred("max_health",zombie_base_health )
+	right_lower_health.max_health = zombie_base_health * .5
 	right_lower_health.fill_health()
 
 func _on_player_position_changed(player_position: Vector2):
