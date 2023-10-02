@@ -14,7 +14,6 @@ func _ready():
 
 	Events.player_money_change.connect(_player_money_change)
 	Events.wave_number_change.connect(_on_wave_number_change)
-	 
 	Events.player_perks_change.connect(_player_perks_change)
 	
 	Events.player_equipped_clip_count_change.connect(_update_equipped_clip_count)

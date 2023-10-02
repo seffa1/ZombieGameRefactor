@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://5wpk32ea7ptu"]
 
+[ext_resource type="Script" path="res://UI/HUD/hud.gd" id="1_6ufjd"]
 [ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="1_lg432"]
-[ext_resource type="Script" path="res://UI/HUD/HUD.gd" id="1_mdlhf"]
 [ext_resource type="Texture2D" uid="uid://cgtj50r6j8864" path="res://UI/images/HUD/element_0004_Layer-6.png" id="2_eqv7c"]
 
 [sub_resource type="Animation" id="Animation_58kr3"]
@@ -269,7 +269,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mdlhf")
+script = ExtResource("1_6ufjd")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
