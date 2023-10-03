@@ -19,7 +19,6 @@ func _on_zombie_death(zombie: CharacterBody2D):
 	if spawn_max_ammo_this_round:
 		# This gaurentees a max ammo spawns before the last zombie is killed
 		var spawn_chance = ( float(zombie_deaths_this_round) /  float(zombies_to_kill_this_round)) 
-		print(spawn_chance)
 		if spawn_chance > randi_range(0, .98):
 			spawn_max_ammo(zombie.global_position)
 
@@ -29,14 +28,15 @@ func _on_wave_started(wave_number: int, zombies_to_be_killed: int):
 	zombie_deaths_this_round = 0
 	rounds_since_max_ammo += 1
 	
-	print(get_round_max_ammo_drop_chance(wave_number))
 	if get_round_max_ammo_drop_chance(wave_number) > randf_range(0, 1):
-		print("Max Ammo spawning this round!")
 		spawn_max_ammo_this_round = true
 
 
 func get_round_max_ammo_drop_chance(wave_number) -> float:
-	""" Chance there will be a max ammo this round. """
+	""" 
+	Chance there will be a max ammo this round. 
+	These are the constants to adjust if max ammo frequency needs to be adjusted.
+	"""
 	if wave_number < 30:
 		return float(rounds_since_max_ammo) * 0.17
 	else:

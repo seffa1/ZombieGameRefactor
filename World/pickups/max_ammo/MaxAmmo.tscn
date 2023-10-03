@@ -1,14 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7yfy5h1lnwxk"]
+[gd_scene load_steps=6 format=3 uid="uid://b7yfy5h1lnwxk"]
 
 [ext_resource type="PackedScene" uid="uid://b5g42pdlwm0ph" path="res://World/pickups/Pickup.tscn" id="1_fnchg"]
 [ext_resource type="Script" path="res://World/pickups/max_ammo/max_ammo.gd" id="2_o6alm"]
+[ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="3_2we6k"]
+
+[sub_resource type="Gradient" id="Gradient_w4pw8"]
+offsets = PackedFloat32Array(0.0671642, 0.343284, 0.942786, 1)
+colors = PackedColorArray(0.462745, 0.435294, 0.376471, 1, 0.380392, 0.419608, 0.192157, 1, 0.858824, 0.870588, 0.431373, 1, 1, 1, 1, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vu6jo"]
 load_path = "res://.godot/imported/texture_max_ammo.png-4fd3acc6473c48b09235a5caa7c34dd9.ctex"
 
 [node name="MaxAmmo" instance=ExtResource("1_fnchg")]
+z_index = 1
 script = ExtResource("2_o6alm")
 
-[node name="Sprite" parent="." index="1"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="0"]
+amount = 10
+lifetime = 30.0
+texture = ExtResource("3_2we6k")
+emission_shape = 1
+emission_sphere_radius = 38.54
+spread = 107.31
+gravity = Vector2(0, 0)
+initial_velocity_max = 62.5
+orbit_velocity_min = 0.6
+orbit_velocity_max = 0.6
+radial_accel_min = -0.6
+radial_accel_max = 0.6
+damping_min = 47.62
+damping_max = 100.0
+scale_amount_min = 0.0
+scale_amount_max = 0.05
+color_ramp = SubResource("Gradient_w4pw8")
+
+[node name="Sprite" parent="." index="2"]
 position = Vector2(0, 4.76837e-07)
 texture = SubResource("CompressedTexture2D_vu6jo")

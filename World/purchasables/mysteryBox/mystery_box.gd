@@ -36,7 +36,6 @@ func _ready():
 	
 	assert(len(starting_locations) > 0, "At least one location needs to be a starting location!")
 	
-		
 	# Set position to random starting location position
 	var random_index = randi_range(0, len(starting_locations) - 1)
 	selected_location = starting_locations[random_index]
