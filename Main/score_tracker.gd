@@ -5,12 +5,23 @@ var save_path = SAVE_DIR + "highscore.dat"
 
 
 var score = {
-	"bullets_fired": 0,
-	"bullets_hit": 0,
-	"wave": 1,
-	"kills": 0,
-	"points": 0
+	"TheLabs": {
+		"bullets_fired": 0,
+		"bullets_hit": 0,
+		"wave": 1,
+		"kills": 0,
+		"points": 0
+	},
+	"DevTestChamber": {
+		"bullets_fired": 0,
+		"bullets_hit": 0,
+		"wave": 1,
+		"kills": 0,
+		"points": 0
+	},
 }
+
+var current_level: String
 
 func _ready():
 	Events.bullet_fired.connect(_on_bullet_fired)
@@ -22,6 +33,14 @@ func _ready():
 	# Make highscore directory if it doesn't exists
 	if !DirAccess.dir_exists_absolute(SAVE_DIR):
 		DirAccess.make_dir_absolute(SAVE_DIR)
+
+	match get_tree().get_current_scene().get_name():
+		"GameInitializerDev":
+			current_level = "DevTestChamber"
+		"GameInitializerLabs":
+			current_level = "TheLabs"
+		_:
+			assert(false, "Root name not handled: " + str(get_tree().get_current_scene().get_name()))
 
 func updateHighScore():
 	"""
@@ -46,11 +65,12 @@ func updateHighScore():
 		var oldSaveData = file.get_var()
 
 		# if we got a new highest level, save current game data
-		if score["wave"] > oldSaveData["wave"]:
+		print(score)
+		if score[current_level]["wave"] > oldSaveData[current_level]["wave"]:
 			newHighScore = true
 
 		# if we got the save level but more kills, save current game data
-		elif score["wave"] == oldSaveData["wave"] and score["kills"] > oldSaveData["kills"]:
+		elif score[current_level]["wave"] == oldSaveData[current_level]["wave"] and score[current_level]["kills"] > oldSaveData[current_level]["kills"]:
 			newHighScore = true
 
 	if newHighScore:
@@ -65,26 +85,42 @@ func updateHighScore():
 		file.store_var(score)
 
 func _on_bullet_fired():
-	score["bullets_fired"] += 1
+	score[current_level]["bullets_fired"] += 1
+	print(score)
 
 var previous_RID: RID
+var previous_random_id: int
 
-func _on_bullet_hit(bullet_RID):
+func _on_bullet_hit(bullet_RID, random_id):
+	
+	# Filter out bullets that hit multiple times
 	if previous_RID != bullet_RID or !previous_RID:
-		score["bullets_hit"] += 1
-		previous_RID = bullet_RID
 
-		# Player gets 10 points for unique each bullet that hits
-		Events.emit_signal("give_player_money", 10)
+		
+		# Filter out bullets that were fired at the same time ( prevents shotguns from counting as multiple bullet hits )
+		if previous_random_id != random_id or !previous_random_id:
+			print("current")
+			print(random_id)
+			print("previou")
+			print(previous_random_id)
+			score[current_level]["bullets_hit"] += 1
+			Events.emit_signal("give_player_money", 10)  # Player gets 10 points for unique each bullet that hits
+
+			previous_RID = bullet_RID
+			previous_random_id = random_id
+		else:
+			print("Shot gun duplicate")
+
+
 
 func _on_wave_started(wave_number: int):
-	score["wave"] = wave_number
+	score[current_level]["wave"] = wave_number
 
 func _on_zombie_death(_zombie: CharacterBody2D):
-	score["kills"] += 1
+	score[current_level]["kills"] += 1
 
 func _on_give_player_money(money: int):
-	score["points"] += money
+	score[current_level]["points"] += money
 
 func get_score():
 	return score

@@ -26,10 +26,11 @@ const _IMPACT_SAMPLES = [
 var smoke_trail
 var weapon_level: int
 
-func init(bullet_damage: int, bullet_shooter: CharacterBody2D, bullet_knockback: float, weapon_level: int):
+func init(bullet_damage: int, bullet_shooter: CharacterBody2D, bullet_knockback: float, weapon_level: int, random_id: int):
 	hit_box_component.damage = bullet_damage
 	hit_box_component.shooter = bullet_shooter
 	hit_box_component.bullet_knockback = bullet_knockback
+	hit_box_component.random_id = random_id
 	self.weapon_level = weapon_level
 
 func start(position, direction, speed):

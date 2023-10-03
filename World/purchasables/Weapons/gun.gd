@@ -163,6 +163,8 @@ func shoot() -> void:
 	# since the gun is not a part of the scene tree (its added via code) 
 	# we have to use get_parent() instead.
 	var shooter = get_parent().owner
+	
+	var random_bullet_id = Globals.get_random_number(1000)
 
 	# we can ignore spread
 	if bullets_per_fire == 1:
@@ -171,7 +173,7 @@ func shoot() -> void:
 		
 		var bullet_instance = bullet.instantiate()
 		ObjectRegistry.register_projectile(bullet_instance)
-		bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level)
+		bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id)
 		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 
 	# we cannot ignore spread ( like a shot gun )
@@ -190,7 +192,7 @@ func shoot() -> void:
 			
 			var bullet_instance = bullet.instantiate()
 			ObjectRegistry.register_projectile(bullet_instance)
-			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level)
+			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id)
 			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 			
 			rotation_direction *= -1

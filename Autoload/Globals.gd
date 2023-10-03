@@ -165,3 +165,8 @@ func mouse_on_screen() -> bool:
 	if get_viewport().get_mouse_position().y > get_viewport().get_visible_rect().size.y or get_viewport().get_mouse_position().y < 0:
 		return false
 	return true
+
+var rng = RandomNumberGenerator.new()
+
+func get_random_number(range: int):
+	return rng.randi_range(-range, range)

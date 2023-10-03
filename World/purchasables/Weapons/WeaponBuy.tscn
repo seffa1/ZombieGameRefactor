@@ -13,7 +13,3 @@ ammo_cost_level_2 = 4500
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("3_ixiwv")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]

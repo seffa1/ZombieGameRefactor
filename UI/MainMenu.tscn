@@ -204,7 +204,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("9_pj024")
 theme_override_font_sizes/font_size = 72
-text = "High Score"
+text = "High Score - Labs"
 horizontal_alignment = 1
 vertical_alignment = 1
 

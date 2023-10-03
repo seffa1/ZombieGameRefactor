@@ -20,19 +20,25 @@ extends Control
 const SAVE_DIR = "user://highscore/"
 var save_path = SAVE_DIR + "highscore.dat"
 
+var current_level
+
 func open():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	menu_sounds.play_open()
 	show()
-#	_show_lights()
+
 	get_tree().paused = true
 	set_process_input(true)
 	vfx_audio.play_sound("sub_hit")
 
-	
 	var score = score_tracker.get_score()
+	print('Round score:')
+	print(score)
+	current_level = score_tracker.current_level
 	score_tracker.updateHighScore()
 	var previousBest = getHighScoreData()
+	print('Previous Best:')
+	print(previousBest)
 	populate_highscore(score, previousBest)
 
 func getHighScoreData():
@@ -49,38 +55,31 @@ func getHighScoreData():
 	return file.get_var()
 
 func populate_highscore(score, previousBest):
-	#var score = {
-	#	"bullets_fired": 0,
-	#	"bullets_hit": 0,
-	#	"wave": 1,
-	#	"kills": 0,
-#		"points": 0
-	#}
 	# Populate current score
-	wave_number.text = str(score["wave"])
-	kill_count.text = str(score["kills"])
-	points_earned.text = str(score["points"])
-	shots_fired.text = str(score["bullets_fired"])
+	wave_number.text = str(score[current_level]["wave"])
+	kill_count.text = str(score[current_level]["kills"])
+	points_earned.text = str(score[current_level]["points"])
+	shots_fired.text = str(score[current_level]["bullets_fired"])
 	
 	var accuracy_label
-	if score["bullets_fired"] == 0:
+	if score[current_level]["bullets_fired"] == 0:
 		accuracy_label = 0
 	else:
-		accuracy_label = round(( float(score["bullets_hit"]) / float(score["bullets_fired"])) * 100 )
+		accuracy_label = round(( float(score[current_level]["bullets_hit"]) / float(score[current_level]["bullets_fired"])) * 100 )
 	accuracy.text = str(accuracy_label) + " %"
 
 	# Populate previous best score
 	if previousBest:
-		previousBest_wave_number.text = str(previousBest["wave"])
-		previousBest_kill_count.text = str(previousBest["kills"])
-		previousBest_points_earned.text = str(previousBest["points"])
-		previousBest_shots_fired.text = str(previousBest["bullets_fired"])
+		previousBest_wave_number.text = str(previousBest[current_level]["wave"])
+		previousBest_kill_count.text = str(previousBest[current_level]["kills"])
+		previousBest_points_earned.text = str(previousBest[current_level]["points"])
+		previousBest_shots_fired.text = str(previousBest[current_level]["bullets_fired"])
 		
 		var previous_best_accuracy_label
-		if previousBest["bullets_fired"] == 0:
+		if previousBest[current_level]["bullets_fired"] == 0:
 			previous_best_accuracy_label = 0
 		else:
-			previous_best_accuracy_label = round(( float(previousBest["bullets_hit"]) / float(previousBest["bullets_fired"])) * 100 )
+			previous_best_accuracy_label = round(( float(previousBest[current_level]["bullets_hit"]) / float(previousBest[current_level]["bullets_fired"])) * 100 )
 		previousBest_accuracy.text = str(previous_best_accuracy_label) + " %"
 
 

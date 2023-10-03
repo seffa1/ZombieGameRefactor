@@ -65,5 +65,5 @@ signal vessel_charged(target_vessel_id)
 
 # Additional High Score Tracking
 signal bullet_fired()
-signal bullet_hit(bullet_RID)
+signal bullet_hit(bullet_RID, random_id)
 
