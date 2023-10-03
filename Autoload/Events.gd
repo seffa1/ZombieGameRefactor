@@ -61,7 +61,7 @@ signal zombie_despawn(zombie: CharacterBody2D)
 
 # Gameplay events
 signal power_activated
-signal vessel_charged(zombie_soul: Node2D)
+signal vessel_charged(target_vessel_id)
 
 # Additional High Score Tracking
 signal bullet_fired()

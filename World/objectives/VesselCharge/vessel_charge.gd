@@ -21,7 +21,10 @@ func _on_zombie_death(zombie: CharacterBody2D):
 	if zombie_detector.overlaps_body(zombie):
 		spawn_zombie_soul(zombie.global_position)
 
-func _on_vessel_charged(zombie_soul: Node2D):
+func _on_vessel_charged(vessel_charge_id):
+	# If this soul came from another vessel charge, ignore
+	if self.get_instance_id() != vessel_charge_id:
+		return
 	souls_collected += 1
 	chargable_light_flicker.charge()
 
@@ -33,9 +36,9 @@ func _on_vessel_charged(zombie_soul: Node2D):
 func spawn_zombie_soul(spawn_location: Vector2):
 	var instance = zombie_soul_scene.instantiate()
 	instance.global_position = spawn_location
-	instance.init(global_position)  # Target location is the vessel's global position
+	instance.init(global_position, self.get_instance_id())  # Target location is the vessel's global position
 	ObjectRegistry.register_effect(instance)
-	
+
 func complete_charging():
 	zombie_detector.monitoring = false
 	animation_player.play("finish_charge")

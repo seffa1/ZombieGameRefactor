@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @onready var short_groans = $"ShortGroans-AudioRandomizer"
 @onready var long_groans = $"LongGroans-AudioRandomizer"

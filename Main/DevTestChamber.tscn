@@ -914,7 +914,16 @@ layer_1/tile_data = PackedInt32Array(917502, 0, 2, 851990, 131072, 2, -65515, 19
 [node name="Objectives" type="Node" parent="GameWorld"]
 
 [node name="VesselCharge" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
-position = Vector2(613, 128)
+position = Vector2(-827, 688)
+souls_needed_to_charge = 3.0
+
+[node name="VesselCharge2" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
+position = Vector2(520, 220)
+souls_needed_to_charge = 3.0
+
+[node name="VesselCharge3" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
+position = Vector2(645, 1086)
+souls_needed_to_charge = 3.0
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(139, -183)

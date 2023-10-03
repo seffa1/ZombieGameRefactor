@@ -8,8 +8,10 @@ Spawned by the vessel charge when a zombie is killed in the vessel area.
 var speed_increase: float = 0.0
 
 var target_location: Vector2
+var target_vessel_id
 
-func init(location: Vector2):
+func init(location: Vector2, vessel_id):
+	target_vessel_id = vessel_id
 	target_location = location
 	
 func _ready():
@@ -24,7 +26,7 @@ func _process(delta):
 	var distance_vector = (target_location - global_position)
 	
 	if distance_vector.length() <= 10:
-		Events.emit_signal("vessel_charged", self)
+		Events.emit_signal("vessel_charged", target_vessel_id)
 		# TODO - add despawn animation
 		queue_free()
 	

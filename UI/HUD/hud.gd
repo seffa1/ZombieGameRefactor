@@ -7,7 +7,7 @@ extends Control
 @onready var wave_number = $MarginContainer/VBoxContainer/Wave
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var perk_container: HBoxContainer = $MarginContainer/PerkContainer
+@onready var perk_container: HBoxContainer = $MarginContainer/MarginContainer/PerkContainer
 
 func _ready():
 	set_as_top_level(true)

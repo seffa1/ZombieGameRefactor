@@ -273,7 +273,7 @@ _data = {
 
 [node name="VesselCharge" type="Node2D"]
 script = ExtResource("1_gtw7i")
-souls_needed_to_charge = 1.0
+souls_needed_to_charge = 20.0
 
 [node name="ZombieDetector" type="Area2D" parent="."]
 collision_layer = 0

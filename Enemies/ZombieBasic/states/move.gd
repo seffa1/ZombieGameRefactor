@@ -41,6 +41,7 @@ func update(delta):
 	# Check if we should do a random groan
 	if groan_timer.is_stopped():
 		zombie_groans.play_long()
+		print("Groaning")
 		groan_timer.start(groan_interval + randf_range(0, 10))
 
 	# Check if theres a player to attack

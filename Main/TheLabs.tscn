@@ -4066,11 +4066,10 @@ layer_1/tile_data = PackedInt32Array(-983114, 0, 0, -917578, 0, 1, -852042, 0, 1
 position = Vector2(307, -2430)
 
 [node name="VesselCharge2" parent="GameWorld/Environment/Objectives" instance=ExtResource("34_81lr8")]
-position = Vector2(-4827, -723)
-rotation = -1.57079
+position = Vector2(-4273, -244)
 
 [node name="VesselCharge3" parent="GameWorld/Environment/Objectives" instance=ExtResource("34_81lr8")]
-position = Vector2(2350, 2265)
+position = Vector2(2534, 2177)
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
 position = Vector2(889, 449)

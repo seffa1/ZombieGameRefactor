@@ -2318,6 +2318,7 @@ scale = Vector2(1.02303, 0.979651)
 skew = 0.000402093
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBox-Head" type="Area2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio")]
 position = Vector2(0.0332603, -3.90296)
@@ -2345,12 +2346,14 @@ rotation = 0.0634662
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 42, -125)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper"]
 position = Vector2(144, -31)
 rotation = 0.128789
 rest = Transform2D(1, 0, 0, 1, 144, -31)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower"]
 position = Vector2(71, 31)
@@ -2402,12 +2405,14 @@ rotation = -0.348765
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, 35, 101)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper"]
 position = Vector2(127, 53)
 rotation = -0.128698
 rest = Transform2D(1, 0, 0, 1, 127, 53)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower"]
 position = Vector2(100, 10)
@@ -2572,6 +2577,8 @@ position = Vector2(21, -2)
 shape = SubResource("CircleShape2D_j67cy")
 debug_color = Color(0.2, 0.607843, 0.588235, 0.419608)
 
+[node name="ZombieGroans-Audio" parent="." instance=ExtResource("34_phdnq")]
+
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("20_2qam5")
 START_STATE = NodePath("SeekWindow")
@@ -2641,8 +2648,6 @@ friction = 800.0
 
 [node name="StatusRecieverComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("30_tn6ka")]
 velocity_component = NodePath("../VelocityComponent")
-
-[node name="ZombieGroans-Audio" parent="." instance=ExtResource("34_phdnq")]
 
 [node name="GroanTimer" type="Timer" parent="."]
 one_shot = true
