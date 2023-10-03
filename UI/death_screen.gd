@@ -32,13 +32,9 @@ func open():
 	vfx_audio.play_sound("sub_hit")
 
 	var score = score_tracker.get_score()
-	print('Round score:')
-	print(score)
 	current_level = score_tracker.current_level
 	score_tracker.updateHighScore()
 	var previousBest = getHighScoreData()
-	print('Previous Best:')
-	print(previousBest)
 	populate_highscore(score, previousBest)
 
 func getHighScoreData():

@@ -65,7 +65,6 @@ func updateHighScore():
 		var oldSaveData = file.get_var()
 
 		# if we got a new highest level, save current game data
-		print(score)
 		if score[current_level]["wave"] > oldSaveData[current_level]["wave"]:
 			newHighScore = true
 
@@ -86,7 +85,6 @@ func updateHighScore():
 
 func _on_bullet_fired():
 	score[current_level]["bullets_fired"] += 1
-	print(score)
 
 var previous_RID: RID
 var previous_random_id: int
@@ -96,24 +94,17 @@ func _on_bullet_hit(bullet_RID, random_id):
 	# Filter out bullets that hit multiple times
 	if previous_RID != bullet_RID or !previous_RID:
 
-		
 		# Filter out bullets that were fired at the same time ( prevents shotguns from counting as multiple bullet hits )
 		if previous_random_id != random_id or !previous_random_id:
-			print("current")
-			print(random_id)
-			print("previou")
-			print(previous_random_id)
 			score[current_level]["bullets_hit"] += 1
 			Events.emit_signal("give_player_money", 10)  # Player gets 10 points for unique each bullet that hits
 
 			previous_RID = bullet_RID
 			previous_random_id = random_id
-		else:
-			print("Shot gun duplicate")
 
 
 
-func _on_wave_started(wave_number: int):
+func _on_wave_started(wave_number: int, zombie_to_be_killed: int):
 	score[current_level]["wave"] = wave_number
 
 func _on_zombie_death(_zombie: CharacterBody2D):

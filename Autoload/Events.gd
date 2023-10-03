@@ -55,7 +55,7 @@ signal shake_screen(intensity, duration)
 signal zombies_to_kill_change(amount: int)
 signal wave_number_change(wave: int)
 signal zombies_on_map_change(quantity: int)
-signal wave_started(wave_number)
+signal wave_started(wave_number: int, zombies_to_be_killed: int)
 signal zombie_death(zombie: CharacterBody2D)
 signal zombie_despawn(zombie: CharacterBody2D)
 

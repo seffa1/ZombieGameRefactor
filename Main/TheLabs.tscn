@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=72 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_yi02j"]
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_mu5om"]
 [ext_resource type="PackedScene" uid="uid://hkwukd3bresb" path="res://World/objectives/VesselCharge/VesselCharge.tscn" id="34_81lr8"]
+[ext_resource type="PackedScene" uid="uid://b58natsckpqcl" path="res://World/infrastructure/PowerUpManager.tscn" id="38_8ura7"]
 [ext_resource type="PackedScene" uid="uid://d2oddfj7gwl4t" path="res://World/purchasables/Weapons/Shotguns/Spas/WeaponBuySpas.tscn" id="40_nhfvi"]
 [ext_resource type="PackedScene" uid="uid://bb1ef3n186kl8" path="res://World/purchasables/Weapons/SubmachineGuns/MP7/WeaponBuyMP7.tscn" id="42_l8j0f"]
 [ext_resource type="PackedScene" uid="uid://1ux02i0bfhlb" path="res://UI/DeathScreen.tscn" id="44_0cvc5"]
@@ -4201,6 +4202,8 @@ position = Vector2(-1538, -551)
 spawn_interval = 5.0
 spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor4"), NodePath("../../Environment/Doors/PurchasableDoor5"), NodePath("../../Environment/Doors/PurchasableDoor6")]
+
+[node name="PowerUpManager" parent="GameWorld" instance=ExtResource("38_8ura7")]
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("26_g7rwe")]
 zoom = Vector2(1.2, 1.2)

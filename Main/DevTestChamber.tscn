@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=63 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_b2va5"]
 [ext_resource type="PackedScene" uid="uid://hkwukd3bresb" path="res://World/objectives/VesselCharge/VesselCharge.tscn" id="35_yxu8u"]
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="39_fdiub"]
+[ext_resource type="PackedScene" uid="uid://b58natsckpqcl" path="res://World/infrastructure/PowerUpManager.tscn" id="40_qr88r"]
 [ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
@@ -949,6 +950,8 @@ trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 position = Vector2(1060, 1044)
 spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
+
+[node name="PowerUpManager" parent="GameWorld" instance=ExtResource("40_qr88r")]
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("26_ii3jy")]
 

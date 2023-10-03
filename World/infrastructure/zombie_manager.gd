@@ -56,7 +56,7 @@ func _ready():
 func start_wave():
 	self.zombies_to_be_killed = get_zombie_count(wave_number)
 	Events.emit_signal("zombies_to_kill_change", zombies_to_be_killed)
-	Events.emit_signal("wave_started", wave_number)
+	Events.emit_signal("wave_started", wave_number, zombies_to_be_killed)
 	set_base_health()
 	
 func get_zombie_count(wave_number):
@@ -76,7 +76,7 @@ func set_base_health():
 
 	else:
 		zombie_base_health = zombie_base_health * 1.1
-	print("Zombie base health set - " + str(zombie_base_health))
+
 
 func end_wave():
 	_kill_all_zombies()  # just to be extra sure
