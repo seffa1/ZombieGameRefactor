@@ -3643,7 +3643,6 @@ collision_mask = 67608
 motion_mode = 1
 script = ExtResource("1_e8yx8")
 money_component = NodePath("MoneyComponent")
-starting_money = 10000
 metadata/_edit_vertical_guides_ = []
 
 [node name="placeholder" type="Sprite2D" parent="."]
@@ -3750,8 +3749,8 @@ metadata/_edit_lock_ = true
 modification_stack = SubResource("SkeletonModificationStack2D_jqo0d")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
-scale = Vector2(0.999822, 0.99983)
-skew = -4.62532e-05
+scale = Vector2(0.999821, 0.999827)
+skew = -4.76837e-05
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 editor_settings/show_bone_gizmo = false
 
@@ -3762,21 +3761,25 @@ scale = Vector2(0.958775, 1.04719)
 skew = 4.673e-05
 rest = Transform2D(1, 0, 0, 1, 33, 37)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(115, -41)
 rotation = 0.731523
 rest = Transform2D(1, 0, 0, 1, 115, -41)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderLeft"]
 position = Vector2(94, 57)
 rotation = -0.479865
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 94, 57)
 auto_calculate_length_and_angle = false
 length = 110.372
 bone_angle = 63.764
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(-75, 122)
@@ -3784,12 +3787,15 @@ rotation = -0.606037
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -75, 122)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight"]
 position = Vector2(67, 101)
 rotation = 0.71527
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 67, 101)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight/armRight"]
 position = Vector2(90, 19)
@@ -3979,7 +3985,7 @@ script = ExtResource("12_u67uk")
 script = ExtResource("13_lfdfl")
 
 [node name="HealthComponent" parent="." instance=ExtResource("35_5mvoc")]
-max_health = 30.0
+max_health = 20.0
 health_regeneration = true
 
 [node name="ActionSoundPlayer" type="AudioStreamPlayer2D" parent="."]

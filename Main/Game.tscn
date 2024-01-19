@@ -7,19 +7,19 @@
 [ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="5_0uk56"]
 [ext_resource type="PackedScene" uid="uid://c1w4ofsu4cj68" path="res://Debug/PlayerStats.tscn" id="5_1ag6a"]
 [ext_resource type="PackedScene" uid="uid://bn822g2rnel5j" path="res://UI/HUD/PlayerLog.tscn" id="6_nxyvm"]
-[ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/DevCanon/WeaponBuyDevCanon.tscn" id="8_ock32"]
+[ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="8_ock32"]
 [ext_resource type="PackedScene" uid="uid://wjwbrp4ypht0" path="res://UI/SettingsMenu.tscn" id="9_0oi6x"]
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="9_8tr1y"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_f0qq6"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="9_sm5ru"]
 [ext_resource type="PackedScene" uid="uid://b7yfy5h1lnwxk" path="res://World/pickups/max_ammo/MaxAmmo.tscn" id="9_vhcrc"]
-[ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistol_01/WeaponBuyPistol01.tscn" id="11_w2f03"]
+[ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistols/Pistol_01/WeaponBuyPistol01.tscn" id="11_w2f03"]
 [ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="11_wtt1n"]
-[ext_resource type="PackedScene" uid="uid://b6km4xub8g4cf" path="res://World/purchasables/Weapons/Pistol_01/AmmoBuyPistol01.tscn" id="12_axbu1"]
+[ext_resource type="PackedScene" uid="uid://b6km4xub8g4cf" path="res://World/purchasables/Weapons/Pistols/Pistol_01/AmmoBuyPistol01.tscn" id="12_axbu1"]
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="12_hte74"]
 [ext_resource type="PackedScene" uid="uid://b3o8b6cd4qnog" path="res://World/purchasables/Doors/PurchasableDoor.tscn" id="12_jcd6l"]
 [ext_resource type="PackedScene" uid="uid://q6wx281jrsea" path="res://World/purchasables/Windows/Window.tscn" id="13_5pbuo"]
-[ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/DevCanon/AmmoBuyDevCanon.tscn" id="13_ymius"]
+[ext_resource type="PackedScene" uid="uid://bfeljttsg5ymp" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/AmmoBuyDevCanon.tscn" id="13_ymius"]
 [ext_resource type="PackedScene" uid="uid://c35lvlmdtsj1k" path="res://World/infrastructure/ZombieManager.tscn" id="15_isj6m"]
 [ext_resource type="PackedScene" uid="uid://bq47d84tq7j2k" path="res://World/infrastructure/ZombieSpawner.tscn" id="16_k1jbq"]
 [ext_resource type="PackedScene" uid="uid://c4k55vme8b3ge" path="res://World/infrastructure/InsideBuildingTrigger.tscn" id="16_u6unb"]
@@ -85,57 +85,57 @@ offset_top = 70.0
 offset_right = 435.0
 offset_bottom = 93.0
 
-[node name="Weapons" parent="UI/PlayerStats" index="7"]
+[node name="Weapons" parent="UI/PlayerStats" index="8"]
 offset_left = 505.0
 offset_right = 938.0
 
-[node name="Equipped" parent="UI/PlayerStats" index="8"]
+[node name="Equipped" parent="UI/PlayerStats" index="9"]
 offset_left = 507.0
 offset_top = 16.0
 offset_right = 711.0
 offset_bottom = 39.0
 
-[node name="ClipCount" parent="UI/PlayerStats" index="9"]
+[node name="ClipCount" parent="UI/PlayerStats" index="10"]
 offset_left = 513.0
 offset_top = 33.0
 offset_right = 727.0
 offset_bottom = 56.0
 
-[node name="Reserve" parent="UI/PlayerStats" index="10"]
+[node name="Reserve" parent="UI/PlayerStats" index="11"]
 offset_left = 505.0
 offset_top = 54.0
 offset_right = 744.0
 offset_bottom = 77.0
 
-[node name="Direction" parent="UI/PlayerStats" index="11"]
+[node name="Direction" parent="UI/PlayerStats" index="12"]
 offset_left = 512.0
 offset_top = 72.0
 offset_right = 711.0
 offset_bottom = 95.0
 
-[node name="Labels3" parent="UI/PlayerStats" index="12"]
+[node name="Labels3" parent="UI/PlayerStats" index="13"]
 offset_left = 668.0
 offset_top = 2.0
 offset_right = 750.0
 offset_bottom = 130.0
 
-[node name="WaveNumber" parent="UI/PlayerStats" index="13"]
+[node name="WaveNumber" parent="UI/PlayerStats" index="14"]
 offset_left = 745.0
 offset_right = 897.0
 
-[node name="ZombiesToKill" parent="UI/PlayerStats" index="14"]
+[node name="ZombiesToKill" parent="UI/PlayerStats" index="15"]
 offset_left = 755.0
 offset_top = 18.0
 offset_right = 950.0
 offset_bottom = 41.0
 
-[node name="ZombiesOnMap" parent="UI/PlayerStats" index="15"]
+[node name="ZombiesOnMap" parent="UI/PlayerStats" index="16"]
 offset_left = 756.0
 offset_top = 35.0
 offset_right = 975.0
 offset_bottom = 58.0
 
-[node name="Velocity" parent="UI/PlayerStats" index="16"]
+[node name="Velocity" parent="UI/PlayerStats" index="17"]
 offset_left = 727.0
 offset_top = 55.0
 offset_right = 959.0
@@ -360,6 +360,7 @@ position = Vector2(443, -493)
 spawner_active = false
 
 [node name="Camera" parent="GameWorld" instance=ExtResource("21_5xg26")]
+zoom = Vector2(0.5, 0.5)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="GameWorld"]
 position = Vector2(-1315, -313)
