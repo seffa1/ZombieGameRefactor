@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=109 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -81,6 +81,9 @@
 [ext_resource type="Texture2D" uid="uid://cwqhbw0msixyy" path="res://World/tilesets/desert_ground/Tilelist_cracks.png" id="56_pbs17"]
 [ext_resource type="Shader" path="res://VFX/shaders/WindSway.gdshader" id="61_687oc"]
 [ext_resource type="Texture2D" uid="uid://dhtajo5glqg5d" path="res://World/Decorations/TREESPRITEAGAIN.png" id="62_4t1if"]
+[ext_resource type="PackedScene" uid="uid://bmb2kvh6x160d" path="res://VFX/fire/Campfire.tscn" id="63_nyk7p"]
+[ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="64_bkdyw"]
+[ext_resource type="Script" path="res://VFX/lights/light_flicker.gd" id="65_akhg3"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3yv44"]
 polygon = PackedVector2Array(106.361, 41.778, 105.792, -53.2361, -99.7626, -47.2062, -104.39, 44.8079)
@@ -5824,7 +5827,12 @@ position = Vector2(2436, 313)
 position = Vector2(-441, -926)
 
 [node name="CarReck9" parent="GameWorld/Environment/Obstacles/Exterior" instance=ExtResource("38_ikwtt")]
-position = Vector2(2714, 464)
+position = Vector2(2238, 843)
+
+[node name="CarReck14" parent="GameWorld/Environment/Obstacles/Exterior" instance=ExtResource("38_ikwtt")]
+position = Vector2(2183, 851)
+rotation = 1.57079
+scale = Vector2(1.02379, 1.02379)
 
 [node name="FallenLogFallenLog" parent="GameWorld/Environment/Obstacles/Exterior" instance=ExtResource("39_12nch")]
 position = Vector2(1866, 368)
@@ -6510,6 +6518,19 @@ scale = Vector2(0.352213, 0.352213)
 texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)
 
+[node name="Campfire" parent="GameWorld/Environment/Decorations" instance=ExtResource("63_nyk7p")]
+z_index = 12
+position = Vector2(2215, 843)
+scale = Vector2(9.24297, 9.24297)
+
+[node name="PointLight2D" type="PointLight2D" parent="GameWorld/Environment/Decorations/Campfire"]
+texture = ExtResource("64_bkdyw")
+texture_scale = 0.14
+script = ExtResource("65_akhg3")
+
+[node name="FlickerTimer" type="Timer" parent="GameWorld/Environment/Decorations/Campfire/PointLight2D"]
+one_shot = true
+
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
 position = Vector2(640, 389)
 rotation = -0.708219
@@ -6761,6 +6782,7 @@ metadata/_edit_lock_ = true
 [editable path="GameWorld/Environment/Objectives/VesselCharge"]
 [editable path="GameWorld/Environment/Objectives/VesselCharge2"]
 [editable path="GameWorld/Environment/Objectives/VesselCharge3"]
+[editable path="GameWorld/Environment/Decorations/Campfire"]
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]
 [editable path="UI/PlayerStats"]

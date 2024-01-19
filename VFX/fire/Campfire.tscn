@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmb2kvh6x160d"]
+
+[ext_resource type="PackedScene" uid="uid://cq8f0xwlifu0y" path="res://VFX/fire/Fire.tscn" id="1_h4xnb"]
+[ext_resource type="PackedScene" uid="uid://y68m6ixfk7ot" path="res://VFX/fire/smoke.tscn" id="2_gr5hq"]
+
+[node name="Campfire" type="Node2D"]
+
+[node name="fire" parent="." instance=ExtResource("1_h4xnb")]
+
+[node name="smoke" parent="." instance=ExtResource("2_gr5hq")]
