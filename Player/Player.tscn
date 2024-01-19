@@ -3637,7 +3637,7 @@ radius = 19.0
 radius = 1498.43
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_oj3ix"]
-polygon = PackedVector2Array(13, -36, -23, -17, -28, 13, -16, 29, 13, 38, 40, 15, 44, -2, 38, -32)
+polygon = PackedVector2Array(12, -23, -11, -12, -10, 12, 2, 19, 21, 21, 33, 12, 36, 0, 28, -15)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("money_component")]
 self_modulate = Color(0.635294, 0.419608, 0, 1)
@@ -3764,12 +3764,14 @@ scale = Vector2(0.958775, 1.04719)
 skew = 4.673e-05
 rest = Transform2D(1, 0, 0, 1, 33, 37)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(115, -41)
 rotation = 0.731523
 rest = Transform2D(1, 0, 0, 1, 115, -41)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderLeft"]
 position = Vector2(94, 57)
@@ -3780,6 +3782,7 @@ auto_calculate_length_and_angle = false
 length = 110.372
 bone_angle = 63.764
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(-75, 122)
@@ -3787,6 +3790,7 @@ rotation = -0.606037
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -75, 122)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight"]
 position = Vector2(67, 101)
@@ -3794,6 +3798,7 @@ rotation = 0.71527
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 67, 101)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight/armRight"]
 position = Vector2(90, 19)
