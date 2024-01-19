@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://hkwukd3bresb"]
+[gd_scene load_steps=13 format=3 uid="uid://hkwukd3bresb"]
 
 [ext_resource type="Script" path="res://World/objectives/VesselCharge/vessel_charge.gd" id="1_gtw7i"]
 [ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="2_khqas"]
@@ -12,6 +12,8 @@ radius = 402.906
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umbwf"]
 size = Vector2(342, 64)
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_wo3qo"]
 
 [sub_resource type="Animation" id="Animation_1pvss"]
 length = 0.001
@@ -126,7 +128,8 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_xrorr"]
 resource_name = "finish_charge"
-length = 5.0
+length = 4.0
+loop_mode = 1
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -316,11 +319,16 @@ region_rect = Rect2(1830, 2223, 88, 61)
 
 [node name="ChargableLightFlicker" parent="." instance=ExtResource("4_4a14k")]
 position = Vector2(0, -5)
-scale = Vector2(1.19244, 0.37549)
+scale = Vector2(7.18041, 2.26106)
 energy = 0.49
+shadow_enabled = true
+shadow_color = Color(0, 0.270588, 0, 0)
+shadow_filter = 2
+shadow_filter_smooth = 15.5
 max_charge_value = 20.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_wo3qo")
 max_distance = 1000.0
 max_polyphony = 7
 bus = &"GameAudio"

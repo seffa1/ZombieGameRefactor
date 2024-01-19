@@ -1,0 +1,459 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwljaxuw3noo6"]
+
+[ext_resource type="Shader" path="res://VFX/shaders/WindSway.gdshader" id="1_fedsx"]
+[ext_resource type="Texture2D" uid="uid://dhtajo5glqg5d" path="res://World/Decorations/TREESPRITEAGAIN.png" id="2_j8d6f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0ea4"]
+shader = ExtResource("1_fedsx")
+shader_parameter/speed = 5.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.203
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
+
+[node name="Forest" type="Node2D"]
+material = SubResource("ShaderMaterial_r0ea4")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1583, 1229)
+scale = Vector2(0.357535, 0.357535)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree56" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(2398, 1638)
+scale = Vector2(0.599065, 0.599065)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree3" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1819, 214)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree4" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1678, -210)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree5" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(2305, 192)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree6" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(2147, -282)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree7" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1188, -401)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree8" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1060, -996)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree9" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1818, -877)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree10" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(282, -1418)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree11" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-548, -1465)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree12" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1340, -1162)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree13" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1721, -401)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree14" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1780, 406)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree15" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1780, 1229)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree16" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1281, 1857)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree17" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-513, 1993)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree18" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(282, 2021)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree19" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(956, 2388)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree20" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1958, 2536)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree21" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(2770, 2114)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree22" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(3142, 1398)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree23" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(3734, 807)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree24" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(4302, 220)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree25" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(4326, -639)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree26" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(3694, -1254)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree27" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(2803, -1398)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree28" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1858, -1676)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree29" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(964, -1820)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree30" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-223, 2810)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree31" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(786, 3146)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree32" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1548, 3122)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree33" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(2678, 2810)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree34" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(3582, 2114)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree35" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(4134, 1496)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree36" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(4766, 807)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree37" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(5036, -202)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree38" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1161, 2700)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree39" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1722, 2041)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree40" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-2705, 1314)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree41" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-2265, 569)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree42" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-2553, -401)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree43" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-2128, -1340)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree44" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1086, -2098)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree45" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(-71.0001, -2242)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree46" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(900, -2520)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree47" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1915, -2370)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree48" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(2770, -2098)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree49" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(3694, -1948)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree50" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(4574, -1418)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree51" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(5206, -1015)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree52" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(887, 1123)
+scale = Vector2(0.352213, 0.352213)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree53" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(921, 1496)
+scale = Vector2(0.352213, 0.352213)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree54" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(883, 1820)
+scale = Vector2(0.352213, 0.352213)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree55" type="Sprite2D" parent="."]
+z_index = 99
+use_parent_material = true
+position = Vector2(1226, 1150)
+scale = Vector2(0.352213, 0.352213)
+texture = ExtResource("2_j8d6f")
+region_rect = Rect2(13, 17, 1025, 959)
