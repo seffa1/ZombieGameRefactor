@@ -2,6 +2,10 @@
 
 [sub_resource type="Environment" id="Environment_hhn5c"]
 background_mode = 3
+glow_enabled = true
+glow_intensity = 5.0
+glow_strength = 1.02
+glow_bloom = 1.0
 adjustment_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment"]

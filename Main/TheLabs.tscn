@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=106 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -79,7 +79,8 @@
 [ext_resource type="PackedScene" uid="uid://d3jkrws6wiwl6" path="res://World/obstacles/TreeStump2.tscn" id="49_bwmb3"]
 [ext_resource type="PackedScene" uid="uid://l2kxxracrvk5" path="res://World/obstacles/TreeStump.tscn" id="50_lf2t7"]
 [ext_resource type="Texture2D" uid="uid://cwqhbw0msixyy" path="res://World/tilesets/desert_ground/Tilelist_cracks.png" id="56_pbs17"]
-[ext_resource type="PackedScene" uid="uid://bwljaxuw3noo6" path="res://World/Decorations/forest.tscn" id="61_aa241"]
+[ext_resource type="Shader" path="res://VFX/shaders/WindSway.gdshader" id="61_687oc"]
+[ext_resource type="Texture2D" uid="uid://dhtajo5glqg5d" path="res://World/Decorations/TREESPRITEAGAIN.png" id="62_4t1if"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3yv44"]
 polygon = PackedVector2Array(106.361, 41.778, 105.792, -53.2361, -99.7626, -47.2062, -104.39, 44.8079)
@@ -5578,6 +5579,18 @@ sources/2 = SubResource("TileSetAtlasSource_e0qqc")
 
 [sub_resource type="TileSet" id="TileSet_oyf12"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0ea4"]
+shader = ExtResource("61_687oc")
+shader_parameter/speed = 5.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.203
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6uvub"]
 vertices = PackedVector2Array(-188, 516, -447, 476, -517, -73, -154, 94, -137, 201, -141, 376, 3017, -925, 3111, -1489, 3504, -1435, 3191, -916.88, 3022.44, -853.828, 1271, 1182, 1365, 1393, 1111, 1399, 779, 1395, 782, 1098, 963, 920, 1141, 897, 692, -516, 727, -479, 674, -458, 595, -574, -1131, 930, -1468, 834, -1498, 514, -1091, 578, -1011, 810, 2744, -1363, -984.692, 850.296, -1105, 965, 2127, 1670, 2654, 1633, 2691, 1770, 2655, 2037, 2126, 1851, 2074, 1679.16, -1098, -450, -1625, -405, -1594, -712, -1105, -637, 305, 899, 440, 1839, -172, 1855, -53, 1102, 134, 901, -1059, -631, -1055, -450, 3191, -863, 2965, -801, 2081, 1852, 1890, 1462, 301, 866, 131, 865, 1131, -823, 1770, -902, 1790, -376, 1067, -64, 909, -65, 1430, 801, 1434, 864, 1141, 864, 811, 442, 814, 305, -78, 375, -90, 201, 1732, 2012, 1546.23, 2010.7, 1134, 2005, 1130, 1451, -1059, -744, -1022.97, -743.628, -806, -738, -377, -652, -835, -297, -1050, -298, 3417, -726, 3539, -725, 3538, -670, -458, 861, -250, 1087, -726, 1572, -963, 1337, -1217, 1074, 965, 865, -731, 606, -542, 777, -373, 619, -319, 728, -82.8695, 614.583, -91, 737, 2585, 730, 2582, 1246, 2074, 1245, 1896, 810, 2573, 620, 1705, 612, 1707, 489, 2567, 493, 680, -23, 900, -29, 1071, -31, 1437, -31, 1439, 132, 488, 308, -88, 867, 488, 441, -371, -443, -371, -295, -624, -290, 2074, 2018, 1726, 2068, 1901, 2538, 1646, 2647, 1368, 2500, 1544, 2074, -382, -737, 3551, 168, 3549, 217, 3431, 221, 3603, -659, 3593, -551, -73, -28, 462, -34, 3220, 358, 3049, 358, 2983, 352, 2981, 291, 3302, 289, 3285, 348, 3673, -413, 2856, 291, 2847, 223, 3671, -532, 2730, -674, 2736, -724, 2843, -727, 2735, 219, 2729, 170, 3735, -400, 3739, -108, 3683, -98, 1472, 132, 1850, -287, 2199, -87, 2199, 190, 1790, 289, 1436, 317, 3275, -859, 3286, -794, -305, -655, -294, -690, -181, -683, -301, -435, 3613, 43, 3612, 153, 2664, 155, 2661, 36, 3405, -787, 3416, 286, 2595, 18, 2596, -96, 2607, -424, 2655, -547, 2543, -121, 2537, -400, 2982, -853, 3671, 25, -130, -77, -219, -151, -94, -689, 98, -780, 184, -706, 462, -64, 650, -418, 2665, -651, 566, -703, 623, -637, 2600, -515, -295, -187, 2868, -788, 662, -89, 680, -68, 1502, 801, 1432, 607, 3050, 612, 3222, 732, 1472, 321)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(11, 12, 13, 14, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26), PackedInt32Array(6, 27, 7), PackedInt32Array(22, 26, 28, 29), PackedInt32Array(30, 31, 32, 33, 34, 35), PackedInt32Array(36, 37, 38, 39), PackedInt32Array(40, 41, 42, 43, 44), PackedInt32Array(36, 39, 45, 46), PackedInt32Array(10, 9, 47, 48), PackedInt32Array(35, 34, 49, 50), PackedInt32Array(51, 40, 44, 52), PackedInt32Array(53, 54, 55, 56, 57), PackedInt32Array(58, 59, 60, 61, 62), PackedInt32Array(63, 5, 4, 64), PackedInt32Array(65, 66, 67, 68, 50, 49), PackedInt32Array(46, 45, 69, 70, 71, 72, 73, 74), PackedInt32Array(75, 76, 77), PackedInt32Array(78, 79, 80, 81, 82, 29, 28), PackedInt32Array(17, 16, 83, 60), PackedInt32Array(78, 28, 84, 85), PackedInt32Array(78, 85, 86, 87), PackedInt32Array(87, 86, 88, 89), PackedInt32Array(90, 91, 92, 93, 94), PackedInt32Array(95, 96, 97, 94, 93), PackedInt32Array(98, 99, 100, 101, 102, 62, 103), PackedInt32Array(52, 104, 89, 88, 105), PackedInt32Array(72, 106, 107, 108, 73), PackedInt32Array(49, 109, 65), PackedInt32Array(110, 111, 112, 113, 114), PackedInt32Array(110, 114, 66, 65), PackedInt32Array(92, 35, 50, 93), PackedInt32Array(71, 115, 72), PackedInt32Array(116, 117, 118), PackedInt32Array(77, 119, 120), PackedInt32Array(103, 63, 64, 121, 122, 98), PackedInt32Array(123, 124, 125, 126, 127, 128), PackedInt32Array(57, 56, 100, 99), PackedInt32Array(129, 126, 130, 131, 120, 132), PackedInt32Array(133, 134, 135), PackedInt32Array(131, 136, 137), PackedInt32Array(138, 139, 140, 129), PackedInt32Array(141, 142, 143, 144, 145), PackedInt32Array(141, 145, 146, 62, 102), PackedInt32Array(48, 47, 147, 148, 135), PackedInt32Array(149, 150, 151, 152, 106), PackedInt32Array(153, 154, 116), PackedInt32Array(137, 155, 156), PackedInt32Array(148, 157, 75, 135), PackedInt32Array(118, 158, 127, 126), PackedInt32Array(120, 156, 159, 160, 161, 162, 133, 135, 75, 77), PackedInt32Array(163, 164, 161, 160), PackedInt32Array(48, 165, 10), PackedInt32Array(106, 72, 149), PackedInt32Array(140, 166, 153), PackedInt32Array(167, 168, 152, 169, 170, 171, 172), PackedInt32Array(21, 20, 173), PackedInt32Array(162, 174, 133), PackedInt32Array(175, 176, 21, 171), PackedInt32Array(161, 177, 162), PackedInt32Array(168, 178, 152), PackedInt32Array(152, 151, 169), PackedInt32Array(135, 179, 48), PackedInt32Array(172, 171, 21, 173, 180), PackedInt32Array(122, 172, 180, 181, 98), PackedInt32Array(63, 103, 105, 88), PackedInt32Array(83, 51, 52, 105, 61, 60), PackedInt32Array(153, 116, 118, 126), PackedInt32Array(131, 137, 156, 120), PackedInt32Array(182, 58, 62, 183), PackedInt32Array(126, 129, 140, 153), PackedInt32Array(184, 124, 123, 185), PackedInt32Array(184, 185, 90, 94), PackedInt32Array(95, 93, 182, 183), PackedInt32Array(146, 183, 62), PackedInt32Array(146, 145, 186)])
@@ -6046,10 +6059,459 @@ offset = Vector2(14.5319, -28.6845)
 
 [node name="Decorations" type="Node" parent="GameWorld/Environment"]
 
-[node name="Forest" parent="GameWorld/Environment/Decorations" instance=ExtResource("61_aa241")]
+[node name="Forest" type="Node2D" parent="GameWorld/Environment/Decorations"]
+material = SubResource("ShaderMaterial_r0ea4")
+
+[node name="Tree2" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1583, 1229)
+scale = Vector2(0.357535, 0.357535)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree57" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(60, 1282)
+scale = Vector2(0.666578, 0.666578)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree56" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(2398, 1638)
+scale = Vector2(0.599065, 0.599065)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree3" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1819, 214)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree4" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1678, -210)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree5" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(2305, 192)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree6" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(2147, -282)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree7" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1188, -401)
+scale = Vector2(0.542541, 0.542541)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree8" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1060, -996)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree9" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1818, -877)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree10" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(282, -1418)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree11" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-548, -1465)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree12" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1340, -1162)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree13" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1721, -401)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree14" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1780, 406)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree15" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1780, 1229)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree16" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1281, 1857)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree17" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-513, 1993)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree18" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(282, 2021)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree19" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(956, 2388)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree20" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1958, 2536)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree21" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(2770, 2114)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree22" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(3142, 1398)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree23" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(3734, 807)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree24" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(4302, 220)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree25" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(4326, -639)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree26" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(3694, -1254)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree27" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(2803, -1398)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree28" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1858, -1676)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree29" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(964, -1820)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree30" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-223, 2810)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree31" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(786, 3146)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree32" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1548, 3122)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree33" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(2678, 2810)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree34" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(3582, 2114)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree35" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(4134, 1496)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree36" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(4766, 807)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree37" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(5036, -202)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree38" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1161, 2700)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree39" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1722, 2041)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree40" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-2705, 1314)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree41" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-2265, 569)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree42" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-2553, -401)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree43" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-2128, -1340)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree44" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-1086, -2098)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree45" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-71.0001, -2242)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree46" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(900, -2520)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree47" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1915, -2370)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree48" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(2770, -2098)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree49" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(3694, -1948)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree50" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(4574, -1418)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree51" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(5206, -1015)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree52" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(887, 1123)
+scale = Vector2(0.352213, 0.352213)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree53" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(921, 1496)
+scale = Vector2(0.352213, 0.352213)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree54" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(883, 1820)
+scale = Vector2(0.352213, 0.352213)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree55" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(1226, 1150)
+scale = Vector2(0.352213, 0.352213)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
-position = Vector2(2216, 865)
+position = Vector2(640, 389)
 rotation = -0.708219
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_ixwma")]
@@ -6302,3 +6764,4 @@ metadata/_edit_lock_ = true
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]
 [editable path="UI/PlayerStats"]
+[editable path="WorldEnvironment"]
