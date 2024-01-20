@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://bypyufryf0ycr"]
+[gd_scene load_steps=92 format=3 uid="uid://bypyufryf0ycr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_e8yx8"]
 [ext_resource type="Script" path="res://Player/player_state_machine_movement.gd" id="1_wjaak"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" path="res://Player/states/actions/die.gd" id="13_lfdfl"]
 [ext_resource type="Script" path="res://Player/weapon_container.gd" id="14_qrq3y"]
 [ext_resource type="Script" path="res://Player/purchasable_detector.gd" id="16_0vxfj"]
+[ext_resource type="PackedScene" uid="uid://cg4lwcaqs41t0" path="res://VFX/lights/Flickering.tscn" id="16_2tvjv"]
 [ext_resource type="Script" path="res://Player/perk_manager.gd" id="16_gldpa"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="16_gye32"]
 [ext_resource type="Script" path="res://Player/blood_puddle_detector.gd" id="19_445ke"]
@@ -3634,7 +3635,7 @@ radius = 52.2398
 radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_whdfb"]
-radius = 1498.43
+radius = 1200.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_oj3ix"]
 polygon = PackedVector2Array(12, -23, -11, -12, -10, 12, 2, 19, 21, 21, 33, 12, 36, 0, 28, -15)
@@ -3764,14 +3765,12 @@ scale = Vector2(0.958775, 1.04719)
 skew = 4.673e-05
 rest = Transform2D(1, 0, 0, 1, 33, 37)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(115, -41)
 rotation = 0.731523
 rest = Transform2D(1, 0, 0, 1, 115, -41)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderLeft"]
 position = Vector2(94, 57)
@@ -3782,7 +3781,6 @@ auto_calculate_length_and_angle = false
 length = 110.372
 bone_angle = 63.764
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="shoulderRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(-75, 122)
@@ -3790,7 +3788,6 @@ rotation = -0.606037
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -75, 122)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight"]
 position = Vector2(67, 101)
@@ -3798,7 +3795,6 @@ rotation = 0.71527
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 67, 101)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/shoulderRight/armRight"]
 position = Vector2(90, 19)
@@ -3868,6 +3864,8 @@ rotation = 3.14159
 scale = Vector2(1.07697, -0.720563)
 texture = ExtResource("34_6mf4n")
 offset = Vector2(-216.901, 29.6469)
+
+[node name="Flickering" parent="PointLight2D" instance=ExtResource("16_2tvjv")]
 
 [node name="ChargeIndicator" parent="." instance=ExtResource("41_x214t")]
 position = Vector2(76, 15)

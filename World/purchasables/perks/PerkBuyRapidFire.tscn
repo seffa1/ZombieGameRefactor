@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckfv1wtlmvqoy"]
+[gd_scene load_steps=9 format=3 uid="uid://ckfv1wtlmvqoy"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_vev8b"]
 [ext_resource type="Script" path="res://World/purchasables/perks/perk_buy.gd" id="2_fbri0"]
 [ext_resource type="Texture2D" uid="uid://cy22w3epri6ne" path="res://World/purchasables/perks/images/element_0100_Layer-102.png" id="3_i6tpa"]
 [ext_resource type="AudioStream" uid="uid://blkticcpqlj0e" path="res://World/purchasables/perks/audio/ESM_Power_Up_Potion_3_Mobile_App_Game_FX_Sound_Magic_Fantasy.wav" id="4_mchcd"]
+[ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="5_pd7hn"]
+[ext_resource type="PackedScene" uid="uid://cg4lwcaqs41t0" path="res://VFX/lights/Flickering.tscn" id="6_x4pd8"]
+[ext_resource type="Script" path="res://World/lights/powered.gd" id="7_t1aet"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ythw6"]
 radius = 45.0
@@ -23,3 +26,17 @@ texture = ExtResource("3_i6tpa")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("4_mchcd")
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="3"]
+shadow_enabled = true
+shadow_color = Color(0.0941176, 0.0941176, 0.0941176, 0.333333)
+texture = ExtResource("5_pd7hn")
+texture_scale = 0.6
+
+[node name="Flickering" parent="PointLight2D" index="0" instance=ExtResource("6_x4pd8")]
+flicker_interval = 0.5
+brightness_offset = 0.7
+brightness_multiplyer = 2.0
+
+[node name="Powered" type="Node" parent="PointLight2D" index="1"]
+script = ExtResource("7_t1aet")
