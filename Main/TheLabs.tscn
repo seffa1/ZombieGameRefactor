@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=112 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -84,6 +84,9 @@
 [ext_resource type="PackedScene" uid="uid://bmb2kvh6x160d" path="res://VFX/fire/Campfire.tscn" id="63_nyk7p"]
 [ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="64_bkdyw"]
 [ext_resource type="Script" path="res://VFX/lights/light_flicker.gd" id="65_akhg3"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rhub5"]
+polygon = PackedVector2Array(14.9999, 31, 16.0001, -23, -21.9999, -23.0001, -24.0001, 31.9999)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ojqkp"]
 polygon = PackedVector2Array(146, 82.0004, -145, 81.9996, -147, -23.0004, 144, -26.9996)
@@ -5670,6 +5673,15 @@ position = Vector2(-792, -946)
 position = Vector2(-731, -312)
 rotation = 3.14159
 
+[node name="LightFlicker" parent="GameWorld/PurchasablesContainer/Switches/PowerSwitch" index="7"]
+position = Vector2(-4.00009, 43)
+scale = Vector2(1.99876, 1.83208)
+shadow_enabled = true
+flicker_interval = 0.1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="GameWorld/PurchasablesContainer/Switches/PowerSwitch"]
+occluder = SubResource("OccluderPolygon2D_rhub5")
+
 [node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
 
 [node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("9_178qv")]
@@ -6266,7 +6278,7 @@ region_rect = Rect2(13, 17, 1025, 959)
 [node name="Tree20" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
 z_index = 99
 use_parent_material = true
-position = Vector2(1958, 2536)
+position = Vector2(1797, 2487)
 scale = Vector2(0.830566, 0.830566)
 texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)
@@ -6322,7 +6334,7 @@ region_rect = Rect2(13, 17, 1025, 959)
 [node name="Tree27" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
 z_index = 99
 use_parent_material = true
-position = Vector2(2803, -1398)
+position = Vector2(2984, -1340)
 scale = Vector2(0.830566, 0.830566)
 texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)
@@ -6435,6 +6447,14 @@ region_rect = Rect2(13, 17, 1025, 959)
 z_index = 99
 use_parent_material = true
 position = Vector2(-2265, 569)
+scale = Vector2(0.830566, 0.830566)
+texture = ExtResource("62_4t1if")
+region_rect = Rect2(13, 17, 1025, 959)
+
+[node name="Tree58" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
+z_index = 99
+use_parent_material = true
+position = Vector2(-548, 192)
 scale = Vector2(0.830566, 0.830566)
 texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)
@@ -6552,7 +6572,7 @@ texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
-position = Vector2(640, 389)
+position = Vector2(-731, -420)
 rotation = -0.708219
 starting_money = 10000
 
@@ -6794,6 +6814,7 @@ metadata/_edit_lock_ = true
 [connection signal="body_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuy50Cal" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuy50Cal" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuy50Cal" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuy50Cal" method="_on_body_exited" flags=18]
 
+[editable path="GameWorld/PurchasablesContainer/Switches/PowerSwitch"]
 [editable path="GameWorld/Environment/Regions/JunkYard"]
 [editable path="GameWorld/Environment/Regions/WorkShop"]
 [editable path="GameWorld/Environment/Lights/TV"]

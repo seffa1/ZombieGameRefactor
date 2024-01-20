@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://qk5muy0tpgq3"]
+[gd_scene load_steps=11 format=3 uid="uid://qk5muy0tpgq3"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_m8msr"]
 [ext_resource type="Script" path="res://World/purchasables/powerSwitch/power_switch.gd" id="2_kcslo"]
 [ext_resource type="AudioStream" uid="uid://c3fuvsg32bre6" path="res://UnusedSounds/LightSwitchOn_BW.60414.wav" id="3_kev2m"]
 [ext_resource type="AudioStream" uid="uid://djybv0pbpeh6d" path="res://World/purchasables/powerSwitch/sounds/ESM_FVESK_cinematic_fx_science_fiction_engine_power_on_mothership_argo_1_clicky_textured_turning_knob_ui_alert_glitchy_responses.wav" id="3_y2nb3"]
+[ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="5_uegqg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwtjn"]
 radius = 39.0
@@ -65,6 +66,9 @@ _data = {
 "switch_on": SubResource("Animation_v3kgk")
 }
 
+[sub_resource type="Gradient" id="Gradient_k01hm"]
+colors = PackedColorArray(0.933938, 0.365093, 4.79806e-05, 1, 1, 1, 1, 1)
+
 [node name="PowerSwitch" instance=ExtResource("1_m8msr")]
 script = ExtResource("2_kcslo")
 purchasable_name = "Turn on Power"
@@ -91,3 +95,22 @@ polygon = PackedVector2Array(-24, -24, 16, -24, 16, 32, -24, 32)
 libraries = {
 "": SubResource("AnimationLibrary_hm2wg")
 }
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="6"]
+position = Vector2(-4, 34)
+rotation = 1.55193
+amount = 13
+lifetime = 0.5
+randomness = 1.0
+lifetime_randomness = 0.23
+emission_shape = 1
+emission_sphere_radius = 12.35
+spread = 117.08
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 63.04
+initial_velocity_max = 273.25
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_k01hm")
+
+[node name="LightFlicker" parent="." index="7" instance=ExtResource("5_uegqg")]
+position = Vector2(-719.007, -424.745)

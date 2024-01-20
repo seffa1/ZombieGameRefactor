@@ -6,3 +6,4 @@
 script = ExtResource("1_od20f")
 
 [node name="FlickerTimer" type="Timer" parent="."]
+one_shot = true
