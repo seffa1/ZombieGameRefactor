@@ -3,7 +3,8 @@ extends Marker2D
 
 """
 Spawns a packed scene at its position and puts it in the object registry.
-The simplest way to spawn in a self-freeing effect for exampl.
+Used to spawn in vfx's in the animation player.
+- animate the position, rotation, and spawn_item() call method
 """
 
 @export var object_to_spawn: PackedScene
