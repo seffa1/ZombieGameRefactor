@@ -41,6 +41,13 @@ func _ready():
 	$SkeletonControl/Skeleton.set_modification_stack(modification_stack.duplicate())
 	$SkeletonControl/Skeleton.get_modification_stack().enabled = true
 	Events.player_position_change.connect(_on_player_position_changed)
+	setWalkingSpeed()
+
+func setWalkingSpeed():
+	randomize()
+	var number = randi_range(-50, 80)
+	velocity_component.max_velocity += number
+	print(velocity_component.max_velocity)
 
 func set_max_health(zombie_base_health: int):
 	"""
