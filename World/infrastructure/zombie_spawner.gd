@@ -18,7 +18,8 @@ for collisions there to determine it a spawner should be on or not.
 @export var trigger_doors: Array[Area2D]
 
 @onready var zombie_list = [
-	preload("res://Enemies/ZombieBasic/ZombieBasic_02.tscn")
+	preload("res://Enemies/ZombieBasic/ZombieBasic_02.tscn"),
+	preload("res://Enemies/Spitter/ZombieSpitter.tscn")
 ]
 
 var target_window: Area2D

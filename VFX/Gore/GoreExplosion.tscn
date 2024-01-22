@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://msot08tqcfe8" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactFlesh_BW.54441.wav" id="10_rdmqi"]
 [ext_resource type="PackedScene" uid="uid://pvyhwr8sgif0" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-TorsoUpper.tscn" id="11_b027n"]
 
-[node name="GoreExplosion" type="Node2D"]
+[node name="GoreExplosion_ZombieBasic" type="Node2D"]
 script = ExtResource("1_l6oq5")
 
 [node name="BodyPartsContainer" type="Node2D" parent="."]

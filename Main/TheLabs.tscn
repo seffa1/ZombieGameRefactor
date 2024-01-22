@@ -6605,7 +6605,7 @@ texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
-position = Vector2(-731, -420)
+position = Vector2(620, 496)
 rotation = -0.708219
 starting_money = 10000
 

@@ -6,7 +6,7 @@ This way the legs can freely move / sprint / idle while the player shoots withou
 interuption.
 """
 
-@onready var hurtbox_head = $"../SkeletonControl/Skeleton/torso/head/HurtBox-Head"
+@onready var hurtbox_head = %HurtBoxHead
 
 func _ready():
 	super()

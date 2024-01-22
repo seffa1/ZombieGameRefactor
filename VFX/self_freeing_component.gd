@@ -24,6 +24,7 @@ func _ready():
 
 func _on_timer_timeout():
 	animation_player.play("fade_out")
+	# TODO - use a shader effect instead of a boring fade out
 	
 func _on_fade_out_end():
 	queue_free()

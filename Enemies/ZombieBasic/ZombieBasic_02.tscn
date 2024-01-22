@@ -2303,8 +2303,8 @@ modification_stack = ExtResource("17_1dk30")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(-24, -3)
-scale = Vector2(0.999823, 0.999838)
-skew = -0.000412345
+scale = Vector2(0.999835, 0.999827)
+skew = -0.000452399
 rest = Transform2D(1, 0, 0, 1, -24, -3)
 auto_calculate_length_and_angle = false
 length = 0.0
@@ -2314,13 +2314,14 @@ editor_settings/show_bone_gizmo = false
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(73.9843, -7)
 rotation = -0.0619003
-scale = Vector2(1.02303, 0.979651)
-skew = 0.000402093
+scale = Vector2(1.1204, 0.894618)
+skew = 0.000442266
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
-[node name="HurtBox-Head" type="Area2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio")]
+[node name="HurtBoxHead" type="Area2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio")]
+unique_name_in_owner = true
 position = Vector2(0.0332603, -3.90296)
 scale = Vector2(1.78076, 1.47727)
 collision_layer = 64
@@ -2331,7 +2332,7 @@ status_reciever = NodePath("../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../ZombieGroans-Audio")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SkeletonControl/Skeleton/torso/head/HurtBox-Head"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead"]
 position = Vector2(8.80424, 0)
 shape = SubResource("CircleShape2D_kxfru")
 debug_color = Color(0.937255, 0.141176, 0.529412, 0.419608)
@@ -2478,7 +2479,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="legRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(66, 35)
-scale = Vector2(0.999906, 0.999938)
+scale = Vector2(0.999896, 0.999924)
 rest = Transform2D(1, 0, 0, 1, 99, 56)
 editor_settings/show_bone_gizmo = false
 
@@ -2513,6 +2514,7 @@ libraries = {
 }
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 1024
 collision_mask = 128
 monitoring = false
@@ -2606,7 +2608,7 @@ script = ExtResource("34_jhgc6")
 
 [node name="Die" type="Node" parent="ZombieStateMachine" node_paths=PackedStringArray("hurtboxes")]
 script = ExtResource("27_bn7mh")
-hurtboxes = [NodePath("../../SkeletonControl/Skeleton/torso/head/HurtBox-Head"), NodePath("../../SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower"), NodePath("../../SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper"), NodePath("../../SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower"), NodePath("../../SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper"), null]
+hurtboxes = [NodePath("../../SkeletonControl/Skeleton/torso/head/HurtBoxHead"), NodePath("../../SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower"), NodePath("../../SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper"), NodePath("../../SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower"), NodePath("../../SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper"), null]
 
 [node name="StandStill" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("35_vsobx")
@@ -2656,7 +2658,7 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
-[connection signal="area_entered" from="SkeletonControl/Skeleton/torso/head/HurtBox-Head" to="SkeletonControl/Skeleton/torso/head/HurtBox-Head" method="_on_area_entered"]
+[connection signal="area_entered" from="SkeletonControl/Skeleton/torso/head/HurtBoxHead" to="SkeletonControl/Skeleton/torso/head/HurtBoxHead" method="_on_area_entered"]
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" to="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" method="_on_area_entered"]
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" to="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" method="_on_area_entered"]
 [connection signal="area_entered" from="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower" to="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower" method="_on_area_entered"]

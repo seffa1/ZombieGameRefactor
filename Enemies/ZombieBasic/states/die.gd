@@ -1,5 +1,11 @@
 extends "res://Libraries/state.gd"
 
+"""
+OBSOLETE STATE - HEADLESS DEATH IS THE ONLY ONE BEING USED CURRENTLY
+
+TODO - DELETE THIS NODE
+"""
+
 @export var death_money_reward: int = 100
 @onready var gore_vfx = $"../../GoreVFX"
 @onready var animation_player = $"../../AnimationPlayer"
