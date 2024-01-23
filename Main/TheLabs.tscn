@@ -5920,7 +5920,7 @@ position = Vector2(-1086, 475)
 rotation = 0.261799
 
 [node name="shippingContainer2" parent="GameWorld/Environment/Obstacles/Exterior" instance=ExtResource("47_ijakh")]
-position = Vector2(-1244, 612)
+position = Vector2(-854, 326)
 rotation = 0.261799
 
 [node name="CarReck12" parent="GameWorld/Environment/Obstacles/Exterior" instance=ExtResource("49_bwmb3")]

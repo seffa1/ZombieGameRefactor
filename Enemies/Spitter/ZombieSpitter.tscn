@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://5703k78iyb24"]
+[gd_scene load_steps=66 format=3 uid="uid://5703k78iyb24"]
 
 [ext_resource type="Script" path="res://Enemies/Spitter/zombie_Spitter.gd" id="1_xluhs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_hcp5o"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="31_pwnig"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="32_p5twy"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="33_55k58"]
+[ext_resource type="Script" path="res://Enemies/Spitter/states/AttackPlayer_Spit.gd" id="34_6rflx"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="34_sni8n"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="35_ka56c"]
 [ext_resource type="PackedScene" uid="uid://dgwrjf4q250b5" path="res://VFX/Gore/GoreExplosion_Spitter.tscn" id="35_tl1vu"]
@@ -1574,9 +1575,9 @@ uv = PackedVector2Array(100.804, 3.27283, 71.2525, -1.21266, 38.271, 18.3124, 25
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = 0.194879
-scale = Vector2(0.999944, 1.00031)
-skew = 0.000420451
+rotation = -0.158916
+scale = Vector2(1.0001, 1.00015)
+skew = 0.000431299
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -1793,6 +1794,9 @@ script = ExtResource("32_p5twy")
 
 [node name="BreakWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("33_55k58")
+
+[node name="AttackPlayer_Spit" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("34_6rflx")
 
 [node name="AttackPlayerThroughWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("34_sni8n")
