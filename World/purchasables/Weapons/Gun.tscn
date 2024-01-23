@@ -26,6 +26,7 @@ shape = SubResource("CapsuleShape2D_b425l")
 debug_color = Color(0.419608, 0.603922, 0, 0.419608)
 
 [node name="Reticle" parent="." instance=ExtResource("2_iod0x")]
+top_level = true
 
 [node name="LowerWeaponRayCast" parent="." instance=ExtResource("3_tpqt3")]
 rotation = -1.57079

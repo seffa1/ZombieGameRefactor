@@ -37,6 +37,7 @@ may end up as a part of the animation tree.
 @export var clip_size: int = 25
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
+@export var has_penetrating_shots: bool = false
 @export_enum("on_fire", "on_reload") var shell_ejection_type: int
 @export_enum("on_reload", "no_magazine") var magazine_ejection_type: int
 
@@ -173,7 +174,7 @@ func shoot() -> void:
 		
 		var bullet_instance = bullet.instantiate()
 		ObjectRegistry.register_projectile(bullet_instance)
-		bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id)
+		bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
 		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 
 	# we cannot ignore spread ( like a shot gun )
@@ -192,7 +193,7 @@ func shoot() -> void:
 			
 			var bullet_instance = bullet.instantiate()
 			ObjectRegistry.register_projectile(bullet_instance)
-			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id)
+			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
 			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 			
 			rotation_direction *= -1

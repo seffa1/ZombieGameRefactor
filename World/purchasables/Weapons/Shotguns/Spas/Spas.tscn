@@ -18,8 +18,9 @@ bullets_per_fire = 6
 bullet_spread = 0.15
 bullet_speed = 2500
 bullet_damage = 40.0
-clip_size = 8
-max_bullet_reserve = 32
+clip_size = 16
+max_bullet_reserve = 64
+reload_speed = 1.0
 shell_ejection_type = 1
 magazine_ejection_type = 1
 

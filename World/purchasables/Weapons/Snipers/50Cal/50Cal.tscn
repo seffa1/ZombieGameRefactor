@@ -18,8 +18,9 @@ bullet_speed = 2500
 bullet_damage = 300.0
 bullet_knockback = 15.0
 fire_rate = 0.3
-clip_size = 6
-max_bullet_reserve = 48
+clip_size = 12
+max_bullet_reserve = 72
+has_penetrating_shots = true
 
 [node name="Reticle" parent="." index="2"]
 recoil_per_shot = 50.0

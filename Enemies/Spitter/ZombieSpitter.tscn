@@ -1826,7 +1826,6 @@ max_health = 100.0
 
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("39_da046")]
 velocity_component = NodePath("../VelocityComponent")
-path_update_interval = 0.5
 draw_lines = false
 
 [node name="NavigationAgent2D" parent="PathfindingComponent" index="0"]

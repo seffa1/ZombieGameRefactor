@@ -12,14 +12,14 @@
 
 [node name="DevCanon" instance=ExtResource("1_o7y46")]
 WEAPON_NAME = "DEV_CANON"
+weapon_level = 3
 fire_type = "automatic"
 bullet = ExtResource("2_8obux")
 bullet_speed = 3000
 bullet_damage = 35.0
 bullet_knockback = 10.0
 fire_rate = 0.1
-clip_size = 30
-max_bullet_reserve = 240
+clip_size = 100
 
 [node name="LowerWeaponRayCast" parent="." index="3"]
 target_position = Vector2(0, 110)
