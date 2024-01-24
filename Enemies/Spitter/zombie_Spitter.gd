@@ -47,7 +47,7 @@ func _ready():
 
 func setWalkingSpeed():
 	randomize()
-	var number = randi_range(-80, 50)
+	var number = randi_range(-30, 50)
 	velocity_component.max_velocity += number
 	print(velocity_component.max_velocity)
 

@@ -42,6 +42,23 @@ grow_vertical = 2
 texture = ExtResource("3_3pxqn")
 expand_mode = 2
 
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 39.0
+offset_right = 1272.0
+offset_bottom = 131.0
+theme = ExtResource("9_pj024")
+theme_override_colors/font_color = Color(0.380392, 0.419608, 0.192157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 72
+text = "Dead Frost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MenuSoundPlayer" parent="." instance=ExtResource("2_p1pvs")]
 
 [node name="LightFlicker" parent="." instance=ExtResource("6_rwddq")]
