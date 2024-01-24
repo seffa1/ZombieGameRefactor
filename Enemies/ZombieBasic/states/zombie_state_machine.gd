@@ -15,11 +15,12 @@ func _ready():
 		"seek_player": $SeekPlayer,
 		"seek_inside": $SeekInside,
 		"attack_player": $AttackPlayer,
+		"attack_player_spit": $AttackPlayer_Spit,
 		"break_window": $BreakWindow,
 		"attack_player_through_window": $AttackPlayerThroughWindow,
 		"die": $Die,
 		"stand_still": $StandStill,
-		"headless_death": $HeadlessDeath
+		"headless_death": $HeadlessDeath,
 	}
 	
 	hurtbox_head.headless_death.connect(_on_headless_death)

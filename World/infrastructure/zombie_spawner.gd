@@ -14,6 +14,7 @@ for collisions there to determine it a spawner should be on or not.
 @onready var player_spawn_detector = $Area2D
 
 @export var spawn_interval: float = 1
+@export var spitter_only: bool = false
 @export var spawner_active: bool = true
 @export var trigger_doors: Array[Area2D]
 
@@ -54,6 +55,8 @@ func spawn_zombie() -> CharacterBody2D:
 	return zombie_instance
 
 func get_random_zombie():
+	if spitter_only:
+		return zombie_list[1]
 	var zombie_list_index = randi_range(0, len(zombie_list) - 1)
 	return zombie_list[zombie_list_index]
 

@@ -4,6 +4,7 @@ extends "res://Libraries/state.gd"
 @onready var zombie_groans = $"../../ZombieGroans-Audio"
 @onready var groan_timer = $"../../GroanTimer"
 @onready var distance_check_timer: Timer = $"../../DistanceCheckTimer"
+@onready var spit_detectors = %SpitDetector
 
 @export var groan_interval = 5  # min seconds between random groans
 
@@ -46,6 +47,16 @@ func update(delta):
 	if owner.player_detector.has_overlapping_areas():
 		emit_signal("finished", "attack_player")
 		return
+		print("UPdate")
+		
+	# Check if the player is in the spit detectors to do a spit attack
+	for rayCast in spit_detectors.get_children():
+		print(":CHECKING")
+		if rayCast.is_colliding():
+			print("COLLIDING")
+			print(rayCast.get_collider())
+			emit_signal("finished" , "attack_player_spit")
+			return
 		
 	# Track the distance we travel to make sure we arent getting stuck
 	if distance_check_timer.is_stopped():

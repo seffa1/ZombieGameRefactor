@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://5703k78iyb24"]
+[gd_scene load_steps=68 format=3 uid="uid://5703k78iyb24"]
 
 [ext_resource type="Script" path="res://Enemies/Spitter/zombie_Spitter.gd" id="1_xluhs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_hcp5o"]
@@ -24,15 +24,17 @@
 [ext_resource type="Texture2D" uid="uid://lkynjcwwlydm" path="res://Enemies/Spitter/images/components/legRightUpper.png" id="15_463fp"]
 [ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_head_Spitter.gd" id="16_psuy7"]
 [ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="17_q3ky8"]
+[ext_resource type="AudioStream" uid="uid://bpkfqq2684gmj" path="res://Enemies/Spitter/sounds/ESM_Deep_Cinematic_Monster_Growl_1_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="25_autvj"]
 [ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="25_f5rvh"]
 [ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="26_gbeqx"]
+[ext_resource type="AudioStream" uid="uid://b0minr0ev4u0a" path="res://Enemies/Spitter/sounds/ESM_Death_by_Monster_3_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="26_pbq0p"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="27_tkohk"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="28_616nb"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="29_0pdtf"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="30_uq5dc"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="31_pwnig"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="32_p5twy"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="33_55k58"]
+[ext_resource type="Script" path="res://Enemies/Spitter/states/move_spitter.gd" id="33_xvlwm"]
 [ext_resource type="Script" path="res://Enemies/Spitter/states/AttackPlayer_Spit.gd" id="34_6rflx"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="34_sni8n"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="35_ka56c"]
@@ -626,6 +628,39 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(48.9999, 1.00008), Vector2(-13.467, 1.4824), Vector2(-34.3616, 1.48231), Vector2(48.9999, 1.00008)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ZombieStateMachine/AttackPlayer_Spit")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot_spit"
+}]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpitSounds")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("25_autvj")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("26_pbq0p")
+}],
+"times": PackedFloat32Array(-0.2, 1.5)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_n4w1o"]
 resource_name = "zombie_break_window_basic"
@@ -1575,9 +1610,9 @@ uv = PackedVector2Array(100.804, 3.27283, 71.2525, -1.21266, 38.271, 18.3124, 25
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = -0.158916
-scale = Vector2(1.0001, 1.00015)
-skew = 0.000431299
+rotation = 0.194884
+scale = Vector2(0.999956, 1.00035)
+skew = 0.000422716
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -1730,6 +1765,30 @@ position = Vector2(77, 17)
 rotation = 1.06188
 object_to_spawn = ExtResource("26_gbeqx")
 
+[node name="SpitDetector" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="RayCast" type="RayCast2D" parent="SpitDetector"]
+position = Vector2(24, 1)
+rotation = -1.57079
+scale = Vector2(2.72682, 1.5761)
+target_position = Vector2(2.08165e-12, 500)
+collision_mask = 17
+
+[node name="RayCast2" type="RayCast2D" parent="SpitDetector"]
+position = Vector2(24, 1)
+rotation = -1.42867
+scale = Vector2(2.72682, 1.5761)
+target_position = Vector2(2.08165e-12, 500)
+collision_mask = 17
+
+[node name="RayCast3" type="RayCast2D" parent="SpitDetector"]
+position = Vector2(24, 1)
+rotation = -1.68037
+scale = Vector2(2.72682, 1.5761)
+target_position = Vector2(2.08165e-12, 500)
+collision_mask = 17
+
 [node name="WindowHitbox" type="Area2D" parent="."]
 collision_layer = 4096
 collision_mask = 512
@@ -1784,7 +1843,7 @@ START_STATE = NodePath("SeekWindow")
 script = ExtResource("29_0pdtf")
 
 [node name="SeekPlayer" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("30_uq5dc")
+script = ExtResource("33_xvlwm")
 
 [node name="SeekInside" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("31_pwnig")
@@ -1854,6 +1913,10 @@ one_shot = true
 [node name="DistanceCheckTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="SpitSounds" type="AudioStreamPlayer2D" parent="."]
+volume_db = -21.201
+bus = &"GameAudio"
 
 [connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]
