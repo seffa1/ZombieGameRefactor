@@ -6119,40 +6119,42 @@ layer_0/name = "aboveGround"
 [node name="Objectives" type="Node" parent="GameWorld/Environment"]
 
 [node name="VesselCharge" parent="GameWorld/Environment/Objectives" instance=ExtResource("34_81lr8")]
-position = Vector2(1188, 1733)
-rotation = 1.57079
+position = Vector2(1590, 1779)
 souls_needed_to_charge = 10.0
 
 [node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge" index="3"]
-position = Vector2(5.53131e-05, 0)
-scale = Vector2(5.69437, 10.118)
+position = Vector2(-3, 0)
+scale = Vector2(6.26903, 4.80167)
 shadow_filter_smooth = 4.0
-offset = Vector2(3.43304, -33.1448)
+offset = Vector2(2.58163, 0.0184097)
 
 [node name="VesselCharge2" parent="GameWorld/Environment/Objectives" instance=ExtResource("34_81lr8")]
-position = Vector2(3664, -266)
-rotation = 4.71238
+position = Vector2(3118, -125)
+rotation = 6.28318
 souls_needed_to_charge = 10.0
 
+[node name="ZombieDetector" parent="GameWorld/Environment/Objectives/VesselCharge2" index="0"]
+scale = Vector2(1.34049, 1.24201)
+
 [node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge2" index="3"]
-position = Vector2(5.53131e-05, 0)
-scale = Vector2(5.69437, 10.118)
+position = Vector2(-0.000244141, -3.05176e-05)
+scale = Vector2(6.78226, 6.33587)
 shadow_color = Color(0, 0, 0, 0)
 shadow_filter = 0
 shadow_filter_smooth = 4.0
-offset = Vector2(3.43304, -33.1448)
+offset = Vector2(2.84323, -8.81959)
 
 [node name="VesselCharge3" parent="GameWorld/Environment/Objectives" instance=ExtResource("34_81lr8")]
-position = Vector2(-1070, 1192)
-rotation = 0.785397
+position = Vector2(-731, 1112)
+rotation = -0.785397
 souls_needed_to_charge = 10.0
 
 [node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge3" index="3"]
-position = Vector2(46.3044, -26.198)
+position = Vector2(-9.82385, -13.882)
 scale = Vector2(6.32346, 5.37058)
 shadow_color = Color(0, 0.305882, 0, 0)
 shadow_filter_smooth = 4.0
-offset = Vector2(14.5319, -28.6845)
+offset = Vector2(3.62435, -9.45782)
 
 [node name="Decorations" type="Node" parent="GameWorld/Environment"]
 
