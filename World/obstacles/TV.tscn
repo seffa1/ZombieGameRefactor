@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://7b7e5bci0po5"]
+[gd_scene load_steps=6 format=3 uid="uid://7b7e5bci0po5"]
 
 [ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="1_awo8m"]
 [ext_resource type="Texture2D" uid="uid://tx4fkomwsfaw" path="res://VFX/textures/spotlight_2.png" id="2_q02to"]
 [ext_resource type="Script" path="res://VFX/lights/light_flicker.gd" id="3_km1m0"]
+[ext_resource type="Script" path="res://World/lights/powered.gd" id="4_0ntfy"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o8xd1"]
 polygon = PackedVector2Array(-43, 21, -20, 12, 17, 11, 43, 26, 42, -19, 29, -25, -23, -26, -40, -20)
@@ -21,6 +22,9 @@ script = ExtResource("3_km1m0")
 
 [node name="FlickerTimer" type="Timer" parent="PointLight2D"]
 one_shot = true
+
+[node name="Node" type="Node" parent="PointLight2D"]
+script = ExtResource("4_0ntfy")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_o8xd1")
