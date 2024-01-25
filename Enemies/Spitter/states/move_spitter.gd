@@ -19,6 +19,10 @@ func _ready():
 func enter():
 	distance_check_timer.start()
 	previous_position = owner.global_position
+	
+	# Enable spit detectors
+	for rayCast in spit_detectors.get_children():
+		rayCast.enabled = true
 
 	is_targeting_player = true
 	if randi_range(0, 1) == 1:
@@ -36,6 +40,11 @@ func _on_player_position_changed(player_position: Vector2):
 func exit():
 	is_targeting_player = false
 	groan_timer.stop()
+	
+	# Disable spit detectors
+	for rayCast in spit_detectors.get_children():
+		rayCast.enabled = false
+
 	return
 
 func update(delta):

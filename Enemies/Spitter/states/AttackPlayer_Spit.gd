@@ -7,23 +7,28 @@ If a zombie is outside and within reach of a window, do break window animation.
 
 var spit_scene: PackedScene = preload("res://VFX/poisenSpitAttack/SpitterAttack.tscn")
 
-var player_position: Vector2
+
+var is_targeting_player: bool = false
 
 func _ready():
+	# TODO - move this to the enter func, and disconnect in the exit function
+	# TODO - do this for all instances in this and all enemies (if not consuming the signal, why waste bandwith getting it)
 	# Connect to player position signal and feed that to the pathfinding component
 	Events.player_position_change.connect(_on_player_position_changed)
 
 # Initialize the state. E.g. change the animation
 func enter():
 	owner.animation_player.play("zombie_attack_spit")
+	is_targeting_player = true
 
 func _on_player_position_changed(player_position: Vector2):
-	player_position = player_position
-	owner.pathfinding_component.update_target_position(player_position)
+	if is_targeting_player:
+		owner.pathfinding_component.update_target_position(player_position)
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
 	owner.animation_player.stop()
+	is_targeting_player = false
 
 func update(delta):
 	print(spit_emission_point.rotation)

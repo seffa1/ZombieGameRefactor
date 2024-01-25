@@ -1642,7 +1642,7 @@ uv = PackedVector2Array(100.804, 3.27283, 71.2525, -1.21266, 38.271, 18.3124, 25
 position = Vector2(48.9999, 1.00008)
 rotation = -0.552489
 scale = Vector2(1.00027, 1.00005)
-skew = 0.000220656
+skew = 0.000220418
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -1806,6 +1806,7 @@ unique_name_in_owner = true
 position = Vector2(24, 1)
 rotation = -1.57079
 scale = Vector2(2.72682, 1.5761)
+enabled = false
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 17
 
@@ -1813,6 +1814,7 @@ collision_mask = 17
 position = Vector2(24, 1)
 rotation = -1.42867
 scale = Vector2(2.72682, 1.5761)
+enabled = false
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 17
 
@@ -1820,6 +1822,7 @@ collision_mask = 17
 position = Vector2(24, 1)
 rotation = -1.68037
 scale = Vector2(2.72682, 1.5761)
+enabled = false
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 17
 

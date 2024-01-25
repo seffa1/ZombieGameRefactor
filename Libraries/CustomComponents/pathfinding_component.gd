@@ -39,6 +39,9 @@ func update_target_position(position: Vector2):
 	"""
 	if position == nagivation_agent.target_position:
 		return
+		
+	print("UPDATING TARGET POSITION")
+	print(position)
 	
 	if path_update_timer.is_stopped():
 		path_update_timer.start(path_update_interval)
