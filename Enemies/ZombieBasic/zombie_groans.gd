@@ -4,6 +4,7 @@ extends Node2D
 @onready var long_groans = $"LongGroans-AudioRandomizer"
 @onready var death_groans = $"DeathGroans-AudioRandomizer"
 @onready var attack_groans = $"AttackGroans-AudioRandomizer"
+@onready var spitter_groans = $"SpitterGroans-AudioRandomizer"
 
 func play_short():
 	short_groans.play_random()
@@ -16,3 +17,6 @@ func play_attack():
 
 func play_death():
 	attack_groans.play_random()
+	
+func play_spitter():
+	spitter_groans.play_random()

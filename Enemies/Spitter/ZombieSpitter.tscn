@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://5703k78iyb24"]
+[gd_scene load_steps=69 format=3 uid="uid://5703k78iyb24"]
 
 [ext_resource type="Script" path="res://Enemies/Spitter/zombie_Spitter.gd" id="1_xluhs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_hcp5o"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_head_Spitter.gd" id="16_psuy7"]
 [ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="17_q3ky8"]
 [ext_resource type="AudioStream" uid="uid://bpkfqq2684gmj" path="res://Enemies/Spitter/sounds/ESM_Deep_Cinematic_Monster_Growl_1_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="25_autvj"]
+[ext_resource type="AudioStream" uid="uid://blvlgye7pe4uv" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Wet.wav" id="25_co7rm"]
 [ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="25_f5rvh"]
 [ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="26_gbeqx"]
 [ext_resource type="AudioStream" uid="uid://b0minr0ev4u0a" path="res://Enemies/Spitter/sounds/ESM_Death_by_Monster_3_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="26_pbq0p"]
@@ -602,6 +603,21 @@ tracks/8/keys = {
 "method": &"_on_attack_animation_finished"
 }]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpitSounds")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("25_co7rm")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_dug5d"]
 resource_name = "zombie_attack_spit"
@@ -1449,8 +1465,8 @@ modification_stack = ExtResource("3_1117w")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(0, 3.4821)
-scale = Vector2(0.999825, 0.999827)
-skew = -0.00047791
+scale = Vector2(0.999827, 0.999825)
+skew = -0.00048697
 rest = Transform2D(1, 0, 0, 1, 104, 2)
 editor_settings/show_bone_gizmo = false
 
@@ -1624,9 +1640,9 @@ uv = PackedVector2Array(100.804, 3.27283, 71.2525, -1.21266, 38.271, 18.3124, 25
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = 0.194884
-scale = Vector2(0.999956, 1.00035)
-skew = 0.000422716
+rotation = -0.552489
+scale = Vector2(1.00027, 1.00005)
+skew = 0.000220656
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true

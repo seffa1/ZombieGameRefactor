@@ -20,3 +20,6 @@ func _process(delta):
 func _on_damage_timer_timeout():
 	player_hit_box.monitorable = true
 	player_hit_box.monitoring = true
+
+func play_hit_sound():
+	$AudioRandomizer.play_random()

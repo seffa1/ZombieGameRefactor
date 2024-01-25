@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjmmniaeam308"]
+[gd_scene load_steps=21 format=3 uid="uid://bjmmniaeam308"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_groans.gd" id="1_6dlug"]
 [ext_resource type="PackedScene" uid="uid://dj8dsfwvk6oas" path="res://Libraries/CustomComponents/AudioRandomizer.tscn" id="2_wt7bi"]
@@ -18,6 +18,8 @@
 [ext_resource type="AudioStream" uid="uid://bg48o0ecrbqgc" path="res://Enemies/sounds/ESM_HCREA_cinematic_FX_voice_one_shot_creahmn_zombie_death_dying_05.wav" id="16_pqsmd"]
 [ext_resource type="AudioStream" uid="uid://kwnlnqx4emxm" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Dry.wav" id="17_kstx2"]
 [ext_resource type="AudioStream" uid="uid://ddqn25nrpwc3k" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Hulking_Zombie_Angry_Dry.wav" id="18_p4s6p"]
+[ext_resource type="AudioStream" uid="uid://s0tqxm4tvm2l" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Bloated_Zombie_Burbling_Dry_Mutant_Dead_Undead_Monster_Fat.wav" id="19_mq3o2"]
+[ext_resource type="AudioStream" uid="uid://djd3bv7t4pc3x" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Beast_Viscous_Attack_Wet.wav" id="20_nvbxl"]
 
 [node name="ZombieGroans" type="Node2D"]
 script = ExtResource("1_6dlug")
@@ -41,3 +43,8 @@ audio_clips = Array[AudioStreamWAV]([ExtResource("16_pqsmd")])
 max_polyphony = 4
 bus = &"GameAudio"
 audio_clips = Array[AudioStreamWAV]([ExtResource("17_kstx2"), ExtResource("18_p4s6p")])
+
+[node name="SpitterGroans-AudioRandomizer" parent="." instance=ExtResource("2_wt7bi")]
+max_polyphony = 4
+bus = &"GameAudio"
+audio_clips = Array[AudioStreamWAV]([ExtResource("19_mq3o2"), ExtResource("20_nvbxl")])
