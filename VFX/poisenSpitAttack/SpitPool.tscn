@@ -223,6 +223,7 @@ offsets = PackedFloat32Array(0, 0.882897, 0.976888)
 colors = PackedColorArray(0.380392, 0.419608, 0.192157, 1, 0.858824, 0.870588, 0.431373, 1, 0.970293, 0.880353, 0.536616, 1)
 
 [node name="SpitPool" type="Node2D"]
+z_index = 1
 material = SubResource("ShaderMaterial_ch23p")
 script = ExtResource("1_fg825")
 
