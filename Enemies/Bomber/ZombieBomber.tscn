@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://n83d0irapkol"]
+[gd_scene load_steps=72 format=3 uid="uid://n83d0irapkol"]
 
 [ext_resource type="Script" path="res://Enemies/Bomber/zombie_bomber.gd" id="1_xr4qn"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_e7liy"]
@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="29_1nm6k"]
 [ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="30_5xl3r"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="31_hqtgc"]
-[ext_resource type="Script" path="res://Enemies/Bomber/bomber_state_Machine.gd" id="32_75irs"]
+[ext_resource type="Script" path="res://Enemies/Bomber/bomber_State_explode.gd" id="32_7nrvc"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="33_r0l6n"]
 [ext_resource type="Script" path="res://Enemies/Bomber/seek_player_bomber.gd" id="34_qw58o"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="35_1tct2"]
@@ -1581,6 +1581,28 @@ height = 146.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_j67cy"]
 radius = 20.0
 
+[sub_resource type="GDScript" id="GDScript_inqmn"]
+script/source = "extends \"res://Libraries/state.gd\"
+
+@onready var animation_player = $\"../../AnimationPlayer\"
+
+func enter():
+	explode()
+
+
+# Clean up the state. Reinitialize values like a timer
+func exit():
+	return
+
+func update(delta):
+	return
+
+func explode():
+	# TODO - enable hit box and explosive death
+	queue_free()
+	
+"
+
 [node name="ZombieBomber" type="CharacterBody2D" groups=["Zombies"]]
 z_index = 2
 collision_layer = 8
@@ -1999,7 +2021,7 @@ debug_color = Color(0.2, 0.607843, 0.588235, 0.419608)
 [node name="ZombieGroans-Audio" parent="." instance=ExtResource("31_hqtgc")]
 
 [node name="ZombieStateMachine" type="Node" parent="."]
-script = ExtResource("32_75irs")
+script = ExtResource("32_7nrvc")
 START_STATE = NodePath("SeekPlayer")
 
 [node name="SeekWindow" type="Node" parent="ZombieStateMachine"]
@@ -2028,6 +2050,9 @@ script = ExtResource("40_uh5dx")
 
 [node name="ExplosiveDeath" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("41_8fm8k")
+
+[node name="Explode" type="Node" parent="ZombieStateMachine"]
+script = SubResource("GDScript_inqmn")
 
 [node name="Die" type="Node" parent="ZombieStateMachine" node_paths=PackedStringArray("hurtboxes")]
 script = ExtResource("41_c03ux")
