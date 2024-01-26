@@ -4,8 +4,6 @@ extends "res://Libraries/state.gd"
 @onready var zombie_groans = $"../../ZombieGroans-Audio"
 @onready var groan_timer = $"../../GroanTimer"
 @onready var distance_check_timer: Timer = $"../../DistanceCheckTimer"
-@onready var spit_detectors = %SpitDetector
-@onready var spit_timer: Timer = $"../../SpitTimer"
 
 @export var groan_interval = 5  # min seconds between random groans
 
@@ -19,10 +17,7 @@ func _ready():
 func enter():
 	distance_check_timer.start()
 	previous_position = owner.global_position
-	
-	# Enable spit detectors
-	for rayCast in spit_detectors.get_children():
-		rayCast.enabled = true
+
 
 	is_targeting_player = true
 	if randi_range(0, 1) == 1:
@@ -40,10 +35,6 @@ func _on_player_position_changed(player_position: Vector2):
 func exit():
 	is_targeting_player = false
 	groan_timer.stop()
-	
-	# Disable spit detectors
-	for rayCast in spit_detectors.get_children():
-		rayCast.enabled = false
 
 	return
 
@@ -53,19 +44,11 @@ func update(delta):
 		zombie_groans.play_spitter()
 		groan_timer.start(groan_interval + randf_range(0, 10))
 
-	# Check if theres a player to melee attack
+	# Check if theres a player to explode
 	if owner.player_detector.has_overlapping_areas():
-		emit_signal("finished", "attack_player")
+		emit_signal("finished", "explosive_death")
 		return
-		
-	# Check if the player is in the spit detectors to do a spit attack
-	if spit_timer.is_stopped():
-		for rayCast in spit_detectors.get_children():
-			if rayCast.is_colliding():
-				# 10 second cooldown on spitting
-				spit_timer.start(10)
-				emit_signal("finished" , "attack_player_spit")
-				return
+	
 		
 	# Track the distance we travel to make sure we arent getting stuck
 	if distance_check_timer.is_stopped():
