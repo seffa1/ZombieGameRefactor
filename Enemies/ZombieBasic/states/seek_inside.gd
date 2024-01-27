@@ -21,8 +21,7 @@ func enter():
 			smallest_distance = distance
 			target_inside_trigger = trigger
 	assert(target_inside_trigger != null, "There are no windows for spawner to target.")
-	print("FOUND AN INSSIDE TRIGGER")
-	print(target_inside_trigger)
+
 	owner.pathfinding_component.update_target_position(target_inside_trigger.global_position)
 
 # Clean up the state. Reinitialize values like a timer
@@ -35,7 +34,7 @@ func update(delta):
 	# Check if weve hit a trigger
 	if owner.trigger_detector.has_overlapping_areas():
 		print("INSIDE, SEEKING PLAYER")
-		emit_signal("finished", "seek_player")
+		emit_signal("finished", "attack_player")
 		return
 
 	# Move - velocity should be getting updated by the pathfinding component

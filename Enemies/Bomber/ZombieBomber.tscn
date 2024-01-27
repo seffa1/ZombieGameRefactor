@@ -73,7 +73,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHitbox:monitoring")
+tracks/1/path = NodePath("PlayerHitBox_explosion:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -85,7 +85,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerHitbox:monitorable")
+tracks/2/path = NodePath("PlayerHitBox_explosion:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -196,26 +196,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerHitbox:monitoring")
+tracks/3/path = NodePath("PlayerHitBox_explosion:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerHitbox:monitorable")
+tracks/4/path = NodePath("PlayerHitBox_explosion:monitorable")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -280,7 +280,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/10/path = NodePath("PlayerHitBox_explosion/CollisionShape2D:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -556,7 +556,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerHitbox:monitoring")
+tracks/5/path = NodePath("PlayerHitBox_explosion:monitoring")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -568,7 +568,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerHitbox:monitorable")
+tracks/6/path = NodePath("PlayerHitBox_explosion:monitorable")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -580,7 +580,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/7/path = NodePath("PlayerHitBox_explosion/CollisionShape2D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -682,84 +682,48 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/5/type = "value"
+tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerHitbox:monitoring")
+tracks/5/path = NodePath("SpitSounds")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerHitbox:monitorable")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("PlayerHitbox/CollisionShape2D:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(14, 1)]
-}
-tracks/8/type = "audio"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SpitSounds")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "clips": [],
 "times": PackedFloat32Array()
 }
-tracks/8/use_blend = true
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(118.457, -52.2404)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 1, 1.1, 1.2),
 "transitions": PackedFloat32Array(2, 2, 2, 2),
 "update": 0,
 "values": [Vector2(13.9214, -3.48827), Vector2(59.2224, -3.47388), Vector2(-24.402, -0.0159225), Vector2(-24.402, -0.0159225)]
 }
-tracks/11/type = "method"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("ZombieStateMachine/ExplosiveDeath")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ZombieStateMachine/ExplosiveDeath")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(1.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1342,6 +1306,30 @@ tracks/14/keys = {
 "update": 0,
 "values": [0.0, 0.0, 0.0, 0.0]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PlayerHitBox_explosion:monitoring")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PlayerHitBox_explosion:monitorable")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_5qii2"]
 resource_name = "zombie_walk_basic_2"
@@ -1527,6 +1515,30 @@ tracks/14/keys = {
 "update": 0,
 "values": [0.0, 0.0, 0.0, 0.0]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PlayerHitBox_explosion:monitoring")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PlayerHitBox_explosion:monitorable")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
 _data = {
@@ -1573,14 +1585,12 @@ script/source = "extends \"res://Libraries/state.gd\"
 
 @onready var explosion = preload(\"res://VFX/explosions/Explosion.tscn\")
 @onready var gore_vfx = $\"../../GoreVFX\"
-@onready var hit_box = $\"../../PlayerHitbox\"
+@onready var hit_box = $\"../../PlayerHitBox_explosion\"
 
 func enter():
 	print(\"ENTERING EXPLOSIONG\")
-	hit_box.monitoring = true
-	hit_box.monitorable = true
-	print(hit_box.monitoring)
-	print(hit_box.monitorable)
+	hit_box.monitoring = false
+	hit_box.monitorable = false
 	explode()
 
 
@@ -1594,11 +1604,11 @@ func update(delta):
 func explode():
 	# Explosion vfx
 	var explosionObject = explosion.instantiate()
-	explosionObject.no_damage = true
-	explosionObject.play_random_explosion([0, 1, 3, 5])
 	explosionObject.global_position = owner.global_position
+	explosionObject.damage_player = true
+	explosionObject.init(false, true, [0, 1, 3, 5])
 	ObjectRegistry.register_effect(explosionObject)
-	
+
 	# Gore vfx
 	gore_vfx.explosion_death(owner.global_position, owner.global_position)
 	Events.emit_signal(\"zombie_death\", owner)
@@ -1644,7 +1654,7 @@ modification_stack = ExtResource("3_x0v72")
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(0, 3.4821)
 scale = Vector2(0.999826, 0.999829)
-skew = -0.000690937
+skew = -0.000691295
 rest = Transform2D(1, 0, 0, 1, 104, 2)
 editor_settings/show_bone_gizmo = false
 
@@ -1654,9 +1664,9 @@ rotation = -0.511451
 scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.872033, -0.489442, 0.489443, 0.872033, 79, -138)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftUpper" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
+visible = false
 position = Vector2(86.6868, -10.8934)
 rotation = -0.236692
 collision_mask = 256
@@ -1679,10 +1689,10 @@ rotation = 0.152667
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.988367, 0.152074, -0.152072, 0.988367, 170, -7)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftLower" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(103.394, 66.085)
 rotation = 0.431961
 collision_mask = 256
@@ -1736,11 +1746,11 @@ uv = PackedVector2Array(27.0665, 5.18639, 50.7293, 4.21394, 76.013, 30.3079, 85.
 [node name="armRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(57, 137)
 rotation = -0.132898
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.99118, -0.132507, 0.132507, 0.99118, 57, 137)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightUpper" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
+visible = false
 position = Vector2(62.1251, 51.597)
 rotation = 0.431961
 collision_mask = 256
@@ -1762,10 +1772,10 @@ position = Vector2(119, 91)
 rotation = -0.609635
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.819856, -0.572567, 0.572568, 0.819855, 119, 91)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightLower" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(138.245, 10.4021)
 rotation = -0.190215
 collision_mask = 256
@@ -1817,12 +1827,11 @@ uv = PackedVector2Array(100.804, 3.27283, 71.2525, -1.21266, 38.271, 18.3124, 25
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = 0.590614
-scale = Vector2(1.00021, 1.00091)
-skew = 0.000264525
+rotation = -0.564802
+scale = Vector2(1.00084, 1.00028)
+skew = 0.000292301
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head"]
 unique_name_in_owner = true
@@ -1836,6 +1845,7 @@ uv = PackedVector2Array(62.9234, 8.3779, 98.9305, -1.06952, 140.107, 9.26917, 16
 
 [node name="HurtBoxHead" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(26.1413, 4.17972)
 rotation = 0.431961
 collision_mask = 256
@@ -1859,7 +1869,7 @@ emitting = false
 [node name="legLeftUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(111.932, -47.2245)
 rotation = -0.219886
-scale = Vector2(0.999796, 0.999826)
+scale = Vector2(0.999784, 0.999826)
 skew = -8.23736e-05
 rest = Transform2D(1, 0, 0, 1, 125.819, -47.2673)
 editor_settings/show_bone_gizmo = false
@@ -1952,18 +1962,17 @@ libraries = {
 "": SubResource("AnimationLibrary_rbgnq")
 }
 
-[node name="PlayerHitbox" type="Area2D" parent="."]
+[node name="PlayerHitBox_explosion" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 128
-monitoring = false
-monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox_explosion"]
 position = Vector2(105, -8)
 shape = SubResource("CircleShape2D_vviat")
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 
 [node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(24, 0)
 shape = SubResource("CircleShape2D_sr2cp")
 

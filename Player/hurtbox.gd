@@ -7,14 +7,25 @@ extends Area2D
 
 func _on_area_entered(_area: Area2D):
 	print("PLAYER GOT HIT")
-	if owner.hit_timer.is_stopped():
-		owner.hit_timer.start(hit_timer_interval)
 
-		# Damage per zombit hit, 
-		# TODO - if we have different zombie types that do different damage, well have to change how this works
-		health_component.health -= 10.0 
-		hurt_sounds.play_random()
-		hit_sounds.play_random()
 
-		if health_component.health <= 0:
-			Events.emit_signal("player_dies")
+func _process(delta):
+	if has_overlapping_areas():
+		print("OVER LAPPING AREAUS")
+		var areas = get_overlapping_areas()
+		for area in areas:
+			if area.name == 'PlayerHitBox_explosion':
+				health_component.health -= 100.0 
+		
+		if owner.hit_timer.is_stopped():
+			owner.hit_timer.start(hit_timer_interval)
+
+			# Damage per zombit hit, 
+			# TODO - if we have different zombie types that do different damage, well have to change how this works
+			health_component.health -= 10.0 
+			hurt_sounds.play_random()
+			hit_sounds.play_random()
+
+			if health_component.health <= 0:
+				Events.emit_signal("player_dies")
+

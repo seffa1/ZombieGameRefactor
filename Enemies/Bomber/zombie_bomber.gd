@@ -11,7 +11,7 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var window_detector: Area2D = $WindowDetector
 @onready var window_hit_box: Area2D = $WindowHitbox
 @onready var player_detector: Area2D = $PlayerDetector
-@onready var player_hit_box: Area2D = $PlayerHitbox
+@onready var player_hit_box: Area2D = $PlayerHitBox_explosion
 @onready var trigger_detector: Area2D = $TriggerDetector
 @onready var skeleton_control: Node2D = $SkeletonControl
 @onready var head_blood_emitter: CPUParticles2D = %HeadBloodEmitter
