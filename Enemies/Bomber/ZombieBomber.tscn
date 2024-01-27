@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://n83d0irapkol"]
+[gd_scene load_steps=71 format=3 uid="uid://n83d0irapkol"]
 
 [ext_resource type="Script" path="res://Enemies/Bomber/zombie_bomber.gd" id="1_xr4qn"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_e7liy"]
@@ -27,7 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://blvlgye7pe4uv" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Wet.wav" id="25_nrbcc"]
 [ext_resource type="AudioStream" uid="uid://bpkfqq2684gmj" path="res://Enemies/Spitter/sounds/ESM_Deep_Cinematic_Monster_Growl_1_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="26_6omb0"]
 [ext_resource type="AudioStream" uid="uid://b0minr0ev4u0a" path="res://Enemies/Spitter/sounds/ESM_Death_by_Monster_3_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="27_hc0ip"]
-[ext_resource type="PackedScene" uid="uid://dgwrjf4q250b5" path="res://VFX/Gore/GoreExplosion_Spitter.tscn" id="28_vgrah"]
+[ext_resource type="PackedScene" uid="uid://debyvwevkbjwj" path="res://VFX/Gore/GoreExplosion_Bomber.tscn" id="28_mboga"]
 [ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="29_1nm6k"]
 [ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="30_5xl3r"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="31_hqtgc"]
@@ -37,7 +37,6 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="35_1tct2"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="36_4ue0d"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="37_jpxot"]
-[ext_resource type="Script" path="res://Enemies/Spitter/states/AttackPlayer_Spit.gd" id="38_hcse8"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="39_lhnlm"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="40_uh5dx"]
 [ext_resource type="Script" path="res://Enemies/Bomber/explosive_death_bomber.gd" id="41_8fm8k"]
@@ -690,10 +689,10 @@ tracks/5/path = NodePath("PlayerHitbox:monitoring")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [false, true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -702,10 +701,10 @@ tracks/6/path = NodePath("PlayerHitbox:monitorable")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [false, true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -717,56 +716,56 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(105, -8)]
+"values": [Vector2(14, 1)]
 }
-tracks/8/type = "method"
+tracks/8/type = "audio"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("ZombieStateMachine/AttackPlayer")
+tracks/8/path = NodePath("SpitSounds")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_attack_animation_finished"
-}]
-}
-tracks/9/type = "audio"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SpitSounds")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "clips": [],
 "times": PackedFloat32Array()
 }
-tracks/9/use_blend = true
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/8/use_blend = true
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(118.457, -52.2404)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0, 1, 1.1, 1.2),
 "transitions": PackedFloat32Array(2, 2, 2, 2),
 "update": 0,
 "values": [Vector2(13.9214, -3.48827), Vector2(59.2224, -3.47388), Vector2(-24.402, -0.0159225), Vector2(-24.402, -0.0159225)]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ZombieStateMachine/ExplosiveDeath")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_explosion_animation_finished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_dug5d"]
@@ -808,27 +807,13 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(48.9999, 1.00008), Vector2(-13.467, 1.4824), Vector2(-34.3616, 1.48231), Vector2(48.9999, 1.00008)]
 }
-tracks/3/type = "method"
+tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ZombieStateMachine/AttackPlayer_Spit")
+tracks/3/path = NodePath("SpitSounds")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"shoot_spit"
-}]
-}
-tracks/4/type = "audio"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SpitSounds")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -840,7 +825,7 @@ tracks/4/keys = {
 }],
 "times": PackedFloat32Array(-0.2, 1.5)
 }
-tracks/4/use_blend = true
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_n4w1o"]
 resource_name = "zombie_break_window_basic"
@@ -1562,7 +1547,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vviat"]
-radius = 40.0
+radius = 70.4557
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr2cp"]
 radius = 20.0
@@ -1586,7 +1571,16 @@ script/source = "extends \"res://Libraries/state.gd\"
 
 @onready var animation_player = $\"../../AnimationPlayer\"
 
+@onready var explosion = preload(\"res://VFX/explosions/Explosion.tscn\")
+@onready var gore_vfx = $\"../../GoreVFX\"
+@onready var hit_box = $\"../../PlayerHitbox\"
+
 func enter():
+	print(\"ENTERING EXPLOSIONG\")
+	hit_box.monitoring = true
+	hit_box.monitorable = true
+	print(hit_box.monitoring)
+	print(hit_box.monitorable)
 	explode()
 
 
@@ -1598,9 +1592,19 @@ func update(delta):
 	return
 
 func explode():
-	# TODO - enable hit box and explosive death
-	queue_free()
+	# Explosion vfx
+	var explosionObject = explosion.instantiate()
+	explosionObject.no_damage = true
+	explosionObject.play_random_explosion([0, 1, 3, 5])
+	explosionObject.global_position = owner.global_position
+	ObjectRegistry.register_effect(explosionObject)
 	
+	# Gore vfx
+	gore_vfx.explosion_death(owner.global_position, owner.global_position)
+	Events.emit_signal(\"zombie_death\", owner)
+	owner.queue_free()
+
+
 "
 
 [node name="ZombieBomber" type="CharacterBody2D" groups=["Zombies"]]
@@ -1650,6 +1654,7 @@ rotation = -0.511451
 scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.872033, -0.489442, 0.489443, 0.872033, 79, -138)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftUpper" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 position = Vector2(86.6868, -10.8934)
@@ -1674,6 +1679,7 @@ rotation = 0.152667
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.988367, 0.152074, -0.152072, 0.988367, 170, -7)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftLower" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
@@ -1732,6 +1738,7 @@ position = Vector2(57, 137)
 rotation = -0.132898
 scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.99118, -0.132507, 0.132507, 0.99118, 57, 137)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightUpper" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 position = Vector2(62.1251, 51.597)
@@ -1755,6 +1762,7 @@ position = Vector2(119, 91)
 rotation = -0.609635
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.819856, -0.572567, 0.572568, 0.819855, 119, 91)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightLower" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
@@ -1809,11 +1817,12 @@ uv = PackedVector2Array(100.804, 3.27283, 71.2525, -1.21266, 38.271, 18.3124, 25
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = -0.566283
-scale = Vector2(1.00083, 1.00028)
-skew = 0.000291348
+rotation = 0.590614
+scale = Vector2(1.00021, 1.00091)
+skew = 0.000264525
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head"]
 unique_name_in_owner = true
@@ -1831,6 +1840,8 @@ position = Vector2(26.1413, 4.17972)
 rotation = 0.431961
 collision_mask = 256
 script = ExtResource("16_p4ssp")
+money_reward_bullet_hit = null
+damage_multiplier = null
 health_component = NodePath("../../../../../HealthComponents/HealthComponent - Head")
 status_reciever = NodePath("../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../GoreVFX")
@@ -1944,7 +1955,6 @@ libraries = {
 }
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 1024
 collision_mask = 128
 monitoring = false
@@ -1959,7 +1969,7 @@ debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 position = Vector2(24, 0)
 shape = SubResource("CircleShape2D_sr2cp")
 
-[node name="GoreVFX" parent="." instance=ExtResource("28_vgrah")]
+[node name="GoreVFX" parent="." instance=ExtResource("28_mboga")]
 
 [node name="ObjectSpawner" parent="." instance=ExtResource("29_1nm6k")]
 position = Vector2(77, 17)
@@ -2033,9 +2043,6 @@ script = ExtResource("36_4ue0d")
 
 [node name="BreakWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("37_jpxot")
-
-[node name="AttackPlayer_Spit" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("38_hcse8")
 
 [node name="AttackPlayerThroughWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("39_lhnlm")

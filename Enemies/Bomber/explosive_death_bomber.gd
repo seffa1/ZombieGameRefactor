@@ -18,6 +18,6 @@ func update(delta):
 	owner.update_rotation()
 
 
-func _on_animation_finished(anim_name):
+func _on_explosion_animation_finished():
 	emit_signal("finished", "explode")
 	

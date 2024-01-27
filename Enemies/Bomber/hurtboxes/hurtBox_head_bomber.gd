@@ -7,6 +7,7 @@ var is_dead: bool = false
 @onready var blood_emitter: CPUParticles2D = %HeadBloodEmitter
 
 signal headless_death
+signal explosion_death
 
 func bullet_impact_effect(area: Area2D):
 	"""
@@ -21,20 +22,9 @@ func bullet_impact_effect(area: Area2D):
 
 	# Spawn bullet impact
 	gore_vfx.bullet_impact(area.owner.velocity)
-	
-	# Apply knock back
-	var knock_back = area.bullet_knockback
-	var knock_back_vector = area.owner.velocity.normalized() * knock_back
-	owner.velocity_component.impulse_in_direction(knock_back_vector)
-	owner.velocity = owner.velocity_component.velocity
-	
-	# 10% Chance to play a hurt sound
-	if randf_range(0, 100) > 90:
-		zombie_groan_audio.play_short()
-	
+
+	# Whether the bomber is killed with a shot or a grenade, the result is the same explosive death
 	if health_component.health <= 0:
-		# Blood particle emitter on head
-		blood_emitter.emitting = true
 		death_effect()
 
 func explosion_impact_effect(area: Area2D):
@@ -48,29 +38,18 @@ func explosion_impact_effect(area: Area2D):
 	if is_dead:
 		return
 
-	# Apply knock back
-	var knock_back = area.bullet_knockback
-	var knock_back_vector = (area.global_position - global_position).normalized() * knock_back
-	owner.velocity_component.impulse_in_direction(knock_back_vector)
-	owner.velocity = owner.velocity_component.velocity
-	
 	# Spawn blood vfx
 	gore_vfx.play_splatter()
 	gore_vfx.bullet_impact(knock_back_vector)
 	
-	# If an explosion kills, then send body parts flying and instantly remove the zombie with no death animation
+	# Whether the bomber is killed with a shot or a grenade, the result is the same explosive death
 	if health_component.health <= 0:
-		gore_vfx.explosion_death(global_position, area.global_position)
-		# TODO - spawn a head body part and send it flying
-		Events.emit_signal("zombie_death", owner)
-		owner.queue_free()
+		death_effect()
 
 func death_effect():
 	is_dead = true
 	set_deferred("monitorable", false)
 	set_deferred("monitoring", false)
 	collision_shape.set_deferred("disabled", true)
-	head_polygon.hide()
-	gore_vfx.play_splatter()
-	# Transition states
-	emit_signal("headless_death")
+
+	emit_signal("explosion_death")

@@ -21,7 +21,8 @@ var health: float:
 		return health
 	set(value):
 		if one_shot_mode:
-			health=1
+			health=0
+			return
 		if value < health:
 			regen_wait_timer.start(health_regeneration_wait_time)
 		if value <= 0:
@@ -35,9 +36,7 @@ func _ready():
 	health = max_health
 	starting_max_health = max_health
 	regen_wait_timer.start(health_regeneration_wait_time)
-	if one_shot_mode:
-		health=1
-		max_health=1
+
 
 
 func _process(delta):

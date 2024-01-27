@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt8ojdwkhvmce"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_nk4i2"]
+[ext_resource type="Script" path="res://VFX/Gore/body_part.gd" id="2_3n7ds"]
+[ext_resource type="Texture2D" uid="uid://c2dpp57g45qdn" path="res://Enemies/Bomber/images/gore/legLowerRight.png" id="3_bp2qq"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_btgn3"]
+[ext_resource type="PackedScene" uid="uid://b3vqlc4bkf8ru" path="res://VFX/Gore/blood_emitters/BloodEmitter_1.tscn" id="5_07tlo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrorc"]
+height = 50.2256
+
+[node name="BodyPart-LegLower" instance=ExtResource("1_nk4i2")]
+collision_layer = 16384
+collision_mask = 17
+linear_damp = 1.0
+angular_damp = 10.0
+script = ExtResource("2_3n7ds")
+free_time = 5.0
+spawn_animation = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+rotation = -0.200609
+shape = SubResource("CapsuleShape2D_qrorc")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_bp2qq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+
+[node name="DampAnimator" parent="." index="5" instance=ExtResource("4_btgn3")]
+final_linear_damp_value = 5
+final_angular_damp_value = 5
+hang_time = 1.0
+tween_duration = 0.05
+
+[node name="BloodEmitter" parent="." index="6" instance=ExtResource("5_07tlo")]
+emitting = false

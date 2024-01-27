@@ -1,0 +1,96 @@
+[gd_scene load_steps=19 format=3 uid="uid://debyvwevkbjwj"]
+
+[ext_resource type="Script" path="res://VFX/Gore/gore_explosion.gd" id="1_tr6iu"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_wy7s4"]
+[ext_resource type="PackedScene" uid="uid://cxagcrallen0g" path="res://Enemies/Bomber/body_parts/Bomber-BodyPart-Head.tscn" id="3_5cfbo"]
+[ext_resource type="PackedScene" uid="uid://pbvwppdrngli" path="res://Enemies/Bomber/body_parts/Bomber - BodyPart-ArmLower.tscn" id="4_lu5xf"]
+[ext_resource type="PackedScene" uid="uid://dw133lfrkb3qf" path="res://Enemies/Bomber/body_parts/Bomber - BodyPart-Foot.tscn" id="5_re0ea"]
+[ext_resource type="PackedScene" uid="uid://u1qkio8iyii2" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-Foot.tscn" id="6_1sbdd"]
+[ext_resource type="PackedScene" uid="uid://c5w1cbykw7qw5" path="res://Enemies/Bomber/body_parts/Bomber - BodyPart-Hand.tscn" id="7_bsst3"]
+[ext_resource type="PackedScene" uid="uid://bt8ojdwkhvmce" path="res://Enemies/Bomber/body_parts/Bomber - BodyPart-LegLower.tscn" id="8_mahjp"]
+[ext_resource type="PackedScene" uid="uid://dwp1rfhsdl27u" path="res://Enemies/Bomber/body_parts/Bomber - BodyPart-LegUpper.tscn" id="9_u1gvb"]
+[ext_resource type="PackedScene" uid="uid://c05xwmkfr14kh" path="res://Enemies/Bomber/body_parts/Bomber - BodyPart-TorsoUpper.tscn" id="10_5jc7g"]
+[ext_resource type="PackedScene" uid="uid://drcsor1i3evor" path="res://Enemies/Bomber/body_parts/Bomber - BodyPart-TorsoLower.tscn" id="11_lfpdn"]
+[ext_resource type="PackedScene" uid="uid://ca2v6t7upnt8m" path="res://VFX/Gore/blood_splatters/BloodSplatter.tscn" id="12_d8ae6"]
+[ext_resource type="PackedScene" uid="uid://dj8dsfwvk6oas" path="res://Libraries/CustomComponents/AudioRandomizer.tscn" id="13_cqd84"]
+[ext_resource type="AudioStream" uid="uid://dvomjtk12mgyv" path="res://VFX/Gore/sounds/bullet_impacts/BRS_Bullet_Hit_Body_Flesh_07.wav" id="14_eu21e"]
+[ext_resource type="AudioStream" uid="uid://d0imhaniij8sw" path="res://VFX/Gore/sounds/bullet_impacts/BRS_Bullet_Hit_Body_Flesh_16.wav" id="15_v02f8"]
+[ext_resource type="AudioStream" uid="uid://cy4dt0ytjfx67" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactBody_BW.54390.wav" id="16_s25qk"]
+[ext_resource type="AudioStream" uid="uid://dnko80tokfoaf" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactBody_BW.54388.wav" id="17_cp28e"]
+[ext_resource type="AudioStream" uid="uid://msot08tqcfe8" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactFlesh_BW.54441.wav" id="18_1crbj"]
+
+[node name="GoreExplosion_Bomber" type="Node2D"]
+script = ExtResource("1_tr6iu")
+
+[node name="BodyPartsContainer" type="Node2D" parent="."]
+
+[node name="VFXSpawner-Head" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("3_5cfbo")
+item_ejection_speed = 300.0
+item_ejection_speed_variance = 0.8
+item_ejection_angle_variance = 0.3
+
+[node name="VFXSpawner-ArmLower" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("4_lu5xf")
+item_ejection_speed = 300.0
+item_ejection_speed_variance = 0.4
+item_ejection_angle_variance = 0.3
+
+[node name="VFXSpawner-ArmUpper" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("5_re0ea")
+item_ejection_speed = 300.0
+item_ejection_speed_variance = 0.4
+item_ejection_angle_variance = 0.3
+
+[node name="VFXSpawner-Foot" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("6_1sbdd")
+item_ejection_speed = 500.0
+item_ejection_speed_variance = 0.8
+item_ejection_angle_variance = 0.3
+
+[node name="VFXSpawner-Hand" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("7_bsst3")
+item_ejection_speed = 500.0
+item_ejection_speed_variance = 0.8
+item_ejection_angle_variance = 0.3
+
+[node name="VFXSpawner-LegLower" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("8_mahjp")
+item_ejection_speed = 300.0
+item_ejection_speed_variance = 0.4
+item_ejection_angle_variance = 0.3
+
+[node name="VFXSpawner-LegUpper" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("9_u1gvb")
+item_ejection_speed = 300.0
+item_ejection_speed_variance = 0.4
+item_ejection_angle_variance = 0.3
+
+[node name="VFXSpawner-TorsoLower" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("10_5jc7g")
+item_ejection_speed = 200.0
+item_ejection_speed_variance = 0.2
+item_ejection_angle_variance = 0.3
+
+[node name="VFXSpawner-TorsoUpper" parent="BodyPartsContainer" instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("11_lfpdn")
+item_ejection_speed = 200.0
+item_ejection_speed_variance = 0.2
+item_ejection_angle_variance = 0.3
+
+[node name="BloodSpawner" parent="." instance=ExtResource("2_wy7s4")]
+object_to_spawn = ExtResource("12_d8ae6")
+item_ejection_speed = 150.0
+item_ejection_speed_variance = 1.0
+item_rotation_variance = 3.1
+item_ejection_torque = 2.08165e-12
+item_ejection_torque_variance = 2.08165e-12
+
+[node name="BulletImpacts" parent="." instance=ExtResource("13_cqd84")]
+volume_db = -6.0
+bus = &"GameAudio"
+audio_clips = Array[AudioStreamWAV]([ExtResource("14_eu21e"), ExtResource("15_v02f8"), ExtResource("16_s25qk")])
+
+[node name="BloodSplatters" parent="." instance=ExtResource("13_cqd84")]
+bus = &"GameAudio"
+audio_clips = Array[AudioStreamWAV]([ExtResource("17_cp28e"), ExtResource("18_1crbj")])

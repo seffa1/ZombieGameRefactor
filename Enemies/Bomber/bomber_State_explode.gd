@@ -15,7 +15,6 @@ func _ready():
 		"seek_player": $SeekPlayer,
 		"seek_inside": $SeekInside,
 		"attack_player": $AttackPlayer,
-		"attack_player_spit": $AttackPlayer_Spit,
 		"break_window": $BreakWindow,
 		"attack_player_through_window": $AttackPlayerThroughWindow,
 		"die": $Die,
@@ -26,9 +25,12 @@ func _ready():
 	}
 	
 	hurtbox_head.headless_death.connect(_on_headless_death)
+	hurtbox_head.explosion_death.connect(_on_explosive_death)
 
 func _on_headless_death():
 	_change_state("headless_death")
+func _on_explosive_death():
+	_change_state("explode")
 
 func _change_state(state_name):
 	"""
