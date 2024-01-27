@@ -137,9 +137,8 @@ script = ExtResource("1_up6te")
 [node name="AnimatedSprite2D2" parent="." instance=ExtResource("14_kya4b")]
 position = Vector2(-0.999996, -0.999992)
 scale = Vector2(2.0202, 2.0202)
-animation = &"new_animation_5"
-autoplay = "new_animation_8"
-frame_progress = 0.703528
+animation = &"new_animation_8"
+autoplay = ""
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_0fc26")]
 collision_layer = 256

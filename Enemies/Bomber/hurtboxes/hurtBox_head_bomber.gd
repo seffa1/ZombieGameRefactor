@@ -22,6 +22,12 @@ func bullet_impact_effect(area: Area2D):
 
 	# Spawn bullet impact
 	gore_vfx.bullet_impact(area.owner.velocity)
+	
+	# Apply knock back
+	var knock_back = area.bullet_knockback
+	var knock_back_vector = area.owner.velocity.normalized() * knock_back
+	owner.velocity_component.impulse_in_direction(knock_back_vector)
+	owner.velocity = owner.velocity_component.velocity
 
 	# Whether the bomber is killed with a shot or a grenade, the result is the same explosive death
 	if health_component.health <= 0:
@@ -38,6 +44,12 @@ func explosion_impact_effect(area: Area2D):
 	if is_dead:
 		return
 
+	# Apply knock back
+	var knock_back = area.bullet_knockback
+	var knock_back_vector = (area.global_position - global_position).normalized() * knock_back
+	owner.velocity_component.impulse_in_direction(knock_back_vector)
+	owner.velocity = owner.velocity_component.velocity
+	
 	# Spawn blood vfx
 	gore_vfx.play_splatter()
 	gore_vfx.bullet_impact(knock_back_vector)
