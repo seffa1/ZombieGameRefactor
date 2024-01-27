@@ -5,16 +5,13 @@ extends Area2D
 @onready var hit_sounds = $"../HitSounds"
 @export var hit_timer_interval: float
 
-func _on_area_entered(_area: Area2D):
-	print("PLAYER GOT HIT")
-
 
 func _process(delta):
 	if has_overlapping_areas():
-		print("OVER LAPPING AREAUS")
 		var areas = get_overlapping_areas()
 		for area in areas:
-			if area.name == 'PlayerHitBox_explosion':
+			# The name of the hitbox component from Explosion.tscn
+			if area.name == 'PlayerHitbox_Explosion':
 				health_component.health -= 100.0 
 		
 		if owner.hit_timer.is_stopped():

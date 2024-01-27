@@ -43,7 +43,6 @@ func get_round_max_ammo_drop_chance(wave_number) -> float:
 		return float(rounds_since_max_ammo) * 0.03
 
 func spawn_max_ammo(global_position: Vector2):
-	print("MAX AMMO")
 	var instance = max_ammo.instantiate()
 	instance.global_position = global_position
 	ObjectRegistry.register_effect(instance)

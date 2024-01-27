@@ -14,5 +14,4 @@ func _process(delta):
 	pass
 
 func _on_power_on():
-	print("POWER On")
 	light.enabled = true

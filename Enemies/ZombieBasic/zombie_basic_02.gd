@@ -47,7 +47,6 @@ func setWalkingSpeed():
 	randomize()
 	var number = randi_range(-50, 80)
 	velocity_component.max_velocity += number
-	print(velocity_component.max_velocity)
 
 func set_max_health(zombie_base_health: int):
 	"""

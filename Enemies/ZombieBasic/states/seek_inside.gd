@@ -33,7 +33,6 @@ func update(delta):
 
 	# Check if weve hit a trigger
 	if owner.trigger_detector.has_overlapping_areas():
-		print("INSIDE, SEEKING PLAYER")
 		emit_signal("finished", "attack_player")
 		return
 

@@ -1,10 +1,8 @@
 extends Node2D
 
-# Used by the throwable to access the shooter variable of the hitbox
-@onready var enemy_hitbox_component = $HitBoxComponent
+@onready var player_hitbox_component = $PlayerHitbox_Explosion
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D2
-
 
 
 var animation: String
@@ -16,7 +14,6 @@ func initialize(args):
 func _ready():
 	animated_sprite.play(animation)
 	animation_player.play("explode")
-		
 
 var animations = [
 	"default",
@@ -30,11 +27,4 @@ var animations = [
 	"new_animation_7",
 	"new_animation_8",
 ]
-
-func _on_damage_end():
-	enemy_hitbox_component.monitorable = false
-	enemy_hitbox_component.monitoring = false
-
-func set_player(player: CharacterBody2D):
-	enemy_hitbox_component.shooter = player
 

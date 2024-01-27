@@ -11,7 +11,7 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var window_detector: Area2D = $WindowDetector
 @onready var window_hit_box: Area2D = $WindowHitbox
 @onready var player_detector: Area2D = $PlayerDetector
-@onready var player_hit_box: Area2D = $PlayerHitBox_explosion
+@onready var player_hit_box: Area2D = $PlayerHitBox
 @onready var trigger_detector: Area2D = $TriggerDetector
 @onready var skeleton_control: Node2D = $SkeletonControl
 @onready var head_blood_emitter: CPUParticles2D = %HeadBloodEmitter
@@ -45,7 +45,7 @@ func _ready():
 
 func setWalkingSpeed():
 	randomize()
-	var number = randi_range(70, 200)
+	var number = randi_range(200, 400)
 	velocity_component.max_velocity += number
 
 func set_max_health(zombie_base_health: int):

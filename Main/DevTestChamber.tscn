@@ -41,10 +41,10 @@
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_4bpo3"]
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_b2va5"]
 [ext_resource type="PackedScene" uid="uid://hkwukd3bresb" path="res://World/objectives/VesselCharge/VesselCharge.tscn" id="35_yxu8u"]
-[ext_resource type="PackedScene" uid="uid://4gpkqemjx0m5" path="res://VFX/explosions/Explosion.tscn" id="37_dqvqt"]
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="39_fdiub"]
 [ext_resource type="PackedScene" uid="uid://b58natsckpqcl" path="res://World/infrastructure/PowerUpManager.tscn" id="40_qr88r"]
 [ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
+[ext_resource type="PackedScene" uid="uid://bupbey7nqrcy5" path="res://VFX/explosions/Explosion_damagePlayer.tscn" id="45_xa86c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
 size = Vector2(410, 20)
@@ -927,12 +927,8 @@ souls_needed_to_charge = 3.0
 position = Vector2(645, 1086)
 souls_needed_to_charge = 3.0
 
-[node name="Explosion" parent="GameWorld" instance=ExtResource("37_dqvqt")]
-position = Vector2(2486, 235)
-rotation = -1.57079
-
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(1266, -93)
+position = Vector2(2421, 331)
 rotation = -1.57079
 starting_gun = "DEV_CANON"
 starting_money = 10000
@@ -986,6 +982,9 @@ process_mode = 3
 
 [node name="ScoreTracker" type="Node" parent="."]
 script = ExtResource("43_ou650")
+
+[node name="Explosion_DamagePlayer" parent="." instance=ExtResource("45_xa86c")]
+position = Vector2(2421, 14)
 
 [connection signal="area_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuy-DevCanon" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuy-DevCanon" method="_on_area_entered" flags=18]
 [connection signal="body_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuy-DevCanon" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuy-DevCanon" method="_on_body_entered" flags=18]

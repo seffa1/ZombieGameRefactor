@@ -31,7 +31,6 @@ func exit():
 	is_targeting_player = false
 
 func update(delta):
-	print(spit_emission_point.rotation)
 	# movement
 	owner.velocity_component.decelerate(delta)
 	owner.velocity = owner.velocity_component.velocity

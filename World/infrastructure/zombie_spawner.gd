@@ -61,7 +61,7 @@ func get_random_zombie():
 		return zombie_list[1]
 	if bomber_only:
 		return zombie_list[2]
-	var zombie_list_index = randi_range(0, 1)
+	var zombie_list_index = randi_range(0, 2)
 	return zombie_list[zombie_list_index]
 
 func in_range_to_spawn() -> bool:

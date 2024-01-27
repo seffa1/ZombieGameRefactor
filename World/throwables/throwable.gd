@@ -47,8 +47,8 @@ func _on_timer_timeout():
 	var explosion = explosion_to_spawn.instantiate()
 	explosion.global_position = global_position
 	explosion.rotation = rotation
-	explosion.init(true, false, [7, 8, 9])
-#	explosion.set_player(player) # vfx will spawn hitboxes and give the player money for doing damage / getting kills
+	explosion.initialize([7, 8, 9])
+	explosion.set_player(player) # vfx will spawn hitboxes and give the player money for doing damage / getting kills
 	ObjectRegistry.register_effect(explosion)
 	queue_free()
 
