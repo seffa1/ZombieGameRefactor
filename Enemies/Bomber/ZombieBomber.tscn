@@ -1650,7 +1650,6 @@ rotation = -0.511451
 scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.872033, -0.489442, 0.489443, 0.872033, 79, -138)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftUpper" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 position = Vector2(86.6868, -10.8934)
@@ -1675,7 +1674,6 @@ rotation = 0.152667
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.988367, 0.152074, -0.152072, 0.988367, 170, -7)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftLower" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
@@ -1734,7 +1732,6 @@ position = Vector2(57, 137)
 rotation = -0.132898
 scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.99118, -0.132507, 0.132507, 0.99118, 57, 137)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightUpper" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 position = Vector2(62.1251, 51.597)
@@ -1758,7 +1755,6 @@ position = Vector2(119, 91)
 rotation = -0.609635
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.819856, -0.572567, 0.572568, 0.819855, 119, 91)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightLower" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
@@ -1818,7 +1814,6 @@ scale = Vector2(1.00083, 1.00028)
 skew = 0.000291348
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head"]
 unique_name_in_owner = true
@@ -1855,7 +1850,7 @@ emitting = false
 [node name="legLeftUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(111.932, -47.2245)
 rotation = -0.219886
-scale = Vector2(0.999795, 0.999826)
+scale = Vector2(0.999796, 0.999826)
 skew = -8.23736e-05
 rest = Transform2D(1, 0, 0, 1, 125.819, -47.2673)
 editor_settings/show_bone_gizmo = false
@@ -2065,18 +2060,23 @@ script = ExtResource("42_mqn1n")
 
 [node name="HealthComponent - Head" parent="HealthComponents" instance=ExtResource("43_cs3tm")]
 max_health = 125.0
+one_shot_mode = true
 
 [node name="HealthComponent - LeftUpper" parent="HealthComponents" instance=ExtResource("43_cs3tm")]
 max_health = 150.0
+one_shot_mode = true
 
 [node name="HealthComponent - RightUpper" parent="HealthComponents" instance=ExtResource("43_cs3tm")]
 max_health = 150.0
+one_shot_mode = true
 
 [node name="HealthComponent - LeftLower" parent="HealthComponents" instance=ExtResource("43_cs3tm")]
 max_health = 100.0
+one_shot_mode = true
 
 [node name="HealthComponent - RightLower" parent="HealthComponents" instance=ExtResource("43_cs3tm")]
 max_health = 100.0
+one_shot_mode = true
 
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("44_ogprr")]
 velocity_component = NodePath("../VelocityComponent")
