@@ -17,6 +17,9 @@ var is_penetrating_shot: bool = false
 
 @export_enum("impact", "explosion") var hit_box_type  # helps the gore system choose vfxs
 
+func _ready():
+	shooter = Globals.player
+
 func _on_area_entered(_area):
 	# If the bullets hitbox hits an enemy hurtbox the bullet dies, unless its 'penetrating', then it keeps going through enemies
 	if hit_box_type == 0 and !is_penetrating_shot:

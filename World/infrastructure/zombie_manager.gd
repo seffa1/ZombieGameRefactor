@@ -15,6 +15,7 @@ Responsible for controlling and tracking the waves of zombies spawning.
 @export var spawn_delay_interval: float = 5  # seconds between each round of wave spawning
 @export var MAX_ZOMBIES_ON_MAP: int = 30
 @export_enum("the_labs", "test_chamber") var wave_spawn_type: String
+@export var bomber_round: bool = false
 
 var zombie_base_health = 150  # Gets adjustet each round
 
@@ -93,6 +94,12 @@ func _on_spawn_delay_timer_timeout():
 
 # Controlling the spawns ------------------------------------
 func _process(_delta):
+	if bomber_round:
+		_bomber_round()
+	else:
+		_normal_round()
+
+func _normal_round():
 	"""
 	Call on zombie spawners to spawn zombies
 	"""
@@ -124,6 +131,9 @@ func _process(_delta):
 				zombie_container.add_child(zombie_instance)
 				zombie_instance.set_max_health(zombie_base_health)
 				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
+
+func _bomber_round():
+	print("bomber round")
 
 func _select_spawners():
 	return get_tree().get_nodes_in_group("ZombieSpawners")

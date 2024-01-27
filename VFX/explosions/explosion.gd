@@ -31,9 +31,6 @@ var animations = [
 	"new_animation_8",
 ]
 
-func _on_damage_end():
-	enemy_hitbox_component.monitorable = false
-	enemy_hitbox_component.monitoring = false
 
 func set_player(player: CharacterBody2D):
 	enemy_hitbox_component.shooter = player

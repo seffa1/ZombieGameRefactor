@@ -6630,6 +6630,8 @@ position = Vector2(0, 7.62939e-06)
 MAX_ZOMBIES_ON_MAP = 30
 wave_spawn_type = "the_labs"
 
+[node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
+
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("25_fmh0i")]
 position = Vector2(105, 1744)
 spawn_interval = 5.0
