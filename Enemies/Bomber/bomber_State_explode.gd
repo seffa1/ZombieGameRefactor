@@ -22,6 +22,7 @@ func _ready():
 		"headless_death": $HeadlessDeath,
 		"explosive_death": $ExplosiveDeath,
 		"explode": $Explode,
+		"bomber_spawn": $BomberSpawn,
 	}
 	
 	hurtbox_head.headless_death.connect(_on_headless_death)

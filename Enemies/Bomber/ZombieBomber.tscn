@@ -1,7 +1,8 @@
-[gd_scene load_steps=71 format=3 uid="uid://n83d0irapkol"]
+[gd_scene load_steps=83 format=3 uid="uid://n83d0irapkol"]
 
 [ext_resource type="Script" path="res://Enemies/Bomber/zombie_bomber.gd" id="1_xr4qn"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_e7liy"]
+[ext_resource type="Shader" path="res://VFX/shaders/disolve.gdshader" id="3_byvw7"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://de2ta1trisi47" path="res://Enemies/Bomber/zombie_bomber_modification_stack.tres" id="3_x0v72"]
 [ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="4_8ft3q"]
 [ext_resource type="Script" path="res://Enemies/Bomber/hurtboxes/hurtBox_leftUpper_bomber.gd" id="5_jg7d0"]
@@ -26,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bv53v6mnvfosb" path="res://Enemies/Bomber/images/components/torso.png" id="24_e1f5i"]
 [ext_resource type="AudioStream" uid="uid://blvlgye7pe4uv" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Wet.wav" id="25_nrbcc"]
 [ext_resource type="AudioStream" uid="uid://bpkfqq2684gmj" path="res://Enemies/Spitter/sounds/ESM_Deep_Cinematic_Monster_Growl_1_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="26_6omb0"]
+[ext_resource type="AudioStream" uid="uid://qr51fgkjcen2" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Evil_Clown_Cackle_Wet.wav" id="26_i13xp"]
 [ext_resource type="AudioStream" uid="uid://b0minr0ev4u0a" path="res://Enemies/Spitter/sounds/ESM_Death_by_Monster_3_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="27_hc0ip"]
 [ext_resource type="PackedScene" uid="uid://debyvwevkbjwj" path="res://VFX/Gore/GoreExplosion_Bomber.tscn" id="28_mboga"]
 [ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="29_1nm6k"]
@@ -48,12 +50,48 @@
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="45_a568e"]
 [ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="46_yu6r4"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26kym"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 1.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wnop"]
 radius = 39.6561
 height = 228.179
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d43j2"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpp65"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pohmd"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1vxh"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2c8h"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avo61"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgmup"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtiv7"]
 radius = 103.891
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vn24v"]
+shader = ExtResource("3_byvw7")
+shader_parameter/sensitivity = 0.0
 
 [sub_resource type="Animation" id="Animation_s0mwp"]
 resource_name = "OBSOLETE_attack_player"
@@ -482,6 +520,138 @@ tracks/26/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/handLeft/handLeftPolygon:material:shader_parameter/sensitivity")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/armLeftLowerPolygon:material:shader_parameter/sensitivity")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("SkeletonControl/Skeleton/torso/armLeftUpper/armLeftUpperPolygon:material:shader_parameter/sensitivity")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/handRight/handRightPolygon:material:shader_parameter/sensitivity")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/armRightLowerPolygon:material:shader_parameter/sensitivity")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("SkeletonControl/Skeleton/torso/head/headPolygon:material:shader_parameter/sensitivity")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:visible")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("SkeletonControl/Skeleton/torso/armRightUpper/armRightUpperPolygon:material:shader_parameter/sensitivity")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("SkeletonControl/Skeleton/torso/torso:material")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_vn24v")]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("SkeletonControl/Skeleton/torso/torso:material:shader_parameter/sensitivity")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_qlkyy"]
 resource_name = "stand_still_01"
@@ -690,8 +860,12 @@ tracks/5/path = NodePath("SpitSounds")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"clips": [],
-"times": PackedFloat32Array()
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("26_i13xp")
+}],
+"times": PackedFloat32Array(0)
 }
 tracks/5/use_blend = true
 tracks/6/type = "value"
@@ -1541,12 +1715,281 @@ tracks/16/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_8kv25"]
+resource_name = "bomber_spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Target/LeftArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(208.926, -66.1599), Vector2(323.835, -184.551)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Target/LeftArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Target/RightArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(177.587, 87.0525), Vector2(278.568, 215.89)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Target/RightArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpitSounds")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(118.457, -52.2404)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(90.5319, -13.9175), Vector2(45.3045, -31.3592)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ZombieStateMachine/BomberSpawn")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [null],
+"method": &"_on_spawn_animation_finished"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(90.5005, 52.2397), Vector2(90.5005, 52.2397)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower/footRight:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.45558, -19.8998), Vector2(1.45558, -19.8998)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/handLeft/handLeftPolygon:material:shader_parameter/sensitivity")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/armLeftLowerPolygon:material:shader_parameter/sensitivity")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SkeletonControl/Skeleton/torso/armLeftUpper/armLeftUpperPolygon:material:shader_parameter/sensitivity")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/handRight/handRightPolygon:material:shader_parameter/sensitivity")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/armRightLowerPolygon:material:shader_parameter/sensitivity")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SkeletonControl/Skeleton/torso/head/headPolygon:material:shader_parameter/sensitivity")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("SkeletonControl/Skeleton/torso/armRightUpper/armRightUpperPolygon:material:shader_parameter/sensitivity")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("SkeletonControl/Skeleton/torso/torso:material")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_vn24v")]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("SkeletonControl/Skeleton/torso/torso:material:shader_parameter/sensitivity")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
 _data = {
 "OBSOLETE_attack_player": SubResource("Animation_s0mwp"),
 "OBSOLETE_break_window": SubResource("Animation_lcroy"),
 "OBSOLETE_zombie_death": SubResource("Animation_u0mci"),
 "RESET": SubResource("Animation_2n82s"),
+"bomber_spawn": SubResource("Animation_8kv25"),
 "stand_still_01": SubResource("Animation_qlkyy"),
 "stand_still_02": SubResource("Animation_p17fh"),
 "zombie_attack_basic": SubResource("Animation_6dyoi"),
@@ -1581,6 +2024,7 @@ radius = 20.0
 
 [node name="ZombieBomber" type="CharacterBody2D" groups=["Zombies"]]
 z_index = 2
+material = SubResource("ShaderMaterial_26kym")
 collision_layer = 8
 collision_mask = 65553
 motion_mode = 1
@@ -1616,7 +2060,7 @@ modification_stack = ExtResource("3_x0v72")
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(0, 3.4821)
 scale = Vector2(0.999826, 0.999829)
-skew = -0.000691295
+skew = -0.000691891
 rest = Transform2D(1, 0, 0, 1, 104, 2)
 editor_settings/show_bone_gizmo = false
 
@@ -1684,6 +2128,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="handLeftPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/handLeft"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_d43j2")
 position = Vector2(-75.9101, 6.76889)
 rotation = -0.477182
 texture = ExtResource("7_548uo")
@@ -1692,6 +2137,7 @@ uv = PackedVector2Array(51.9411, -2.00803, 87.1486, 4.95315, 98.2597, 10.9772, 1
 
 [node name="armLeftLowerPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fpp65")
 position = Vector2(-45.9041, 11.6849)
 rotation = -0.973359
 texture = ExtResource("8_fjqj2")
@@ -1700,6 +2146,7 @@ uv = PackedVector2Array(7.92798, 4.06438, 33.2578, 11.9799, 63.3369, -2.00421, 7
 
 [node name="armLeftUpperPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_pohmd")
 position = Vector2(-38.1561, 28.7201)
 rotation = -1.2726
 scale = Vector2(1.15866, 1.15866)
@@ -1769,6 +2216,7 @@ editor_settings/show_bone_gizmo = false
 
 [node name="handRightPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/handRight"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_e1vxh")
 position = Vector2(28.6461, 45.8919)
 rotation = -1.75944
 texture = ExtResource("12_byyl3")
@@ -1777,6 +2225,7 @@ uv = PackedVector2Array(39.06, 1.13452, 21.8801, 8.9141, 7.6175, 45.5429, 0.4862
 
 [node name="armRightLowerPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_d2c8h")
 position = Vector2(-7, 50)
 rotation = -1.40108
 texture = ExtResource("13_m5shx")
@@ -1785,6 +2234,7 @@ uv = PackedVector2Array(16.1074, -0.421112, 45.1311, 10.6607, 72.5718, 3.00897, 
 
 [node name="armRightUpperPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_avo61")
 position = Vector2(-57, 58)
 rotation = -1.16644
 texture = ExtResource("14_rumjt")
@@ -1793,9 +2243,9 @@ uv = PackedVector2Array(100.804, 3.27283, 71.2525, -1.21266, 38.271, 18.3124, 25
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = -0.564802
-scale = Vector2(1.00084, 1.00028)
-skew = 0.000292301
+rotation = 0.653894
+scale = Vector2(1.00005, 1.00091)
+skew = 0.000182867
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -1803,8 +2253,9 @@ metadata/_local_pose_override_enabled_ = true
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head"]
 unique_name_in_owner = true
 z_index = 1
+material = SubResource("ShaderMaterial_hgmup")
 position = Vector2(31.1509, 15.6274)
-rotation = -0.966897
+rotation = -2.09439
 offset = Vector2(-94.1301, -102.491)
 texture = ExtResource("15_6f6oc")
 polygon = PackedVector2Array(62.9234, 8.3779, 98.9305, -1.06952, 140.107, 9.26917, 167.38, 38.8592, 192.335, 108.556, 186.809, 123.886, 149.376, 175.579, 143.137, 207.843, 117.469, 226.203, 96.7915, 230.125, 73.0838, 226.56, 51.1586, 207.665, 30.6595, 152.941, 0.53476, 114.439, 1.78253, 100, 26.9162, 42.4242, 48.1283, 15.3298)
@@ -1834,6 +2285,7 @@ unique_name_in_owner = true
 emitting = false
 
 [node name="legLeftUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
+visible = false
 position = Vector2(111.932, -47.2245)
 rotation = -0.219886
 scale = Vector2(0.999784, 0.999826)
@@ -1877,6 +2329,7 @@ polygon = PackedVector2Array(46.7688, 0.607092, 62.6553, 2.30922, 80.8113, 13.37
 uv = PackedVector2Array(46.7688, 0.607092, 62.6553, 2.30922, 80.8113, 13.3731, 94.8539, 40.0397, 101.946, 90.5362, 90.8823, 164.437, 78.8255, 184.862, 55.1376, 196.494, 37.2652, 189.401, 27.6199, 172.806, -1.03263, 86.2809, 5.35035, 25.5716, 29.6057, 2.02553)
 
 [node name="legRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
+visible = false
 position = Vector2(87.5032, 53.7617)
 rotation = -0.273358
 scale = Vector2(0.999999, 0.999999)
@@ -1918,6 +2371,8 @@ polygon = PackedVector2Array(52.3007, -0.243971, 83.2227, 7.98298, 97.9745, 32.0
 uv = PackedVector2Array(52.3007, -0.243971, 83.2227, 7.98298, 97.9745, 32.0965, 100.528, 86.8482, 69.4638, 188.55, 41.3787, 196.494, 26.4851, 188.55, 17.6908, 177.345, -1.74185, 99.8979, 6.4851, 32.9475, 31.7333, 3.01844)
 
 [node name="torso" type="Polygon2D" parent="SkeletonControl/Skeleton/torso"]
+z_index = -1
+material = SubResource("ShaderMaterial_vn24v")
 position = Vector2(-28, 161)
 rotation = -1.57079
 texture = ExtResource("24_e1f5i")
@@ -2002,6 +2457,9 @@ debug_color = Color(0.2, 0.607843, 0.588235, 0.419608)
 [node name="ZombieStateMachine" type="Node" parent="."]
 script = ExtResource("32_7nrvc")
 START_STATE = NodePath("SeekPlayer")
+
+[node name="BomberSpawn" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("42_mqn1n")
 
 [node name="SeekWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("33_r0l6n")

@@ -11,11 +11,14 @@ Responsible for controlling and tracking the waves of zombies spawning.
 @onready var vfx_audio: AudioStreamPlayer = $VFXAudio
 @onready var vfx_audio2: AudioStreamPlayer = $VFXAudio2
 
+@onready var max_ammo: PackedScene = preload("res://World/pickups/max_ammo/MaxAmmo.tscn")
+
 # Variables
 @export var spawn_delay_interval: float = 5  # seconds between each round of wave spawning
 @export var MAX_ZOMBIES_ON_MAP: int = 30
 @export_enum("the_labs", "test_chamber") var wave_spawn_type: String
-@export var bomber_round: bool = false
+@export var _bomber_only: bool = false
+var bomber_round: bool = false
 
 var zombie_base_health = 150  # Gets adjustet each round
 
@@ -49,6 +52,11 @@ func _ready():
 	Events.zombie_death.connect(_on_zombie_death)
 	Events.zombie_despawn.connect(_on_zombie_despawn)
 	Events.emit_signal("wave_number_change", wave_number)
+	bomber_round = set_is_bomber_round(wave_number)
+	if bomber_round:
+		vfx_audio.play_sound("bomber_round_start")
+	else:
+		vfx_audio.play_sound("piano_loop")
 	
 	# Start the wave, connect signals, initialize UI
 	start_wave()
@@ -60,9 +68,23 @@ func start_wave():
 	Events.emit_signal("wave_started", wave_number, zombies_to_be_killed)
 	set_base_health()
 	
+func set_is_bomber_round(wave_number):
+	if _bomber_only:
+		return true
+
+	if wave_number % 3 == 0:
+		return true
+	else:
+		return false
+
+func spawn_max_ammo():
+	var ammo = max_ammo.instantiate()
+	ammo.global_position = Globals.player.global_position
+	ObjectRegistry.register_effect(ammo)
+
 func get_zombie_count(wave_number):
 	if wave_spawn_type == 'test_chamber':
-		return 100
+		return 10
 	var multiplyer
 	if wave_number < 5:
 		multiplyer = 0.2 * wave_number
@@ -82,11 +104,20 @@ func set_base_health():
 
 
 func end_wave():
+	if bomber_round:
+		spawn_max_ammo()
+
 	_kill_all_zombies()  # just to be extra sure
 	wave_number += 1
 	round_start_spawn_delay.start(spawn_delay_interval)
 	vfx_audio2.play_sound("sub_hit")
 	vfx_audio.play_sound("piano_loop")
+	bomber_round = set_is_bomber_round(wave_number)
+	if bomber_round:
+		vfx_audio.play_sound("bomber_round_start")
+	else:
+		vfx_audio.play_sound("piano_loop")
+
 	
 func _on_spawn_delay_timer_timeout():
 	start_wave()
@@ -94,12 +125,6 @@ func _on_spawn_delay_timer_timeout():
 
 # Controlling the spawns ------------------------------------
 func _process(_delta):
-	if bomber_round:
-		_bomber_round()
-	else:
-		_normal_round()
-
-func _normal_round():
 	"""
 	Call on zombie spawners to spawn zombies
 	"""
@@ -132,11 +157,12 @@ func _normal_round():
 				zombie_instance.set_max_health(zombie_base_health)
 				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
 
-func _bomber_round():
-	print("bomber round")
 
 func _select_spawners():
-	return get_tree().get_nodes_in_group("ZombieSpawners")
+	if bomber_round:
+		return get_tree().get_nodes_in_group("bomber_spawns")
+	else:
+		return get_tree().get_nodes_in_group("ZombieSpawners")
 
 # Tracking zombies ------------------------------------
 func _on_zombie_death(zombie: CharacterBody2D):

@@ -28,3 +28,5 @@ var animations = [
 	"new_animation_8",
 ]
 
+func _process(delta):
+	print($PlayerHitbox_Explosion.monitorable)

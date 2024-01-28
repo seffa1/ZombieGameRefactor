@@ -10,7 +10,7 @@ state of the state machine to this state.
 
 # Initialize the state. E.g. change the animation
 func enter():
-	animation_player.play("stand_still_01")
+	animation_player.play("bomber_spawn")
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
@@ -19,6 +19,6 @@ func exit():
 func update(delta):
 	return
 
-func _on_animation_finished(anim_name):
-	return
+func _on_spawn_animation_finished(anim_name):
+	emit_signal("finished", "seek_player")
 

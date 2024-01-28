@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=64 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -45,7 +45,6 @@
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="39_fdiub"]
 [ext_resource type="PackedScene" uid="uid://b58natsckpqcl" path="res://World/infrastructure/PowerUpManager.tscn" id="40_qr88r"]
 [ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
-[ext_resource type="PackedScene" uid="uid://bupbey7nqrcy5" path="res://VFX/explosions/Explosion_damagePlayer.tscn" id="45_xa86c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
 size = Vector2(410, 20)
@@ -669,6 +668,7 @@ visible = false
 color = Color(0.309804, 0.309804, 0.309804, 1)
 
 [node name="vinette" parent="GameWorld/Darkness" instance=ExtResource("10_04yua")]
+visible = false
 
 [node name="PurchasablesContainer" type="Node" parent="GameWorld"]
 
@@ -935,31 +935,36 @@ starting_money = 10000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
-MAX_ZOMBIES_ON_MAP = 1
+MAX_ZOMBIES_ON_MAP = 10
 wave_spawn_type = "test_chamber"
-bomber_round = true
+_bomber_only = true
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
 
-[node name="ZombieSpawner_Interior" parent="GameWorld/ZombieManager/InteriorSpawns" instance=ExtResource("39_6ssm2")]
-position = Vector2(371, -246)
+[node name="ZombieSpawner_Interior" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
+position = Vector2(234, -330)
+spawner_active = true
 
-[node name="ZombieSpawner_Interior2" parent="GameWorld/ZombieManager/InteriorSpawns" instance=ExtResource("39_6ssm2")]
-position = Vector2(645, -625)
+[node name="ZombieSpawner_Interior4" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
+position = Vector2(-648, 719)
+trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
-[node name="ZombieSpawner_Interior3" parent="GameWorld/ZombieManager/InteriorSpawns" instance=ExtResource("39_6ssm2")]
-position = Vector2(964, -246)
+[node name="ZombieSpawner_Interior2" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
+position = Vector2(1145, -95)
+spawner_active = true
+
+[node name="ZombieSpawner_Interior3" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
+position = Vector2(505, 499)
+spawner_active = true
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
 position = Vector2(1678, -149)
 spawn_interval = 1.0
-bomber_only = true
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(153, 1215)
 spawn_interval = 1.0
 spitter_only = true
-spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner3" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
@@ -994,9 +999,6 @@ process_mode = 3
 
 [node name="ScoreTracker" type="Node" parent="."]
 script = ExtResource("43_ou650")
-
-[node name="Explosion_DamagePlayer" parent="." instance=ExtResource("45_xa86c")]
-position = Vector2(2421, 14)
 
 [connection signal="area_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuy-DevCanon" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuy-DevCanon" method="_on_area_entered" flags=18]
 [connection signal="body_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuy-DevCanon" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuy-DevCanon" method="_on_body_entered" flags=18]
