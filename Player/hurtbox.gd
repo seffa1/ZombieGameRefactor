@@ -11,14 +11,14 @@ func _process(delta):
 		for area in areas:
 			# The name of the hitbox component from Explosion_damage_player.tscn
 			if area.name == 'PlayerHitbox_Explosion':
+				print("Explosive damage")
 				if owner.hit_timer.is_stopped():
 					owner.hit_timer.start(hit_timer_interval)
 					health_component.health -= 30
-				else:
-					print("cant take damage right now")
 			# Any other form of damage
 			else:
 				if owner.hit_timer.is_stopped():
+					print("melee damage")
 					owner.hit_timer.start(hit_timer_interval)
 					# Damage per zombit hit, 
 					health_component.health -= 10.0 
