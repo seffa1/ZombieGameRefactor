@@ -72,7 +72,7 @@ func set_is_bomber_round(wave_number):
 	if _bomber_only:
 		return true
 
-	if wave_number % 3 == 0:
+	if wave_number % 4 == 0:
 		return true
 	else:
 		return false
