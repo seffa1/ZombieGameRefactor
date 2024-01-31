@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Enemies/PoliceMan/zombie_police.gd" id="1_55ygs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_w6hwu"]
-[ext_resource type="SkeletonModificationStack2D" uid="uid://c2pp3n03licr" path="res://Enemies/Spitter/ZombieSpitter_ModificationStack.tres" id="3_jrquy"]
+[ext_resource type="SkeletonModificationStack2D" uid="uid://cu3iopcmu1txy" path="res://Enemies/PoliceMan/zombie_police_skeleton_modification.tres" id="3_h2rwi"]
 [ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="4_otldl"]
 [ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_left_upper_Spitter.gd" id="5_yaiqx"]
 [ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_left_lower_Spitter.gd" id="6_vg57s"]
@@ -1536,11 +1536,11 @@ position = Vector2(389.995, 149.73)
 position = Vector2(553.654, 17.4105)
 
 [node name="Skeleton" type="Skeleton2D" parent="SkeletonControl"]
-modification_stack = ExtResource("3_jrquy")
+modification_stack = ExtResource("3_h2rwi")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
-scale = Vector2(0.999829, 0.999832)
-skew = -0.000541806
+scale = Vector2(0.99983, 0.999831)
+skew = -0.000554204
 rest = Transform2D(1, 0, 0, 1, 104, 2)
 editor_settings/show_bone_gizmo = false
 
@@ -1549,7 +1549,6 @@ position = Vector2(59.2622, -114.939)
 rotation = -0.120904
 scale = Vector2(0.999923, 0.999923)
 rest = Transform2D(0.872033, -0.489442, 0.489443, 0.872033, 79, -138)
-editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftUpper" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_otldl")]
@@ -1575,7 +1574,6 @@ position = Vector2(127.401, 17.0319)
 rotation = 1.01178
 scale = Vector2(0.999992, 0.999992)
 rest = Transform2D(0.988367, 0.152074, -0.152072, 0.988367, 170, -7)
-editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftLower" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("4_otldl")]
@@ -1759,8 +1757,8 @@ emitting = false
 [node name="legLeftUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(111.932, -47.2245)
 rotation = -0.219886
-scale = Vector2(0.999792, 0.99982)
-skew = -5.74589e-05
+scale = Vector2(0.999797, 0.999821)
+skew = -6.03199e-05
 rest = Transform2D(1, 0, 0, 1, 125.819, -47.2673)
 editor_settings/show_bone_gizmo = false
 
