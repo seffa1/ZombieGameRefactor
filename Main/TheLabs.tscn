@@ -6635,6 +6635,7 @@ position = Vector2(608, 669)
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
 position = Vector2(620, 496)
 rotation = -0.708219
+starting_money = 10000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_ixwma")]
 position = Vector2(0, 7.62939e-06)
