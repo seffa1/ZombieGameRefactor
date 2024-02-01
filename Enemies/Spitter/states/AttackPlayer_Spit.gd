@@ -40,7 +40,7 @@ func update(delta):
 	owner.update_rotation()
 
 func shoot_spit():
-	# Spawn spit
+	# TODO - Spawn grenade
 	var spit_object = spit_scene.instantiate()
 	spit_object.global_position = owner.global_position
 	spit_object.rotation = spit_emission_point.rotation

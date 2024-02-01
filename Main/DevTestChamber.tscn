@@ -935,42 +935,43 @@ starting_money = 10000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
-MAX_ZOMBIES_ON_MAP = 10
+MAX_ZOMBIES_ON_MAP = 1
 wave_spawn_type = "test_chamber"
-_bomber_only = true
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
 
-[node name="ZombieSpawner_Interior" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
+[node name="ZombieSpawner_Interior" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
 position = Vector2(234, -330)
-spawner_active = true
+bomber_only = false
+trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner_Interior4" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
 position = Vector2(-648, 719)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
-[node name="ZombieSpawner_Interior2" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
+[node name="ZombieSpawner_Interior2" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
 position = Vector2(1145, -95)
-spawner_active = true
+trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
-[node name="ZombieSpawner_Interior3" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
+[node name="ZombieSpawner_Interior3" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
 position = Vector2(505, 499)
-spawner_active = true
+trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("25_2j7wj")]
-position = Vector2(1678, -149)
+position = Vector2(1655, 331)
 spawn_interval = 1.0
+police_only = true
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(153, 1215)
 spawn_interval = 1.0
-spitter_only = true
+police_only = true
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner3" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1060, 1044)
 spawn_interval = 1.0
-spawner_active = false
+police_only = true
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="PowerUpManager" parent="GameWorld" instance=ExtResource("40_qr88r")]

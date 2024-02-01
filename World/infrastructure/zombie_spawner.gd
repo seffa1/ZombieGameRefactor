@@ -16,13 +16,15 @@ for collisions there to determine it a spawner should be on or not.
 @export var spawn_interval: float = 1
 @export var spitter_only: bool = false
 @export var bomber_only: bool = false
+@export var police_only: bool = false
 @export var spawner_active: bool = true
 @export var trigger_doors: Array[Area2D]
 
 @onready var zombie_list = [
+	preload("res://Enemies/Bomber/ZombieBomber.tscn"),
 	preload("res://Enemies/ZombieBasic/ZombieBasic_02.tscn"),
 	preload("res://Enemies/Spitter/ZombieSpitter.tscn"),
-	preload("res://Enemies/Bomber/ZombieBomber.tscn"),
+	preload("res://Enemies/PoliceMan/ZombiePolice.tscn")
 ]
 
 var target_window: Area2D
@@ -57,11 +59,14 @@ func spawn_zombie() -> CharacterBody2D:
 	return zombie_instance
 
 func get_random_zombie():
-	if spitter_only:
-		return zombie_list[1]
 	if bomber_only:
+		return zombie_list[0]
+	if spitter_only:
 		return zombie_list[2]
-	var zombie_list_index = randi_range(0, 1)
+	if police_only:
+		return zombie_list[3]
+	
+	var zombie_list_index = randi_range(0, 2)
 	return zombie_list[zombie_list_index]
 
 func in_range_to_spawn() -> bool:
