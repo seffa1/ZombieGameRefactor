@@ -39,8 +39,8 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="35_05s5h"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="36_3k27g"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="37_pehvs"]
-[ext_resource type="Script" path="res://Enemies/Spitter/states/AttackPlayer_Spit.gd" id="38_2u1q6"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="39_kwsay"]
+[ext_resource type="Script" path="res://Enemies/PoliceMan/states/Police_Throw_Grenade.gd" id="40_eca24"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="40_yn8ur"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="41_ixibq"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/stand_still.gd" id="42_h8nxa"]
@@ -543,6 +543,18 @@ tracks/31/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("SpitEmissionPosition:rotation")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.00914322]
+}
 
 [sub_resource type="Animation" id="Animation_qlkyy"]
 resource_name = "stand_still_01"
@@ -860,6 +872,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpitEmissionPosition:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.7),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.00914322]
 }
 
 [sub_resource type="Animation" id="Animation_n4w1o"]
@@ -1742,9 +1766,8 @@ position = Vector2(553.654, 17.4105)
 modification_stack = ExtResource("3_h2rwi")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
-scale = Vector2(0.99983, 0.999831)
-skew = -0.000554204
-
+scale = Vector2(0.99983, 0.99983)
+skew = -0.000555396
 rest = Transform2D(1, 0, 0, 1, 104, 2)
 editor_settings/show_bone_gizmo = false
 
@@ -1919,9 +1942,9 @@ uv = PackedVector2Array(73.1861, 6.30915, 85.1735, -1.57729, 108.833, 15.4574, 1
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = 0.530586
-scale = Vector2(0.999795, 1.00078)
-skew = 0.000349283
+rotation = 0.0823488
+scale = Vector2(1.00005, 1.00066)
+skew = 0.000547767
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -2086,6 +2109,8 @@ object_to_spawn = ExtResource("30_1hpip")
 
 [node name="SpitEmissionPosition" type="Marker2D" parent="."]
 position = Vector2(26, 75)
+rotation = -0.00914322
+gizmo_extents = 48.7
 
 [node name="grenade" type="Sprite2D" parent="SpitEmissionPosition"]
 visible = false
@@ -2190,7 +2215,7 @@ script = ExtResource("36_3k27g")
 script = ExtResource("37_pehvs")
 
 [node name="AttackPlayer_Spit" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("38_2u1q6")
+script = ExtResource("40_eca24")
 
 [node name="AttackPlayerThroughWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("39_kwsay")

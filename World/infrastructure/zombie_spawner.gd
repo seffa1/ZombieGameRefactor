@@ -66,7 +66,7 @@ func get_random_zombie():
 	if police_only:
 		return zombie_list[3]
 	
-	var zombie_list_index = randi_range(0, 2)
+	var zombie_list_index = randi_range(1, 3)
 	return zombie_list[zombie_list_index]
 
 func in_range_to_spawn() -> bool:
