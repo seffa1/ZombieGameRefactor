@@ -1657,7 +1657,7 @@ modification_stack = ExtResource("3_h2rwi")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 scale = Vector2(0.99983, 0.999826)
-skew = -0.000596523
+skew = -0.000598192
 rest = Transform2D(1, 0, 0, 1, 104, 2)
 editor_settings/show_bone_gizmo = false
 
@@ -1831,9 +1831,9 @@ uv = PackedVector2Array(73.1861, 6.30915, 85.1735, -1.57729, 108.833, 15.4574, 1
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = -0.18768
-scale = Vector2(1.00032, 1.00064)
-skew = 0.000556469
+rotation = 0.210871
+scale = Vector2(1.00009, 1.00087)
+skew = 0.000544071
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -1977,8 +1977,6 @@ libraries = {
 position = Vector2(-8, 14)
 collision_layer = 1024
 collision_mask = 128
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(105, -8)

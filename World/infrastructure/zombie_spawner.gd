@@ -13,10 +13,14 @@ for collisions there to determine it a spawner should be on or not.
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var player_spawn_detector = $Area2D
 
-@export var spawn_interval: float = 1
+@export_category("zombie type")
 @export var spitter_only: bool = false
 @export var bomber_only: bool = false
 @export var police_only: bool = false
+@export var basic_zombie_only: bool = false
+
+@export_category("spawner activation")
+@export var spawn_interval: float = 1
 @export var spawner_active: bool = true
 @export var trigger_doors: Array[Area2D]
 
@@ -65,6 +69,8 @@ func get_random_zombie():
 		return zombie_list[2]
 	if police_only:
 		return zombie_list[3]
+	if basic_zombie_only:
+		return zombie_list[1]
 	
 	var zombie_list_index = randi_range(1, 3)
 	return zombie_list[zombie_list_index]
