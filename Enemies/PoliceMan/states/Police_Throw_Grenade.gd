@@ -3,8 +3,9 @@ extends "res://Libraries/state.gd"
 """
 If a zombie is outside and within reach of a window, do break window animation.
 """
-@onready var spit_emission_point: Marker2D = $"../../SpitEmissionPosition"
 
+@onready var grenade_emission_point = $"../../RotationController/GrenadeEmissionPoint"
+@onready var grenade_rotation_controller = $"../../RotationController"
 var grenade_scene: PackedScene = preload("res://Enemies/PoliceMan/PoliceGrenade.tscn")
 
 
@@ -18,7 +19,7 @@ func _ready():
 
 # Initialize the state. E.g. change the animation
 func enter():
-	owner.animation_player.play("zombie_attack_spit")
+	owner.animation_player.play("zombie_throw_grenade")
 	is_targeting_player = true
 
 func _on_player_position_changed(player_position: Vector2):
@@ -39,19 +40,20 @@ func update(delta):
 	# Rotate
 	owner.update_rotation()
 
-func shoot_spit():
+func throw_grenade():
 	# Create a new instance and attach to the global registry
 	var equipment_object = grenade_scene.instantiate()
-	equipment_object.global_position = spit_emission_point.global_position
-	equipment_object.rotation = spit_emission_point.rotation
+	equipment_object.global_position = grenade_emission_point.global_position
+	equipment_object.rotation = grenade_rotation_controller.rotation
 	ObjectRegistry.register_effect(equipment_object)
 	
 	# Apply the impulse
 	var distance_to_player = (Globals.player.global_position - owner.global_position).length()
 	
-	var charge_value = remap(distance_to_player, 1, 500, 1, 3) 
+	# The remap range determines how accuracte the distance the grenade goes to land on the player
+	var charge_value = remap(distance_to_player, 0, 400, .1, 1.5)
 	print(charge_value)
-	var direction_vector = Vector2.RIGHT.rotated(owner.rotation) *  charge_value * 200
+	var direction_vector = Vector2.RIGHT.rotated(grenade_rotation_controller.rotation) *  charge_value * 200
 	equipment_object.apply_impulse(direction_vector)
 	
 	# Give it some random torque

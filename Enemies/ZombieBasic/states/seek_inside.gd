@@ -31,9 +31,9 @@ func exit():
 
 func update(delta):
 
-	# Check if weve hit a trigger
+	# Check if weve hit an inside trigger
 	if owner.trigger_detector.has_overlapping_areas():
-		emit_signal("finished", "attack_player")
+		emit_signal("finished", "seek_player")
 		return
 
 	# Move - velocity should be getting updated by the pathfinding component

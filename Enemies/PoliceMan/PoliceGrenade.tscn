@@ -1,24 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtrya4lso4mel"]
+[gd_scene load_steps=7 format=3 uid="uid://dtrya4lso4mel"]
 
 [ext_resource type="PackedScene" uid="uid://cesbyk4vgali5" path="res://World/throwables/Throwable.tscn" id="1_sfgql"]
 [ext_resource type="Script" path="res://Enemies/PoliceMan/police_grenade.gd" id="2_um1mn"]
 [ext_resource type="PackedScene" uid="uid://bupbey7nqrcy5" path="res://VFX/explosions/Explosion_damagePlayer.tscn" id="3_rm6v5"]
 [ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_0ewvn"]
+[ext_resource type="AudioStream" uid="uid://c1qc0e2ve87h1" path="res://World/throwables/sounds/grenade_land.wav" id="4_2yoyh"]
 [ext_resource type="Texture2D" uid="uid://57i3mteqcq4v" path="res://World/throwables/images/grenade2.png" id="5_u8qk4"]
 
 [node name="PoliceGrenade" groups=["throwable_equipment"] instance=ExtResource("1_sfgql")]
 script = ExtResource("2_um1mn")
 free_time = 5.0
 explosion_to_spawn = ExtResource("3_rm6v5")
+ground_hit_audio = ExtResource("4_2yoyh")
 
 [node name="DampAnimator" parent="." index="0" instance=ExtResource("4_0ewvn")]
 final_linear_damp_value = 3
 final_angular_damp_value = 3
 hang_time = 0.7
 tween_duration = 0.1
-
-[node name="ScaleController" parent="." index="2"]
-z_index = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
 scale = Vector2(0.0760869, 0.0760869)

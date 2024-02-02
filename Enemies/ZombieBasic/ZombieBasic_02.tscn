@@ -2317,8 +2317,8 @@ modification_stack = ExtResource("17_1dk30")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(-24, -3)
-scale = Vector2(0.999835, 0.999827)
-skew = -0.000452399
+scale = Vector2(0.99984, 0.999825)
+skew = -0.000453472
 rest = Transform2D(1, 0, 0, 1, -24, -3)
 auto_calculate_length_and_angle = false
 length = 0.0

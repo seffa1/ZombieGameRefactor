@@ -1645,7 +1645,6 @@ scale = Vector2(1.00027, 1.00005)
 skew = 0.000220299
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head"]
 unique_name_in_owner = true
@@ -1682,7 +1681,7 @@ emitting = false
 position = Vector2(111.932, -47.2245)
 rotation = -0.219886
 scale = Vector2(0.999803, 0.999828)
-skew = -5.50747e-05
+skew = -5.51939e-05
 rest = Transform2D(1, 0, 0, 1, 125.819, -47.2673)
 editor_settings/show_bone_gizmo = false
 
