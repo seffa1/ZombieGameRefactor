@@ -39,7 +39,7 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="37_pehvs"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="39_kwsay"]
 [ext_resource type="Script" path="res://Enemies/PoliceMan/states/Police_Throw_Grenade.gd" id="40_eca24"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="40_yn8ur"]
+[ext_resource type="Script" path="res://Enemies/PoliceMan/headless_death_police.gd" id="40_nw527"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="41_ixibq"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/stand_still.gd" id="42_h8nxa"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="43_3pre3"]
@@ -2122,7 +2122,7 @@ script = ExtResource("40_eca24")
 script = ExtResource("39_kwsay")
 
 [node name="HeadlessDeath" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("40_yn8ur")
+script = ExtResource("40_nw527")
 
 [node name="Die" type="Node" parent="ZombieStateMachine" node_paths=PackedStringArray("hurtboxes")]
 script = ExtResource("41_ixibq")

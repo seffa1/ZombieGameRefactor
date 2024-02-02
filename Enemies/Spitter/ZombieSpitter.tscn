@@ -38,12 +38,12 @@
 [ext_resource type="Script" path="res://Enemies/Spitter/states/move_spitter.gd" id="33_xvlwm"]
 [ext_resource type="Script" path="res://Enemies/Spitter/states/AttackPlayer_Spit.gd" id="34_6rflx"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="34_sni8n"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="35_ka56c"]
 [ext_resource type="PackedScene" uid="uid://dgwrjf4q250b5" path="res://VFX/Gore/GoreExplosion_Spitter.tscn" id="35_tl1vu"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="36_k4v36"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/stand_still.gd" id="37_he0yk"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="38_p72uw"]
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="39_da046"]
+[ext_resource type="Script" path="res://Enemies/Spitter/headless_death_spitter.gd" id="40_qpsk5"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="40_smvoh"]
 [ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="41_nagbk"]
 
@@ -1645,6 +1645,7 @@ scale = Vector2(1.00027, 1.00005)
 skew = 0.000220299
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head"]
 unique_name_in_owner = true
@@ -1896,7 +1897,7 @@ script = ExtResource("34_6rflx")
 script = ExtResource("34_sni8n")
 
 [node name="HeadlessDeath" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("35_ka56c")
+script = ExtResource("40_qpsk5")
 
 [node name="Die" type="Node" parent="ZombieStateMachine" node_paths=PackedStringArray("hurtboxes")]
 script = ExtResource("36_k4v36")
