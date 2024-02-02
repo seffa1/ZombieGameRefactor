@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player_hit_box: Area2D = $PlayerHitBox
+@onready var player_hit_box_collision: CollisionShape2D = $PlayerHitBox/CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,13 +14,11 @@ func _process(delta):
 		# Do damage to player, then prevent damage until timer runs out
 		if $DamageTimer.is_stopped():
 			$DamageTimer.start(3)
-			player_hit_box.monitorable = false
-			player_hit_box.monitoring = false
+			player_hit_box_collision.disabled = true
 
 
 func _on_damage_timer_timeout():
-	player_hit_box.monitorable = true
-	player_hit_box.monitoring = true
+	player_hit_box_collision.disabled = false
 
 func play_hit_sound():
 	$AudioRandomizer.play_random()
