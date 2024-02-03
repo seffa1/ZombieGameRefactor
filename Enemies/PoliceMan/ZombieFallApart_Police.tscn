@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxauntwt8vpk3"]
+
+[ext_resource type="Script" path="res://Enemies/PoliceMan/fall_apart_police.gd" id="1_v1gbv"]
+
+[node name="ZombieFallApart_Police" type="Node2D"]
+script = ExtResource("1_v1gbv")

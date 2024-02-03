@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dap477bggrrxx"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_3t11l"]
+[ext_resource type="Script" path="res://VFX/Gore/body_part.gd" id="2_drlrg"]
+[ext_resource type="Texture2D" uid="uid://h1a22ppif5fh" path="res://Enemies/PoliceMan/images/gore/zombie_cop_0014_Layer-15.png" id="3_ucmvf"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_n8vxd"]
+[ext_resource type="PackedScene" uid="uid://b3vqlc4bkf8ru" path="res://VFX/Gore/blood_emitters/BloodEmitter_1.tscn" id="5_nkup8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8s2q"]
+height = 82.0
+
+[node name="BodyPart-LegUpper" instance=ExtResource("1_3t11l")]
+collision_layer = 16384
+collision_mask = 17
+linear_damp = 1.0
+angular_damp = 10.0
+script = ExtResource("2_drlrg")
+free_time = 5.0
+spawn_animation = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+rotation = -0.115509
+shape = SubResource("CapsuleShape2D_e8s2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_ucmvf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+
+[node name="DampAnimator" parent="." index="5" instance=ExtResource("4_n8vxd")]
+final_linear_damp_value = 5
+final_angular_damp_value = 5
+hang_time = 1.0
+tween_duration = 0.05
+
+[node name="BloodEmitter" parent="." index="6" instance=ExtResource("5_nkup8")]
+emitting = false
