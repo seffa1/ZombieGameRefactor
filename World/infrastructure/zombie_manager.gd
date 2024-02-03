@@ -137,7 +137,7 @@ func _process(_delta):
 			return
 		if spawner.spawn_timer.is_stopped() and spawner.spawner_active and spawner.in_range_to_spawn():
 			zombies_on_map += 1
-			var zombie_instance = spawner.spawn_zombie()
+			var zombie_instance = spawner.spawn_zombie(wave_number)
 			zombie_container.add_child(zombie_instance)
 			zombie_instance.set_max_health(zombie_base_health)
 			zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
@@ -152,7 +152,7 @@ func _process(_delta):
 				return
 			if spawner.spawn_timer.is_stopped() and spawner.spawner_active:
 				zombies_on_map += 1
-				var zombie_instance = spawner.spawn_zombie()
+				var zombie_instance = spawner.spawn_zombie(wave_number)
 				zombie_container.add_child(zombie_instance)
 				zombie_instance.set_max_health(zombie_base_health)
 				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance

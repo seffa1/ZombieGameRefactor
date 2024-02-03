@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=114 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -85,7 +85,6 @@
 [ext_resource type="PackedScene" uid="uid://bmb2kvh6x160d" path="res://VFX/fire/Campfire.tscn" id="63_nyk7p"]
 [ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="64_bkdyw"]
 [ext_resource type="Script" path="res://VFX/lights/light_flicker.gd" id="65_akhg3"]
-[ext_resource type="PackedScene" uid="uid://qqxsjlljdylu" path="res://VFX/poisenSpitAttack/SpitterAttack.tscn" id="67_lqlfi"]
 [ext_resource type="PackedScene" uid="uid://ciai0fyjc558v" path="res://World/infrastructure/ZombieSpawner_Interior.tscn" id="70_2thcf"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rhub5"]
@@ -6628,9 +6627,6 @@ position = Vector2(1226, 1150)
 scale = Vector2(0.352213, 0.352213)
 texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)
-
-[node name="SpitterAttack" parent="GameWorld/Environment" instance=ExtResource("67_lqlfi")]
-position = Vector2(608, 669)
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
 position = Vector2(620, 496)

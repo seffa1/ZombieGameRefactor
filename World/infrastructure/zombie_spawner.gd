@@ -24,6 +24,7 @@ for collisions there to determine it a spawner should be on or not.
 @export var spawner_active: bool = true
 @export var trigger_doors: Array[Area2D]
 
+# dont re-arrange these
 @onready var zombie_list = [
 	preload("res://Enemies/Bomber/ZombieBomber.tscn"),
 	preload("res://Enemies/ZombieBasic/ZombieBasic_02.tscn"),
@@ -51,9 +52,9 @@ func _ready():
 func _on_trigger_door_opened():
 	spawner_active = true
 
-func spawn_zombie() -> CharacterBody2D:
+func spawn_zombie(wave_number: int) -> CharacterBody2D:
 	# Creates the zombie and sets its needed properties
-	var zombie_to_spawn = get_random_zombie()
+	var zombie_to_spawn = get_random_zombie(wave_number)
 	var zombie_instance = zombie_to_spawn.instantiate()
 	zombie_instance.target_window = target_window
 	zombie_instance.global_position = global_position
@@ -62,7 +63,8 @@ func spawn_zombie() -> CharacterBody2D:
 	spawn_timer.start(spawn_interval)
 	return zombie_instance
 
-func get_random_zombie():
+func get_random_zombie(wave_number: int):
+	# Debug options
 	if bomber_only:
 		return zombie_list[0]
 	if spitter_only:
@@ -71,9 +73,19 @@ func get_random_zombie():
 		return zombie_list[3]
 	if basic_zombie_only:
 		return zombie_list[1]
+
+	# Select rando zombie
+	var chosen_zombie_index = 1 # basic zombie by default
 	
-	var zombie_list_index = randi_range(1, 3)
-	return zombie_list[zombie_list_index]
+	var police_spawn_chance = clampf(1 * wave_number, 0, 10)  # 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+	if police_spawn_chance > randf_range(0, 100):
+		chosen_zombie_index = 3
+	
+	var spitter_spawn_chance = clampf(2 * wave_number, 0, 25)  # 2, 4, 6, 8, 10, 12, 14, 16, 18, 20
+	if spitter_spawn_chance > randf_range(0, 100):
+		chosen_zombie_index = 2
+
+	return zombie_list[chosen_zombie_index]
 
 func in_range_to_spawn() -> bool:
 	return player_spawn_detector.has_overlapping_areas()

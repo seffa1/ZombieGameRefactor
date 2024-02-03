@@ -35,7 +35,7 @@ func _ready():
 func _on_trigger_door_opened():
 	spawner_active = true
 
-func spawn_zombie() -> CharacterBody2D:
+func spawn_zombie(wave_number: int) -> CharacterBody2D:
 	# Creates the zombie and sets its needed properties
 	var zombie_to_spawn = get_random_zombie()
 	var zombie_instance = zombie_to_spawn.instantiate()
