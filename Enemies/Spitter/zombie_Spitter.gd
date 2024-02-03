@@ -17,6 +17,7 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var head_blood_emitter: CPUParticles2D = %HeadBloodEmitter
 @onready var spit_detectors: Node2D = %SpitDetector
 @onready var spit_emission_point: Marker2D = $SpitEmissionPosition
+@onready var debri_rotation_controller: Node2D = $RotationController_Debri
 
 # Helper Nodes
 @onready var pathfinding_component: Node2D = $PathfindingComponent
@@ -110,3 +111,4 @@ func update_rotation():
 	head_blood_emitter.rotation = lerp_angle(head_blood_emitter.rotation, angle, STEER_FORCE)
 	spit_detectors.rotation = lerp_angle(spit_detectors.rotation, angle - deg_to_rad(0), STEER_FORCE)
 	spit_emission_point.rotation = lerp_angle(spit_emission_point.rotation, angle - deg_to_rad(0), STEER_FORCE)
+	debri_rotation_controller.rotation = lerp_angle(debri_rotation_controller.rotation, angle - deg_to_rad(0), STEER_FORCE)

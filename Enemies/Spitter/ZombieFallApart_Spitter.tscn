@@ -1,27 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://dplarx2db472r"]
+[gd_scene load_steps=12 format=3 uid="uid://dplarx2db472r"]
 
 [ext_resource type="PackedScene" uid="uid://bxnf43ummssw5" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-LegLower.tscn" id="1_33aw8"]
 [ext_resource type="PackedScene" uid="uid://coubi6ba1r7e5" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-LegUpper.tscn" id="2_fd2n2"]
-[ext_resource type="PackedScene" uid="uid://c38avnra83rkh" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-TorsoUpper.tscn" id="3_hsaoy"]
-[ext_resource type="PackedScene" uid="uid://blnd1i0w8cuj1" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-TorsoLower.tscn" id="4_ejgwh"]
 [ext_resource type="PackedScene" uid="uid://dwixwb7bllhis" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-ArmLower.tscn" id="5_7rhes"]
 [ext_resource type="PackedScene" uid="uid://b6cifkj3ch7l2" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-ArmUpper.tscn" id="6_f872d"]
 [ext_resource type="PackedScene" uid="uid://u1qkio8iyii2" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-Foot.tscn" id="7_euwxh"]
+[ext_resource type="PackedScene" uid="uid://brkdycnp6ay1w" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-TorsoUpperTopDown.tscn" id="8_04mbl"]
 [ext_resource type="PackedScene" uid="uid://btawr1gynpjgk" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-Hand.tscn" id="8_4x453"]
+[ext_resource type="PackedScene" uid="uid://bhgd63r316efn" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-ArmRightUpper.tscn" id="9_6mtgw"]
 [ext_resource type="PackedScene" uid="uid://ca2v6t7upnt8m" path="res://VFX/Gore/blood_splatters/BloodSplatter.tscn" id="9_msds5"]
+[ext_resource type="PackedScene" uid="uid://brkv40nty23l4" path="res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-HandLeft.tscn" id="10_xtotp"]
 
 [sub_resource type="GDScript" id="GDScript_crr7e"]
 script/source = "extends Node2D
 
+# TODO - this should a million % be an export array, then i dont have to keep re-saving this
+# script for each enemy type
 @onready var body_parts_forwards = [
-	$\"BodyPart-LegLower\",
-	$\"BodyPart-LegUpper\",
-	$\"BodyPart-TorsoUpper\",
-	$\"BodyPart-TorsoLower\",
-	$\"BodyPart-ArmLowerLeft\",
-	$\"BodyPart-ArmUpperLeft\",
-	$\"BodyPart-Foot\",
-	$\"BodyPart-Hand\"
+	$\"BodyPart-LegLower\", 
+	$\"BodyPart-LegUpper\", 
+	$\"BodyPart-ArmLowerLeft\", 
+	$\"BodyPart-ArmLowerLeft2\", 
+	$\"BodyPart-ArmUpperLeft\", 
+	$\"BodyPart-Foot\", 
+	$\"BodyPart-Hand\", 
+	$BloodSplatter, 
+	$\"BodyPart-TorsoUpperTopDown\", 
+	$\"BodyPart-ArmUpperLeft2\", 
+	$\"BodyPart-Hand2\"
 ]
 
 @export var item_ejection_speed: float = 90.0  # impulse multiplier applied to item on ejection
@@ -50,35 +56,43 @@ func fall_apart():
 script = SubResource("GDScript_crr7e")
 
 [node name="BodyPart-LegLower" parent="." instance=ExtResource("1_33aw8")]
-position = Vector2(52, 29)
-rotation = -1.309
+position = Vector2(3.99999, 23)
+rotation = -1.10809
 
 [node name="BodyPart-LegUpper" parent="." instance=ExtResource("2_fd2n2")]
-position = Vector2(69, -20)
-rotation = -1.5708
-
-[node name="BodyPart-TorsoUpper" parent="." instance=ExtResource("3_hsaoy")]
-position = Vector2(-5, 4)
-rotation = -1.5708
-
-[node name="BodyPart-TorsoLower" parent="." instance=ExtResource("4_ejgwh")]
-position = Vector2(23, 8)
+position = Vector2(11, -10)
 rotation = -1.5708
 
 [node name="BodyPart-ArmLowerLeft" parent="." instance=ExtResource("5_7rhes")]
-position = Vector2(42, -43)
-rotation = -1.0472
+position = Vector2(61, -48)
+rotation = -0.598104
+
+[node name="BodyPart-ArmLowerLeft2" parent="." instance=ExtResource("5_7rhes")]
+position = Vector2(65, 54)
+rotation = -1.76529
 
 [node name="BodyPart-ArmUpperLeft" parent="." instance=ExtResource("6_f872d")]
-position = Vector2(-9, -37)
-rotation = -1.5708
+position = Vector2(19, -57)
+rotation = -1.20574
 
 [node name="BodyPart-Foot" parent="." instance=ExtResource("7_euwxh")]
-position = Vector2(85, 34)
-rotation = -1.0472
+position = Vector2(17, 21)
+rotation = -1.22032
 
 [node name="BodyPart-Hand" parent="." instance=ExtResource("8_4x453")]
-position = Vector2(94, -36)
-rotation = -1.0472
+position = Vector2(88, -17)
+rotation = -0.0387728
 
 [node name="BloodSplatter" parent="." instance=ExtResource("9_msds5")]
+
+[node name="BodyPart-TorsoUpperTopDown" parent="." instance=ExtResource("8_04mbl")]
+position = Vector2(1, 1)
+rotation = -1.5708
+
+[node name="BodyPart-ArmUpperLeft2" parent="." instance=ExtResource("9_6mtgw")]
+position = Vector2(17, 64)
+rotation = -0.793533
+
+[node name="BodyPart-Hand2" parent="." instance=ExtResource("10_xtotp")]
+position = Vector2(92, 25)
+rotation = -2.79147
