@@ -1,13 +1,16 @@
 extends Node2D
 
 @onready var body_parts_forwards = [
-	$"BodyPart-LegLower",
-	$"BodyPart-LegUpper",
-	$"BodyPart-TorsoUpperTopDown",
-	$"BodyPart-ArmLowerRightWithHand",
-	$"BodyPart-ArmLowerWithHand",
-	$"BodyPart-ArmUpperLeft",
-	$"BodyPart-ArmUpperRight"
+	$"BodyPart-LegLower", 
+	$"BodyPart-LegUpper", 
+	$"BodyPart-ArmLowerLeft", 
+	$"BodyPart-ArmLowerLeft2", 
+	$"BodyPart-ArmUpperLeft", 
+	$"BodyPart-Foot", 
+	$"BodyPart-Hand",  
+	$"BodyPart-TorsoUpperTopDown", 
+	$"BodyPart-ArmUpperLeft2", 
+	$"BodyPart-Hand2"
 ]
 
 @export var item_ejection_speed: float = 90.0  # impulse multiplier applied to item on ejection

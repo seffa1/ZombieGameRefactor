@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8u8mwpa4wv4v"]
+[gd_scene load_steps=7 format=3 uid="uid://5akjuupgfn2"]
 
 [ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_hqep4"]
 [ext_resource type="Script" path="res://VFX/Gore/body_part.gd" id="2_ookat"]

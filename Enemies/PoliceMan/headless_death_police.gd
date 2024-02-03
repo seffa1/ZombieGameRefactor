@@ -1,7 +1,7 @@
 extends "res://Libraries/state.gd"
 
 @onready var animation_player = $"../../AnimationPlayer"
-@onready var fall_apart_scene = preload("res://Enemies/ZombieBasic/ZombieFallApart.tscn")
+@onready var fall_apart_scene = preload("res://Enemies/PoliceMan/ZombieFallApart_Police.tscn")
 
 var is_targeting_player = false
 

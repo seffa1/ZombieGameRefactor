@@ -1,21 +1,21 @@
-[gd_scene load_steps=69 format=3 uid="uid://monivhylrkee"]
+[gd_scene load_steps=71 format=3 uid="uid://monivhylrkee"]
 
 [ext_resource type="Script" path="res://Enemies/PoliceMan/zombie_police.gd" id="1_55ygs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_w6hwu"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://cu3iopcmu1txy" path="res://Enemies/PoliceMan/zombie_police_skeleton_modification.tres" id="3_h2rwi"]
 [ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="4_otldl"]
-[ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_left_upper_Spitter.gd" id="5_yaiqx"]
-[ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_left_lower_Spitter.gd" id="6_vg57s"]
+[ext_resource type="Script" path="res://Enemies/PoliceMan/hurtboxes/hurtbox_left_upper_Police.gd" id="5_wfa02"]
+[ext_resource type="Script" path="res://Enemies/PoliceMan/hurtboxes/hurtbox_left_lower_Police.gd" id="6_cjhv6"]
 [ext_resource type="Texture2D" uid="uid://dy18eqtvxan5m" path="res://Enemies/Spriter_Animations&Bodyparts/2_LVL/Cop_zombie/zombie_cop_0044_Layer-45.png" id="7_54274"]
 [ext_resource type="Texture2D" uid="uid://b0o1lfr4dbdmf" path="res://Enemies/PoliceMan/images/components/armLeftLower.png" id="8_h2ake"]
 [ext_resource type="Texture2D" uid="uid://culompxtuqqm8" path="res://Enemies/PoliceMan/images/components/armLegtUpper.png" id="9_thgnm"]
-[ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_right_upper_Spitter.gd" id="10_fnao5"]
-[ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_right_lower_Spitter.gd" id="11_g7bmk"]
+[ext_resource type="Script" path="res://Enemies/PoliceMan/hurtboxes/hurtbox_right_upper_Police.gd" id="10_0onf6"]
+[ext_resource type="Script" path="res://Enemies/PoliceMan/hurtboxes/hurtbox_right_lower_Police.gd" id="11_gyk3g"]
 [ext_resource type="Texture2D" uid="uid://cqd44q3dthjv4" path="res://Enemies/PoliceMan/images/components/handRight.png" id="12_1fglj"]
 [ext_resource type="Texture2D" uid="uid://teqp0hxcih61" path="res://Enemies/PoliceMan/images/components/armRightLower.png" id="13_b3vgs"]
 [ext_resource type="Texture2D" uid="uid://ctdf2i6ob4kbj" path="res://Enemies/PoliceMan/images/components/armRightUpper.png" id="14_u7vjy"]
 [ext_resource type="Texture2D" uid="uid://ctvvt7whop0v6" path="res://Enemies/PoliceMan/images/components/head.png" id="15_qn1i3"]
-[ext_resource type="Script" path="res://Enemies/Spitter/hurtboxes/hurtbox_head_Spitter.gd" id="16_hns2t"]
+[ext_resource type="Script" path="res://Enemies/PoliceMan/hurtboxes/hurtbox_head_Police.gd" id="16_s27vp"]
 [ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="17_i4o64"]
 [ext_resource type="Texture2D" uid="uid://8nee5g8yp60m" path="res://Enemies/PoliceMan/images/components/footLeft.png" id="18_6j67p"]
 [ext_resource type="Texture2D" uid="uid://d03ftetf50knb" path="res://Enemies/PoliceMan/images/components/legLeftLower.png" id="19_hnrvd"]
@@ -27,11 +27,13 @@
 [ext_resource type="Texture2D" uid="uid://bxs615pib88m3" path="res://Enemies/PoliceMan/images/components/torso_1.png" id="25_2wtd5"]
 [ext_resource type="AudioStream" uid="uid://blvlgye7pe4uv" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Wet.wav" id="25_muekj"]
 [ext_resource type="AudioStream" uid="uid://c7wp5qvtmbcao" path="res://World/throwables/sounds/ESM_GW_explosion_one_shot_grenade_remove_safety_bomb_safety_hold_grenade_1.wav" id="27_g4mlx"]
-[ext_resource type="PackedScene" uid="uid://dgwrjf4q250b5" path="res://VFX/Gore/GoreExplosion_Spitter.tscn" id="28_3jlod"]
 [ext_resource type="AudioStream" uid="uid://uxajvtm60aay" path="res://World/throwables/sounds/throw_woosh.wav" id="28_kwsc2"]
+[ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="31_3it5y"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="31_n8adm"]
 [ext_resource type="Texture2D" uid="uid://brpcpaw7dvoib" path="res://World/throwables/images/grenade2-small2.png" id="32_2ck21"]
+[ext_resource type="PackedScene" uid="uid://cfws2coe1l47m" path="res://VFX/Gore/GoreExplosion_Police.tscn" id="32_blfa1"]
 [ext_resource type="Script" path="res://Enemies/PoliceMan/states/police_state_machine.gd" id="32_cr58j"]
+[ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="32_ro6sg"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="33_wskfw"]
 [ext_resource type="Script" path="res://Enemies/PoliceMan/move_police.gd" id="34_07ebd"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="35_05s5h"]
@@ -778,55 +780,55 @@ tracks/5/keys = {
 "update": 1,
 "values": [false, false, true, false]
 }
-tracks/6/type = "method"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("ObjectSpawner")
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.8),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"spawn_item"
-}]
+"update": 0,
+"values": [-0.219886]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legLeftUpper:rotation")
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.219886]
+"values": [Vector2(41.7486, 69.6498)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(41.7486, 69.6498)]
+"values": [-0.273358]
 }
-tracks/9/type = "value"
+tracks/9/type = "method"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:rotation")
+tracks/9/path = NodePath("RotationController/ObjectSpawner")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.273358]
+"values": [{
+"args": [],
+"method": &"spawn_item"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_61oaq"]
@@ -1670,8 +1672,8 @@ position = Vector2(553.654, 17.4105)
 modification_stack = ExtResource("3_h2rwi")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
-scale = Vector2(0.99983, 0.999826)
-skew = -0.000598192
+scale = Vector2(0.999831, 0.999825)
+skew = -0.000598311
 rest = Transform2D(1, 0, 0, 1, 104, 2)
 editor_settings/show_bone_gizmo = false
 
@@ -1687,8 +1689,8 @@ visible = false
 position = Vector2(86.6868, -10.8934)
 rotation = -0.236692
 collision_mask = 256
-script = ExtResource("5_yaiqx")
-health_component = NodePath("../../../../../HealthComponents/HealthComponent - Head")
+script = ExtResource("5_wfa02")
+health_component = NodePath("../../../../../HealthComponents/HealthComponent - LeftUpper")
 status_reciever = NodePath("../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../ZombieGroans-Audio")
@@ -1713,7 +1715,7 @@ visible = false
 position = Vector2(103.394, 66.085)
 rotation = 0.431961
 collision_mask = 256
-script = ExtResource("6_vg57s")
+script = ExtResource("6_cjhv6")
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftLower")
 status_reciever = NodePath("../../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../../GoreVFX")
@@ -1771,7 +1773,7 @@ visible = false
 position = Vector2(62.1251, 51.597)
 rotation = 0.431961
 collision_mask = 256
-script = ExtResource("10_fnao5")
+script = ExtResource("10_0onf6")
 health_component = NodePath("../../../../../HealthComponents/HealthComponent - RightUpper")
 status_reciever = NodePath("../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../GoreVFX")
@@ -1797,7 +1799,7 @@ unique_name_in_owner = true
 position = Vector2(138.245, 10.4021)
 rotation = -0.190215
 collision_mask = 256
-script = ExtResource("11_g7bmk")
+script = ExtResource("11_gyk3g")
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - RightLower")
 status_reciever = NodePath("../../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../../GoreVFX")
@@ -1867,7 +1869,7 @@ visible = false
 position = Vector2(67.5524, 55.4967)
 rotation = 0.431961
 collision_mask = 256
-script = ExtResource("16_hns2t")
+script = ExtResource("16_s27vp")
 health_component = NodePath("../../../../../HealthComponents/HealthComponent - Head")
 status_reciever = NodePath("../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../GoreVFX")
@@ -2004,8 +2006,6 @@ debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_sr2cp")
 
-[node name="GoreVFX" parent="." instance=ExtResource("28_3jlod")]
-
 [node name="RotationController" type="Node2D" parent="."]
 
 [node name="GrenadeEmissionPoint" type="Marker2D" parent="RotationController"]
@@ -2019,6 +2019,10 @@ position = Vector2(6, 0)
 rotation = 0.429234
 scale = Vector2(0.478625, 0.478625)
 texture = ExtResource("32_2ck21")
+
+[node name="ObjectSpawner" parent="RotationController" instance=ExtResource("31_3it5y")]
+position = Vector2(97, 4)
+object_to_spawn = ExtResource("32_ro6sg")
 
 [node name="GrenadeThrowDetectors" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -2046,6 +2050,8 @@ scale = Vector2(2.72682, 1.5761)
 enabled = false
 target_position = Vector2(2.08165e-12, 400)
 collision_mask = 17
+
+[node name="GoreVFX" parent="." instance=ExtResource("32_blfa1")]
 
 [node name="WindowHitbox" type="Area2D" parent="."]
 visible = false
@@ -2141,12 +2147,14 @@ max_health = 150.0
 
 [node name="HealthComponent - RightUpper" parent="HealthComponents" instance=ExtResource("43_3pre3")]
 max_health = 150.0
+invincible_mode = true
 
 [node name="HealthComponent - LeftLower" parent="HealthComponents" instance=ExtResource("43_3pre3")]
 max_health = 100.0
 
 [node name="HealthComponent - RightLower" parent="HealthComponents" instance=ExtResource("43_3pre3")]
 max_health = 100.0
+invincible_mode = true
 
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("44_rxjtc")]
 velocity_component = NodePath("../VelocityComponent")

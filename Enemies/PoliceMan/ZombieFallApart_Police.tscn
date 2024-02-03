@@ -1,6 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxauntwt8vpk3"]
+[gd_scene load_steps=9 format=3 uid="uid://bxauntwt8vpk3"]
 
 [ext_resource type="Script" path="res://Enemies/PoliceMan/fall_apart_police.gd" id="1_v1gbv"]
+[ext_resource type="PackedScene" uid="uid://bchlhsbcy6ynd" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-TorsoUpperTopDown.tscn" id="2_48mom"]
+[ext_resource type="PackedScene" uid="uid://4oy3ba6xhyt6" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-Hand.tscn" id="3_mh8wa"]
+[ext_resource type="PackedScene" uid="uid://cqt63h1o17yq3" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-HandLeft.tscn" id="4_4btr0"]
+[ext_resource type="PackedScene" uid="uid://uagk6sejbaih" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmLower.tscn" id="5_6llx7"]
+[ext_resource type="PackedScene" uid="uid://cndcvevlspfw7" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmRightUpper.tscn" id="6_yupqc"]
+[ext_resource type="PackedScene" uid="uid://0x2qiwcl6c2y" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmUpper.tscn" id="7_3u16a"]
+[ext_resource type="PackedScene" uid="uid://ca2v6t7upnt8m" path="res://VFX/Gore/blood_splatters/BloodSplatter.tscn" id="7_5n431"]
 
 [node name="ZombieFallApart_Police" type="Node2D"]
 script = ExtResource("1_v1gbv")
+
+[node name="BodyPart-TorsoUpperTopDown" parent="." instance=ExtResource("2_48mom")]
+rotation = -1.57079
+
+[node name="BodyPart-Hand" parent="." instance=ExtResource("3_mh8wa")]
+position = Vector2(64, -21)
+rotation = 0.242148
+
+[node name="BodyPart-Hand2" parent="." instance=ExtResource("4_4btr0")]
+position = Vector2(67, 12)
+rotation = -3.20202
+
+[node name="BodyPart-ArmLowerLeft" parent="." instance=ExtResource("5_6llx7")]
+position = Vector2(47, -50)
+rotation = -0.507137
+
+[node name="BodyPart-ArmLowerLeft2" parent="." instance=ExtResource("5_6llx7")]
+position = Vector2(52, 38)
+rotation = -2.14369
+
+[node name="BodyPart-ArmUpperLeft" parent="." instance=ExtResource("6_yupqc")]
+position = Vector2(13, 51)
+rotation = -0.855893
+
+[node name="BodyPart-ArmUpperLeft2" parent="." instance=ExtResource("7_3u16a")]
+position = Vector2(7, -51)
+rotation = -1.359
+
+[node name="BloodSplatter" parent="." instance=ExtResource("7_5n431")]

@@ -3,17 +3,13 @@ extends Node2D
 # TODO - this should a million % be an export array, then i dont have to keep re-saving this
 # script for each enemy type
 @onready var body_parts_forwards = [
-	$"BodyPart-LegLower", 
-	$"BodyPart-LegUpper", 
+	$"BodyPart-TorsoUpperTopDown", 
+	$"BodyPart-Hand", 
+	$"BodyPart-Hand2", 
 	$"BodyPart-ArmLowerLeft", 
 	$"BodyPart-ArmLowerLeft2", 
 	$"BodyPart-ArmUpperLeft", 
-	$"BodyPart-Foot", 
-	$"BodyPart-Hand", 
-	$BloodSplatter, 
-	$"BodyPart-TorsoUpperTopDown", 
-	$"BodyPart-ArmUpperLeft2", 
-	$"BodyPart-Hand2"
+	$"BodyPart-ArmUpperLeft2"
 ]
 
 @export var item_ejection_speed: float = 90.0  # impulse multiplier applied to item on ejection

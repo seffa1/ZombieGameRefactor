@@ -5,7 +5,7 @@ extends "res://Libraries/CustomComponents/hurt_box_component.gd"
 
 @onready var collision_shape: CollisionShape2D = $leftLowerCollision
 
-@onready var lower_arm_body_part = preload("res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-ArmLower.tscn")
+@onready var lower_arm_body_part = preload("res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmLower.tscn")
 
 var is_dead: bool = false
 

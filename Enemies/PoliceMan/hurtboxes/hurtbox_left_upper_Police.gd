@@ -7,8 +7,8 @@ extends "res://Libraries/CustomComponents/hurt_box_component.gd"
 @onready var left_lower_collision: CollisionShape2D = %leftLowerCollision
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-@onready var lower_arm_body_part = preload("res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-ArmLower.tscn")
-@onready var upper_arm_body_part = preload("res://VFX/Gore/rigidBodyParts_Spitter/Spitter - BodyPart-ArmUpper.tscn")
+@onready var lower_arm_body_part = preload("res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmLower.tscn")
+@onready var upper_arm_body_part = preload("res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmUpper.tscn")
 var is_dead: bool = false
 
 func bullet_impact_effect(area: Area2D):

@@ -13,6 +13,7 @@ player or enemy could use.
 @export var health_regeneration_wait_time: float = 2.0  # how many seconds of no-damage taken before health regenerates
 @export var health_regeneration_amount_per_tick: float = .1  # how much health is regenerated per game tick
 @export var one_shot_mode: bool = false  # if true, health will always be one ( die in one shot )
+@export var invincible_mode: bool = false
 
 var starting_max_health: int  # set in ready, tracked in case max health is modified
 
@@ -22,6 +23,9 @@ var health: float:
 	set(value):
 		if one_shot_mode:
 			health=0
+			return
+		if invincible_mode:
+			health = max_health
 			return
 		if value < health:
 			regen_wait_timer.start(health_regeneration_wait_time)
@@ -36,8 +40,6 @@ func _ready():
 	health = max_health
 	starting_max_health = max_health
 	regen_wait_timer.start(health_regeneration_wait_time)
-
-
 
 func _process(delta):
 	if !health_regeneration or one_shot_mode:
