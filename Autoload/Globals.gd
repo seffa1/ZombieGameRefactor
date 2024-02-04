@@ -149,7 +149,7 @@ const PERK_INDEX = {
 	},
 	"STEADY_AIM": {
 		"nice name": "Steady Aim",
-		"HUD_image": preload("res://World/purchasables/perks/images/element_0005_Layer-7.png")
+		"HUD_image": preload("res://World/purchasables/perks/images/steady_aim_icon.png")
 	}
 }
 
