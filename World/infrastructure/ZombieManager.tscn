@@ -22,4 +22,8 @@ volume_db = -8.0
 max_polyphony = 4
 bus = &"GameAudio"
 
+[node name="BomberSpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
 [connection signal="timeout" from="RoundStartSpawnDelay" to="." method="_on_spawn_delay_timer_timeout"]

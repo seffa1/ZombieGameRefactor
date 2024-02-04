@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=132 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -5605,6 +5605,60 @@ shader_parameter/distortion = null
 shader_parameter/heightOffset = null
 shader_parameter/offset = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sij2"]
+size = Vector2(376, 175)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vwcp"]
+size = Vector2(812, 265)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qm5i5"]
+size = Vector2(487, 380)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14xrq"]
+size = Vector2(799, 207)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dghs0"]
+size = Vector2(334, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swm70"]
+size = Vector2(274.358, 199.404)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d88ys"]
+size = Vector2(671.324, 194.744)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftbi3"]
+size = Vector2(184, 497)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nswah"]
+size = Vector2(215, 605)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvrxn"]
+size = Vector2(657, 262)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhw74"]
+size = Vector2(823, 225)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_732qo"]
+size = Vector2(111, 246)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhvt7"]
+size = Vector2(561, 306)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlmqe"]
+size = Vector2(275, 449)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_inkix"]
+size = Vector2(279, 442)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7no0j"]
+size = Vector2(256, 806)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj7tr"]
+size = Vector2(223, 918)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej5qw"]
+size = Vector2(386, 361)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6uvub"]
 vertices = PackedVector2Array(680, -23, 900, -29, 1071, -31, 1437, -31, 1439, 132, 1410, 308, 785, 306, 563, 302, 516, 225, 3282, -387, 3673, -413, 3735, -400, 3739, -108, 3683, -98, 3305, -176, 2585, 730, 2580, 951, 2472, 973, 2318, 862, 2273, 751, 2573, 620, -561, 1010, -458, 861, -250, 1087, -726, 1572, -188, 516, -447, 476, -517, -73, -154, 94, -137, 201, -141, 376, -827, 1275, -892, 1200, -963, 1337, -1217, 1074, -1105, 965, 369, -268, 228, -402, 338, -434, 650, -418, 662, -89, 3017, -925, 3111, -1489, 3504, -1435, 3191, -916.88, 3022.44, -853.828, 1271, 1182, 1365, 1393, 1111, 1399, 779, 1395, 782, 1098, 963, 920, 1141, 897, 595, -574, 692, -516, 727, -479, 674, -458, 369, -522, 331, -606, -1131, 930, -1468, 834, -1498, 514, -1091, 578, -1011, 810, 2744, -1363, 2127, 1670, 2654, 1633, 2691, 1770, 2126, 1851, 2081, 1852, 1779, 1817, 2074, 1679.16, 1777, 1723, 1889, 1563, -984.692, 850.296, 2655, 2037, -1098, -450, -1625, -405, -1594, -712, -1105, -637, 305, 899, 440, 1839, -172, 1855, -53, 1102, 134, 901, -542, 777, -635, 937, -731, 606, -1059, -631, -1055, -450, 3310, -79, 3671, 25, 3613, 43, 3191, -863, 2950, -527, 301, 866, 131, 865, 1131, -823, 1770, -902, 1790, -376, 1067, -64, 909, -65, 1430, 801, 1434, 864, 1141, 864, -78, 375, -90, 201, 122, 341, -373, 619, -319, 728, -82.8695, 614.583, -91, 737, 1134, 2005, 1130, 1451, 1503.44, 1456.41, 1499, 1564, 1413, 1727, 361, 750, 362, 867, 3671, -532, 3276, -531, 3593, -551, 936, 755, 922, 614, 920, 431, 1434.39, 433.884, 1432, 607, 965, 865, -1059, -744, -1022.97, -743.628, -873.172, -739.742, -835, -297, -1050, -298, 3417, -726, 3539, -725, 3538, -670, -93, -31, -24.6989, -31.3692, -14, 89, 2941, -176, 2946, -389, -864, -998, -741, -994, -733, -737, 1705, 612, 1707, 489, 2567, 493, 2124, 768, 346, 427, 783, 624, -372, -423, -371, -295, -624, -290, -664, -620, -378, -627, -88, 867, 2462, 1252, 2074, 1245, 2247, 941, 2131, 914, 1890, 1462, 2074, 2018, 1732, 2012, 1407, 1823, 310, -179, 462, -64, 1726, 2068, 1901, 2538, 1646, 2647, 1368, 2500, 1544, 2074, 1546.23, 2010.7, 3551, 168, 3549, 217, 3431, 221, 3603, -659, -668, -733, 3049, 358, 2983, 352, 2981, 291, 3220, 358, 2856, 291, 2847, 223, 2730, -674, 2736, -724, 2843, -727, 360, 86, 366, -25, 462, -34, 2735, 219, 2729, 170, 936.722, 859.616, 1472, 132, 1850, -287, 2199, -87, 2199, 190, 1790, 289, 1472, 321, 3275, -859, 3286, -794, -298, -424, -305, -655, -294, -690, -181, -683, -64, -599, -60, -444, -121, -327, -219, -151, 3612, 153, 2664, 155, 2661, 36, 2938, -83, 3405, -787, 2982, -853, 2965, -801, 2868, -788, 3416, 286, 3302, 289, 2595, 18, 2596, -96, 2607, -424, 2655, -547, 551, -783, 623, -637, 213, -773, 95, -797, -28, -606, -94, -689, 2543, -121, 2537, -400, 3285, 348, 2665, -651, 2600, -515, 3050, 612, 3222, 732, 1896, 810, -295, -187, -368, -651, 106, 439, -130, -77, 37, -251, 60, -206, 221, -130, 680, -68, 328, 334, 1502, 801)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12, 13, 14), PackedInt32Array(15, 16, 17, 18, 19, 20), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(25, 26, 27, 28, 29, 30), PackedInt32Array(31, 21, 24), PackedInt32Array(32, 31, 24, 33, 34, 35), PackedInt32Array(36, 37, 38, 39, 40), PackedInt32Array(41, 42, 43, 44, 45), PackedInt32Array(46, 47, 48, 49, 50, 51, 52), PackedInt32Array(53, 54, 55, 56, 57, 58), PackedInt32Array(39, 38, 57, 56), PackedInt32Array(59, 60, 61, 62, 63), PackedInt32Array(41, 64, 42), PackedInt32Array(65, 66, 67, 68, 69, 70, 71), PackedInt32Array(71, 70, 72, 73), PackedInt32Array(59, 63, 74, 35), PackedInt32Array(67, 75, 68), PackedInt32Array(76, 77, 78, 79), PackedInt32Array(80, 81, 82, 83, 84), PackedInt32Array(85, 22, 21, 86, 87), PackedInt32Array(76, 79, 88, 89), PackedInt32Array(90, 14, 13, 91, 92), PackedInt32Array(45, 44, 93, 94), PackedInt32Array(95, 80, 84, 96), PackedInt32Array(97, 98, 99, 100, 101), PackedInt32Array(102, 103, 104), PackedInt32Array(86, 32, 35, 74), PackedInt32Array(86, 74, 87), PackedInt32Array(105, 30, 29, 106, 107), PackedInt32Array(22, 85, 108, 109), PackedInt32Array(109, 108, 110, 111), PackedInt32Array(112, 113, 114, 115, 116), PackedInt32Array(117, 118, 95), PackedInt32Array(119, 10, 9, 120, 121), PackedInt32Array(122, 123, 124, 125, 126, 104, 127), PackedInt32Array(89, 88, 128, 129, 130, 131, 132), PackedInt32Array(133, 134, 135, 120), PackedInt32Array(106, 136, 137, 138), PackedInt32Array(9, 14, 139, 140), PackedInt32Array(52, 51, 127, 104), PackedInt32Array(130, 141, 142, 143, 131), PackedInt32Array(144, 145, 146, 20, 19, 147), PackedInt32Array(148, 7, 6, 149, 117), PackedInt32Array(150, 151, 152, 131, 153, 154), PackedInt32Array(96, 155, 111, 110, 117), PackedInt32Array(18, 17, 156, 157, 158), PackedInt32Array(159, 158, 157, 160), PackedInt32Array(70, 69, 161, 162, 163), PackedInt32Array(164, 36, 40, 165), PackedInt32Array(166, 167, 168, 169, 170), PackedInt32Array(166, 170, 171, 162), PackedInt32Array(163, 162, 171, 112), PackedInt32Array(172, 173, 174, 90), PackedInt32Array(135, 175, 121, 120), PackedInt32Array(143, 176, 153, 131), PackedInt32Array(177, 178, 179, 180), PackedInt32Array(101, 100, 2, 1), PackedInt32Array(179, 181, 182), PackedInt32Array(183, 184, 185, 94), PackedInt32Array(8, 186, 187, 188, 0), PackedInt32Array(182, 189, 190), PackedInt32Array(127, 191, 122), PackedInt32Array(192, 193, 194, 195, 196, 197, 5), PackedInt32Array(4, 192, 5), PackedInt32Array(94, 93, 198, 199, 120), PackedInt32Array(200, 201, 202, 203, 204, 205, 206, 207), PackedInt32Array(92, 208, 172, 90), PackedInt32Array(190, 209, 210, 211), PackedInt32Array(199, 212, 133, 120), PackedInt32Array(213, 45, 94, 214), PackedInt32Array(215, 214, 94, 185), PackedInt32Array(90, 174, 216, 217, 211), PackedInt32Array(140, 139, 211, 210, 218, 219, 220, 221), PackedInt32Array(222, 223, 53, 58, 224), PackedInt32Array(225, 224, 58, 226, 227), PackedInt32Array(227, 226, 204, 203), PackedInt32Array(228, 229, 220, 219), PackedInt32Array(190, 211, 217, 230, 180, 182), PackedInt32Array(221, 231, 183, 94, 140), PackedInt32Array(220, 232, 221), PackedInt32Array(179, 182, 180), PackedInt32Array(233, 177, 180, 234), PackedInt32Array(233, 234, 15, 20), PackedInt32Array(144, 147, 159, 235), PackedInt32Array(207, 236, 200), PackedInt32Array(154, 237, 201, 200, 150), PackedInt32Array(117, 95, 96), PackedInt32Array(117, 110, 105, 238), PackedInt32Array(239, 207, 206, 240, 241), PackedInt32Array(239, 241, 242), PackedInt32Array(165, 239, 242), PackedInt32Array(165, 242, 164), PackedInt32Array(188, 165, 40, 243, 0), PackedInt32Array(138, 186, 8, 244, 107, 106), PackedInt32Array(105, 107, 238), PackedInt32Array(117, 238, 148), PackedInt32Array(122, 117, 149, 123), PackedInt32Array(102, 104, 126), PackedInt32Array(245, 102, 126, 144), PackedInt32Array(235, 245, 144), PackedInt32Array(160, 235, 159), PackedInt32Array(160, 157, 71, 73), PackedInt32Array(115, 73, 72, 116), PackedInt32Array(112, 116, 163)])
@@ -6637,103 +6691,173 @@ starting_money = 10000
 position = Vector2(0, 7.62939e-06)
 MAX_ZOMBIES_ON_MAP = 30
 wave_spawn_type = "the_labs"
+bomber_round_interval = 2
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
 
 [node name="ZombieSpawner_Interior" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
 position = Vector2(217, 196)
-spawn_interval = 5.0
 spawner_active = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior/SpawnArea" index="0"]
+position = Vector2(-55, 10.5)
+shape = SubResource("RectangleShape2D_1sij2")
+debug_color = Color(0.756863, 0.435294, 0.345098, 0.419608)
+
 [node name="ZombieSpawner_Interior2" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(-13, 669)
-spawn_interval = 5.0
+position = Vector2(346, 606)
 spawner_active = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior2/SpawnArea" index="0"]
+position = Vector2(12, -1.5)
+shape = SubResource("RectangleShape2D_6vwcp")
+debug_color = Color(0.721569, 0.462745, 0.34902, 0.419608)
 
 [node name="ZombieSpawner_Interior3" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
 position = Vector2(1145, 614)
-spawn_interval = 5.0
 spawner_active = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior3/SpawnArea" index="0"]
+position = Vector2(18.5, 24)
+shape = SubResource("RectangleShape2D_qm5i5")
+debug_color = Color(0.74902, 0.443137, 0.352941, 0.419608)
 
 [node name="ZombieSpawner_Interior4" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(1145, 192)
-spawn_interval = 5.0
+position = Vector2(956, 154)
 spawner_active = true
 
-[node name="ZombieSpawner_Interior5" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(611, 405)
-spawn_interval = 5.0
-spawner_active = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior4/SpawnArea" index="0"]
+position = Vector2(48.5, 42.5)
+shape = SubResource("RectangleShape2D_14xrq")
+debug_color = Color(0.698039, 0.478431, 0.352941, 0.419608)
 
 [node name="ZombieSpawner_Interior6" parent="GameWorld/ZombieManager/InteriorSpawns" groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(-275, 669)
-spawn_interval = 5.0
+position = Vector2(-293, 669)
 spawner_active = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior6/SpawnArea" index="0"]
+position = Vector2(69, 7.5)
+shape = SubResource("RectangleShape2D_dghs0")
+debug_color = Color(0.701961, 0.47451, 0.360784, 0.419608)
+
 [node name="ZombieSpawner_Interior7" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(-513, 1058)
-spawn_interval = 5.0
+position = Vector2(-606, 1170)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior7/SpawnArea" index="0"]
+position = Vector2(194.5, -110.5)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_swm70")
+debug_color = Color(0.760784, 0.435294, 0.356863, 0.419608)
 
 [node name="ZombieSpawner_Interior8" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(-1070, 1080)
-spawn_interval = 5.0
+position = Vector2(-859, 1031)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor5")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior8/SpawnArea" index="0"]
+position = Vector2(33.4966, -46.201)
+rotation = -0.785397
+shape = SubResource("RectangleShape2D_d88ys")
+debug_color = Color(0.705882, 0.470588, 0.341176, 0.419608)
+
 [node name="ZombieSpawner_Interior9" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(-71, -514)
-spawn_interval = 5.0
+position = Vector2(-224, -516)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior9/SpawnArea" index="0"]
+position = Vector2(23, 87.5)
+shape = SubResource("RectangleShape2D_ftbi3")
+debug_color = Color(0.745098, 0.45098, 0.282353, 0.419608)
 
 [node name="ZombieSpawner_Interior10" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(360, -342)
-spawn_interval = 5.0
+position = Vector2(505, -370)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor2")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior10/SpawnArea" index="0"]
+position = Vector2(-27.5, -22.5)
+shape = SubResource("RectangleShape2D_nswah")
+debug_color = Color(0.760784, 0.439216, 0.27451, 0.419608)
+
 [node name="ZombieSpawner_Interior11" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(-731, -543)
-spawn_interval = 5.0
+position = Vector2(-721, -486)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor4")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior11/SpawnArea" index="0"]
+position = Vector2(11.5, 2)
+shape = SubResource("RectangleShape2D_uvrxn")
+debug_color = Color(0.741176, 0.45098, 0.321569, 0.419608)
+
 [node name="ZombieSpawner_Interior12" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(1866, 629)
-spawn_interval = 5.0
+position = Vector2(1880, 642)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor3")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior12/SpawnArea" index="0"]
+position = Vector2(247.5, -21.5)
+shape = SubResource("RectangleShape2D_uhw74")
+debug_color = Color(0.8, 0.407843, 0.27451, 0.419608)
+
 [node name="ZombieSpawner_Interior19" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(3118, 642)
-spawn_interval = 5.0
+position = Vector2(3118, 662)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior19/SpawnArea" index="0"]
+position = Vector2(14.5, -93)
+shape = SubResource("RectangleShape2D_732qo")
+debug_color = Color(0.717647, 0.470588, 0.317647, 0.419608)
 
 [node name="ZombieSpawner_Interior13" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
 position = Vector2(2216, 1074)
-spawn_interval = 5.0
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor3")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior13/SpawnArea" index="0"]
+position = Vector2(-37.5, 20)
+shape = SubResource("RectangleShape2D_vhvt7")
+debug_color = Color(0.74902, 0.447059, 0.298039, 0.419608)
+
 [node name="ZombieSpawner_Interior14" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(1280, 1733)
-spawn_interval = 5.0
+position = Vector2(1274, 1733)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor13")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior14/SpawnArea" index="0"]
+position = Vector2(-3.5, 37.5)
+shape = SubResource("RectangleShape2D_jlmqe")
+debug_color = Color(0.788235, 0.419608, 0.290196, 0.419608)
 
 [node name="ZombieSpawner_Interior15" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(1866, 1641)
-spawn_interval = 5.0
+position = Vector2(1920, 1753)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor13")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior15/SpawnArea" index="0"]
+position = Vector2(5.5, 32)
+shape = SubResource("RectangleShape2D_inkix")
+debug_color = Color(0.752941, 0.443137, 0.309804, 0.419608)
+
 [node name="ZombieSpawner_Interior16" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(2814, -342)
-spawn_interval = 5.0
+position = Vector2(2770, -266)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor14")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior16/SpawnArea" index="0"]
+position = Vector2(32, 20)
+shape = SubResource("RectangleShape2D_7no0j")
+debug_color = Color(0.713726, 0.470588, 0.345098, 0.419608)
 
 [node name="ZombieSpawner_Interior17" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(3424, -401)
-spawn_interval = 5.0
+position = Vector2(3498, -244)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor14")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior17/SpawnArea" index="0"]
+position = Vector2(-77.5, -7)
+shape = SubResource("RectangleShape2D_tj7tr")
+debug_color = Color(0.756863, 0.431373, 0.392157, 0.419608)
+
 [node name="ZombieSpawner_Interior18" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("70_2thcf")]
-position = Vector2(3210, 82)
-spawn_interval = 5.0
+position = Vector2(3118, 113)
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor14")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior18/SpawnArea" index="0"]
+position = Vector2(7, -13.5)
+shape = SubResource("RectangleShape2D_ej5qw")
+debug_color = Color(0.694118, 0.478431, 0.34902, 0.419608)
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" instance=ExtResource("25_fmh0i")]
 position = Vector2(105, 1744)
@@ -6978,6 +7102,24 @@ metadata/_edit_lock_ = true
 [editable path="GameWorld/Environment/Objectives/VesselCharge"]
 [editable path="GameWorld/Environment/Objectives/VesselCharge2"]
 [editable path="GameWorld/Environment/Objectives/VesselCharge3"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior2"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior3"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior4"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior6"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior7"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior8"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior9"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior10"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior11"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior12"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior19"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior13"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior14"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior15"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior16"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior17"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior18"]
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]
 [editable path="UI/PlayerStats"]

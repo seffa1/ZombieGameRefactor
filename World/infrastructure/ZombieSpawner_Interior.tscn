@@ -20,3 +20,5 @@ collision_mask = 524288
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_i40iu")
 debug_color = Color(0.780392, 0.396078, 0.486275, 0.419608)
+
+[node name="SpawnArea" type="Area2D" parent="."]

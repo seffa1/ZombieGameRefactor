@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=67 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -519,6 +519,15 @@ sources/0 = SubResource("TileSetAtlasSource_11j7o")
 sources/4 = SubResource("TileSetAtlasSource_xdoex")
 sources/5 = SubResource("TileSetAtlasSource_67q2i")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ygt"]
+size = Vector2(730, 916)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5d1w"]
+size = Vector2(744, 562)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8kxw"]
+size = Vector2(597, 1550)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w47ju"]
 vertices = PackedVector2Array(-885, 319, -1123, -201, -545, -194, -717, 322, -433, 1906, -1216, 1961, -884, 1087, -714, 1086, -1156, 754, -2025, 1075, -2016, 436, -1152, 589, 1141, 897, 1288, 1576, 934, 1590, 964, 893, 305, 899, 399, 1780, -113, 1781, -53, 1102, 134, 901, 301, 866, 131, 865, 1436, 266, -716, 1053, -887, 1050, -717, 348, -485, 350, -500, 615, -54, -763, 1463, -758, 1447.8, -332.915, -73, -28, 1141, 864, 965, 865, -885, 348, 1434, 442, 1434, 864, -1118, 755, -1121, 588, -499, 793, -502, 1054, -1112, 1046, -1111, 350, 1861, -327, 1863, 194, 1437, 201, -77, 617, -88, 867, -91, 793, 1473, 439, 1470, 267, 1958, 129, 1963, 567)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19, 20, 21), PackedInt32Array(21, 20, 22, 23), PackedInt32Array(24, 7, 6, 25), PackedInt32Array(26, 27, 28), PackedInt32Array(29, 30, 31, 32), PackedInt32Array(33, 12, 15, 34), PackedInt32Array(35, 0, 3, 26), PackedInt32Array(36, 37, 33), PackedInt32Array(38, 8, 11, 39), PackedInt32Array(40, 41, 24, 25, 42, 38, 39, 43, 35, 26, 28), PackedInt32Array(31, 44, 45, 46, 32), PackedInt32Array(47, 32, 46, 23, 22), PackedInt32Array(22, 48, 49, 47), PackedInt32Array(23, 36, 33, 34, 21), PackedInt32Array(40, 28, 47, 49), PackedInt32Array(50, 36, 23, 51), PackedInt32Array(50, 51, 52, 53)])
@@ -935,27 +944,42 @@ starting_money = 10000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
-MAX_ZOMBIES_ON_MAP = 2
+MAX_ZOMBIES_ON_MAP = 30
 wave_spawn_type = "test_chamber"
+_bomber_only = true
+bomber_spawn_interval = 3
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
 
 [node name="ZombieSpawner_Interior" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
 position = Vector2(234, -330)
-bomber_only = false
+spawner_active = true
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
-[node name="ZombieSpawner_Interior4" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
-position = Vector2(-648, 719)
-trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
-
-[node name="ZombieSpawner_Interior2" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
-position = Vector2(1145, -95)
-trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior/SpawnArea" index="0"]
+position = Vector2(143, 39)
+shape = SubResource("RectangleShape2D_s4ygt")
+debug_color = Color(0.760784, 0.431373, 0.356863, 0.419608)
 
 [node name="ZombieSpawner_Interior3" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
-position = Vector2(505, 499)
+position = Vector2(288, 500)
+spawner_active = true
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior3/SpawnArea" index="0"]
+position = Vector2(75, 55)
+shape = SubResource("RectangleShape2D_j5d1w")
+debug_color = Color(0.721569, 0.470588, 0.27451, 0.419608)
+
+[node name="ZombieSpawner_Interior2" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
+position = Vector2(1145, -11)
+spawner_active = true
+trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior2/SpawnArea" index="0"]
+position = Vector2(-83.5, 45)
+shape = SubResource("RectangleShape2D_t8kxw")
+debug_color = Color(0.666667, 0.494118, 0.372549, 0.419608)
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1655, 331)
@@ -1025,3 +1049,6 @@ script = ExtResource("43_ou650")
 [editable path="UI/StatesStackDiplayer"]
 [editable path="UI/StatesStackDiplayer2"]
 [editable path="UI/PlayerStats"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior3"]
+[editable path="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior2"]

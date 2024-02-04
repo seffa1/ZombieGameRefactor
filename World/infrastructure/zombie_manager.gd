@@ -10,6 +10,7 @@ Responsible for controlling and tracking the waves of zombies spawning.
 @onready var zombie_container: Node = $ZombieContainer
 @onready var vfx_audio: AudioStreamPlayer = $VFXAudio
 @onready var vfx_audio2: AudioStreamPlayer = $VFXAudio2
+@onready var bomber_spawn_timer: Timer = %BomberSpawnTimer
 
 @onready var max_ammo: PackedScene = preload("res://World/pickups/max_ammo/MaxAmmo.tscn")
 
@@ -18,6 +19,8 @@ Responsible for controlling and tracking the waves of zombies spawning.
 @export var MAX_ZOMBIES_ON_MAP: int = 30
 @export_enum("the_labs", "test_chamber") var wave_spawn_type: String
 @export var _bomber_only: bool = false
+@export var bomber_round_interval: int = 4
+@export var bomber_spawn_interval: int = 1
 var bomber_round: bool = false
 
 var zombie_base_health = 150  # Gets adjustet each round
@@ -72,7 +75,7 @@ func set_is_bomber_round(wave_number):
 	if _bomber_only:
 		return true
 
-	if wave_number % 4 == 0:
+	if wave_number % bomber_round_interval == 0:
 		return true
 	else:
 		return false
@@ -128,8 +131,12 @@ func _process(_delta):
 	"""
 	Call on zombie spawners to spawn zombies
 	"""
+	
 	var spawners_in_range = 0
 	for spawner in _select_spawners():
+		# enforce bomber spawn timer
+		if bomber_round and !bomber_spawn_timer.is_stopped():
+			return
 		if !spawner.in_range_to_spawn():
 			continue  # skip spawners that arent in range
 		spawners_in_range += 1
@@ -141,6 +148,8 @@ func _process(_delta):
 			zombie_container.add_child(zombie_instance)
 			zombie_instance.set_max_health(zombie_base_health)
 			zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
+			if bomber_round:
+				bomber_spawn_timer.start(bomber_spawn_interval)
 	
 	zombies_on_map = len(get_tree().get_nodes_in_group("Zombies"))  # This is just a safe-gaurd incase the counter gets in a bad state
 
@@ -148,6 +157,9 @@ func _process(_delta):
 	# again without checking for the spawner range
 	if spawners_in_range == 0:
 		for spawner in _select_spawners():
+			# enforce bomber spawn timer
+			if bomber_round and !bomber_spawn_timer.is_stopped():
+				return
 			if zombies_to_be_killed == 0 or zombies_on_map >= MAX_ZOMBIES_ON_MAP or zombies_on_map >= zombies_to_be_killed: 
 				return
 			if spawner.spawn_timer.is_stopped() and spawner.spawner_active:
@@ -156,6 +168,8 @@ func _process(_delta):
 				zombie_container.add_child(zombie_instance)
 				zombie_instance.set_max_health(zombie_base_health)
 				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
+				if bomber_round:
+					bomber_spawn_timer.start(bomber_spawn_interval)
 
 
 func _select_spawners():
