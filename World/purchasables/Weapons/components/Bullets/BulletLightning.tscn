@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://db80v1do83ant"]
+
+[ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/bullet_lightning.gd" id="1_5jgh6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dg0rk"]
+radius = 100.0
+
+[node name="Bullet_Lightning" type="RayCast2D"]
+collision_mask = 65560
+script = ExtResource("1_5jgh6")
+
+[node name="JumpArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpArea"]
+shape = SubResource("CircleShape2D_dg0rk")
+debug_color = Color(0.560784, 0.470588, 0.796078, 0.419608)
