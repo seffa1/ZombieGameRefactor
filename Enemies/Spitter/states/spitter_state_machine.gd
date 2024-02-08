@@ -15,6 +15,7 @@ func _ready():
 		"seek_player": $SeekPlayer,
 		"seek_inside": $SeekInside,
 		"attack_player": $AttackPlayer,
+		"attack_player_spit": $AttackPlayer_Spit,
 		"break_window": $BreakWindow,
 		"attack_player_through_window": $AttackPlayerThroughWindow,
 		"die": $Die,

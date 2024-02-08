@@ -23,7 +23,7 @@ func _ready():
 func _on_area_entered(_area):
 	# If the bullets hitbox hits an enemy hurtbox the bullet dies, unless its 'penetrating', then it keeps going through enemies
 	if hit_box_type == 0 and !is_penetrating_shot:
-		owner.die()
+		owner.create_explosion()
 
 	# Track bullet
 	Events.emit_signal("bullet_hit", get_rid(), random_id)

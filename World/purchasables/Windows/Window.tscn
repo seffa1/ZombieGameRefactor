@@ -109,7 +109,7 @@ shape = SubResource("RectangleShape2D_11esv")
 debug_color = Color(0.878431, 0.164706, 0.313726, 0.419608)
 
 [node name="DamageTimer" type="Timer" parent="." index="5"]
-wait_time = 0.01
+wait_time = 0.05
 one_shot = true
 
 [node name="AnimationPlaceholder" type="AnimationPlayer" parent="." index="6"]

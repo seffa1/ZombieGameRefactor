@@ -30,10 +30,10 @@
 [ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="26_gbeqx"]
 [ext_resource type="AudioStream" uid="uid://b0minr0ev4u0a" path="res://Enemies/Spitter/sounds/ESM_Death_by_Monster_3_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="26_pbq0p"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="27_tkohk"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="28_616nb"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="29_0pdtf"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="31_pwnig"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="32_p5twy"]
+[ext_resource type="Script" path="res://Enemies/Spitter/states/spitter_state_machine.gd" id="32_vgh47"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="33_55k58"]
 [ext_resource type="Script" path="res://Enemies/Spitter/states/move_spitter.gd" id="33_xvlwm"]
 [ext_resource type="Script" path="res://Enemies/Spitter/states/AttackPlayer_Spit.gd" id="34_6rflx"]
@@ -1858,8 +1858,7 @@ debug_color = Color(0.2, 0.607843, 0.588235, 0.419608)
 [node name="ZombieGroans-Audio" parent="." instance=ExtResource("27_tkohk")]
 
 [node name="ZombieStateMachine" type="Node" parent="."]
-script = ExtResource("28_616nb")
-START_STATE = NodePath("SeekWindow")
+script = ExtResource("32_vgh47")
 
 [node name="SeekWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("29_0pdtf")

@@ -25,7 +25,3 @@ func _ready():
 	Events.emit_signal("player_equipped_change", nice_weapon_name, player_gun.weapon_level)
 	Events.emit_signal("player_money_change", player.money_component.money)
 	
-	
-
-
-
