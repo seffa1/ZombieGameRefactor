@@ -35,6 +35,18 @@ func get_interactable_message(player: CharacterBody2D) -> String:
 	else:
 		return ""
 
+func _process(delta):
+	# set window collisions and hurtbox at the end of the current frame
+	if health_component.health <= 0:
+		# Disable the zombie collision layer
+		window_collision.set_collision_mask_value(4, false)
+		
+
+	else:
+		# Enable the zombie collision layer
+		window_collision.set_collision_mask_value(4, true)
+	
+
 func update_animation_frame(health: int) -> void:
 	"""
 	Frame here is really seconds. But The animation should have 1 second
@@ -45,16 +57,9 @@ func update_animation_frame(health: int) -> void:
 	animation_player.play("window_break")
 	animation_player.seek(float(frame), true)
 	animation_player.pause()
-	
-	# set window collisions and hurtbox at the end of the current frame
-	if health_component.health <= 0:
-		# Disable the zombie collision layer
-		window_collision.set_collision_mask_value(4, false)
-
-	else:
-		# Enable the zombie collision layer
-		window_collision.set_collision_mask_value(4, true)
 
 
 func is_broken() -> bool:
+	print("IS BROKEN")
+	print(health_component.health <= 0)
 	return health_component.health <= 0

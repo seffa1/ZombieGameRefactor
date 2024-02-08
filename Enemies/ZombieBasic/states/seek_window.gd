@@ -27,6 +27,7 @@ func exit():
 	return
 
 func update(delta):
+	print("UPDATE")
 
 	# Check if we should do a random groan
 	if groan_timer.is_stopped():
@@ -47,12 +48,15 @@ func update(delta):
 
 	# Check if we have arrived at a window
 	if owner.window_detector.has_overlapping_areas():
+		print("OVER LAPPING")
 		# Check if the window has health
 		var window_hurtbox = owner.window_detector.get_overlapping_areas()[0]
 		if window_hurtbox.owner.is_broken():
 			emit_signal("finished", "seek_inside")
 		else:
 			emit_signal("finished", "break_window")
+	else:
+		print("NO OVERLAPPING")
 
 	# Move - velocity should be getting updated by the pathfinding component
 	# the pathfinding target position is set by the owner in the ready function

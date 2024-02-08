@@ -9,10 +9,11 @@ This is to help the zombie cross the threshold between the outside and inside.
 @onready var animation_player = $"../../AnimationPlayer"
 
 var target_inside_trigger = null
+var target_position = null
 
 func enter():
 	animation_player.play("zombie_walk_basic")
-	
+
 	# Find the closest inside trigger to target
 	var smallest_distance = INF
 	for trigger in get_tree().get_nodes_in_group("inside_trigger"):
@@ -20,9 +21,8 @@ func enter():
 		if distance < smallest_distance:
 			smallest_distance = distance
 			target_inside_trigger = trigger
-	assert(target_inside_trigger != null, "There are no windows for spawner to target.")
+	assert(target_inside_trigger != null, "There are no inside triggers for spawner to target.")
 
-	owner.pathfinding_component.update_target_position(target_inside_trigger.global_position)
 
 # Clean up the state. Reinitialize values like a timer
 func exit():
@@ -30,6 +30,7 @@ func exit():
 	return
 
 func update(delta):
+	owner.pathfinding_component.update_target_position(target_inside_trigger.global_position)
 
 	# Check if weve hit an inside trigger
 	if owner.trigger_detector.has_overlapping_areas():
