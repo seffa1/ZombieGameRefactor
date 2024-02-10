@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_wkdjm"]
 
 [sub_resource type="Curve" id="Curve_y5q4y"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.578947), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Animation" id="Animation_h6nmi"]
@@ -68,10 +68,10 @@ tracks/1/path = NodePath(".:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
