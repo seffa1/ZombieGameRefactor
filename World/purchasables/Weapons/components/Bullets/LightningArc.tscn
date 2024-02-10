@@ -156,7 +156,7 @@ color = Color(0.52549, 0.686275, 0.980392, 1)
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_wkdjm")]
 collision_layer = 256
 collision_mask = 64
-damage = 100
+damage = 20
 bullet_knockback = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]

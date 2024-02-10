@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=133 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="9_178qv"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ffymw"]
 [ext_resource type="PackedScene" uid="uid://bugjbduk2yeae" path="res://World/purchasables/perks/PerkBuyHealthBoost.tscn" id="9_wgtcj"]
+[ext_resource type="PackedScene" uid="uid://b5vp5f5q88h4i" path="res://World/purchasables/Weapons/Specials/Fulgurizer/WeaponBuy_Fulgurizer.tscn" id="9_wnf3b"]
 [ext_resource type="PackedScene" uid="uid://dew3qrg0ysy7e" path="res://World/purchasables/perks/PerkBuyQuickReload.tscn" id="10_0w7a4"]
 [ext_resource type="PackedScene" uid="uid://5wpk32ea7ptu" path="res://UI/HUD/HUD.tscn" id="10_4m0vi"]
 [ext_resource type="PackedScene" uid="uid://76s4kicryfd0" path="res://World/purchasables/mysteryBox/MysteryBoxLocation.tscn" id="10_4stfb"]
@@ -5712,6 +5713,10 @@ rotation = -1.57079
 weapon_cost = 10000
 purchasable_name = ""
 
+[node name="WeaponBuy_Fulgurizer" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("9_wnf3b")]
+position = Vector2(3582, -270)
+rotation = 1.57079
+
 [node name="Perks" type="Node" parent="GameWorld/PurchasablesContainer"]
 
 [node name="PerkBuyHealthBoost" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("9_wgtcj")]
@@ -6691,7 +6696,6 @@ starting_money = 10000
 position = Vector2(0, 7.62939e-06)
 MAX_ZOMBIES_ON_MAP = 30
 wave_spawn_type = "the_labs"
-bomber_round_interval = 2
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
 

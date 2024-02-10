@@ -12,6 +12,8 @@ Activates all the VFX spawns with slightly different times.
 # Last global position of the object that damaged the zombie
 var last_damage_position: Vector2
 
+var has_exploded: bool = false
+
 func zombie_death():
 	"""
 	VFX for a generic zombie death.
@@ -31,6 +33,10 @@ func bullet_impact(velocity: Vector2):
 	impact_audio.play_random()
 
 func explosion_death(zombie_position: Vector2, explosion_position: Vector2):
+	# prevents multiple explosive deaths when two hit boxes kill at the same time (lighting arc causes this)
+	if has_exploded:
+		return
+	has_exploded = true
 	# Spawn gore in the direction of the velocity (the -90 is because the vfx spawner defaults to a vector.DOWN
 	var angle = (zombie_position - explosion_position).angle()
 	

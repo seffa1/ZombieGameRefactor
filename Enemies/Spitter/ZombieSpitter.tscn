@@ -1618,7 +1618,7 @@ uv = PackedVector2Array(100.804, 3.27283, 71.2525, -1.21266, 38.271, 18.3124, 25
 position = Vector2(48.9999, 1.00008)
 rotation = 0.578248
 scale = Vector2(0.999844, 1.0005)
-skew = 0.000195384
+skew = 0.000195265
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 
@@ -1658,7 +1658,7 @@ emitting = false
 position = Vector2(111.932, -47.2245)
 rotation = -0.219886
 scale = Vector2(0.999803, 0.999828)
-skew = -5.56707e-05
+skew = -5.62668e-05
 rest = Transform2D(1, 0, 0, 1, 125.819, -47.2673)
 editor_settings/show_bone_gizmo = false
 

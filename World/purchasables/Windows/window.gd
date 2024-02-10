@@ -60,6 +60,4 @@ func update_animation_frame(health: int) -> void:
 
 
 func is_broken() -> bool:
-	print("IS BROKEN")
-	print(health_component.health <= 0)
 	return health_component.health <= 0

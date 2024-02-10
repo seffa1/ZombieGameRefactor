@@ -948,7 +948,7 @@ starting_money = 10000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
-MAX_ZOMBIES_ON_MAP = 30
+MAX_ZOMBIES_ON_MAP = 1
 wave_spawn_type = "test_chamber"
 bomber_spawn_interval = 3
 

@@ -46,4 +46,4 @@ func create(start: Vector2, end: Vector2):
 	
 	
 func handle_enemy_hit():
-	hit_box_collision.disabled = true
+	hit_box_collision.set_deferred("disabled", true)

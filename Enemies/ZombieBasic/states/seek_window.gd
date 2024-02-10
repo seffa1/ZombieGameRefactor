@@ -27,7 +27,6 @@ func exit():
 	return
 
 func update(delta):
-	print("UPDATE")
 
 	# Check if we should do a random groan
 	if groan_timer.is_stopped():
