@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5vp5f5q88h4i"]
+
+[ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_dn0a6"]
+[ext_resource type="Texture2D" uid="uid://bmth0t5vqycqc" path="res://World/purchasables/Weapons/Specials/Fulgurizer/images/riffle_buy.png" id="2_mrood"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bquc2"]
+radius = 79.0
+height = 346.0
+
+[node name="WeaponBuy_Fulgurizer" instance=ExtResource("1_dn0a6")]
+weapon_name = "FULGURIZER"
+weapon_cost = 10
+
+[node name="interactionZone" parent="." index="0"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_bquc2")
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(1, 0.4, 1, 1)
+scale = Vector2(0.494071, 0.494071)
+texture = ExtResource("2_mrood")

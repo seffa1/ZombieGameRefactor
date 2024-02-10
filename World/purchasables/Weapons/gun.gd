@@ -27,6 +27,8 @@ may end up as a part of the animation tree.
 @export var WEAPON_NAME: String  # Must be in Globals.GUN_INDEX as a key
 @export_enum("Base:1", "First Upgrade:2", "Second Upgrade:3") var weapon_level: int # 'pack-a-punch' level
 @export_enum("single_fire", "automatic", "burst") var fire_type: String  # affects how the shoot state is exited
+@export_enum("projectile", "ray_cast") var bullet_type: String = "projectile"  # affects how the bullet is treated
+@export var bullet_ray_cast: RayCast2D
 @export var bullet: PackedScene
 @export var bullets_per_fire: int = 1
 @export var bullet_spread: float = 0.0  # if bullets_per_fire > 1, this is the angle between the bullets
@@ -40,7 +42,6 @@ may end up as a part of the animation tree.
 @export var has_penetrating_shots: bool = false
 @export_enum("on_fire", "on_reload") var shell_ejection_type: int
 @export_enum("on_reload", "no_magazine") var magazine_ejection_type: int
-
 
 var starting_bullet_damage: float
 
@@ -64,7 +65,10 @@ var starting_recoil_reduction_amount: int
 func _ready():
 	assert(fire_type != "", "Gun doesnt have a fire type selected.")
 	assert(WEAPON_NAME != "", "Gun doesnt have a name set.: " + WEAPON_NAME)
-	assert(bullet, "Bullet not assigned for gun.")
+	if (bullet_type == "projectile"):
+		assert(bullet, "Bullet not assigned for gun.")
+	if (bullet_type == "ray_cast"):
+		assert(bullet_ray_cast, "Bullet raycast not assigned for gun.")
 	
 	bullets_in_clip = clip_size
 	bullet_reserve = max_bullet_reserve
@@ -172,10 +176,14 @@ func shoot() -> void:
 		var bullet_direction = Vector2(1,0).rotated(global_rotation + recoil_rotation)
 		var spawn_position = muzzle_position.global_position
 		
-		var bullet_instance = bullet.instantiate()
-		ObjectRegistry.register_projectile(bullet_instance)
-		bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
-		bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
+		# Projectile
+		if bullet_type == "projectile":
+			var bullet_instance = bullet.instantiate()
+			ObjectRegistry.register_projectile(bullet_instance)
+			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
+			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
+		elif bullet_type == "ray_cast":
+			bullet_ray_cast.shoot()
 
 	# we cannot ignore spread ( like a shot gun )
 	else:
@@ -189,15 +197,18 @@ func shoot() -> void:
 		# Although we are shooting multiple bullets in one shot, we treat this as one bullet in the clip
 		# like a shotgun buck shot
 		for i in bullets_per_fire:
-			var bullet_direction = Vector2(1,0).rotated(bullet_rotation)
-			
-			var bullet_instance = bullet.instantiate()
-			ObjectRegistry.register_projectile(bullet_instance)
-			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
-			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
-			
-			rotation_direction *= -1
-			bullet_rotation += bullet_spread * (i+1) * rotation_direction
+			if bullet_type == "projectile":
+				var bullet_direction = Vector2(1,0).rotated(bullet_rotation)
+				
+				var bullet_instance = bullet.instantiate()
+				ObjectRegistry.register_projectile(bullet_instance)
+				bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
+				bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
+				
+				rotation_direction *= -1
+				bullet_rotation += bullet_spread * (i+1) * rotation_direction
+			elif bullet_type == "ray_cast":
+				bullet_ray_cast.shoot()
 
 func set_gun_level(weapon_level: int) -> void:
 	"""

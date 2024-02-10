@@ -104,7 +104,22 @@ const GUN_INDEX = {
 		"pickup_sprite": preload("res://World/purchasables/Weapons/shared/images/weapon_pack/weapons_pack_0007_submachine-gun_2.png"),
 		"lower_weapon_animation": "lower_weapon_riffle",
 		"scene": preload("res://World/purchasables/Weapons/SubmachineGuns/MP7/MP7.tscn")
-	}
+	},
+	"FULGURIZER": {
+		"nice_name": "Fulgurizer",
+		"idle_animation": "idle_riffle",
+		"shoot_animation": "shoot_riffle",
+		"reload_animation": "reload_riffle",
+		"switch_from_animation": "switch_from_riffle",
+		"switch_to_animation": "switch_to_riffle",
+		"buy_weapon_from_animation": "buy_weapon_from_riffle",
+		"buy_weapon_to_animation": "buy_weapon_to_riffle",
+		"sprint_animation": "sprint_riffle",
+		"sprite": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/images/rifle.png"),
+		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/images/riffle_buy.png"),
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/Weapon_Fulgurizer.tscn")
+	},
 }
 
 const EQUIPMENT_INDEX = {
@@ -120,12 +135,13 @@ const EQUIPMENT_INDEX = {
 
 # Gun name, selection_weight
 const mystery_box_spawn_weights = [
-		["DEV_CANON", 0.1],
+		["DEV_CANON", 1.0],
 		["PISTOL_01", 1.0],
 		["MP7", 1.0],
 		["AUTO_SHOTGUN", 1.0],
 		["SPAS", 1.0],
-		["50_CAL", 1.0]
+		["50_CAL", .5],
+		["FULGURIZER", .5]
 	]
 
 # Stores all the information for all perks (should maybe turn this into resources?)
@@ -152,11 +168,6 @@ const PERK_INDEX = {
 		"HUD_image": preload("res://World/purchasables/perks/images/steady_aim_icon.png")
 	}
 }
-
-# Stores all the information for all the different zombie types
-const ZOMBIE_INDEX = {
-}
-
 
 # Utils
 func mouse_on_screen() -> bool:

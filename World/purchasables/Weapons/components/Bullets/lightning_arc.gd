@@ -6,7 +6,7 @@ extends Line2D
 @onready var sparks: CPUParticles2D = $Sparks
 @onready var ray_cast: RayCast2D = $RayCast2D
 
-func creat(start: Vector2, end: Vector2):
+func create(start: Vector2, end: Vector2):
 	ray_cast.global_position = start
 	ray_cast.target_position = end - start
 	ray_cast.force_raycast_update()

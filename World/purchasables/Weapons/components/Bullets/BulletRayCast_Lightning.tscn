@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dg0rk"]
 radius = 100.0
 
-[node name="Bullet_Lightning" type="RayCast2D"]
+[node name="BulletRayCast_Lightning" type="RayCast2D"]
 collision_mask = 65560
 script = ExtResource("1_5jgh6")
 
