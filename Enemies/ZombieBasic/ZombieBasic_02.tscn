@@ -2481,6 +2481,7 @@ radius = 100.0
 neighbor_distance = 5977.77
 time_horizon_agents = 7.27
 time_horizon_obstacles = 6.02
+debug_enabled = false
 
 [node name="VelocityComponent" parent="." instance=ExtResource("29_smf7u")]
 max_velocity = 100.0

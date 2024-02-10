@@ -18,11 +18,11 @@ collision_layer = 4
 collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_g0efj")
+hit_box_type = 0
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_0iepx")]
 collision_layer = 256
 collision_mask = 64
-hit_box_type = 0
 
 [node name="CollisionShapeHitbox" type="CollisionShape2D" parent="HitBoxComponent"]
 rotation = -1.5708

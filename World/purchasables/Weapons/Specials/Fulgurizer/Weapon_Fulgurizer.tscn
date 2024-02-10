@@ -1,17 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://mfghsnfs1cr5"]
+[gd_scene load_steps=10 format=3 uid="uid://mfghsnfs1cr5"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_3h2db"]
+[ext_resource type="AudioStream" uid="uid://b8n12qfrocpjy" path="res://World/purchasables/Weapons/shared/unusedAudio/LaserMachineGunHeavy_HV.437.wav" id="2_ooho0"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_s40ve"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_1pcqc"]
-[ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_qhuyq"]
+[ext_resource type="AudioStream" uid="uid://d0svxgogbd5e5" path="res://World/purchasables/Weapons/shared/unusedAudio/ESM_Bolt_Action_Load_Sound_FX_Military_Ammo.wav" id="3_wsnn2"]
+[ext_resource type="PackedScene" uid="uid://3som05calmsq" path="res://VFX/magazines/MagazineRiffle.tscn" id="4_e6d8q"]
+[ext_resource type="AudioStream" uid="uid://cc5485erphky6" path="res://World/purchasables/Weapons/shared/unusedAudio/ESM_Laser_Gun_Shot_Sound_FX_Military_Gun.wav" id="4_smmpo"]
+[ext_resource type="AudioStream" uid="uid://delv2woa67kac" path="res://World/purchasables/Weapons/shared/unusedAudio/ESM_Laser_Gun_Shot_Fast_Sound_FX_Military_Gun.wav" id="5_6tnbp"]
 [ext_resource type="PackedScene" uid="uid://db80v1do83ant" path="res://World/purchasables/Weapons/components/Bullets/BulletRayCast_Lightning.tscn" id="5_p48on"]
 
 [node name="Fulgurizer" node_paths=PackedStringArray("bullet_ray_cast") instance=ExtResource("1_3h2db")]
 WEAPON_NAME = "FULGURIZER"
 weapon_level = 1
-fire_type = "single_fire"
+fire_type = "automatic"
 bullet_type = "ray_cast"
 bullet_ray_cast = NodePath("BulletRayCast_Lightning")
+
+[node name="GunAudio" parent="." index="4"]
+audio_reload_start = ExtResource("2_ooho0")
+audio_reload_finished = ExtResource("3_wsnn2")
+audio_shoot_gun_shot = ExtResource("4_smmpo")
+audio_shoot_gun_shot_level_up = ExtResource("5_6tnbp")
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
 position = Vector2(121, 7)
@@ -21,9 +31,9 @@ position = Vector2(56, 11)
 object_to_spawn = ExtResource("3_1pcqc")
 
 [node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("2_s40ve")]
-object_to_spawn = ExtResource("4_qhuyq")
+object_to_spawn = ExtResource("4_e6d8q")
 
 [node name="BulletRayCast_Lightning" parent="." index="8" instance=ExtResource("5_p48on")]
-position = Vector2(1, 0)
+position = Vector2(121, 7)
 rotation = -1.5708
 target_position = Vector2(0, 1000)

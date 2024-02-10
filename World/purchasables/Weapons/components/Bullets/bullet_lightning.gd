@@ -10,6 +10,9 @@ extends RayCast2D
 
 var target_point: Vector2 = Vector2.ZERO
 
+func _ready():
+	collide_with_areas = true
+
 func _physics_process(delta):
 	target_point = to_global(target_position)
 	
@@ -23,7 +26,9 @@ func shoot():
 	
 	# Could be the environment, or an enemy
 	var _primary_body = get_collider()
-	var _secondary_bodies = jump_area.get_overlapping_bodies()
+	var _secondary_bodies = jump_area.get_overlapping_areas()
+	
+	print(_secondary_bodies)
 	
 	# So the primary body doesnt get hit twice since it will be inside the jump area already
 	if _primary_body:
@@ -43,8 +48,10 @@ func shoot():
 			var _body = _secondary_bodies[_i]
 			arc = lightning_arc_scene.instantiate()
 			add_child(arc)
-			arc.create(_start, _body.global_position)
-			_start = _target_point
+			# If the enemy is killed by the shot, we can't lookup their position
+			if (is_instance_valid(_body)):
+				arc.create(_start, _body.global_position)
+				_start = _body.global_position
 
 		# Make a one-shot timer and wait for it to finish.
 		await get_tree().create_timer(flash_time).timeout

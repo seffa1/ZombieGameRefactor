@@ -5,6 +5,10 @@ extends Line2D
 
 @onready var sparks: CPUParticles2D = $Sparks
 @onready var ray_cast: RayCast2D = $RayCast2D
+@onready var hit_box_collision: CollisionShape2D = $HitBoxComponent/CollisionShape2D
+
+# The enemy checks this when they are hit, to determine which death/impact VFX to play
+@export_enum("impact", "explosion", "lightning") var hit_box_type 
 
 func create(start: Vector2, end: Vector2):
 	ray_cast.global_position = start
@@ -34,3 +38,12 @@ func create(start: Vector2, end: Vector2):
 	
 	sparks.global_position = end
 	
+	# Set the hit box component
+	var hit_box_shape: SegmentShape2D = hit_box_collision.get_shape()
+	hit_box_shape.a = to_local(start)
+	hit_box_shape.b = to_local(end)
+	hit_box_collision.disabled = false
+	
+	
+func handle_enemy_hit():
+	hit_box_collision.disabled = true

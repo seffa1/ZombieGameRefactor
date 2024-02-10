@@ -5,7 +5,7 @@ extends Node2D
 @onready var animation_player = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D2
 
-
+@export_enum("impact", "explosion", "lightning") var hit_box_type  # helps the gore system choose vfxs
 
 var animation: String
 

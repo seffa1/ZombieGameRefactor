@@ -943,7 +943,7 @@ souls_needed_to_charge = 3.0
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(952, 0)
 rotation = -1.57079
-starting_gun = "SPAS"
+starting_gun = "FULGURIZER"
 starting_money = 10000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]

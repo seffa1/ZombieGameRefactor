@@ -23,6 +23,12 @@ const _IMPACT_SAMPLES = [
 @onready var smoke_puff_scene_level_3 = preload("res://VFX/smokePuff/SmokePuff_level_3.tscn")
 @onready var smoke_puff_scene_level_4 = preload("res://VFX/smokePuff/SmokePuff_level_4.tscn")
 
+@onready var explosion_scene = preload("res://VFX/explosions/Explosion.tscn")
+
+var is_penetrating_shot: bool = false
+@export_enum("impact", "explosion", "lightning") var hit_box_type  # helps the gore system choose vfxs
+
+
 var smoke_trail
 var weapon_level: int
 
@@ -31,7 +37,7 @@ func init(bullet_damage: int, bullet_shooter: CharacterBody2D, bullet_knockback:
 	hit_box_component.shooter = bullet_shooter
 	hit_box_component.bullet_knockback = bullet_knockback
 	hit_box_component.random_id = random_id
-	hit_box_component.is_penetrating_shot = is_penetrating_shot
+	is_penetrating_shot = is_penetrating_shot
 	self.weapon_level = weapon_level
 
 func start(position, direction, speed):
@@ -96,6 +102,27 @@ func _physics_process(delta: float) -> void:
 		smoke_puff.rotation = rotation + deg_to_rad(180)
 		ObjectRegistry.register_effect(smoke_puff)
 		die()
+
+func handle_enemy_hit():
+	# If the bullets hitbox hits an enemy hurtbox the bullet dies, unless its 'penetrating', then it keeps going through enemies
+	var IMPACT_TYPE = 0
+	var EXPLOSIVE_TYPE = 1
+	var LIGHTING_TYPE = 2
+	if hit_box_type == IMPACT_TYPE and !is_penetrating_shot:
+		die()
+	if hit_box_type == EXPLOSIVE_TYPE:
+		create_explosion()
+	if hit_box_type == LIGHTING_TYPE:
+		die()
+
+func create_explosion():
+	# Create the explosion
+	var explosion = explosion_scene.instantiate()
+	explosion.global_position = global_position
+	explosion.rotation = rotation
+	explosion.initialize([7, 8, 9])
+	ObjectRegistry.register_effect(explosion)
+	die()
 
 func die() -> void:
 	queue_free()

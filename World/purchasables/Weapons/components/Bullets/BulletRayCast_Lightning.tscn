@@ -3,15 +3,16 @@
 [ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/bullet_lightning.gd" id="1_5jgh6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dg0rk"]
-radius = 100.0
+radius = 310.103
 
 [node name="BulletRayCast_Lightning" type="RayCast2D"]
-collision_mask = 65560
+collision_mask = 64
 script = ExtResource("1_5jgh6")
+bounces_max = 5
 
 [node name="JumpArea" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 0
+collision_layer = 0
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpArea"]
 shape = SubResource("CircleShape2D_dg0rk")

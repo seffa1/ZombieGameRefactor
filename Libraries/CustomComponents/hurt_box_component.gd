@@ -33,11 +33,15 @@ func _on_area_entered(area: Area2D):
 	gore_vfx.last_damage_position = area.global_position
 	
 	# If the area is an impact (from a bullet)
-	if area.hit_box_type == 0:
+	if area.owner.hit_box_type == 0:
 		bullet_impact_effect(area)
 	
 	# If the area is an exposion
-	elif area.hit_box_type == 1:
+	elif area.owner.hit_box_type == 1:
+		explosion_impact_effect(area)
+	
+	# TODO - Lighting specific VFX
+	elif area.owner.hit_box_type == 2:
 		explosion_impact_effect(area)
 
 func bullet_impact_effect(area: Area2D):
