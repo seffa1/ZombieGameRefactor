@@ -8,14 +8,18 @@ Detects collisions with a body that can hurt us and triggers:
 	gives the gore system the impact types and velocities it needs to spawn gore vfx
 """
 
-@export var money_reward_bullet_hit: int = 10
 @export var damage_multiplier: float = 1.0
 
 @export var health_component: Node2D
-@export var status_reciever: Node2D
 
+@export var status_reciever: Node2D
 @export var gore_vfx: Node2D
 @export var zombie_groan_audio: Node
+
+@export_enum("head", "leftLower", "leftUpper", "rightLower", "rightUpper") var body_part: String
+
+signal hurt_box_hit(body_part: String, area: Area2D)
+signal hurt_box_destroyed(body_part: String, area: Area2D)
 
 func _on_area_entered(area: Area2D):
 	""" 
@@ -26,6 +30,11 @@ func _on_area_entered(area: Area2D):
 	"""
 	# Take damage
 	health_component.health -= area.damage * damage_multiplier
+	
+	if health_component.health <= 0:
+		emit_signal("hurt_box_destroyed", body_part, area)
+	else:
+		emit_signal("hurt_box_hit", body_part, area)
 	
 	# gore system tracks the last position a bullet / grenade / etc. did damage to it
 	# so when the zombie dies, it knows the position of the thing that killed it

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://chbm4wqyr2ec5"]
+[gd_scene load_steps=67 format=3 uid="uid://chbm4wqyr2ec5"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_02.gd" id="1_owmnw"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="2_p30iu"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="19_o8bpu"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="20_2qam5"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="21_fq27d"]
+[ext_resource type="PackedScene" uid="uid://bm44c7e0g2aay" path="res://Libraries/CustomComponents/ImpactableComponent.tscn" id="21_pigry"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_head.gd" id="21_yoed2"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="22_ytv8d"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_left_upper.gd" id="23_p7sme"]
@@ -2165,6 +2166,7 @@ scale = Vector2(1.11997, 0.894974)
 skew = 0.00045073
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxHead" type="Area2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio")]
 unique_name_in_owner = true
@@ -2193,12 +2195,14 @@ rotation = 0.0634662
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 42, -125)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper"]
 position = Vector2(144, -31)
 rotation = 0.128789
 rest = Transform2D(1, 0, 0, 1, 144, -31)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower"]
 position = Vector2(71, 31)
@@ -2227,6 +2231,8 @@ position = Vector2(4.4257, -2.15321)
 shape = SubResource("CapsuleShape2D_2jslj")
 debug_color = Color(0.956863, 0, 0.529412, 0.419608)
 
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" instance=ExtResource("21_pigry")]
+
 [node name="HurtBox-LeftUpper" type="Area2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio")]
 position = Vector2(52.8011, -9.45598)
 rotation = 1.36741
@@ -2250,12 +2256,14 @@ rotation = -0.348765
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, 35, 101)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper"]
 position = Vector2(127, 53)
 rotation = -0.128698
 rest = Transform2D(1, 0, 0, 1, 127, 53)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower"]
 position = Vector2(100, 10)

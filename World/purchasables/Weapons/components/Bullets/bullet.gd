@@ -10,7 +10,8 @@ const _IMPACT_SAMPLES = [
  # TODO
 ]
 
-@onready var hit_box_component = $HitBoxComponent
+@onready var hit_box_component: Area2D = $HitBoxComponent
+@onready var impact_component: Node2D = $HitBoxComponent/Impact_Component
 
 # The smoke trails lifespan must be greater than the bullets!
 @onready var life_span: Timer = $Lifespan
@@ -26,11 +27,12 @@ const _IMPACT_SAMPLES = [
 @onready var explosion_scene = preload("res://VFX/explosions/Explosion.tscn")
 
 var is_penetrating_shot: bool = false
-@export_enum("impact", "explosion", "lightning") var hit_box_type  # helps the gore system choose vfxs
-
 
 var smoke_trail
 var weapon_level: int
+
+func _ready():
+	hit_box_component.enemy_hit.connect(_handle_enemy_hit)
 
 func init(bullet_damage: int, bullet_shooter: CharacterBody2D, bullet_knockback: float, weapon_level: int, random_id: int, is_penetrating_shot: bool=false):
 	hit_box_component.damage = bullet_damage
@@ -103,16 +105,12 @@ func _physics_process(delta: float) -> void:
 		ObjectRegistry.register_effect(smoke_puff)
 		die()
 
-func handle_enemy_hit():
-	# If the bullets hitbox hits an enemy hurtbox the bullet dies, unless its 'penetrating', then it keeps going through enemies
-	var IMPACT_TYPE = 0
-	var EXPLOSIVE_TYPE = 1
-	var LIGHTING_TYPE = 2
-	if hit_box_type == IMPACT_TYPE and !is_penetrating_shot:
+func _handle_enemy_hit():
+	if impact_component.impact_type == "impact" and !is_penetrating_shot:
 		die()
-	if hit_box_type == EXPLOSIVE_TYPE:
+	if impact_component.impact_type == "explosion":
 		create_explosion()
-	if hit_box_type == LIGHTING_TYPE:
+	if impact_component.impact_type == "lightning":
 		die()
 
 func create_explosion():
