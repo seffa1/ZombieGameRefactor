@@ -7,7 +7,6 @@ Controls what happens when hurtbox is struct like, knockbacks, spawning blood, p
 
 @onready var hurt_box: Area2D = $".."
 
-
 @export_category('Components To Link')
 @export var health_component: Node2D
 @export var status_reciever: Node2D
@@ -16,8 +15,9 @@ Controls what happens when hurtbox is struct like, knockbacks, spawning blood, p
 @export var velocity_component: Node
 
 @export_category('Body Parts')
-@export var body_parts_polygons:Array[Polygon2D]
-@export var body_parts_gore: Array[PackedScene]
+@export var body_part_to_spawn: PackedScene
+## Allows one impact to trigger a chain of imacts. So if an upper arm is destroyed, a lower arm can also get destroyed
+@export var child_impactable_component: Array[Node2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,6 +55,10 @@ func _handle_hurtbox_destroy(body_part: String, area: Area2D):
 			_apply_knockback(area)
 			zombie_groan_audio.play_death()
 			gore_vfx.play_splatter()
+			_spawn_body_part()
+			for child_impact in child_impactable_component:
+				child_impact._spawn_body_part()
+				
 			
 			# TODO - head shot VFX and special animation
 			# if body_part == "head":
@@ -74,3 +78,11 @@ func _apply_knockback(area: Area2D):
 	var knock_back_vector = area.knockback_vector
 	velocity_component.impulse_in_direction(knock_back_vector)
 	owner.velocity = velocity_component.velocity
+
+func _spawn_body_part():
+	# Spawn an upper piece
+	var _part = body_part_to_spawn.instantiate()
+	_part.spawn_animation = 1
+	_part.global_position = global_position
+	_part.global_rotation = global_rotation - deg_to_rad(180)
+	ObjectRegistry.register_effect(_part)

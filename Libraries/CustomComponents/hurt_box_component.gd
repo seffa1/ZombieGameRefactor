@@ -13,9 +13,9 @@ Detects collision with a hitbox, damages the health, and emits a signal when it 
 @export var damage_multiplier: float = 1.0
 
 @export_category("Collision Control")
-## If true, and associated health compoent hits zero, disables collision and any other connected collisions
+## If true, and associated health compoent hits zero, calls the detroy method of each child hurtbox ( like cutton of an apendage )
 @export var is_destroyable: bool = true
-@export var connected_collisions: Array[CollisionShape2D]
+@export var child_hurtboxes: Array[Area2D]
 
 signal hurt_box_hit(body_part: String, area: Area2D)
 signal hurt_box_destroyed(body_part: String, area: Area2D)
@@ -39,5 +39,9 @@ func _on_area_entered(area: Area2D):
 		if is_destroyable:
 			collision_shape.set_deferred("disabled", true)
 
-			for connected_collision_shape in connected_collisions:
-				connected_collision_shape.set_deferred("disabled", true)
+			for child_hurtbox in child_hurtboxes:
+				child_hurtbox.destroy()
+
+func destroy():
+	if is_destroyable:
+		collision_shape.set_deferred("disabled", true)

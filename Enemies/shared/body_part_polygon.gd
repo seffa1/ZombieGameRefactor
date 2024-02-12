@@ -1,5 +1,8 @@
 extends Polygon2D
 
+"""
+If a linked hurtbox is destroyed, hides itself to appear like its been blown off
+"""
 
 @export var hurt_boxes: Array[Area2D]
 

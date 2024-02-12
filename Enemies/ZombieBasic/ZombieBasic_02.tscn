@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://chbm4wqyr2ec5"]
+[gd_scene load_steps=69 format=3 uid="uid://chbm4wqyr2ec5"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_02.gd" id="1_owmnw"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="2_p30iu"]
@@ -21,13 +21,14 @@
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="19_8kjpw"]
 [ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="19_o8bpu"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/zombie_state_machine.gd" id="20_2qam5"]
+[ext_resource type="Script" path="res://Libraries/CustomComponents/hurt_box_component.gd" id="21_e5tdg"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="21_fq27d"]
 [ext_resource type="PackedScene" uid="uid://bm44c7e0g2aay" path="res://Libraries/CustomComponents/ImpactableComponent.tscn" id="21_pigry"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_head.gd" id="21_yoed2"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="22_ytv8d"]
+[ext_resource type="PackedScene" uid="uid://8i1we2cbhjgy" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmLowerWithHand.tscn" id="23_h8lhh"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_left_upper.gd" id="23_p7sme"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="23_q2i5y"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_left_lower.gd" id="24_dlk4c"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="24_grelo"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="25_tx3an"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/hurtboxes/hurtbox_right_upper.gd" id="25_y6kl4"]
@@ -2222,31 +2223,30 @@ length = 46.088
 bone_angle = 18.536
 editor_settings/show_bone_gizmo = false
 
-[node name="HurtBox-LeftLower" type="Area2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower"]
+[node name="HurtBox-LeftLower" type="Area2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "collision_shape")]
 position = Vector2(64.5835, 31.0064)
 rotation = 2.08439
 scale = Vector2(1.62287, 1.62288)
 skew = -0.000264406
 collision_layer = 64
 collision_mask = 256
-script = ExtResource("24_dlk4c")
-health_component = null
-status_reciever = null
-gore_vfx = null
-zombie_groan_audio = null
+script = ExtResource("21_e5tdg")
+body_part = "leftLower"
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftLower")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower"]
 position = Vector2(4.4257, -2.15321)
 shape = SubResource("CapsuleShape2D_2jslj")
 debug_color = Color(0.956863, 0, 0.529412, 0.419608)
 
-[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component", "body_parts_polygons") instance=ExtResource("21_pigry")]
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../../HealthComponents/HealthComponent - LeftUpper")
 status_reciever = NodePath("../../../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../../VelocityComponent")
-body_parts_polygons = [NodePath("../../../../../../Polygons/ArmLeftLower"), NodePath("../../../../../../Polygons/HandLeft")]
+body_part_to_spawn = ExtResource("23_h8lhh")
 
 [node name="HurtBox-LeftUpper" type="Area2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper"]
 position = Vector2(52.8011, -9.45598)
