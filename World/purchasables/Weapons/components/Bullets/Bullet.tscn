@@ -24,7 +24,7 @@ explosion_scene = ExtResource("2_n40g8")
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_0iepx")]
 collision_layer = 256
 collision_mask = 64
-impact_type = "impact"
+impact_type = "bullet"
 
 [node name="CollisionShapeHitbox" type="CollisionShape2D" parent="HitBoxComponent"]
 rotation = -1.5708

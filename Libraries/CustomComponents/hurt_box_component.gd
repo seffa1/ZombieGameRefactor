@@ -38,7 +38,7 @@ func _on_area_entered(area: Area2D):
 		emit_signal("hurt_box_destroyed", body_part, area)
 		if is_destroyable:
 			collision_shape.set_deferred("disabled", true)
-
+			
 			for child_hurtbox in child_hurtboxes:
 				child_hurtbox.destroy()
 
