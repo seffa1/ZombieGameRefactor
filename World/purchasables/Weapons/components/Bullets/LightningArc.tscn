@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/lightning_arc.gd" id="1_3xa7c"]
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_wkdjm"]
-[ext_resource type="PackedScene" uid="uid://cyot87jld4aab" path="res://Libraries/CustomComponents/ImpactComponent.tscn" id="3_0l8wf"]
+[ext_resource type="PackedScene" uid="uid://do1pumxirkw15" path="res://Libraries/CustomComponents/ImpactComponent.tscn" id="3_0l8wf"]
 
 [sub_resource type="Curve" id="Curve_y5q4y"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -156,6 +156,7 @@ color = Color(0.52549, 0.686275, 0.980392, 1)
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_wkdjm")]
 collision_layer = 256
 collision_mask = 64
+impact_type = "lightning"
 damage = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
@@ -164,6 +165,5 @@ disabled = true
 debug_color = Color(0, 0, 0, 0.419608)
 
 [node name="ImpactComponent" parent="HitBoxComponent" instance=ExtResource("3_0l8wf")]
-impact_type = 2
 
 [connection signal="area_entered" from="HitBoxComponent" to="HitBoxComponent" method="_on_area_entered"]
