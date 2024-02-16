@@ -34,13 +34,13 @@ func _handle_hit(body_part: String, area: Area2D):
 	match area.impact_type:
 		'bullet':
 			_apply_knockback(area)
-			gore_vfx.bullet_impact(area.knock_back_vector)
+			gore_vfx.bullet_impact(area.knockback_vector)
 			if randf_range(0, 100) > 90:
 				zombie_groan_audio.play_short()
 		'explosion':
 			_apply_knockback(area)
 			gore_vfx.play_splatter()
-			gore_vfx.bullet_impact(area.knock_back_vector)
+			gore_vfx.bullet_impact(area.knockback_vector)
 		'lightning':
 			gore_vfx.play_splatter()
 			if randf_range(0, 100) > 90:
@@ -63,8 +63,7 @@ func _handle_hurtbox_destroy(body_part: String, area: Area2D):
 			_spawn_body_part()
 			for child_impact in child_impactable_component:
 				child_impact._spawn_body_part()
-				
-			
+
 			# TODO - head shot VFX and special animation
 			# if body_part == "head":
 		'explosion':
@@ -80,8 +79,8 @@ func _handle_hurtbox_destroy(body_part: String, area: Area2D):
 			owner.queue_free()
 
 func _apply_knockback(area: Area2D):
-	var knock_back_vector = area.knockback_vector
-	velocity_component.impulse_in_direction(knock_back_vector)
+	var knockback_vector = area.knockback_vector
+	velocity_component.impulse_in_direction(knockback_vector)
 	owner.velocity = velocity_component.velocity
 
 func _spawn_body_part():

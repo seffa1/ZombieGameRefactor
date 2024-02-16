@@ -12,5 +12,5 @@ func _ready():
 	for hurt_box in hurt_boxes:
 		hurt_box.hurt_box_destroyed.connect(_handle_hurtbox_detroyed)
 	
-func _handle_hurtbox_detroyed():
+func _handle_hurtbox_detroyed(body_part: String, area: Area2D):
 	hide()
