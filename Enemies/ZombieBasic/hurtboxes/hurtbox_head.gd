@@ -60,7 +60,6 @@ func explosion_impact_effect(area: Area2D):
 	
 	# If an explosion kills, then send body parts flying and instantly remove the zombie with no death animation
 	if health_component.health <= 0:
-		print("EXPLOSIVE DEATH")
 		collision_shape.set_deferred("disabled", true)
 		gore_vfx.explosion_death(global_position, area.global_position)
 		# TODO - spawn a head body part and send it flying

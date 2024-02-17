@@ -52,7 +52,6 @@ func throw_grenade():
 	
 	# The remap range determines how accuracte the distance the grenade goes to land on the player
 	var charge_value = remap(distance_to_player, 0, 400, .1, 1.5)
-	print(charge_value)
 	var direction_vector = Vector2.RIGHT.rotated(grenade_rotation_controller.rotation) *  charge_value * 200
 	equipment_object.apply_impulse(direction_vector)
 	

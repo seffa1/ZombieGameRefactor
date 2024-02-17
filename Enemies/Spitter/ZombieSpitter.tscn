@@ -1683,7 +1683,6 @@ hurt_boxes = [NodePath("../HurtBoxHead")]
 
 [node name="HurtBoxHead" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("3_ove1n")]
 unique_name_in_owner = true
-visible = false
 position = Vector2(67.5524, 55.4967)
 rotation = 0.431961
 collision_mask = 256
@@ -1697,6 +1696,13 @@ position = Vector2(-51.6657, -51.462)
 rotation = 0.0283522
 shape = SubResource("CircleShape2D_gtiv7")
 debug_color = Color(0.501961, 0.0666667, 0.219608, 0.419608)
+
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("5_r1sew")]
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - Head")
+status_reciever = NodePath("../../../../../../StatusRecieverComponent")
+gore_vfx = NodePath("../../../../../../GoreVFX")
+zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
+velocity_component = NodePath("../../../../../../VelocityComponent")
 
 [node name="HeadBloodEmitter" parent="SkeletonControl/Skeleton/torso/head" instance=ExtResource("17_q3ky8")]
 unique_name_in_owner = true

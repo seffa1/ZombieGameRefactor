@@ -2309,6 +2309,13 @@ rotation = 0.0283522
 shape = SubResource("CircleShape2D_gtiv7")
 debug_color = Color(0.501961, 0.0666667, 0.219608, 0.419608)
 
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("6_hwiib")]
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - Head")
+status_reciever = NodePath("../../../../../../StatusRecieverComponent")
+gore_vfx = NodePath("../../../../../../GoreVFX")
+zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
+velocity_component = NodePath("../../../../../../VelocityComponent")
+
 [node name="HeadBloodEmitter" parent="SkeletonControl/Skeleton/torso/head" instance=ExtResource("17_dp3lm")]
 unique_name_in_owner = true
 emitting = false

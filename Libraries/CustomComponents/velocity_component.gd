@@ -21,7 +21,5 @@ func decelerate(delta):
 
 func impulse_in_direction(direction: Vector2):
 	""" Great for bullet recoil or knockback effects. """
-	print('KNOCK BACK APPLIER')
-	print(direction)
 	velocity += direction
 

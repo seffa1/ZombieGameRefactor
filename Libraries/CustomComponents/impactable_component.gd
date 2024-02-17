@@ -59,6 +59,7 @@ func _handle_hurtbox_destroy(body_part: String, area: Area2D):
 			_apply_knockback(area)
 			zombie_groan_audio.play_death()
 			gore_vfx.play_splatter()
+			gore_vfx.bullet_impact(area.knockback_vector)
 
 			_spawn_body_part()
 			for child_impact in child_impactable_component:
