@@ -27,8 +27,7 @@ func shoot():
 	# Could be the environment, or an enemy
 	var _primary_body = get_collider()
 	var _secondary_bodies = jump_area.get_overlapping_areas()
-	
-	print(_secondary_bodies)
+
 	
 	# So the primary body doesnt get hit twice since it will be inside the jump area already
 	if _primary_body:

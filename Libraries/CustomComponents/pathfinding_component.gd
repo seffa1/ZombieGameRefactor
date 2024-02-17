@@ -44,6 +44,9 @@ func update_target_position(position: Vector2):
 		path_update_timer.start(path_update_interval)
 		nagivation_agent.target_position = position
 
+func get_target_position():
+	return nagivation_agent.target_position
+
 func _physics_process(delta):
 	# A* pathfinding velocity update
 	if nagivation_agent.is_navigation_finished():

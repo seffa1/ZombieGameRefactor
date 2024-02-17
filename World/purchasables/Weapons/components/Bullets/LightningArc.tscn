@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cty6bg3lbjtd6"]
+[gd_scene load_steps=10 format=3 uid="uid://cty6bg3lbjtd6"]
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/lightning_arc.gd" id="1_3xa7c"]
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_wkdjm"]
+[ext_resource type="PackedScene" uid="uid://do1pumxirkw15" path="res://Libraries/CustomComponents/ImpactComponent.tscn" id="3_0l8wf"]
 
 [sub_resource type="Curve" id="Curve_y5q4y"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -123,7 +124,6 @@ end_cap_mode = 2
 script = ExtResource("1_3xa7c")
 spread_angle = 0.5
 segments = 3
-hit_box_type = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "destroy"
@@ -156,12 +156,14 @@ color = Color(0.52549, 0.686275, 0.980392, 1)
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_wkdjm")]
 collision_layer = 256
 collision_mask = 64
+impact_type = "lightning"
 damage = 20
-bullet_knockback = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 shape = SubResource("SegmentShape2D_t2n1m")
 disabled = true
 debug_color = Color(0, 0, 0, 0.419608)
+
+[node name="ImpactComponent" parent="HitBoxComponent" instance=ExtResource("3_0l8wf")]
 
 [connection signal="area_entered" from="HitBoxComponent" to="HitBoxComponent" method="_on_area_entered"]

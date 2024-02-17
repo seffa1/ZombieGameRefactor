@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjoq280647k0k"]
+[gd_scene load_steps=7 format=3 uid="uid://cjoq280647k0k"]
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/bullet.gd" id="1_xu1j1"]
+[ext_resource type="PackedScene" uid="uid://4gpkqemjx0m5" path="res://VFX/explosions/Explosion.tscn" id="2_dpkti"]
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_ew703"]
 [ext_resource type="Texture2D" uid="uid://dpxu2ijho0mcb" path="res://World/purchasables/Weapons/components/Bullets/images/Shot.png" id="3_wkp3e"]
 
@@ -18,11 +19,13 @@ collision_layer = 4
 collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_xu1j1")
-hit_box_type = 1
+is_explosive = true
+explosion_scene = ExtResource("2_dpkti")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_ew703")]
 collision_layer = 256
 collision_mask = 64
+impact_type = "bullet"
 
 [node name="CollisionShapeHitbox" type="CollisionShape2D" parent="HitBoxComponent"]
 rotation = -1.5708

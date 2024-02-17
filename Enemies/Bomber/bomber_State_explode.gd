@@ -25,12 +25,9 @@ func _ready():
 		"bomber_spawn": $BomberSpawn,
 	}
 	
-	hurtbox_head.headless_death.connect(_on_headless_death)
-	hurtbox_head.explosion_death.connect(_on_explosive_death)
+	hurtbox_head.hurt_box_destroyed.connect(_on_explosive_death)
 
-func _on_headless_death():
-	_change_state("headless_death")
-func _on_explosive_death():
+func _on_explosive_death(body_part: String, area: Area2D):
 	_change_state("explode")
 
 func _change_state(state_name):

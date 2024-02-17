@@ -39,12 +39,14 @@ func _process(delta):
 	# set window collisions and hurtbox at the end of the current frame
 	if health_component.health <= 0:
 		# Disable the zombie collision layer
-		window_collision.set_collision_mask_value(4, false)
+		# window_collision.set_collision_mask_value(4, false)
+		window_collision.call_deferred("set_collision_mask_value", 4, false)
 		
 
 	else:
 		# Enable the zombie collision layer
-		window_collision.set_collision_mask_value(4, true)
+		# window_collision.set_collision_mask_value(4, true)
+		window_collision.call_deferred("set_collision_mask_value", 4, true)
 	
 
 func update_animation_frame(health: int) -> void:

@@ -23,9 +23,9 @@ func _ready():
 		"headless_death": $HeadlessDeath,
 	}
 	
-	hurtbox_head.headless_death.connect(_on_headless_death)
+	hurtbox_head.hurt_box_destroyed.connect(_on_head_destroyed)
 
-func _on_headless_death():
+func _on_head_destroyed(body_part: String, area: Area2D):
 	_change_state("headless_death")
 
 func _change_state(state_name):
