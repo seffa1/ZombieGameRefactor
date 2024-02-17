@@ -1900,7 +1900,6 @@ scale = Vector2(1.00009, 1.00087)
 skew = 0.000544071
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("hurt_boxes")]
 unique_name_in_owner = true
