@@ -4,12 +4,11 @@ extends "res://Libraries/state.gd"
 
 @onready var explosion = preload("res://VFX/explosions/Explosion_damagePlayer.tscn")
 @onready var gore_vfx = $"../../GoreVFX"
-@onready var hit_box = $"../../PlayerHitBox"
+@onready var hit_box: CollisionShape2D = $"../../PlayerHitBox/CollisionShape2D"
 
 
 func enter():
-	hit_box.monitoring = false
-	hit_box.monitorable = false
+	hit_box.set_deferred("disabled", true)
 	explode()
 
 

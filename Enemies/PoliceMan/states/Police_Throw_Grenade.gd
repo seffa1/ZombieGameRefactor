@@ -48,7 +48,7 @@ func throw_grenade():
 	ObjectRegistry.register_effect(equipment_object)
 	
 	# Apply the impulse
-	var distance_to_player = (Globals.player.global_position - owner.global_position).length()
+	var distance_to_player = (owner.pathfinding_component.get_target_position() - owner.global_position).length()
 	
 	# The remap range determines how accuracte the distance the grenade goes to land on the player
 	var charge_value = remap(distance_to_player, 0, 400, .1, 1.5)
