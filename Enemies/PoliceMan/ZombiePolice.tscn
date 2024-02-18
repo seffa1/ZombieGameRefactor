@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://monivhylrkee"]
+[gd_scene load_steps=72 format=3 uid="uid://monivhylrkee"]
 
 [ext_resource type="Script" path="res://Enemies/PoliceMan/zombie_police.gd" id="1_55ygs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_w6hwu"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ctdf2i6ob4kbj" path="res://Enemies/PoliceMan/images/components/armRightUpper.png" id="14_u7vjy"]
 [ext_resource type="Texture2D" uid="uid://ctvvt7whop0v6" path="res://Enemies/PoliceMan/images/components/head.png" id="15_qn1i3"]
 [ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="17_i4o64"]
+[ext_resource type="PackedScene" uid="uid://boaigxqytxxpx" path="res://Libraries/CustomComponents/FlamableComponent.tscn" id="17_owp8e"]
 [ext_resource type="Texture2D" uid="uid://8nee5g8yp60m" path="res://Enemies/PoliceMan/images/components/footLeft.png" id="18_6j67p"]
 [ext_resource type="Texture2D" uid="uid://d03ftetf50knb" path="res://Enemies/PoliceMan/images/components/legLeftLower.png" id="19_hnrvd"]
 [ext_resource type="Texture2D" uid="uid://gly5sxquf00x" path="res://Enemies/PoliceMan/images/components/legRIghtUpper.png" id="20_kkyj0"]
@@ -1910,7 +1911,6 @@ hurt_boxes = [NodePath("../HurtBoxHead")]
 
 [node name="HurtBoxHead" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_otldl")]
 unique_name_in_owner = true
-visible = false
 position = Vector2(67.5524, 55.4967)
 rotation = 0.431961
 collision_mask = 256
@@ -1931,6 +1931,11 @@ status_reciever = NodePath("../../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
+
+[node name="FlamableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("hurt_box_component", "health_component") instance=ExtResource("17_owp8e")]
+z_index = 35
+hurt_box_component = NodePath("..")
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - Head")
 
 [node name="HeadBloodEmitter" parent="SkeletonControl/Skeleton/torso/head" instance=ExtResource("17_i4o64")]
 unique_name_in_owner = true

@@ -20,6 +20,7 @@ func _ready():
 	assert(hurt_box_component, "You forget to link the hurt box component")
 	
 	hurt_box_component.hurt_box_hit.connect(_handle_hit)
+	health_component.health_at_zero.connect(_handle_health_zero)
 	
 func _handle_hit(body_part: String, area: Area2D):
 	if area.elemental_type != "fire":
@@ -29,6 +30,11 @@ func _handle_hit(body_part: String, area: Area2D):
 	
 	if damage_received >= damage_until_ignition:
 		ignite()
+
+func _handle_health_zero():
+	for particle in particles.get_children():
+		particle.emitting = false
+	ignited = false
 
 func ignite():
 	ignited = true

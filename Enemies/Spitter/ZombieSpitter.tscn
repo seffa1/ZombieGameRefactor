@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://5703k78iyb24"]
+[gd_scene load_steps=69 format=3 uid="uid://5703k78iyb24"]
 
 [ext_resource type="Script" path="res://Enemies/Spitter/zombie_Spitter.gd" id="1_xluhs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_hcp5o"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cwnfslg3mt0fa" path="res://Enemies/Spitter/images/gore/footRight.png" id="13_k1kyt"]
 [ext_resource type="Texture2D" uid="uid://caar7mufkx038" path="res://Enemies/Spitter/images/components/legRightLower.png" id="14_w0qwq"]
 [ext_resource type="Texture2D" uid="uid://lkynjcwwlydm" path="res://Enemies/Spitter/images/components/legRightUpper.png" id="15_463fp"]
+[ext_resource type="PackedScene" uid="uid://boaigxqytxxpx" path="res://Libraries/CustomComponents/FlamableComponent.tscn" id="16_4dqm4"]
 [ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="17_q3ky8"]
 [ext_resource type="AudioStream" uid="uid://bpkfqq2684gmj" path="res://Enemies/Spitter/sounds/ESM_Deep_Cinematic_Monster_Growl_1_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="25_autvj"]
 [ext_resource type="AudioStream" uid="uid://blvlgye7pe4uv" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Wet.wav" id="25_co7rm"]
@@ -1698,6 +1699,11 @@ status_reciever = NodePath("../../../../../../StatusRecieverComponent")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
+
+[node name="FlamableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("hurt_box_component", "health_component") instance=ExtResource("16_4dqm4")]
+z_index = 35
+hurt_box_component = NodePath("..")
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - Head")
 
 [node name="HeadBloodEmitter" parent="SkeletonControl/Skeleton/torso/head" instance=ExtResource("17_q3ky8")]
 unique_name_in_owner = true

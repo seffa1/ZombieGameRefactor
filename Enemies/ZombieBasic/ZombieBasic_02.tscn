@@ -2206,6 +2206,7 @@ velocity_component = NodePath("../../../../../../VelocityComponent")
 child_impactable_component = [NodePath("../../../armLeftUpper/armLeftLower/HurtBox-LeftLower/ImpactableComponent")]
 
 [node name="FlamableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("hurt_box_component", "health_component") instance=ExtResource("21_g8wav")]
+z_index = 35
 hurt_box_component = NodePath("..")
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - Head")
 damage_until_ignition = 1

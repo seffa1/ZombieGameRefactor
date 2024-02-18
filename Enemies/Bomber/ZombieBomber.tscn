@@ -2056,6 +2056,7 @@ rotation = -0.511451
 scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.872033, -0.489442, 0.489443, 0.872033, 79, -138)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftUpper" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes") instance=ExtResource("4_8ft3q")]
 visible = false
@@ -2091,6 +2092,7 @@ rotation = 0.152667
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.988367, 0.152074, -0.152072, 0.988367, 170, -7)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftLower" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
@@ -2167,6 +2169,7 @@ position = Vector2(57, 137)
 rotation = -0.132898
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.99118, -0.132507, 0.132507, 0.99118, 57, 137)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightUpper" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes") instance=ExtResource("4_8ft3q")]
 visible = false
@@ -2201,6 +2204,7 @@ position = Vector2(119, 91)
 rotation = -0.609635
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.819856, -0.572567, 0.572568, 0.819855, 119, 91)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightLower" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
@@ -2277,6 +2281,7 @@ rotation = -0.101637
 scale = Vector2(0.950129, 1.05438)
 skew = 0.000914931
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("hurt_boxes")]
 unique_name_in_owner = true
