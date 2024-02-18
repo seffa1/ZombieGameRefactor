@@ -2,6 +2,8 @@ extends "res://Libraries/state.gd"
 
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var fall_apart_scene = preload("res://Enemies/ZombieBasic/ZombieFallApart.tscn")
+@onready var gore_vfx = $"../../GoreVFX"
+@onready var zombie_groan_audio = $"../../ZombieGroans-Audio"
 
 var is_targeting_player = false
 
@@ -11,6 +13,8 @@ func _ready():
 
 func enter():
 	is_targeting_player = true
+	zombie_groan_audio.play_death()
+	gore_vfx.play_splatter()
 	if randi_range(0, 1) == 1:
 		animation_player.play("zombie_headless_death")
 	else:

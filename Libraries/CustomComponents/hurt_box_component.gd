@@ -16,6 +16,8 @@ Detects collision with a hitbox, damages the health, and emits a signal when it 
 ## If true, and associated health compoent hits zero, calls the detroy method of each child hurtbox ( like cutton of an apendage )
 @export var is_destroyable: bool = true
 @export var child_hurtboxes: Array[Area2D]
+## If true, sets health zomponent to zero on hit
+@export var one_shot_mode: bool = false
 
 signal hurt_box_hit(body_part: String, area: Area2D)
 signal hurt_box_destroyed(body_part: String, area: Area2D)
@@ -30,7 +32,10 @@ func _on_area_entered(area: Area2D):
 	from bullets, explosions, or anything else we can take damage from.
 	
 	"""
-	health_component.health -= area.damage * damage_multiplier
+	if one_shot_mode:
+		health_component.health = 0
+	else:
+		health_component.health -= area.damage * damage_multiplier
 	
 	if health_component.health > 0:
 		emit_signal("hurt_box_hit", body_part, area)

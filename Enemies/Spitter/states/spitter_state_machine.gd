@@ -6,7 +6,7 @@ This way the legs can freely move / sprint / idle while the player shoots withou
 interuption.
 """
 
-@onready var hurtbox_head = %HurtBoxHead
+@onready var head_health_component = $"../HealthComponents/HealthComponent - Head"
 
 func _ready():
 	super()
@@ -23,9 +23,9 @@ func _ready():
 		"headless_death": $HeadlessDeath,
 	}
 	
-	hurtbox_head.hurt_box_destroyed.connect(_on_head_destroyed)
+	head_health_component.health_at_zero.connect(_on_head_destroyed)
 
-func _on_head_destroyed(body_part: String, area: Area2D):
+func _on_head_destroyed():
 	_change_state("headless_death")
 
 func _change_state(state_name):

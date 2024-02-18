@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://boaigxqytxxpx"]
+
+[ext_resource type="Script" path="res://Libraries/CustomComponents/flamable_component.gd" id="1_aatms"]
+[ext_resource type="PackedScene" uid="uid://etbctx3b6vgv" path="res://VFX/fire/smoke_nonLocal.tscn" id="2_31cch"]
+[ext_resource type="PackedScene" uid="uid://ckejb5gpabu8e" path="res://VFX/fire/Fire_nonLocal.tscn" id="3_2bdin"]
+
+[node name="FlamableComponent" type="Node2D"]
+script = ExtResource("1_aatms")
+
+[node name="Particles" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="fire" parent="Particles" instance=ExtResource("3_2bdin")]
+emitting = false
+
+[node name="smoke" parent="Particles" instance=ExtResource("2_31cch")]
+emitting = false

@@ -1682,7 +1682,6 @@ position = Vector2(59.2622, -114.939)
 rotation = -0.120904
 scale = Vector2(0.999923, 0.999923)
 rest = Transform2D(0.872033, -0.489442, 0.489443, 0.872033, 79, -138)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftUpper" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes") instance=ExtResource("4_otldl")]
 visible = false
@@ -1716,7 +1715,6 @@ position = Vector2(127.401, 17.0319)
 rotation = 1.01178
 scale = Vector2(0.999992, 0.999992)
 rest = Transform2D(0.988367, 0.152074, -0.152072, 0.988367, 170, -7)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftLower" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_otldl")]
 unique_name_in_owner = true
@@ -1788,7 +1786,6 @@ rotation = -0.132898
 scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.99118, -0.132507, 0.132507, 0.99118, 57, 137)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightUpper" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes") instance=ExtResource("4_otldl")]
 visible = false
@@ -1827,7 +1824,6 @@ rotation = -0.609635
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.819856, -0.572567, 0.572568, 0.819855, 119, 91)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightLower" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_otldl")]
 unique_name_in_owner = true
