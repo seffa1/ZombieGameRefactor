@@ -35,13 +35,13 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="27_bn7mh"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="28_p3tbj"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="29_smf7u"]
-[ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="30_tn6ka"]
 [ext_resource type="PackedScene" uid="uid://c4akdgdbo2bsd" path="res://VFX/Gore/GoreExplosion.tscn" id="31_ja008"]
 [ext_resource type="PackedScene" uid="uid://b1rqohrx24n1" path="res://Libraries/CustomComponents/ObjectSpawner.tscn" id="32_y2oq4"]
 [ext_resource type="PackedScene" uid="uid://7vw76npx58xm" path="res://VFX/debris/Debris.tscn" id="33_6wr2m"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="34_jhgc6"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="34_phdnq"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/stand_still.gd" id="35_vsobx"]
+[ext_resource type="PackedScene" uid="uid://cu3mxpcwixhx2" path="res://Libraries/CustomComponents/FreezableComponent.tscn" id="41_37pdn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxfru"]
 radius = 44.0762
@@ -2180,9 +2180,11 @@ scale = Vector2(1.11997, 0.894974)
 skew = 0.00045073
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxHead" type="Area2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "collision_shape")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0.0332603, -3.90296)
 scale = Vector2(1.78076, 1.47727)
 collision_layer = 64
@@ -2199,7 +2201,7 @@ debug_color = Color(0.937255, 0.141176, 0.529412, 0.419608)
 
 [node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component", "child_impactable_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - Head")
-status_reciever = NodePath("../../../../../../StatusRecieverComponent")
+status_reciever = NodePath("")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
@@ -2221,12 +2223,14 @@ rotation = 0.0634662
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 42, -125)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper"]
 position = Vector2(144, -31)
 rotation = 0.128789
 rest = Transform2D(1, 0, 0, 1, 144, -31)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower"]
 position = Vector2(71, 31)
@@ -2238,6 +2242,7 @@ bone_angle = 18.536
 editor_settings/show_bone_gizmo = false
 
 [node name="HurtBox-LeftLower" type="Area2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "collision_shape")]
+visible = false
 position = Vector2(64.5835, 31.0064)
 rotation = 2.08439
 scale = Vector2(1.62287, 1.62288)
@@ -2256,7 +2261,7 @@ debug_color = Color(0.956863, 0, 0.529412, 0.419608)
 
 [node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../../HealthComponents/HealthComponent - LeftUpper")
-status_reciever = NodePath("../../../../../../../StatusRecieverComponent")
+status_reciever = NodePath("")
 gore_vfx = NodePath("../../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../../VelocityComponent")
@@ -2264,6 +2269,7 @@ spawn_body_part_on_death = true
 body_part_to_spawn = ExtResource("23_h8lhh")
 
 [node name="HurtBox-LeftUpper" type="Area2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes")]
+visible = false
 position = Vector2(52.8011, -9.45598)
 rotation = 1.36741
 scale = Vector2(1.62283, 1.62292)
@@ -2282,7 +2288,7 @@ debug_color = Color(0.964706, 0, 0.490196, 0.419608)
 
 [node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component", "child_impactable_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftUpper")
-status_reciever = NodePath("../../../../../../StatusRecieverComponent")
+status_reciever = NodePath("")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
@@ -2296,12 +2302,14 @@ rotation = -0.348765
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, 35, 101)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper"]
 position = Vector2(127, 53)
 rotation = -0.128698
 rest = Transform2D(1, 0, 0, 1, 127, 53)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower"]
 position = Vector2(100, 10)
@@ -2313,6 +2321,7 @@ bone_angle = 11.765
 editor_settings/show_bone_gizmo = false
 
 [node name="HurtBox-RightLower" type="Area2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("health_component", "collision_shape")]
+visible = false
 position = Vector2(95.5785, 6.6819)
 rotation = 1.59886
 scale = Vector2(1.62285, 1.62291)
@@ -2330,7 +2339,7 @@ debug_color = Color(0.898039, 0.227451, 0.552941, 0.419608)
 
 [node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../../HealthComponents/HealthComponent - RightLower")
-status_reciever = NodePath("../../../../../../../StatusRecieverComponent")
+status_reciever = NodePath("")
 gore_vfx = NodePath("../../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../../VelocityComponent")
@@ -2338,6 +2347,7 @@ spawn_body_part_on_death = true
 body_part_to_spawn = ExtResource("23_h8lhh")
 
 [node name="HurtBox-RightUpper" type="Area2D" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes")]
+visible = false
 position = Vector2(50.8762, 22.6981)
 rotation = 2.01393
 scale = Vector2(1.62301, 1.62275)
@@ -2356,7 +2366,7 @@ debug_color = Color(0.980392, 0, 0.372549, 0.419608)
 
 [node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper" node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio", "velocity_component", "child_impactable_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - RightUpper")
-status_reciever = NodePath("../../../../../../StatusRecieverComponent")
+status_reciever = NodePath("")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
@@ -2447,6 +2457,7 @@ disabled = true
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 
 [node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(6, -2)
 shape = SubResource("CircleShape2D_sr2cp")
 
@@ -2547,13 +2558,18 @@ time_horizon_agents = 7.27
 time_horizon_obstacles = 6.02
 debug_enabled = false
 
+[node name="FreezableComponent" parent="." node_paths=PackedStringArray("velocity_component", "hurtboxes", "modulator") instance=ExtResource("41_37pdn")]
+velocity_component = NodePath("../VelocityComponent")
+hurtboxes = [NodePath("../SkeletonControl/Skeleton/torso/head/HurtBoxHead"), NodePath("../SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper"), NodePath("../SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper")]
+hits_until_freeze = null
+velocity_drop_per_point = null
+modulator = NodePath("../SkeletonControl")
+freeze_color = Color(0.298039, 0.309804, 0.882353, 1)
+
 [node name="VelocityComponent" parent="." instance=ExtResource("29_smf7u")]
 max_velocity = 100.0
 acceleration_coefficient = 600.0
 friction = 800.0
-
-[node name="StatusRecieverComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("30_tn6ka")]
-velocity_component = NodePath("../VelocityComponent")
 
 [node name="GroanTimer" type="Timer" parent="."]
 one_shot = true

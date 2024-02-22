@@ -5,7 +5,15 @@ extends Node
 Contains all the logic for tracking a velocity value.
 """
 
-@export var max_velocity: float
+@export var max_velocity: float :
+	get:
+		return max_velocity
+	set(value):
+		if value < 0:
+			max_velocity = 9
+		max_velocity = value
+
+
 @export var acceleration_coefficient: float = 500.0
 @export var friction: float = 500.0
 
@@ -23,3 +31,8 @@ func impulse_in_direction(direction: Vector2):
 	""" Great for bullet recoil or knockback effects. """
 	velocity += direction
 
+func slow_down(amount: float):
+	self.max_velocity = self.max_velocity - amount
+
+func stop():
+	max_velocity = 0
