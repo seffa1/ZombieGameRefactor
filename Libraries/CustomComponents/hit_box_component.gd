@@ -12,7 +12,7 @@ signal enemy_hit()
 @export_enum("bullet", "explosion", "lightning") var impact_type : String
 
 ## Optional argument, checked by components of the hurt box, to activate status effects
-@export_enum("fire", "lightning") var elemental_type : String
+@export_enum("fire", "lightning", "frost") var elemental_type : String
 
 ## Either set by the gun shooting (bullets) or static value (grenades) via the bullets init function
 @export var damage: int = 1

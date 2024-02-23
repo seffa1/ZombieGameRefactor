@@ -4,3 +4,14 @@
 
 [node name="FreezableComponent" type="Node2D"]
 script = ExtResource("1_q0lbf")
+
+[node name="FrozenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="FreezeAudio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+volume_db = -12.808
+bus = &"GameAudio"
+
+[connection signal="timeout" from="FrozenTimer" to="." method="_on_frozen_timer_timeout"]
