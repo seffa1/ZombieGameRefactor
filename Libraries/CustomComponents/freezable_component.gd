@@ -11,9 +11,9 @@ Takes a veritey of status' and applys the effect.
 @export var freeze_sound: AudioStream
 
 @export_group('Configuration')
-@export var freeze_per_hit: float = 10.0
+@export var freeze_per_hit: float = 50.0
 @export var freeze_until_frozen: float = 100.0
-@export var velocity_drop_per_point: float = 20.0
+@export var velocity_drop_per_point: float = 10.0
 ## Which node's canvas items is adjusted when frozen
 @export var modulator: Node2D
 ## Which color are we modulating it to
@@ -41,6 +41,7 @@ var freeze_amount: float = 0.0:
 			freeze_amount = amount
 
 var is_frozen: bool = false
+var first_hit: bool = true
 
 func _ready():
 	assert(hurtboxes, 'You didnt link hurtboxes for freezable')
@@ -51,6 +52,7 @@ func _ready():
 		hurtbox.hurt_box_hit.connect(_on_hurtbox_hit)
 	
 	freeze_audio.stream = freeze_sound
+	
 
 func _on_hurtbox_hit(body_part: String, area: Area2D):
 	if !area.elemental_type == "frost":
@@ -58,6 +60,10 @@ func _on_hurtbox_hit(body_part: String, area: Area2D):
 
 	if is_frozen:
 		return
+		
+	if first_hit:
+		velocity_component.save_max_velocity()
+		first_hit = false
 
 	velocity_component.reduce_max(velocity_drop_per_point)
 	self.freeze_amount += freeze_per_hit
@@ -79,7 +85,8 @@ func _process(delta):
 	self.freeze_amount -= freeze_recovery_rate * delta
 
 func _on_frozen_timer_timeout():
-	velocity_component.start()
+	velocity_component.load_max_velocity()
 	is_frozen = false
+	modulator.modulate = Color(1,1,1,1)
 	emit_signal("frozen", false)
 

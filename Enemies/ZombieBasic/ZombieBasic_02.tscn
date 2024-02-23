@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://chbm4wqyr2ec5"]
+[gd_scene load_steps=69 format=3 uid="uid://chbm4wqyr2ec5"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_02.gd" id="1_owmnw"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="2_p30iu"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/headless_death.gd" id="34_jhgc6"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="34_phdnq"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/stand_still.gd" id="35_vsobx"]
+[ext_resource type="Script" path="res://Enemies/shared/states/frozen.gd" id="37_ob54d"]
 [ext_resource type="PackedScene" uid="uid://cu3mxpcwixhx2" path="res://Libraries/CustomComponents/FreezableComponent.tscn" id="41_37pdn"]
 [ext_resource type="AudioStream" uid="uid://owdfdjcwlc7c" path="res://World/sounds/vfx/Freeze_01.wav" id="42_glrjg"]
 
@@ -2527,6 +2528,9 @@ script = ExtResource("25_tx3an")
 [node name="AttackPlayerThroughWindow" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("26_7txat")
 
+[node name="Frozen" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("37_ob54d")
+
 [node name="HeadlessDeath" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("34_jhgc6")
 
@@ -2550,6 +2554,7 @@ time_horizon_obstacles = 6.02
 debug_enabled = false
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("velocity_component", "hurtboxes", "modulator") instance=ExtResource("41_37pdn")]
+unique_name_in_owner = true
 velocity_component = NodePath("../VelocityComponent")
 hurtboxes = [NodePath("../SkeletonControl/Skeleton/torso/head/HurtBoxHead"), NodePath("../SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper"), NodePath("../SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper")]
 freeze_sound = ExtResource("42_glrjg")
