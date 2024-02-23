@@ -48,7 +48,7 @@
 [ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
-size = Vector2(410, 20)
+size = Vector2(410, 58)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t0y30"]
 polygon = PackedVector2Array(-32, -32, -32, 32, -13.75, 32, -13.5, -13.5, 32, -13.5, 32, -32)
@@ -521,7 +521,7 @@ sources/4 = SubResource("TileSetAtlasSource_xdoex")
 sources/5 = SubResource("TileSetAtlasSource_67q2i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ygt"]
-size = Vector2(730, 916)
+size = Vector2(276, 322)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5d1w"]
 size = Vector2(744, 562)
@@ -832,7 +832,7 @@ position = Vector2(-1085, -1211)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D"]
-position = Vector2(809, 2381)
+position = Vector2(645, 741)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
@@ -850,7 +850,7 @@ rotation = 1.57079
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D3"]
-position = Vector2(844.988, 1970.01)
+position = Vector2(-600.016, 2570)
 rotation = 0.785397
 shape = SubResource("RectangleShape2D_2psla")
 
@@ -860,7 +860,7 @@ rotation = 1.57079
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D4"]
-position = Vector2(520, 331)
+position = Vector2(597.999, 216.004)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="Doors" type="Node" parent="GameWorld/Environment"]
@@ -943,7 +943,7 @@ position = Vector2(645, 1086)
 souls_needed_to_charge = 3.0
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(952, 0)
+position = Vector2(520, -230)
 rotation = -1.57079
 starting_gun = "DEV_CANON"
 starting_money = 10000
@@ -953,23 +953,22 @@ position = Vector2(0, 7.62939e-06)
 spawn_delay_interval = 1.0
 MAX_ZOMBIES_ON_MAP = 1
 wave_spawn_type = "test_chamber"
+_bomber_only = true
 bomber_spawn_interval = 3
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
 
 [node name="ZombieSpawner_Interior" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
-position = Vector2(234, -330)
+position = Vector2(200, -470)
 spawner_active = true
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior/SpawnArea" index="0"]
-position = Vector2(143, 39)
 shape = SubResource("RectangleShape2D_s4ygt")
 debug_color = Color(0.760784, 0.431373, 0.356863, 0.419608)
 
 [node name="ZombieSpawner_Interior3" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
 position = Vector2(288, 500)
-spawner_active = true
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior3/SpawnArea" index="0"]
@@ -979,7 +978,6 @@ debug_color = Color(0.721569, 0.470588, 0.27451, 0.419608)
 
 [node name="ZombieSpawner_Interior2" parent="GameWorld/ZombieManager/InteriorSpawns" node_paths=PackedStringArray("trigger_doors") groups=["bomber_spawns"] instance=ExtResource("39_6ssm2")]
 position = Vector2(1145, -11)
-spawner_active = true
 trigger_doors = [NodePath("../../../Environment/Doors/PurchasableDoor")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/ZombieManager/InteriorSpawns/ZombieSpawner_Interior2/SpawnArea" index="0"]

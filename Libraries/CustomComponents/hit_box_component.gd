@@ -21,7 +21,9 @@ var random_id: int  # set by bullet, for tracking accuracy when a gun fires mult
 var knockback_vector: Vector2 = Vector2.ZERO
 
 func _ready():
-	shooter = Globals.player
+	# if the player dies and something spawns, this prevents a crash
+	if Globals.player:
+		shooter = Globals.player
 
 func _on_area_entered(_area):
 	# Track bullet

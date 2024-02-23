@@ -5,10 +5,11 @@ extends Node
 @export var states_to_check: Array[Node]
 @export var time_until_despawn: float = 5.0
 @export var max_distance_considered: float = 50.0
-
-@onready var distance_timer: Timer = %DistanceCheckTimer
 ## Should be true if the starting state needs to check despawn
 @export var check_despawn: bool = true
+
+@onready var distance_timer: Timer = %DistanceCheckTimer
+
 var previous_position: Vector2
 
 func _ready():

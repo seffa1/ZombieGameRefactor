@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://n83d0irapkol"]
+[gd_scene load_steps=86 format=3 uid="uid://n83d0irapkol"]
 
 [ext_resource type="Script" path="res://Enemies/Bomber/zombie_bomber.gd" id="1_xr4qn"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_e7liy"]
@@ -48,7 +48,10 @@
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="43_cs3tm"]
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="44_ogprr"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="45_a568e"]
-[ext_resource type="PackedScene" uid="uid://is6uo4d64fpi" path="res://Libraries/CustomComponents/StatusRecieverComponent.tscn" id="46_yu6r4"]
+[ext_resource type="Script" path="res://Enemies/shared/states/frozen.gd" id="46_5np00"]
+[ext_resource type="PackedScene" uid="uid://cu3mxpcwixhx2" path="res://Libraries/CustomComponents/FreezableComponent.tscn" id="49_qvr5o"]
+[ext_resource type="PackedScene" uid="uid://k120gr1njqll" path="res://Libraries/CustomComponents/DespawnComponent.tscn" id="50_50n0a"]
+[ext_resource type="AudioStream" uid="uid://owdfdjcwlc7c" path="res://World/sounds/vfx/Freeze_01.wav" id="50_nen6t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_26kym"]
 shader = ExtResource("3_byvw7")
@@ -2532,6 +2535,9 @@ hurtboxes = [null, null, null, null, null, null]
 [node name="StandStill" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("42_mqn1n")
 
+[node name="Frozen" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("46_5np00")
+
 [node name="HealthComponents" type="Node" parent="."]
 
 [node name="HealthComponent - Head" parent="HealthComponents" instance=ExtResource("43_cs3tm")]
@@ -2567,14 +2573,17 @@ max_velocity = 100.0
 acceleration_coefficient = 600.0
 friction = 800.0
 
-[node name="StatusRecieverComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("46_yu6r4")]
+[node name="FreezableComponent" parent="." node_paths=PackedStringArray("velocity_component", "hurtboxes", "modulator") instance=ExtResource("49_qvr5o")]
+unique_name_in_owner = true
 velocity_component = NodePath("../VelocityComponent")
+hurtboxes = [NodePath("../SkeletonControl/Skeleton/torso/head/HurtBoxHead"), NodePath("../SkeletonControl/Skeleton/torso/armLeftUpper/HurtBoxLeftUpper"), NodePath("../SkeletonControl/Skeleton/torso/armRightUpper/HurtBoxRightUpper")]
+freeze_sound = ExtResource("50_nen6t")
+freeze_until_frozen = 50.0
+modulator = NodePath("../SkeletonControl")
+freeze_color = Color(0.25098, 0.537255, 0.690196, 1)
+frozen_time = 2.0
 
 [node name="GroanTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="DistanceCheckTimer" type="Timer" parent="."]
-wait_time = 5.0
 one_shot = true
 
 [node name="SpitTimer" type="Timer" parent="."]
@@ -2584,6 +2593,10 @@ one_shot = true
 [node name="SpitSounds" type="AudioStreamPlayer2D" parent="."]
 volume_db = -21.201
 bus = &"GameAudio"
+
+[node name="DespawnComponent" parent="." node_paths=PackedStringArray("state_machine", "states_to_check") instance=ExtResource("50_50n0a")]
+state_machine = NodePath("../ZombieStateMachine")
+states_to_check = [NodePath("../ZombieStateMachine/SeekPlayer")]
 
 [connection signal="area_entered" from="WindowDetector" to="WindowDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="WindowDetector" to="WindowDetector" method="_on_area_exited"]
