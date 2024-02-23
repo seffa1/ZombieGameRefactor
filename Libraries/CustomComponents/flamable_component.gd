@@ -18,6 +18,7 @@ var ignited: bool = false
 
 func _ready():
 	assert(hurt_box_component, "You forget to link the hurt box component")
+	assert(get_parent().visible, 'Flamable component cant be seen because of non-visible parent')
 	
 	hurt_box_component.hurt_box_hit.connect(_handle_hit)
 	health_component.health_at_zero.connect(_handle_health_zero)
@@ -29,7 +30,6 @@ func _handle_hit(body_part: String, area: Area2D):
 	damage_received += area.damage
 	
 	if damage_received >= damage_until_ignition:
-		print("IGNITION")
 		ignite()
 
 func _handle_health_zero():
@@ -48,5 +48,4 @@ func _process(delta):
 
 	var damage = delta * damage_per_second
 	health_component.health -= damage
-	print(damage)
 	

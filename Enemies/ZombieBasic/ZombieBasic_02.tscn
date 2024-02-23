@@ -2186,7 +2186,6 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxHead" type="Area2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "collision_shape")]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0.0332603, -3.90296)
 scale = Vector2(1.78076, 1.47727)
 collision_layer = 64
