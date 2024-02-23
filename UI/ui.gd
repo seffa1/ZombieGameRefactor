@@ -18,7 +18,6 @@ func _ready():
 	Events.return_to_main_menu.connect(_on_return_to_main_menu)
 	Events.game_over.connect(_on_game_over)
 
-
 func _on_return_to_main_menu():
 	ObjectRegistry.clear_registry()
 	get_tree().paused = false
@@ -54,6 +53,10 @@ func _unhandled_input(event):
 		states_stack_displayer_1.visible = !states_stack_displayer_1.visible
 		states_stack_displayer_2.visible = !states_stack_displayer_2.visible
 		player_stats.visible = !player_stats.visible
+		
+	if event.is_action_pressed("toggle_debug_enemies"):
+		Globals.debug_enemies = !Globals.debug_enemies
+		Events.emit_signal("enemy_debug", Globals.debug_enemies)
 
 #func _on_game_paused():
 #	Events.emit_signal("open_settings")

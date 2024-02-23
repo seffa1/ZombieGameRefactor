@@ -20,7 +20,6 @@ func _on_state_changed(statestack):
 		check_despawn = true
 	else:
 		check_despawn = false
-	print(check_despawn)
 
 func _process(delta):
 	if !check_despawn:

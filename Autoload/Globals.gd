@@ -8,6 +8,7 @@ This is to inform the player states so they can choose the correct animations.
 # A reference to the player assigned in GameInitializer
 var player = null
 var debug_on = true
+var debug_enemies = false
 
 # Globally updated variables
 var is_power_on: bool = false

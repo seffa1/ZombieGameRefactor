@@ -31,7 +31,7 @@ func _on_head_destroyed():
 	_change_state("headless_death")
 	
 func _on_frozen(is_frozen: bool):
-	if is_frozen and states_stack[0] != $Frozen:
+	if is_frozen and states_stack[0] != $Frozen and states_stack[0] != $HeadlessDeath:
 		_change_state("frozen")
 	if !is_frozen and states_stack[0] == $Frozen:
 		_change_state("previous")

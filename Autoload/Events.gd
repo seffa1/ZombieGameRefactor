@@ -67,3 +67,5 @@ signal vessel_charged(target_vessel_id)
 signal bullet_fired()
 signal bullet_hit(bullet_RID, random_id)
 
+# Debug
+signal enemy_debug(visible: bool)

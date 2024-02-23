@@ -34,7 +34,7 @@ func _on_explosive_death():
 	_change_state("explode")
 	
 func _on_frozen(is_frozen: bool):
-	if is_frozen and states_stack[0] != $Frozen:
+	if is_frozen and states_stack[0] != $Frozen and states_stack[0] != $Explode:
 		_change_state("frozen")
 	if !is_frozen and states_stack[0] == $Frozen:
 		_change_state("previous")
