@@ -36,6 +36,7 @@ NOTE: Make sure to add the zombie to the zombie group.
 var ZOMBIE_DESPAWN_DISTANCE = 4000  # if a zombie gets this far from the player, despawn them
 
 var target_window: Area2D # set by zombie spawner, used by state machine to get zombie through the target window
+var base_walking_speed: float
 
 func _ready():
 	# We must load the modification stack AFTER the zombie is a part of the scene tree or it breaks
@@ -49,6 +50,10 @@ func setWalkingSpeed():
 	randomize()
 	var number = randi_range(-30, 50)
 	velocity_component.max_velocity += number
+	base_walking_speed = velocity_component.max_velocity
+
+func reset_walk_speed():
+	velocity_component.max_velocity = base_walking_speed
 
 func set_max_health(zombie_base_health: int):
 	"""

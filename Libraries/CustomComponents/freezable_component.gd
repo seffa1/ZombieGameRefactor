@@ -60,23 +60,17 @@ func _on_hurtbox_hit(body_part: String, area: Area2D):
 
 	if is_frozen:
 		return
-		
-	if first_hit:
-		velocity_component.save_max_velocity()
-		first_hit = false
 
 	velocity_component.reduce_max(velocity_drop_per_point)
 	self.freeze_amount += freeze_per_hit
-	
+
 	if freeze_amount >= freeze_until_frozen:
 		_freeze()
 
 func _freeze():
-	velocity_component.stop()
+	velocity_component.max_velocity = 0
 	is_frozen = true
-	# TODO - visual effect / sound effect
 	freeze_audio.play()
-	# make the zombie tinted blue
 	modulator.modulate = freeze_color
 	frozen_timer.start(frozen_time)
 	emit_signal("frozen", true)
@@ -85,7 +79,8 @@ func _process(delta):
 	self.freeze_amount -= freeze_recovery_rate * delta
 
 func _on_frozen_timer_timeout():
-	velocity_component.load_max_velocity()
+	freeze_amount = 0
+	owner.reset_walk_speed()
 	is_frozen = false
 	modulator.modulate = Color(1,1,1,1)
 	emit_signal("frozen", false)

@@ -7,6 +7,7 @@ interuption.
 """
 
 @onready var head_health_component = $"../HealthComponents/HealthComponent - Head"
+@onready var freezeable_component: Node2D = %FreezableComponent
 
 func _ready():
 	super()
@@ -21,12 +22,20 @@ func _ready():
 		"die": $Die,
 		"stand_still": $StandStill,
 		"headless_death": $HeadlessDeath,
+		"frozen": $Frozen
 	}
 	
 	head_health_component.health_at_zero.connect(_on_head_destroyed)
+	freezeable_component.frozen.connect(_on_frozen)
 
 func _on_head_destroyed():
 	_change_state("headless_death")
+
+func _on_frozen(is_frozen: bool):
+	if is_frozen and states_stack[0] != $Frozen:
+		_change_state("frozen")
+	if !is_frozen and states_stack[0] == $Frozen:
+		_change_state("seek_player")
 
 func _change_state(state_name):
 	"""

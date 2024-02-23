@@ -9,7 +9,6 @@ Controls what happens when hurtbox is struct like, knockbacks, spawning blood, p
 
 @export_category('Components To Link')
 @export var health_component: Node2D
-@export var status_reciever: Node2D
 @export var gore_vfx: Node2D
 @export var zombie_groan_audio: Node
 @export var velocity_component: Node

@@ -9,8 +9,6 @@ Contains all the logic for tracking a velocity value.
 	get:
 		return max_velocity
 	set(value):
-		print("Setting Velocity")
-		print(value)
 		if value < 0:
 			max_velocity = 0
 		max_velocity = value
@@ -21,7 +19,6 @@ Contains all the logic for tracking a velocity value.
 var velocity: Vector2 = Vector2.ZERO
 
 var saved_velocity_stack: Array[float]
-var previous_max_velocity: float = 0.0
 
 func accelerate_in_direction(direction: Vector2, delta):
 	velocity = velocity.move_toward(direction * max_velocity, acceleration_coefficient * delta)
@@ -41,16 +38,3 @@ func reduce_max(amount: float):
 func raise_max(amount: float):
 	self.max_velocity = self.max_velocity + amount
 
-func stop():
-	previous_max_velocity = max_velocity
-	self.max_velocity = 0
-
-func start():
-	self.max_velocity = previous_max_velocity
-
-func save_max_velocity():
-	saved_velocity_stack.push_front(self.max_velocity)
-
-func load_max_velocity():
-	if len(saved_velocity_stack) > 0:
-		self.max_velocity = saved_velocity_stack[0]

@@ -29,6 +29,7 @@ func _handle_hit(body_part: String, area: Area2D):
 	damage_received += area.damage
 	
 	if damage_received >= damage_until_ignition:
+		print("IGNITION")
 		ignite()
 
 func _handle_health_zero():
@@ -47,6 +48,5 @@ func _process(delta):
 
 	var damage = delta * damage_per_second
 	health_component.health -= damage
-	print('damage ')
 	print(damage)
 	
