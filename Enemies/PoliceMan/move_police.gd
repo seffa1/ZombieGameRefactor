@@ -3,23 +3,18 @@ extends "res://Libraries/state.gd"
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var zombie_groans = $"../../ZombieGroans-Audio"
 @onready var groan_timer = $"../../GroanTimer"
-@onready var distance_check_timer: Timer = $"../../DistanceCheckTimer"
 @onready var grenade_throw_detectors = %GrenadeThrowDetectors
 @onready var spit_timer: Timer = $"../../SpitTimer"
 
 @export var groan_interval = 5  # min seconds between random groans
 
 var is_targeting_player = false
-var previous_position: Vector2
 
 func _ready():
 	# Connect to player position signal and feed that to the pathfinding component
 	Events.player_position_change.connect(_on_player_position_changed)
 
-func enter():
-	distance_check_timer.start()
-	previous_position = owner.global_position
-	
+func enter():	
 	# Enable spit detectors
 	for rayCast in grenade_throw_detectors.get_children():
 		rayCast.enabled = true
@@ -66,15 +61,6 @@ func update(delta):
 				spit_timer.start(10)
 				emit_signal("finished" , "throw_grenade")
 				return
-		
-	# Track the distance we travel to make sure we arent getting stuck
-	if distance_check_timer.is_stopped():
-		var distance_traveled = (owner.global_position - previous_position).length()
-		if distance_traveled <= 50:
-			owner.despawn()
-		else:
-			previous_position = owner.global_position
-			distance_check_timer.start()
 
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://chbm4wqyr2ec5"]
+[gd_scene load_steps=70 format=3 uid="uid://chbm4wqyr2ec5"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_02.gd" id="1_owmnw"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="2_p30iu"]
@@ -44,6 +44,7 @@
 [ext_resource type="Script" path="res://Enemies/shared/states/frozen.gd" id="37_ob54d"]
 [ext_resource type="PackedScene" uid="uid://cu3mxpcwixhx2" path="res://Libraries/CustomComponents/FreezableComponent.tscn" id="41_37pdn"]
 [ext_resource type="AudioStream" uid="uid://owdfdjcwlc7c" path="res://World/sounds/vfx/Freeze_01.wav" id="42_glrjg"]
+[ext_resource type="PackedScene" uid="uid://k120gr1njqll" path="res://Libraries/CustomComponents/DespawnComponent.tscn" id="45_q7vob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxfru"]
 radius = 44.0762
@@ -2568,6 +2569,10 @@ freeze_color = Color(0.298039, 0.309804, 0.882353, 1)
 max_velocity = 100.0
 acceleration_coefficient = 600.0
 friction = 800.0
+
+[node name="DespawnComponent" parent="." node_paths=PackedStringArray("state_machine", "states_to_check") instance=ExtResource("45_q7vob")]
+state_machine = NodePath("../ZombieStateMachine")
+states_to_check = [NodePath("../ZombieStateMachine/SeekWindow"), NodePath("../ZombieStateMachine/SeekPlayer"), NodePath("../ZombieStateMachine/SeekInside")]
 
 [node name="GroanTimer" type="Timer" parent="."]
 one_shot = true

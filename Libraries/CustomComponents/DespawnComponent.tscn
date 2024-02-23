@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://k120gr1njqll"]
+
+[ext_resource type="Script" path="res://Libraries/CustomComponents/despawn_component.gd" id="1_qt4uv"]
+
+[node name="DespawnComponent" type="Node"]
+script = ExtResource("1_qt4uv")
+
+[node name="DistanceCheckTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

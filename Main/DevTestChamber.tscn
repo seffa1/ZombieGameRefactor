@@ -832,7 +832,7 @@ position = Vector2(-1085, -1211)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D"]
-position = Vector2(520, 331)
+position = Vector2(809, 2381)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
@@ -840,7 +840,8 @@ position = Vector2(-1102, -1050)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
-position = Vector2(520, 331)
+position = Vector2(1470, 1732)
+rotation = 0.785397
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
@@ -849,7 +850,8 @@ rotation = 1.57079
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D3"]
-position = Vector2(-636.018, 2843)
+position = Vector2(844.988, 1970.01)
+rotation = 0.785397
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
@@ -987,14 +989,14 @@ debug_color = Color(0.666667, 0.494118, 0.372549, 0.419608)
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1655, 331)
-police_only = true
+basic_zombie_only = true
 spawn_interval = 1.0
 spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(153, 1215)
-spitter_only = true
+position = Vector2(124, 1325)
+police_only = true
 spawn_interval = 1.0
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 

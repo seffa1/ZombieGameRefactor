@@ -35,7 +35,7 @@ func _on_frozen(is_frozen: bool):
 	if is_frozen and states_stack[0] != $Frozen:
 		_change_state("frozen")
 	if !is_frozen and states_stack[0] == $Frozen:
-		_change_state("seek_player")
+		_change_state("previous")
 
 func _change_state(state_name):
 	"""
@@ -48,7 +48,7 @@ func _change_state(state_name):
 		reset_stack()
 		
 	# If we want to add state to the state-queue
-	if state_name in ["die", "seek_player", "attack", "break_window"]:
+	if state_name in ["die", "seek_player", "attack", "break_window", "frozen"]:
 		states_stack.push_front(states_map[state_name])
 	# Otherwise the base statemachine will just switch to the new state
 	super(state_name)

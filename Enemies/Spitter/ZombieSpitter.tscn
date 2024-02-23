@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://5703k78iyb24"]
+[gd_scene load_steps=72 format=3 uid="uid://5703k78iyb24"]
 
 [ext_resource type="Script" path="res://Enemies/Spitter/zombie_Spitter.gd" id="1_xluhs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_hcp5o"]
@@ -48,6 +48,7 @@
 [ext_resource type="Script" path="res://Enemies/shared/states/frozen.gd" id="43_p55s4"]
 [ext_resource type="PackedScene" uid="uid://cu3mxpcwixhx2" path="res://Libraries/CustomComponents/FreezableComponent.tscn" id="46_ty8af"]
 [ext_resource type="AudioStream" uid="uid://owdfdjcwlc7c" path="res://World/sounds/vfx/Freeze_01.wav" id="47_5vo5v"]
+[ext_resource type="PackedScene" uid="uid://k120gr1njqll" path="res://Libraries/CustomComponents/DespawnComponent.tscn" id="49_u4fgk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wnop"]
 radius = 39.6561
@@ -1990,11 +1991,11 @@ freeze_sound = ExtResource("47_5vo5v")
 modulator = NodePath("../SkeletonControl")
 freeze_color = Color(0.32549, 0.462745, 0.701961, 1)
 
-[node name="GroanTimer" type="Timer" parent="."]
-one_shot = true
+[node name="DespawnComponent" parent="." node_paths=PackedStringArray("state_machine", "states_to_check") instance=ExtResource("49_u4fgk")]
+state_machine = NodePath("../ZombieStateMachine")
+states_to_check = [NodePath("../ZombieStateMachine/SeekPlayer"), NodePath("../ZombieStateMachine/SeekWindow")]
 
-[node name="DistanceCheckTimer" type="Timer" parent="."]
-wait_time = 5.0
+[node name="GroanTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="SpitTimer" type="Timer" parent="."]

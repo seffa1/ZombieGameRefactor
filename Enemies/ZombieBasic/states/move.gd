@@ -3,21 +3,16 @@ extends "res://Libraries/state.gd"
 @onready var animation_player = $"../../AnimationPlayer"
 @onready var zombie_groans = $"../../ZombieGroans-Audio"
 @onready var groan_timer = $"../../GroanTimer"
-@onready var distance_check_timer: Timer = $"../../DistanceCheckTimer"
 
 @export var groan_interval = 5  # min seconds between random groans
 
 var is_targeting_player = false
-var previous_position: Vector2
 
 func _ready():
 	# Connect to player position signal and feed that to the pathfinding component
 	Events.player_position_change.connect(_on_player_position_changed)
 
 func enter():
-	distance_check_timer.start()
-	previous_position = owner.global_position
-
 	is_targeting_player = true
 	if randi_range(0, 1) == 1:
 		animation_player.play("zombie_walk_basic")
@@ -46,15 +41,6 @@ func update(delta):
 	if owner.player_detector.has_overlapping_areas():
 		emit_signal("finished", "attack_player")
 		return
-		
-	# Track the distance we travel to make sure we arent getting stuck
-	if distance_check_timer.is_stopped():
-		var distance_traveled = (owner.global_position - previous_position).length()
-		if distance_traveled <= 50:
-			owner.despawn()
-		else:
-			previous_position = owner.global_position
-			distance_check_timer.start()
 
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity
