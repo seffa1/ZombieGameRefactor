@@ -72,7 +72,8 @@ func _create_hitbot(start, target_point):
 	print('Creating hitbox')
 	print(to_local(start))
 	print(to_local(target_point))
-	hit_box_shape.a = (start)
-	hit_box_shape.b = (target_point)
+	hitbox.global_position = start
+	hit_box_shape.a = ((start))
+	hit_box_shape.b = ((target_point))
 	ObjectRegistry.register_effect(hitbox)
 	collision.disabled = false

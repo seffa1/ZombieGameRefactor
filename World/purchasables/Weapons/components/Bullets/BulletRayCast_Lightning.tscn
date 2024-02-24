@@ -8,7 +8,7 @@ radius = 310.103
 [node name="BulletRayCast_Lightning" type="RayCast2D"]
 collision_mask = 64
 script = ExtResource("1_5jgh6")
-flashes = 5
+flashes = 1
 bounces_max = 5
 
 [node name="JumpArea" type="Area2D" parent="."]
