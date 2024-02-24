@@ -7,8 +7,10 @@ extends RayCast2D
 @export var lightning_arc_scene: PackedScene = preload("res://World/purchasables/Weapons/components/Bullets/LightningArc.tscn")
 
 @onready var jump_area = $JumpArea
+@onready var hitbox_scene: PackedScene = preload("res://World/purchasables/Weapons/components/Bullets/HitBoxComponent-Lightning.tscn")
 
 var target_point: Vector2 = Vector2.ZERO
+var first_flash: bool = true
 
 func _ready():
 	collide_with_areas = true
@@ -22,13 +24,15 @@ func _physics_process(delta):
 	jump_area.global_position = target_point
 	
 func shoot():
+	print('---------------------')
+	print("SHOOT")
 	var _target_point = target_point
-	
+	first_flash = true
+
 	# Could be the environment, or an enemy
 	var _primary_body = get_collider()
 	var _secondary_bodies = jump_area.get_overlapping_areas()
 
-	
 	# So the primary body doesnt get hit twice since it will be inside the jump area already
 	if _primary_body:
 		_secondary_bodies.erase(_primary_body)
@@ -41,6 +45,8 @@ func shoot():
 		add_child(arc)
 		arc.create(_start, target_point)
 		_start = _target_point
+		if first_flash:
+			_create_hitbot(_start, target_point)
 		
 		# For each lightning bolt, create the bolt that jumps to a secondary body
 		for _i in range(min(bounces_max, _secondary_bodies.size())):
@@ -50,7 +56,23 @@ func shoot():
 			# If the enemy is killed by the shot, we can't lookup their position
 			if (is_instance_valid(_body)):
 				arc.create(_start, _body.global_position)
+				if first_flash:
+					_create_hitbot(_start, target_point)
 				_start = _body.global_position
+		first_flash = false
 
 		# Make a one-shot timer and wait for it to finish.
 		await get_tree().create_timer(flash_time).timeout
+
+
+func _create_hitbot(start, target_point):
+	var hitbox = hitbox_scene.instantiate()
+	var collision: CollisionShape2D = hitbox.get_collision_shape()
+	var hit_box_shape: SegmentShape2D  = collision.get_shape()
+	print('Creating hitbox')
+	print(to_local(start))
+	print(to_local(target_point))
+	hit_box_shape.a = (start)
+	hit_box_shape.b = (target_point)
+	ObjectRegistry.register_effect(hitbox)
+	collision.disabled = false

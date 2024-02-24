@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://chbm4wqyr2ec5"]
+[gd_scene load_steps=75 format=3 uid="uid://chbm4wqyr2ec5"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_02.gd" id="1_owmnw"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="2_p30iu"]
@@ -44,6 +44,8 @@
 [ext_resource type="Script" path="res://Enemies/shared/states/frozen.gd" id="37_ob54d"]
 [ext_resource type="PackedScene" uid="uid://cu3mxpcwixhx2" path="res://Libraries/CustomComponents/FreezableComponent.tscn" id="41_37pdn"]
 [ext_resource type="AudioStream" uid="uid://owdfdjcwlc7c" path="res://World/sounds/vfx/Freeze_01.wav" id="42_glrjg"]
+[ext_resource type="PackedScene" uid="uid://0bc62shn5bjj" path="res://Libraries/CustomComponents/ConductableComponent.tscn" id="44_plkaa"]
+[ext_resource type="Script" path="res://Libraries/CustomComponents/conductable_component.gd" id="45_gxjsy"]
 [ext_resource type="PackedScene" uid="uid://k120gr1njqll" path="res://Libraries/CustomComponents/DespawnComponent.tscn" id="45_q7vob"]
 [ext_resource type="Script" path="res://Enemies/shared/debug/debug.gd" id="46_rmat6"]
 [ext_resource type="Script" path="res://Enemies/shared/debug/state_stack.gd" id="47_mq80x"]
@@ -2002,6 +2004,9 @@ height = 126.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_j67cy"]
 radius = 41.0122
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mi8ey"]
+radius = 47.0106
+
 [node name="ZombieBasic_02" type="CharacterBody2D" groups=["Zombies"]]
 z_index = 2
 collision_layer = 8
@@ -2566,6 +2571,16 @@ hurtboxes = [NodePath("../SkeletonControl/Skeleton/torso/head/HurtBoxHead"), Nod
 freeze_sound = ExtResource("42_glrjg")
 modulator = NodePath("../SkeletonControl")
 freeze_color = Color(0.298039, 0.309804, 0.882353, 1)
+
+[node name="ConductableComponent" parent="." instance=ExtResource("44_plkaa")]
+rotation = 0.00316296
+collision_mask = 2097152
+script = ExtResource("45_gxjsy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConductableComponent"]
+position = Vector2(27, -4)
+shape = SubResource("CircleShape2D_mi8ey")
+debug_color = Color(0.654902, 0.345098, 0.960784, 0.419608)
 
 [node name="VelocityComponent" parent="." instance=ExtResource("29_smf7u")]
 max_velocity = 100.0

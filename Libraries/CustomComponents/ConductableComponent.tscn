@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://0bc62shn5bjj"]
+
+[node name="ConductableComponent" type="Area2D"]
+collision_layer = 1048576
+collision_mask = 0

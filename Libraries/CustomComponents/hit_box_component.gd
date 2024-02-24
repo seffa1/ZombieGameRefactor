@@ -29,3 +29,8 @@ func _on_area_entered(_area):
 	# Track bullet
 	Events.emit_signal("bullet_hit", get_rid(), random_id)
 	emit_signal("enemy_hit")
+
+func get_collision_shape() -> CollisionShape2D:  
+	var shape = get_child(0)
+	assert(shape.is_class('CollisionShape2D'), 'The first child of the hitbox component should be the CollisionShape2D')
+	return shape
