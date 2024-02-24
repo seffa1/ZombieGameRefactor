@@ -127,7 +127,7 @@ func _create_explosion():
 	var _explosion = explosion_scene.instantiate()
 	_explosion.global_position = global_position
 	_explosion.rotation = rotation
-	_explosion.initialize([7, 8, 9])
+	_explosion.initialize([0, 1, 2, 3, 4])
 	ObjectRegistry.register_effect(_explosion)
 	queue_free()
 

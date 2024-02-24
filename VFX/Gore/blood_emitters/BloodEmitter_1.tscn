@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3vqlc4bkf8ru"]
 
-[ext_resource type="Texture2D" uid="uid://bcbhx5e7btjsn" path="res://VFX/Gore/blood_splatters/images/pngwing/pngwing.com (3).png" id="1_wnv0j"]
+[ext_resource type="Texture2D" uid="uid://cphxqdt2e2f5m" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/circle_05.png" id="1_pb7in"]
 
 [sub_resource type="Curve" id="Curve_60x1j"]
-_data = [Vector2(0, 0.0129609), 0.0, 0.0, 0, 0, Vector2(0.962451, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.0631579), 0.0, 0.0, 0, 0, Vector2(0.985075, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Animation" id="Animation_hhkml"]
@@ -58,12 +58,10 @@ _data = {
 }
 
 [node name="BloodEmitter" type="CPUParticles2D"]
-amount = 20
-lifetime = 3.0
-speed_scale = 3.18
+amount = 10
 randomness = 0.78
 lifetime_randomness = 0.18
-texture = ExtResource("1_wnv0j")
+texture = ExtResource("1_pb7in")
 gravity = Vector2(2.08165e-12, 2.08165e-12)
 initial_velocity_min = 38.87
 initial_velocity_max = 102.85

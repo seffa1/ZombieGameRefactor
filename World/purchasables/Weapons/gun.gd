@@ -149,6 +149,7 @@ func shoot() -> void:
 		bullet_spawner.spawn_item(global_rotation)
 	var muzzle_flash = muzzle_flash_vfx.instantiate()
 	muzzle_flash.global_position = muzzle_position.global_position
+	muzzle_flash.global_rotation = global_rotation
 	ObjectRegistry.register_effect(muzzle_flash)
 	
 	fire_timer.start(fire_rate)

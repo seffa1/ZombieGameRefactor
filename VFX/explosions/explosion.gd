@@ -16,7 +16,7 @@ func initialize(args):
 func _ready():
 	animated_sprite.play(animation)
 	animation_player.play("explode")
-		
+
 
 var animations = [
 	"default",

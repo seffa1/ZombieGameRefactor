@@ -1,6 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2rb6b1hgd3lg"]
+[gd_scene load_steps=11 format=3 uid="uid://c2rb6b1hgd3lg"]
 
 [ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="1_618ys"]
+[ext_resource type="Script" path="res://VFX/muzzleFlash/muzzle_flash.gd" id="2_ct5ur"]
+[ext_resource type="Texture2D" uid="uid://dx64v5riawj0u" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/Rotated/muzzle_01_rotated.png" id="3_a807x"]
+[ext_resource type="Texture2D" uid="uid://dyvmscg6acpxn" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/Rotated/muzzle_02_rotated.png" id="4_2xd24"]
+[ext_resource type="Texture2D" uid="uid://jlceh3r7tu5r" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/Rotated/muzzle_03_rotated.png" id="5_e544u"]
+[ext_resource type="Texture2D" uid="uid://gehpbeh6e8dg" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/Rotated/muzzle_04_rotated.png" id="6_65qgj"]
+[ext_resource type="Texture2D" uid="uid://r0vxk5gqq63t" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/Rotated/muzzle_05_rotated.png" id="7_2cwbf"]
 
 [sub_resource type="Animation" id="Animation_8ki7r"]
 resource_name = "DEFAULT"
@@ -32,6 +38,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 0.5]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.03),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_opeo4"]
 length = 0.001
@@ -47,6 +65,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i5s4r"]
 _data = {
@@ -58,6 +88,17 @@ _data = {
 color = Color(0.960784, 0.772549, 0.556863, 1)
 energy = 0.0
 texture = ExtResource("1_618ys")
+script = ExtResource("2_ct5ur")
+muzzle_flashes = Array[CompressedTexture2D]([ExtResource("3_a807x"), ExtResource("4_2xd24"), ExtResource("5_e544u"), ExtResource("6_65qgj"), ExtResource("7_2cwbf")])
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.360784, 0.815686, 0.211765, 1)
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_a807x")
+offset = Vector2(206, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "DEFAULT"
