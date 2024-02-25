@@ -1,10 +1,11 @@
-[gd_scene load_steps=77 format=3 uid="uid://monivhylrkee"]
+[gd_scene load_steps=78 format=3 uid="uid://monivhylrkee"]
 
 [ext_resource type="Script" path="res://Enemies/PoliceMan/zombie_police.gd" id="1_55ygs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_w6hwu"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://cu3iopcmu1txy" path="res://Enemies/PoliceMan/zombie_police_skeleton_modification.tres" id="3_h2rwi"]
 [ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="4_otldl"]
 [ext_resource type="PackedScene" uid="uid://bm44c7e0g2aay" path="res://Libraries/CustomComponents/ImpactableComponent.tscn" id="5_g5baf"]
+[ext_resource type="PackedScene" uid="uid://c8a36hmev7rps" path="res://Libraries/CustomComponents/BodypartSpawnComponent.tscn" id="6_gx4st"]
 [ext_resource type="PackedScene" uid="uid://0x2qiwcl6c2y" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmUpper.tscn" id="6_xxotg"]
 [ext_resource type="Texture2D" uid="uid://dy18eqtvxan5m" path="res://Enemies/Spriter_Animations&Bodyparts/2_LVL/Cop_zombie/zombie_cop_0044_Layer-45.png" id="7_54274"]
 [ext_resource type="PackedScene" uid="uid://uagk6sejbaih" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmLower.tscn" id="7_r4jyu"]
@@ -1707,14 +1708,17 @@ rotation = 1.77011
 shape = SubResource("CapsuleShape2D_1wnop")
 debug_color = Color(0.964706, 0, 0.498039, 0.419608)
 
-[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBoxLeftUpper" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component", "child_impactable_component") instance=ExtResource("5_g5baf")]
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBoxLeftUpper" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("5_g5baf")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftUpper")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
-spawn_body_part_on_death = true
+
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBoxLeftUpper" node_paths=PackedStringArray("health_component", "gore", "child_bodyparts_components") instance=ExtResource("6_gx4st")]
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftUpper")
+gore = NodePath("../../../../../../GoreVFX")
 body_part_to_spawn = ExtResource("6_xxotg")
-child_impactable_component = [NodePath("../../armLeftLower/HurtBoxLeftLower/ImpactableComponent")]
+child_bodyparts_components = [NodePath("../../armLeftLower/HurtBoxLeftLower/BodypartSpawnComponent")]
 
 [node name="armLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper"]
 position = Vector2(127.401, 17.0319)
@@ -1746,7 +1750,10 @@ health_component = NodePath("../../../../../../../HealthComponents/HealthCompone
 gore_vfx = NodePath("../../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../../VelocityComponent")
-spawn_body_part_on_death = true
+
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBoxLeftLower" node_paths=PackedStringArray("health_component", "gore") instance=ExtResource("6_gx4st")]
+health_component = NodePath("../../../../../../../HealthComponents/HealthComponent - LeftLower")
+gore = NodePath("../../../../../../../GoreVFX")
 body_part_to_spawn = ExtResource("7_r4jyu")
 
 [node name="handLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower"]
@@ -1756,7 +1763,7 @@ auto_calculate_length_and_angle = false
 length = 16.0
 bone_angle = 47.932
 
-[node name="handLeftPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/handLeft" node_paths=PackedStringArray("hurt_boxes")]
+[node name="handLeftPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/handLeft" node_paths=PackedStringArray("health_components")]
 unique_name_in_owner = true
 position = Vector2(-43.6406, 35.3487)
 rotation = -0.785397
@@ -1764,9 +1771,9 @@ texture = ExtResource("7_54274")
 polygon = PackedVector2Array(37.224, 0, 63.7224, 0.315456, 81.388, 9.14827, 97.4763, 91.7981, 75.3943, 102.839, 53.3123, 104.101, 53.3123, 104.101, 29.653, 91.1672, -2.20821, 47.0032, 20.1893, 16.0883)
 uv = PackedVector2Array(37.224, 0, 63.7224, 0.315456, 81.388, 9.14827, 97.4763, 91.7981, 75.3943, 102.839, 53.3123, 104.101, 53.3123, 104.101, 29.653, 91.1672, -2.20821, 47.0032, 20.1893, 16.0883)
 script = ExtResource("9_ohhm5")
-hurt_boxes = [NodePath("../../../HurtBoxLeftUpper"), NodePath("../../HurtBoxLeftLower")]
+health_components = [NodePath("../../../../../../../HealthComponents/HealthComponent - LeftUpper"), NodePath("../../../../../../../HealthComponents/HealthComponent - LeftLower")]
 
-[node name="armLeftLowerPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("hurt_boxes")]
+[node name="armLeftLowerPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_components")]
 unique_name_in_owner = true
 position = Vector2(-17.5957, 28.9785)
 rotation = -0.973359
@@ -1774,9 +1781,9 @@ texture = ExtResource("8_h2ake")
 polygon = PackedVector2Array(46.0568, -0.946373, 53.9432, -0.315456, 65.2997, 23.9748, 62.4606, 50.7886, 45.4259, 111.987, 28.0757, 117.981, 14.511, 113.249, 8.20189, 103.155, -0.946373, 19.2429, 1.89274, 5.04732, 8.20189, 2.52365)
 uv = PackedVector2Array(46.0568, -0.946373, 53.9432, -0.315456, 65.2997, 23.9748, 62.4606, 50.7886, 45.4259, 111.987, 28.0757, 117.981, 14.511, 113.249, 8.20189, 103.155, -0.946373, 19.2429, 1.89274, 5.04732, 8.20189, 2.52365)
 script = ExtResource("9_ohhm5")
-hurt_boxes = [NodePath("../../HurtBoxLeftUpper"), NodePath("../HurtBoxLeftLower")]
+health_components = [NodePath("../../../../../../HealthComponents/HealthComponent - LeftLower"), NodePath("../../../../../../HealthComponents/HealthComponent - LeftUpper")]
 
-[node name="armLeftUpperPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("hurt_boxes")]
+[node name="armLeftUpperPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_components")]
 unique_name_in_owner = true
 position = Vector2(-67.2193, -9.89641)
 rotation = -0.914264
@@ -1784,7 +1791,7 @@ texture = ExtResource("9_thgnm")
 polygon = PackedVector2Array(28.0757, 9.77918, 43.5331, -1.89275, 98.4227, 28.0757, 138.17, 96.8454, 136.909, 164.984, 63.7224, 205.678, 43.8486, 129.022, 1.89274, 111.041, 0.315453, 72.2397, 4.10094, 34.7003)
 uv = PackedVector2Array(28.0757, 9.77918, 43.5331, -1.89275, 98.4227, 28.0757, 138.17, 96.8454, 136.909, 164.984, 63.7224, 205.678, 43.8486, 129.022, 1.89274, 111.041, 0.315453, 72.2397, 4.10094, 34.7003)
 script = ExtResource("9_ohhm5")
-hurt_boxes = [NodePath("../HurtBoxLeftUpper")]
+health_components = [NodePath("../../../../../HealthComponents/HealthComponent - LeftUpper")]
 
 [node name="armRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(57, 137)
@@ -1811,7 +1818,7 @@ rotation = 1.77011
 shape = SubResource("CapsuleShape2D_1wnop")
 debug_color = Color(0.964706, 0, 0.498039, 0.419608)
 
-[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBoxRightUpper" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component", "child_impactable_component") instance=ExtResource("5_g5baf")]
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBoxRightUpper" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("5_g5baf")]
 position = Vector2(-109.224, -165.916)
 rotation = 0.182399
 scale = Vector2(3.4827, 3.48272)
@@ -1820,9 +1827,12 @@ health_component = NodePath("../../../../../../HealthComponents/HealthComponent 
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
-spawn_body_part_on_death = true
+
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBoxRightUpper" node_paths=PackedStringArray("health_component", "gore", "child_bodyparts_components") instance=ExtResource("6_gx4st")]
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - RightUpper")
+gore = NodePath("../../../../../../GoreVFX")
 body_part_to_spawn = ExtResource("12_i6trk")
-child_impactable_component = [NodePath("../../armRightLower/HurtBoxRightLower/ImpactableComponent")]
+child_bodyparts_components = [NodePath("../../armRightLower/HurtBoxRightLower/BodypartSpawnComponent")]
 
 [node name="armRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper"]
 position = Vector2(119, 91)
@@ -1854,7 +1864,10 @@ health_component = NodePath("../../../../../../../HealthComponents/HealthCompone
 gore_vfx = NodePath("../../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../../VelocityComponent")
-spawn_body_part_on_death = true
+
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBoxRightLower" node_paths=PackedStringArray("health_component", "gore") instance=ExtResource("6_gx4st")]
+health_component = NodePath("../../../../../../../HealthComponents/HealthComponent - RightLower")
+gore = NodePath("../../../../../../../GoreVFX")
 body_part_to_spawn = ExtResource("7_r4jyu")
 
 [node name="handRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower"]
@@ -1865,7 +1878,7 @@ length = 16.0
 bone_angle = -18.357
 editor_settings/show_bone_gizmo = false
 
-[node name="handRightPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/handRight" node_paths=PackedStringArray("hurt_boxes")]
+[node name="handRightPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/handRight" node_paths=PackedStringArray("health_components")]
 unique_name_in_owner = true
 position = Vector2(-13.7286, 46.3457)
 rotation = -1.57079
@@ -1873,9 +1886,9 @@ texture = ExtResource("12_1fglj")
 polygon = PackedVector2Array(40.694, 0.630913, 58.0442, 0.630913, 65.2997, 5.04732, 82.0189, 28.0757, 79.4953, 60.5678, 72.5552, 73.817, 47.9495, 91.4827, 28.0757, 97.1609, 6.94006, 93.6909, -2.20821, 76.9716, 2.83911, 56.4669, 24.6057, 8.83281)
 uv = PackedVector2Array(40.694, 0.630913, 58.0442, 0.630913, 65.2997, 5.04732, 82.0189, 28.0757, 79.4953, 60.5678, 72.5552, 73.817, 47.9495, 91.4827, 28.0757, 97.1609, 6.94006, 93.6909, -2.20821, 76.9716, 2.83911, 56.4669, 24.6057, 8.83281)
 script = ExtResource("9_ohhm5")
-hurt_boxes = [NodePath("../../../HurtBoxRightUpper"), NodePath("../../HurtBoxRightLower")]
+health_components = [NodePath("../../../../../../../HealthComponents/HealthComponent - RightLower"), NodePath("../../../../../../../HealthComponents/HealthComponent - RightUpper")]
 
-[node name="armRightLowerPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("hurt_boxes")]
+[node name="armRightLowerPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("health_components")]
 unique_name_in_owner = true
 position = Vector2(-13.266, 36.9146)
 rotation = -1.40209
@@ -1883,9 +1896,9 @@ texture = ExtResource("13_b3vgs")
 polygon = PackedVector2Array(57.0978, 9.46372, 10.7255, -0.315456, 0.630913, 26.4984, 0, 52.9968, 1.26183, 91.4827, 8.51735, 116.088, 35.0158, 124.606, 50.1577, 119.558, 66.877, 109.148, 67.1924, 90.8517, 67.8233, 18.2965)
 uv = PackedVector2Array(57.0978, 9.46372, 10.7255, -0.315456, 0.630913, 26.4984, 0, 52.9968, 1.26183, 91.4827, 8.51735, 116.088, 35.0158, 124.606, 50.1577, 119.558, 66.877, 109.148, 67.1924, 90.8517, 67.8233, 18.2965)
 script = ExtResource("9_ohhm5")
-hurt_boxes = [NodePath("../../HurtBoxRightUpper"), NodePath("../HurtBoxRightLower")]
+health_components = [NodePath("../../../../../../HealthComponents/HealthComponent - RightLower"), NodePath("../../../../../../HealthComponents/HealthComponent - RightUpper")]
 
-[node name="armRightUpperPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("hurt_boxes")]
+[node name="armRightUpperPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_components")]
 unique_name_in_owner = true
 position = Vector2(-65.2124, 71.9047)
 rotation = -1.309
@@ -1893,7 +1906,7 @@ texture = ExtResource("14_u7vjy")
 polygon = PackedVector2Array(73.1861, 6.30915, 85.1735, -1.57729, 108.833, 15.4574, 118.297, 42.5868, 120.189, 60.8833, 110.41, 94.9527, 77.918, 154.574, 55.205, 179.495, 35.0158, 189.905, 9.77917, 186.12, -0.31546, 139.117, -1.26183, 101.893, 28.7066, 57.4132, 25.552, 29.653)
 uv = PackedVector2Array(73.1861, 6.30915, 85.1735, -1.57729, 108.833, 15.4574, 118.297, 42.5868, 120.189, 60.8833, 110.41, 94.9527, 77.918, 154.574, 55.205, 179.495, 35.0158, 189.905, 9.77917, 186.12, -0.31546, 139.117, -1.26183, 101.893, 28.7066, 57.4132, 25.552, 29.653)
 script = ExtResource("9_ohhm5")
-hurt_boxes = [NodePath("../HurtBoxRightUpper")]
+health_components = [NodePath("../../../../../HealthComponents/HealthComponent - RightUpper")]
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
@@ -1904,7 +1917,7 @@ rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
-[node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("hurt_boxes")]
+[node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_components")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(-4.46445, 91.9134)
@@ -1913,7 +1926,7 @@ texture = ExtResource("15_qn1i3")
 polygon = PackedVector2Array(41.0095, 3.78549, 75.3943, -1.57729, 105.363, 5.36277, 133.123, 27.4448, 141.64, 52.0505, 141.956, 76.3407, 136.593, 94.0063, 112.934, 134.385, 99.3691, 152.366, 84.858, 160.252, 53.9432, 157.413, 35.0158, 141.64, 20.5047, 120.189, 1.26183, 75.0789, -0.31546, 55.5205, 5.99369, 33.123, 22.082, 14.8265)
 uv = PackedVector2Array(41.0095, 3.78549, 75.3943, -1.57729, 105.363, 5.36277, 133.123, 27.4448, 141.64, 52.0505, 141.956, 76.3407, 136.593, 94.0063, 112.934, 134.385, 99.3691, 152.366, 84.858, 160.252, 53.9432, 157.413, 35.0158, 141.64, 20.5047, 120.189, 1.26183, 75.0789, -0.31546, 55.5205, 5.99369, 33.123, 22.082, 14.8265)
 script = ExtResource("9_ohhm5")
-hurt_boxes = [NodePath("../HurtBoxHead")]
+health_components = [NodePath("../../../../../HealthComponents/HealthComponent - Head")]
 
 [node name="HurtBoxHead" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_otldl")]
 unique_name_in_owner = true

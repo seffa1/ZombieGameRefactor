@@ -29,7 +29,13 @@ func _ready():
 	freezeable_component.frozen.connect(_on_frozen)
 
 func _on_head_destroyed():
-	_change_state("headless_death")
+	match head_health_component.last_damage_source:
+		# TODO
+		# fire
+		# electric
+		# explosive
+		_:
+			_change_state("headless_death")
 
 func _on_frozen(is_frozen: bool):
 	if is_frozen and states_stack[0] != $Frozen and states_stack[0] != $HeadlessDeath:

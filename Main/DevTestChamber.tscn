@@ -984,7 +984,7 @@ debug_color = Color(0.666667, 0.494118, 0.372549, 0.419608)
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1655, 331)
-basic_zombie_only = true
+police_only = true
 spawn_interval = 1.0
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 

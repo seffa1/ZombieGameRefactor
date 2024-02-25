@@ -13,7 +13,7 @@ Once it spawns a body part, it queue frees.
 @export var spawn_body_part_on_death: bool = true
 @export var body_part_to_spawn: PackedScene
 ## Allows one impact to trigger a chain of imacts. So if an upper arm is destroyed, a lower arm can also get destroyed
-@export var child_impactable_component: Array[Node2D]
+@export var child_bodyparts_components: Array[Node2D]
 
 
 func _ready():
@@ -24,9 +24,9 @@ func _ready():
 		
 func _handle_health_at_zero():
 	_spawn_body_part()
-	for child_impact in child_impactable_component:
-		if is_instance_valid(child_impact):
-			child_impact._spawn_body_part()
+	for child_bodypart in child_bodyparts_components:
+		if is_instance_valid(child_bodypart):
+			child_bodypart._spawn_body_part()
 
 func _spawn_body_part():
 	if !spawn_body_part_on_death:

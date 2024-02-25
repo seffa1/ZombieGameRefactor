@@ -2256,6 +2256,7 @@ scale = Vector2(1.11988, 0.895459)
 skew = 0.000422478
 rest = Transform2D(1, 0, 0, 1, 53, -3)
 editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxHead" type="Area2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "collision_shape")]
 unique_name_in_owner = true
@@ -2363,11 +2364,10 @@ gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
 
-[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" node_paths=PackedStringArray("health_component", "gore", "child_impactable_component") instance=ExtResource("22_c5ika")]
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" node_paths=PackedStringArray("health_component", "gore") instance=ExtResource("22_c5ika")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftUpper")
 gore = NodePath("../../../../../../GoreVFX")
 body_part_to_spawn = ExtResource("24_hmxgf")
-child_impactable_component = [NodePath("../../armLeftLower/HurtBox-LeftLower/BodypartSpawnComponent")]
 
 [node name="armRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(35, 101)
@@ -2443,11 +2443,10 @@ gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
 
-[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper" node_paths=PackedStringArray("health_component", "gore", "child_impactable_component") instance=ExtResource("22_c5ika")]
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper" node_paths=PackedStringArray("health_component", "gore") instance=ExtResource("22_c5ika")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - RightUpper")
 gore = NodePath("../../../../../../GoreVFX")
 body_part_to_spawn = ExtResource("24_hmxgf")
-child_impactable_component = [NodePath("../../armRightLower/HurtBox-RightLower/BodypartSpawnComponent")]
 
 [node name="legLeftUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(56, -46)
