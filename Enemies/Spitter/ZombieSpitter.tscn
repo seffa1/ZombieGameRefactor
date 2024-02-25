@@ -479,6 +479,70 @@ tracks/25/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_uyr0y"]
+resource_name = "electrocuted"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Target/LeftArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(289.014, -278.568), Vector2(313.389, -240.265), Vector2(275.086, -240.265), Vector2(264.64, -306.425), Vector2(278.568, -285.532), Vector2(323.835, -229.819), Vector2(320.353, -240.265), Vector2(316.871, -271.604), Vector2(261.157, -275.086), Vector2(306.425, -289.014), Vector2(292.496, -264.64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Target/RightArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(292.496, 236.783), Vector2(306.425, 198.48), Vector2(275.086, 250.711), Vector2(299.461, 226.337), Vector2(282.05, 194.998), Vector2(278.568, 215.89), Vector2(264.64, 222.854), Vector2(302.943, 198.48), Vector2(292.496, 194.998), Vector2(295.979, 219.372), Vector2(306.425, 114.909)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Target/HeadLook:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(553.654, 17.4105), Vector2(473.566, 146.248), Vector2(494.458, 94.0167), Vector2(428.298, 198.48), Vector2(452.673, 90.5346), Vector2(424.816, 146.248), Vector2(466.601, 48.7494), Vector2(463.119, 142.766), Vector2(501.422, 41.7852), Vector2(501.422, 104.463), Vector2(553.654, 17.4105)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(49.0131, 1.00008)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.00784107, 0.0227886, -0.0848119, 0.00544748, -0.0218632, 0.0686586, -0.00325802, 0.0767637, -0.0388516, -0.113947]
+}
+
 [sub_resource type="Animation" id="Animation_qlkyy"]
 resource_name = "stand_still_01"
 
@@ -1376,70 +1440,6 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_uyr0y"]
-resource_name = "electrocuted"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SkeletonControl/Target/LeftArm:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(289.014, -278.568), Vector2(313.389, -240.265), Vector2(275.086, -240.265), Vector2(264.64, -306.425), Vector2(278.568, -285.532), Vector2(323.835, -229.819), Vector2(320.353, -240.265), Vector2(316.871, -271.604), Vector2(261.157, -275.086), Vector2(306.425, -289.014), Vector2(292.496, -264.64)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SkeletonControl/Target/RightArm:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(292.496, 236.783), Vector2(306.425, 198.48), Vector2(275.086, 250.711), Vector2(299.461, 226.337), Vector2(282.05, 194.998), Vector2(278.568, 215.89), Vector2(264.64, 222.854), Vector2(302.943, 198.48), Vector2(292.496, 194.998), Vector2(295.979, 219.372), Vector2(306.425, 114.909)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SkeletonControl/Target/HeadLook:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(553.654, 17.4105), Vector2(473.566, 146.248), Vector2(494.458, 94.0167), Vector2(428.298, 198.48), Vector2(452.673, 90.5346), Vector2(424.816, 146.248), Vector2(466.601, 48.7494), Vector2(463.119, 142.766), Vector2(501.422, 41.7852), Vector2(501.422, 104.463), Vector2(553.654, 17.4105)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(49.0131, 1.00008)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.00784107, 0.0227886, -0.0848119, 0.00544748, -0.0218632, 0.0686586, -0.00325802, 0.0767637, -0.0388516, -0.113947]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]

@@ -2296,9 +2296,9 @@ health_components = [NodePath("../../../../../HealthComponents/HealthComponent -
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(90.5319, -13.9175)
-rotation = -0.101637
-scale = Vector2(0.950129, 1.05438)
-skew = 0.000914931
+rotation = 0.161707
+scale = Vector2(0.949898, 1.05464)
+skew = 0.000886321
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -2446,6 +2446,8 @@ libraries = {
 [node name="PlayerHitBox" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 128
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
 position = Vector2(105, -8)

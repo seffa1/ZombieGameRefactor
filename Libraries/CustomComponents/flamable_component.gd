@@ -10,7 +10,7 @@ extends Node2D
 @export_range(0, 9999999) var damage_until_ignition: int
 ## Prevents and/or resets the vfx
 @export var is_flamable: bool = true
-@export_range(1.0, 99.0, .1) var damage_per_second: float = 10.0
+@export_range(1.0, 99.0, .1) var damage_per_second: float = 25.0
 
 @onready var particles: Node2D = %Particles
 var damage_received: int = 0
