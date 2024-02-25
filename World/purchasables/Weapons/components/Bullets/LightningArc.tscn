@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cty6bg3lbjtd6"]
+[gd_scene load_steps=8 format=3 uid="uid://cty6bg3lbjtd6"]
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/lightning_arc.gd" id="1_3xa7c"]
+[ext_resource type="Texture2D" uid="uid://b8kckr5xgagmk" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/spark_02.png" id="2_hmwky"]
 
 [sub_resource type="Curve" id="Curve_y5q4y"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -82,8 +83,9 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_eebsg"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.577093, 0.88421), 0.0, 0.0, 0, 0, Vector2(0.995595, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+max_value = 0.1
+_data = [Vector2(0.00842696, 0.0789474), 0.0, -0.0814463, 0, 1, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="LightningArc" type="Line2D"]
 top_level = true
@@ -95,7 +97,7 @@ begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("1_3xa7c")
 spread_angle = 0.5
-segments = 10
+segments = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "destroy"
@@ -105,21 +107,20 @@ libraries = {
 
 [node name="Sparks" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 4
-one_shot = true
+lifetime = 0.5
 explosiveness = 1.0
 randomness = 1.0
+lifetime_randomness = 0.67
 local_coords = true
+texture = ExtResource("2_hmwky")
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 77.45
-initial_velocity_max = 200.85
-angular_velocity_min = -171.57
-angular_velocity_max = 324.77
+initial_velocity_min = 40.0
+initial_velocity_max = 150.0
+angular_velocity_min = -33.83
+angular_velocity_max = 74.34
 damping_min = 100.0
 damping_max = 100.0
-scale_amount_min = 4.0
-scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_eebsg")
 color = Color(0.52549, 0.686275, 0.980392, 1)
 
