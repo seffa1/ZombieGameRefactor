@@ -13,6 +13,7 @@ script = ExtResource("1_me86m")
 unique_name_in_owner = true
 z_index = 35
 emitting = false
+emission_sphere_radius = 30.0
 
 [node name="SparksAudio" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true

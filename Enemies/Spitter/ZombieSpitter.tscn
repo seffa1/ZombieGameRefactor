@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://5703k78iyb24"]
+[gd_scene load_steps=80 format=3 uid="uid://5703k78iyb24"]
 
 [ext_resource type="Script" path="res://Enemies/Spitter/zombie_Spitter.gd" id="1_xluhs"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_hcp5o"]
@@ -48,10 +48,12 @@
 [ext_resource type="Script" path="res://Enemies/Spitter/headless_death_spitter.gd" id="40_qpsk5"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="40_smvoh"]
 [ext_resource type="Script" path="res://Enemies/shared/states/frozen.gd" id="43_p55s4"]
+[ext_resource type="Script" path="res://Enemies/shared/states/electrocuted.gd" id="46_rmeq3"]
 [ext_resource type="PackedScene" uid="uid://cu3mxpcwixhx2" path="res://Libraries/CustomComponents/FreezableComponent.tscn" id="46_ty8af"]
 [ext_resource type="AudioStream" uid="uid://owdfdjcwlc7c" path="res://World/sounds/vfx/Freeze_01.wav" id="47_5vo5v"]
 [ext_resource type="PackedScene" uid="uid://k120gr1njqll" path="res://Libraries/CustomComponents/DespawnComponent.tscn" id="49_u4fgk"]
 [ext_resource type="Script" path="res://Enemies/shared/debug/debug.gd" id="50_m13v4"]
+[ext_resource type="PackedScene" uid="uid://0bc62shn5bjj" path="res://Libraries/CustomComponents/ConductableComponent.tscn" id="51_ktxqr"]
 [ext_resource type="Script" path="res://Enemies/shared/debug/state_stack.gd" id="51_r88ep"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wnop"]
@@ -1376,12 +1378,77 @@ tracks/14/keys = {
 "values": [0.0, 0.0, 0.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_uyr0y"]
+resource_name = "electrocuted"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Target/LeftArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(289.014, -278.568), Vector2(313.389, -240.265), Vector2(275.086, -240.265), Vector2(264.64, -306.425), Vector2(278.568, -285.532), Vector2(323.835, -229.819), Vector2(320.353, -240.265), Vector2(316.871, -271.604), Vector2(261.157, -275.086), Vector2(306.425, -289.014), Vector2(292.496, -264.64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Target/RightArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(292.496, 236.783), Vector2(306.425, 198.48), Vector2(275.086, 250.711), Vector2(299.461, 226.337), Vector2(282.05, 194.998), Vector2(278.568, 215.89), Vector2(264.64, 222.854), Vector2(302.943, 198.48), Vector2(292.496, 194.998), Vector2(295.979, 219.372), Vector2(306.425, 114.909)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Target/HeadLook:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(553.654, 17.4105), Vector2(473.566, 146.248), Vector2(494.458, 94.0167), Vector2(428.298, 198.48), Vector2(452.673, 90.5346), Vector2(424.816, 146.248), Vector2(466.601, 48.7494), Vector2(463.119, 142.766), Vector2(501.422, 41.7852), Vector2(501.422, 104.463), Vector2(553.654, 17.4105)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(49.0131, 1.00008)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.00784107, 0.0227886, -0.0848119, 0.00544748, -0.0218632, 0.0686586, -0.00325802, 0.0767637, -0.0388516, -0.113947]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
 _data = {
 "OBSOLETE_attack_player": SubResource("Animation_s0mwp"),
 "OBSOLETE_break_window": SubResource("Animation_lcroy"),
 "OBSOLETE_zombie_death": SubResource("Animation_u0mci"),
 "RESET": SubResource("Animation_2n82s"),
+"electrocuted": SubResource("Animation_uyr0y"),
 "stand_still_01": SubResource("Animation_qlkyy"),
 "stand_still_02": SubResource("Animation_p17fh"),
 "zombie_attack_basic": SubResource("Animation_6dyoi"),
@@ -1412,6 +1479,9 @@ height = 146.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j67cy"]
 radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8itjs"]
+radius = 67.0
 
 [node name="ZombieSpitter" type="CharacterBody2D" groups=["Zombies"]]
 z_index = 2
@@ -1448,7 +1518,7 @@ modification_stack = ExtResource("3_1117w")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 position = Vector2(0, 3.4821)
-scale = Vector2(0.999827, 0.999827)
+scale = Vector2(0.999825, 0.999829)
 skew = -0.000490308
 rest = Transform2D(1, 0, 0, 1, 104, 2)
 editor_settings/show_bone_gizmo = false
@@ -1677,9 +1747,9 @@ health_components = [NodePath("../../../../../HealthComponents/HealthComponent -
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(48.9999, 1.00008)
-rotation = 0.578248
-scale = Vector2(0.999844, 1.0005)
-skew = 0.000195265
+rotation = -0.552498
+scale = Vector2(1.00042, 1.00011)
+skew = 0.000216603
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -1825,6 +1895,8 @@ libraries = {
 [node name="PlayerHitbox" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 128
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(105, -8)
@@ -1962,9 +2034,14 @@ script = ExtResource("37_he0yk")
 [node name="Frozen" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("43_p55s4")
 
+[node name="Electrocuted" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("46_rmeq3")
+
 [node name="HealthComponents" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="HealthComponent - Head" parent="HealthComponents" instance=ExtResource("38_p72uw")]
+unique_name_in_owner = true
 max_health = 125.0
 
 [node name="HealthComponent - LeftUpper" parent="HealthComponents" instance=ExtResource("38_p72uw")]
@@ -2005,6 +2082,15 @@ freeze_sound = ExtResource("47_5vo5v")
 modulator = NodePath("../SkeletonControl")
 freeze_color = Color(0.32549, 0.462745, 0.701961, 1)
 
+[node name="ConductableComponent" parent="." instance=ExtResource("51_ktxqr")]
+unique_name_in_owner = true
+z_index = 35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConductableComponent"]
+position = Vector2(52, 0)
+shape = SubResource("CircleShape2D_8itjs")
+debug_color = Color(0.721569, 0.341176, 0.843137, 0.419608)
+
 [node name="DespawnComponent" parent="." node_paths=PackedStringArray("state_machine", "states_to_check") instance=ExtResource("49_u4fgk")]
 state_machine = NodePath("../ZombieStateMachine")
 states_to_check = [NodePath("../ZombieStateMachine/SeekPlayer"), NodePath("../ZombieStateMachine/SeekWindow"), NodePath("../ZombieStateMachine/SeekInside")]
@@ -2030,6 +2116,7 @@ offset_bottom = -83.0
 script = ExtResource("50_m13v4")
 
 [node name="StateStack" type="Label" parent="Debug" node_paths=PackedStringArray("state_machine")]
+visible = false
 layout_mode = 0
 offset_left = -20.0
 offset_top = -26.0
