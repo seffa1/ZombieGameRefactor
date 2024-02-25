@@ -7,11 +7,11 @@ it needs here to do different things it needs to do based on the hitbox damage, 
 """
 
 signal enemy_hit()
-
-## Optional argument, checked by components of the hurt box, to determine which impact VFXs to play
+## REQUIRED - Used to determine which death animation to play for enemy if killed by
+@export_enum("fire", "frost", "electric", "explosive", "bullet") var damage_type: String
+## OPTIONAL - Used to trigger bullet impact vfx like blood splatters and knockbacks
 @export_enum("bullet", "explosion", "lightning") var impact_type : String
-
-## Optional argument, checked by components of the hurt box, to activate status effects
+## OPTIONAL - Used to trigger status effects, 'on fire', 'frozen', 'electrocuted', etc.
 @export_enum("fire", "lightning", "frost") var elemental_type : String
 
 ## Either set by the gun shooting (bullets) or static value (grenades) via the bullets init function
@@ -24,6 +24,7 @@ func _ready():
 	# if the player dies and something spawns, this prevents a crash
 	if Globals.player:
 		shooter = Globals.player
+	assert(damage_type, 'You didnt set the damage type')
 
 func _on_area_entered(_area):
 	# Track bullet

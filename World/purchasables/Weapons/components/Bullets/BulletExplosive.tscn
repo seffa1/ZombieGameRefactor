@@ -25,6 +25,7 @@ explosion_scene = ExtResource("2_epoy8")
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_ew703")]
 collision_layer = 256
 collision_mask = 64
+damage_type = "explosive"
 impact_type = "bullet"
 
 [node name="CollisionShapeHitbox" type="CollisionShape2D" parent="HitBoxComponent"]

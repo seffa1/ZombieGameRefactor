@@ -12,6 +12,11 @@ zombie should reach through the window to hit the player (like in cod).
 var damage_per_second: float
 var electrocution_time: float
 
+var DAMAGE_TYPE = 'electric'
+
+func _ready():
+	assert(Globals.DAMAGE_TYPES.find(DAMAGE_TYPE) != -1, 'Undeclared damage type')
+
 # Initialize the state. E.g. change the animation
 func enter():
 	owner.animation_player.play('electrocuted')
@@ -31,6 +36,7 @@ func update(delta):
 	# Damage
 	for health_component in health_components.get_children():
 		health_component.health -= (delta * damage_per_second)
+		health_component.set_damage_source(DAMAGE_TYPE)
 
 func _on_animation_finished(anim_name):
 	return

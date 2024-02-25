@@ -23,7 +23,6 @@ func electrocute(damage_per_second: float, electrocution_time: float):
 	
 
 func _on_timeout():
-	print("TIMEOUT")
 	emit_signal("electrocuted", false)
 	sparks.emitting = false
 	sparks_audio.stop()

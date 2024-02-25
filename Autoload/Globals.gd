@@ -170,6 +170,15 @@ const PERK_INDEX = {
 	}
 }
 
+# Determines the kind of death animation enemies use
+const DAMAGE_TYPES = [
+	'bullet',
+	'explosive',
+	'fire',
+	'electric',
+	'frost'
+]
+
 # Utils
 func mouse_on_screen() -> bool:
 	if get_viewport().get_mouse_position().x > get_viewport().get_visible_rect().size.x or get_viewport().get_mouse_position().x < 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://chbm4wqyr2ec5"]
+[gd_scene load_steps=77 format=3 uid="uid://chbm4wqyr2ec5"]
 
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/zombie_basic_02.gd" id="1_owmnw"]
 [ext_resource type="Texture2D" uid="uid://ji12ixd600jc" path="res://Enemies/ZombieBasic/images/zombie3_male_walk_spritesheet.png" id="2_p30iu"]
@@ -25,9 +25,10 @@
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="21_fq27d"]
 [ext_resource type="PackedScene" uid="uid://boaigxqytxxpx" path="res://Libraries/CustomComponents/FlamableComponent.tscn" id="21_g8wav"]
 [ext_resource type="PackedScene" uid="uid://bm44c7e0g2aay" path="res://Libraries/CustomComponents/ImpactableComponent.tscn" id="21_pigry"]
+[ext_resource type="PackedScene" uid="uid://c8a36hmev7rps" path="res://Libraries/CustomComponents/BodypartSpawnComponent.tscn" id="22_c5ika"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/move.gd" id="22_ytv8d"]
-[ext_resource type="PackedScene" uid="uid://8i1we2cbhjgy" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmLowerWithHand.tscn" id="23_h8lhh"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="23_q2i5y"]
+[ext_resource type="PackedScene" uid="uid://dvcp03wtnlqmy" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmLower.tscn" id="24_6iqen"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="24_grelo"]
 [ext_resource type="PackedScene" uid="uid://clbcj6xejpb7s" path="res://VFX/Gore/rigidBodyBodyParts/BodyPart-ArmUpper.tscn" id="24_hmxgf"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="25_tx3an"]
@@ -440,6 +441,70 @@ tracks/25/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jqc2o"]
+resource_name = "electrocuted"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Targets/LeftArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(121.429, -314.286), Vector2(96.4286, -325), Vector2(53.5714, -310.714), Vector2(139.286, -267.857), Vector2(57.1429, -328.571), Vector2(139.286, -285.714), Vector2(107.143, -342.857), Vector2(214.286, -278.571), Vector2(67.8571, -321.429), Vector2(192.857, -260.714), Vector2(121.429, -314.286)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Targets/RightArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(132.143, 282.143), Vector2(189.286, 228.571), Vector2(239.286, 150), Vector2(192.857, 207.143), Vector2(235.714, 160.714), Vector2(160.714, 196.429), Vector2(200, 135.714), Vector2(160.714, 232.143), Vector2(221.429, 182.143), Vector2(117.857, 271.429), Vector2(203.571, 225)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Targets/HeadLook:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(292, -25), Vector2(289.286, -96.4286), Vector2(285.714, -32.1429), Vector2(242.857, 39.2857), Vector2(253.571, -60.7143), Vector2(267.857, -128.571), Vector2(207.143, -153.571), Vector2(232.143, -25), Vector2(250, 25), Vector2(264.286, -67.8571), Vector2(292, -25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(40.1749, -18.0037), Vector2(40.1749, -18.0037)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.187378, 0.0484883, -0.170337, 0.0484883, -0.178958, 0.0484883, -0.0961344, -0.0194155, -0.174591, -0.00396036, -0.261419]
 }
 
 [sub_resource type="Animation" id="Animation_qlkyy"]
@@ -1968,70 +2033,6 @@ tracks/15/keys = {
 "values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_jqc2o"]
-resource_name = "electrocuted"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SkeletonControl/Targets/LeftArm:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(121.429, -314.286), Vector2(96.4286, -325), Vector2(53.5714, -310.714), Vector2(139.286, -267.857), Vector2(57.1429, -328.571), Vector2(139.286, -285.714), Vector2(107.143, -342.857), Vector2(214.286, -278.571), Vector2(67.8571, -321.429), Vector2(192.857, -260.714), Vector2(121.429, -314.286)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SkeletonControl/Targets/RightArm:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(132.143, 282.143), Vector2(189.286, 228.571), Vector2(239.286, 150), Vector2(192.857, 207.143), Vector2(235.714, 160.714), Vector2(160.714, 196.429), Vector2(200, 135.714), Vector2(160.714, 232.143), Vector2(221.429, 182.143), Vector2(117.857, 271.429), Vector2(203.571, 225)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SkeletonControl/Targets/HeadLook:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(292, -25), Vector2(289.286, -96.4286), Vector2(285.714, -32.1429), Vector2(242.857, 39.2857), Vector2(253.571, -60.7143), Vector2(267.857, -128.571), Vector2(207.143, -153.571), Vector2(232.143, -25), Vector2(250, 25), Vector2(264.286, -67.8571), Vector2(292, -25)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(40.1749, -18.0037), Vector2(40.1749, -18.0037)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [-0.187378, 0.0484883, -0.170337, 0.0484883, -0.178958, 0.0484883, -0.0961344, -0.0194155, -0.174591, -0.00396036, -0.261419]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
 _data = {
 "OBSOLETE_attack_player": SubResource("Animation_s0mwp"),
@@ -2272,12 +2273,11 @@ position = Vector2(8.80424, 0)
 shape = SubResource("CircleShape2D_kxfru")
 debug_color = Color(0.937255, 0.141176, 0.529412, 0.419608)
 
-[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component", "child_impactable_component") instance=ExtResource("21_pigry")]
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - Head")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
-child_impactable_component = [NodePath("../../../armLeftUpper/armLeftLower/HurtBox-LeftLower/ImpactableComponent")]
 
 [node name="FlamableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("hurt_box_component", "health_component") instance=ExtResource("21_g8wav")]
 z_index = 35
@@ -2333,8 +2333,11 @@ health_component = NodePath("../../../../../../../HealthComponents/HealthCompone
 gore_vfx = NodePath("../../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../../VelocityComponent")
-spawn_body_part_on_death = true
-body_part_to_spawn = ExtResource("23_h8lhh")
+
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower/HurtBox-LeftLower" node_paths=PackedStringArray("health_component", "gore") instance=ExtResource("22_c5ika")]
+health_component = NodePath("../../../../../../../HealthComponents/HealthComponent - LeftLower")
+gore = NodePath("../../../../../../../GoreVFX")
+body_part_to_spawn = ExtResource("24_6iqen")
 
 [node name="HurtBox-LeftUpper" type="Area2D" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes")]
 visible = false
@@ -2354,14 +2357,17 @@ child_hurtboxes = [NodePath("../armLeftLower/HurtBox-LeftLower")]
 shape = SubResource("CapsuleShape2D_dowcn")
 debug_color = Color(0.964706, 0, 0.490196, 0.419608)
 
-[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component", "child_impactable_component") instance=ExtResource("21_pigry")]
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftUpper")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
-spawn_body_part_on_death = true
+
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armLeftUpper/HurtBox-LeftUpper" node_paths=PackedStringArray("health_component", "gore", "child_impactable_component") instance=ExtResource("22_c5ika")]
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - LeftUpper")
+gore = NodePath("../../../../../../GoreVFX")
 body_part_to_spawn = ExtResource("24_hmxgf")
-child_impactable_component = [NodePath("../../armLeftLower/HurtBox-LeftLower/ImpactableComponent")]
+child_impactable_component = [NodePath("../../armLeftLower/HurtBox-LeftLower/BodypartSpawnComponent")]
 
 [node name="armRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(35, 101)
@@ -2407,8 +2413,11 @@ health_component = NodePath("../../../../../../../HealthComponents/HealthCompone
 gore_vfx = NodePath("../../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../../VelocityComponent")
-spawn_body_part_on_death = true
-body_part_to_spawn = ExtResource("23_h8lhh")
+
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower/HurtBox-RightLower" node_paths=PackedStringArray("health_component", "gore") instance=ExtResource("22_c5ika")]
+health_component = NodePath("../../../../../../../HealthComponents/HealthComponent - RightLower")
+gore = NodePath("../../../../../../../GoreVFX")
+body_part_to_spawn = ExtResource("24_6iqen")
 
 [node name="HurtBox-RightUpper" type="Area2D" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes")]
 visible = false
@@ -2428,14 +2437,17 @@ child_hurtboxes = [NodePath("../armRightLower/HurtBox-RightLower")]
 shape = SubResource("CapsuleShape2D_acqr5")
 debug_color = Color(0.980392, 0, 0.372549, 0.419608)
 
-[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component", "child_impactable_component") instance=ExtResource("21_pigry")]
+[node name="ImpactableComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper" node_paths=PackedStringArray("health_component", "gore_vfx", "zombie_groan_audio", "velocity_component") instance=ExtResource("21_pigry")]
 health_component = NodePath("../../../../../../HealthComponents/HealthComponent - RightUpper")
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
-spawn_body_part_on_death = true
+
+[node name="BodypartSpawnComponent" parent="SkeletonControl/Skeleton/torso/armRightUpper/HurtBox-RightUpper" node_paths=PackedStringArray("health_component", "gore", "child_impactable_component") instance=ExtResource("22_c5ika")]
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - RightUpper")
+gore = NodePath("../../../../../../GoreVFX")
 body_part_to_spawn = ExtResource("24_hmxgf")
-child_impactable_component = [NodePath("../../armRightLower/HurtBox-RightLower/ImpactableComponent")]
+child_impactable_component = [NodePath("../../armRightLower/HurtBox-RightLower/BodypartSpawnComponent")]
 
 [node name="legLeftUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(56, -46)
