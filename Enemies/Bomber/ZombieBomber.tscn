@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://n83d0irapkol"]
+[gd_scene load_steps=90 format=3 uid="uid://n83d0irapkol"]
 
 [ext_resource type="Script" path="res://Enemies/Bomber/zombie_bomber.gd" id="1_xr4qn"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_e7liy"]
@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://cu3mxpcwixhx2" path="res://Libraries/CustomComponents/FreezableComponent.tscn" id="49_qvr5o"]
 [ext_resource type="PackedScene" uid="uid://k120gr1njqll" path="res://Libraries/CustomComponents/DespawnComponent.tscn" id="50_50n0a"]
 [ext_resource type="AudioStream" uid="uid://owdfdjcwlc7c" path="res://World/sounds/vfx/Freeze_01.wav" id="50_nen6t"]
+[ext_resource type="PackedScene" uid="uid://0bc62shn5bjj" path="res://Libraries/CustomComponents/ConductableComponent.tscn" id="52_8v0l8"]
 [ext_resource type="Script" path="res://Enemies/shared/debug/debug.gd" id="53_fwb1v"]
 [ext_resource type="Script" path="res://Enemies/shared/debug/state_stack.gd" id="53_yq6dy"]
 
@@ -2011,6 +2012,9 @@ height = 146.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_j67cy"]
 radius = 20.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_br2bp"]
+radius = 69.0072
+
 [node name="ZombieBomber" type="CharacterBody2D" groups=["Zombies"]]
 z_index = 2
 material = SubResource("ShaderMaterial_26kym")
@@ -2553,8 +2557,10 @@ script = ExtResource("42_mqn1n")
 script = ExtResource("46_5np00")
 
 [node name="HealthComponents" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="HealthComponent - Head" parent="HealthComponents" instance=ExtResource("43_cs3tm")]
+unique_name_in_owner = true
 max_health = 125.0
 
 [node name="HealthComponent - LeftUpper" parent="HealthComponents" instance=ExtResource("43_cs3tm")]
@@ -2597,6 +2603,14 @@ modulator = NodePath("../SkeletonControl")
 freeze_color = Color(0.25098, 0.537255, 0.690196, 1)
 frozen_time = 2.0
 
+[node name="ConductableComponent" parent="." instance=ExtResource("52_8v0l8")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConductableComponent"]
+position = Vector2(64, 1)
+shape = SubResource("CircleShape2D_br2bp")
+debug_color = Color(0.54902, 0.411765, 0.976471, 0.419608)
+
 [node name="GroanTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -2622,6 +2636,7 @@ offset_bottom = -83.0
 script = ExtResource("53_fwb1v")
 
 [node name="StateStack" type="Label" parent="Debug" node_paths=PackedStringArray("state_machine")]
+visible = false
 layout_mode = 0
 offset_left = -20.0
 offset_top = -26.0

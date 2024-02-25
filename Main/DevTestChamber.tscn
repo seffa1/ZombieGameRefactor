@@ -951,6 +951,7 @@ starting_money = 10000
 position = Vector2(0, 7.62939e-06)
 spawn_delay_interval = 1.0
 wave_spawn_type = "test_chamber"
+_bomber_only = true
 bomber_spawn_interval = 3
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]

@@ -6,8 +6,9 @@ This way the legs can freely move / sprint / idle while the player shoots withou
 interuption.
 """
 
-@onready var head_health_component = $"../HealthComponents/HealthComponent - Head"
+@onready var head_health_component = %"HealthComponent - Head"
 @onready var freezeable_component: Node2D = %FreezableComponent
+@onready var conductable_component: Area2D = %ConductableComponent
 
 func _ready():
 	super()
@@ -29,6 +30,11 @@ func _ready():
 	
 	head_health_component.health_at_zero.connect(_on_explosive_death)
 	freezeable_component.frozen.connect(_on_frozen)
+	conductable_component.electrocuted.connect(_on_electrocuted)
+
+func _on_electrocuted(is_electrocuted: bool):
+	if is_electrocuted and states_stack[0] != $ExplosiveDeath:
+		_on_explosive_death()
 
 func _on_explosive_death():
 	_change_state("explode")
