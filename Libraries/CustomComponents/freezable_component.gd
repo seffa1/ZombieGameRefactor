@@ -71,7 +71,9 @@ func _freeze():
 	velocity_component.max_velocity = 0
 	is_frozen = true
 	freeze_audio.play()
-	modulator.modulate = freeze_color
+#	modulator.modulate = freeze_color
+	var tween = get_tree().create_tween()
+	tween.tween_property(modulator, "modulate", freeze_color, .5)
 	frozen_timer.start(frozen_time)
 	emit_signal("frozen", true)
 	
@@ -82,6 +84,8 @@ func _on_frozen_timer_timeout():
 	freeze_amount = 0
 	owner.reset_walk_speed()
 	is_frozen = false
-	modulator.modulate = Color(1,1,1,1)
+#	modulator.modulate = Color(1,1,1,1)
+	var tween = get_tree().create_tween()
+	tween.tween_property(modulator, "modulate", Color(1,1,1,1), .2)
 	emit_signal("frozen", false)
 

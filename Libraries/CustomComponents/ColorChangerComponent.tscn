@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drvhjsgrguoej"]
+
+[ext_resource type="Script" path="res://Libraries/CustomComponents/color_changer_component.gd" id="1_mm11u"]
+
+[node name="ColorChangerComponent" type="CanvasModulate"]
+script = ExtResource("1_mm11u")
