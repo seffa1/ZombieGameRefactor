@@ -14,20 +14,13 @@ const _IMPACT_SAMPLES = [
 
 # The smoke trails lifespan must be greater than the bullets!
 @onready var life_span: Timer = $Lifespan
-@onready var smoke_trail_scene_level_1 = preload("res://VFX/smoketrails/Smoketrail.tscn")
-@onready var smoke_trail_scene_level_2 = preload("res://VFX/smoketrails/Smoketrail_level_2.tscn")
-@onready var smoke_trail_scene_level_3 = preload("res://VFX/smoketrails/Smoketrail_level_3.tscn")
-@onready var smoke_trail_scene_level_4 = preload("res://VFX/smoketrails/Smoketrail_level_4.tscn")
-@onready var smoke_puff_scene_level_1 = preload("res://VFX/smokePuff/SmokePuff.tscn")
-@onready var smoke_puff_scene_level_2 = preload("res://VFX/smokePuff/SmokePuff_level_2.tscn")
-@onready var smoke_puff_scene_level_3 = preload("res://VFX/smokePuff/SmokePuff_level_3.tscn")
-@onready var smoke_puff_scene_level_4 = preload("res://VFX/smokePuff/SmokePuff_level_4.tscn")
-
 
 @export_category('Bullet Configs')
 @export var is_penetrating_shot: bool = false
 @export var is_explosive: bool = false
 @export var explosion_scene: PackedScene
+@export var smoke_trail: PackedScene
+@export var smoke_puff: PackedScene
 
 var _smoke_trail
 var _weapon_level: int
@@ -54,46 +47,8 @@ func start(position, direction, speed):
 	hit_box_component.knockback_vector = velocity.normalized() * _bullet_knockback
 
 	# VFX
-	_smoke_trail = get_smoke_trail()
+	_smoke_trail = smoke_trail.instantiate()
 	ObjectRegistry.register_effect(_smoke_trail)
-
-func get_smoke_trail():
-	"""
-	0 = weapon level 1 (base) 
-	1 = weapon level 2 (first upgrade)
-	2 = weapon level 3 (second upgrade)
-	3 = weapon level 4 (third upgrade)
-	"""
-	match _weapon_level:
-		0:
-			return smoke_trail_scene_level_1.instantiate()
-		1:
-			return smoke_trail_scene_level_2.instantiate()
-		2:
-			return smoke_trail_scene_level_3.instantiate()
-		3:
-			return smoke_trail_scene_level_4.instantiate()
-		_:
-			assert(false, "Weapon level not in match statement - " + str(_weapon_level))
-
-func get_smoke_puff():
-	"""
-	0 = weapon level 1 (base) 
-	1 = weapon level 2 (first upgrade)
-	2 = weapon level 3 (second upgrade)
-	3 = weapon level 4 (third upgrade)
-	"""
-	match _weapon_level:
-		0:
-			return smoke_puff_scene_level_1.instantiate()
-		1:
-			return smoke_puff_scene_level_2.instantiate()
-		2:
-			return smoke_puff_scene_level_3.instantiate()
-		3:
-			return smoke_puff_scene_level_4.instantiate()
-		_:
-			assert(false, "Weapon level not in match statement - " + str(_weapon_level))
 
 func _physics_process(delta: float) -> void:
 
@@ -106,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	# Check if it collided with the environment
 	if collision:
 		# TODO - bullet collision fx based on tile type it collided with
-		var smoke_puff = get_smoke_puff()
+		var smoke_puff = smoke_puff.instantiate()
 		smoke_puff.global_position = global_position
 		smoke_puff.rotation = rotation + deg_to_rad(180)
 		ObjectRegistry.register_effect(smoke_puff)

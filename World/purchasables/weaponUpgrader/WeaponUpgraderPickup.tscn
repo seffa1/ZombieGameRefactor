@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhjdptwgx4i0f"]
+[gd_scene load_steps=7 format=3 uid="uid://dhjdptwgx4i0f"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_7tn1b"]
 [ext_resource type="Script" path="res://World/purchasables/weaponUpgrader/weapon_upgrader_pickup.gd" id="2_46ivt"]
+[ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="3_gxaop"]
+[ext_resource type="PackedScene" uid="uid://cjoq280647k0k" path="res://World/purchasables/Weapons/components/Bullets/BulletExplosive.tscn" id="4_33fgd"]
+[ext_resource type="PackedScene" uid="uid://d2mp8jis8cnir" path="res://World/purchasables/Weapons/components/Bullets/BulletFrost.tscn" id="5_orp27"]
+[ext_resource type="PackedScene" uid="uid://bfodliuu2vrva" path="res://World/purchasables/Weapons/components/Bullets/Bullet_Fire.tscn" id="6_j6dot"]
 
 [node name="WeaponUpgraderPickup" instance=ExtResource("1_7tn1b")]
 script = ExtResource("2_46ivt")
+bullet_scenes = Array[PackedScene]([ExtResource("3_gxaop"), ExtResource("4_33fgd"), ExtResource("5_orp27"), ExtResource("6_j6dot")])

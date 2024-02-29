@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_olmgi"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_a4564"]
-[ext_resource type="PackedScene" uid="uid://cjoq280647k0k" path="res://World/purchasables/Weapons/components/Bullets/BulletExplosive.tscn" id="2_hhhf8"]
+[ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_e3125"]
 [ext_resource type="AudioStream" uid="uid://dyv6sgqgfpeow" path="res://World/purchasables/Weapons/Shotguns/Spas/audio/ESM_Shotgun_Chamber_Shell_6_Sound_FX_Military_Ammo.wav" id="3_35td5"]
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_e1owu"]
 [ext_resource type="AudioStream" uid="uid://6xe3qvfubw7a" path="res://World/purchasables/Weapons/Shotguns/Spas/audio/ESM_Shotgun_Pump_22_Sound_FX_Military_Cock.wav" id="4_mq04u"]
@@ -13,7 +13,7 @@
 [node name="Spas" instance=ExtResource("1_olmgi")]
 WEAPON_NAME = "SPAS"
 fire_type = "single_fire"
-bullet = ExtResource("2_hhhf8")
+bullet = ExtResource("2_e3125")
 bullets_per_fire = 6
 bullet_spread = 0.1
 bullet_speed = 2500
