@@ -5756,16 +5756,20 @@ occluder = SubResource("OccluderPolygon2D_rhub5")
 
 [node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("9_178qv")]
 position = Vector2(882, -1302)
-mystery_box_locations = [NodePath("../MysteryBoxLocation"), NodePath("../MysteryBoxLocation3")]
+mystery_box_locations = [NodePath("../MysteryBoxLocation"), NodePath("../MysteryBoxLocation3"), NodePath("../MysteryBoxLocation4")]
 
 [node name="MysteryBoxLocation" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
 position = Vector2(2836, 130)
 rotation = -2.35619
-is_starting_location = true
 
 [node name="MysteryBoxLocation3" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
-position = Vector2(-850, -668)
+position = Vector2(-859, -684)
 rotation = 3.14393
+
+[node name="MysteryBoxLocation4" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" instance=ExtResource("10_4stfb")]
+position = Vector2(1111, 496)
+rotation = 6.28318
+is_starting_location = true
 
 [node name="PackAPunch" type="Node" parent="GameWorld/PurchasablesContainer"]
 
