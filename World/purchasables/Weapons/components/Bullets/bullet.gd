@@ -19,8 +19,8 @@ const _IMPACT_SAMPLES = [
 @export var is_penetrating_shot: bool = false
 @export var is_explosive: bool = false
 @export var explosion_scene: PackedScene
-@export var smoke_trail: PackedScene
-@export var smoke_puff: PackedScene
+@export var smoke_trail_scene: PackedScene
+@export var smoke_puff_scene: PackedScene
 
 var _smoke_trail
 var _weapon_level: int
@@ -47,7 +47,7 @@ func start(position, direction, speed):
 	hit_box_component.knockback_vector = velocity.normalized() * _bullet_knockback
 
 	# VFX
-	_smoke_trail = smoke_trail.instantiate()
+	_smoke_trail = smoke_trail_scene.instantiate()
 	ObjectRegistry.register_effect(_smoke_trail)
 
 func _physics_process(delta: float) -> void:
@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	# Check if it collided with the environment
 	if collision:
 		# TODO - bullet collision fx based on tile type it collided with
-		var smoke_puff = smoke_puff.instantiate()
+		var smoke_puff = smoke_puff_scene.instantiate()
 		smoke_puff.global_position = global_position
 		smoke_puff.rotation = rotation + deg_to_rad(180)
 		ObjectRegistry.register_effect(smoke_puff)

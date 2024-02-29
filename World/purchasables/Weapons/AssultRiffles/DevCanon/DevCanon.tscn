@@ -12,7 +12,6 @@
 
 [node name="DevCanon" instance=ExtResource("1_o7y46")]
 WEAPON_NAME = "DEV_CANON"
-weapon_level = 1
 fire_type = "automatic"
 bullet = ExtResource("2_xe0fa")
 bullet_speed = 3000

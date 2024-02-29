@@ -22,8 +22,8 @@ collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_g0efj")
 explosion_scene = ExtResource("2_n40g8")
-smoke_trail = ExtResource("3_ud674")
-smoke_puff = ExtResource("4_sdgha")
+smoke_trail_scene = ExtResource("3_ud674")
+smoke_puff_scene = ExtResource("4_sdgha")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_0iepx")]
 collision_layer = 256
