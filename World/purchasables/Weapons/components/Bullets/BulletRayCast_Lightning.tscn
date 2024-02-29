@@ -11,6 +11,7 @@ script = ExtResource("1_5jgh6")
 flashes = 5
 flash_time = 0.0
 bounces_max = 5
+damage_per_second = 200.0
 
 [node name="JumpArea" type="Area2D" parent="."]
 collision_layer = 0

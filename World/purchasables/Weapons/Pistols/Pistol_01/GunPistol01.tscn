@@ -15,11 +15,11 @@ WEAPON_NAME = "PISTOL_01"
 fire_type = "single_fire"
 bullet = ExtResource("2_th7va")
 bullet_speed = 2000
-bullet_damage = 40.0
+bullet_damage = 80.0
 bullet_knockback = 0.0
 fire_rate = 0.05
-clip_size = 7
-max_bullet_reserve = 56
+clip_size = 12
+max_bullet_reserve = 72
 
 [node name="Reticle" parent="." index="2"]
 recoil_per_shot = 15.0
