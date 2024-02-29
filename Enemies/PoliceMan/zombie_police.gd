@@ -17,6 +17,7 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var head_blood_emitter: CPUParticles2D = %HeadBloodEmitter
 @onready var grenade_throw_detectors: Node2D = %GrenadeThrowDetectors
 @onready var grenade_position: Node2D = $RotationController
+@onready var conductable_component: Area2D = %ConductableComponent
 
 # Helper Nodes
 @onready var pathfinding_component: Node2D = $PathfindingComponent
@@ -115,3 +116,5 @@ func update_rotation():
 	head_blood_emitter.rotation = lerp_angle(head_blood_emitter.rotation, angle, STEER_FORCE)
 	grenade_throw_detectors.rotation = lerp_angle(grenade_throw_detectors.rotation, angle - deg_to_rad(0), STEER_FORCE)
 	grenade_position.rotation = lerp_angle(grenade_position.rotation, angle - deg_to_rad(0), STEER_FORCE)
+	conductable_component.rotation = lerp_angle(conductable_component.rotation, angle - deg_to_rad(0), STEER_FORCE)
+	

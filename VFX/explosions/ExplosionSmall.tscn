@@ -2842,6 +2842,7 @@ frame_progress = 0.60958
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_wiscr")]
 collision_layer = 256
 collision_mask = 64
+damage_type = "explosive"
 impact_type = "explosion"
 damage = 50
 

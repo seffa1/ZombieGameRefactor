@@ -37,6 +37,8 @@ func _on_area_entered(area: Area2D):
 	else:
 		health_component.health -= area.damage * damage_multiplier
 	
+	health_component.set_damage_source(area.damage_type)
+	
 	if health_component.health > 0:
 		emit_signal("hurt_box_hit", body_part, area)
 	else:

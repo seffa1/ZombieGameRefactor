@@ -5,10 +5,19 @@ The mystery box spawns this in and sets the weapon name so the player can pick i
 The pack a punch also uses this in a similar way but sets the weapon level
 """
 
+@export var bullet_scenes: Array[PackedScene]
+
 var weapon_name: String  # Set by mystery box
 var weapon_level: int = 0  # set by pack a punch
 
 signal mystery_box_weapon_picked_up
+
+func configure_gun(level: int):
+	"""
+	Based on the level, modifies the gun's stats / bullets
+	"""
+	
+	pass
 
 func _ready():
 	purchasable_name = 'Pickup ' + weapon_name
@@ -32,6 +41,10 @@ func give_item(player: CharacterBody2D):
 	
 	# Set the guns level
 	weapon_object.set_gun_level(weapon_level)
+	
+	# Sets the gun's bullet
+	var bullet = bullet_scenes.pick_random()
+	weapon_object.bullet = bullet
 	
 	# Let the mystery box know the weapons been picked up
 	emit_signal("mystery_box_weapon_picked_up")

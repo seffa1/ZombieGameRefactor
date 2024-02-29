@@ -82,5 +82,6 @@ func _change_state(state_name):
 
 	
 	# We don"t want to reinitialize the state if we"re going back to the previous state
-	if state_name != "previous":
-		current_state.enter()
+	## At the moment it makes sense to reinitialize when going to 'previous' state
+#	if state_name != "previous":
+	current_state.enter()

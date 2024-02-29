@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://0bc62shn5bjj"]
+
+[ext_resource type="Script" path="res://Libraries/CustomComponents/conductable_component.gd" id="1_me86m"]
+[ext_resource type="PackedScene" uid="uid://cny6i1b55rn6p" path="res://VFX/electricity/Sparks.tscn" id="2_ps08b"]
+[ext_resource type="AudioStream" uid="uid://bi11nloo614j0" path="res://VFX/electricity/sounds/sparks_1.wav" id="3_cc4b5"]
+
+[node name="ConductableComponent" type="Area2D"]
+collision_layer = 1048576
+collision_mask = 0
+script = ExtResource("1_me86m")
+
+[node name="Sparks" parent="." instance=ExtResource("2_ps08b")]
+unique_name_in_owner = true
+z_index = 35
+emitting = false
+emission_sphere_radius = 30.0
+
+[node name="SparksAudio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_cc4b5")
+volume_db = -7.789
+bus = &"GameAudio"

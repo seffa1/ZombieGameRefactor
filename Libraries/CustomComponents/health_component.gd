@@ -11,13 +11,13 @@ player or enemy could use.
 @export var max_health: float
 @export var health_regeneration: bool = false  # feature toggle for health regeneration
 @export var health_regeneration_wait_time: float = 2.0  # how many seconds of no-damage taken before health regenerates
-@export var health_regeneration_amount_per_tick: float = .1  # how much health is regenerated per game tick
+@export var health_regeneration_per_second: float = 10.0  # how much health is regenerated per game tick
 @export var invincible_mode: bool = false
-
 
 signal health_at_zero
 
 var starting_max_health: int  # set in ready, tracked in case max health is modified
+var last_damage_source: String
 
 var health: float:
 	get:
@@ -45,7 +45,14 @@ func _process(delta):
 	if !health_regeneration:
 		return
 	if regen_wait_timer.is_stopped():
-		health += health_regeneration_amount_per_tick
+		health += health_regeneration_per_second * delta
 
 func fill_health():
 	health = max_health
+
+func set_damage_source(source_name: String):
+	if health <= 0:
+		return
+	assert(Globals.DAMAGE_TYPES.find(source_name) != -1, 'Damage type not in global index!')
+	last_damage_source = source_name
+

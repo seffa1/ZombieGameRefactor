@@ -9,3 +9,4 @@ func enter():
 # Clean up the state. Reinitialize values like a timer
 func exit():
 	animation_player.play()
+

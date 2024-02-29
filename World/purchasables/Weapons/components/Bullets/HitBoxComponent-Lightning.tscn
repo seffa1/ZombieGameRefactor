@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2y54rgmr26nr"]
+
+[ext_resource type="Script" path="res://Libraries/CustomComponents/hit_box_component.gd" id="1_xd2gn"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tbc8g"]
+
+[sub_resource type="Animation" id="Animation_jexsl"]
+resource_name = "default"
+step = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pb5s3"]
+_data = {
+"default": SubResource("Animation_jexsl")
+}
+
+[node name="HitBoxComponent-Lightning" type="Area2D"]
+z_index = 99
+collision_layer = 2097152
+collision_mask = 1048576
+script = ExtResource("1_xd2gn")
+impact_type = "lightning"
+elemental_type = "lightning"
+damage = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_tbc8g")
+disabled = true
+debug_color = Color(0.0823529, 0, 0.898039, 0.74902)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_pb5s3")
+}

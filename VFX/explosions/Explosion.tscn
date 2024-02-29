@@ -111,6 +111,7 @@ autoplay = ""
 [node name="HitBoxComponent" parent="." instance=ExtResource("2_0fc26")]
 collision_layer = 256
 collision_mask = 64
+damage_type = "explosive"
 impact_type = "explosion"
 damage = 200
 

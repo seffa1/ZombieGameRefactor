@@ -1,15 +1,15 @@
 extends Line2D
 
+"""
+This class is purley for visual effect. Its a single line that zig-zags from one point to the other
+to look like a lightning-bolt.
+"""
+
 @export_range(0.5, 3.0, 0.1) var spread_angle: float = PI/4.0
 @export_range(1, 36) var segments: int = 12
 
 @onready var sparks: CPUParticles2D = $Sparks
 @onready var ray_cast: RayCast2D = $RayCast2D
-@onready var hit_box: Area2D = $HitBoxComponent
-@onready var hit_box_collision: CollisionShape2D = $HitBoxComponent/CollisionShape2D
-
-func _ready():
-	hit_box.enemy_hit.connect(_handle_enemy_hit)
 
 func create(start: Vector2, end: Vector2):
 	ray_cast.global_position = start
@@ -38,13 +38,3 @@ func create(start: Vector2, end: Vector2):
 	points = _points
 	
 	sparks.global_position = end
-	
-	# Set the hit box component
-	var hit_box_shape: SegmentShape2D = hit_box_collision.get_shape()
-	hit_box_shape.a = to_local(start)
-	hit_box_shape.b = to_local(end)
-	hit_box_collision.disabled = false
-
-	
-func _handle_enemy_hit():
-	hit_box_collision.set_deferred("disabled", true)

@@ -66,6 +66,10 @@ func give_item(player: CharacterBody2D) -> void:
 	animation_player.play("upgrade")
 
 func _on_upgrade_animation_complete():
+	_spawn_weapon_pickup()
+	animation_player.play("pickup")
+
+func _spawn_weapon_pickup():
 	# Instantiate a weapon buy for the chosen weapon
 	weapon_pickup = weapon_pickup_scene.instantiate()
 	weapon_pickup.weapon_name = weapon_to_upgrade
@@ -73,9 +77,6 @@ func _on_upgrade_animation_complete():
 	weapon_pickup.mystery_box_weapon_picked_up.connect(_on_weapon_picked_up)
 	weapon_pickup.weapon_level = level_upgrading_to
 	add_child(weapon_pickup)
-	
-	# Then switch to the 'is giving state'
-	animation_player.play("pickup")
 
 # If the player DOESNT pick the gun up in time
 func _on_pickup_animation_complete():

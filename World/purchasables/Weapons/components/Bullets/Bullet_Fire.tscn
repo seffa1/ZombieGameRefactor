@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfodliuu2vrva"]
+[gd_scene load_steps=9 format=3 uid="uid://bfodliuu2vrva"]
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/bullet.gd" id="1_xudt3"]
 [ext_resource type="PackedScene" uid="uid://4gpkqemjx0m5" path="res://VFX/explosions/Explosion.tscn" id="2_aki2w"]
+[ext_resource type="PackedScene" uid="uid://dp3jfedfbt2xr" path="res://VFX/smoketrails/Smoketrail_yellow.tscn" id="3_p5cm6"]
 [ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="3_wud7j"]
 [ext_resource type="Texture2D" uid="uid://dpxu2ijho0mcb" path="res://World/purchasables/Weapons/components/Bullets/images/Shot.png" id="4_8m043"]
+[ext_resource type="PackedScene" uid="uid://ivb282i6siyx" path="res://VFX/smokePuff/SmokePuff_yellow.tscn" id="4_wlpqr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gg70d"]
 radius = 4.0
@@ -20,10 +22,13 @@ collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_xudt3")
 explosion_scene = ExtResource("2_aki2w")
+smoke_trail_scene = ExtResource("3_p5cm6")
+smoke_puff_scene = ExtResource("4_wlpqr")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("3_wud7j")]
 collision_layer = 256
 collision_mask = 64
+damage_type = "bullet"
 impact_type = "bullet"
 elemental_type = "fire"
 

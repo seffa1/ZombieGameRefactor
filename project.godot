@@ -134,6 +134,8 @@ toggle_debug_enemies={
 2d_physics/layer_18="playerPurchasbleDetector"
 2d_physics/layer_19="bloodPuddle"
 2d_physics/layer_20="playerSpawnDetector"
+2d_physics/layer_21="conductable"
+2d_physics/layer_22="lightningHitbox"
 avoidance/layer_1="environment"
 
 [physics]
