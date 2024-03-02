@@ -121,6 +121,21 @@ const GUN_INDEX = {
 		"lower_weapon_animation": "lower_weapon_riffle",
 		"scene": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/Weapon_Fulgurizer.tscn")
 	},
+	"FLAMETHROWER": {
+		"nice_name": "Flame Thrower",
+		"idle_animation": "idle_riffle",
+		"shoot_animation": "shoot_riffle",
+		"reload_animation": "reload_riffle",
+		"switch_from_animation": "switch_from_riffle",
+		"switch_to_animation": "switch_to_riffle",
+		"buy_weapon_from_animation": "buy_weapon_from_riffle",
+		"buy_weapon_to_animation": "buy_weapon_to_riffle",
+		"sprint_animation": "sprint_riffle",
+		"sprite": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/images/rifle.png"),
+		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/images/riffle_buy.png"),
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/Weapon_Fulgurizer.tscn")
+	}
 }
 
 const EQUIPMENT_INDEX = {
