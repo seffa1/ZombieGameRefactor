@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://jollhgu5723e"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_cqj6g"]
+[ext_resource type="Script" path="res://VFX/bulletShells/bullet_shell.gd" id="2_emsck"]
+[ext_resource type="Texture2D" uid="uid://d3afb5jymy0gb" path="res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0012_cylinder.png" id="3_qaang"]
+[ext_resource type="PackedScene" uid="uid://bqn6pfsyp3a6" path="res://Libraries/CustomComponents/AudioVariator.tscn" id="4_2hpeo"]
+[ext_resource type="AudioStream" uid="uid://wk66217bttnw" path="res://VFX/bulletShells/shell_ground_hit_single.wav" id="5_meny4"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="6_mfrai"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvjay"]
+radius = 2.0
+height = 14.0
+
+[node name="BulletShell_FlameThrower" instance=ExtResource("1_cqj6g")]
+collision_layer = 16384
+collision_mask = 17
+mass = 10.0
+script = ExtResource("2_emsck")
+free_time = 5.0
+spawn_animation = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_kvjay")
+debug_color = Color(0.603922, 0.537255, 0.219608, 0.760784)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+z_index = 4
+texture_filter = 1
+rotation = 2.17699
+texture = ExtResource("3_qaang")
+
+[node name="AudioVariator" parent="." index="4" instance=ExtResource("4_2hpeo")]
+stream = ExtResource("5_meny4")
+volume_db = -21.69
+pitch_scale = 0.7
+bus = &"GameAudio"
+
+[node name="DampAnimator" parent="." index="5" instance=ExtResource("6_mfrai")]
+final_linear_damp_value = 3
+final_angular_damp_value = 3
+hang_time = 0.7
+tween_duration = 0.1

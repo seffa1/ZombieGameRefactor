@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=69 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://cju2hf0p32e23" path="res://World/purchasables/Weapons/Snipers/50Cal/WeaponBuy50Cal.tscn" id="24_srur5"]
 [ext_resource type="PackedScene" uid="uid://bq47d84tq7j2k" path="res://World/infrastructure/ZombieSpawner.tscn" id="25_2j7wj"]
 [ext_resource type="PackedScene" uid="uid://76s4kicryfd0" path="res://World/purchasables/mysteryBox/MysteryBoxLocation.tscn" id="25_atn32"]
+[ext_resource type="PackedScene" uid="uid://uvebsx8insd1" path="res://World/purchasables/Weapons/Specials/Flamethrower/WeaponBuy_flamethrower.tscn" id="25_lq8sk"]
 [ext_resource type="PackedScene" uid="uid://cdx6tkvpkamvh" path="res://World/purchasables/weaponUpgrader/WeaponUpgrader.tscn" id="26_ap0nb"]
 [ext_resource type="PackedScene" uid="uid://ciapy12l0w3w2" path="res://Libraries/CustomComponents/CameraComponent.tscn" id="26_ii3jy"]
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_4bpo3"]
@@ -732,6 +733,9 @@ position = Vector2(678, -276)
 [node name="WeaponBuy_Fulgurizer" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("24_gvt8k")]
 position = Vector2(952, 257)
 
+[node name="WeaponBuy_Flamethrower" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("25_lq8sk")]
+position = Vector2(386, 78)
+
 [node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
 
 [node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("39_fdiub")]
@@ -935,7 +939,7 @@ position = Vector2(-827, 688)
 souls_needed_to_charge = 3.0
 
 [node name="VesselCharge2" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
-position = Vector2(520, 220)
+position = Vector2(1145, 662)
 souls_needed_to_charge = 3.0
 
 [node name="VesselCharge3" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]

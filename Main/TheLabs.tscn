@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=134 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://76s4kicryfd0" path="res://World/purchasables/mysteryBox/MysteryBoxLocation.tscn" id="10_4stfb"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="10_5nexr"]
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_7kl0x"]
+[ext_resource type="PackedScene" uid="uid://uvebsx8insd1" path="res://World/purchasables/Weapons/Specials/Flamethrower/WeaponBuy_flamethrower.tscn" id="10_hd1w5"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="11_trv02"]
 [ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistols/Pistol_01/WeaponBuyPistol01.tscn" id="12_k34b3"]
 [ext_resource type="PackedScene" uid="uid://bxwt5d0a8v8bs" path="res://World/purchasables/perks/PerkBuySteadyAim.tscn" id="12_o5ggv"]
@@ -5715,6 +5716,11 @@ purchasable_name = ""
 
 [node name="WeaponBuy_Fulgurizer" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("9_wnf3b")]
 position = Vector2(3582, -270)
+rotation = 1.57079
+
+[node name="WeaponBuy_Flamethrower" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("10_hd1w5")]
+z_index = 29
+position = Vector2(288, 606)
 rotation = 1.57079
 
 [node name="Perks" type="Node" parent="GameWorld/PurchasablesContainer"]

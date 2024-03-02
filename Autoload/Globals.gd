@@ -123,18 +123,18 @@ const GUN_INDEX = {
 	},
 	"FLAMETHROWER": {
 		"nice_name": "Flame Thrower",
-		"idle_animation": "idle_riffle",
-		"shoot_animation": "shoot_riffle",
-		"reload_animation": "reload_riffle",
-		"switch_from_animation": "switch_from_riffle",
-		"switch_to_animation": "switch_to_riffle",
-		"buy_weapon_from_animation": "buy_weapon_from_riffle",
-		"buy_weapon_to_animation": "buy_weapon_to_riffle",
-		"sprint_animation": "sprint_riffle",
-		"sprite": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/images/rifle.png"),
-		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/images/riffle_buy.png"),
-		"lower_weapon_animation": "lower_weapon_riffle",
-		"scene": preload("res://World/purchasables/Weapons/Specials/Fulgurizer/Weapon_Fulgurizer.tscn")
+		"idle_animation": "idle_flamethrower",
+		"shoot_animation": "shoot_flamethrower",
+		"reload_animation": "reload_flamethrower",
+		"switch_from_animation": "switch_from_flamethrower",
+		"switch_to_animation": "switch_to_flamethrower",
+		"buy_weapon_from_animation": "buy_weapon_from_flamethrower",
+		"buy_weapon_to_animation": "buy_weapon_to_flamethrower",
+		"sprint_animation": "sprint_flamethrower",
+		"sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man_smaller_2.png"),
+		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png"),
+		"lower_weapon_flamethrower": "lower_weapon_flamethrower",
+		"scene": preload("res://World/purchasables/Weapons/Specials/Flamethrower/WeaponFlamethrower.tscn")
 	}
 }
 

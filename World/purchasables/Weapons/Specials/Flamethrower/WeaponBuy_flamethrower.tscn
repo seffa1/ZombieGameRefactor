@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://uvebsx8insd1"]
+
+[ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_ksmo5"]
+[ext_resource type="Texture2D" uid="uid://d0k25ccnw5byl" path="res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png" id="2_nntfc"]
+
+[node name="WeaponBuy_Flamethrower" instance=ExtResource("1_ksmo5")]
+weapon_name = "FLAMETHROWER"
+weapon_cost = 500
+ammo_cost_level_2 = 1000
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = -1.57079
+texture = ExtResource("2_nntfc")
