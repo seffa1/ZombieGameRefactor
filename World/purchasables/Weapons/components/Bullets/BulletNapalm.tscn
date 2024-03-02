@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://ci5wtgtfi3fa1"]
+
+[ext_resource type="PackedScene" uid="uid://dc6osdkjy4xa4" path="res://VFX/SelfFreeingRigidBodyBase.tscn" id="1_rodos"]
+[ext_resource type="PackedScene" uid="uid://tjxohs2tmjko" path="res://Libraries/CustomComponents/HitBoxComponent.tscn" id="2_3stf3"]
+[ext_resource type="Texture2D" uid="uid://e061dmxykaeo" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/fire_01.png" id="2_34xxq"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="2_dcayy"]
+[ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/bullet_napalm.gd" id="2_rlql6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugrme"]
+radius = 20.025
+
+[sub_resource type="Gradient" id="Gradient_78md4"]
+offsets = PackedFloat32Array(0, 0.90927, 0.996055, 1)
+colors = PackedColorArray(0.646105, 0.825878, 0.216069, 1, 0.885762, 0.288953, 0.232496, 1, 0.996078, 0.266667, 0.0941176, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hkmkk"]
+gradient = SubResource("Gradient_78md4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nseok"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+angular_velocity_min = -71.75
+angular_velocity_max = 35.87
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.08
+scale_max = 0.13
+color_ramp = SubResource("GradientTexture1D_hkmkk")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yub7k"]
+radius = 17.0
+
+[node name="Napalm" instance=ExtResource("1_rodos")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("2_rlql6")
+item_ejection_speed_variance = 0.3
+item_ejection_angle_variance = 1.0
+item_rotation_variance = 0.0
+item_ejection_torque = 100000.0
+item_ejection_torque_variance = 50000.0
+free_time = 10.0
+
+[node name="HitBoxComponent" parent="." index="0" instance=ExtResource("2_3stf3")]
+unique_name_in_owner = true
+damage_type = "bullet"
+impact_type = "bullet"
+elemental_type = "fire"
+damage = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_ugrme")
+debug_color = Color(0.941176, 0.203922, 0.341176, 0.419608)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="1"]
+position = Vector2(1, 1)
+process_material = SubResource("ParticleProcessMaterial_nseok")
+texture = ExtResource("2_34xxq")
+speed_scale = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_yub7k")
+debug_color = Color(0.796078, 0.411765, 0.298039, 0.419608)
+
+[node name="DampAnimator" parent="." index="6" instance=ExtResource("2_dcayy")]
+final_linear_damp_value = 5
+final_angular_damp_value = 5
+hang_time = 0.3
+tween_duration = 0.05

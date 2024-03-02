@@ -133,7 +133,7 @@ const GUN_INDEX = {
 		"sprint_animation": "sprint_flamethrower",
 		"sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man_smaller_2.png"),
 		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png"),
-		"lower_weapon_flamethrower": "lower_weapon_flamethrower",
+		"lower_weapon_animation": "lower_weapon_flamethrower",
 		"scene": preload("res://World/purchasables/Weapons/Specials/Flamethrower/WeaponFlamethrower.tscn")
 	}
 }
