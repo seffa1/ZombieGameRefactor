@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://n83d0irapkol"]
+[gd_scene load_steps=83 format=3 uid="uid://n83d0irapkol"]
 
 [ext_resource type="Script" path="res://Enemies/Bomber/zombie_bomber.gd" id="1_xr4qn"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_e7liy"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cyfhbeaais0h7" path="res://Enemies/Bomber/images/components/armRightUpper.png" id="14_rumjt"]
 [ext_resource type="Texture2D" uid="uid://8fy3d3o517y" path="res://Enemies/Bomber/images/components/head.png" id="15_6f6oc"]
 [ext_resource type="PackedScene" uid="uid://d4br30mrh144q" path="res://VFX/Gore/blood_emitters/BloodEmitter_2_noAnimation.tscn" id="17_dp3lm"]
+[ext_resource type="PackedScene" uid="uid://boaigxqytxxpx" path="res://Libraries/CustomComponents/FlamableComponent.tscn" id="17_ke8gx"]
 [ext_resource type="Texture2D" uid="uid://b53imox44dtxn" path="res://Enemies/Bomber/images/components/footLeft.png" id="18_8ij7h"]
 [ext_resource type="Texture2D" uid="uid://buk3yp2ep5b1q" path="res://Enemies/Bomber/images/components/legLeftLower.png" id="19_08y3d"]
 [ext_resource type="Texture2D" uid="uid://dosd162xs8s5o" path="res://Enemies/Bomber/images/components/legLeftUpper.png" id="20_ml3ea"]
@@ -2001,7 +2002,6 @@ rotation = -0.511451
 scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(0.872033, -0.489442, 0.489443, 0.872033, 79, -138)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftUpper" parent="SkeletonControl/Skeleton/torso/armLeftUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes") instance=ExtResource("4_8ft3q")]
 visible = false
@@ -2039,7 +2039,6 @@ rotation = 0.152667
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.988367, 0.152074, -0.152072, 0.988367, 170, -7)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxLeftLower" parent="SkeletonControl/Skeleton/torso/armLeftUpper/armLeftLower" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
@@ -2116,7 +2115,6 @@ rotation = -0.132898
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.99118, -0.132507, 0.132507, 0.99118, 57, 137)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightUpper" parent="SkeletonControl/Skeleton/torso/armRightUpper" node_paths=PackedStringArray("health_component", "collision_shape", "child_hurtboxes") instance=ExtResource("4_8ft3q")]
 visible = false
@@ -2154,7 +2152,6 @@ rotation = -0.609635
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.819856, -0.572567, 0.572568, 0.819855, 119, 91)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HurtBoxRightLower" parent="SkeletonControl/Skeleton/torso/armRightUpper/armRightLower" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
@@ -2231,7 +2228,6 @@ scale = Vector2(0.950104, 1.05441)
 skew = 0.000924349
 rest = Transform2D(0.989734, -0.14293, 0.14293, 0.989733, 49, 1)
 editor_settings/show_bone_gizmo = false
-metadata/_local_pose_override_enabled_ = true
 
 [node name="headPolygon" type="Polygon2D" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_components")]
 unique_name_in_owner = true
@@ -2247,7 +2243,6 @@ health_components = [NodePath("../../../../../HealthComponents/HealthComponent -
 
 [node name="HurtBoxHead" parent="SkeletonControl/Skeleton/torso/head" node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("4_8ft3q")]
 unique_name_in_owner = true
-visible = false
 position = Vector2(26.1413, 4.17972)
 rotation = 0.431961
 collision_mask = 256
@@ -2267,6 +2262,10 @@ health_component = NodePath("../../../../../../HealthComponents/HealthComponent 
 gore_vfx = NodePath("../../../../../../GoreVFX")
 zombie_groan_audio = NodePath("../../../../../../ZombieGroans-Audio")
 velocity_component = NodePath("../../../../../../VelocityComponent")
+
+[node name="FlamableComponent" parent="SkeletonControl/Skeleton/torso/head/HurtBoxHead" node_paths=PackedStringArray("hurt_box_component", "health_component") instance=ExtResource("17_ke8gx")]
+hurt_box_component = NodePath("..")
+health_component = NodePath("../../../../../../HealthComponents/HealthComponent - Head")
 
 [node name="HeadBloodEmitter" parent="SkeletonControl/Skeleton/torso/head" instance=ExtResource("17_dp3lm")]
 unique_name_in_owner = true
