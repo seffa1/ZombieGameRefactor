@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=70 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://76s4kicryfd0" path="res://World/purchasables/mysteryBox/MysteryBoxLocation.tscn" id="25_atn32"]
 [ext_resource type="PackedScene" uid="uid://uvebsx8insd1" path="res://World/purchasables/Weapons/Specials/Flamethrower/WeaponBuy_flamethrower.tscn" id="25_lq8sk"]
 [ext_resource type="PackedScene" uid="uid://cdx6tkvpkamvh" path="res://World/purchasables/weaponUpgrader/WeaponUpgrader.tscn" id="26_ap0nb"]
+[ext_resource type="PackedScene" uid="uid://bkuljfmjacjpe" path="res://World/purchasables/Weapons/Specials/ClusterCannon/WeaponBuy_ClusterCannon.tscn" id="26_dhwu2"]
 [ext_resource type="PackedScene" uid="uid://ciapy12l0w3w2" path="res://Libraries/CustomComponents/CameraComponent.tscn" id="26_ii3jy"]
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_4bpo3"]
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_b2va5"]
@@ -736,6 +737,10 @@ position = Vector2(952, 257)
 [node name="WeaponBuy_Flamethrower" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("25_lq8sk")]
 position = Vector2(386, 78)
 
+[node name="WeaponBuy_ClusterCannon" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("26_dhwu2")]
+position = Vector2(1626, -70)
+rotation = -0.785397
+
 [node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
 
 [node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("39_fdiub")]
@@ -949,7 +954,7 @@ souls_needed_to_charge = 3.0
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(520, -230)
 rotation = -1.57079
-starting_gun = "FLAMETHROWER"
+starting_gun = "CLUSTER_CANNON"
 starting_money = 100000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]

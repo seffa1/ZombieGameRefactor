@@ -21,8 +21,10 @@ func spawn_item(rotation: float):
 	with some variance, like how a bullet item would eject from a gun.
 	"""
 	var instance = object_to_spawn.instantiate()
+
 	instance.global_position = global_position
 	instance.global_rotation = rotation + randf_range(-item_rotation_variance, item_rotation_variance)
+
 	ObjectRegistry.register_effect(instance)
 	
 	var impulse_speed = item_ejection_speed + (item_ejection_speed * randf_range(-item_ejection_speed_variance, item_ejection_speed_variance))

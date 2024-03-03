@@ -135,7 +135,22 @@ const GUN_INDEX = {
 		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png"),
 		"lower_weapon_animation": "lower_weapon_flamethrower",
 		"scene": preload("res://World/purchasables/Weapons/Specials/Flamethrower/WeaponFlamethrower.tscn")
-	}
+	},
+	"CLUSTER_CANNON": {
+		"nice_name": "Cluster Cannon",
+		"idle_animation": "idle_flamethrower",
+		"shoot_animation": "shoot_flamethrower",
+		"reload_animation": "reload_flamethrower",
+		"switch_from_animation": "switch_from_flamethrower",
+		"switch_to_animation": "switch_to_flamethrower",
+		"buy_weapon_from_animation": "buy_weapon_from_flamethrower",
+		"buy_weapon_to_animation": "buy_weapon_to_flamethrower",
+		"sprint_animation": "sprint_flamethrower",
+		"sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man_smaller_2.png"),
+		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png"),
+		"lower_weapon_animation": "lower_weapon_flamethrower",
+		"scene": preload("res://World/purchasables/Weapons/Specials/ClusterCannon/Weapon_ClusterCannon.tscn")
+	},
 }
 
 const EQUIPMENT_INDEX = {
@@ -151,13 +166,15 @@ const EQUIPMENT_INDEX = {
 
 # Gun name, selection_weight
 const mystery_box_spawn_weights = [
-		["DEV_CANON", 1.0],
-		["PISTOL_01", 1.0],
-		["MP7", 1.0],
-		["AUTO_SHOTGUN", 1.0],
-		["SPAS", 1.0],
-		["50_CAL", .5],
-		["FULGURIZER", .5]
+		["DEV_CANON", 0.5],
+		["PISTOL_01", 0.2],
+		["MP7", 0.5],
+		["AUTO_SHOTGUN", 0.5],
+		["SPAS", 0.5],
+		["50_CAL", 0.5],
+		["FULGURIZER", 1.0],
+		["FLAMETHROWER", 1.0],
+		["CLUSTER_CANNON", 1.0]
 	]
 
 # Stores all the information for all perks (should maybe turn this into resources?)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkuljfmjacjpe"]
+
+[ext_resource type="PackedScene" uid="uid://dhgffs262qhl1" path="res://World/purchasables/Weapons/WeaponBuy.tscn" id="1_v7n1i"]
+[ext_resource type="Texture2D" uid="uid://d0k25ccnw5byl" path="res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png" id="2_uohxr"]
+
+[node name="WeaponBuy_ClusterCannon" instance=ExtResource("1_v7n1i")]
+weapon_name = "CLUSTER_CANNON"
+weapon_cost = 10
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0, 0.596078, 0, 1)
+rotation = 1.57079
+texture = ExtResource("2_uohxr")

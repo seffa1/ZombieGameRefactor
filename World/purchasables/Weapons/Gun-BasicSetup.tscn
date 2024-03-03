@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_2rtc2"]
 [ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_1ohnf"]
 
-[node name="SET_GUNE_NAME" instance=ExtResource("1_mobns")]
+[node name="Weapon_ClusterCannon" instance=ExtResource("1_mobns")]
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
 position = Vector2(121, 7)

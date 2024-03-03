@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://k3pna1u68ffm"]
+
+[ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_ce1qb"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_4x257"]
+[ext_resource type="PackedScene" uid="uid://di4sy4pfusqav" path="res://World/purchasables/Weapons/components/Bullets/BulletRayCast_ClusterBomb.tscn" id="2_vtvrw"]
+[ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_sfrqh"]
+[ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_ie6fl"]
+
+[node name="Weapon_ClusterCannon" node_paths=PackedStringArray("bullet_ray_cast") instance=ExtResource("1_ce1qb")]
+WEAPON_NAME = "CLUSTER_CANNON"
+fire_type = "single_fire"
+bullet_type = "ray_cast"
+bullet_ray_cast = NodePath("BulletRayCast_ClusterBomb")
+clip_size = 10000
+max_bullet_reserve = 40
+reload_speed = 3.0
+shell_ejection_type = "no_shell"
+
+[node name="BulletRayCast_ClusterBomb" parent="." index="0" instance=ExtResource("2_vtvrw")]
+position = Vector2(121, 7)
+rotation = -1.57079
+target_position = Vector2(0.000575066, 259)
+
+[node name="MuzzlePosition" type="Marker2D" parent="." index="6"]
+position = Vector2(121, 7)
+
+[node name="VFXSpawnerBulletShells" parent="." index="7" instance=ExtResource("2_4x257")]
+position = Vector2(56, 11)
+object_to_spawn = ExtResource("3_sfrqh")
+
+[node name="VFXSpawnerMagazines" parent="." index="8" instance=ExtResource("2_4x257")]
+object_to_spawn = ExtResource("4_ie6fl")
