@@ -22,7 +22,7 @@ var knockback_vector: Vector2 = Vector2.ZERO
 
 func _ready():
 	# if the player dies and something spawns, this prevents a crash
-	if Globals.player:
+	if is_instance_valid(Globals.player):
 		shooter = Globals.player
 	assert(damage_type, 'You didnt set the damage type')
 
