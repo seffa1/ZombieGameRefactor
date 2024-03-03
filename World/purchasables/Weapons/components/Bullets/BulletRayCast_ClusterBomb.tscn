@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/BulletRayCast_ClusterBomb.gd" id="1_u03xt"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_bmoee"]
-[ext_resource type="PackedScene" uid="uid://ddrcl4xqul8l6" path="res://World/throwables/ThrowableGrenade.tscn" id="3_hsma6"]
+[ext_resource type="PackedScene" uid="uid://n56hwso6dotp" path="res://World/throwables/ClusterBomb.tscn" id="3_lfcn6"]
 
 [node name="BulletRayCast_ClusterBomb" type="RayCast2D"]
 script = ExtResource("1_u03xt")
 
 [node name="GrenadeSpawner" parent="." instance=ExtResource("2_bmoee")]
 unique_name_in_owner = true
-object_to_spawn = ExtResource("3_hsma6")
+object_to_spawn = ExtResource("3_lfcn6")
 item_ejection_speed_variance = 0.0
 item_ejection_angle_variance = 0.0

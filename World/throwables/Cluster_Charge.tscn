@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpy1l0ct5r4yb"]
+
+[ext_resource type="PackedScene" uid="uid://cesbyk4vgali5" path="res://World/throwables/Throwable.tscn" id="1_ixx46"]
+[ext_resource type="PackedScene" uid="uid://4gpkqemjx0m5" path="res://VFX/explosions/Explosion.tscn" id="2_15otb"]
+[ext_resource type="AudioStream" uid="uid://dy0rcvf17cwjw" path="res://World/purchasables/Weapons/shared/unusedAudio/ESM_Frozen_Arrow_Sound_FX_Military.wav" id="3_h5ffb"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_wux3e"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3i0w3"]
+load_path = "res://.godot/imported/grenade2.png-5f08133e1df130a43a7c5766ae057a41.ctex"
+
+[node name="ClusterCharge" groups=["throwable_equipment"] instance=ExtResource("1_ixx46")]
+free_time = 1.0
+free_time_variance = 0.5
+explosion_to_spawn = ExtResource("2_15otb")
+ground_hit_audio = ExtResource("3_h5ffb")
+
+[node name="DampAnimator" parent="." index="0" instance=ExtResource("4_wux3e")]
+final_linear_damp_value = 3
+final_angular_damp_value = 3
+hang_time = 0.7
+tween_duration = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+modulate = Color(0.278431, 0.631373, 0.0627451, 1)
+scale = Vector2(0.0760869, 0.0760869)
+texture = SubResource("CompressedTexture2D_3i0w3")
+
+[node name="AudioStreamPlayer2D" parent="." index="5"]
+volume_db = -17.333

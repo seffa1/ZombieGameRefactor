@@ -13,6 +13,7 @@ Needs an VFX scene to spawn when it dies. The VFX scene should handle hit boxes 
 @onready var audio = $AudioStreamPlayer2D
 
 @export var free_time: float
+@export var free_time_variance: float = 0.0
 @export var explosion_to_spawn: PackedScene
 @export var ground_hit_audio: AudioStream
 
@@ -35,7 +36,7 @@ func throw():
 	
 	# Start the throwing animation
 	animation_player.play("throw")
-	explode_timer.start(free_time)
+	explode_timer.start(free_time + randf_range(-free_time_variance, free_time_variance))
 
 func _on_throw_animation_compete():
 	audio.stream = ground_hit_audio

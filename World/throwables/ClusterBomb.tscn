@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://n56hwso6dotp"]
+
+[ext_resource type="PackedScene" uid="uid://cesbyk4vgali5" path="res://World/throwables/Throwable.tscn" id="1_c2m5v"]
+[ext_resource type="Script" path="res://World/throwables/ClusterBomb.gd" id="2_qphvg"]
+[ext_resource type="AudioStream" uid="uid://c1qc0e2ve87h1" path="res://World/throwables/sounds/grenade_land.wav" id="3_h7q3s"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="3_kv7uq"]
+[ext_resource type="PackedScene" uid="uid://dx8wack6yoyb5" path="res://VFX/DampAnimator.tscn" id="4_6nbig"]
+[ext_resource type="Texture2D" uid="uid://57i3mteqcq4v" path="res://World/throwables/images/grenade2.png" id="5_1nfh1"]
+[ext_resource type="PackedScene" uid="uid://dpy1l0ct5r4yb" path="res://World/throwables/Cluster_Charge.tscn" id="5_dq82c"]
+
+[node name="ClusterBomb" groups=["throwable_equipment"] instance=ExtResource("1_c2m5v")]
+script = ExtResource("2_qphvg")
+free_time = 1.0
+ground_hit_audio = ExtResource("3_h7q3s")
+
+[node name="ClusterSpawner" parent="." index="0" instance=ExtResource("3_kv7uq")]
+unique_name_in_owner = true
+item_ejection_speed = 200.0
+item_ejection_speed_variance = 1.0
+item_ejection_angle_variance = 0.5
+item_rotation_variance = 0.2
+item_ejection_torque = 50000.0
+item_ejection_torque_variance = 20000.0
+objects_to_spawn = Array[PackedScene]([ExtResource("5_dq82c"), ExtResource("5_dq82c"), ExtResource("5_dq82c"), ExtResource("5_dq82c"), ExtResource("5_dq82c"), ExtResource("5_dq82c")])
+
+[node name="DampAnimator" parent="." index="1" instance=ExtResource("4_6nbig")]
+final_linear_damp_value = 3
+final_angular_damp_value = 3
+hang_time = 0.7
+tween_duration = 0.1
+
+[node name="ScaleController" parent="." index="3"]
+z_index = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleController" index="0"]
+scale = Vector2(0.0760869, 0.0760869)
+texture = ExtResource("5_1nfh1")
+
+[node name="AudioStreamPlayer2D" parent="." index="6"]
+volume_db = -15.0
