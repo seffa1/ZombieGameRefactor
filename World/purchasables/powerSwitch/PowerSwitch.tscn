@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_m8msr"]
 [ext_resource type="Script" path="res://World/purchasables/powerSwitch/power_switch.gd" id="2_kcslo"]
-[ext_resource type="AudioStream" uid="uid://c3fuvsg32bre6" path="res://UnusedSounds/LightSwitchOn_BW.60414.wav" id="3_kev2m"]
+[ext_resource type="AudioStream" uid="uid://b6fsnf34ppgj2" path="res://UnusedSounds/LightSwitchOn_BW.60414.wav" id="3_kev2m"]
 [ext_resource type="AudioStream" uid="uid://djybv0pbpeh6d" path="res://World/purchasables/powerSwitch/sounds/ESM_FVESK_cinematic_fx_science_fiction_engine_power_on_mothership_argo_1_clicky_textured_turning_knob_ui_alert_glitchy_responses.wav" id="3_y2nb3"]
 [ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="5_uegqg"]
 

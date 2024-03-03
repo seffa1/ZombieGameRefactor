@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bm44c7e0g2aay" path="res://Libraries/CustomComponents/ImpactableComponent.tscn" id="5_g5baf"]
 [ext_resource type="PackedScene" uid="uid://c8a36hmev7rps" path="res://Libraries/CustomComponents/BodypartSpawnComponent.tscn" id="6_gx4st"]
 [ext_resource type="PackedScene" uid="uid://0x2qiwcl6c2y" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmUpper.tscn" id="6_xxotg"]
-[ext_resource type="Texture2D" uid="uid://dy18eqtvxan5m" path="res://Enemies/Spriter_Animations&Bodyparts/2_LVL/Cop_zombie/zombie_cop_0044_Layer-45.png" id="7_54274"]
 [ext_resource type="PackedScene" uid="uid://uagk6sejbaih" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmLower.tscn" id="7_r4jyu"]
 [ext_resource type="Texture2D" uid="uid://b0o1lfr4dbdmf" path="res://Enemies/PoliceMan/images/components/armLeftLower.png" id="8_h2ake"]
 [ext_resource type="Script" path="res://Enemies/shared/body_part_polygon.gd" id="9_ohhm5"]
+[ext_resource type="Texture2D" uid="uid://wph0tjn0k6ld" path="res://Enemies/PoliceMan/images/components/handLeft.png" id="9_s8edv"]
 [ext_resource type="Texture2D" uid="uid://culompxtuqqm8" path="res://Enemies/PoliceMan/images/components/armLegtUpper.png" id="9_thgnm"]
 [ext_resource type="Texture2D" uid="uid://cqd44q3dthjv4" path="res://Enemies/PoliceMan/images/components/handRight.png" id="12_1fglj"]
 [ext_resource type="PackedScene" uid="uid://cndcvevlspfw7" path="res://VFX/Gore/rigidBodyParts_Police/Police - BodyPart-ArmRightUpper.tscn" id="12_i6trk"]
@@ -1861,7 +1861,7 @@ bone_angle = 47.932
 unique_name_in_owner = true
 position = Vector2(-43.6406, 35.3487)
 rotation = -0.785397
-texture = ExtResource("7_54274")
+texture = ExtResource("9_s8edv")
 polygon = PackedVector2Array(37.224, 0, 63.7224, 0.315456, 81.388, 9.14827, 97.4763, 91.7981, 75.3943, 102.839, 53.3123, 104.101, 53.3123, 104.101, 29.653, 91.1672, -2.20821, 47.0032, 20.1893, 16.0883)
 uv = PackedVector2Array(37.224, 0, 63.7224, 0.315456, 81.388, 9.14827, 97.4763, 91.7981, 75.3943, 102.839, 53.3123, 104.101, 53.3123, 104.101, 29.653, 91.1672, -2.20821, 47.0032, 20.1893, 16.0883)
 script = ExtResource("9_ohhm5")
