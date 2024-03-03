@@ -1,41 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1i73q3i2g13s"]
+[gd_scene load_steps=7 format=3 uid="uid://b1i73q3i2g13s"]
 
 [ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_3dh4k"]
 [ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_3xw1t"]
+[ext_resource type="PackedScene" uid="uid://dv6a8nygfru46" path="res://World/purchasables/Weapons/components/Bullets/BulletRayCast_Fire.tscn" id="2_18uv0"]
 [ext_resource type="AudioStream" uid="uid://bb0cylhdatdhq" path="res://UnusedSounds/oneShots/mechanisms/ESM_FVESK_fx_foley_repair_work_shop_unlock_mechanism_varied_shuffle_latch_lift_05.wav" id="2_k2gq3"]
-[ext_resource type="PackedScene" uid="uid://ci5wtgtfi3fa1" path="res://World/purchasables/Weapons/components/Bullets/BulletNapalm.tscn" id="2_s51gl"]
 [ext_resource type="AudioStream" uid="uid://dr6k57sg8a80l" path="res://World/purchasables/Weapons/shared/unusedAudio/ESM_Shotgun_Chamber_Shell_8_Sound_FX_Military_Ammo.wav" id="3_yreqk"]
-[ext_resource type="PackedScene" uid="uid://byp0n3aupyh0d" path="res://VFX/magazines/Magazine.tscn" id="4_k6q30"]
-[ext_resource type="AudioStream" uid="uid://dexght31nxbou" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/WeldingFlameRun_S08IN.1085.wav" id="4_u0yyy"]
 [ext_resource type="PackedScene" uid="uid://jollhgu5723e" path="res://VFX/bulletShells/BulletShell_FlameThrower.tscn" id="6_ud3wi"]
 
-[node name="Flamethrower" instance=ExtResource("1_3dh4k")]
+[node name="Flamethrower" node_paths=PackedStringArray("bullet_ray_cast") instance=ExtResource("1_3dh4k")]
 WEAPON_NAME = "FLAMETHROWER"
-fire_type = "automatic"
-bullet = ExtResource("2_s51gl")
-bullets_per_fire = 2
-bullet_spread = 0.05
-bullet_speed = 300
-bullet_damage = 100.0
-bullet_knockback = 0.0
-fire_rate = 0.05
-clip_size = 100
-reload_speed = 3.0
-shell_ejection_type = 1
-magazine_ejection_type = 1
+fire_type = "continuous"
+bullet_type = "ray_cast"
+bullet_ray_cast = NodePath("BulletRayCast_Fire")
+shell_ejection_type = "no_shell"
 
-[node name="GunAudio" parent="." index="4"]
+[node name="BulletRayCast_Fire" parent="." index="0" instance=ExtResource("2_18uv0")]
+position = Vector2(121, 7)
+collision_mask = 24
+
+[node name="GunAudio" parent="." index="5"]
 audio_reload_start = ExtResource("2_k2gq3")
 audio_reload_finished = ExtResource("3_yreqk")
-audio_shoot_gun_shot = ExtResource("4_u0yyy")
-audio_shoot_gun_shot_level_up = ExtResource("4_u0yyy")
 
-[node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
+[node name="MuzzlePosition" type="Marker2D" parent="." index="6"]
 position = Vector2(121, 7)
 
-[node name="VFXSpawnerBulletShells" parent="." index="6" instance=ExtResource("2_3xw1t")]
+[node name="VFXSpawnerBulletShells" parent="." index="7" instance=ExtResource("2_3xw1t")]
 position = Vector2(56, 11)
 object_to_spawn = ExtResource("6_ud3wi")
 
-[node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("2_3xw1t")]
-object_to_spawn = ExtResource("4_k6q30")
+[node name="VFXSpawnerMagazines" parent="." index="8" instance=ExtResource("2_3xw1t")]
+object_to_spawn = ExtResource("6_ud3wi")

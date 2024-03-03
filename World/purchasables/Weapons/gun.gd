@@ -18,7 +18,7 @@ may end up as a part of the animation tree.
 @onready var muzzle_position: Marker2D = $MuzzlePosition
 @onready var reticle = $Reticle
 @onready var lower_weapon_ray_cast = $LowerWeaponRayCast
-@onready var bullet_spawner = $VFXSpawnerBulletShells
+@onready var bullet_shell_spawner = $VFXSpawnerBulletShells
 @onready var magazine_spawner = $VFXSpawnerMagazines
 @onready var muzzle_flash_vfx = preload("res://VFX/muzzleFlash/MuzzleFlash.tscn");
 @onready var audio = $GunAudio
@@ -26,7 +26,7 @@ may end up as a part of the animation tree.
 # Exports
 @export var WEAPON_NAME: String  # Must be in Globals.GUN_INDEX as a key
 @export_enum("Base:1", "First Upgrade:2", "Second Upgrade:3") var weapon_level: int # 'pack-a-punch' level
-@export_enum("single_fire", "automatic", "burst") var fire_type: String  # affects how the shoot state is exited
+@export_enum("single_fire", "automatic", "burst", "continuous") var fire_type: String  # affects how the shoot state is exited
 @export_enum("projectile", "ray_cast") var bullet_type: String = "projectile"  # affects how the bullet is treated
 @export var bullet_ray_cast: RayCast2D
 @export var bullet: PackedScene
@@ -40,10 +40,11 @@ may end up as a part of the animation tree.
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
 @export var has_penetrating_shots: bool = false
-@export_enum("on_fire", "on_reload") var shell_ejection_type: int
+@export_enum("on_fire", "on_reload", "no_shell") var shell_ejection_type: String
 @export_enum("on_reload", "no_magazine") var magazine_ejection_type: int
 
 var starting_bullet_damage: float
+var trigger_held: bool = false # used by continuously firing guns
 
 # Variables
 var bullets_in_clip: int:
@@ -69,6 +70,8 @@ func _ready():
 		assert(bullet, "Bullet not assigned for gun.")
 	if (bullet_type == "ray_cast"):
 		assert(bullet_ray_cast, "Bullet raycast not assigned for gun.")
+	if (fire_type == "continuous"):
+		assert(bullet_type=="ray_cast", 'Continuous firing guns need to use raycast bullets')
 	
 	bullets_in_clip = clip_size
 	bullet_reserve = max_bullet_reserve
@@ -112,8 +115,8 @@ func start_reload():
 	if magazine_ejection_type == 0:  # spawn magazine on reload
 		magazine_spawner.spawn_item(global_rotation)
 	
-	if shell_ejection_type == 1:  # on_reload
-		bullet_spawner.spawn_item(global_rotation)
+	if shell_ejection_type == "on_reload":  # on_reload
+		bullet_shell_spawner.spawn_item(global_rotation)
 
 func finish_reload() -> void:
 	"""
@@ -134,19 +137,20 @@ func finish_reload() -> void:
 
 func shoot() -> void:
 	"""
-	Generic function used by all children. Should not need to be re-defined.
 	The player shoot state will check 'can_shoot' before it calls this function since
 	the state will dictate the animations.
 	"""
+
 	# Track shots
 	Events.emit_signal("bullet_fired")
+
 	
 	# Play audio
 	audio.play_audio_shoot_gun_shot()
 
 	# Spawn vfx's
-	if shell_ejection_type == 0:  # on_shoot
-		bullet_spawner.spawn_item(global_rotation)
+	if shell_ejection_type == "on_fire":  # on_shoot
+		bullet_shell_spawner.spawn_item(global_rotation)
 	var muzzle_flash = muzzle_flash_vfx.instantiate()
 	muzzle_flash.global_position = muzzle_position.global_position
 	muzzle_flash.global_rotation = global_rotation
@@ -185,6 +189,10 @@ func shoot() -> void:
 			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 		elif bullet_type == "ray_cast":
 			bullet_ray_cast.shoot()
+		elif bullet_type == "continuous":
+			if !trigger_held:
+				trigger_held = true
+				bullet_ray_cast.shoot()
 
 	# we cannot ignore spread ( like a shot gun )
 	else:
@@ -209,6 +217,7 @@ func shoot() -> void:
 				rotation_direction *= -1
 				bullet_rotation += bullet_spread * (i+1) * rotation_direction
 			elif bullet_type == "ray_cast":
+				assert(false, 'Raycast bullets should only fire one bullet per shot')
 				bullet_ray_cast.shoot()
 
 func set_gun_level(weapon_level: int) -> void:
@@ -257,3 +266,10 @@ func toggle_crosshairs(value: bool):
 	reticle.visible = value
 func toggle_raycast(value: bool):
 	lower_weapon_ray_cast.enabled = value
+
+func release_trigger():
+	print('gun releasing trigger')
+	trigger_held = false
+	if fire_type == "continuous":
+		print('stoping ray cast')
+		bullet_ray_cast.stop()

@@ -33,7 +33,7 @@ func _on_shoot_animation_finished():
 	Handle singefire/burst fire state
 	"""
 	# Just in case we still have call method track in the animation for testing purposes
-	if fire_type == "automatic":
+	if fire_type == "automatic" or fire_type == "continuous":
 		return
 
 	# single / burst fire weapons play one animation and go back to idle state until shoot is called again
@@ -46,16 +46,18 @@ func _process(_delta):
 	"""
 	await enter  # Dont process until the enter function finishes
 	
-	if !fire_type == "automatic":
+	if !fire_type == "automatic" and !fire_type == "continuous":
 		return
 	
 	# check if shoot Input is still held and the gun is able to shoot
 	if !Input.is_action_pressed("shoot"):
+		print('NOT HELD')
 		emit_signal("finished", "idle")
 		return
 	
 	# Check that theres still bullets in the clip
 	if weapon_object.bullets_in_clip == 0:
+		print('NO BULLETS')
 		emit_signal("finished", "idle")
 		return
 	
@@ -69,6 +71,8 @@ func _process(_delta):
 # Clean up the state. Reinitialize values like a timer
 func exit():
 	owner.animation_player.stop()
+	print('Player leaving shoot state')
+	weapon_object.release_trigger()
 	weapon_object = null
 	fire_type = null
 	

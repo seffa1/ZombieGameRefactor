@@ -5719,7 +5719,7 @@ position = Vector2(3582, -270)
 rotation = 1.57079
 
 [node name="WeaponBuy_Flamethrower" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("10_hd1w5")]
-z_index = 29
+z_index = 4
 position = Vector2(288, 606)
 rotation = 1.57079
 

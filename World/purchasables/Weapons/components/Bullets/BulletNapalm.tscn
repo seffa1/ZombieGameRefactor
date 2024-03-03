@@ -44,6 +44,8 @@ free_time = 10.0
 
 [node name="HitBoxComponent" parent="." index="0" instance=ExtResource("2_3stf3")]
 unique_name_in_owner = true
+collision_layer = 256
+collision_mask = 64
 damage_type = "bullet"
 impact_type = "bullet"
 elemental_type = "fire"

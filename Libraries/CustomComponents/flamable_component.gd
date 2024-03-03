@@ -1,5 +1,9 @@
 extends Node2D
 
+"""
+Handles fire bullet hits, as well as fire from flamethrowers.
+"""
+
 ## Must link nodes or it throws an error
 @export_category('Nodes to link')
 @export var hurt_box_component: Area2D
@@ -10,9 +14,12 @@ extends Node2D
 @export_range(0, 9999999) var damage_until_ignition: int
 ## Prevents and/or resets the vfx
 @export var is_flamable: bool = true
-@export_range(1.0, 99.0, .1) var damage_per_second: float = 25.0
+@export_range(1.0, 99.0, .1) var ignition_damage_per_second: float = 25.0
+@export_range(1.0, 999.0, .1) var in_fire_damage_per_second: float = 200.0
 
 @onready var particles: Node2D = %Particles
+@onready var fire_detector: Area2D = %FireDetector
+
 var damage_received: int = 0
 var ignited: bool = false
 
@@ -25,7 +32,10 @@ func _ready():
 	
 	hurt_box_component.hurt_box_hit.connect(_handle_hit)
 	health_component.health_at_zero.connect(_handle_health_zero)
-	
+
+func _on_fire_detector_area_entered(area):
+	ignite()
+
 func _handle_hit(body_part: String, area: Area2D):
 	if area.elemental_type != "fire":
 		return
@@ -46,10 +56,18 @@ func ignite():
 		particle.emitting = true
 	
 func _process(delta):
+	# Take damage if currently in fire ( like the flamethrower )
+	if fire_detector.has_overlapping_areas():
+		var damage = delta * in_fire_damage_per_second
+		health_component.health -= damage
+		health_component.set_damage_source(DAMAGE_TYPE)
+	
 	if !ignited:
 		return
-
-	var damage = delta * damage_per_second
+	
+	## If ignited, take another tick of damage
+	var damage = delta * ignition_damage_per_second
 	health_component.health -= damage
 	health_component.set_damage_source(DAMAGE_TYPE)
-	
+
+
