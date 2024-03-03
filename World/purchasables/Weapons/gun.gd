@@ -188,10 +188,11 @@ func shoot() -> void:
 			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
 			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 		elif bullet_type == "ray_cast":
-			bullet_ray_cast.shoot()
-		elif bullet_type == "continuous":
-			if !trigger_held:
-				trigger_held = true
+			if fire_type == "continuous":
+				if !trigger_held:
+					trigger_held = true
+					bullet_ray_cast.shoot()
+			else:
 				bullet_ray_cast.shoot()
 
 	# we cannot ignore spread ( like a shot gun )
@@ -268,8 +269,6 @@ func toggle_raycast(value: bool):
 	lower_weapon_ray_cast.enabled = value
 
 func release_trigger():
-	print('gun releasing trigger')
 	trigger_held = false
 	if fire_type == "continuous":
-		print('stoping ray cast')
 		bullet_ray_cast.stop()

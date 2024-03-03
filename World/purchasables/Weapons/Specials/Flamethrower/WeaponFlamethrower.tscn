@@ -15,7 +15,7 @@ bullet_ray_cast = NodePath("BulletRayCast_Fire")
 shell_ejection_type = "no_shell"
 
 [node name="BulletRayCast_Fire" parent="." index="0" instance=ExtResource("2_18uv0")]
-position = Vector2(121, 7)
+position = Vector2(145, 27)
 collision_mask = 24
 
 [node name="GunAudio" parent="." index="5"]
@@ -23,7 +23,7 @@ audio_reload_start = ExtResource("2_k2gq3")
 audio_reload_finished = ExtResource("3_yreqk")
 
 [node name="MuzzlePosition" type="Marker2D" parent="." index="6"]
-position = Vector2(121, 7)
+position = Vector2(145, 27)
 
 [node name="VFXSpawnerBulletShells" parent="." index="7" instance=ExtResource("2_3xw1t")]
 position = Vector2(56, 11)

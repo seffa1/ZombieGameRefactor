@@ -51,13 +51,11 @@ func _process(_delta):
 	
 	# check if shoot Input is still held and the gun is able to shoot
 	if !Input.is_action_pressed("shoot"):
-		print('NOT HELD')
 		emit_signal("finished", "idle")
 		return
 	
 	# Check that theres still bullets in the clip
 	if weapon_object.bullets_in_clip == 0:
-		print('NO BULLETS')
 		emit_signal("finished", "idle")
 		return
 	
@@ -71,7 +69,6 @@ func _process(_delta):
 # Clean up the state. Reinitialize values like a timer
 func exit():
 	owner.animation_player.stop()
-	print('Player leaving shoot state')
 	weapon_object.release_trigger()
 	weapon_object = null
 	fire_type = null

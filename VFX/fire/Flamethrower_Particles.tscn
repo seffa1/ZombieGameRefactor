@@ -1,6 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc8y7w3y6it21"]
+[gd_scene load_steps=9 format=3 uid="uid://bc8y7w3y6it21"]
 
 [ext_resource type="Texture2D" uid="uid://dv77dwtmvonqd" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/scorch_03.png" id="1_kmucb"]
+[ext_resource type="Shader" path="res://VFX/shaders/fire_shader.gdshader" id="1_yt8w5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iicm0"]
+shader = ExtResource("1_yt8w5")
 
 [sub_resource type="Gradient" id="Gradient_0xriy"]
 offsets = PackedFloat32Array(0, 0.0596591, 0.113636, 0.610795, 0.75, 0.869318)
@@ -10,8 +14,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0.102605, 0.328274, 1, 1, 0.890196, 0.7960
 gradient = SubResource("Gradient_0xriy")
 
 [sub_resource type="Curve" id="Curve_cxgd6"]
-_data = [Vector2(0, 0), 0.0, 3.56279, 0, 0, Vector2(0.24282, 0.989474), 0.0, 0.0, 0, 0, Vector2(0.558747, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 3.56279, 0, 0, Vector2(0.258693, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_ai5jn"]
 curve = SubResource("Curve_cxgd6")
@@ -28,8 +32,8 @@ angular_velocity_max = 720.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 radial_accel_max = 55.17
-scale_min = 0.3
-scale_max = 0.3
+scale_min = 0.4
+scale_max = 0.4
 scale_curve = SubResource("CurveTexture_ai5jn")
 color_ramp = SubResource("GradientTexture1D_i3vyt")
 turbulence_enabled = true
@@ -38,7 +42,7 @@ turbulence_influence_min = 0.03
 turbulence_influence_max = 0.03
 
 [node name="FlamethrowerParticles" type="GPUParticles2D"]
-emitting = false
+material = SubResource("ShaderMaterial_iicm0")
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_307g4")
 texture = ExtResource("1_kmucb")
