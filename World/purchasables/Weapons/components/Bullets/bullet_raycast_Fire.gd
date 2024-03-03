@@ -24,4 +24,4 @@ func stop():
 
 func _on_shoot_animation_finished():
 	flame_sounds.play()
-	print(flame_sounds.get_stream_playback())
+

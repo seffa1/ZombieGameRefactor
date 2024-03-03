@@ -45,6 +45,7 @@ may end up as a part of the animation tree.
 
 var starting_bullet_damage: float
 var trigger_held: bool = false # used by continuously firing guns
+var modifier: String = ""
 
 # Variables
 var bullets_in_clip: int:
@@ -235,7 +236,7 @@ func set_gun_level(weapon_level: int) -> void:
 	
 	audio.level_up(weapon_level)
 	self.weapon_level = weapon_level
-	Events.emit_signal("player_equipped_change", WEAPON_NAME, weapon_level)
+	Events.emit_signal("player_equipped_change", get_nice_name(), weapon_level, modifier)
 
 func can_shoot() -> bool:
 	"""
@@ -272,3 +273,17 @@ func release_trigger():
 	trigger_held = false
 	if fire_type == "continuous":
 		bullet_ray_cast.stop()
+
+func set_bullet(bullet: PackedScene, modifier: String):
+	self.bullet = bullet
+	self.modifier = modifier
+	Events.emit_signal("player_equipped_change", get_nice_name(), weapon_level, modifier)
+
+func get_modifier() -> String:
+	return self.modifier
+
+func get_nice_name():
+	if weapon_level == 0:
+		return Globals.GUN_INDEX[WEAPON_NAME].nice_name
+	else:
+		return Globals.GUN_INDEX[WEAPON_NAME].nice_name_upgraded

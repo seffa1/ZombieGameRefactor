@@ -6,8 +6,8 @@ extends "res://World/purchasables/purchasable.gd"
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var first_upgrade_cost: int = 5000
-@export var second_upgrade_cost: int = 15000
-@export var third_upgrade_cost: int = 30000
+@export var second_upgrade_cost: int = 2500
+@export var third_upgrade_cost: int = 2500
 
 var is_activated: bool = false  # can the player use the weapon upgrader?
 
@@ -28,9 +28,9 @@ func purchase_item(player: CharacterBody2D) -> void:
 		Events.emit_signal("player_log", "No gun to upgrade")
 		return
 	
-	if player.weapon_manager.get_equipped_gun().weapon_level == 3:
-		Events.emit_signal("player_log", "Weapon is already fully upgraded!")
-		return
+#	if player.weapon_manager.get_equipped_gun().weapon_level == 3:
+#		Events.emit_signal("player_log", "Weapon is already fully upgraded!")
+#		return
 
 	if player.money_component.money < purchasable_cost:
 		Events.emit_signal("player_log", "Not enough money")
@@ -53,8 +53,12 @@ func give_item(player: CharacterBody2D) -> void:
 	# Get required weapon information
 	var weapon = player.weapon_manager.get_equipped_gun()
 	weapon_to_upgrade = weapon.WEAPON_NAME
-	level_upgrading_to = weapon.weapon_level + 1
-	
+	# base=0, first_upgrade=1, second_upgrade=2 (max)
+	if weapon.weapon_level == 2:
+		level_upgrading_to = 2
+	else:
+		level_upgrading_to = weapon.weapon_level + 1
+
 	# Remove gun from player
 	player.weapon_manager.put_gun_in_upgraded()
 	
@@ -127,16 +131,14 @@ func _process(delta):
 		var weapon_object = player.weapon_manager.get_equipped_gun()
 		purchasable_name = Globals.GUN_INDEX[weapon_object.WEAPON_NAME].nice_name
 		match weapon_object.weapon_level:
-			0:  # First upgrade
+			0:  # base level
 				purchasable_cost = first_upgrade_cost
 				interactable_message =  "Upgrade " + purchasable_name + ": " + str(purchasable_cost)
-			1:  # Second upgrade
+			1:  # upgraded once
 				purchasable_cost = second_upgrade_cost
-				interactable_message =  "Upgrade " + purchasable_name + ": " + str(purchasable_cost)
-			2:  # Third Upgrade
-				purchasable_cost = third_upgrade_cost
-				interactable_message =  "Upgrade " + purchasable_name + ": " + str(purchasable_cost)
-			3:
-				interactable_message = purchasable_name + " is fully upgraded!"
+				interactable_message =  "Randomize modifier " + purchasable_name + ": " + str(purchasable_cost)
+			2:  # upgraded once
+				purchasable_cost = second_upgrade_cost
+				interactable_message =  "Randomize modifier " + purchasable_name + ": " + str(purchasable_cost)
 			_:
 				assert(false, "Trying to upgrade a gun to a level that doesn't exist!")

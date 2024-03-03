@@ -46,5 +46,5 @@ func _player_perks_change(perks: Array[String]):
 		perk_container.add_child(texture_rect)
 	
 
-func _on_weapon_manager_player_equipped_change(weapon_name: String, weapon_level: int):
-	equipped.text = weapon_name + " - " + str(weapon_level)
+func _on_weapon_manager_player_equipped_change(weapon_name: String, weapon_level: int, modifier: String):
+	equipped.text = modifier + ' ' + weapon_name if modifier else  weapon_name

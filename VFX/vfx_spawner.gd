@@ -44,15 +44,11 @@ func spawn_items_outwards(rotation_offset: float=0.0):
 	Takes all items in 'objects_to_spawn' and evenly dispearses them out in all directions. 
 		Rotation_offset will change the rotation of the dispersion
 	"""
-	print("SPAWNING OUTWARDS ----- ")
 	var item_rotation = rotation_offset
 	var rotation_delta = deg_to_rad(360) / len(objects_to_spawn)
-	print("DELTA: ")
 	print(rotation_delta)
 
 	for i in range(len(objects_to_spawn)):
-		print('CLUSTER')
-		print(item_rotation)
 		var instance = objects_to_spawn[i].instantiate()
 		instance.global_position = global_position
 		instance.global_rotation = item_rotation

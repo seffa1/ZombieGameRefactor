@@ -57,6 +57,8 @@ func add_weapon(weapon_name: String):
 	"""
 	Called by the weapon buy on the purchase of a weapon.
 	"""
+	print('Added weapon')
+	print(weapon_name)
 	assert(Globals.GUN_INDEX.keys().find(weapon_name) != -1, "You are adding a weapon name that isnt in the global GUN_INDEX list.")
 	
 	# The weapon buys check if we already have the same weapon before it gives it to the player.
@@ -122,7 +124,7 @@ func add_weapon_object(weapon_object):
 
 	# Info the HUD
 	Events.emit_signal("player_weapons_change", weapon_names)
-	Events.emit_signal("player_equipped_change", weapon_object.WEAPON_NAME, weapon_object.weapon_level)
+	Events.emit_signal("player_equipped_change", weapon_object.get_nice_name(), weapon_object.weapon_level, weapon_object.get_modifier())
 
 func put_gun_in_upgraded():
 	"""
@@ -152,6 +154,7 @@ func _set_equipped_gun(weapon_index: int):
 	Updates the current weapon index which determines which gun name / gun object is 
 	retrieved from the weapon names and weapon object arrays from the other methods.
 	"""
+	
 	# disable any components from the gun we are un-equipping
 	if has_a_gun():
 		get_equipped_gun().toggle_crosshairs(false)
@@ -167,7 +170,7 @@ func _set_equipped_gun(weapon_index: int):
 	get_equipped_gun().set_modifiers(modifiers)
 
 	# Inform the UI
-	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index], get_equipped_gun().weapon_level)
+	Events.emit_signal("player_equipped_change", get_equipped_gun().get_nice_name(), get_equipped_gun().weapon_level, get_equipped_gun().get_modifier())
 	Events.emit_signal("player_equipped_clip_count_change", get_equipped_gun().bullets_in_clip)
 	Events.emit_signal("player_equipped_reserve_count_change", get_equipped_gun().bullet_reserve)
 
@@ -183,6 +186,8 @@ func _create_weapon(weapon_name: String):
 
 	# Add it to the tree and store a reference
 	add_child(weapon_object)
+	print('crewating weapon')
+	print(weapon_object)
 	weapon_objects.append(weapon_object)
 
 func has_a_gun() -> bool:
@@ -223,6 +228,9 @@ func number_of_guns():
 
 func get_equipped_gun():
 	assert(has_a_gun(), "You tried to get equipped a gun when you dont have any.")
+	print('Getting gun')
+	print(weapon_objects)
+	print(current_weapon_index)
 	return weapon_objects[current_weapon_index]
 
 func get_equipped_gun_name():

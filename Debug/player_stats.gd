@@ -90,8 +90,8 @@ func _on_weapon_manager_player_weapons_change(weapons: Array[String]):
 		weapons_text += weapon + ", "
 	player_weapons.text = weapons_text
 
-func _on_weapon_manager_player_equipped_change(weapon_name: String, weapon_level: int):
-	equipped.text = weapon_name + " - " + str(weapon_level)
+func _on_weapon_manager_player_equipped_change(weapon_name: String, weapon_level: int, modifier: String):
+	equipped.text = weapon_name + " - " + str(weapon_level) + " - " + modifier
 
 func _player_health_change(health: int):
 	health_label.text = str(health)
