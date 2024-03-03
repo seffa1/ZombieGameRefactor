@@ -161,6 +161,14 @@ const EQUIPMENT_INDEX = {
 		"charge_audio": preload("res://World/throwables/sounds/ESM_GW_explosion_one_shot_grenade_remove_safety_bomb_safety_hold_grenade_1.wav"),
 		"throw_audio": preload("res://World/throwables/sounds/throw_woosh.wav"),
 		"hit_ground_audio": preload("res://World/throwables/sounds/grenade_land.wav")
+	},
+	"CLUSTER_BOMB": {
+		"nice name": "Cluster Bomb",
+		"scene": preload("res://World/throwables/ClusterBomb.tscn"),
+		"sprite": preload("res://World/throwables/images/grenade2-small2.png"),
+		"charge_audio": preload("res://World/throwables/sounds/ESM_GW_explosion_one_shot_grenade_remove_safety_bomb_safety_hold_grenade_1.wav"),
+		"throw_audio": preload("res://World/throwables/sounds/throw_woosh.wav"),
+		"hit_ground_audio": preload("res://World/throwables/sounds/grenade_land.wav")
 	}
 }
 

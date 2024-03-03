@@ -955,6 +955,7 @@ souls_needed_to_charge = 3.0
 position = Vector2(520, -230)
 rotation = -1.57079
 starting_gun = "CLUSTER_CANNON"
+starting_equipment = "CLUSTER_BOMB"
 starting_money = 100000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
