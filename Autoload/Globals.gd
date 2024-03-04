@@ -18,6 +18,7 @@ var is_power_on: bool = false
 const GUN_INDEX = {
 	"DEV_CANON": {
 		"nice_name": "Dev Canon",
+		"nice_name_upgraded": "Master Blaster",
 		"idle_animation": "idle_riffle",
 		"shoot_animation": "shoot_riffle",
 		"reload_animation": "reload_riffle",
@@ -33,6 +34,7 @@ const GUN_INDEX = {
 	},
 	"PISTOL_01": {
 		"nice_name": "Dev Pistol",
+		"nice_name_upgraded": "Stinger",
 		"idle_animation": "idle_pistol",
 		"shoot_animation": "shoot_pistol",
 		"reload_animation": "reload_pistol",
@@ -48,6 +50,7 @@ const GUN_INDEX = {
 	},
 	"SPAS": {
 		"nice_name": "Spas 12",
+		"nice_name_upgraded": "Spark Daddy",
 		"idle_animation": "idle_riffle",
 		"shoot_animation": "shoot_riffle",
 		"reload_animation": "reload_riffle",
@@ -63,6 +66,7 @@ const GUN_INDEX = {
 	},
 	"AUTO_SHOTGUN": {
 		"nice_name": "Auto Shotgun",
+		"nice_name_upgraded": "Blast Zone",
 		"idle_animation": "idle_riffle",
 		"shoot_animation": "shoot_riffle",
 		"reload_animation": "reload_riffle",
@@ -78,6 +82,7 @@ const GUN_INDEX = {
 	},
 	"50_CAL": {
 		"nice_name": ".50 Cal",
+		"nice_name_upgraded": "Executioner",
 		"idle_animation": "idle_riffle",
 		"shoot_animation": "shoot_riffle",
 		"reload_animation": "reload_riffle",
@@ -93,6 +98,7 @@ const GUN_INDEX = {
 	},
 	"MP7": {
 		"nice_name": "MP-7",
+		"nice_name_upgraded": "Ripper",
 		"idle_animation": "idle_riffle",
 		"shoot_animation": "shoot_riffle",
 		"reload_animation": "reload_riffle",
@@ -108,6 +114,7 @@ const GUN_INDEX = {
 	},
 	"FULGURIZER": {
 		"nice_name": "Fulgurizer",
+		"nice_name_upgraded": "Thunder Clap",
 		"idle_animation": "idle_riffle",
 		"shoot_animation": "shoot_riffle",
 		"reload_animation": "reload_riffle",
@@ -123,6 +130,7 @@ const GUN_INDEX = {
 	},
 	"FLAMETHROWER": {
 		"nice_name": "Flame Thrower",
+		"nice_name_upgraded": "Fiery Confluence",
 		"idle_animation": "idle_flamethrower",
 		"shoot_animation": "shoot_flamethrower",
 		"reload_animation": "reload_flamethrower",
@@ -138,6 +146,7 @@ const GUN_INDEX = {
 	},
 	"CLUSTER_CANNON": {
 		"nice_name": "Cluster Cannon",
+		"nice_name_upgraded": "Shatterstorm",
 		"idle_animation": "idle_flamethrower",
 		"shoot_animation": "shoot_flamethrower",
 		"reload_animation": "reload_flamethrower",
