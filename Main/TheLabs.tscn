@@ -5782,6 +5782,8 @@ is_starting_location = true
 [node name="WeaponUpgrader" parent="GameWorld/PurchasablesContainer/PackAPunch" instance=ExtResource("16_5ho7j")]
 position = Vector2(3118, -430)
 rotation = 3.14159
+second_upgrade_cost = 2500
+third_upgrade_cost = 2500
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="GameWorld/PurchasablesContainer/PackAPunch/WeaponUpgrader"]
 occluder = SubResource("OccluderPolygon2D_ojqkp")
