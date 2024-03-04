@@ -272,3 +272,8 @@ func release_trigger():
 	trigger_held = false
 	if fire_type == "continuous":
 		bullet_ray_cast.stop()
+
+## THIS CAUSES PARSE EXT RESOURCE BUG
+#func get_nice_name():
+#	print('Getting nice name')
+#	var thing = Globals.GUN_INDEX
