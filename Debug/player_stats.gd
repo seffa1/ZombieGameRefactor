@@ -90,8 +90,13 @@ func _on_weapon_manager_player_weapons_change(weapons: Array[String]):
 		weapons_text += weapon + ", "
 	player_weapons.text = weapons_text
 
-func _on_weapon_manager_player_equipped_change(weapon_name: String, weapon_level: int):
-	equipped.text = weapon_name + " - " + str(weapon_level)
+func _on_weapon_manager_player_equipped_change(WEAPON_NAME: String, weapon_level: int, bullet_modifier: String):
+	# No wepaon
+	if WEAPON_NAME == 'n/a':
+		equipped.text = ''
+	else:
+		var name = Globals.GUN_INDEX[WEAPON_NAME].nice_name if weapon_level == 0 else Globals.GUN_INDEX[WEAPON_NAME].nice_name_upgraded
+		equipped.text = bullet_modifier + ' ' + name
 
 func _player_health_change(health: int):
 	health_label.text = str(health)
