@@ -48,7 +48,11 @@ func give_item(player: CharacterBody2D):
 	if weapon_level == 2:
 		var bullet_type = bullet_types.pick_random()
 		weapon_object.bullet = bullet_modifier_map[bullet_type]
-	
+		weapon_object.bullet_modifier = bullet_type
+
+	print('emitting signal')
+	print(weapon_object.bullet_modifier)
+	Events.emit_signal("player_equipped_change", weapon_object.WEAPON_NAME, weapon_object.weapon_level, weapon_object.bullet_modifier)
 	# Let the mystery box know the weapons been picked up
 	emit_signal("mystery_box_weapon_picked_up")
 	

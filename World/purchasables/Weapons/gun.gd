@@ -45,6 +45,7 @@ may end up as a part of the animation tree.
 
 var starting_bullet_damage: float
 var trigger_held: bool = false # used by continuously firing guns
+var bullet_modifier: String = ''  # set by weapon upgrader pickup, used in the UI
 
 # Variables
 var bullets_in_clip: int:
@@ -235,7 +236,7 @@ func set_gun_level(weapon_level: int) -> void:
 	
 	audio.level_up(weapon_level)
 	self.weapon_level = weapon_level
-	Events.emit_signal("player_equipped_change", WEAPON_NAME, weapon_level)
+	Events.emit_signal("player_equipped_change", WEAPON_NAME, weapon_level, bullet_modifier)
 
 func can_shoot() -> bool:
 	"""

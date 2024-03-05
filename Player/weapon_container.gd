@@ -122,7 +122,7 @@ func add_weapon_object(weapon_object):
 
 	# Info the HUD
 	Events.emit_signal("player_weapons_change", weapon_names)
-	Events.emit_signal("player_equipped_change", weapon_object.WEAPON_NAME, weapon_object.weapon_level)
+	#Events.emit_signal("player_equipped_change", weapon_object.WEAPON_NAME, weapon_object.weapon_level, weapon_object.bullet_modifier)
 
 func put_gun_in_upgraded():
 	"""
@@ -167,7 +167,7 @@ func _set_equipped_gun(weapon_index: int):
 	get_equipped_gun().set_modifiers(modifiers)
 
 	# Inform the UI
-	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index], get_equipped_gun().weapon_level)
+	Events.emit_signal("player_equipped_change", weapon_names[current_weapon_index], get_equipped_gun().weapon_level, get_equipped_gun().bullet_modifier)
 	Events.emit_signal("player_equipped_clip_count_change", get_equipped_gun().bullets_in_clip)
 	Events.emit_signal("player_equipped_reserve_count_change", get_equipped_gun().bullet_reserve)
 
