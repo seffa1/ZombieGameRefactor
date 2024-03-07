@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1jxmenjf7skw"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_fweav"]
+[ext_resource type="Script" path="res://World/purchasables/Weapons/weapon_buy.gd" id="2_ltlhm"]
+[ext_resource type="Texture2D" uid="uid://bqqdovbqatmsk" path="res://World/purchasables/Weapons/LMGs/LSAT/images/weapons_pack_0012_machine-gun_1.png" id="3_5kodb"]
+[ext_resource type="AudioStream" uid="uid://cjro8ragyyvts" path="res://World/purchasables/Weapons/shared/audio/CashRegisterOpen_SFXB.2496.wav" id="3_ek0th"]
+
+[node name="WeaponBuy_LSAT" instance=ExtResource("1_fweav")]
+script = ExtResource("2_ltlhm")
+weapon_name = "LSAT"
+weapon_cost = 10
+ammo_cost_level_1 = 500
+ammo_cost_level_2 = 4500
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = 1.57079
+scale = Vector2(0.672486, 0.672486)
+texture = ExtResource("3_5kodb")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("3_ek0th")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://tlaadjebs7pl"]
+
+[ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_hr7iu"]
+[ext_resource type="PackedScene" uid="uid://cn7t7mkilellv" path="res://World/purchasables/Weapons/components/Bullets/Bullet.tscn" id="2_35s6s"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_tw0w0"]
+[ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="3_pn34g"]
+[ext_resource type="AudioStream" uid="uid://dyv6sgqgfpeow" path="res://World/purchasables/Weapons/Shotguns/Spas/audio/ESM_Shotgun_Chamber_Shell_6_Sound_FX_Military_Ammo.wav" id="3_qmvs5"]
+[ext_resource type="AudioStream" uid="uid://6xe3qvfubw7a" path="res://World/purchasables/Weapons/Shotguns/Spas/audio/ESM_Shotgun_Pump_22_Sound_FX_Military_Cock.wav" id="4_u062c"]
+[ext_resource type="AudioStream" uid="uid://bmneacfwjrano" path="res://World/purchasables/Weapons/shared/unusedAudio/GunshotMachineGun_BW.56658.wav" id="5_neyqv"]
+[ext_resource type="PackedScene" uid="uid://3som05calmsq" path="res://VFX/magazines/MagazineRiffle.tscn" id="8_fbter"]
+
+[node name="Weapon_LSAT" instance=ExtResource("1_hr7iu")]
+WEAPON_NAME = "LSAT"
+fire_type = "automatic"
+bullet = ExtResource("2_35s6s")
+bullet_speed = 2500
+bullet_damage = 150.0
+clip_size = 100
+reload_speed = 5.0
+penetrations = 4
+shell_ejection_type = "on_fire"
+
+[node name="Reticle" parent="." index="2"]
+recoil_per_shot = 20.0
+gun_recoil_max = 150.0
+
+[node name="GunAudio" parent="." index="4"]
+audio_reload_start = ExtResource("3_qmvs5")
+audio_reload_finished = ExtResource("4_u062c")
+audio_shoot_gun_shot = ExtResource("5_neyqv")
+audio_shoot_gun_shot_level_up = ExtResource("5_neyqv")
+
+[node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
+position = Vector2(121, 7)
+
+[node name="VFXSpawnerBulletShells" parent="." index="6" instance=ExtResource("2_tw0w0")]
+position = Vector2(56, 11)
+object_to_spawn = ExtResource("3_pn34g")
+
+[node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("2_tw0w0")]
+object_to_spawn = ExtResource("8_fbter")

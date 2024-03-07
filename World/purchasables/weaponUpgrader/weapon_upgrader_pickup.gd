@@ -9,9 +9,9 @@ The pack a punch also uses this in a similar way but sets the weapon level
 @onready var bullet_types = ['fiery', 'frosty', 'explosive']
 
 @onready var bullet_modifier_map = {
-	'fiery': preload("res://World/purchasables/Weapons/components/Bullets/BulletExplosive.tscn"),
+	'explosive': preload("res://World/purchasables/Weapons/components/Bullets/BulletExplosive.tscn"),
 	'frosty': preload("res://World/purchasables/Weapons/components/Bullets/BulletFrost.tscn"),
-	'explosive': preload("res://World/purchasables/Weapons/components/Bullets/Bullet_Fire.tscn")
+	'fiery': preload("res://World/purchasables/Weapons/components/Bullets/Bullet_Fire.tscn")
 }
 
 

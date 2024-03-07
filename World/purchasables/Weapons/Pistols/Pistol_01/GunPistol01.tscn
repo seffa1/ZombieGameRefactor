@@ -20,6 +20,7 @@ bullet_knockback = 0.0
 fire_rate = 0.05
 clip_size = 12
 max_bullet_reserve = 72
+penetrations = 2
 
 [node name="Reticle" parent="." index="2"]
 recoil_per_shot = 15.0

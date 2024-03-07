@@ -22,6 +22,7 @@ bullet_knockback = 30.0
 fire_rate = 0.3
 clip_size = 20
 max_bullet_reserve = 100
+penetrations = 1
 
 [node name="GunAudio" parent="." index="4"]
 audio_reload_start = ExtResource("3_rn2c8")

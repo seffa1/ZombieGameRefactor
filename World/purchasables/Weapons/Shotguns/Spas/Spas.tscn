@@ -21,7 +21,7 @@ bullet_damage = 150.0
 clip_size = 16
 max_bullet_reserve = 64
 reload_speed = 1.0
-shell_ejection_type = 1
+penetrations = 2
 magazine_ejection_type = 1
 
 [node name="Reticle" parent="." index="2"]
