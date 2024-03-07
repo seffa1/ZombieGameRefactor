@@ -1,6 +1,6 @@
 extends RayCast2D
 
-@onready var particles: GPUParticles2D = %FlamethrowerParticles
+@export var particles: GPUParticles2D
 @onready var fire_hitbox_collision: CollisionShape2D = %CollisionShape2D
 @onready var flame_sounds: AudioStreamPlayer2D = %FlameSound
 @onready var animation_player: AnimationPlayer = %AnimationPlayer

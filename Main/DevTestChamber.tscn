@@ -980,6 +980,7 @@ souls_needed_to_charge = 3.0
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(124, 154)
 rotation = -1.57079
+starting_gun = "FLAMETHROWER_UPGRADED"
 starting_equipment = "CLUSTER_BOMB"
 starting_money = 100000
 

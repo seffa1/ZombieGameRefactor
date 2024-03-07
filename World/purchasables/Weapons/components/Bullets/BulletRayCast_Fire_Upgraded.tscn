@@ -1,14 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv6a8nygfru46"]
+[gd_scene load_steps=10 format=3 uid="uid://bh62luqmdo7et"]
 
-[ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/bullet_raycast_Fire.gd" id="1_loncq"]
-[ext_resource type="AudioStream" uid="uid://d1fmcwacngp47" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_loop.wav" id="2_7epve"]
-[ext_resource type="PackedScene" uid="uid://bc8y7w3y6it21" path="res://VFX/fire/Flamethrower_Particles.tscn" id="2_q5hhv"]
-[ext_resource type="AudioStream" uid="uid://p3fqwdra5d4n" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_start.wav" id="4_5k3uk"]
-[ext_resource type="AudioStream" uid="uid://hc0ey4ci1u6v" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_stop.wav" id="5_tha18"]
+[ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/bullet_raycast_Fire.gd" id="1_ccu2r"]
+[ext_resource type="PackedScene" uid="uid://ddf4fjnit61m8" path="res://VFX/fire/Flamethrower_Particles_Upgraded_V2.tscn" id="2_wok16"]
+[ext_resource type="AudioStream" uid="uid://d1fmcwacngp47" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_loop.wav" id="3_0lkoc"]
+[ext_resource type="AudioStream" uid="uid://p3fqwdra5d4n" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_start.wav" id="4_51yd4"]
+[ext_resource type="AudioStream" uid="uid://hc0ey4ci1u6v" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_stop.wav" id="5_rpm2h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_farod"]
-radius = 53.0
-height = 402.0
+radius = 90.0
+height = 728.0
 
 [sub_resource type="Animation" id="Animation_d0xu2"]
 resource_name = "shoot"
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0150782,
-"stream": ExtResource("4_5k3uk")
+"stream": ExtResource("4_51yd4")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -56,7 +56,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_tha18")
+"stream": ExtResource("5_rpm2h")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -68,16 +68,13 @@ _data = {
 "stop": SubResource("Animation_5gn26")
 }
 
-[node name="BulletRayCast_Fire" type="RayCast2D" node_paths=PackedStringArray("particles")]
-script = ExtResource("1_loncq")
-particles = NodePath("FlamethrowerParticles")
+[node name="BulletRayCast_Fire_Upgraded" type="RayCast2D" node_paths=PackedStringArray("particles")]
+script = ExtResource("1_ccu2r")
+particles = NodePath("FlamethrowerParticles_Upgrade_V2")
 
-[node name="FlamethrowerParticles" parent="." instance=ExtResource("2_q5hhv")]
-unique_name_in_owner = true
+[node name="FlamethrowerParticles_Upgrade_V2" parent="." instance=ExtResource("2_wok16")]
+material = null
 emitting = false
-lifetime = 1.0
-interpolate = false
-fract_delta = false
 
 [node name="Fire" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -86,7 +83,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fire"]
 unique_name_in_owner = true
-position = Vector2(201, 0)
+position = Vector2(366, -10)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_farod")
 disabled = true
@@ -94,7 +91,7 @@ debug_color = Color(0.729412, 0.105882, 0.137255, 0.419608)
 
 [node name="FlameSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("2_7epve")
+stream = ExtResource("3_0lkoc")
 volume_db = -15.617
 bus = &"GameAudio"
 

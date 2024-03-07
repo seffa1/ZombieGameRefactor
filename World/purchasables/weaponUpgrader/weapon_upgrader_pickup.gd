@@ -29,29 +29,45 @@ func give_item(player: CharacterBody2D):
 	assert(weapon_level > 0, "You didnt set the weapon level, cant upgrade to level 0!")
 	assert(Globals.GUN_INDEX.keys().find(weapon_name) != -1, "You are creating a weapon name that isnt in the global GUN_INDEX list.")
 	
-	# Create the weapon
-	var weapon_object = Globals.GUN_INDEX[weapon_name].scene.instantiate()
+	var weapon_object
 	
-	# Check if player already has this weapon and remove it 
-	# (cause they put the gun in the upgrader, then bought it, and then picked it up from the upgrader)
-	if player.weapon_manager.has_gun(weapon_name):
-		player.weapon_manager.remove_gun(weapon_name)
+	# For special weapons, we get an entire new weapon object instead of trying to modify the original
+	if weapon_name == 'FLAMETHROWER':
+		weapon_object = Globals.GUN_INDEX['FLAMETHROWER_UPGRADED'].scene.instantiate()
+		
+		# Check if player already has this weapon and remove it 
+		# (cause they put the gun in the upgrader, then bought it, and then picked it up from the upgrader)
+		if player.weapon_manager.has_gun(weapon_name):
+			player.weapon_manager.remove_gun(weapon_name)
+			
+		# Give the player the weapon
+		player.weapon_manager.add_weapon_object(weapon_object)
+		Events.emit_signal("player_log", "Picked up " + purchasable_name)
+	else:
+		# Create the weapon
+		weapon_object = Globals.GUN_INDEX[weapon_name].scene.instantiate()
+	
+		# Check if player already has this weapon and remove it 
+		# (cause they put the gun in the upgrader, then bought it, and then picked it up from the upgrader)
+		if player.weapon_manager.has_gun(weapon_name):
+			player.weapon_manager.remove_gun(weapon_name)
 
-	# Give the player the weapon
-	player.weapon_manager.add_weapon_object(weapon_object)
-	Events.emit_signal("player_log", "Picked up " + purchasable_name)
-	
-	# Set the guns level
-	weapon_object.set_gun_level(weapon_level)
-	
-	# Sets the gun's bullet
-	if weapon_level == 2:
-		var bullet_type = bullet_types.pick_random()
-		weapon_object.bullet = bullet_modifier_map[bullet_type]
-		weapon_object.bullet_modifier = bullet_type
+		# Give the player the weapon
+		player.weapon_manager.add_weapon_object(weapon_object)
+		Events.emit_signal("player_log", "Picked up " + purchasable_name)
+		
+		# Set the guns level
+		weapon_object.set_gun_level(weapon_level)
+		
+		# Sets the gun's bullet
+		if weapon_level == 2:
+			var bullet_type = bullet_types.pick_random()
+			weapon_object.bullet = bullet_modifier_map[bullet_type]
+			weapon_object.bullet_modifier = bullet_type
+		
+		# Sets the gun's penetration
+		weapon_object.penetrations = weapon_object.penetrations + 2
 
-	print('emitting signal')
-	print(weapon_object.bullet_modifier)
 	Events.emit_signal("player_equipped_change", weapon_object.WEAPON_NAME, weapon_object.weapon_level, weapon_object.bullet_modifier)
 	# Let the mystery box know the weapons been picked up
 	emit_signal("mystery_box_weapon_picked_up")

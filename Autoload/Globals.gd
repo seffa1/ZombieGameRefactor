@@ -160,6 +160,22 @@ const GUN_INDEX = {
 		"lower_weapon_animation": "lower_weapon_flamethrower",
 		"scene": preload("res://World/purchasables/Weapons/Specials/Flamethrower/WeaponFlamethrower.tscn")
 	},
+	"FLAMETHROWER_UPGRADED": {
+		"nice_name": "Fiery Confluence",
+		"nice_name_upgraded": "Fiery Confluence",
+		"idle_animation": "idle_flamethrower",
+		"shoot_animation": "shoot_flamethrower",
+		"reload_animation": "reload_flamethrower",
+		"switch_from_animation": "switch_from_flamethrower",
+		"switch_to_animation": "switch_to_flamethrower",
+		"buy_weapon_from_animation": "buy_weapon_from_flamethrower",
+		"buy_weapon_to_animation": "buy_weapon_to_flamethrower",
+		"sprint_animation": "sprint_flamethrower",
+		"sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man_smaller_2.png"),
+		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png"),
+		"lower_weapon_animation": "lower_weapon_flamethrower",
+		"scene": preload("res://World/purchasables/Weapons/Specials/Flamethrower/WeaponFlamethrower_Upgraded.tscn")
+	},
 	"CLUSTER_CANNON": {
 		"nice_name": "Cluster Cannon",
 		"nice_name_upgraded": "Shatterstorm",
