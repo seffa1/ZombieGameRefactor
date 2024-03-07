@@ -87,7 +87,7 @@ func spawn_max_ammo():
 
 func get_zombie_count(wave_number):
 	if wave_spawn_type == 'test_chamber':
-		return 10
+		return 100
 	var multiplyer
 	if wave_number < 5:
 		multiplyer = 0.2 * wave_number

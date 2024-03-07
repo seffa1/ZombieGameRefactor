@@ -1,6 +1,7 @@
 extends Node
 
 @export_group('Configuration')
+@export var disable: bool = false
 @export var state_machine: Node
 @export var states_to_check: Array[Node]
 @export var time_until_despawn: float = 5.0
@@ -22,7 +23,7 @@ func _on_state_changed(statestack):
 		check_despawn = false
 
 func _process(delta):
-	if !check_despawn:
+	if !check_despawn or disable:
 		return
 
 	# Track the distance we travel to make sure we arent getting stuck

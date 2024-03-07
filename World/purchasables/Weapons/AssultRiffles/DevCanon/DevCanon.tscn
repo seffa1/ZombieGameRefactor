@@ -19,6 +19,7 @@ bullet_damage = 70.0
 bullet_knockback = 10.0
 fire_rate = 0.1
 clip_size = 100
+penetrations = 1
 
 [node name="LowerWeaponRayCast" parent="." index="3"]
 target_position = Vector2(0, 110)

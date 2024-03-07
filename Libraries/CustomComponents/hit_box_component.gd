@@ -29,7 +29,7 @@ func _ready():
 func _on_area_entered(_area):
 	# Track bullet
 	Events.emit_signal("bullet_hit", get_rid(), random_id)
-	emit_signal("enemy_hit")
+	emit_signal("enemy_hit", _area)
 
 func get_collision_shape() -> CollisionShape2D:  
 	var shape = get_child(0)

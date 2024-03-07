@@ -39,7 +39,8 @@ may end up as a part of the animation tree.
 @export var clip_size: int = 25
 @export var max_bullet_reserve: int = 500  # total bullets the gun can hold, other than the current clip
 @export var reload_speed: float = 2.0  # reload animation should be dynamic for 'speed-cola' effects
-@export var has_penetrating_shots: bool = false
+## If 0, the bullet is destroyed on hit of any HITBOX. It larger, is destroyed after hitting that amount of unique ENEMIES.
+@export_range(0, 10) var penetrations: int = 0
 @export_enum("on_fire", "on_reload", "no_shell") var shell_ejection_type: String
 @export_enum("on_reload", "no_magazine") var magazine_ejection_type: int
 
@@ -186,7 +187,7 @@ func shoot() -> void:
 		if bullet_type == "projectile":
 			var bullet_instance = bullet.instantiate()
 			ObjectRegistry.register_projectile(bullet_instance)
-			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
+			bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, penetrations)
 			bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 		elif bullet_type == "ray_cast":
 			if fire_type == "continuous":
@@ -213,7 +214,7 @@ func shoot() -> void:
 				
 				var bullet_instance = bullet.instantiate()
 				ObjectRegistry.register_projectile(bullet_instance)
-				bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, has_penetrating_shots)
+				bullet_instance.init(bullet_damage, shooter, bullet_knockback, weapon_level, random_bullet_id, penetrations)
 				bullet_instance.start(spawn_position, bullet_direction, bullet_speed)
 				
 				rotation_direction *= -1

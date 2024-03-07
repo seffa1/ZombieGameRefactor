@@ -32,6 +32,7 @@ func _on_area_entered(area: Area2D):
 	from bullets, explosions, or anything else we can take damage from.
 	
 	"""
+
 	if one_shot_mode:
 		health_component.health = 0
 	else:

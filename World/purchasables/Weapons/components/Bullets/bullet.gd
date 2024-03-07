@@ -16,7 +16,7 @@ const _IMPACT_SAMPLES = [
 @onready var life_span: Timer = $Lifespan
 
 @export_category('Bullet Configs')
-@export var is_penetrating_shot: bool = false
+@export var penetrations: int = 0
 @export var is_explosive: bool = false
 @export var explosion_scene: PackedScene
 @export var smoke_trail_scene: PackedScene
@@ -25,16 +25,18 @@ const _IMPACT_SAMPLES = [
 var _smoke_trail
 var _weapon_level: int
 var _bullet_knockback: float
+var _enemies_hit: int = 0
+var _RIDs_struct: Array = []
 
 func _ready():
 	hit_box_component.enemy_hit.connect(_handle_enemy_hit)
 
 # Parameters passed in by the gun instantiating it
-func init(bullet_damage: int, bullet_shooter: CharacterBody2D, bullet_knockback: float, weapon_level: int, random_id: int, is_penetrating_shot: bool=false):
+func init(bullet_damage: int, bullet_shooter: CharacterBody2D, bullet_knockback: float, weapon_level: int, random_id: int, penetrations: int):
 	hit_box_component.damage = bullet_damage
 	hit_box_component.shooter = bullet_shooter
 	hit_box_component.random_id = random_id
-	is_penetrating_shot = is_penetrating_shot
+	self.penetrations = penetrations
 	self._weapon_level = weapon_level
 	self._bullet_knockback = bullet_knockback
 
@@ -67,15 +69,26 @@ func _physics_process(delta: float) -> void:
 		ObjectRegistry.register_effect(smoke_puff)
 		queue_free()
 
-func _handle_enemy_hit():
+func _new_enemy_struct(RID: RID):
+	return _RIDs_struct.find(RID) == -1
+
+func _handle_enemy_hit(_enemy_hurt_box: Area2D):
 	if is_explosive:
 		_create_explosion()
 	
-	# prevents the bullet from being destroyed by enemy hits
-	if is_penetrating_shot:
-		return
-		
-	queue_free()
+	if penetrations == 0:
+		queue_free()
+	
+	# Destroy bullet when the penetrations limit is reached
+	if _enemies_hit > penetrations:
+		queue_free()
+
+	# Track unique enemy hits ( instead of unique hurtbox hits )
+	var enemyRID = _enemy_hurt_box.owner.get_rid()
+
+	if _new_enemy_struct(enemyRID):
+		_RIDs_struct.append(enemyRID)
+		_enemies_hit += 1
 
 func _create_explosion():
 	# Create the explosion

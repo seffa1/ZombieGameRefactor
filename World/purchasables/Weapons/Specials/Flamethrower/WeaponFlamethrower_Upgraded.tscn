@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlbblon3rvuja"]
+
+[ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_7hcjy"]
+[ext_resource type="PackedScene" uid="uid://bh62luqmdo7et" path="res://World/purchasables/Weapons/components/Bullets/BulletRayCast_Fire_Upgraded.tscn" id="2_opmdg"]
+[ext_resource type="AudioStream" uid="uid://bb0cylhdatdhq" path="res://UnusedSounds/oneShots/mechanisms/ESM_FVESK_fx_foley_repair_work_shop_unlock_mechanism_varied_shuffle_latch_lift_05.wav" id="3_hqiiy"]
+[ext_resource type="AudioStream" uid="uid://dr6k57sg8a80l" path="res://World/purchasables/Weapons/shared/unusedAudio/ESM_Shotgun_Chamber_Shell_8_Sound_FX_Military_Ammo.wav" id="4_y3w7w"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="5_8e1px"]
+[ext_resource type="PackedScene" uid="uid://jollhgu5723e" path="res://VFX/bulletShells/BulletShell_FlameThrower.tscn" id="6_cuueo"]
+
+[node name="Flamethrower_Upgraded" node_paths=PackedStringArray("bullet_ray_cast") instance=ExtResource("1_7hcjy")]
+WEAPON_NAME = "FLAMETHROWER_UPGRADED"
+fire_type = "continuous"
+bullet_type = "ray_cast"
+bullet_ray_cast = NodePath("BulletRayCast_Fire_Upgraded")
+clip_size = 100
+shell_ejection_type = "no_shell"
+
+[node name="BulletRayCast_Fire_Upgraded" parent="." index="0" instance=ExtResource("2_opmdg")]
+position = Vector2(145, 28)
+
+[node name="GunAudio" parent="." index="5"]
+audio_reload_start = ExtResource("3_hqiiy")
+audio_reload_finished = ExtResource("4_y3w7w")
+
+[node name="MuzzlePosition" type="Marker2D" parent="." index="6"]
+position = Vector2(145, 27)
+
+[node name="VFXSpawnerBulletShells" parent="." index="7" instance=ExtResource("5_8e1px")]
+position = Vector2(56, 11)
+object_to_spawn = ExtResource("6_cuueo")
+
+[node name="VFXSpawnerMagazines" parent="." index="8" instance=ExtResource("5_8e1px")]
+object_to_spawn = ExtResource("6_cuueo")

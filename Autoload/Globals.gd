@@ -32,6 +32,22 @@ const GUN_INDEX = {
 		"lower_weapon_animation": "lower_weapon_riffle",
 		"scene": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/DevCanon.tscn")
 	},
+	"LSAT": {
+		"nice_name": "L-SAT",
+		"nice_name_upgraded": "Penatrator",
+		"idle_animation": "idle_riffle",
+		"shoot_animation": "shoot_riffle",
+		"reload_animation": "reload_riffle",
+		"switch_from_animation": "switch_from_riffle",
+		"switch_to_animation": "switch_to_riffle",
+		"buy_weapon_from_animation": "buy_weapon_from_riffle",
+		"buy_weapon_to_animation": "buy_weapon_to_riffle",
+		"sprint_animation": "sprint_riffle",
+		"sprite": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/rifle.png"),
+		"pickup_sprite": preload("res://World/purchasables/Weapons/AssultRiffles/DevCanon/images/riffle_buy.png"),
+		"lower_weapon_animation": "lower_weapon_riffle",
+		"scene": preload("res://World/purchasables/Weapons/LMGs/WeaponLSAT.tscn")
+	},
 	"PISTOL_01": {
 		"nice_name": "Dev Pistol",
 		"nice_name_upgraded": "Stinger",
@@ -144,6 +160,22 @@ const GUN_INDEX = {
 		"lower_weapon_animation": "lower_weapon_flamethrower",
 		"scene": preload("res://World/purchasables/Weapons/Specials/Flamethrower/WeaponFlamethrower.tscn")
 	},
+	"FLAMETHROWER_UPGRADED": {
+		"nice_name": "Fiery Confluence",
+		"nice_name_upgraded": "Fiery Confluence",
+		"idle_animation": "idle_flamethrower",
+		"shoot_animation": "shoot_flamethrower",
+		"reload_animation": "reload_flamethrower",
+		"switch_from_animation": "switch_from_flamethrower",
+		"switch_to_animation": "switch_to_flamethrower",
+		"buy_weapon_from_animation": "buy_weapon_from_flamethrower",
+		"buy_weapon_to_animation": "buy_weapon_to_flamethrower",
+		"sprint_animation": "sprint_flamethrower",
+		"sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man_smaller_2.png"),
+		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png"),
+		"lower_weapon_animation": "lower_weapon_flamethrower",
+		"scene": preload("res://World/purchasables/Weapons/Specials/Flamethrower/WeaponFlamethrower_Upgraded.tscn")
+	},
 	"CLUSTER_CANNON": {
 		"nice_name": "Cluster Cannon",
 		"nice_name_upgraded": "Shatterstorm",
@@ -191,7 +223,8 @@ const mystery_box_spawn_weights = [
 		["50_CAL", 0.5],
 		["FULGURIZER", 1.0],
 		["FLAMETHROWER", 1.0],
-		["CLUSTER_CANNON", 1.0]
+		["CLUSTER_CANNON", 1.0],
+		["LSAT", 1.0]
 	]
 
 # Stores all the information for all perks (should maybe turn this into resources?)

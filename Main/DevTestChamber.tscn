@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=71 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://bkuljfmjacjpe" path="res://World/purchasables/Weapons/Specials/ClusterCannon/WeaponBuy_ClusterCannon.tscn" id="26_dhwu2"]
 [ext_resource type="PackedScene" uid="uid://ciapy12l0w3w2" path="res://Libraries/CustomComponents/CameraComponent.tscn" id="26_ii3jy"]
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_4bpo3"]
+[ext_resource type="PackedScene" uid="uid://b1jxmenjf7skw" path="res://World/purchasables/Weapons/LMGs/WeaponBuy_LSAT.tscn" id="27_wfbrc"]
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_b2va5"]
 [ext_resource type="PackedScene" uid="uid://hkwukd3bresb" path="res://World/objectives/VesselCharge/VesselCharge.tscn" id="35_yxu8u"]
 [ext_resource type="PackedScene" uid="uid://ciai0fyjc558v" path="res://World/infrastructure/ZombieSpawner_Interior.tscn" id="39_6ssm2"]
@@ -50,7 +51,7 @@
 [ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
-size = Vector2(410, 58)
+size = Vector2(582.595, 58)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t0y30"]
 polygon = PackedVector2Array(-32, -32, -32, 32, -13.75, 32, -13.5, -13.5, 32, -13.5, 32, -32)
@@ -741,6 +742,10 @@ position = Vector2(386, 78)
 position = Vector2(1626, -70)
 rotation = -0.785397
 
+[node name="WeaponBuy_LSAT" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("27_wfbrc")]
+position = Vector2(359, 526)
+rotation = -1.57079
+
 [node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
 
 [node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("39_fdiub")]
@@ -849,8 +854,28 @@ position = Vector2(-1102, -1050)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
-position = Vector2(662, 895)
-rotation = 0.785397
+position = Vector2(790, 833)
+rotation = 2.09439
+shape = SubResource("RectangleShape2D_2psla")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
+position = Vector2(748, 1066)
+rotation = 2.09439
+shape = SubResource("RectangleShape2D_2psla")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
+position = Vector2(261, 867)
+rotation = 2.09439
+shape = SubResource("RectangleShape2D_2psla")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
+position = Vector2(498, 990)
+rotation = 4.18878
+shape = SubResource("RectangleShape2D_2psla")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
+position = Vector2(550, 824)
+rotation = 4.18878
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
@@ -859,8 +884,8 @@ rotation = 1.57079
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D3"]
-position = Vector2(-600.016, 2570)
-rotation = 0.785397
+position = Vector2(-576.017, 2626)
+rotation = 0.523598
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
@@ -869,7 +894,8 @@ rotation = 1.57079
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D4"]
-position = Vector2(597.999, 216.004)
+position = Vector2(580.998, 280.004)
+rotation = -0.523598
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="Doors" type="Node" parent="GameWorld/Environment"]
@@ -952,15 +978,16 @@ position = Vector2(645, 1086)
 souls_needed_to_charge = 3.0
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(520, -230)
+position = Vector2(124, 154)
 rotation = -1.57079
-starting_gun = "MP7"
+starting_gun = "FLAMETHROWER_UPGRADED"
 starting_equipment = "CLUSTER_BOMB"
 starting_money = 100000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
 spawn_delay_interval = 1.0
+MAX_ZOMBIES_ON_MAP = 50
 wave_spawn_type = "test_chamber"
 bomber_spawn_interval = 3
 
@@ -994,22 +1021,18 @@ shape = SubResource("RectangleShape2D_t8kxw")
 debug_color = Color(0.666667, 0.494118, 0.372549, 0.419608)
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(1655, 331)
+position = Vector2(1775, 345)
 spawn_interval = 1.0
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(124, 1325)
-police_only = true
+position = Vector2(1075, 1379)
 spawn_interval = 1.0
-spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner3" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(1060, 1044)
-spitter_only = true
+position = Vector2(153, 1481)
 spawn_interval = 1.0
-spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="PowerUpManager" parent="GameWorld" instance=ExtResource("40_qr88r")]
