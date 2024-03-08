@@ -17,8 +17,8 @@ fire_type = "automatic"
 bullet_type = "ray_cast"
 bullet_ray_cast = NodePath("BulletRayCast_Lightning")
 fire_rate = 0.5
-clip_size = 10
-max_bullet_reserve = 100
+clip_size = 3
+max_bullet_reserve = 20
 reload_speed = 3.0
 
 [node name="GunAudio" parent="." index="4"]

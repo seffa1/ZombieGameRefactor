@@ -220,8 +220,10 @@ func shoot() -> void:
 				rotation_direction *= -1
 				bullet_rotation += bullet_spread * (i+1) * rotation_direction
 			elif bullet_type == "ray_cast":
-				assert(false, 'Raycast bullets should only fire one bullet per shot')
-				bullet_ray_cast.shoot()
+				if fire_type == "single_fire":
+					bullet_ray_cast.shoot()
+				else:
+					assert(false, 'Raycast bullets should only fire one bullet per shot')
 
 func set_gun_level(weapon_level: int) -> void:
 	"""
