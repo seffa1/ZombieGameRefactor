@@ -93,6 +93,9 @@ func set_modifiers(modifiers: Array):
 	for modifier in modifiers:
 		match modifier:
 			"RAPID_FIRE":
+				# Doesnt make sense to deplete ammo fast on a continuous fliring weapon since it wont do double damage
+				if fire_type == "continuous":
+					return
 				fire_rate = starting_fire_rate * 0.5  # doubles the fire rate ( by halving the fire rate COOLDOWN )
 			"STEADY_AIM":
 				reticle.recoil_per_shot = starting_recoil_per_shot * 0.5  # how much recoil increases per shot
