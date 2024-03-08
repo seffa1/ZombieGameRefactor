@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://be032hxg7cc8j"]
+
+[ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="1_75vds"]
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_fmuqx"]
+[ext_resource type="Script" path="res://World/purchasables/grenadeUpgrade/grenadeUpgrade.gd" id="2_k0nmf"]
+[ext_resource type="Texture2D" uid="uid://57i3mteqcq4v" path="res://World/throwables/images/grenade2.png" id="2_ogsee"]
+[ext_resource type="AudioStream" uid="uid://cjro8ragyyvts" path="res://World/purchasables/Weapons/shared/audio/CashRegisterOpen_SFXB.2496.wav" id="5_g7r1o"]
+
+[node name="GrenadeUpgrader" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_75vds")
+region_enabled = true
+region_rect = Rect2(1310, 2328, 111, 110)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 0.619608, 0.223529, 1)
+scale = Vector2(0.339331, 0.339331)
+texture = ExtResource("2_ogsee")
+region_rect = Rect2(1310, 2328, 111, 110)
+
+[node name="Purchasable" parent="." instance=ExtResource("1_fmuqx")]
+script = ExtResource("2_k0nmf")
+purchasable_cost = 5000
+purchasable_name = "Upgrade Grenade"
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_g7r1o")
+bus = &"GameAudio"

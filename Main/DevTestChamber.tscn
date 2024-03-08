@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=72 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://je78bmpmau0y" path="res://VFX/ScreenShaker.tscn" id="27_4bpo3"]
 [ext_resource type="PackedScene" uid="uid://b1jxmenjf7skw" path="res://World/purchasables/Weapons/LMGs/WeaponBuy_LSAT.tscn" id="27_wfbrc"]
 [ext_resource type="PackedScene" uid="uid://cwtgxr717cje3" path="res://World/WorldEnvironment.tscn" id="28_b2va5"]
+[ext_resource type="PackedScene" uid="uid://be032hxg7cc8j" path="res://World/purchasables/grenadeUpgrade/GrenadeUpgrader.tscn" id="28_v16ti"]
 [ext_resource type="PackedScene" uid="uid://hkwukd3bresb" path="res://World/objectives/VesselCharge/VesselCharge.tscn" id="35_yxu8u"]
 [ext_resource type="PackedScene" uid="uid://ciai0fyjc558v" path="res://World/infrastructure/ZombieSpawner_Interior.tscn" id="39_6ssm2"]
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="39_fdiub"]
@@ -746,6 +747,9 @@ rotation = -0.785397
 position = Vector2(359, 526)
 rotation = -1.57079
 
+[node name="GrenadeUpgrader" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("28_v16ti")]
+position = Vector2(1614, -970)
+
 [node name="MysteryBoxAndLocations" type="Node" parent="GameWorld/PurchasablesContainer"]
 
 [node name="MysteryBox" parent="GameWorld/PurchasablesContainer/MysteryBoxAndLocations" node_paths=PackedStringArray("mystery_box_locations") instance=ExtResource("39_fdiub")]
@@ -978,10 +982,9 @@ position = Vector2(645, 1086)
 souls_needed_to_charge = 3.0
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(124, 154)
+position = Vector2(1280, -1129)
 rotation = -1.57079
-starting_gun = "FULGURIZER"
-starting_equipment = "CLUSTER_BOMB"
+starting_gun = "CLUSTER_CANNON_UPGRADED"
 starting_money = 100000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]

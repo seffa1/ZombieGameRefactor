@@ -13,3 +13,4 @@ ammo_cost_level_2 = 4500
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("3_ixiwv")
+bus = &"GameAudio"

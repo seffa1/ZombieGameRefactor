@@ -6,6 +6,9 @@ Tracks all equipment.
 
 
 @export var max_equipment_count: int = 4
+func _ready():
+	self.equipment_count = max_equipment_count
+	Events.give_player_grenade.connect(_handle_give_grenade)
 
 var equipment_count: int:
 	set(value):
@@ -29,9 +32,13 @@ var current_equipment: String:
 	get:
 		return current_equipment
 
+func refill_equipment():
+	equipment_count = max_equipment_count
 
-func _ready():
-	self.equipment_count = max_equipment_count
+
 
 func has_equipment() -> bool:
 	return (equipment_count > 0 and current_equipment != '')
+
+func _handle_give_grenade():
+	equipment_count += 1

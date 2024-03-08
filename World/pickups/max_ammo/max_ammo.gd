@@ -9,4 +9,5 @@ func _trigger_pickup_effect(player: CharacterBody2D):
 	"""
 	# Refill all the ammo in all the player's weapons (even the ones not equipped)
 	player.weapon_manager.max_ammo()
+	player.equipment_manager.refill_equipment()
 

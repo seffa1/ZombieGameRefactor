@@ -37,6 +37,7 @@ signal player_stop_sprinting()
 signal player_knockback(direction: Vector2)
 signal lower_weapon()
 signal raise_weapon()
+signal give_player_grenade()
 
 # Player movement states (used for the reticle)
 signal player_idle()

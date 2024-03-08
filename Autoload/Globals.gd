@@ -208,6 +208,22 @@ const GUN_INDEX = {
 		"lower_weapon_animation": "lower_weapon_flamethrower",
 		"scene": preload("res://World/purchasables/Weapons/Specials/ClusterCannon/Weapon_ClusterCannon.tscn")
 	},
+	"CLUSTER_CANNON_UPGRADED": {
+		"nice_name": "Shatterstorm",
+		"nice_name_upgraded": "Shatterstorm",
+		"idle_animation": "idle_flamethrower",
+		"shoot_animation": "shoot_flamethrower",
+		"reload_animation": "reload_flamethrower",
+		"switch_from_animation": "switch_from_flamethrower",
+		"switch_to_animation": "switch_to_flamethrower",
+		"buy_weapon_from_animation": "buy_weapon_from_flamethrower",
+		"buy_weapon_to_animation": "buy_weapon_to_flamethrower",
+		"sprint_animation": "sprint_flamethrower",
+		"sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man_smaller_2.png"),
+		"pickup_sprite": preload("res://World/purchasables/Weapons/Specials/Flamethrower/images/items_0001_fire.png"),
+		"lower_weapon_animation": "lower_weapon_flamethrower",
+		"scene": preload("res://World/purchasables/Weapons/Specials/ClusterCannon/Weapon_ClusterCannon_Upgraded.tscn")
+	},
 }
 
 const EQUIPMENT_INDEX = {
@@ -237,10 +253,10 @@ const mystery_box_spawn_weights = [
 		["AUTO_SHOTGUN", 0.5],
 		["SPAS", 0.5],
 		["50_CAL", 0.5],
+		["LSAT", 1.0],
 		["FULGURIZER", 1.0],
 		["FLAMETHROWER", 1.0],
 		["CLUSTER_CANNON", 1.0],
-		["LSAT", 1.0]
 	]
 
 # Stores all the information for all perks (should maybe turn this into resources?)

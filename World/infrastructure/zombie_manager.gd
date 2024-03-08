@@ -69,6 +69,7 @@ func start_wave():
 	self.zombies_to_be_killed = get_zombie_count(wave_number)
 	Events.emit_signal("zombies_to_kill_change", zombies_to_be_killed)
 	Events.emit_signal("wave_started", wave_number, zombies_to_be_killed)
+	Events.emit_signal("give_player_grenade")
 	set_base_health()
 	
 func set_is_bomber_round(wave_number):
@@ -87,7 +88,7 @@ func spawn_max_ammo():
 
 func get_zombie_count(wave_number):
 	if wave_spawn_type == 'test_chamber':
-		return 100
+		return 2
 	var multiplyer
 	if wave_number < 5:
 		multiplyer = 0.2 * wave_number

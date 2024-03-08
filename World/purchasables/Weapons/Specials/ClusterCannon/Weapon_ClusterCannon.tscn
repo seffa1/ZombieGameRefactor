@@ -15,7 +15,7 @@ fire_type = "single_fire"
 bullet_type = "ray_cast"
 bullet_ray_cast = NodePath("BulletRayCast_ClusterBomb")
 clip_size = 1
-max_bullet_reserve = 40
+max_bullet_reserve = 20
 reload_speed = 3.0
 shell_ejection_type = "no_shell"
 

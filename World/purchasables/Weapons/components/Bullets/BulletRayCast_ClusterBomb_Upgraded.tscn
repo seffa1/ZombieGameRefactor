@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://kcfpxxg3sk0p"]
+
+[ext_resource type="Script" path="res://World/purchasables/Weapons/components/Bullets/BulletRayCast_ClusterBomb.gd" id="1_hrtub"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="2_ikhs8"]
+[ext_resource type="PackedScene" uid="uid://n56hwso6dotp" path="res://World/throwables/ClusterBomb.tscn" id="3_nm4ko"]
+
+[node name="BulletRayCast_ClusterBomb_Upgraded" type="RayCast2D"]
+script = ExtResource("1_hrtub")
+is_upgraded = true
+
+[node name="GrenadeSpawner" parent="." instance=ExtResource("2_ikhs8")]
+unique_name_in_owner = true
+object_to_spawn = ExtResource("3_nm4ko")
+item_ejection_speed_variance = 0.0
+item_ejection_angle_variance = 0.0
+objects_to_spawn = Array[PackedScene]([ExtResource("3_nm4ko"), ExtResource("3_nm4ko"), ExtResource("3_nm4ko")])

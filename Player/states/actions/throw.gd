@@ -23,7 +23,6 @@ func _throw_equipment():
 	ObjectRegistry.register_equipment(equipment_object)
 	
 	# Apply the impulse
-	# TODO - variable hangtime base on charge up time
 	var charge_value = charge_state.charge_value
 	var direction_vector = Vector2.RIGHT.rotated(owner.rotation) *  charge_value * 200
 	equipment_object.apply_impulse(direction_vector)
@@ -35,6 +34,9 @@ func _throw_equipment():
 	var audio = Globals.EQUIPMENT_INDEX[equipment_manager.current_equipment].throw_audio
 	action_sound_player.stream = audio
 	action_sound_player.play()
+	
+	# Reduce count
+	equipment_manager.equipment_count -= 1
 	
 func _on_throw_animation_complete():
 	emit_signal("finished", "idle")

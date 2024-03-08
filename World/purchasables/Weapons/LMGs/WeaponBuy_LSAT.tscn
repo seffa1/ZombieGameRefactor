@@ -19,3 +19,4 @@ texture = ExtResource("3_5kodb")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("3_ek0th")
+bus = &"GameAudio"

@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://c85igyww6wi8s"]
+
+[ext_resource type="PackedScene" uid="uid://85bf3y3ufwct" path="res://World/purchasables/Weapons/Gun.tscn" id="1_alp8q"]
+[ext_resource type="AudioStream" uid="uid://cp0i4m4ww408t" path="res://World/throwables/sounds/grenadeLauncher/GrenadeLauncher_S08WA.233.wav" id="3_cv0gd"]
+[ext_resource type="AudioStream" uid="uid://cbqniuf70gbb3" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/audio/dev_canon_reload_end.wav" id="4_8akij"]
+[ext_resource type="AudioStream" uid="uid://pb7b4gkxrc25" path="res://World/throwables/sounds/grenadeLauncher/ESM_GW_heavy_weapon_one_shot_grenade_launcher_fire_rocket_flame_explosive_1.wav" id="5_uyxw5"]
+[ext_resource type="PackedScene" uid="uid://drveh4d8d4wcp" path="res://VFX/VFXSpawner.tscn" id="6_h6b0q"]
+[ext_resource type="PackedScene" uid="uid://ck7yplcjt3uym" path="res://VFX/bulletShells/BulletShell.tscn" id="7_bx8pi"]
+[ext_resource type="PackedScene" uid="uid://kcfpxxg3sk0p" path="res://World/purchasables/Weapons/components/Bullets/BulletRayCast_ClusterBomb_Upgraded.tscn" id="8_5sx4h"]
+[ext_resource type="PackedScene" uid="uid://jollhgu5723e" path="res://VFX/bulletShells/BulletShell_FlameThrower.tscn" id="8_mqnay"]
+
+[node name="Weapon_ClusterCannon_Upgraded" node_paths=PackedStringArray("bullet_ray_cast") instance=ExtResource("1_alp8q")]
+WEAPON_NAME = "CLUSTER_CANNON_UPGRADED"
+fire_type = "single_fire"
+bullet_type = "ray_cast"
+bullet_ray_cast = NodePath("BulletRayCast_ClusterBomb_Upgraded")
+clip_size = 1
+max_bullet_reserve = 20
+reload_speed = 3.0
+shell_ejection_type = "no_shell"
+
+[node name="GunAudio" parent="." index="4"]
+audio_reload_start = ExtResource("3_cv0gd")
+audio_reload_finished = ExtResource("4_8akij")
+audio_shoot_gun_shot = ExtResource("5_uyxw5")
+
+[node name="MuzzlePosition" type="Marker2D" parent="." index="5"]
+position = Vector2(121, 7)
+
+[node name="VFXSpawnerBulletShells" parent="." index="6" instance=ExtResource("6_h6b0q")]
+position = Vector2(56, 11)
+object_to_spawn = ExtResource("7_bx8pi")
+
+[node name="VFXSpawnerMagazines" parent="." index="7" instance=ExtResource("6_h6b0q")]
+object_to_spawn = ExtResource("8_mqnay")
+
+[node name="BulletRayCast_ClusterBomb_Upgraded" parent="." index="8" instance=ExtResource("8_5sx4h")]
+position = Vector2(121, 7)
