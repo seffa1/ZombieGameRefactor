@@ -16,7 +16,8 @@ func give_item(player: CharacterBody2D) -> void:
 		Events.emit_signal('player_log', 'Note opened')
 
 func _on_area_exited(area):
-	close_note()
+	if note_opened:
+		close_note()
 
 func close_note():
 	note_opened = false

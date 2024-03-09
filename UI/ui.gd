@@ -16,6 +16,7 @@ func _ready():
 	Events.game_resumed.connect(_on_game_resumed) # emited by pause menu
 	Events.game_quit.connect(_on_game_quit) # emited by pause menu
 #	Events.game_paused.connect(_on_game_paused)
+	Events.game_over.connect(_on_game_over)
 	Events.return_to_main_menu.connect(_on_return_to_main_menu)
 	Events.show_note.connect(_handle_show_note)
 	Events.hide_note.connect(_handle_hide_note)
@@ -41,6 +42,7 @@ func _on_game_resumed():
 	hud.show()
 
 func _on_game_over():
+	note.hide()
 	death_screen.open()
 	hud.hide()
 	vinette.hide()
@@ -53,6 +55,7 @@ func _unhandled_input(event):
 		return
 
 	if event.is_action_pressed("pause"):
+		note.hide()
 		settings_menu.open()
 		hud.hide()
 		vinette.hide()
