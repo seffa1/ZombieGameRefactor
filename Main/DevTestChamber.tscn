@@ -988,7 +988,7 @@ position = Vector2(1058, -1346)
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(1280, -1129)
 rotation = -1.57079
-starting_gun = "CLUSTER_CANNON_UPGRADED"
+starting_gun = "CLUSTER_CANNON"
 starting_money = 100000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
