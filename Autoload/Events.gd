@@ -60,9 +60,11 @@ signal wave_started(wave_number: int, zombies_to_be_killed: int)
 signal zombie_death(zombie: CharacterBody2D)
 signal zombie_despawn(zombie: CharacterBody2D)
 
-# Gameplay events
+# Objectives
 signal power_activated
 signal vessel_charged(target_vessel_id)
+signal show_note()
+signal hide_note()
 
 # Additional High Score Tracking
 signal bullet_fired()
