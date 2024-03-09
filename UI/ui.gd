@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var vinette = $"../GameWorld/Darkness/vinette"
 @onready var hud = $HUD
 @onready var death_screen = $DeathScreen
+@onready var note = %Note
 
 
 func _ready():
@@ -16,7 +17,14 @@ func _ready():
 	Events.game_quit.connect(_on_game_quit) # emited by pause menu
 #	Events.game_paused.connect(_on_game_paused)
 	Events.return_to_main_menu.connect(_on_return_to_main_menu)
-	Events.game_over.connect(_on_game_over)
+	Events.show_note.connect(_handle_show_note)
+	Events.hide_note.connect(_handle_hide_note)
+
+func _handle_show_note():
+	note.show()
+	
+func _handle_hide_note():
+	note.hide()
 
 func _on_return_to_main_menu():
 	ObjectRegistry.clear_registry()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=74 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_04yua"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="10_xnv1m"]
 [ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistols/Pistol_01/WeaponBuyPistol01.tscn" id="12_0owsd"]
+[ext_resource type="PackedScene" uid="uid://bj6dl8gbp1b5" path="res://UI/Note.tscn" id="12_0yupk"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="14_ralqs"]
 [ext_resource type="PackedScene" uid="uid://bugjbduk2yeae" path="res://World/purchasables/perks/PerkBuyHealthBoost.tscn" id="14_smj05"]
 [ext_resource type="PackedScene" uid="uid://b7yfy5h1lnwxk" path="res://World/pickups/max_ammo/MaxAmmo.tscn" id="15_1qwsw"]
@@ -675,6 +676,10 @@ score_tracker = NodePath("../../ScoreTracker")
 [node name="MenuSoundPlayer" parent="UI" instance=ExtResource("9_ih603")]
 
 [node name="HUD" parent="UI" instance=ExtResource("10_1jyyk")]
+visible = false
+
+[node name="Note" parent="UI" instance=ExtResource("12_0yupk")]
+unique_name_in_owner = true
 visible = false
 
 [node name="GameWorld" type="Node2D" parent="."]

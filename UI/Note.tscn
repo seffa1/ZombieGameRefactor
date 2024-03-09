@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj6dl8gbp1b5"]
+
+[ext_resource type="Texture2D" uid="uid://5rsf8p2dowvb" path="res://World/objectives/Notes/note_opened_smaller.png" id="1_qst1t"]
+[ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="2_xar58"]
+
+[node name="Note" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -767.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_qst1t")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label8" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_xar58")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 23
+theme_override_font_sizes/font_size = 65
+text = "escape the lab
+"
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xar58")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "1.) Turn On Power"
+
+[node name="Label2" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xar58")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "2.) Fill Vessels (x3)"
+
+[node name="Label3" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xar58")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "3.) Get keycard"
+
+[node name="Label4" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xar58")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "4.) Override Vessels"
+
+[node name="Label5" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xar58")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "5.) open vault door"
+
+[node name="Label6" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xar58")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "6.) call helicopter"
+
+[node name="Label7" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_xar58")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "7.) escape"
