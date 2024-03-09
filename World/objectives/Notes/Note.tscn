@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1x5x2k8ibs3v"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_wadtj"]
+[ext_resource type="Script" path="res://World/objectives/Notes/note.gd" id="2_mulvh"]
+[ext_resource type="Texture2D" uid="uid://dpa4yrydnq65r" path="res://World/objectives/Notes/Folder_Transparent.png" id="3_brdrf"]
+[ext_resource type="AudioStream" uid="uid://l00mbb1d7ort" path="res://World/objectives/Notes/PaperSheetUnfold_S08OF.331.wav" id="4_3tm0q"]
+[ext_resource type="AudioStream" uid="uid://ckr716rekwrsp" path="res://World/objectives/Notes/PaperSheetFold_S08OF.330.wav" id="5_q8s3j"]
+
+[node name="Note" type="Node2D"]
+
+[node name="Purchasable" parent="." instance=ExtResource("1_wadtj")]
+script = ExtResource("2_mulvh")
+purchasable_name = "Read Note"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -4)
+rotation = -0.000367171
+scale = Vector2(0.151868, 0.151868)
+texture = ExtResource("3_brdrf")
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3tm0q")
+volume_db = -8.368
+bus = &"GameAudio"
+
+[node name="CloseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_q8s3j")
+volume_db = -8.966
+bus = &"GameAudio"
+
+[connection signal="area_exited" from="Purchasable" to="Purchasable" method="_on_area_exited"]

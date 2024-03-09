@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=73 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://ciai0fyjc558v" path="res://World/infrastructure/ZombieSpawner_Interior.tscn" id="39_6ssm2"]
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="39_fdiub"]
 [ext_resource type="PackedScene" uid="uid://b58natsckpqcl" path="res://World/infrastructure/PowerUpManager.tscn" id="40_qr88r"]
+[ext_resource type="PackedScene" uid="uid://c1x5x2k8ibs3v" path="res://World/objectives/Notes/Note.tscn" id="42_ujoyx"]
 [ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
@@ -981,10 +982,13 @@ souls_needed_to_charge = 3.0
 position = Vector2(645, 1086)
 souls_needed_to_charge = 3.0
 
+[node name="Note" parent="GameWorld/Objectives" instance=ExtResource("42_ujoyx")]
+position = Vector2(1058, -1346)
+
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(1280, -1129)
 rotation = -1.57079
-starting_gun = "CLUSTER_CANNON_UPGRADED"
+starting_gun = "CLUSTER_CANNON"
 starting_money = 100000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_at8cq")]
