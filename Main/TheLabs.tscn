@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://7hhgw2axi61j"]
+[gd_scene load_steps=132 format=3 uid="uid://7hhgw2axi61j"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_a2bbj"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_0my7n"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c1w4ofsu4cj68" path="res://Debug/PlayerStats.tscn" id="5_28la1"]
 [ext_resource type="PackedScene" uid="uid://bn822g2rnel5j" path="res://UI/HUD/PlayerLog.tscn" id="6_fsl8i"]
 [ext_resource type="PackedScene" uid="uid://cwvdxwpmd6hig" path="res://UI/HUD/InteractableLog.tscn" id="7_tw0cg"]
-[ext_resource type="PackedScene" uid="uid://bo2drheyfcgle" path="res://World/purchasables/Weapons/Shotguns/AutoShotgun/WeaponBuyAutoShotgun.tscn" id="7_w83lw"]
 [ext_resource type="PackedScene" uid="uid://cju2hf0p32e23" path="res://World/purchasables/Weapons/Snipers/50Cal/WeaponBuy50Cal.tscn" id="8_14npo"]
 [ext_resource type="PackedScene" uid="uid://bgb41n3ecyxgh" path="res://World/regions/WorkShop.tscn" id="8_rbq33"]
 [ext_resource type="PackedScene" uid="uid://ckfv1wtlmvqoy" path="res://World/purchasables/perks/PerkBuyRapidFire.tscn" id="8_ry1ca"]
@@ -16,13 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://mwhossw8vvb7" path="res://World/purchasables/mysteryBox/MysteryBox.tscn" id="9_178qv"]
 [ext_resource type="PackedScene" uid="uid://2rf30uifytvo" path="res://UI/sounds/MenuSoundPlayer.tscn" id="9_ffymw"]
 [ext_resource type="PackedScene" uid="uid://bugjbduk2yeae" path="res://World/purchasables/perks/PerkBuyHealthBoost.tscn" id="9_wgtcj"]
-[ext_resource type="PackedScene" uid="uid://b5vp5f5q88h4i" path="res://World/purchasables/Weapons/Specials/Fulgurizer/WeaponBuy_Fulgurizer.tscn" id="9_wnf3b"]
 [ext_resource type="PackedScene" uid="uid://dew3qrg0ysy7e" path="res://World/purchasables/perks/PerkBuyQuickReload.tscn" id="10_0w7a4"]
 [ext_resource type="PackedScene" uid="uid://5wpk32ea7ptu" path="res://UI/HUD/HUD.tscn" id="10_4m0vi"]
 [ext_resource type="PackedScene" uid="uid://76s4kicryfd0" path="res://World/purchasables/mysteryBox/MysteryBoxLocation.tscn" id="10_4stfb"]
 [ext_resource type="PackedScene" uid="uid://d2emngbokfwop" path="res://World/purchasables/Weapons/AssultRiffles/DevCanon/WeaponBuyDevCanon.tscn" id="10_5nexr"]
 [ext_resource type="PackedScene" uid="uid://cb0v1lay7ny0b" path="res://VFX/fog/vinette.tscn" id="10_7kl0x"]
-[ext_resource type="PackedScene" uid="uid://uvebsx8insd1" path="res://World/purchasables/Weapons/Specials/Flamethrower/WeaponBuy_flamethrower.tscn" id="10_hd1w5"]
 [ext_resource type="PackedScene" uid="uid://be032hxg7cc8j" path="res://World/purchasables/grenadeUpgrade/GrenadeUpgrader.tscn" id="11_pq03p"]
 [ext_resource type="PackedScene" uid="uid://b71bsmfaksnm4" path="res://World/purchasables/perks/PerkBuyStaminaBoost.tscn" id="11_trv02"]
 [ext_resource type="PackedScene" uid="uid://dgwux2kjmj8bj" path="res://World/purchasables/Weapons/Pistols/Pistol_01/WeaponBuyPistol01.tscn" id="12_k34b3"]
@@ -5687,21 +5684,18 @@ visible = false
 z_index = 4
 position = Vector2(-513, -683)
 rotation = -0.523598
+weapon_cost = 2500
 
 [node name="WeaponBuyPistol_01" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("12_k34b3")]
 z_index = 4
 position = Vector2(855, 368)
 rotation = -0.523598
 
-[node name="WeaponBuyAutoShotgun" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("7_w83lw")]
-z_index = 4
-position = Vector2(-570, 1260)
-rotation = -2.09439
-
 [node name="WeaponBuySpas" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("40_nhfvi")]
 z_index = 4
-position = Vector2(1678, 1506)
-rotation = 1.309
+position = Vector2(-533, 1282)
+rotation = 0.785397
+weapon_cost = 1500
 
 [node name="WeaponBuyMP7" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("42_l8j0f")]
 z_index = 4
@@ -5710,19 +5704,10 @@ rotation = 2.61799
 
 [node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("8_14npo")]
 z_index = 1
-position = Vector2(620, 817)
-rotation = -1.57079
-weapon_cost = 10000
+position = Vector2(1678, 1496)
+rotation = 1.57079
+weapon_cost = 3000
 purchasable_name = ""
-
-[node name="WeaponBuy_Fulgurizer" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("9_wnf3b")]
-position = Vector2(3582, -270)
-rotation = 1.57079
-
-[node name="WeaponBuy_Flamethrower" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("10_hd1w5")]
-z_index = 4
-position = Vector2(288, 606)
-rotation = 1.57079
 
 [node name="GrenadeUpgrader" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("11_pq03p")]
 position = Vector2(1772, 530)
@@ -6704,11 +6689,11 @@ region_rect = Rect2(13, 17, 1025, 959)
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
 position = Vector2(620, 496)
 rotation = -0.708219
-starting_gun = "FLAMETHROWER_UPGRADED"
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_ixwma")]
 position = Vector2(0, 7.62939e-06)
-MAX_ZOMBIES_ON_MAP = 30
+spawn_delay_interval = 2.0
+MAX_ZOMBIES_ON_MAP = 40
 wave_spawn_type = "the_labs"
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
@@ -7101,9 +7086,6 @@ metadata/_edit_lock_ = true
 [connection signal="area_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuyPistol_01" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuyPistol_01" method="_on_area_entered" flags=18]
 [connection signal="body_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuyPistol_01" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuyPistol_01" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuyPistol_01" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuyPistol_01" method="_on_body_exited" flags=18]
-[connection signal="area_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuyAutoShotgun" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuyAutoShotgun" method="_on_area_entered" flags=18]
-[connection signal="body_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuyAutoShotgun" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuyAutoShotgun" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuyAutoShotgun" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuyAutoShotgun" method="_on_body_exited" flags=18]
 [connection signal="area_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuySpas" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuySpas" method="_on_area_entered" flags=18]
 [connection signal="body_entered" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuySpas" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuySpas" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="GameWorld/PurchasablesContainer/Weapons/WeaponBuySpas" to="GameWorld/PurchasablesContainer/Weapons/WeaponBuySpas" method="_on_body_exited" flags=18]

@@ -31,7 +31,10 @@ func enter():
 	animation_player.play(Globals.GUN_INDEX[weapon_object.WEAPON_NAME]["reload_animation"])
 
 func _on_reload_animation_finished():
-	weapon_object.finish_reload()
+	# TODO - How could this be null?
+	# had a spas + fulgiruzzer, reloaded while opening door or switching weapons
+	if !weapon_object == null:
+		weapon_object.finish_reload()
 	emit_signal("finished", "idle")
 	return
 

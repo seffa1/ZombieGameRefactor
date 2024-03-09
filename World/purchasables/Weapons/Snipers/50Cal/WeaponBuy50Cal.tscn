@@ -9,6 +9,6 @@ purchasable_cost = 1000
 purchasable_name = ".50 Cal"
 
 [node name="Sprite2D" parent="." index="1"]
-rotation = -1.57486
-scale = Vector2(0.593115, 0.593115)
+rotation = -1.58929
+scale = Vector2(0.44917, 0.44917)
 texture = ExtResource("2_cyex3")
