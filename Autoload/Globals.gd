@@ -10,8 +10,10 @@ var player = null
 var debug_on = true
 var debug_enemies = false
 
-# Globally updated variables
+# World Variables
 var is_power_on: bool = false
+var has_keycard: bool = false
+
 
 # Stores all the information for all guns (should maybe turn this into resources?)
 # The key is what we consider the 'weapon name' and is what must match the guns that are created

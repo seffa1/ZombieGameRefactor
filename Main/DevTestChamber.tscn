@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=75 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://b58natsckpqcl" path="res://World/infrastructure/PowerUpManager.tscn" id="40_qr88r"]
 [ext_resource type="PackedScene" uid="uid://c1x5x2k8ibs3v" path="res://World/objectives/Notes/Note.tscn" id="42_ujoyx"]
 [ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
+[ext_resource type="PackedScene" uid="uid://dkom10wmh5ukg" path="res://World/objectives/Keycard/KeycardConsole.tscn" id="44_tb3dc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
 size = Vector2(582.595, 58)
@@ -977,18 +978,21 @@ layer_1/tile_data = PackedInt32Array(917502, 0, 2, 851990, 131072, 2, -1, 196613
 
 [node name="VesselCharge" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
 position = Vector2(-827, 688)
-souls_needed_to_charge = 3.0
+souls_needed_to_charge = 1.0
 
 [node name="VesselCharge2" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
 position = Vector2(1145, 662)
-souls_needed_to_charge = 3.0
+souls_needed_to_charge = 1.0
 
 [node name="VesselCharge3" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
 position = Vector2(645, 1086)
-souls_needed_to_charge = 3.0
+souls_needed_to_charge = 1.0
 
 [node name="Note" parent="GameWorld/Objectives" instance=ExtResource("42_ujoyx")]
 position = Vector2(1058, -1346)
+
+[node name="KeycardConsole" parent="GameWorld/Objectives" instance=ExtResource("44_tb3dc")]
+position = Vector2(495, -1372)
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
 position = Vector2(1280, -1129)

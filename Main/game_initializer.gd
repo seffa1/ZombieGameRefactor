@@ -19,8 +19,10 @@ func _ready():
 	# Initialilze all HUD elements
 	hud.show()
 	var player_gun = player.weapon_manager.get_equipped_gun()
+	print(player_gun)
+
 	Events.emit_signal("player_equipped_clip_count_change", player_gun.bullets_in_clip)
 	Events.emit_signal("player_equipped_reserve_count_change", player_gun.bullet_reserve)
 	Events.emit_signal("player_equipped_change", player_gun.WEAPON_NAME, player_gun.weapon_level, '')
 	Events.emit_signal("player_money_change", player.money_component.money)
-	
+
