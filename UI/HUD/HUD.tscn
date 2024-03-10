@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="1_6ufjd"]
 [ext_resource type="Theme" uid="uid://b465nj0tesjok" path="res://UI/themes/Game.tres" id="1_lg432"]
-[ext_resource type="Texture2D" uid="uid://cg1frbjoc57ry" path="res://World/objectives/Keycard/keycard_3.png" id="3_kai8e"]
-[ext_resource type="Texture2D" uid="uid://c2cimr1cuewue" path="res://World/objectives/power_small.png" id="4_c1k3n"]
+[ext_resource type="Texture2D" uid="uid://c3x24odlv25w6" path="res://World/objectives/Keycard/keycard_4.png" id="3_ord16"]
+[ext_resource type="Texture2D" uid="uid://dy3314ev4f7a1" path="res://World/objectives/power_small_2.png" id="4_asvmd"]
 
 [sub_resource type="Animation" id="Animation_58kr3"]
 length = 0.001
@@ -327,15 +327,13 @@ theme_override_constants/separation = 20
 
 [node name="KeyCard" type="TextureRect" parent="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-texture = ExtResource("3_kai8e")
+texture = ExtResource("3_ord16")
 
 [node name="Power" type="TextureRect" parent="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-texture = ExtResource("4_c1k3n")
+texture = ExtResource("4_asvmd")
 expand_mode = 4
 stretch_mode = 3
 
@@ -395,10 +393,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1010.0
-offset_top = 491.5
-offset_right = 1255.0
-offset_bottom = 582.5
+offset_left = 50.0
+offset_top = -48.5
+offset_right = 295.0
+offset_bottom = 42.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_lg432")
@@ -413,10 +411,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 795.0
-offset_top = 491.0
-offset_right = 961.0
-offset_bottom = 582.0
+offset_left = -165.0
+offset_top = -49.0
+offset_right = 1.0
+offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_lg432")

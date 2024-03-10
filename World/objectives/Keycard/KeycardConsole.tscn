@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkom10wmh5ukg"]
+[gd_scene load_steps=15 format=3 uid="uid://dkom10wmh5ukg"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_4xrop"]
 [ext_resource type="Script" path="res://World/objectives/Keycard/keycard_console.gd" id="2_wfiv1"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b7j1lyk87hl2k" path="res://World/objectives/VesselCharge/sounds/ESM_FVESK_fx_ambience_machine_factory_engine_hum_hiss_whine_02.wav" id="6_3y0y6"]
 [ext_resource type="AudioStream" uid="uid://cjrg057mn3qp2" path="res://UnusedSounds/oneShots/mechanisms/ESM_FVESK_fx_foley_repair_sparks_energy_particles_electrons_tools_fix_08.wav" id="6_w3dxm"]
 [ext_resource type="AudioStream" uid="uid://bdl2b1pdkucin" path="res://UnusedSounds/ambiance/ESM_FVESK_cinematic_fx_science_fiction_engine_power_on_assault_carrier_1_pulling_a_large_lever_robotic_movements_steam_discharge.wav" id="7_dv8e1"]
+[ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="10_jkkds"]
 
 [sub_resource type="Animation" id="Animation_lwayu"]
 length = 0.001
@@ -256,3 +257,7 @@ libraries = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_distance = 800.0
 bus = &"GameAudio"
+
+[node name="LightFlicker" parent="." instance=ExtResource("10_jkkds")]
+visible = false
+position = Vector2(1396.05, -1561.99)

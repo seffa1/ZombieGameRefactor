@@ -911,8 +911,9 @@ shape = SubResource("RectangleShape2D_2psla")
 
 [node name="Doors" type="Node" parent="GameWorld/Environment"]
 
-[node name="PurchasableDoor" parent="GameWorld/Environment/Doors" instance=ExtResource("17_okwvs")]
+[node name="PurchasableDoor" parent="GameWorld/Environment/Doors" node_paths=PackedStringArray("linked_doors") instance=ExtResource("17_okwvs")]
 position = Vector2(-119, 706)
+linked_doors = []
 purchasable_cost = 0
 
 [node name="Window" type="Node" parent="GameWorld/Environment"]

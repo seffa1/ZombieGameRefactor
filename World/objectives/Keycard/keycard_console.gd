@@ -6,11 +6,13 @@ func _ready():
 	Events.vessel_charge_complete.connect(_on_vessel_charged)
 	can_be_purchased = true
 	$"../AnimationPlayer".play("idle")
+	$"../LightFlicker".hide()
 
 func _on_vessel_charged():
 	vessel_charge_count += 1
 	if vessel_charge_count == 3:
 		$"../AnimationPlayer".play("powered")
+		$"../LightFlicker".show()
 
 func purchase_item(player: CharacterBody2D) -> void:
 	if vessel_charge_count < 3:
