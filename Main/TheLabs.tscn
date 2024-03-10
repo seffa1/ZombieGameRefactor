@@ -6160,6 +6160,10 @@ rotation = 3.14159
 position = Vector2(2510, -220)
 rotation = 3.14159
 
+[node name="Window19" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
+position = Vector2(1461, 221)
+rotation = 3.14159
+
 [node name="Window15" parent="GameWorld/Environment/Window" instance=ExtResource("18_c6sqf")]
 position = Vector2(2657, -1418)
 rotation = 4.71238
@@ -6802,8 +6806,6 @@ region_rect = Rect2(13, 17, 1025, 959)
 [node name="Player" parent="GameWorld" instance=ExtResource("23_12fdy")]
 position = Vector2(533, 514)
 rotation = 0.0248547
-starting_gun = "CLUSTER_CANNON"
-starting_money = 100000
 
 [node name="ZombieManager" parent="GameWorld" instance=ExtResource("24_ixwma")]
 position = Vector2(0, 7.62939e-06)
@@ -7025,7 +7027,7 @@ position = Vector2(-378, 110)
 spawn_interval = 5.0
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" instance=ExtResource("25_fmh0i")]
-position = Vector2(2030, 30)
+position = Vector2(1706, 165)
 spawn_interval = 5.0
 
 [node name="ZombieSpawner13" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_fmh0i")]
