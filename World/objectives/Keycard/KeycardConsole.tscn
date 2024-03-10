@@ -197,7 +197,7 @@ polygon = PackedVector2Array(-53, 124, 50, 125, 54, 21, 96, 23, 95, -120, -89, -
 
 [node name="Purchasable" parent="." instance=ExtResource("1_4xrop")]
 script = ExtResource("2_wfiv1")
-vessel_count = 1
+vessel_count = 3
 purchasable_name = "Keycard"
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]

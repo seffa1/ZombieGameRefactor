@@ -751,7 +751,7 @@ position = Vector2(1626, -70)
 rotation = -0.785397
 
 [node name="WeaponBuy_LSAT" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("27_wfbrc")]
-position = Vector2(359, 526)
+position = Vector2(-219, 1175)
 rotation = -1.57079
 
 [node name="GrenadeUpgrader" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("28_v16ti")]
@@ -983,15 +983,29 @@ souls_needed_to_charge = 1.0
 overload_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 overload_duration = 30
 
+[node name="VesselCharge3" parent="GameWorld/Objectives" node_paths=PackedStringArray("overload_doors") instance=ExtResource("35_yxu8u")]
+position = Vector2(936, 627)
+rotation = 1.53076
+souls_needed_to_charge = 1.0
+overload_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
+overload_duration = 30
+
+[node name="VesselCharge4" parent="GameWorld/Objectives" node_paths=PackedStringArray("overload_doors") instance=ExtResource("35_yxu8u")]
+position = Vector2(660, 1353)
+rotation = 1.53076
+souls_needed_to_charge = 1.0
+overload_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
+overload_duration = 30
+
 [node name="Note" parent="GameWorld/Objectives" instance=ExtResource("42_ujoyx")]
 position = Vector2(1058, -1346)
 
 [node name="KeycardConsole" parent="GameWorld/Objectives" instance=ExtResource("44_tb3dc")]
-position = Vector2(-1399, 429)
+position = Vector2(-374, 146)
 rotation = -1.26599
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(-1005, 870)
+position = Vector2(43, 726)
 rotation = -1.57079
 starting_gun = "LSAT"
 starting_money = 100000
@@ -1002,50 +1016,113 @@ zombie_container = NodePath("ZombieContainer")
 spawn_delay_interval = 1.0
 MAX_ZOMBIES_ON_MAP = 50
 wave_spawn_type = "test_chamber"
-_bomber_only = true
 bomber_spawn_interval = 3
 
 [node name="OverloadSpawns" type="Node" parent="GameWorld/ZombieManager"]
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
 position = Vector2(-990, 2233)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
 spawner_active = false
 zombie_container = NodePath("../../ZombieContainer")
 zombie_manager = NodePath("../..")
 is_overload_spawner = true
 overload_vessel = NodePath("../../../Objectives/VesselCharge2")
+overload_spawn_interval = null
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
 position = Vector2(-654, 2158)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
 spawner_active = false
 zombie_container = NodePath("../../ZombieContainer")
 zombie_manager = NodePath("../..")
 is_overload_spawner = true
 overload_vessel = NodePath("../../../Objectives/VesselCharge2")
+overload_spawn_interval = null
 
 [node name="ZombieSpawner3" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
 position = Vector2(-990, 1966)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
 spawner_active = false
 zombie_container = NodePath("../../ZombieContainer")
 zombie_manager = NodePath("../..")
 is_overload_spawner = true
 overload_vessel = NodePath("../../../Objectives/VesselCharge2")
+overload_spawn_interval = null
+
+[node name="ZombieSpawner6" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
+position = Vector2(1845, 441)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
+spawner_active = false
+zombie_container = NodePath("../../ZombieContainer")
+zombie_manager = NodePath("../..")
+is_overload_spawner = true
+overload_vessel = NodePath("../../../Objectives/VesselCharge3")
+overload_spawn_interval = null
+
+[node name="ZombieSpawner7" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
+position = Vector2(1845, 441)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
+spawner_active = false
+zombie_container = NodePath("../../ZombieContainer")
+zombie_manager = NodePath("../..")
+is_overload_spawner = true
+overload_vessel = NodePath("../../../Objectives/VesselCharge3")
+overload_spawn_interval = null
+
+[node name="ZombieSpawner8" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
+position = Vector2(1875, 225)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
+spawner_active = false
+zombie_container = NodePath("../../ZombieContainer")
+zombie_manager = NodePath("../..")
+is_overload_spawner = true
+overload_vessel = NodePath("../../../Objectives/VesselCharge3")
+overload_spawn_interval = null
 
 [node name="ZombieSpawner4" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
-position = Vector2(-696, 1816)
+position = Vector2(143, 1278)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
 spawner_active = false
 zombie_container = NodePath("../../ZombieContainer")
 zombie_manager = NodePath("../..")
 is_overload_spawner = true
-overload_vessel = NodePath("../../../Objectives/VesselCharge2")
+overload_vessel = NodePath("../../../Objectives/VesselCharge4")
+overload_spawn_interval = null
 
 [node name="ZombieSpawner5" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
 position = Vector2(-829, 1506)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
 spawner_active = false
 zombie_container = NodePath("../../ZombieContainer")
 zombie_manager = NodePath("../..")
 is_overload_spawner = true
 overload_vessel = NodePath("../../../Objectives/VesselCharge2")
+overload_spawn_interval = null
 
 [node name="InteriorSpawns" type="Node" parent="GameWorld/ZombieManager"]
 
@@ -1078,25 +1155,64 @@ debug_color = Color(0.666667, 0.494118, 0.372549, 0.419608)
 
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1775, 345)
-spawn_interval = 1.0
-spawner_active = false
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
+spawn_interval = null
+spawner_active = null
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
+is_overload_spawner = null
+overload_spawn_interval = null
+
+[node name="ZombieSpawner5" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
+position = Vector2(82, 1453)
+scale = Vector2(0.191553, 2.22867)
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
+spawn_interval = null
+spawner_active = null
+trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
+is_overload_spawner = null
+overload_spawn_interval = null
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1075, 1379)
-spawn_interval = 1.0
-spawner_active = false
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
+spawn_interval = null
+spawner_active = null
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
+is_overload_spawner = null
+overload_spawn_interval = null
 
 [node name="ZombieSpawner3" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(-812, 1231)
-spawn_interval = 1.0
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
+spawn_interval = null
+spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
+is_overload_spawner = null
+overload_spawn_interval = null
 
 [node name="ZombieSpawner4" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(-819, 76)
-spawn_interval = 1.0
+spitter_only = null
+bomber_only = null
+police_only = null
+basic_zombie_only = null
+spawn_interval = null
+spawner_active = null
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
+is_overload_spawner = null
+overload_spawn_interval = null
 
 [node name="ZombieContainer" type="Node" parent="GameWorld/ZombieManager"]
 
