@@ -38,6 +38,7 @@ var ZOMBIE_DESPAWN_DISTANCE = 4000  # if a zombie gets this far from the player,
 
 var target_window: Area2D # set by zombie spawner, used by state machine to get zombie through the target window
 var base_walking_speed: float
+var is_overload_zombie: bool = false  # Set by overload spawner so ozmbie manager doesn't count it towards the wave count
 
 func _ready():
 	# We must load the modification stack AFTER the zombie is a part of the scene tree or it breaks

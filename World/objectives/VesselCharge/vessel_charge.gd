@@ -18,6 +18,9 @@ var souls_collected = 0
 var charge_complete: bool = false
 
 signal charging_complete
+# These are used by the overload spawners, while the Events.gd signals of the same name are used by the HUD and vault door
+signal overload_started()
+signal overload_ended()
 
 func _ready():
 	Events.zombie_death.connect(_on_zombie_death)
@@ -27,6 +30,7 @@ func _ready():
 
 # OVERLOAD SEQUENCE
 func _on_overload_activated():
+	emit_signal("overload_started")
 	Events.emit_signal("vessel_overload_started")
 	%OverloadTimer.start(overload_duration)
 	animation_player.play("overload")
@@ -36,6 +40,7 @@ func _on_overload_activated():
 		door.overload_started()
 
 func _on_overload_complete():
+	emit_signal("overload_ended")
 	%OverloadParticles.emitting = true
 	animation_player.play("overload_complete")
 	for audio_player in %OverloadAudio.get_children():

@@ -13,6 +13,7 @@ var debug_enemies = false
 # World Variables
 var is_power_on: bool = false
 var has_keycard: bool = false
+var wave_number: int = 1
 
 
 # Stores all the information for all guns (should maybe turn this into resources?)
@@ -249,16 +250,16 @@ const EQUIPMENT_INDEX = {
 
 # Gun name, selection_weight
 const mystery_box_spawn_weights = [
-		["DEV_CANON", 0.5],
+		["DEV_CANON", 1.0],
 		["PISTOL_01", 0.2],
-		["MP7", 0.5],
-		["AUTO_SHOTGUN", 0.5],
-		["SPAS", 0.5],
-		["50_CAL", 0.5],
+		["MP7", 1.0],
+		["AUTO_SHOTGUN", 1.0],
+		["SPAS", 1.0],
+		["50_CAL", 1.5],
 		["LSAT", 1.0],
-		["FULGURIZER", 1.0],
-		["FLAMETHROWER", 1.0],
-		["CLUSTER_CANNON", 1.0],
+		["FULGURIZER", 7.0],
+		["FLAMETHROWER", 8.0],
+		["CLUSTER_CANNON", 5.0],
 	]
 
 # Stores all the information for all perks (should maybe turn this into resources?)

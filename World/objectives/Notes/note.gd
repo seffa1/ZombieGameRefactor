@@ -13,14 +13,15 @@ func give_item(player: CharacterBody2D) -> void:
 		$"../OpenSound".play()
 		player.money_component.money -= purchasable_cost
 		Events.emit_signal('show_note')
-		Events.emit_signal('player_log', 'Note opened')
+
 
 func _on_area_exited(area):
-	if note_opened:
-		close_note()
+	close_note()
 
 func close_note():
 	note_opened = false
 	Events.emit_signal('hide_note')
-	Events.emit_signal('player_log', 'Note closed')
 	$"../CloseSound".play()
+	
+func get_interactable_message(player: CharacterBody2D) -> String:
+	return "Read Note"

@@ -64,8 +64,8 @@ signal zombie_despawn(zombie: CharacterBody2D)
 signal power_activated
 signal vessel_charged(target_vessel_id)
 signal vessel_charge_complete()
-signal vessel_overload_started()
-signal vessel_overload_complete()
+signal vessel_overload_started()  # Used by the HUD countdown timer
+signal vessel_overload_complete()  # Used by the vault door
 signal has_keycard()
 signal show_note()
 signal hide_note()

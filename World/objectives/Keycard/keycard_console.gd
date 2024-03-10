@@ -1,5 +1,7 @@
 extends "res://World/purchasables/purchasable.gd"
 
+@export var vessel_count: int = 3
+
 var vessel_charge_count: int = 0
 
 func _ready():
@@ -10,13 +12,13 @@ func _ready():
 
 func _on_vessel_charged():
 	vessel_charge_count += 1
-	if vessel_charge_count == 3:
+	if vessel_charge_count == vessel_count:
 		$"../AnimationPlayer".play("powered")
 		$"../LightFlicker".show()
 
 func purchase_item(player: CharacterBody2D) -> void:
-	if vessel_charge_count < 3:
-		Events.emit_signal("player_log", str(vessel_charge_count) + "/3 charging sequences complete.")
+	if vessel_charge_count < vessel_count:
+		Events.emit_signal("player_log", str(vessel_charge_count) + "/" + str(vessel_count) + " charging sequences complete.")
 		return
 
 	give_item(player)
@@ -33,7 +35,7 @@ func give_item(player: CharacterBody2D) -> void:
 	
 
 func get_interactable_message(player: CharacterBody2D) -> String:
-	if vessel_charge_count < 3:
-		return "Requires 3 powered vessel modules. Only " + str(vessel_charge_count) + " charging sequences complete."
+	if vessel_charge_count < vessel_count:
+		return "Requires " + str(vessel_count) + "powered vessel modules. Only " + str(vessel_charge_count) + " charging sequences complete."
 	else:
 		return "Pickup Keycard"

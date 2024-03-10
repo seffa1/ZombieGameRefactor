@@ -7,7 +7,6 @@ Responsible for controlling and tracking the waves of zombies spawning.
 
 # Nodes
 @onready var round_start_spawn_delay: Timer = $RoundStartSpawnDelay
-@onready var zombie_container: Node = $ZombieContainer
 @onready var vfx_audio: AudioStreamPlayer = $VFXAudio
 @onready var vfx_audio2: AudioStreamPlayer = $VFXAudio2
 @onready var bomber_spawn_timer: Timer = %BomberSpawnTimer
@@ -15,6 +14,7 @@ Responsible for controlling and tracking the waves of zombies spawning.
 @onready var max_ammo: PackedScene = preload("res://World/pickups/max_ammo/MaxAmmo.tscn")
 
 # Variables
+@export var zombie_container: Node
 @export var spawn_delay_interval: float = 5  # seconds between each round of wave spawning
 @export var MAX_ZOMBIES_ON_MAP: int = 30
 @export_enum("the_labs", "test_chamber") var wave_spawn_type: String
@@ -52,6 +52,7 @@ var zombies_on_map: int = 0:  # current zombies spawned on the map
 		
 # Functions
 func _ready():
+	assert(zombie_container, 'Manager note linked to container')
 	Events.zombie_death.connect(_on_zombie_death)
 	Events.zombie_despawn.connect(_on_zombie_despawn)
 	Events.emit_signal("wave_number_change", wave_number)
@@ -111,8 +112,8 @@ func end_wave():
 	if bomber_round:
 		spawn_max_ammo()
 
-	_kill_all_zombies()  # just to be extra sure
 	wave_number += 1
+	Globals.wave_number = wave_number
 	round_start_spawn_delay.start(spawn_delay_interval)
 	vfx_audio2.play_sound("sub_hit")
 	vfx_audio.play_sound("piano_loop")
@@ -145,7 +146,7 @@ func _process(_delta):
 			return
 		if spawner.spawn_timer.is_stopped() and spawner.spawner_active and spawner.in_range_to_spawn():
 			zombies_on_map += 1
-			var zombie_instance = spawner.spawn_zombie(wave_number)
+			var zombie_instance = spawner.get_zombie(wave_number)
 			zombie_container.add_child(zombie_instance)
 			zombie_instance.set_max_health(zombie_base_health)
 			zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
@@ -165,7 +166,7 @@ func _process(_delta):
 				return
 			if spawner.spawn_timer.is_stopped() and spawner.spawner_active:
 				zombies_on_map += 1
-				var zombie_instance = spawner.spawn_zombie(wave_number)
+				var zombie_instance = spawner.get_zombie(wave_number)
 				zombie_container.add_child(zombie_instance)
 				zombie_instance.set_max_health(zombie_base_health)
 				zombie_ids[zombie_instance.get_instance_id()] = zombie_instance
@@ -175,12 +176,18 @@ func _process(_delta):
 
 func _select_spawners():
 	if bomber_round:
-		return get_tree().get_nodes_in_group("bomber_spawns")
+		var zombie_spawners = get_tree().get_nodes_in_group("bomber_spawns")
+		return zombie_spawners.filter(func(spawner): return !spawner.is_overload_spawner)
 	else:
-		return get_tree().get_nodes_in_group("ZombieSpawners")
+		var zombie_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
+		# Dont select the overload spawners
+		return zombie_spawners.filter(func(spawner): return !spawner.is_overload_spawner)
 
 # Tracking zombies ------------------------------------
 func _on_zombie_death(zombie: CharacterBody2D):
+	if zombie.is_overload_zombie:
+		return
+
 	Events.emit_signal("give_player_money", 150)
 	var id = zombie.get_instance_id()
 	if id in zombie_ids:

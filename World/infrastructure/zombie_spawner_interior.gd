@@ -27,6 +27,7 @@ for collisions there to determine it a spawner should be on or not.
 ]
 
 var target_window: Area2D
+var is_overload_spawner: bool = false
 
 func _ready():
 	if len(trigger_doors) > 0:
@@ -44,7 +45,7 @@ func get_interior_position():
 	var chose_y = rect.position.y + randi_range(0, abs(rect.size.y))
 	return global_position + Vector2(chosen_x, chose_y)
 
-func spawn_zombie(wave_number: int) -> CharacterBody2D:
+func get_zombie(wave_number: int) -> CharacterBody2D:
 	# Creates the zombie and sets its needed properties
 	var zombie_to_spawn = get_random_zombie()
 	var zombie_instance = zombie_to_spawn.instantiate()

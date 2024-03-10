@@ -10,8 +10,6 @@ MAX_ZOMBIES_ON_MAP = 5
 [node name="RoundStartSpawnDelay" type="Timer" parent="."]
 one_shot = true
 
-[node name="ZombieContainer" type="Node" parent="."]
-
 [node name="VFXAudio" parent="." instance=ExtResource("2_uq2dh")]
 volume_db = -8.0
 max_polyphony = 4
