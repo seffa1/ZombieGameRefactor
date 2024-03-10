@@ -1,15 +1,15 @@
 extends Control
 
-@onready var player_money = $MarginContainer/VBoxContainer/Points
-@onready var equipped = $MarginContainer/HBoxContainer/VBoxContainer/GunName
-@onready var clip_count = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/BulletsInClip
-@onready var reserve_count = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/BulletsInReserve
-@onready var wave_number = $MarginContainer/VBoxContainer/Wave
+@onready var player_money = %Points
+@onready var equipped = %GunName
+@onready var clip_count = %BulletsInClip
+@onready var reserve_count = %BulletsInReserve
+@onready var wave_number = %Wave
 @onready var keycard: TextureRect = %KeyCard
 @onready var power: TextureRect = %Power
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var perk_container: HBoxContainer = $MarginContainer/MarginContainer/PerkContainer
+@onready var perk_container: HBoxContainer = %PerkContainer
 
 func _ready():
 	set_as_top_level(true)

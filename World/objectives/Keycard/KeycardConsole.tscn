@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkom10wmh5ukg"]
+[gd_scene load_steps=14 format=3 uid="uid://dkom10wmh5ukg"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_4xrop"]
 [ext_resource type="Script" path="res://World/objectives/Keycard/keycard_console.gd" id="2_wfiv1"]
 [ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="3_d34p4"]
+[ext_resource type="Texture2D" uid="uid://cg1frbjoc57ry" path="res://World/objectives/Keycard/keycard_3.png" id="4_ut4r5"]
 [ext_resource type="AudioStream" uid="uid://cosh5vo5nrsp5" path="res://World/objectives/VesselCharge/sounds/ESM_FVESK_cinematic_fx_science_fiction_engine_troopship_pandora_1_air_pressure_discharge_hydraulics_functioning.wav" id="5_sscij"]
 [ext_resource type="AudioStream" uid="uid://bm04pcuuyevqa" path="res://UnusedSounds/oneShots/mechanisms/ESM_FVESK_fx_foley_repair_work_shop_unlock_mechanism_varied_shuffle_latch_lift_08.wav" id="5_wd0v1"]
 [ext_resource type="AudioStream" uid="uid://b7j1lyk87hl2k" path="res://World/objectives/VesselCharge/sounds/ESM_FVESK_fx_ambience_machine_factory_engine_hum_hiss_whine_02.wav" id="6_3y0y6"]
@@ -82,7 +83,7 @@ tracks/2/path = NodePath("keycard:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.2045),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(40, 69)]
@@ -186,8 +187,16 @@ _data = {
 
 [node name="KeycardConsole" type="Node2D"]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-53, 124, 50, 125, 54, 21, 96, 23, 95, -120, -89, -120, -87, 19, -57, 22)
+
 [node name="Purchasable" parent="." instance=ExtResource("1_4xrop")]
 script = ExtResource("2_wfiv1")
+purchasable_name = "Keycard"
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 modulate = Color(0, 0.454902, 0, 1)
@@ -201,6 +210,7 @@ region_rect = Rect2(2356, 1854, 182, 151)
 modulate = Color(0, 0.454902, 0, 1)
 position = Vector2(40, 69)
 rotation = 3.14159
+texture = ExtResource("4_ut4r5")
 offset = Vector2(44.9378, -35.0749)
 region_rect = Rect2(1569, 2328, 110, 110)
 

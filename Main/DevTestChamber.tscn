@@ -977,7 +977,7 @@ layer_1/tile_data = PackedInt32Array(917502, 0, 2, 851990, 131072, 2, -1, 196613
 [node name="Objectives" type="Node" parent="GameWorld"]
 
 [node name="VesselCharge" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
-position = Vector2(-827, 688)
+position = Vector2(1880, 234)
 souls_needed_to_charge = 1.0
 
 [node name="VesselCharge2" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
@@ -992,10 +992,10 @@ souls_needed_to_charge = 1.0
 position = Vector2(1058, -1346)
 
 [node name="KeycardConsole" parent="GameWorld/Objectives" instance=ExtResource("44_tb3dc")]
-position = Vector2(495, -1372)
+position = Vector2(1814, 1428)
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(1280, -1129)
+position = Vector2(2317, 1116)
 rotation = -1.57079
 starting_gun = "CLUSTER_CANNON"
 starting_money = 100000

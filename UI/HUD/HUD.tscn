@@ -292,12 +292,14 @@ theme_override_constants/separation = 10
 alignment = 2
 
 [node name="Points" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_lg432")
 theme_override_font_sizes/font_size = 48
 text = "0"
 
 [node name="Wave" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_lg432")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -347,18 +349,21 @@ theme_override_constants/separation = 20
 alignment = 2
 
 [node name="BulletsInClip" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_lg432")
 theme_override_font_sizes/font_size = 48
 text = "25"
 
 [node name="BulletsInReserve" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_lg432")
 theme_override_font_sizes/font_size = 48
 text = "100"
 
 [node name="GunName" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_lg432")
 theme_override_font_sizes/font_size = 28
@@ -371,6 +376,7 @@ size_flags_vertical = 8
 theme_override_constants/margin_left = 100
 
 [node name="PerkContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
