@@ -1,13 +1,15 @@
 extends Control
 
-@onready var player_money = $MarginContainer/VBoxContainer/Points
-@onready var equipped = $MarginContainer/HBoxContainer/VBoxContainer/GunName
-@onready var clip_count = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/BulletsInClip
-@onready var reserve_count = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/BulletsInReserve
-@onready var wave_number = $MarginContainer/VBoxContainer/Wave
+@onready var player_money = %Points
+@onready var equipped = %GunName
+@onready var clip_count = %BulletsInClip
+@onready var reserve_count = %BulletsInReserve
+@onready var wave_number = %Wave
+@onready var keycard: TextureRect = %KeyCard
+@onready var power: TextureRect = %Power
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var perk_container: HBoxContainer = $MarginContainer/MarginContainer/PerkContainer
+@onready var perk_container: HBoxContainer = %PerkContainer
 
 func _ready():
 	set_as_top_level(true)
@@ -20,7 +22,16 @@ func _ready():
 	Events.player_equipped_reserve_count_change.connect(_update_equipped_reserve_count)
 	Events.player_equipped_change.connect(_on_weapon_manager_player_equipped_change)
 	
+	Events.power_activated.connect(_on_power_on)
+	Events.has_keycard.connect(_on_keycard_aquired)
+	
 	animation_player.play("start_game")
+
+func _on_power_on():
+	power.show()
+
+func _on_keycard_aquired():
+	keycard.show()
 
 func _on_wave_number_change(wave: int):
 	wave_number.text = str(wave)

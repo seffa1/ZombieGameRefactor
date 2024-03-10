@@ -79,8 +79,9 @@ _data = {
 "open": SubResource("Animation_dpfsy")
 }
 
-[node name="PurchasableDoor" instance=ExtResource("1_qb6s1")]
+[node name="PurchasableDoor" node_paths=PackedStringArray("linked_doors") instance=ExtResource("1_qb6s1")]
 script = ExtResource("2_key0h")
+linked_doors = []
 purchasable_cost = 1000
 purchasable_name = "door"
 

@@ -11,6 +11,8 @@ var max_light_energy: float = 0.7
 var energy_per_soul: float
 var souls_collected = 0
 
+var charge_complete: bool = false
+
 func _ready():
 	Events.zombie_death.connect(_on_zombie_death)
 	Events.vessel_charged.connect(_on_vessel_charged)
@@ -40,8 +42,13 @@ func spawn_zombie_soul(spawn_location: Vector2):
 	ObjectRegistry.register_effect(instance)
 
 func complete_charging():
+	if charge_complete:
+		return
+	charge_complete = true
+
 	zombie_detector.monitoring = false
 	animation_player.play("finish_charge")
+	Events.emit_signal("vessel_charge_complete")
 
 func _on_charge_animation_complete():
 	loop_audio.play()

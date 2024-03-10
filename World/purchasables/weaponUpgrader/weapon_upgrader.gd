@@ -24,6 +24,10 @@ func purchase_item(player: CharacterBody2D) -> void:
 	if !can_be_purchased:
 		return
 	
+	if !Globals.has_keycard:
+		Events.emit_signal("player_log", "Keycard Required")
+		return
+	
 	if !player.weapon_manager.has_a_gun():
 		Events.emit_signal("player_log", "No gun to upgrade")
 		return
@@ -56,7 +60,6 @@ func give_item(player: CharacterBody2D) -> void:
 	else:
 		level_upgrading_to = weapon.weapon_level + 1
 
-	
 	# Remove gun from player
 	player.weapon_manager.put_gun_in_upgraded()
 	
@@ -118,7 +121,8 @@ func _process(delta):
 		purchasable_name = ''
 		return
 	
-	if !can_be_purchased:
+	if !Globals.has_keycard:
+		interactable_message = 'Keycard Required'
 		return
 
 	assert(len(get_overlapping_bodies()) == 1, "Why are two things overlapping the purchasable?")

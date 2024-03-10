@@ -63,6 +63,8 @@ signal zombie_despawn(zombie: CharacterBody2D)
 # Objectives
 signal power_activated
 signal vessel_charged(target_vessel_id)
+signal vessel_charge_complete()
+signal has_keycard()
 signal show_note()
 signal hide_note()
 

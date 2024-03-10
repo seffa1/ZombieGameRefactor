@@ -1,0 +1,263 @@
+[gd_scene load_steps=15 format=3 uid="uid://dkom10wmh5ukg"]
+
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_4xrop"]
+[ext_resource type="Script" path="res://World/objectives/Keycard/keycard_console.gd" id="2_wfiv1"]
+[ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="3_d34p4"]
+[ext_resource type="Texture2D" uid="uid://cg1frbjoc57ry" path="res://World/objectives/Keycard/keycard_3.png" id="4_ut4r5"]
+[ext_resource type="AudioStream" uid="uid://cosh5vo5nrsp5" path="res://World/objectives/VesselCharge/sounds/ESM_FVESK_cinematic_fx_science_fiction_engine_troopship_pandora_1_air_pressure_discharge_hydraulics_functioning.wav" id="5_sscij"]
+[ext_resource type="AudioStream" uid="uid://bm04pcuuyevqa" path="res://UnusedSounds/oneShots/mechanisms/ESM_FVESK_fx_foley_repair_work_shop_unlock_mechanism_varied_shuffle_latch_lift_08.wav" id="5_wd0v1"]
+[ext_resource type="AudioStream" uid="uid://b7j1lyk87hl2k" path="res://World/objectives/VesselCharge/sounds/ESM_FVESK_fx_ambience_machine_factory_engine_hum_hiss_whine_02.wav" id="6_3y0y6"]
+[ext_resource type="AudioStream" uid="uid://cjrg057mn3qp2" path="res://UnusedSounds/oneShots/mechanisms/ESM_FVESK_fx_foley_repair_sparks_energy_particles_electrons_tools_fix_08.wav" id="6_w3dxm"]
+[ext_resource type="AudioStream" uid="uid://bdl2b1pdkucin" path="res://UnusedSounds/ambiance/ESM_FVESK_cinematic_fx_science_fiction_engine_power_on_assault_carrier_1_pulling_a_large_lever_robotic_movements_steam_discharge.wav" id="7_dv8e1"]
+[ext_resource type="PackedScene" uid="uid://cjyuuxgoe10wd" path="res://VFX/LightFlicker.tscn" id="10_jkkds"]
+
+[sub_resource type="Animation" id="Animation_lwayu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("keycard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 69)]
+}
+
+[sub_resource type="Animation" id="Animation_uo2oc"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.696993, 0.935928, 0.696993]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.464195,
+"start_offset": 0.0939781,
+"stream": ExtResource("5_wd0v1")
+}, {
+"end_offset": 0.654999,
+"start_offset": 0.0,
+"stream": ExtResource("6_w3dxm")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.350282,
+"stream": ExtResource("6_w3dxm")
+}],
+"times": PackedFloat32Array(-0.1, 0, 1)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("keycard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 69)]
+}
+
+[sub_resource type="Animation" id="Animation_jcrnp"]
+resource_name = "powered"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 4),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.0, 0.0, 6.28319]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 1.69665,
+"stream": ExtResource("5_sscij")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 26.2929,
+"start_offset": 0.0,
+"stream": ExtResource("6_3y0y6")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 2.79491,
+"start_offset": 0.672586,
+"stream": ExtResource("5_sscij")
+}],
+"times": PackedFloat32Array(3.1)
+}
+tracks/3/use_blend = true
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_dv8e1")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("keycard:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.28837),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45, 117)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntpn6"]
+_data = {
+"RESET": SubResource("Animation_lwayu"),
+"idle": SubResource("Animation_uo2oc"),
+"powered": SubResource("Animation_jcrnp")
+}
+
+[node name="KeycardConsole" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-53, 124, 50, 125, 54, 21, 96, 23, 95, -120, -89, -120, -87, 19, -57, 22)
+
+[node name="Purchasable" parent="." instance=ExtResource("1_4xrop")]
+script = ExtResource("2_wfiv1")
+purchasable_name = "Keycard"
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(0, 0.454902, 0, 1)
+position = Vector2(-38.9378, -10.4251)
+texture = ExtResource("3_d34p4")
+offset = Vector2(44.9378, -35.0749)
+region_enabled = true
+region_rect = Rect2(2356, 1854, 182, 151)
+
+[node name="keycard" type="Sprite2D" parent="."]
+modulate = Color(0, 0.454902, 0, 1)
+position = Vector2(40, 69)
+rotation = 3.14159
+texture = ExtResource("4_ut4r5")
+offset = Vector2(44.9378, -35.0749)
+region_rect = Rect2(1569, 2328, 110, 110)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(-45.9378, 110.575)
+texture = ExtResource("3_d34p4")
+offset = Vector2(44.9378, -35.0749)
+region_enabled = true
+region_rect = Rect2(1569, 2328, 110, 110)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(6.06217, -43.4251)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-1.69212, -52.9753)
+rotation = -1.05095
+texture = ExtResource("3_d34p4")
+offset = Vector2(-43.9515, -34.827)
+region_enabled = true
+region_rect = Rect2(2479, 2218, 90, 72)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
+position = Vector2(-1, 59)
+rotation = 3.13867
+texture = ExtResource("3_d34p4")
+region_enabled = true
+region_rect = Rect2(2479, 2218, 90, 72)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+position = Vector2(0.999998, -54)
+rotation = 1.05809
+texture = ExtResource("3_d34p4")
+offset = Vector2(44.9378, -35.0749)
+region_enabled = true
+region_rect = Rect2(2479, 2218, 90, 72)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_ntpn6")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 800.0
+bus = &"GameAudio"
+
+[node name="LightFlicker" parent="." instance=ExtResource("10_jkkds")]
+visible = false
+position = Vector2(1396.05, -1561.99)
