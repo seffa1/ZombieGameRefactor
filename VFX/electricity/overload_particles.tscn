@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8137l16wtqga"]
+
+[ext_resource type="Texture2D" uid="uid://bu8pf2l8mm55h" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/spark_03.png" id="1_tcb4a"]
+
+[sub_resource type="Gradient" id="Gradient_1bgku"]
+offsets = PackedFloat32Array(0, 0.545455, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0nyvi"]
+gradient = SubResource("Gradient_1bgku")
+
+[sub_resource type="Curve" id="Curve_5rlm7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.386423, 1), 0.0, 0.0, 0, 0, Vector2(0.75718, 0.873684), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_b74sv"]
+curve = SubResource("Curve_5rlm7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kowd4"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(100, 10, 1)
+particle_flag_disable_z = true
+spread = 135.72
+gravity = Vector3(0, 0, 0)
+angular_velocity_min = -404.28
+angular_velocity_max = 411.97
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_b74sv")
+color = Color(0.803922, 0.466667, 1, 1)
+color_ramp = SubResource("GradientTexture1D_0nyvi")
+
+[node name="OverloadParticles" type="GPUParticles2D"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_kowd4")
+texture = ExtResource("1_tcb4a")
+lifetime = 0.5
+speed_scale = 0.5
+randomness = 0.54

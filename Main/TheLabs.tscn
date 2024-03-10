@@ -5704,8 +5704,8 @@ rotation = 2.61799
 
 [node name="WeaponBuy50Cal" parent="GameWorld/PurchasablesContainer/Weapons" instance=ExtResource("8_14npo")]
 z_index = 1
-position = Vector2(1678, 1496)
-rotation = 1.57079
+position = Vector2(1579, 1437)
+rotation = 1.57589
 weapon_cost = 3000
 purchasable_name = ""
 
@@ -5732,7 +5732,7 @@ position = Vector2(524, -639)
 rotation = 0.523598
 
 [node name="PerkBuySteadyName" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("12_o5ggv")]
-position = Vector2(1280, 1496)
+position = Vector2(1159, 1484)
 
 [node name="PerkBuyRapidFire" parent="GameWorld/PurchasablesContainer/Perks" instance=ExtResource("8_ry1ca")]
 position = Vector2(-792, -946)
@@ -5924,10 +5924,6 @@ rotation = 1.309
 [node name="Bus3" parent="GameWorld/Environment/Obstacles/Exterior" instance=ExtResource("25_1kclh")]
 position = Vector2(1857, -1736)
 rotation = 2.90591
-
-[node name="Bus2" parent="GameWorld/Environment/Obstacles/Exterior" instance=ExtResource("25_1kclh")]
-position = Vector2(470, -2068)
-rotation = 2.45153
 
 [node name="CarReck1" parent="GameWorld/Environment/Obstacles/Exterior" instance=ExtResource("14_n8sl2")]
 position = Vector2(-124, -1090)
@@ -6287,25 +6283,29 @@ layer_0/name = "aboveGround"
 
 [node name="Objectives" type="Node" parent="GameWorld/Environment"]
 
-[node name="VesselCharge" parent="GameWorld/Environment/Objectives" instance=ExtResource("34_81lr8")]
+[node name="VesselCharge" parent="GameWorld/Environment/Objectives" node_paths=PackedStringArray("overload_doors") instance=ExtResource("34_81lr8")]
 position = Vector2(1590, 1779)
 souls_needed_to_charge = 10.0
+overload_doors = [NodePath("../../Doors/PurchasableDoor13")]
+overload_duration = 30
 
-[node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge" index="3"]
+[node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge" index="4"]
 position = Vector2(-3, 0)
 scale = Vector2(6.26903, 4.80167)
 shadow_filter_smooth = 4.0
 offset = Vector2(2.58163, 0.0184097)
 
-[node name="VesselCharge2" parent="GameWorld/Environment/Objectives" instance=ExtResource("34_81lr8")]
+[node name="VesselCharge2" parent="GameWorld/Environment/Objectives" node_paths=PackedStringArray("overload_doors") instance=ExtResource("34_81lr8")]
 position = Vector2(1091, -1362)
 rotation = 5.69951
 souls_needed_to_charge = 10.0
+overload_doors = [NodePath("../../Doors/PurchasableDoor16"), NodePath("../../Doors/PurchasableDoor6")]
+overload_duration = 30
 
-[node name="ZombieDetector" parent="GameWorld/Environment/Objectives/VesselCharge2" index="0"]
+[node name="ZombieDetector" parent="GameWorld/Environment/Objectives/VesselCharge2" index="1"]
 scale = Vector2(1.34049, 1.24201)
 
-[node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge2" index="3"]
+[node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge2" index="4"]
 position = Vector2(-0.000244141, -3.05176e-05)
 scale = Vector2(6.78226, 6.33587)
 shadow_color = Color(0, 0, 0, 0)
@@ -6313,12 +6313,14 @@ shadow_filter = 0
 shadow_filter_smooth = 4.0
 offset = Vector2(2.84323, -8.81959)
 
-[node name="VesselCharge3" parent="GameWorld/Environment/Objectives" instance=ExtResource("34_81lr8")]
+[node name="VesselCharge3" parent="GameWorld/Environment/Objectives" node_paths=PackedStringArray("overload_doors") instance=ExtResource("34_81lr8")]
 position = Vector2(-731, 1112)
 rotation = -0.785397
 souls_needed_to_charge = 10.0
+overload_doors = [NodePath("../../Doors/PurchasableDoor5")]
+overload_duration = 30
 
-[node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge3" index="3"]
+[node name="ChargableLightFlicker" parent="GameWorld/Environment/Objectives/VesselCharge3" index="4"]
 position = Vector2(-9.82385, -13.882)
 scale = Vector2(6.32346, 5.37058)
 shadow_color = Color(0, 0.305882, 0, 0)
@@ -6454,7 +6456,7 @@ region_rect = Rect2(13, 17, 1025, 959)
 [node name="Tree14" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
 z_index = 99
 use_parent_material = true
-position = Vector2(-1780, 406)
+position = Vector2(-1523, 515)
 scale = Vector2(0.830566, 0.830566)
 texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)
@@ -6678,7 +6680,7 @@ region_rect = Rect2(13, 17, 1025, 959)
 [node name="Tree58" type="Sprite2D" parent="GameWorld/Environment/Decorations/Forest"]
 z_index = 99
 use_parent_material = true
-position = Vector2(-548, 192)
+position = Vector2(-650, 192)
 scale = Vector2(0.830566, 0.830566)
 texture = ExtResource("62_4t1if")
 region_rect = Rect2(13, 17, 1025, 959)

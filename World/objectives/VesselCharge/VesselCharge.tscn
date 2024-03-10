@@ -1,19 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://hkwukd3bresb"]
+[gd_scene load_steps=19 format=3 uid="uid://hkwukd3bresb"]
 
 [ext_resource type="Script" path="res://World/objectives/VesselCharge/vessel_charge.gd" id="1_gtw7i"]
 [ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="2_khqas"]
+[ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="2_tuwvm"]
 [ext_resource type="Texture2D" uid="uid://bco2hv7tpkfic" path="res://UI/images/buttons/element_0069_Layer-71.png" id="3_7ngg7"]
+[ext_resource type="Script" path="res://World/objectives/VesselCharge/overloader.gd" id="3_pg8cw"]
 [ext_resource type="PackedScene" uid="uid://bl5wdttpxydsv" path="res://VFX/ChargableLightFlicker.tscn" id="4_4a14k"]
 [ext_resource type="AudioStream" uid="uid://cosh5vo5nrsp5" path="res://World/objectives/VesselCharge/sounds/ESM_FVESK_cinematic_fx_science_fiction_engine_troopship_pandora_1_air_pressure_discharge_hydraulics_functioning.wav" id="5_a5bt5"]
 [ext_resource type="AudioStream" uid="uid://b7j1lyk87hl2k" path="res://World/objectives/VesselCharge/sounds/ESM_FVESK_fx_ambience_machine_factory_engine_hum_hiss_whine_02.wav" id="6_torrw"]
+[ext_resource type="AudioStream" uid="uid://tvqxqacb4d7a" path="res://World/objectives/VesselCharge/sounds/CementMixer_BW.20810.wav" id="9_rmusj"]
+[ext_resource type="AudioStream" uid="uid://b3pdwv2oh0u7p" path="res://World/objectives/VesselCharge/sounds/MilitaryBaseAlarm_HV.493.wav" id="10_n13yq"]
+[ext_resource type="PackedScene" uid="uid://b8137l16wtqga" path="res://VFX/electricity/overload_particles.tscn" id="11_ta5qj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_anym3"]
 radius = 402.906
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umbwf"]
 size = Vector2(342, 64)
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_wo3qo"]
 
 [sub_resource type="Animation" id="Animation_1pvss"]
 length = 0.001
@@ -124,6 +127,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1.05984, 0.830401)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node2D/Sprite2D:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_xrorr"]
@@ -268,15 +283,128 @@ tracks/10/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_eut7p"]
+resource_name = "overload"
+loop_mode = 1
+step = 0.01
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite2D4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.6, 1),
+"transitions": PackedFloat32Array(2, 2, 2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.211765, 0.345098, 1), Color(1, 0.211765, 0.345098, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cxtr5"]
+resource_name = "overload_complete"
+loop_mode = 1
+step = 0.01
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite2D4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 0.211765, 0.345098, 1), Color(1, 0.211765, 0.345098, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rvv15"]
 _data = {
 "RESET": SubResource("Animation_1pvss"),
-"finish_charge": SubResource("Animation_xrorr")
+"finish_charge": SubResource("Animation_xrorr"),
+"overload": SubResource("Animation_eut7p"),
+"overload_complete": SubResource("Animation_cxtr5")
 }
 
 [node name="VesselCharge" type="Node2D"]
 script = ExtResource("1_gtw7i")
 souls_needed_to_charge = 20.0
+overload_duration = 5
+
+[node name="Overloader" parent="." instance=ExtResource("2_tuwvm")]
+unique_name_in_owner = true
+script = ExtResource("3_pg8cw")
+purchasable_name = "Overload Essence Vessel"
+can_be_purchased = false
 
 [node name="ZombieDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -328,7 +456,6 @@ shadow_filter_smooth = 15.5
 max_charge_value = 20.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamPolyphonic_wo3qo")
 max_distance = 1000.0
 max_polyphony = 7
 bus = &"GameAudio"
@@ -343,3 +470,26 @@ stream = ExtResource("6_torrw")
 volume_db = -10.0
 attenuation = 1.1
 bus = &"GameAudio"
+
+[node name="OverloadAudio" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="OverloadLoop_1" type="AudioStreamPlayer2D" parent="OverloadAudio"]
+stream = ExtResource("9_rmusj")
+volume_db = -8.428
+bus = &"GameAudio"
+
+[node name="OverloadLoop_2" type="AudioStreamPlayer2D" parent="OverloadAudio"]
+stream = ExtResource("10_n13yq")
+volume_db = -5.126
+bus = &"GameAudio"
+
+[node name="OverloadParticles" parent="." instance=ExtResource("11_ta5qj")]
+unique_name_in_owner = true
+emitting = false
+
+[node name="OverloadTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="OverloadTimer" to="." method="_on_overload_timer_timeout"]

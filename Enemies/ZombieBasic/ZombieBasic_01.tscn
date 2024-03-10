@@ -1658,13 +1658,10 @@ position = Vector2(76, 33)
 shape = SubResource("CircleShape2D_xp20h")
 debug_color = Color(0.980392, 0, 0.384314, 0.419608)
 
-[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component", "status_reciever", "gore_vfx", "zombie_groan_audio") instance=ExtResource("1_wvdm7")]
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("1_wvdm7")]
 visible = false
 collision_mask = 256
 health_component = NodePath("../HealthComponent")
-status_reciever = NodePath("../StatusRecieverComponent")
-gore_vfx = NodePath("../GoreVFX")
-zombie_groan_audio = NodePath("../ZombieGroans-Audio")
 
 [node name="HurtBoxCollision" type="CollisionShape2D" parent="HurtBoxComponent"]
 position = Vector2(22, -2)

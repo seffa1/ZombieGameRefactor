@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3o8b6cd4qnog"]
+[gd_scene load_steps=12 format=3 uid="uid://b3o8b6cd4qnog"]
 
 [ext_resource type="PackedScene" uid="uid://d1bl63brb88os" path="res://World/purchasables/Purchasable.tscn" id="1_qb6s1"]
 [ext_resource type="Script" path="res://World/purchasables/Doors/purchasable_door.gd" id="2_key0h"]
 [ext_resource type="AudioStream" uid="uid://c7s1b7qturd1x" path="res://World/purchasables/Windows/sounds/DungeonDoorOpen_HV.209.wav" id="3_uxj14"]
 [ext_resource type="AudioStream" uid="uid://yphwuylirv0r" path="res://World/purchasables/Doors/sounds/ESM_FVESK_cinematic_fx_science_fiction_engine_cargoship_duke_1_single_button_hit_releases_steam_an_analog_ringing.wav" id="4_vej4t"]
+[ext_resource type="AudioStream" uid="uid://dslandda8kfcl" path="res://World/objectives/VesselCharge/sounds/FF_FM_foley_mechanical_valve_hydrolic_release.wav" id="5_j1kgq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8vqf"]
 radius = 57.0
@@ -73,9 +74,52 @@ tracks/2/keys = {
 }
 tracks/2/use_blend = true
 
+[sub_resource type="Animation" id="Animation_al2kl"]
+resource_name = "close"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(2.08165e-12, -240), Vector2(0, -0.898949)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 1.65291,
+"start_offset": 0.0,
+"stream": ExtResource("5_j1kgq")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qr3a4"]
 _data = {
 "RESET": SubResource("Animation_1cv5i"),
+"close": SubResource("Animation_al2kl"),
 "open": SubResource("Animation_dpfsy")
 }
 

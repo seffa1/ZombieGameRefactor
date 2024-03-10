@@ -25,26 +25,31 @@
 script = ExtResource("1_6dlug")
 
 [node name="ShortGroans-AudioRandomizer" parent="." instance=ExtResource("2_wt7bi")]
+volume_db = -8.0
 max_polyphony = 4
 bus = &"GameAudio"
 audio_clips = Array[AudioStreamWAV]([ExtResource("3_l8y8q"), ExtResource("4_5pghm"), ExtResource("5_ufm3g"), ExtResource("6_wrtr7"), ExtResource("7_yu0lb")])
 
 [node name="LongGroans-AudioRandomizer" parent="." instance=ExtResource("2_wt7bi")]
+volume_db = -8.0
 max_polyphony = 4
 bus = &"GameAudio"
 audio_clips = Array[AudioStreamWAV]([ExtResource("8_1cpfm"), ExtResource("9_gohcb"), ExtResource("10_554g0"), ExtResource("11_cxx5t"), ExtResource("12_slpwu"), ExtResource("13_jqt30"), ExtResource("14_x62lf"), ExtResource("15_m202s")])
 
 [node name="DeathGroans-AudioRandomizer" parent="." instance=ExtResource("2_wt7bi")]
+volume_db = -8.0
 max_polyphony = 4
 bus = &"GameAudio"
 audio_clips = Array[AudioStreamWAV]([ExtResource("16_pqsmd")])
 
 [node name="AttackGroans-AudioRandomizer" parent="." instance=ExtResource("2_wt7bi")]
+volume_db = -8.0
 max_polyphony = 4
 bus = &"GameAudio"
 audio_clips = Array[AudioStreamWAV]([ExtResource("17_kstx2"), ExtResource("18_p4s6p")])
 
 [node name="SpitterGroans-AudioRandomizer" parent="." instance=ExtResource("2_wt7bi")]
+volume_db = -8.0
 max_polyphony = 4
 bus = &"GameAudio"
 audio_clips = Array[AudioStreamWAV]([ExtResource("19_mq3o2"), ExtResource("20_nvbxl")])

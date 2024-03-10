@@ -911,9 +911,8 @@ shape = SubResource("RectangleShape2D_2psla")
 
 [node name="Doors" type="Node" parent="GameWorld/Environment"]
 
-[node name="PurchasableDoor" parent="GameWorld/Environment/Doors" node_paths=PackedStringArray("linked_doors") instance=ExtResource("17_okwvs")]
+[node name="PurchasableDoor" parent="GameWorld/Environment/Doors" instance=ExtResource("17_okwvs")]
 position = Vector2(-119, 706)
-linked_doors = []
 purchasable_cost = 0
 
 [node name="Window" type="Node" parent="GameWorld/Environment"]
@@ -978,25 +977,28 @@ layer_1/tile_data = PackedInt32Array(917502, 0, 2, 851990, 131072, 2, -1, 196613
 [node name="Objectives" type="Node" parent="GameWorld"]
 
 [node name="VesselCharge" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
-position = Vector2(1880, 234)
+position = Vector2(778, 759)
 souls_needed_to_charge = 1.0
 
 [node name="VesselCharge2" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
 position = Vector2(1145, 662)
 souls_needed_to_charge = 1.0
 
-[node name="VesselCharge3" parent="GameWorld/Objectives" instance=ExtResource("35_yxu8u")]
-position = Vector2(645, 1086)
+[node name="VesselCharge3" parent="GameWorld/Objectives" node_paths=PackedStringArray("overload_doors") instance=ExtResource("35_yxu8u")]
+position = Vector2(-784, 691)
+rotation = 1.57079
 souls_needed_to_charge = 1.0
+overload_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="Note" parent="GameWorld/Objectives" instance=ExtResource("42_ujoyx")]
 position = Vector2(1058, -1346)
 
 [node name="KeycardConsole" parent="GameWorld/Objectives" instance=ExtResource("44_tb3dc")]
-position = Vector2(1814, 1428)
+position = Vector2(-434, 108)
+rotation = -0.92226
 
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(2317, 1116)
+position = Vector2(577, 352)
 rotation = -1.57079
 starting_gun = "CLUSTER_CANNON"
 starting_money = 100000
@@ -1040,6 +1042,7 @@ debug_color = Color(0.666667, 0.494118, 0.372549, 0.419608)
 [node name="ZombieSpawner" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
 position = Vector2(1775, 345)
 spawn_interval = 1.0
+spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner2" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
@@ -1048,8 +1051,9 @@ spawn_interval = 1.0
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="ZombieSpawner3" parent="GameWorld/ZombieManager" node_paths=PackedStringArray("trigger_doors") instance=ExtResource("25_2j7wj")]
-position = Vector2(153, 1481)
+position = Vector2(-823, 1541)
 spawn_interval = 1.0
+spawner_active = false
 trigger_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
 
 [node name="PowerUpManager" parent="GameWorld" instance=ExtResource("40_qr88r")]

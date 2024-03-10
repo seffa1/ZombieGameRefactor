@@ -5,7 +5,11 @@ extends Node2D
 @onready var chargable_light_flicker: Light2D = $ChargableLightFlicker
 @onready var loop_audio: AudioStreamPlayer2D = $Looping
 @onready var animation_player = $AnimationPlayer
+@onready var overloader: Area2D = %Overloader
+
 @export var souls_needed_to_charge: float = 50.0
+@export var overload_doors: Array[Area2D]
+@export var overload_duration: int = 60
 
 var max_light_energy: float = 0.7
 var energy_per_soul: float
@@ -13,12 +17,37 @@ var souls_collected = 0
 
 var charge_complete: bool = false
 
+signal charging_complete
+
 func _ready():
 	Events.zombie_death.connect(_on_zombie_death)
 	Events.vessel_charged.connect(_on_vessel_charged)
 	energy_per_soul = max_light_energy / souls_needed_to_charge
+	overloader.overload_activated.connect(_on_overload_activated)
 
+# OVERLOAD SEQUENCE
+func _on_overload_activated():
+	Events.emit_signal("vessel_overload_started")
+	%OverloadTimer.start(overload_duration)
+	animation_player.play("overload")
+	for audio_player in %OverloadAudio.get_children():
+		audio_player.play()
+	for door in overload_doors:
+		door.overload_started()
 
+func _on_overload_complete():
+	%OverloadParticles.emitting = true
+	animation_player.play("overload_complete")
+	for audio_player in %OverloadAudio.get_children():
+		audio_player.stop()
+	for door in overload_doors:
+		door.overload_finished()
+	Events.emit_signal("vessel_overload_complete")
+
+func _on_overload_timer_timeout():
+	_on_overload_complete()
+
+# CHARGING SEQUENCE
 func _on_zombie_death(zombie: CharacterBody2D):
 	if zombie_detector.overlaps_body(zombie):
 		spawn_zombie_soul(zombie.global_position)
@@ -45,6 +74,7 @@ func complete_charging():
 	if charge_complete:
 		return
 	charge_complete = true
+	emit_signal("charging_complete")
 
 	zombie_detector.monitoring = false
 	animation_player.play("finish_charge")
@@ -52,3 +82,6 @@ func complete_charging():
 
 func _on_charge_animation_complete():
 	loop_audio.play()
+
+
+

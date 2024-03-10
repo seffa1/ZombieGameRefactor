@@ -25,3 +25,11 @@ func open_door():
 	
 	# Consumed by zombie spawners to becomem active
 	emit_signal("door_opened")
+
+func overload_started():
+	collision.disabled = false
+	animation_player.play("close")
+	
+func overload_finished():
+	collision.disabled = true
+	animation_player.play("open")
