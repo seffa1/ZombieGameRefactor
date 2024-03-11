@@ -55,7 +55,7 @@ func _ready():
 			target_window = window
 	assert(target_window != null, "There are no windows for spawner to target.")
 	assert(spawner_active or len(trigger_doors) > 0 or is_overload_spawner, "An inactive spawner has no triggers doors to activate it!")
-	assert(!is_overload_swpawner or overload_vessel, 'Overload spawner not linked to a vessel')
+	assert(!is_overload_spawner or overload_vessel, 'Overload spawner not linked to a vessel')
 	assert(!is_overload_spawner or zombie_container, "Overload Spawner not linked to container")
 	assert(!is_overload_spawner or zombie_manager, "Overload Spawner not linked to manager")
 	
