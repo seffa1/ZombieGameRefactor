@@ -70,7 +70,6 @@ func _ready():
 
 # OVERLOAD BEHAVRIOR
 func _on_overload_started():
-	print('overload spawning started')
 	overload_activated = true
 	spawn_zombie(Globals.wave_number)
 	overload_spawn_timer.start(overload_spawn_interval)
@@ -88,7 +87,6 @@ func _on_trigger_door_opened():
 	spawner_active = true
 
 func spawn_zombie(wave_number: int) -> void:
-	print("overload spawn")
 	# Creates the zombie and sets its needed properties
 	var zombie_to_spawn = get_random_zombie(wave_number)
 	var zombie_instance = zombie_to_spawn.instantiate()
@@ -110,7 +108,6 @@ func get_zombie(wave_number: int) -> CharacterBody2D:
 	zombie_instance.global_position = global_position
 	
 	if is_overload_spawner:
-		print("getting zombie from overload")
 		zombie_instance.is_overload_zombie = true
 	
 	# Timer is checked by the spawn manager before calling this function

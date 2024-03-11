@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://bxupwwkkaqg6q"]
+[gd_scene load_steps=76 format=3 uid="uid://bxupwwkkaqg6q"]
 
 [ext_resource type="Script" path="res://Main/game_initializer.gd" id="1_436u3"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="2_ywtrq"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://c1x5x2k8ibs3v" path="res://World/objectives/Notes/Note.tscn" id="42_ujoyx"]
 [ext_resource type="Script" path="res://Main/score_tracker.gd" id="43_ou650"]
 [ext_resource type="PackedScene" uid="uid://dkom10wmh5ukg" path="res://World/objectives/Keycard/KeycardConsole.tscn" id="44_tb3dc"]
+[ext_resource type="PackedScene" uid="uid://b2b10kgrwlwfh" path="res://World/objectives/VaultDoor/VaultDoor.tscn" id="45_5650x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2psla"]
 size = Vector2(582.595, 58)
@@ -545,6 +546,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-77, 617, -73, -28, -54
 process_mode = 1
 script = ExtResource("1_436u3")
 remove_vinette = true
+start_with_keycard = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -816,18 +818,6 @@ shadow_filter = 1
 shadow_filter_smooth = 1.4
 texture = ExtResource("16_yds3k")
 
-[node name="PointLight2D5" type="PointLight2D" parent="GameWorld/Environment/Lights"]
-visible = false
-position = Vector2(-66.375, 375.5)
-scale = Vector2(0.186279, 0.610352)
-color = Color(1, 0, 0, 1)
-energy = 3.21
-blend_mode = 2
-shadow_enabled = true
-shadow_filter = 1
-shadow_filter_smooth = 1.4
-texture = ExtResource("16_yds3k")
-
 [node name="PointLight2D2" type="PointLight2D" parent="GameWorld/Environment/Lights"]
 visible = false
 position = Vector2(-284, 695)
@@ -857,7 +847,7 @@ position = Vector2(-1085, -1211)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D"]
-position = Vector2(645, 741)
+position = Vector2(-668, -96.9992)
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="GameWorld/Environment/Obstacles"]
@@ -865,27 +855,27 @@ position = Vector2(-1102, -1050)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
-position = Vector2(790, 833)
+position = Vector2(-523, -4.99927)
 rotation = 2.09439
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
-position = Vector2(748, 1066)
+position = Vector2(-565, 228.001)
 rotation = 2.09439
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
-position = Vector2(261, 867)
+position = Vector2(-1052, 29.0007)
 rotation = 2.09439
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
-position = Vector2(498, 990)
+position = Vector2(-815, 152.001)
 rotation = 4.18878
 shape = SubResource("RectangleShape2D_2psla")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D2"]
-position = Vector2(550, 824)
+position = Vector2(-763, -13.9992)
 rotation = 4.18878
 shape = SubResource("RectangleShape2D_2psla")
 
@@ -895,7 +885,7 @@ rotation = 1.57079
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D3"]
-position = Vector2(-576.017, 2626)
+position = Vector2(-1414.02, 3938.99)
 rotation = 0.523598
 shape = SubResource("RectangleShape2D_2psla")
 
@@ -905,7 +895,7 @@ rotation = 1.57079
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWorld/Environment/Obstacles/StaticBody2D4"]
-position = Vector2(580.998, 280.004)
+position = Vector2(-257.009, 1593)
 rotation = -0.523598
 shape = SubResource("RectangleShape2D_2psla")
 
@@ -981,21 +971,18 @@ position = Vector2(-773, 728)
 rotation = 1.53076
 souls_needed_to_charge = 1.0
 overload_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
-overload_duration = 30
 
 [node name="VesselCharge3" parent="GameWorld/Objectives" node_paths=PackedStringArray("overload_doors") instance=ExtResource("35_yxu8u")]
 position = Vector2(936, 627)
 rotation = 1.53076
 souls_needed_to_charge = 1.0
 overload_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
-overload_duration = 30
 
 [node name="VesselCharge4" parent="GameWorld/Objectives" node_paths=PackedStringArray("overload_doors") instance=ExtResource("35_yxu8u")]
 position = Vector2(428, 1051)
 rotation = 1.53076
 souls_needed_to_charge = 1.0
 overload_doors = [NodePath("../../Environment/Doors/PurchasableDoor")]
-overload_duration = 30
 
 [node name="Note" parent="GameWorld/Objectives" instance=ExtResource("42_ujoyx")]
 position = Vector2(1058, -1346)
@@ -1004,8 +991,12 @@ position = Vector2(1058, -1346)
 position = Vector2(-374, 146)
 rotation = -1.26599
 
+[node name="VaultDoor" parent="GameWorld/Objectives" instance=ExtResource("45_5650x")]
+position = Vector2(-579, -342)
+rotation = -1.57079
+
 [node name="Player" parent="GameWorld" instance=ExtResource("23_mt1io")]
-position = Vector2(43, 726)
+position = Vector2(51, 177)
 rotation = -1.57079
 starting_gun = "LSAT"
 starting_money = 100000
@@ -1028,6 +1019,46 @@ zombie_container = NodePath("../../ZombieContainer")
 zombie_manager = NodePath("../..")
 is_overload_spawner = true
 overload_vessel = NodePath("../../../Objectives/VesselCharge2")
+
+[node name="LockdownSpawner" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
+position = Vector2(-491, -673)
+spawner_active = false
+zombie_container = NodePath("../../ZombieContainer")
+zombie_manager = NodePath("../..")
+is_overload_spawner = true
+overload_vessel = NodePath("../../../Objectives/VaultDoor")
+
+[node name="LockdownSpawner2" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
+position = Vector2(-746, -631)
+spawner_active = false
+zombie_container = NodePath("../../ZombieContainer")
+zombie_manager = NodePath("../..")
+is_overload_spawner = true
+overload_vessel = NodePath("../../../Objectives/VaultDoor")
+
+[node name="LockdownSpawner3" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
+position = Vector2(-653, -790)
+spawner_active = false
+zombie_container = NodePath("../../ZombieContainer")
+zombie_manager = NodePath("../..")
+is_overload_spawner = true
+overload_vessel = NodePath("../../../Objectives/VaultDoor")
+
+[node name="LockdownSpawner4" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
+position = Vector2(-932, -487)
+spawner_active = false
+zombie_container = NodePath("../../ZombieContainer")
+zombie_manager = NodePath("../..")
+is_overload_spawner = true
+overload_vessel = NodePath("../../../Objectives/VaultDoor")
+
+[node name="LockdownSpawner5" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
+position = Vector2(-911, -682)
+spawner_active = false
+zombie_container = NodePath("../../ZombieContainer")
+zombie_manager = NodePath("../..")
+is_overload_spawner = true
+overload_vessel = NodePath("../../../Objectives/VaultDoor")
 
 [node name="OverloadSpawner2" parent="GameWorld/ZombieManager/OverloadSpawns" node_paths=PackedStringArray("zombie_container", "zombie_manager", "overload_vessel") instance=ExtResource("25_2j7wj")]
 position = Vector2(-654, 2158)

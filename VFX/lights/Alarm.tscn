@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8pki84ffjauu"]
+
+[ext_resource type="Texture2D" uid="uid://duqdx02c27sfd" path="res://World/lights/light.png" id="1_dow2p"]
+[ext_resource type="Script" path="res://VFX/lights/alarm.gd" id="2_cysso"]
+[ext_resource type="AudioStream" uid="uid://ef58d3dslcsp" path="res://VFX/lights/Alarm.wav" id="3_dsvvc"]
+
+[node name="Alarm" type="PointLight2D"]
+position = Vector2(-326, -100)
+scale = Vector2(0.599821, 0.764746)
+color = Color(1, 0, 0, 1)
+energy = 3.21
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.4
+texture = ExtResource("1_dow2p")
+script = ExtResource("2_cysso")
+
+[node name="AlarmSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_dsvvc")
+volume_db = -2.836
+bus = &"GameAudio"
+
+[node name="SoundInterval" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="SoundInterval" to="." method="_on_sound_interval_timeout"]

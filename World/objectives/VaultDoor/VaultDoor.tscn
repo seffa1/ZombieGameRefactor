@@ -1,0 +1,250 @@
+[gd_scene load_steps=16 format=3 uid="uid://b2b10kgrwlwfh"]
+
+[ext_resource type="Script" path="res://World/objectives/VaultDoor/vault_door.gd" id="1_fbptj"]
+[ext_resource type="Texture2D" uid="uid://c3x24odlv25w6" path="res://World/objectives/Keycard/keycard_4.png" id="2_cgs0n"]
+[ext_resource type="Texture2D" uid="uid://ddbhmaax4ie5a" path="res://World/tilesets/objects_house/Tilelist3.png" id="2_ys3h0"]
+[ext_resource type="AudioStream" uid="uid://ds7c34ia4fxc0" path="res://UI/sounds/button_clicks/ButtonPress_BW.61183.wav" id="4_li8l1"]
+[ext_resource type="AudioStream" uid="uid://dslandda8kfcl" path="res://World/objectives/VesselCharge/sounds/FF_FM_foley_mechanical_valve_hydrolic_release.wav" id="6_uck5h"]
+[ext_resource type="AudioStream" uid="uid://tvqxqacb4d7a" path="res://World/objectives/VesselCharge/sounds/CementMixer_BW.20810.wav" id="6_y10hn"]
+[ext_resource type="AudioStream" uid="uid://b48mhwsrgq62c" path="res://World/objectives/VesselCharge/sounds/FF_FM_foley_mechanical_machine_power_down_full.wav" id="7_2nln5"]
+[ext_resource type="PackedScene" uid="uid://b8pki84ffjauu" path="res://VFX/lights/Alarm.tscn" id="8_hglcp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iv26f"]
+radius = 79.0
+height = 276.0
+
+[sub_resource type="Animation" id="Animation_55w55"]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("keycard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_30rx1"]
+resource_name = "keycard_insert"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("keycard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3, 3),
+"update": 0,
+"values": [Vector2(-41, 76), Vector2(-41, 48)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.19143,
+"start_offset": 0.0,
+"stream": ExtResource("4_li8l1")
+}, {
+"end_offset": 0.101977,
+"start_offset": 0.101977,
+"stream": ExtResource("4_li8l1")
+}],
+"times": PackedFloat32Array(0, 0.967985)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_xj35e"]
+resource_name = "open"
+length = 6.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("keycard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-41, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-300, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 1.77348,
+"start_offset": 0.0,
+"stream": ExtResource("6_uck5h")
+}],
+"times": PackedFloat32Array(2.89866)
+}
+tracks/2/use_blend = true
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 2.11551,
+"start_offset": 0.0,
+"stream": ExtResource("7_2nln5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukare"]
+_data = {
+"RESET": SubResource("Animation_55w55"),
+"keycard_insert": SubResource("Animation_30rx1"),
+"open": SubResource("Animation_xj35e")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8kig"]
+size = Vector2(320, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32qnn"]
+size = Vector2(512, 64)
+
+[node name="VaultDoor" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_fbptj")
+
+[node name="interactionZone" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_iv26f")
+
+[node name="keycard" type="Sprite2D" parent="."]
+position = Vector2(-1, 25)
+texture = ExtResource("2_cgs0n")
+region_rect = Rect2(2479, 2218, 90, 72)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_ys3h0")
+region_enabled = true
+region_rect = Rect2(1569, 2328, 110, 110)
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(-104, 0)
+texture = ExtResource("2_ys3h0")
+region_enabled = true
+region_rect = Rect2(1569, 2328, 110, 110)
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(104, 0)
+texture = ExtResource("2_ys3h0")
+region_enabled = true
+region_rect = Rect2(1569, 2328, 110, 110)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+texture = ExtResource("2_ys3h0")
+region_enabled = true
+region_rect = Rect2(2479, 2218, 90, 72)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(96, -8)
+rotation = 0.785398
+texture = ExtResource("2_ys3h0")
+region_enabled = true
+region_rect = Rect2(2479, 2218, 90, 72)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(-96, -8)
+rotation = -0.785398
+texture = ExtResource("2_ys3h0")
+region_enabled = true
+region_rect = Rect2(2479, 2218, 90, 72)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ukare")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_i8kig")
+
+[node name="DoorContainer" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DoorContainer"]
+collision_layer = 16
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorContainer/StaticBody2D"]
+position = Vector2(-312, -88)
+shape = SubResource("RectangleShape2D_32qnn")
+
+[node name="Polygon2D" type="Polygon2D" parent="DoorContainer"]
+position = Vector2(-312, -120)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-256, 0, 256, 0, 256, 64, -256, 64)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -8.194
+bus = &"GameAudio"
+
+[node name="LockdownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="OverloadAudio" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="OverloadLoop_1" type="AudioStreamPlayer2D" parent="OverloadAudio"]
+stream = ExtResource("6_y10hn")
+volume_db = -6.502
+bus = &"GameAudio"
+
+[node name="Alarm" parent="." instance=ExtResource("8_hglcp")]
+unique_name_in_owner = true
+position = Vector2(24, 192)
+rotation = 1.57079
+
+[connection signal="timeout" from="LockdownTimer" to="." method="_on_lockdown_timer_timeout"]
+
+[editable path="Alarm"]
