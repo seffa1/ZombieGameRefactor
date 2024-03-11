@@ -29,7 +29,7 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var right_upper_health: Node2D = $"HealthComponents/HealthComponent - RightUpper"
 @onready var right_lower_health: Node2D = $"HealthComponents/HealthComponent - RightLower"
 
-@onready var modification_stack = preload("res://Enemies/Boss/boss_skeleton_modification_stack.tres")
+@onready var modification_stack = preload("res://Enemies/Boss/boss_skeleton_modification_stack_2d.tres")
 
 var base_walking_speed: float
 

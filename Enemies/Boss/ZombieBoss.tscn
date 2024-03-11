@@ -1,7 +1,8 @@
-[gd_scene load_steps=57 format=3 uid="uid://japa4n414dpl"]
+[gd_scene load_steps=52 format=3 uid="uid://japa4n414dpl"]
 
 [ext_resource type="Script" path="res://Enemies/Boss/zombie_boss.gd" id="1_5p7gg"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_monke"]
+[ext_resource type="SkeletonModificationStack2D" uid="uid://cmvmy0edfep5k" path="res://Enemies/Boss/boss_skeleton_modification_stack_2d.tres" id="3_4hisv"]
 [ext_resource type="Texture2D" uid="uid://2we8cri5bv08" path="res://Enemies/Boss/images/mainParts/torsoLower.png" id="3_4nvxn"]
 [ext_resource type="Texture2D" uid="uid://c2byu8et636iv" path="res://Enemies/Boss/images/mainParts/armRightLower.png" id="3_gkwey"]
 [ext_resource type="Texture2D" uid="uid://b0jg8t5depd5" path="res://Enemies/Boss/images/mainParts/head.png" id="3_p5gud"]
@@ -11,22 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://bv20fdblasnlw" path="res://Enemies/Boss/images/mainParts/armLeftLower.png" id="6_3ptqe"]
 [ext_resource type="Texture2D" uid="uid://bj3xjoj38tbf0" path="res://Enemies/Boss/images/mainParts/armLeftUpper.png" id="7_23rjn"]
 [ext_resource type="Texture2D" uid="uid://cq0yomd6wjsr5" path="res://Enemies/Boss/images/mainParts/armLeftUpper_v2.png" id="8_nwpe2"]
+[ext_resource type="Script" path="res://Enemies/Boss/zombie_boss_StateMachine.gd" id="17_dned1"]
 [ext_resource type="AudioStream" uid="uid://blvlgye7pe4uv" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Wet.wav" id="27_pajfw"]
 [ext_resource type="AudioStream" uid="uid://bpkfqq2684gmj" path="res://Enemies/Spitter/sounds/ESM_Deep_Cinematic_Monster_Growl_1_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="28_cyffy"]
 [ext_resource type="AudioStream" uid="uid://b0minr0ev4u0a" path="res://Enemies/Spitter/sounds/ESM_Death_by_Monster_3_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="29_4ev8b"]
 [ext_resource type="PackedScene" uid="uid://dgwrjf4q250b5" path="res://VFX/Gore/GoreExplosion_Spitter.tscn" id="30_u542t"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="33_sjp7a"]
-[ext_resource type="Script" path="res://Enemies/Spitter/states/spitter_state_machine.gd" id="34_q272v"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_window.gd" id="35_tb6r6"]
 [ext_resource type="Script" path="res://Enemies/Spitter/states/move_spitter.gd" id="36_pucei"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/seek_inside.gd" id="37_4yliy"]
 [ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack.gd" id="38_05ae1"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_window.gd" id="39_2wynw"]
 [ext_resource type="Script" path="res://Enemies/Spitter/states/AttackPlayer_Spit.gd" id="40_86brm"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/attack_player_through_window.gd" id="41_5eyld"]
 [ext_resource type="Script" path="res://Enemies/Spitter/headless_death_spitter.gd" id="42_541aa"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/die.gd" id="43_ifcn6"]
-[ext_resource type="Script" path="res://Enemies/ZombieBasic/states/stand_still.gd" id="44_5cvq1"]
 [ext_resource type="Script" path="res://Enemies/shared/states/frozen.gd" id="45_g2880"]
 [ext_resource type="Script" path="res://Enemies/shared/states/electrocuted.gd" id="46_cducv"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="47_2t7uu"]
@@ -100,20 +95,6 @@ tracks/0/keys = {
 resource_name = "OBSOLETE_zombie_death"
 length = 2.0
 step = 0.05
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ZombieStateMachine/Die")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_death_animation_finished"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_2n82s"]
 length = 0.001
@@ -689,18 +670,19 @@ scale = Vector2(0.287183, 0.287183)
 position = Vector2(449.191, -194.998)
 
 [node name="LeftArm2" type="Node2D" parent="SkeletonControl/Target"]
-position = Vector2(403.924, -295.978)
+position = Vector2(623.296, -299.461)
 
 [node name="RightArm1" type="Node2D" parent="SkeletonControl/Target"]
 position = Vector2(389.995, 149.73)
 
 [node name="RightArm2" type="Node2D" parent="SkeletonControl/Target"]
-position = Vector2(518.833, 438.745)
+position = Vector2(654.635, 302.943)
 
 [node name="HeadLook" type="Node2D" parent="SkeletonControl/Target"]
-position = Vector2(692.938, 0)
+position = Vector2(856.597, -38.3031)
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SkeletonControl"]
+modification_stack = ExtResource("3_4hisv")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
@@ -708,10 +690,12 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="armLeft1Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
 position = Vector2(41.7852, -257.675)
 rest = Transform2D(1, 0, 0, 1, 0, -121.874)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft1Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper"]
 position = Vector2(142.766, -285.532)
 rest = Transform2D(1, 0, 0, 1, 55.7136, -59.1957)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handLeft1" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper/armLeft1Lower"]
 position = Vector2(257.675, -24.3747)
@@ -732,10 +716,12 @@ texture = ExtResource("4_mtqwg")
 [node name="armLeft2Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
 position = Vector2(170.623, -188.033)
 rest = Transform2D(1, 0, 0, 1, 52.2315, -111.427)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armLeft2Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper"]
 position = Vector2(261.158, -94.0167)
 rest = Transform2D(1, 0, 0, 1, 45.2673, -13.9284)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handLeft2" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper/armLeft2Lower"]
 position = Vector2(257.675, -20.8926)
@@ -756,13 +742,14 @@ texture = ExtResource("5_regss")
 [node name="armRight1Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
 position = Vector2(69.642, 254.193)
 rotation = 0.367831
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 10.4463, 142.766)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight1Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper"]
 position = Vector2(302.943, 111.427)
 rotation = -0.359682
 rest = Transform2D(1, 0, 0, 1, 31.3389, 34.821)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight1" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper/armRight1Lower"]
 position = Vector2(264.64, 31.3389)
@@ -784,10 +771,12 @@ texture = ExtResource("7_23rjn")
 position = Vector2(160.177, 174.105)
 rotation = 0.159043
 rest = Transform2D(1, 0, 0, 1, 66.1599, 114.909)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="armRight2Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper"]
 position = Vector2(264.64, 59.1957)
 rest = Transform2D(1, 0, 0, 1, 52.2315, 17.4105)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="handRight2" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper/armRight2Lower"]
 position = Vector2(261.158, -41.7852)
@@ -832,6 +821,7 @@ rest = Transform2D(1, 0, 0, 1, 6.9642, 0)
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
 position = Vector2(153.212, -3.4821)
 rest = Transform2D(1, 0, 0, 1, 45.2673, 3.4821)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="head" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/head"]
 z_index = 1
@@ -918,39 +908,20 @@ debug_color = Color(0.67451, 0.494118, 0.333333, 0.419608)
 [node name="ZombieGroans-Audio" parent="." instance=ExtResource("33_sjp7a")]
 
 [node name="ZombieStateMachine" type="Node" parent="."]
-script = ExtResource("34_q272v")
-START_STATE = NodePath("SeekWindow")
-
-[node name="SeekWindow" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("35_tb6r6")
+script = ExtResource("17_dned1")
+START_STATE = NodePath("SeekPlayer")
 
 [node name="SeekPlayer" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("36_pucei")
 
-[node name="SeekInside" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("37_4yliy")
-
 [node name="AttackPlayer" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("38_05ae1")
-
-[node name="BreakWindow" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("39_2wynw")
 
 [node name="AttackPlayer_Spit" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("40_86brm")
 
-[node name="AttackPlayerThroughWindow" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("41_5eyld")
-
 [node name="HeadlessDeath" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("42_541aa")
-
-[node name="Die" type="Node" parent="ZombieStateMachine" node_paths=PackedStringArray("hurtboxes")]
-script = ExtResource("43_ifcn6")
-hurtboxes = [null, null, null, null, null, null]
-
-[node name="StandStill" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("44_5cvq1")
 
 [node name="Frozen" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("45_g2880")
@@ -964,17 +935,30 @@ unique_name_in_owner = true
 [node name="HealthComponent - Head" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
 unique_name_in_owner = true
 max_health = 125.0
+invincible_mode = true
 
-[node name="HealthComponent - LeftUpper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+[node name="HealthComponent - Left1Upper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
 max_health = 150.0
 
-[node name="HealthComponent - RightUpper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+[node name="HealthComponent - Left2Upper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
 max_health = 150.0
 
-[node name="HealthComponent - LeftLower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+[node name="HealthComponent - Right1Upper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+max_health = 150.0
+
+[node name="HealthComponent - Right2Upper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+max_health = 150.0
+
+[node name="HealthComponent - Left1Lower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
 max_health = 100.0
 
-[node name="HealthComponent - RightLower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+[node name="HealthComponent - Left2Lower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+max_health = 100.0
+
+[node name="HealthComponent - Right1Lower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+max_health = 100.0
+
+[node name="HealthComponent - Right2Lower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
 max_health = 100.0
 
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("48_khul8")]
@@ -998,7 +982,7 @@ friction = 800.0
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("velocity_component", "hurtboxes", "modulator") instance=ExtResource("50_p780w")]
 unique_name_in_owner = true
 velocity_component = NodePath("../VelocityComponent")
-hurtboxes = [NodePath(""), NodePath(""), NodePath("")]
+hurtboxes = [null, null, null]
 freeze_sound = ExtResource("51_4ou53")
 modulator = NodePath("../SkeletonControl")
 freeze_color = Color(0.32549, 0.462745, 0.701961, 1)
