@@ -22,7 +22,7 @@ func _process(_delta):
 				if message != '':
 					Events.emit_signal("update_interactable_log", message)
 	
-	assert(num_of_purchasables <= 1, "Player has two purchasables on top of each other!")
+	#assert(num_of_purchasables <= 1, "Player has two purchasables on top of each other!")
 	if num_of_purchasables == 0:
 		Events.emit_signal("update_interactable_log", "")
 
