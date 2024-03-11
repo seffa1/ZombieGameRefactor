@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj3xjoj38tbf0"
-path="res://.godot/imported/armLeftUpper.png-ff46cdd5e0ffe5e66f5e6a38bd7b77c2.ctex"
+uid="uid://cq0yomd6wjsr5"
+path="res://.godot/imported/armLeftUpper_v2.png-8214489611804eef8cf4b288ec3dc4f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Boss/images/mainParts/armLeftUpper.png"
-dest_files=["res://.godot/imported/armLeftUpper.png-ff46cdd5e0ffe5e66f5e6a38bd7b77c2.ctex"]
+source_file="res://Enemies/Boss/images/mainParts/armLeftUpper_v2.png"
+dest_files=["res://.godot/imported/armLeftUpper_v2.png-8214489611804eef8cf4b288ec3dc4f2.ctex"]
 
 [params]
 

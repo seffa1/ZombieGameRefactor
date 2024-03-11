@@ -1,7 +1,16 @@
-[gd_scene load_steps=48 format=3 uid="uid://japa4n414dpl"]
+[gd_scene load_steps=57 format=3 uid="uid://japa4n414dpl"]
 
 [ext_resource type="Script" path="res://Enemies/Boss/zombie_boss.gd" id="1_5p7gg"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_monke"]
+[ext_resource type="Texture2D" uid="uid://2we8cri5bv08" path="res://Enemies/Boss/images/mainParts/torsoLower.png" id="3_4nvxn"]
+[ext_resource type="Texture2D" uid="uid://c2byu8et636iv" path="res://Enemies/Boss/images/mainParts/armRightLower.png" id="3_gkwey"]
+[ext_resource type="Texture2D" uid="uid://b0jg8t5depd5" path="res://Enemies/Boss/images/mainParts/head.png" id="3_p5gud"]
+[ext_resource type="Texture2D" uid="uid://yxvptq5yfem1" path="res://Enemies/Boss/images/mainParts/torsoUpper.png" id="4_ln0cw"]
+[ext_resource type="Texture2D" uid="uid://cjexf5w6mr10e" path="res://Enemies/Boss/images/mainParts/armRightUpper.png" id="4_mtqwg"]
+[ext_resource type="Texture2D" uid="uid://7hjelamfpnt0" path="res://Enemies/Boss/images/mainParts/armRightUpper_v2.png" id="5_regss"]
+[ext_resource type="Texture2D" uid="uid://bv20fdblasnlw" path="res://Enemies/Boss/images/mainParts/armLeftLower.png" id="6_3ptqe"]
+[ext_resource type="Texture2D" uid="uid://bj3xjoj38tbf0" path="res://Enemies/Boss/images/mainParts/armLeftUpper.png" id="7_23rjn"]
+[ext_resource type="Texture2D" uid="uid://cq0yomd6wjsr5" path="res://Enemies/Boss/images/mainParts/armLeftUpper_v2.png" id="8_nwpe2"]
 [ext_resource type="AudioStream" uid="uid://blvlgye7pe4uv" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Wet.wav" id="27_pajfw"]
 [ext_resource type="AudioStream" uid="uid://bpkfqq2684gmj" path="res://Enemies/Spitter/sounds/ESM_Deep_Cinematic_Monster_Growl_1_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="28_cyffy"]
 [ext_resource type="AudioStream" uid="uid://b0minr0ev4u0a" path="res://Enemies/Spitter/sounds/ESM_Death_by_Monster_3_Sound_FX_Foley_Creature_Gurgle_Groan.wav" id="29_4ev8b"]
@@ -664,7 +673,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_5p7gg")
 
 [node name="placeholderSprite" type="Sprite2D" parent="."]
-visible = false
+position = Vector2(-157, 1)
 rotation = -1.57079
 scale = Vector2(0.2859, 0.2859)
 texture = ExtResource("2_monke")
@@ -694,60 +703,150 @@ position = Vector2(692.938, 0)
 [node name="Skeleton2D" type="Skeleton2D" parent="SkeletonControl"]
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton2D"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="armLeft1Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
-position = Vector2(0, -121.874)
+position = Vector2(41.7852, -257.675)
+rest = Transform2D(1, 0, 0, 1, 0, -121.874)
 
 [node name="armLeft1Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper"]
-position = Vector2(55.7136, -59.1957)
+position = Vector2(142.766, -285.532)
+rest = Transform2D(1, 0, 0, 1, 55.7136, -59.1957)
 
 [node name="handLeft1" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper/armLeft1Lower"]
-position = Vector2(52.2315, -6.9642)
+position = Vector2(257.675, -24.3747)
+rest = Transform2D(1, 0, 0, 1, 52.2315, -6.9642)
+
+[node name="armLeft1Lower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper/armLeft1Lower"]
+z_index = 2
+position = Vector2(83.5704, -13.9283)
+rotation = -1.62227
+texture = ExtResource("3_gkwey")
+
+[node name="armLeft1Upper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper"]
+z_index = 1
+position = Vector2(76.6062, -114.909)
+rotation = -2.47166
+texture = ExtResource("4_mtqwg")
 
 [node name="armLeft2Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
-position = Vector2(52.2315, -111.427)
+position = Vector2(170.623, -188.033)
+rest = Transform2D(1, 0, 0, 1, 52.2315, -111.427)
 
 [node name="armLeft2Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper"]
-position = Vector2(45.2673, -13.9284)
+position = Vector2(261.158, -94.0167)
+rest = Transform2D(1, 0, 0, 1, 45.2673, -13.9284)
 
 [node name="handLeft2" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper/armLeft2Lower"]
-position = Vector2(45.2673, 3.4821)
+position = Vector2(257.675, -20.8926)
+rest = Transform2D(1, 0, 0, 1, 45.2673, 3.4821)
+
+[node name="armLeft2Lower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper/armLeft2Lower"]
+z_index = 2
+position = Vector2(83.5704, -13.9283)
+rotation = -1.62227
+texture = ExtResource("3_gkwey")
+
+[node name="armLeft2Upper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper"]
+z_index = 1
+position = Vector2(167.141, -87.0526)
+rotation = -1.83137
+texture = ExtResource("5_regss")
 
 [node name="armRight1Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
-position = Vector2(10.4463, 142.766)
+position = Vector2(69.642, 254.193)
+rotation = 0.367831
+scale = Vector2(1, 1)
+rest = Transform2D(1, 0, 0, 1, 10.4463, 142.766)
 
 [node name="armRight1Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper"]
-position = Vector2(31.3389, 34.821)
+position = Vector2(302.943, 111.427)
+rotation = -0.359682
+rest = Transform2D(1, 0, 0, 1, 31.3389, 34.821)
 
 [node name="handRight1" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper/armRight1Lower"]
-position = Vector2(55.7136, 10.4463)
+position = Vector2(264.64, 31.3389)
+rest = Transform2D(1, 0, 0, 1, 55.7136, 10.4463)
+
+[node name="armRight1Lower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper/armRight1Lower"]
+z_index = 2
+position = Vector2(87.0526, 10.4463)
+rotation = -1.49026
+texture = ExtResource("6_3ptqe")
+
+[node name="armRight1Upper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper"]
+z_index = 1
+position = Vector2(146.248, 48.7494)
+rotation = -1.51901
+texture = ExtResource("7_23rjn")
 
 [node name="armRight2Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
-position = Vector2(66.1599, 114.909)
+position = Vector2(160.177, 174.105)
+rotation = 0.159043
+rest = Transform2D(1, 0, 0, 1, 66.1599, 114.909)
 
 [node name="armRight2Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper"]
-position = Vector2(52.2315, 17.4105)
+position = Vector2(264.64, 59.1957)
+rest = Transform2D(1, 0, 0, 1, 52.2315, 17.4105)
 
 [node name="handRight2" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper/armRight2Lower"]
-position = Vector2(52.2315, -6.9642)
+position = Vector2(261.158, -41.7852)
+rest = Transform2D(1, 0, 0, 1, 52.2315, -6.9642)
+
+[node name="armRight2Lower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper/armRight2Lower"]
+z_index = 2
+position = Vector2(97.4989, -20.8926)
+rotation = -1.7283
+texture = ExtResource("6_3ptqe")
+
+[node name="armRight2Upper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper"]
+z_index = 1
+position = Vector2(181.069, 52.2315)
+rotation = -1.45775
+texture = ExtResource("8_nwpe2")
 
 [node name="legRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
 position = Vector2(45.2673, -34.821)
+rest = Transform2D(1, 0, 0, 1, 45.2673, -34.821)
 
 [node name="legRightLower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/legRightUpper"]
 position = Vector2(6.9642, 7.62939e-06)
+rest = Transform2D(1, 0, 0, 1, 6.9642, 7.62939e-06)
 
 [node name="footRight" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower"]
 position = Vector2(6.9642, 3.4821)
+rest = Transform2D(1, 0, 0, 1, 6.9642, 3.4821)
 
 [node name="legLegUpper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
 position = Vector2(45.2673, 41.7852)
+rest = Transform2D(1, 0, 0, 1, 45.2673, 41.7852)
 
 [node name="legLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/legLegUpper"]
 position = Vector2(6.9642, 3.8147e-06)
+rest = Transform2D(1, 0, 0, 1, 6.9642, 3.8147e-06)
 
 [node name="footLeft" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower"]
 position = Vector2(6.9642, 0)
+rest = Transform2D(1, 0, 0, 1, 6.9642, 0)
+
+[node name="head" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
+position = Vector2(153.212, -3.4821)
+rest = Transform2D(1, 0, 0, 1, 45.2673, 3.4821)
+
+[node name="head" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/head"]
+z_index = 1
+position = Vector2(3.48209, 0)
+rotation = -1.57079
+texture = ExtResource("3_p5gud")
+
+[node name="torsoLower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso"]
+position = Vector2(62.6778, -3.4821)
+rotation = -1.57079
+texture = ExtResource("3_4nvxn")
+
+[node name="torsoLower2" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso"]
+rotation = -1.57079
+texture = ExtResource("4_ln0cw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -755,6 +854,7 @@ libraries = {
 }
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 1024
 collision_mask = 128
 monitoring = false
@@ -767,6 +867,7 @@ disabled = true
 debug_color = Color(0.286275, 0, 0.0509804, 0.419608)
 
 [node name="EnvironmentCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(24, 0)
 shape = SubResource("CircleShape2D_sr2cp")
 
@@ -907,6 +1008,7 @@ unique_name_in_owner = true
 z_index = 35
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConductableComponent"]
+visible = false
 position = Vector2(52, 0)
 shape = SubResource("CircleShape2D_8itjs")
 debug_color = Color(0.721569, 0.341176, 0.843137, 0.419608)
