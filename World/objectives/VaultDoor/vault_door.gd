@@ -9,6 +9,7 @@ extends "res://World/purchasables/purchasable.gd"
 @export var vessel_count: int = 3
 @export var lockdown_duration: int = 60
 @export var overload_spawners: Array[Node2D]
+@export var lockdown_doors: Array[Area2D]
 
 var vessel_overload_count: int = 0
 
@@ -41,12 +42,16 @@ func give_item(player: CharacterBody2D) -> void:
 	emit_signal("overload_started")
 	lockdown_timer.start(lockdown_duration)
 	alarm.start()
+	for door in lockdown_doors:
+		door.overload_started()
 	for audio in overload_audio.get_children():
 		audio.play()
 
 func _on_lockdown_timer_timeout():
 	animation_player.play("open")
 	alarm.stop()
+	for door in lockdown_doors:
+		door.overload_finished()
 	for audio in overload_audio.get_children():
 		audio.stop()
 
