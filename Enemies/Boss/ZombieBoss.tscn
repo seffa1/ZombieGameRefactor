@@ -95,7 +95,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SkeletonControl/Skeleton2D/torso:rotation")
+tracks/5/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -107,7 +107,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SkeletonControl/Skeleton2D/torso/head:position")
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -119,7 +119,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower:position")
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -131,7 +131,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower/footRight:position")
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower/footRight:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -143,7 +143,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper:position")
+tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -155,7 +155,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper:position")
+tracks/10/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -167,7 +167,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower:position")
+tracks/11/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -179,7 +179,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower/footLeft:position")
+tracks/12/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower/footLeft:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -191,7 +191,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper:rotation")
+tracks/13/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -203,7 +203,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("SkeletonControl/Skeleton2D/torso:position")
+tracks/14/path = NodePath("SkeletonControl/Skeleton/torso:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -215,7 +215,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower:rotation")
+tracks/15/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -227,7 +227,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower/footRight:rotation")
+tracks/16/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower/footRight:rotation")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -239,7 +239,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper:rotation")
+tracks/17/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -251,7 +251,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower:rotation")
+tracks/18/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower:rotation")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -263,7 +263,7 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower/footLeft:rotation")
+tracks/19/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower/footLeft:rotation")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
@@ -352,7 +352,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SkeletonControl/Skeleton2D/torso:rotation")
+tracks/0/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -432,6 +432,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ZombieStateMachine/AttackPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_attack_animation_finished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_dug5d"]
@@ -616,7 +630,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SkeletonControl/Skeleton2D/torso:rotation")
+tracks/4/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -628,7 +642,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower:position")
+tracks/5/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -640,7 +654,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower/footRight:position")
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower/footRight:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -652,7 +666,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper:position")
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -664,7 +678,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper:position")
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -676,7 +690,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower:position")
+tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -688,7 +702,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower/footLeft:position")
+tracks/10/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower/footLeft:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -700,7 +714,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper:rotation")
+tracks/11/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -712,7 +726,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("SkeletonControl/Skeleton2D/torso:position")
+tracks/12/path = NodePath("SkeletonControl/Skeleton/torso:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -724,7 +738,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower:rotation")
+tracks/13/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -736,7 +750,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower/footRight:rotation")
+tracks/14/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower/footRight:rotation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -748,7 +762,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper:rotation")
+tracks/15/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -760,7 +774,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower:rotation")
+tracks/16/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower:rotation")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -772,7 +786,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower/footLeft:rotation")
+tracks/17/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower/footLeft:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -807,7 +821,7 @@ radius = 20.0
 radius = 55.2357
 height = 253.618
 
-[node name="ZombieBoss" type="CharacterBody2D" groups=["Zombies"]]
+[node name="ZombieBoss" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 8
 collision_mask = 65553
@@ -816,6 +830,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_5p7gg")
 
 [node name="placeholderSprite" type="Sprite2D" parent="."]
+visible = false
 rotation = -1.57079
 scale = Vector2(0.2859, 0.2859)
 texture = ExtResource("2_monke")
@@ -823,6 +838,7 @@ region_enabled = true
 region_rect = Rect2(56, 72, 564, 491)
 
 [node name="SkeletonControl" type="Node2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.287183, 0.287183)
 
 [node name="Target" type="Node2D" parent="SkeletonControl"]
@@ -842,205 +858,195 @@ position = Vector2(647.671, 323.835)
 [node name="HeadLook" type="Node2D" parent="SkeletonControl/Target"]
 position = Vector2(856.597, -38.3031)
 
-[node name="Skeleton2D" type="Skeleton2D" parent="SkeletonControl"]
+[node name="Skeleton" type="Skeleton2D" parent="SkeletonControl"]
 modification_stack = ExtResource("3_4hisv")
 
-[node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton2D"]
+[node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
 scale = Vector2(0.999844, 0.999833)
 skew = -0.000239253
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
-[node name="armLeft1Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="armLeft1Upper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(41.7852, -257.675)
 rotation = -0.372815
 scale = Vector2(0.999957, 0.999959)
 skew = -1.38283e-05
 rest = Transform2D(1, 0, 0, 1, 41.7852, -257.675)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="armLeft1Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper"]
+[node name="armLeft1Lower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeft1Upper"]
 position = Vector2(142.766, -285.532)
 rest = Transform2D(1, 0, 0, 1, 142.766, -285.532)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="handLeft1" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper/armLeft1Lower"]
+[node name="handLeft1" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeft1Upper/armLeft1Lower"]
 position = Vector2(257.675, -24.3747)
 rest = Transform2D(1, 0, 0, 1, 257.675, -24.3747)
 
-[node name="armLeft1Lower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper/armLeft1Lower"]
+[node name="armLeft1Lower" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/armLeft1Upper/armLeft1Lower"]
 z_index = 2
 position = Vector2(83.5704, -13.9283)
 rotation = -1.62227
 texture = ExtResource("3_gkwey")
 
-[node name="armLeft1Upper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armLeft1Upper"]
+[node name="armLeft1Upper" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/armLeft1Upper"]
 z_index = 1
 position = Vector2(76.6062, -114.909)
 rotation = -2.47166
 texture = ExtResource("4_mtqwg")
 
-[node name="armLeft2Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="armLeft2Upper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(170.623, -188.033)
 rest = Transform2D(1, 0, 0, 1, 170.623, -188.033)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="armLeft2Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper"]
+[node name="armLeft2Lower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeft2Upper"]
 position = Vector2(261.158, -94.0167)
 rest = Transform2D(1, 0, 0, 1, 261.158, -94.0167)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="handLeft2" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper/armLeft2Lower"]
+[node name="handLeft2" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armLeft2Upper/armLeft2Lower"]
 position = Vector2(257.675, -20.8926)
 rest = Transform2D(1, 0, 0, 1, 257.675, -20.8926)
 
-[node name="armLeft2Lower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper/armLeft2Lower"]
+[node name="armLeft2Lower" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/armLeft2Upper/armLeft2Lower"]
 z_index = 2
 position = Vector2(83.5704, -13.9283)
 rotation = -1.62227
 texture = ExtResource("3_gkwey")
 
-[node name="armLeft2Upper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armLeft2Upper"]
+[node name="armLeft2Upper" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/armLeft2Upper"]
 z_index = 1
 position = Vector2(167.141, -87.0526)
 rotation = -1.83137
 texture = ExtResource("5_regss")
 
-[node name="armRight1Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="armRight1Upper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(69.642, 254.193)
 rotation = 0.367831
 rest = Transform2D(0.93311, 0.359592, -0.359592, 0.93311, 69.642, 254.193)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="armRight1Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper"]
+[node name="armRight1Lower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRight1Upper"]
 position = Vector2(302.943, 111.427)
 rotation = -0.359682
 rest = Transform2D(0.936009, -0.351977, 0.351977, 0.936009, 302.943, 111.427)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="handRight1" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper/armRight1Lower"]
+[node name="handRight1" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRight1Upper/armRight1Lower"]
 position = Vector2(264.64, 31.3389)
 rest = Transform2D(1, 0, 0, 1, 264.64, 31.3389)
 
-[node name="armRight1Lower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper/armRight1Lower"]
+[node name="armRight1Lower" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/armRight1Upper/armRight1Lower"]
 z_index = 2
 position = Vector2(87.0526, 10.4463)
 rotation = -1.49026
 texture = ExtResource("6_3ptqe")
 
-[node name="armRight1Upper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armRight1Upper"]
+[node name="armRight1Upper" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/armRight1Upper"]
 z_index = 1
 position = Vector2(146.248, 48.7494)
 rotation = -1.51901
 texture = ExtResource("7_23rjn")
 
-[node name="armRight2Upper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="armRight2Upper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(160.177, 174.105)
 rotation = 0.159043
 rest = Transform2D(0.987379, 0.158373, -0.158373, 0.987379, 160.177, 174.105)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="armRight2Lower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper"]
+[node name="armRight2Lower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRight2Upper"]
 position = Vector2(264.64, 59.1957)
 rest = Transform2D(1, 0, 0, 1, 264.64, 59.1957)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="handRight2" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper/armRight2Lower"]
+[node name="handRight2" type="Bone2D" parent="SkeletonControl/Skeleton/torso/armRight2Upper/armRight2Lower"]
 position = Vector2(261.158, -41.7852)
 rest = Transform2D(1, 0, 0, 1, 261.158, -41.7852)
 
-[node name="armRight2Lower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper/armRight2Lower"]
+[node name="armRight2Lower" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/armRight2Upper/armRight2Lower"]
 z_index = 2
 position = Vector2(97.4989, -20.8926)
 rotation = -1.7283
 texture = ExtResource("6_3ptqe")
 
-[node name="armRight2Upper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/armRight2Upper"]
+[node name="armRight2Upper" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/armRight2Upper"]
 z_index = 1
 position = Vector2(181.069, 52.2315)
 rotation = -1.45775
 texture = ExtResource("8_nwpe2")
 
-[node name="legRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="legRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(87.0525, -13.9284)
 rotation = 0.229244
 scale = Vector2(0.999835, 0.99984)
-skew = -0.000108838
+skew = -0.000109076
 rest = Transform2D(1, 0, 0, 1, 87.0525, -13.9284)
 
-[node name="legRightLower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/legRightUpper"]
+[node name="legRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/legRightUpper"]
 position = Vector2(69.6421, -10.4463)
 rest = Transform2D(1, 0, 0, 1, 69.6421, -10.4463)
 
-[node name="footRight" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower"]
+[node name="footRight" type="Bone2D" parent="SkeletonControl/Skeleton/torso/legRightUpper/legRightLower"]
 position = Vector2(-20.8926, -10.4463)
 rest = Transform2D(1, 0, 0, 1, -20.8926, -10.4463)
 
-[node name="footRight" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower/footRight"]
+[node name="footRight" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/legRightUpper/legRightLower/footRight"]
 rotation = -1.57079
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("13_nynh0")
 
-[node name="legRightLower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/legRightUpper/legRightLower"]
+[node name="legRightLower" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/legRightUpper/legRightLower"]
 rotation = -1.57079
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("11_jybq1")
 
-[node name="legRightUpper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/legRightUpper"]
+[node name="legRightUpper" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/legRightUpper"]
 position = Vector2(-10.4462, 3.48212)
 rotation = -1.57079
 texture = ExtResource("12_4xiu3")
 
-[node name="legLegUpper" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="legLegUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(76.6062, 6.96417)
 rotation = -0.373838
 scale = Vector2(0.999837, 0.999849)
 skew = -0.000173092
 rest = Transform2D(0.995921, -0.0902268, 0.0902268, 0.995921, 76.6062, 6.96417)
 
-[node name="legLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/legLegUpper"]
+[node name="legLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/legLegUpper"]
 position = Vector2(90.5346, 3.48209)
 rest = Transform2D(1, 0, 0, 1, 90.5346, 3.48209)
 
-[node name="footLeft" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower"]
+[node name="footLeft" type="Bone2D" parent="SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower"]
 position = Vector2(20.8926, -2.28882e-05)
 rotation = 0.128987
 scale = Vector2(0.999998, 1)
 rest = Transform2D(1, 0, 0, 1, 20.8926, -2.28882e-05)
 
-[node name="footLeft" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower/footLeft"]
+[node name="footLeft" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower/footLeft"]
 rotation = -1.57079
 texture = ExtResource("10_14gh1")
 
-[node name="legLeftLower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/legLegUpper/legLeftLower"]
+[node name="legLeftLower" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower"]
 rotation = -1.57079
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("14_syero")
 
-[node name="legLeftUpper" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/legLegUpper"]
+[node name="legLeftUpper" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/legLegUpper"]
 position = Vector2(-6.96414, -13.9284)
 rotation = -1.57079
 texture = ExtResource("15_yc1mb")
 
-[node name="head" type="Bone2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(153.212, -3.4821)
-rotation = -0.0494632
-scale = Vector2(1.00004, 1.00003)
-skew = 0.000226378
+scale = Vector2(1.00003, 1.00004)
+skew = 0.000239253
 rest = Transform2D(1, 0, 0, 1, 153.212, -3.4821)
-metadata/_local_pose_override_enabled_ = true
 
-[node name="head" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso/head"]
+[node name="head" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/head"]
 z_index = 1
 position = Vector2(3.48209, 0)
 rotation = -1.57079
 texture = ExtResource("3_p5gud")
 
-[node name="torsoLower" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="torsoLower" type="Sprite2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(62.6778, -3.4821)
 rotation = -1.57079
 texture = ExtResource("3_4nvxn")
 
-[node name="torsoLower2" type="Sprite2D" parent="SkeletonControl/Skeleton2D/torso"]
+[node name="torsoLower2" type="Sprite2D" parent="SkeletonControl/Skeleton/torso"]
 rotation = -1.57079
 texture = ExtResource("4_ln0cw")
 
@@ -1128,7 +1134,6 @@ max_health = 100.0
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("48_khul8")]
 velocity_component = NodePath("../VelocityComponent")
 path_update_interval = 0.2
-draw_lines = false
 
 [node name="NavigationAgent2D" parent="PathfindingComponent" index="0"]
 avoidance_enabled = false
@@ -1136,10 +1141,10 @@ radius = 100.0
 neighbor_distance = 5977.77
 time_horizon_agents = 7.27
 time_horizon_obstacles = 6.02
-debug_enabled = false
 
 [node name="VelocityComponent" parent="." instance=ExtResource("49_0kjc3")]
-max_velocity = 100.0
+unique_name_in_owner = true
+max_velocity = 200.0
 acceleration_coefficient = 600.0
 friction = 800.0
 

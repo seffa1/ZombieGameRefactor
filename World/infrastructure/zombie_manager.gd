@@ -14,6 +14,9 @@ Responsible for controlling and tracking the waves of zombies spawning.
 @onready var max_ammo: PackedScene = preload("res://World/pickups/max_ammo/MaxAmmo.tscn")
 
 # Variables
+@export var disable_spawning: bool = false
+@export var spawn_boss: bool = false
+@export var boss_spawner: Node2D
 @export var zombie_container: Node
 @export var spawn_delay_interval: float = 5  # seconds between each round of wave spawning
 @export var MAX_ZOMBIES_ON_MAP: int = 30
@@ -72,6 +75,9 @@ func start_wave():
 	Events.emit_signal("wave_started", wave_number, zombies_to_be_killed)
 	Events.emit_signal("give_player_grenade")
 	set_base_health()
+	
+	if spawn_boss:
+		_spawn_boss()
 	
 func set_is_bomber_round(wave_number):
 	if _bomber_only:
@@ -133,6 +139,8 @@ func _process(_delta):
 	"""
 	Call on zombie spawners to spawn zombies
 	"""
+	if disable_spawning:
+		return
 	
 	var spawners_in_range = 0
 	for spawner in _select_spawners():
@@ -212,3 +220,6 @@ func _kill_all_zombies():
 	for zombie in get_tree().get_nodes_in_group("Zombies"):
 		zombie.queue_free()
 	zombie_ids = {}
+
+func _spawn_boss():
+	boss_spawner.spawn()

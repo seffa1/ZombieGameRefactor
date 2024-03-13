@@ -37,4 +37,3 @@ func reduce_max(amount: float):
 
 func raise_max(amount: float):
 	self.max_velocity = self.max_velocity + amount
-
