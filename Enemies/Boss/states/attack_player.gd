@@ -1,6 +1,6 @@
 extends "res://Libraries/state.gd"
 
-@onready var zombie_groans = $"../../ZombieGroans-Audio"
+@onready var zombie_groans: Node2D = %ZombieGroans
 
 var is_targeting_player: bool = false
 

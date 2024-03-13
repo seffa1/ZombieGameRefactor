@@ -1,12 +1,6 @@
 extends "res://Libraries/state.gd"
 
-@onready var animation_player = $"../../AnimationPlayer"
-@onready var zombie_groans = $"../../ZombieGroans-Audio"
-@onready var groan_timer = $"../../GroanTimer"
-@onready var spit_detectors = %SpitDetector
-@onready var spit_timer: Timer = $"../../SpitTimer"
-
-@export var groan_interval = 5  # min seconds between random groans
+@onready var animation_player = %AnimationPlayer
 
 var is_targeting_player = false
 var previous_position: Vector2
@@ -17,17 +11,9 @@ func _ready():
 
 func enter():
 	previous_position = owner.global_position
-	
-	# Enable spit detectors
-	for rayCast in spit_detectors.get_children():
-		rayCast.enabled = true
 
 	is_targeting_player = true
-	if randi_range(0, 1) == 1:
-		animation_player.play("zombie_walk_basic")
-	else:
-		animation_player.play("zombie_walk_basic_2")
-	groan_timer.start(groan_interval + randf_range(0, 10))
+	animation_player.play("zombie_walk_basic")
 
 func _on_player_position_changed(player_position: Vector2):
 	# We only consume this signal to update the pathfinding IF we are in this state
@@ -38,31 +24,12 @@ func _on_player_position_changed(player_position: Vector2):
 func exit():
 	previous_position = owner.global_position
 	is_targeting_player = false
-	groan_timer.stop()
-	
-	# Disable spit detectors
-	for rayCast in spit_detectors.get_children():
-		rayCast.enabled = false
 
 func update(delta):
-	# Check if we should do a random groan
-	if groan_timer.is_stopped():
-		zombie_groans.play_spitter()
-		groan_timer.start(groan_interval + randf_range(0, 10))
-
 	# Check if theres a player to melee attack
 	if owner.player_detector.has_overlapping_areas():
 		emit_signal("finished", "attack_player")
 		return
-		
-	# Check if the player is in the spit detectors to do a spit attack
-	if spit_timer.is_stopped():
-		for rayCast in spit_detectors.get_children():
-			if rayCast.is_colliding():
-				# 10 second cooldown on spitting
-				spit_timer.start(10)
-				emit_signal("finished" , "attack_player_spit")
-				return
 
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity
