@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://7kckpdbmnk8s"]
+
+[ext_resource type="Texture2D" uid="uid://11ad0lbs4dd4" path="res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man.png" id="1_4chop"]
+[ext_resource type="Script" path="res://Enemies/Boss/boss_arm_flame.gd" id="1_mdotc"]
+[ext_resource type="Texture2D" uid="uid://bv20fdblasnlw" path="res://Enemies/Boss/images/mainParts/armLeftLower.png" id="1_p2xfd"]
+[ext_resource type="Texture2D" uid="uid://cq0yomd6wjsr5" path="res://Enemies/Boss/images/mainParts/armLeftUpper_v2.png" id="2_m2wul"]
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_b1n6q"]
+target_nodepath = NodePath("../Target")
+flip_bend_direction = true
+joint_one_bone_idx = 0
+joint_one_bone2d_node = NodePath("Upper")
+joint_two_bone_idx = 1
+joint_two_bone2d_node = NodePath("Upper/Lower")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_3oa1j"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_b1n6q")
+
+[sub_resource type="Animation" id="Animation_lnrw1"]
+resource_name = "idle_1"
+
+[sub_resource type="Animation" id="Animation_1qyiv"]
+resource_name = "idle_2"
+
+[sub_resource type="Animation" id="Animation_4p2fq"]
+resource_name = "idle_3"
+length = 3.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lix46"]
+_data = {
+"idle_1": SubResource("Animation_lnrw1"),
+"idle_2": SubResource("Animation_1qyiv"),
+"idle_3": SubResource("Animation_4p2fq")
+}
+
+[node name="BossArm_Flame" type="Node2D"]
+script = ExtResource("1_mdotc")
+
+[node name="SkeletonControl" type="Node2D" parent="."]
+
+[node name="Target" type="Node2D" parent="SkeletonControl"]
+unique_name_in_owner = true
+position = Vector2(850, 19)
+
+[node name="Skeleton" type="Skeleton2D" parent="SkeletonControl"]
+modification_stack = SubResource("SkeletonModificationStack2D_3oa1j")
+
+[node name="Upper" type="Bone2D" parent="SkeletonControl/Skeleton"]
+rest = Transform2D(0.958132, -0.286077, 0.286177, 0.958099, 0, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Lower" type="Bone2D" parent="SkeletonControl/Skeleton/Upper"]
+position = Vector2(233, 4)
+rest = Transform2D(0.999988, -4.28161e-08, 1.95929e-05, 0.99999, 233, 4)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Flame" type="Bone2D" parent="SkeletonControl/Skeleton/Upper/Lower"]
+position = Vector2(274.564, 14.4555)
+scale = Vector2(1, 1)
+rest = Transform2D(1, -5.57323e-09, 5.57323e-09, 1, 274.564, 14.4555)
+
+[node name="Flame" type="Sprite2D" parent="SkeletonControl/Skeleton/Upper/Lower/Flame"]
+position = Vector2(52.021, 6.24805)
+texture = ExtResource("1_4chop")
+
+[node name="RayCast2D" type="RayCast2D" parent="SkeletonControl/Skeleton/Upper/Lower/Flame"]
+position = Vector2(263.3, 3.61676)
+rotation = -1.53767
+target_position = Vector2(2.08165e-12, 500)
+
+[node name="Lower" type="Sprite2D" parent="SkeletonControl/Skeleton/Upper/Lower"]
+z_index = 1
+position = Vector2(-5, 0)
+rotation = -1.5708
+texture = ExtResource("1_p2xfd")
+offset = Vector2(-15.4124, 106.051)
+
+[node name="Upper" type="Sprite2D" parent="SkeletonControl/Skeleton/Upper"]
+position = Vector2(1, 0)
+rotation = -1.5708
+texture = ExtResource("2_m2wul")
+offset = Vector2(-18.0182, 159.526)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_lix46")
+}
+
+[node name="FlameTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+unique_name_in_owner = true
