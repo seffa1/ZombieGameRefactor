@@ -1,45 +1,37 @@
-[gd_resource type="SkeletonModificationStack2D" load_steps=6 format=3 uid="uid://cmvmy0edfep5k"]
+[gd_resource type="SkeletonModificationStack2D" load_steps=5 format=3 uid="uid://cmvmy0edfep5k"]
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_8dde1"]
-bone_index = 19
+bone_index = 16
 bone2d_node = NodePath("torso/head")
 target_nodepath = NodePath("../Target/HeadLook")
 
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_fob6q"]
-target_nodepath = NodePath("../Target/LeftArm1")
-joint_one_bone_idx = 1
-joint_one_bone2d_node = NodePath("torso/armLeft1Upper")
-joint_two_bone_idx = 2
-joint_two_bone2d_node = NodePath("torso/armLeft1Upper/armLeft1Lower")
-
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_hfd7k"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_d51j3"]
 target_nodepath = NodePath("../Target/LeftArm2")
 joint_one_bone_idx = 4
 joint_one_bone2d_node = NodePath("torso/armLeft2Upper")
 joint_two_bone_idx = 5
 joint_two_bone2d_node = NodePath("torso/armLeft2Upper/armLeft2Lower")
 
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_1tjt7"]
-target_nodepath = NodePath("../Target/RightArm1")
-flip_bend_direction = true
-joint_one_bone_idx = 7
-joint_one_bone2d_node = NodePath("torso/armRight1Upper")
-joint_two_bone_idx = 8
-joint_two_bone2d_node = NodePath("torso/armRight1Upper/armRight1Lower")
-
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_bcw0l"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_rq8vp"]
 target_nodepath = NodePath("../Target/RightArm2")
 flip_bend_direction = true
-joint_one_bone_idx = 10
+joint_one_bone_idx = 7
 joint_one_bone2d_node = NodePath("torso/armRight2Upper")
-joint_two_bone_idx = 11
+joint_two_bone_idx = 8
 joint_two_bone2d_node = NodePath("torso/armRight2Upper/armRight2Lower")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_b352k"]
+target_nodepath = NodePath("../Target/flame")
+flip_bend_direction = true
+joint_one_bone_idx = 1
+joint_one_bone2d_node = NodePath("torso/Upper")
+joint_two_bone_idx = 2
+joint_two_bone2d_node = NodePath("torso/Upper/Lower")
 
 [resource]
 enabled = true
-modification_count = 5
+modification_count = 4
 modifications/0 = SubResource("SkeletonModification2DLookAt_8dde1")
-modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_fob6q")
-modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_hfd7k")
-modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_1tjt7")
-modifications/4 = SubResource("SkeletonModification2DTwoBoneIK_bcw0l")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_d51j3")
+modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_rq8vp")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_b352k")

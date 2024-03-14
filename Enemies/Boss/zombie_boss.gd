@@ -21,13 +21,6 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: Node = $ZombieStateMachine
 
-# Health Nodes
-@onready var head_health: Node2D = $"HealthComponents/HealthComponent - Head"
-@onready var left_upper_health: Node2D = $"HealthComponents/HealthComponent - LeftUpper"
-@onready var left_lower_health: Node2D = $"HealthComponents/HealthComponent - LeftLower"
-@onready var right_upper_health: Node2D = $"HealthComponents/HealthComponent - RightUpper"
-@onready var right_lower_health: Node2D = $"HealthComponents/HealthComponent - RightLower"
-
 @onready var modification_stack = preload("res://Enemies/Boss/boss_skeleton_modification_stack_2d.tres")
 
 var base_walking_speed: float

@@ -28,8 +28,10 @@ func exit():
 func update(delta):
 	# Check if theres a player to melee attack
 	if owner.player_detector.has_overlapping_areas():
-		emit_signal("finished", "attack_player")
-		return
+		if randi_range(0, 1) == 0:
+			emit_signal("finished", "attack_player")
+		else:
+			emit_signal("finished", "stationary_attack")
 
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity
