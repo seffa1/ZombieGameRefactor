@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://d0cyg0gpq5gsk"]
+
+[ext_resource type="Script" path="res://Enemies/Boss/spit_emitter_arm.gd" id="1_mmu36"]
+[ext_resource type="Texture2D" uid="uid://4qoffcjngcmh" path="res://VFX/textures/kenney_particle-pack/PNG (Transparent)/dirt_03.png" id="1_nhx8k"]
+[ext_resource type="PackedScene" uid="uid://c52q7k4fdk0nm" path="res://VFX/fire/PoisenThrow.tscn" id="3_xqp53"]
+[ext_resource type="Shader" path="res://VFX/shaders/fire_shader.gdshader" id="4_ww42f"]
+
+[sub_resource type="Gradient" id="Gradient_t8t3q"]
+colors = PackedColorArray(5.54903e-06, 0.734863, 0, 1, 3.22222e-08, 0.0359316, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qa5j4"]
+gradient = SubResource("Gradient_t8t3q")
+
+[sub_resource type="Curve" id="Curve_nidk1"]
+_data = [Vector2(0, 0.0341365), 0.0, 1.87412, 0, 0, Vector2(0.316664, 0.971157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hy2y6"]
+curve = SubResource("Curve_nidk1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u017n"]
+particle_flag_disable_z = true
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+initial_velocity_min = 19.69
+initial_velocity_max = 240.16
+angular_velocity_max = 93.54
+orbit_velocity_min = -2.0
+orbit_velocity_max = 2.0
+damping_min = 100.0
+damping_max = 100.0
+scale_min = 0.01
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_hy2y6")
+color_ramp = SubResource("GradientTexture1D_qa5j4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aiykd"]
+shader = ExtResource("4_ww42f")
+
+[sub_resource type="Gradient" id="Gradient_0xriy"]
+offsets = PackedFloat32Array(0.00206186, 1)
+colors = PackedColorArray(8.90718e-07, 0.290447, 0.130839, 1, 2.37084e-06, 0.553552, 0.27238, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i3vyt"]
+gradient = SubResource("Gradient_0xriy")
+
+[sub_resource type="Curve" id="Curve_cxgd6"]
+_data = [Vector2(0, 0), 0.0, 3.56279, 0, 0, Vector2(0.17795, 0.944688), 0.0, 0.0, 0, 0, Vector2(0.978224, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ai5jn"]
+curve = SubResource("Curve_cxgd6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dgawa"]
+lifetime_randomness = 0.49
+particle_flag_disable_z = true
+spread = 9.53
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 223.82
+initial_velocity_max = 744.19
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+linear_accel_min = -14.44
+linear_accel_max = 38.15
+radial_accel_min = -6.29
+radial_accel_max = 42.21
+tangential_accel_min = -2.22
+tangential_accel_max = 3.7
+damping_min = 100.0
+damping_max = 100.0
+scale_min = 0.04
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_ai5jn")
+color_ramp = SubResource("GradientTexture1D_i3vyt")
+turbulence_noise_strength = 8.09
+turbulence_influence_min = 0.03
+turbulence_influence_max = 0.03
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4nws8"]
+load_path = "res://.godot/imported/dirt_03.png-71aaecdd0c65c1caf23eec189a795446.ctex"
+
+[node name="SpitEmitter" type="Node2D"]
+script = ExtResource("1_mmu36")
+
+[node name="DrippingParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+z_index = 3
+process_material = SubResource("ParticleProcessMaterial_u017n")
+texture = ExtResource("1_nhx8k")
+lifetime = 0.14
+speed_scale = 0.4
+randomness = 1.0
+
+[node name="PoisenThrow" parent="." instance=ExtResource("3_xqp53")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_aiykd")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_dgawa")
+texture = SubResource("CompressedTexture2D_4nws8")
+lifetime = 1.0
+one_shot = true
+speed_scale = 0.7
+explosiveness = 1.0

@@ -5,6 +5,8 @@ extends "res://Libraries/state.gd"
 var is_targeting_player = false
 var previous_position: Vector2
 
+var player_position: Vector2
+
 func _ready():
 	# Connect to player position signal and feed that to the pathfinding component
 	Events.player_position_change.connect(_on_player_position_changed)
@@ -17,6 +19,7 @@ func enter():
 
 func _on_player_position_changed(player_position: Vector2):
 	# We only consume this signal to update the pathfinding IF we are in this state
+	self.player_position = player_position
 	if is_targeting_player:
 		owner.pathfinding_component.update_target_position(player_position)
 
@@ -32,6 +35,10 @@ func update(delta):
 			emit_signal("finished", "attack_player")
 		else:
 			emit_signal("finished", "stationary_attack")
+	
+	else:
+		if is_player_far_away():
+			emit_signal("finished", "ranged_attack")
 
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity
@@ -43,3 +50,5 @@ func update(delta):
 func _on_animation_finished(anim_name):
 	return
 
+func is_player_far_away():
+	return len(self.player_position - owner.global_position) > 500
