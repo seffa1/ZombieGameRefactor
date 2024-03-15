@@ -208,6 +208,8 @@ _data = {
 [node name="SpawnInAnimator" type="RigidBody2D"]
 script = ExtResource("1_4u6pn")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -216,5 +218,3 @@ libraries = {
 
 [node name="WrapperNode" type="Node2D" parent="."]
 z_index = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

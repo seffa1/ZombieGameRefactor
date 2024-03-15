@@ -1,0 +1,124 @@
+[gd_scene load_steps=23 format=3 uid="uid://dstfq125185kf"]
+
+[ext_resource type="Script" path="res://Enemies/Boss/boss_body_part.gd" id="1_gc0xc"]
+[ext_resource type="PackedScene" uid="uid://dwb8c16e8xsp1" path="res://VFX/SpawnInAnimator.tscn" id="2_ifqrj"]
+[ext_resource type="Texture2D" uid="uid://cm7eciarjofxk" path="res://Enemies/Boss/images/gore/armLeft/left_sholder_0007_Layer-1.png" id="3_arwkc"]
+[ext_resource type="Texture2D" uid="uid://11ad0lbs4dd4" path="res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man.png" id="3_f86tv"]
+[ext_resource type="Texture2D" uid="uid://cvvg47ikrnytb" path="res://Enemies/Boss/images/gore/armLeft/left_sholder_0006_Layer-2.png" id="4_upwk4"]
+[ext_resource type="Texture2D" uid="uid://cj70ls8rgh0lw" path="res://Enemies/Boss/images/gore/armLeft/left_sholder_0005_Layer-3.png" id="5_fibvn"]
+[ext_resource type="Texture2D" uid="uid://cukaspggkn2sg" path="res://Enemies/Boss/images/gore/armLeft/left_sholder_0004_Layer-4.png" id="6_y52x6"]
+[ext_resource type="Texture2D" uid="uid://pyomm07aljgi" path="res://Enemies/Boss/images/gore/armLeft/left_sholder_0003_Layer-5.png" id="7_ygau8"]
+[ext_resource type="Texture2D" uid="uid://c11yscqkbeo6t" path="res://Enemies/Boss/images/gore/armLeft/left_sholder_0002_Layer-6.png" id="8_qicj7"]
+[ext_resource type="Texture2D" uid="uid://cvthkt383qaxu" path="res://Enemies/Boss/images/gore/armLeft/left_sholder_0001_Layer-7.png" id="9_3frqi"]
+[ext_resource type="Texture2D" uid="uid://btrha0iiji0k2" path="res://Enemies/Boss/images/gore/armLeft/left_sholder_0000_Layer-8.png" id="10_6vcu5"]
+[ext_resource type="Texture2D" uid="uid://b104rorvgcjl0" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0007_Layer-1.png" id="11_jmf6h"]
+[ext_resource type="Texture2D" uid="uid://bvrohervd7ert" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0006_Layer-2.png" id="12_tp2i7"]
+[ext_resource type="Texture2D" uid="uid://cpuad6b4blxyl" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0005_Layer-3.png" id="13_kls8b"]
+[ext_resource type="Texture2D" uid="uid://du7g7fljlku1h" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0004_Layer-4.png" id="14_e7evd"]
+[ext_resource type="Texture2D" uid="uid://vp3pw67to0c3" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0003_Layer-5.png" id="15_5g2np"]
+[ext_resource type="Texture2D" uid="uid://cxgtr2rrafsdb" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0002_Layer-6.png" id="16_pkmjl"]
+[ext_resource type="Texture2D" uid="uid://c1ahyq2hbq21h" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0001_Layer-7.png" id="17_emmau"]
+[ext_resource type="Texture2D" uid="uid://tqs38p6dq8h2" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0000_Layer-8.png" id="18_wicit"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhjov"]
+radius = 37.0
+height = 564.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvguo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_arwkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_upwk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fibvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y52x6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ygau8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qicj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3frqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6vcu5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xj3xa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_jmf6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tp2i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kls8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_e7evd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5g2np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pkmjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_emmau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wicit")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BossBodyPart_FireArm" type="Node2D" node_paths=PackedStringArray("animated_sprites")]
+script = ExtResource("1_gc0xc")
+animated_sprites = [NodePath("SpawnInAnimator/WrapperNode/AnimatedSprite2D"), NodePath("SpawnInAnimator/WrapperNode/AnimatedSprite2D2")]
+
+[node name="SpawnInAnimator" parent="." instance=ExtResource("2_ifqrj")]
+spawn_animation = 1
+
+[node name="CollisionShape2D" parent="SpawnInAnimator" index="0"]
+position = Vector2(3, 137)
+rotation = -0.0793614
+shape = SubResource("CapsuleShape2D_bhjov")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnInAnimator/WrapperNode" index="0"]
+position = Vector2(1453, 4962)
+rotation = 0.799683
+scale = Vector2(10.1596, 10.1596)
+texture = ExtResource("3_f86tv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpawnInAnimator/WrapperNode" index="1"]
+unique_name_in_owner = true
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_gvguo")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SpawnInAnimator/WrapperNode" index="2"]
+unique_name_in_owner = true
+position = Vector2(190, 2980)
+rotation = -0.490576
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_xj3xa")
+
+[connection signal="animation_finished" from="SpawnInAnimator/WrapperNode/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="SpawnInAnimator/WrapperNode/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="SpawnInAnimator"]
