@@ -1,7 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://japa4n414dpl"]
+[gd_scene load_steps=51 format=3 uid="uid://japa4n414dpl"]
 
 [ext_resource type="Script" path="res://Enemies/Boss/zombie_boss.gd" id="1_5p7gg"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_monke"]
+[ext_resource type="PackedScene" uid="uid://bc4so1f7n1rc2" path="res://Libraries/CustomComponents/HurtBoxComponent.tscn" id="2_n62qm"]
 [ext_resource type="SkeletonModificationStack2D" uid="uid://cmvmy0edfep5k" path="res://Enemies/Boss/boss_skeleton_modification_stack_2d.tres" id="3_4hisv"]
 [ext_resource type="Texture2D" uid="uid://2we8cri5bv08" path="res://Enemies/Boss/images/mainParts/torsoLower.png" id="3_4nvxn"]
 [ext_resource type="Texture2D" uid="uid://c2byu8et636iv" path="res://Enemies/Boss/images/mainParts/armRightLower.png" id="3_gkwey"]
@@ -19,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c4gply484qbau" path="res://Enemies/Boss/images/mainParts/legLeftLower.png" id="14_syero"]
 [ext_resource type="Texture2D" uid="uid://eb4l8e7p2nr5" path="res://Enemies/Boss/images/mainParts/legLeftUpper.png" id="15_yc1mb"]
 [ext_resource type="Script" path="res://Enemies/Boss/zombie_boss_StateMachine.gd" id="17_dned1"]
+[ext_resource type="PackedScene" uid="uid://bm44c7e0g2aay" path="res://Libraries/CustomComponents/ImpactableComponent.tscn" id="20_5g6nh"]
 [ext_resource type="Script" path="res://Enemies/Boss/stationary_attack.gd" id="23_urriq"]
 [ext_resource type="Script" path="res://Enemies/Boss/ranged_attack.gd" id="24_yo0er"]
 [ext_resource type="Script" path="res://Enemies/Boss/SeekPlayer.gd" id="25_l4aff"]
@@ -31,6 +33,9 @@
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="49_0kjc3"]
 [ext_resource type="Script" path="res://Enemies/shared/debug/debug.gd" id="54_1erb6"]
 [ext_resource type="Script" path="res://Enemies/shared/debug/state_stack.gd" id="55_vx131"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ft4av"]
+radius = 66.2722
 
 [sub_resource type="Animation" id="Animation_2n82s"]
 length = 0.001
@@ -334,7 +339,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ZombieStateMachine/StationaryAttack")
+tracks/1/path = NodePath("ZombieStateMachine/FlameAttack")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1163,7 +1168,7 @@ texture = ExtResource("8_nwpe2")
 position = Vector2(87.0525, -13.9284)
 rotation = 0.229244
 scale = Vector2(0.999829, 0.999829)
-skew = -0.000548363
+skew = -0.00054872
 rest = Transform2D(0.97367, 0.227202, -0.227046, 0.973706, 87.0525, -13.9284)
 
 [node name="legRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/legRightUpper"]
@@ -1222,9 +1227,9 @@ texture = ExtResource("15_yc1mb")
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(153.212, -3.4821)
-rotation = 0.22176
-scale = Vector2(0.999591, 1.00046)
-skew = 0.000971794
+rotation = -0.337837
+scale = Vector2(1.00019, 0.999862)
+skew = 0.00088501
 rest = Transform2D(0.999695, -0.0255149, 0.0251493, 0.999631, 153.212, -3.47419)
 metadata/_local_pose_override_enabled_ = true
 
@@ -1242,6 +1247,20 @@ texture = ExtResource("3_4nvxn")
 [node name="torsoLower2" type="Sprite2D" parent="SkeletonControl/Skeleton/torso"]
 rotation = -1.57079
 texture = ExtResource("4_ln0cw")
+
+[node name="HurtBoxHead" parent="." node_paths=PackedStringArray("health_component", "collision_shape") instance=ExtResource("2_n62qm")]
+body_part = "head"
+health_component = NodePath("../HealthComponents/HealthComponent - Head")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxHead"]
+position = Vector2(35, 0)
+shape = SubResource("CircleShape2D_ft4av")
+debug_color = Color(0.615686, 0.0745098, 0.301961, 0.419608)
+
+[node name="ImpactableComponent" parent="HurtBoxHead" node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("20_5g6nh")]
+health_component = NodePath("../../HealthComponents/HealthComponent - Head")
+velocity_component = NodePath("../../VelocityComponent")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -1292,7 +1311,7 @@ script = ExtResource("26_bfm67")
 [node name="Death" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("28_a8hal")
 
-[node name="StationaryAttack" type="Node" parent="ZombieStateMachine"]
+[node name="FlameAttack" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("23_urriq")
 
 [node name="RangedAttack" type="Node" parent="ZombieStateMachine"]
@@ -1303,32 +1322,8 @@ unique_name_in_owner = true
 
 [node name="HealthComponent - Head" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
 unique_name_in_owner = true
-max_health = 125.0
+max_health = 10000.0
 invincible_mode = true
-
-[node name="HealthComponent - Left1Upper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
-max_health = 150.0
-
-[node name="HealthComponent - Left2Upper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
-max_health = 150.0
-
-[node name="HealthComponent - Right1Upper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
-max_health = 150.0
-
-[node name="HealthComponent - Right2Upper" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
-max_health = 150.0
-
-[node name="HealthComponent - Left1Lower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
-max_health = 100.0
-
-[node name="HealthComponent - Left2Lower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
-max_health = 100.0
-
-[node name="HealthComponent - Right1Lower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
-max_health = 100.0
-
-[node name="HealthComponent - Right2Lower" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
-max_health = 100.0
 
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("48_khul8")]
 velocity_component = NodePath("../VelocityComponent")
@@ -1376,6 +1371,14 @@ state_machine = NodePath("../../ZombieStateMachine")
 
 [node name="ZombieGroans" parent="." instance=ExtResource("33_sjp7a")]
 unique_name_in_owner = true
+
+[node name="FlameAttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="SpitAttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
 [connection signal="velocity_computed" from="PathfindingComponent/NavigationAgent2D" to="PathfindingComponent" method="_on_navigation_agent_2d_velocity_computed"]
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgp1ydr07bl5y"]
+
+[ext_resource type="Script" path="res://Enemies/Boss/boss_body_part.gd" id="1_tpgwt"]
+[ext_resource type="PackedScene" uid="uid://dwb8c16e8xsp1" path="res://VFX/SpawnInAnimator.tscn" id="2_p4cva"]
+
+[node name="BossBodyPart_template" type="Node2D"]
+script = ExtResource("1_tpgwt")
+
+[node name="SpawnInAnimator" parent="." instance=ExtResource("2_p4cva")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="SpawnInAnimator"]

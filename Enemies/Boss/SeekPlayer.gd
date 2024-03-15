@@ -1,6 +1,8 @@
 extends "res://Libraries/state.gd"
 
 @onready var animation_player = %AnimationPlayer
+@onready var flame_timer: Timer = %FlameAttackTimer
+@onready var spit_timer: Timer = %SpitAttackTimer
 
 var is_targeting_player = false
 var previous_position: Vector2
@@ -31,14 +33,18 @@ func exit():
 func update(delta):
 	# Check if theres a player to melee attack
 	if owner.player_detector.has_overlapping_areas():
-		if randi_range(0, 1) == 0:
-			emit_signal("finished", "attack_player")
-		else:
-			emit_signal("finished", "stationary_attack")
-	
-	else:
-		if is_player_far_away():
-			emit_signal("finished", "ranged_attack")
+		emit_signal("finished", "attack_player")
+		return
+
+	if flame_timer.is_stopped():
+		flame_timer.start(10.0)
+		emit_signal("finished", "flame_attack")
+		return
+
+	if spit_timer.is_stopped():
+		spit_timer.start(12.0)
+		emit_signal("finished", "ranged_attack")
+		return
 
 	# Move - velocity should be getting updated by the pathfinding component
 	owner.velocity = owner.velocity_component.velocity

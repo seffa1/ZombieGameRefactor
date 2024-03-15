@@ -69,6 +69,7 @@ signal vessel_overload_complete()  # Used by the vault door
 signal has_keycard()
 signal show_note()
 signal hide_note()
+signal boss_death()
 
 # Additional High Score Tracking
 signal bullet_fired()

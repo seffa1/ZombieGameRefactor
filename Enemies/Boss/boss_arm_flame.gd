@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var flame_particles: GPUParticles2D = %FlamethrowerParticles_Upgrade_V2
+@onready var flame_particles: GPUParticles2D = %FlamethrowerParticles_Boss
 @onready var hitbox: CollisionShape2D = %hitboxCollision
 
 func _flame_on():

@@ -23,18 +23,17 @@ NOTE: Make sure to add the zombie to the zombie group.
 
 @onready var modification_stack = preload("res://Enemies/Boss/boss_skeleton_modification_stack_2d.tres")
 
-var base_walking_speed: float
+var base_walking_speed: float = 190
 
 func _ready():
 	# We must load the modification stack AFTER the zombie is a part of the scene tree or it breaks
 	# We must also duplicate the modification resource or it gets shared between all the zombies (weird but whatever)
 	$SkeletonControl/Skeleton.set_modification_stack(modification_stack.duplicate())
 	$SkeletonControl/Skeleton.get_modification_stack().enabled = true
-	setWalkingSpeed()
+	reset_walk_speed()
 
-func setWalkingSpeed():
-	var number = 10
-	velocity_component.max_velocity += number
+func set_walk_speed(speed: float):
+	velocity_component.max_velocity = speed
 
 func reset_walk_speed():
 	velocity_component.max_velocity = base_walking_speed

@@ -11,7 +11,7 @@ func _ready():
 	states_map = {
 		"seek_player": $SeekPlayer,
 		"attack_player": $AttackPlayer,
-		"stationary_attack": $StationaryAttack,
+		"flame_attack": $FlameAttack,
 		"ranged_attack": $RangedAttack,
 		"death": $Death,
 	}
