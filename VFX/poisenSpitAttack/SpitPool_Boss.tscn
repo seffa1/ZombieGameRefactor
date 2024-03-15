@@ -1,26 +1,26 @@
-[gd_scene load_steps=21 format=3 uid="uid://bq1ihjvb3wlwk"]
+[gd_scene load_steps=21 format=3 uid="uid://hnhkdcd7yov"]
 
-[ext_resource type="Texture2D" uid="uid://1xaowoq6x8jx" path="res://VFX/poisenSpitAttack/images/spit02.png" id="1_aqp5y"]
-[ext_resource type="Script" path="res://VFX/poisenSpitAttack/SpitPool.gd" id="1_fg825"]
-[ext_resource type="Shader" path="res://VFX/shaders/disolve.gdshader" id="1_icods"]
-[ext_resource type="Texture2D" uid="uid://c8fdm500noe5u" path="res://VFX/poisenSpitAttack/images/spit03.png" id="2_fb2yn"]
-[ext_resource type="Texture2D" uid="uid://cjnjq2go438iu" path="res://VFX/poisenSpitAttack/images/spit04.png" id="3_crbb5"]
-[ext_resource type="Texture2D" uid="uid://mjwwxvof0d50" path="res://VFX/poisenSpitAttack/images/spit05.png" id="4_tgfts"]
-[ext_resource type="Texture2D" uid="uid://bdb4a57t13lka" path="res://VFX/textures/fire/fire_shap_smaller.png" id="5_xfyli"]
-[ext_resource type="AudioStream" uid="uid://bks0giv8v5pnb" path="res://VFX/poisenSpitAttack/sounds/StomachGurgle_S011HU.19.wav" id="7_01ley"]
-[ext_resource type="PackedScene" uid="uid://dj8dsfwvk6oas" path="res://Libraries/CustomComponents/AudioRandomizer.tscn" id="8_ds0ii"]
-[ext_resource type="AudioStream" uid="uid://gnv1aerh85jc" path="res://VFX/Gore/sounds/fleshy_mushiness/big_smashes/ESM_Fat_Zombie_Smash_2_Wet_Smash_Liquid_Bash_Knife_Organic_Splat_Gore_Horror_Explosion.wav" id="9_13hm8"]
-[ext_resource type="AudioStream" uid="uid://b6y3i0qo1fsfi" path="res://VFX/Gore/sounds/fleshy_mushiness/big_smashes/SquishSplatBlood_SFXB.1484.wav" id="10_nmmto"]
+[ext_resource type="Script" path="res://VFX/poisenSpitAttack/SpitPool.gd" id="1_1bue2"]
+[ext_resource type="Shader" path="res://VFX/shaders/disolve.gdshader" id="2_sc4nj"]
+[ext_resource type="Texture2D" uid="uid://1xaowoq6x8jx" path="res://VFX/poisenSpitAttack/images/spit02.png" id="3_pkaf5"]
+[ext_resource type="Texture2D" uid="uid://c8fdm500noe5u" path="res://VFX/poisenSpitAttack/images/spit03.png" id="4_mal67"]
+[ext_resource type="Texture2D" uid="uid://cjnjq2go438iu" path="res://VFX/poisenSpitAttack/images/spit04.png" id="5_fo3r1"]
+[ext_resource type="Texture2D" uid="uid://mjwwxvof0d50" path="res://VFX/poisenSpitAttack/images/spit05.png" id="6_kpyt2"]
+[ext_resource type="AudioStream" uid="uid://bks0giv8v5pnb" path="res://VFX/poisenSpitAttack/sounds/StomachGurgle_S011HU.19.wav" id="7_wmy4n"]
+[ext_resource type="Texture2D" uid="uid://bdb4a57t13lka" path="res://VFX/textures/fire/fire_shap_smaller.png" id="8_qu8w3"]
+[ext_resource type="PackedScene" uid="uid://dj8dsfwvk6oas" path="res://Libraries/CustomComponents/AudioRandomizer.tscn" id="9_21yso"]
+[ext_resource type="AudioStream" uid="uid://gnv1aerh85jc" path="res://VFX/Gore/sounds/fleshy_mushiness/big_smashes/ESM_Fat_Zombie_Smash_2_Wet_Smash_Liquid_Bash_Knife_Organic_Splat_Gore_Horror_Explosion.wav" id="10_6hf67"]
+[ext_resource type="AudioStream" uid="uid://b6y3i0qo1fsfi" path="res://VFX/Gore/sounds/fleshy_mushiness/big_smashes/SquishSplatBlood_SFXB.1484.wav" id="11_k57cu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ch23p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo2f3"]
+shader = ExtResource("2_sc4nj")
+shader_parameter/sensitivity = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbbru"]
 radius = 39.0
 height = 136.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo2f3"]
-shader = ExtResource("1_icods")
-shader_parameter/sensitivity = 0.0
 
 [sub_resource type="Animation" id="Animation_ynf36"]
 length = 0.001
@@ -34,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_aqp5y")]
+"values": [ExtResource("3_pkaf5")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -98,7 +98,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_aqp5y"), ExtResource("2_fb2yn"), ExtResource("3_crbb5"), ExtResource("4_tgfts")]
+"values": [ExtResource("3_pkaf5"), ExtResource("4_mal67"), ExtResource("5_fo3r1"), ExtResource("6_kpyt2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -163,7 +163,7 @@ tracks/5/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("7_01ley")
+"stream": ExtResource("7_wmy4n")
 }],
 "times": PackedFloat32Array(0.7)
 }
@@ -198,22 +198,23 @@ colors = PackedColorArray(0.266667, 0.294118, 0.12549, 0.580392, 0.566167, 0.572
 offsets = PackedFloat32Array(0, 0.882897, 0.976888)
 colors = PackedColorArray(0.380392, 0.419608, 0.192157, 1, 0.858824, 0.870588, 0.431373, 1, 0.970293, 0.880353, 0.536616, 1)
 
-[node name="SpitPool" type="Node2D"]
+[node name="SpitPool_Boss" type="Node2D"]
 z_index = 1
 material = SubResource("ShaderMaterial_ch23p")
-script = ExtResource("1_fg825")
+script = ExtResource("1_1bue2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qo2f3")
+texture = ExtResource("3_pkaf5")
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
+position = Vector2(1, 4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kbbru")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_qo2f3")
-texture = ExtResource("1_aqp5y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -243,7 +244,7 @@ position = Vector2(-15, 0)
 scale = Vector2(1.70695, 1.70695)
 speed_scale = 0.73
 lifetime_randomness = 0.27
-texture = ExtResource("5_xfyli")
+texture = ExtResource("8_qu8w3")
 emission_shape = 1
 emission_sphere_radius = 45.67
 spread = 78.05
@@ -257,9 +258,9 @@ color_ramp = SubResource("Gradient_a8saq")
 [node name="DamageTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AudioRandomizer" parent="." instance=ExtResource("8_ds0ii")]
+[node name="AudioRandomizer" parent="." instance=ExtResource("9_21yso")]
 volume_db = -13.102
 bus = &"GameAudio"
-audio_clips = Array[AudioStreamWAV]([ExtResource("9_13hm8"), ExtResource("10_nmmto")])
+audio_clips = Array[AudioStreamWAV]([ExtResource("10_6hf67"), ExtResource("11_k57cu")])
 
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

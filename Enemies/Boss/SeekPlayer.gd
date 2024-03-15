@@ -51,4 +51,4 @@ func _on_animation_finished(anim_name):
 	return
 
 func is_player_far_away():
-	return len(self.player_position - owner.global_position) > 500
+	return (self.player_position - owner.global_position).length() > 500

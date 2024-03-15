@@ -7,7 +7,6 @@ extends Node2D
 func _ready():
 	$AnimationPlayer.play("spit_pool")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if player_hit_box.has_overlapping_areas():

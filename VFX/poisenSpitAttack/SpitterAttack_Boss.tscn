@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://m18we23lb2sb"]
+
+[ext_resource type="Script" path="res://VFX/poisenSpitAttack/SpitterAttack.gd" id="1_snd57"]
+[ext_resource type="Texture2D" uid="uid://1xaowoq6x8jx" path="res://VFX/poisenSpitAttack/images/spit02.png" id="2_0wf46"]
+[ext_resource type="PackedScene" uid="uid://hnhkdcd7yov" path="res://VFX/poisenSpitAttack/SpitPool_Boss.tscn" id="2_dye2d"]
+[ext_resource type="Texture2D" uid="uid://uv2n07mpesa6" path="res://VFX/poisenSpitAttack/images/spit01.png" id="3_lqdof"]
+[ext_resource type="PackedScene" uid="uid://c8ap0kyktujbj" path="res://VFX/poisenSpitAttack/DrippingParticles.tscn" id="4_o6xfo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_greur"]
+radius = 27.0185
+
+[sub_resource type="Animation" id="Animation_bcorp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_0wf46")]
+}
+
+[sub_resource type="Animation" id="Animation_7nfc4"]
+resource_name = "spit"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_0wf46"), ExtResource("3_lqdof")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jiw0"]
+_data = {
+"RESET": SubResource("Animation_bcorp"),
+"spit": SubResource("Animation_7nfc4")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ld0cl"]
+radius = 26.0192
+
+[node name="SpitterAttack_Boss" type="CharacterBody2D"]
+z_index = 3
+position = Vector2(0, 1)
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_snd57")
+spit_pool = ExtResource("2_dye2d")
+speed = 800
+use_travel_timer = true
+
+[node name="wallCollisions" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_greur")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8jiw0")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57079
+scale = Vector2(0.537036, 0.537036)
+texture = ExtResource("2_0wf46")
+
+[node name="PlayerHitBox" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
+shape = SubResource("CircleShape2D_ld0cl")
+debug_color = Color(0.94902, 0.172549, 0.388235, 0.419608)
+
+[node name="DrippingParticles" parent="." instance=ExtResource("4_o6xfo")]
+
+[node name="TravelTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="area_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_area_entered"]
+[connection signal="timeout" from="TravelTimer" to="." method="_on_travel_timer_timeout"]

@@ -12,6 +12,7 @@ func _ready():
 		"seek_player": $SeekPlayer,
 		"attack_player": $AttackPlayer,
 		"stationary_attack": $StationaryAttack,
+		"ranged_attack": $RangedAttack,
 		"death": $Death,
 	}
 
