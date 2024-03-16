@@ -32,10 +32,6 @@ func _handle_hit(body_part: String, area: Area2D):
 			_apply_knockback(area)
 			gore_vfx.play_splatter()
 			gore_vfx.bullet_impact(area.knockback_vector)
-		'lightning':
-			gore_vfx.play_splatter()
-			if randf_range(0, 100) > 90:
-				zombie_groan_audio.play_short()
 			
 	# gore system tracks the last position a bullet / grenade / etc. did damage to it
 	# so when the zombie dies, it knows the position of the thing that killed it
@@ -56,12 +52,9 @@ func _handle_hurtbox_destroy(body_part: String, area: Area2D):
 			_apply_knockback(area)
 			gore_vfx.explosion_death(global_position, area.global_position)
 			Events.emit_signal("zombie_death", owner)
-			owner.queue_free()
-		'lightning':
-			_apply_knockback(area)
-			gore_vfx.explosion_death(global_position, area.global_position)
-			Events.emit_signal("zombie_death", owner)
-			owner.queue_free()
+			
+			if hurt_box.body_part == "head":
+				owner.queue_free()
 
 func _apply_knockback(area: Area2D):
 	var knockback_vector = area.knockback_vector

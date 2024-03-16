@@ -993,7 +993,6 @@ starting_money = 100000
 
 [node name="ZombieManager" parent="GameWorld" node_paths=PackedStringArray("boss_spawner", "zombie_container") instance=ExtResource("24_at8cq")]
 position = Vector2(0, 7.62939e-06)
-disable_spawning = true
 spawn_boss = true
 boss_spawner = NodePath("BossSpawner")
 zombie_container = NodePath("ZombieContainer")
