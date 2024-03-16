@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://dccooa85e0a14"]
+
+[ext_resource type="Script" path="res://Enemies/Boss/boss_body_part.gd" id="1_h6uqp"]
+[ext_resource type="PackedScene" uid="uid://dwb8c16e8xsp1" path="res://VFX/SpawnInAnimator.tscn" id="2_qjyj3"]
+[ext_resource type="Texture2D" uid="uid://b104rorvgcjl0" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0007_Layer-1.png" id="4_mmq6a"]
+[ext_resource type="Texture2D" uid="uid://bvrohervd7ert" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0006_Layer-2.png" id="5_8rxed"]
+[ext_resource type="Texture2D" uid="uid://cpuad6b4blxyl" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0005_Layer-3.png" id="6_ielar"]
+[ext_resource type="Texture2D" uid="uid://du7g7fljlku1h" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0004_Layer-4.png" id="7_ys3rm"]
+[ext_resource type="Texture2D" uid="uid://vp3pw67to0c3" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0003_Layer-5.png" id="8_y71tv"]
+[ext_resource type="Texture2D" uid="uid://cxgtr2rrafsdb" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0002_Layer-6.png" id="9_jrhlx"]
+[ext_resource type="Texture2D" uid="uid://c1ahyq2hbq21h" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0001_Layer-7.png" id="10_yvuxn"]
+[ext_resource type="Texture2D" uid="uid://tqs38p6dq8h2" path="res://Enemies/Boss/images/gore/armLeft/left_arm_0000_Layer-8.png" id="11_vujp5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhjov"]
+radius = 6.29823
+height = 59.2444
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7qw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mmq6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8rxed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ielar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ys3rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y71tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jrhlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yvuxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vujp5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BossBodyPart_LeftLower" type="Node2D" node_paths=PackedStringArray("animated_sprites")]
+z_index = 3
+scale = Vector2(2, 2)
+script = ExtResource("1_h6uqp")
+animated_sprites = [NodePath("SpawnInAnimator/WrapperNode/AnimatedSprite2D2")]
+
+[node name="SpawnInAnimator" parent="." instance=ExtResource("2_qjyj3")]
+collision_layer = 16384
+collision_mask = 17
+linear_damp = 2.0
+angular_damp = 1.0
+spawn_animation = 1
+
+[node name="CollisionShape2D" parent="SpawnInAnimator" index="0"]
+position = Vector2(5, 22)
+rotation = -0.326392
+shape = SubResource("CapsuleShape2D_bhjov")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SpawnInAnimator/WrapperNode" index="0"]
+unique_name_in_owner = true
+position = Vector2(5, 10.5)
+rotation = -0.170045
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_p7qw4")
+
+[connection signal="animation_finished" from="SpawnInAnimator/WrapperNode/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="SpawnInAnimator"]

@@ -24,6 +24,8 @@ NOTE: Make sure to add the zombie to the zombie group.
 @onready var modification_stack = preload("res://Enemies/Boss/boss_skeleton_modification_stack_2d.tres")
 
 var base_walking_speed: float = 190
+var is_overload_zombie: bool = false
+
 
 func _ready():
 	# We must load the modification stack AFTER the zombie is a part of the scene tree or it breaks

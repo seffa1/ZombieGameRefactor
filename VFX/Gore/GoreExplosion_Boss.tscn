@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://dnko80tokfoaf" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactBody_BW.54388.wav" id="17_q7apq"]
 [ext_resource type="AudioStream" uid="uid://msot08tqcfe8" path="res://VFX/Gore/sounds/bullet_impacts/BulletImpactFlesh_BW.54441.wav" id="18_7wuqc"]
 
-[node name="GoreExplosion_ZombieBasic" type="Node2D"]
+[node name="GoreExplosion_Boss" type="Node2D"]
 script = ExtResource("1_463ay")
 
 [node name="BodyPartsContainer" type="Node2D" parent="."]

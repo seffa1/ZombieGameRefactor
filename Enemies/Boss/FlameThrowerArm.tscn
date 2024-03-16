@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv51ohm6kyjvj"]
+[gd_scene load_steps=8 format=3 uid="uid://cv51ohm6kyjvj"]
 
 [ext_resource type="Texture2D" uid="uid://11ad0lbs4dd4" path="res://World/purchasables/Weapons/Specials/Flamethrower/images/riffle&firethrower_0010_Firethrower_man.png" id="1_2lgoe"]
 [ext_resource type="Script" path="res://Enemies/Boss/boss_arm_flame.gd" id="1_mso5n"]
 [ext_resource type="PackedScene" uid="uid://b556405io5s3b" path="res://VFX/fire/Flamethrower_Particles_BOSS.tscn" id="4_sbcgc"]
+[ext_resource type="AudioStream" uid="uid://d1fmcwacngp47" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_loop.wav" id="4_yos5i"]
+[ext_resource type="AudioStream" uid="uid://p3fqwdra5d4n" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_start.wav" id="5_bosqo"]
+[ext_resource type="AudioStream" uid="uid://hc0ey4ci1u6v" path="res://World/purchasables/Weapons/Specials/Flamethrower/audio/flame_stop.wav" id="6_lg1og"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6c0t"]
 radius = 134.704
@@ -14,11 +17,6 @@ script = ExtResource("1_mso5n")
 [node name="Flame" type="Sprite2D" parent="."]
 position = Vector2(52.021, 6.24805)
 texture = ExtResource("1_2lgoe")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(263.3, 3.61676)
-rotation = -1.53767
-target_position = Vector2(2.08165e-12, 500)
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 collision_layer = 1024
@@ -37,4 +35,23 @@ debug_color = Color(0.662745, 0, 0.0392157, 1)
 [node name="FlamethrowerParticles_Boss" parent="." instance=ExtResource("4_sbcgc")]
 unique_name_in_owner = true
 position = Vector2(258, 3)
+emitting = false
 speed_scale = 2.19
+
+[node name="FlameSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_yos5i")
+volume_db = -15.617
+bus = &"GameAudio"
+
+[node name="StartSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_bosqo")
+volume_db = -9.94
+bus = &"GameAudio"
+
+[node name="StopSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_lg1og")
+volume_db = -13.856
+bus = &"GameAudio"

@@ -9,7 +9,6 @@ Creates the 'impact' that occurs when a hurtbox is damaged or destroyed:
 @onready var hurt_box: Area2D = $".."
 
 @export_category('Components To Link')
-@export var health_component: Node2D
 @export var gore_vfx: Node2D
 @export var zombie_groan_audio: Node
 @export var velocity_component: Node

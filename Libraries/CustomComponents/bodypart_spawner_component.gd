@@ -33,7 +33,7 @@ func _spawn_body_part():
 		return
 
 	var _part = body_part_to_spawn.instantiate()
-	_part.spawn_animation = 1
+	#_part.spawn_animation = 1
 	_part.global_position = global_position
 	_part.global_rotation = global_rotation - deg_to_rad(180)
 	ObjectRegistry.register_effect(_part)

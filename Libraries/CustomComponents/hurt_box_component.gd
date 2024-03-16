@@ -11,6 +11,7 @@ Detects collision with a hitbox, damages the health, and emits a signal when it 
 
 @export_category("Damage Modifications")
 @export var damage_multiplier: float = 1.0
+@export var resist_explosion: bool = false
 
 @export_category("Collision Control")
 ## If true, and associated health compoent hits zero, calls the detroy method of each child hurtbox ( like cutton of an apendage )
@@ -36,8 +37,14 @@ func _on_area_entered(area: Area2D):
 	if one_shot_mode:
 		health_component.health = 0
 	else:
-		health_component.health -= area.damage * damage_multiplier
+		var damage = area.damage * damage_multiplier
+		if resist_explosion and area.damage_type == "explosive":
+			damage = damage * .1
+		health_component.health -= damage
 	
+		if body_part == "head":
+			print('Taking damage!')
+			
 	health_component.set_damage_source(area.damage_type)
 	
 	if health_component.health > 0:

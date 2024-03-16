@@ -14,9 +14,10 @@ func _ready():
 	elif spawn_animation == 2:
 		animation_player.play("splatter")
 	
-	collision_shape.get_shape().disabled = true
+	#collision_shape.disabled = true
 
 
 
 func _on_animation_finsished():
-	collision_shape.get_shape().disabled = false
+	#collision_shape.disabled = false
+	pass
