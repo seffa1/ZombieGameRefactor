@@ -42,9 +42,6 @@ func _on_area_entered(area: Area2D):
 			damage = damage * .1
 		health_component.health -= damage
 	
-		if body_part == "head":
-			print('Taking damage!')
-			
 	health_component.set_damage_source(area.damage_type)
 	
 	if health_component.health > 0:

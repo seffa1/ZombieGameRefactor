@@ -6,6 +6,8 @@ This way the legs can freely move / sprint / idle while the player shoots withou
 interuption.
 """
 
+@onready var head_health_component: Node = %"HealthComponent - Head"
+
 func _ready():
 	super()
 	states_map = {
@@ -14,8 +16,15 @@ func _ready():
 		"flame_attack": $FlameAttack,
 		"ranged_attack": $RangedAttack,
 		"death": $Death,
+		"roar": $Roar,
+		"charge_player": $ChargePlayer,
+		"head_attack": $HeadAttack
 	}
+	
+	head_health_component.health_at_zero.connect(_on_head_health_at_zero)
 
+func _on_head_health_at_zero():
+	_change_state("death")
 
 func _change_state(state_name):
 	"""
@@ -32,5 +41,3 @@ func _change_state(state_name):
 		states_stack.push_front(states_map[state_name])
 	# Otherwise the base statemachine will just switch to the new state
 	super(state_name)
-
-

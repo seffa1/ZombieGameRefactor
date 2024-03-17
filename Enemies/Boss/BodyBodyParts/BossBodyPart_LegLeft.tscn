@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://ds5jtcbqnqna6"]
+
+[ext_resource type="Script" path="res://Enemies/Boss/boss_body_part.gd" id="1_m4hrw"]
+[ext_resource type="PackedScene" uid="uid://dwb8c16e8xsp1" path="res://VFX/SpawnInAnimator.tscn" id="2_q74n0"]
+[ext_resource type="Texture2D" uid="uid://cy1erxxk1ymqo" path="res://Enemies/Boss/images/gore/legLeft/leftleg_0006_Layer-1.png" id="3_ie8p7"]
+[ext_resource type="Texture2D" uid="uid://bk8x5s4lgpyfw" path="res://Enemies/Boss/images/gore/legLeft/leftleg_0005_Layer-2.png" id="4_ypmkb"]
+[ext_resource type="Texture2D" uid="uid://brc4wvxs3yo8b" path="res://Enemies/Boss/images/gore/legLeft/leftleg_0004_Layer-3.png" id="5_cu8u6"]
+[ext_resource type="Texture2D" uid="uid://dnajcynvupjde" path="res://Enemies/Boss/images/gore/legLeft/leftleg_0003_Layer-4.png" id="6_8mb8p"]
+[ext_resource type="Texture2D" uid="uid://bpkvf34v4ama7" path="res://Enemies/Boss/images/gore/legLeft/leftleg_0002_Layer-5.png" id="7_r0hj2"]
+[ext_resource type="Texture2D" uid="uid://dkvu3gym4djfp" path="res://Enemies/Boss/images/gore/legLeft/leftleg_0001_Layer-6.png" id="8_c8xqc"]
+[ext_resource type="Texture2D" uid="uid://hw1x7ww08s0e" path="res://Enemies/Boss/images/gore/legLeft/leftleg_0000_Layer-7.png" id="9_653se"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhjov"]
+radius = 6.29823
+height = 59.2444
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24p1g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ie8p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ypmkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cu8u6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8mb8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r0hj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c8xqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_653se")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="BossBodyPart_LegLeft" type="Node2D" node_paths=PackedStringArray("animated_sprites")]
+z_index = 3
+scale = Vector2(2, 2)
+script = ExtResource("1_m4hrw")
+animated_sprites = [NodePath("SpawnInAnimator/WrapperNode/AnimatedSprite2D2")]
+
+[node name="SpawnInAnimator" parent="." instance=ExtResource("2_q74n0")]
+collision_layer = 16384
+collision_mask = 17
+linear_damp = 2.0
+angular_damp = 1.0
+spawn_animation = 1
+
+[node name="CollisionShape2D" parent="SpawnInAnimator" index="0"]
+position = Vector2(5, 22)
+rotation = -0.326392
+shape = SubResource("CapsuleShape2D_bhjov")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SpawnInAnimator/WrapperNode" index="0"]
+unique_name_in_owner = true
+position = Vector2(1.90735e-06, 4)
+rotation = -0.170045
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_24p1g")
+autoplay = "default"
+
+[connection signal="animation_finished" from="SpawnInAnimator/WrapperNode/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="SpawnInAnimator"]

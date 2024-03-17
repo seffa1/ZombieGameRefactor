@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://japa4n414dpl"]
+[gd_scene load_steps=80 format=3 uid="uid://japa4n414dpl"]
 
 [ext_resource type="Script" path="res://Enemies/Boss/zombie_boss.gd" id="1_5p7gg"]
 [ext_resource type="Texture2D" uid="uid://fa6j3ykyn4xx" path="res://Enemies/Spitter/walk_000.png" id="2_monke"]
@@ -33,8 +33,17 @@
 [ext_resource type="Script" path="res://Enemies/Boss/ranged_attack.gd" id="24_yo0er"]
 [ext_resource type="Script" path="res://Enemies/Boss/SeekPlayer.gd" id="25_l4aff"]
 [ext_resource type="Script" path="res://Enemies/Boss/states/attack_player.gd" id="26_bfm67"]
-[ext_resource type="Script" path="res://Enemies/Boss/states/death.gd" id="28_a8hal"]
+[ext_resource type="AudioStream" uid="uid://kwnlnqx4emxm" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Dry.wav" id="30_da6sj"]
+[ext_resource type="AudioStream" uid="uid://hrf6l1m7fdho" path="res://World/sounds/vfx/ESM_MU_FX_foley_cloth_whoosh_organic_basic_small_quick_swoosh_07.wav" id="30_lgr56"]
+[ext_resource type="AudioStream" uid="uid://b6y3i0qo1fsfi" path="res://VFX/Gore/sounds/fleshy_mushiness/big_smashes/SquishSplatBlood_SFXB.1484.wav" id="31_52dyp"]
+[ext_resource type="AudioStream" uid="uid://blvlgye7pe4uv" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Attack_Wet.wav" id="31_j1yfi"]
 [ext_resource type="PackedScene" uid="uid://bjmmniaeam308" path="res://Enemies/ZombieBasic/ZombieGroans.tscn" id="33_sjp7a"]
+[ext_resource type="AudioStream" uid="uid://bcsn17we7hngt" path="res://Enemies/sounds/ESM_Horror_Game_Vocal_Creature_Demon_Wounded_Wet.wav" id="34_i2cwh"]
+[ext_resource type="AudioStream" uid="uid://cnwyf3pinsi7o" path="res://Enemies/Boss/sounds/scream.wav" id="35_aktnt"]
+[ext_resource type="Script" path="res://Enemies/Boss/states/boss_death.gd" id="39_si54c"]
+[ext_resource type="Script" path="res://Enemies/Boss/states/roar.gd" id="40_x7oi1"]
+[ext_resource type="Script" path="res://Enemies/Boss/states/charge_player.gd" id="43_kqulc"]
+[ext_resource type="Script" path="res://Enemies/Boss/states/head_attack.gd" id="44_kep55"]
 [ext_resource type="PackedScene" uid="uid://b1s81t3ks3f4y" path="res://Libraries/CustomComponents/HealthComponent.tscn" id="47_2t7uu"]
 [ext_resource type="PackedScene" uid="uid://ms7gd6clccyt" path="res://Libraries/CustomComponents/PathfindingComponent.tscn" id="48_khul8"]
 [ext_resource type="PackedScene" uid="uid://ng78irgsk8jg" path="res://Libraries/CustomComponents/VelocityComponent.tscn" id="49_0kjc3"]
@@ -100,7 +109,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(856.597, -38.3031)]
+"values": [Vector2(832.222, 435.263)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -463,10 +472,10 @@ tracks/6/path = NodePath("SkeletonControl/Target/HeadLook:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1, 2, 4, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(856.597, -38.3031), Vector2(804.365, 393.477), Vector2(891.418, 31.3389), Vector2(689.456, -365.621), Vector2(856.597, -38.3031)]
+"values": [Vector2(766.062, 438.745), Vector2(793.919, 908.828), Vector2(856.597, 414.37), Vector2(779.99, 24.3747), Vector2(752.134, -219.372), Vector2(839.186, 571.064)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -518,7 +527,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.5, 1.8, 3),
 "transitions": PackedFloat32Array(2, 1, 1, 1, 1, 1, 2),
 "update": 0,
-"values": [Vector2(856.597, -38.3031), Vector2(1062.04, -337.764), Vector2(1096.86, -268.122), Vector2(1096.86, -268.122), Vector2(1096.86, -268.122), Vector2(1096.86, -268.122), Vector2(856.597, -38.3031)]
+"values": [Vector2(779.99, 456.155), Vector2(1096.86, 34.821), Vector2(1079.45, 254.193), Vector2(797.401, 640.707), Vector2(417.852, 860.079), Vector2(1169.99, 630.26), Vector2(1062.04, 637.224)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -607,6 +616,33 @@ tracks/8/keys = {
 "method": &"_on_attack_animation_complete"
 }]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BossSounds")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 1.08894,
+"start_offset": 0.0945578,
+"stream": ExtResource("30_lgr56")
+}, {
+"end_offset": 2.83312,
+"start_offset": 0.0,
+"stream": ExtResource("31_52dyp")
+}, {
+"end_offset": 2.83312,
+"start_offset": 0.0,
+"stream": ExtResource("31_52dyp")
+}, {
+"end_offset": 2.83312,
+"start_offset": 0.0,
+"stream": ExtResource("31_52dyp")
+}],
+"times": PackedFloat32Array(0.1, 0.7, 1.1, 1.5)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_qlkyy"]
 resource_name = "stand_still_01"
@@ -614,134 +650,6 @@ resource_name = "stand_still_01"
 [sub_resource type="Animation" id="Animation_p17fh"]
 resource_name = "stand_still_02"
 loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_6dyoi"]
-resource_name = "zombie_attack_basic"
-length = 0.8
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.194077, -0.349185, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SkeletonControl/Target/LeftArm2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(661.599, -362.139), Vector2(665.081, -302.943), Vector2(466.602, -358.656), Vector2(661.599, -362.139)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SkeletonControl/Target/RightArm2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(647.671, 323.835), Vector2(536.243, 494.458), Vector2(706.866, 135.802), Vector2(602.403, -254.193), Vector2(647.671, 323.835)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SkeletonControl/Target/LeftArm1:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(487.494, -553.654), Vector2(574.547, -501.422), Vector2(299.461, -546.69), Vector2(487.494, -553.654)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ZombieStateMachine/AttackPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_attack_animation_finished"
-}]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerHitbox/CollisionShape2D:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(177, 92), Vector2(152, 140), Vector2(179, 31), Vector2(177, -48)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(87.0525, -13.9284)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(76.6062, 6.96417)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SkeletonControl/Target/spit:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.35, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(301.993, -577.712), Vector2(301.993, -577.712), Vector2(146.248, -560.618), Vector2(301.993, -577.712)]
-}
 
 [sub_resource type="Animation" id="Animation_dug5d"]
 resource_name = "zombie_attack_spit"
@@ -1032,17 +940,907 @@ tracks/18/keys = {
 "values": [Vector2(316.871, -591.957), Vector2(208.926, -588.475), Vector2(-62.6779, -588.475), Vector2(174.105, -661.599), Vector2(208.926, -581.511), Vector2(379.549, -574.547), Vector2(515.351, -358.656), Vector2(316.871, -591.957)]
 }
 
+[sub_resource type="Animation" id="Animation_6dyoi"]
+resource_name = "zombie_attack_right_arm"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.194077, -0.349185, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Target/LeftArm2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(661.599, -362.139), Vector2(665.081, -302.943), Vector2(466.602, -358.656), Vector2(661.599, -362.139)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Target/RightArm2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(647.671, 323.835), Vector2(536.243, 494.458), Vector2(706.866, 135.802), Vector2(602.403, -254.193), Vector2(647.671, 323.835)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Target/LeftArm1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(487.494, -553.654), Vector2(574.547, -501.422), Vector2(299.461, -546.69), Vector2(487.494, -553.654)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ZombieStateMachine/AttackPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_attack_animation_finished"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(177, 92), Vector2(152, 140), Vector2(179, 31), Vector2(177, -48)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(87.0525, -13.9284)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(76.6062, 6.96417)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/Target/spit:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(301.993, -577.712), Vector2(301.993, -577.712), Vector2(146.248, -560.618), Vector2(301.993, -577.712)]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BossSounds")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.421862,
+"stream": ExtResource("30_da6sj")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_qbhnr"]
+resource_name = "zombie_attack_left_arm"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.140084, 0.235312, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Target/LeftArm2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.35, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(661.599, -362.139), Vector2(407.406, -578.029), Vector2(623.296, -337.764), Vector2(567.582, 160.177), Vector2(445.709, 334.282), Vector2(661.599, -362.139)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Target/RightArm2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(647.671, 323.835), Vector2(658.117, 334.282), Vector2(400.442, 369.103), Vector2(647.671, 323.835)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Target/LeftArm1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(487.494, -553.654), Vector2(574.547, -501.422), Vector2(299.461, -546.69), Vector2(487.494, -553.654)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ZombieStateMachine/AttackPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_attack_animation_finished"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(187, -101), Vector2(115, -164), Vector2(180, -95), Vector2(164, 48), Vector2(128, 94), Vector2(137, 75)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(87.0525, -13.9284)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(76.6062, 6.96417)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/Target/spit:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(301.993, -577.712), Vector2(73.124, -675.527), Vector2(146.248, -560.618), Vector2(301.993, -577.712)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkeletonControl/Target/flame:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(299.461, 564.1), Vector2(62.6779, 522.315)]
+}
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BossSounds")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.590292,
+"stream": ExtResource("31_j1yfi")
+}],
+"times": PackedFloat32Array(0.05)
+}
+tracks/11/use_blend = true
+
+[sub_resource type="Animation" id="Animation_8tqrr"]
+resource_name = "zombie_attack_both_arms"
+length = 1.6
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.85, 0.95, 1.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 1, 1),
+"update": 0,
+"values": [0.0, -0.140084, 0.235312, 0.342311, -0.169989, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Target/LeftArm2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.35, 0.4, 0.85, 0.95, 1.05, 1.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 1, 0.5, 0.5, 1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(661.599, -362.139), Vector2(407.406, -578.029), Vector2(623.296, -337.764), Vector2(567.582, 160.177), Vector2(445.709, 334.282), Vector2(499.681, 160.176), Vector2(358.656, -271.604), Vector2(372.585, -435.263), Vector2(661.599, -362.139)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Target/RightArm2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.85, 0.95, 1.05, 1.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(647.671, 323.835), Vector2(658.117, 334.282), Vector2(400.442, 369.103), Vector2(553.654, 490.976), Vector2(689.456, 41.7852), Vector2(546.69, -236.783), Vector2(647.671, 323.835)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Target/LeftArm1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 1.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(487.494, -553.654), Vector2(574.547, -501.422), Vector2(299.461, -546.69), Vector2(487.494, -553.654)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.45, 0.88, 1.03),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ZombieStateMachine/AttackPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_attack_animation_finished"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.35, 0.4, 0.45, 0.85, 0.88, 0.95, 1.05, 1.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 1, 0.5, 0.5, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(187, -101), Vector2(115, -164), Vector2(180, -95), Vector2(164, 48), Vector2(128, 94), Vector2(137, 75), Vector2(157, 143), Vector2(179, 74), Vector2(197, 15), Vector2(155, -76), Vector2(187, -101)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(87.0525, -13.9284), Vector2(87.0525, -13.9284)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(76.6062, 6.96417), Vector2(76.6062, 6.96417)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/Target/spit:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.85, 0.95, 1.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 0.5, 1, 1),
+"update": 0,
+"values": [Vector2(301.993, -577.712), Vector2(73.124, -675.527), Vector2(146.248, -560.618), Vector2(473.566, -484.012), Vector2(160.177, -529.279), Vector2(301.993, -577.712)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkeletonControl/Target/flame:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.85, 0.95, 1.05, 1.6),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(299.461, 564.1), Vector2(62.6779, 522.315), Vector2(-24.3747, 477.048), Vector2(372.585, 591.957), Vector2(522.315, 282.05), Vector2(299.461, 564.1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SkeletonControl/Target/HeadLook:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.85, 1.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(832.222, 435.263), Vector2(832.222, 435.263), Vector2(821.776, 83.5704)]
+}
+tracks/12/type = "audio"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("BossSounds")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"clips": [{
+"end_offset": 0.368032,
+"start_offset": 0.770121,
+"stream": ExtResource("31_j1yfi")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.325758,
+"stream": ExtResource("30_da6sj")
+}],
+"times": PackedFloat32Array(0.04, 0.733019)
+}
+tracks/12/use_blend = true
+
+[sub_resource type="Animation" id="Animation_8sm4k"]
+resource_name = "roar"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Target/HeadLook:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 5),
+"transitions": PackedFloat32Array(-2, -2, -2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2),
+"update": 0,
+"values": [Vector2(832.222, 435.263), Vector2(793.919, 490.976), Vector2(793.919, 410.888), Vector2(797.401, 372.585), Vector2(644.189, 564.1), Vector2(647.671, 344.728), Vector2(602.403, 609.368), Vector2(654.635, 393.477), Vector2(651.153, 588.475), Vector2(713.831, 348.21), Vector2(696.42, 710.349), Vector2(727.759, 477.048), Vector2(706.866, 578.029), Vector2(731.241, 456.155), Vector2(675.527, 623.296), Vector2(713.831, 473.566), Vector2(696.42, 602.403), Vector2(748.652, 435.262), Vector2(797.401, 372.585), Vector2(832.222, 435.263)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 5),
+"transitions": PackedFloat32Array(-2, -2, -2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2),
+"update": 0,
+"values": [0.0, 0.0, 0.0656471, -0.00543683, 0.0560831, -0.0225431, 0.0218499, -0.0302449, 0.02075, -0.0758162, 0.00896025, -0.0482355, 0.0120769, -0.069062, -0.0145373, -0.0589585, 0.00199487, -0.0685274, -0.00543683, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.5, 4, 5),
+"transitions": PackedFloat32Array(-2, -2, -2, 1, 2, 2),
+"update": 0,
+"values": [Vector2(153.212, -3.4821), Vector2(191.558, -3.48219), Vector2(222.893, 4.19617e-05), Vector2(48.4172, -6.67936), Vector2(48.4172, -6.67936), Vector2(153.212, -3.4821)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BossSounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 7.65821,
+"start_offset": 0.161318,
+"stream": ExtResource("34_i2cwh")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.117166,
+"stream": ExtResource("35_aktnt")
+}],
+"times": PackedFloat32Array(0, 2.01717)
+}
+tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ZombieStateMachine/Roar")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"roar_shake"
+}, {
+"args": [],
+"method": &"_on_roar_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cpsp2"]
+resource_name = "zombie_charge"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Target/LeftArm2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.098, 0.196, 0.294, 0.392, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(591.957, -344.728), Vector2(518.833, -449.191), Vector2(316.871, -578.029), Vector2(518.833, -449.191), Vector2(557.136, -428.298), Vector2(745.169, -191.516), Vector2(591.957, -344.728)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Target/RightArm1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.098, 0.196, 0.294, 0.392, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(341.246, 706.866), Vector2(417.852, 654.635), Vector2(633.742, 525.797), Vector2(417.852, 654.635), Vector2(484.012, 644.188), Vector2(205.444, 581.511), Vector2(341.246, 706.866)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.098, 0.196, 0.294, 0.392, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.240182, -0.474098, -0.240182, -0.156586, 0.484702, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.196, 0.392, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10.4463, -24.3747), Vector2(94.925, -25.5522), Vector2(-30.708, -24.6135), Vector2(10.4463, -24.3747)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower/footRight:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.196, 0.294, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(66.1599, 3.8147e-06), Vector2(48.7673, 3.22249), Vector2(30.8041, 2.28858), Vector2(66.1599, 3.8147e-06)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.098, 0.196, 0.294, 0.392, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(83.5704, 73.1241), Vector2(161.237, 161.379), Vector2(222.327, 184.531), Vector2(191.677, 168.834), Vector2(122.557, 139.208), Vector2(155.986, 51.7994), Vector2(83.5704, 73.1241)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.098, 0.196, 0.294, 0.392, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(76.6062, 6.96417), Vector2(81.795, -26.5735), Vector2(67.7896, -78.7163), Vector2(63.918, -56.0472), Vector2(94.8585, -87.2571), Vector2(278.916, -142.942), Vector2(76.6062, 6.96417)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(90.5346, 3.48209), Vector2(81.6391, 17.8656), Vector2(90.5346, 3.48209)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower/footLeft:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.294, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(20.8926, -2.28882e-05), Vector2(23.8114, 5.21082), Vector2(20.8926, -2.28882e-05)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.098, 0.196, 0.294, 0.588),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.229244, 0.336808, 0.229244, -0.212734]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkeletonControl/Skeleton/torso:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.196, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.196, 0.392),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SkeletonControl/Skeleton/torso/legRightUpper/legRightLower/footRight:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.196, 0.294),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.098, 0.196, 0.294, 0.392, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0756375, 0.296649, -0.0356142, -0.0616668, -0.700141, -0.0472009]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.588),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SkeletonControl/Skeleton/torso/legLegUpper/legLeftLower/footLeft:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.294),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.180556]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SkeletonControl/Target/RightArm2:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.098, 0.196, 0.294, 0.392, 0.539, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(567.583, 334.282), Vector2(689.456, 160.177), Vector2(668.563, -38.3031), Vector2(640.707, 125.356), Vector2(605.885, 212.408), Vector2(449.191, 316.871), Vector2(567.583, 334.282)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("SkeletonControl/Target/flame:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.098, 0.196, 0.294, 0.392, 0.588, 0.686, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(299.461, 564.1), Vector2(414.37, 459.637), Vector2(571.064, 278.568), Vector2(323.835, 511.869), Vector2(163.659, 557.136), Vector2(-139.284, 550.172), Vector2(104.463, 710.348), Vector2(299.461, 564.1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("SkeletonControl/Target/spit:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.098, 0.196, 0.294, 0.392, 0.49, 0.588, 0.784),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(316.871, -591.957), Vector2(208.926, -588.475), Vector2(-62.6779, -588.475), Vector2(174.105, -661.599), Vector2(208.926, -581.511), Vector2(379.549, -574.547), Vector2(515.351, -358.656), Vector2(316.871, -591.957)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("SkeletonControl/Target/HeadLook:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.63, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(853.115, 306.425), Vector2(800.883, 470.083), Vector2(804.365, 268.122), Vector2(800.883, 470.083), Vector2(804.365, 268.122), Vector2(800.883, 470.083), Vector2(804.365, 268.122), Vector2(800.883, 470.083), Vector2(804.365, 268.122), Vector2(800.883, 470.083), Vector2(804.365, 268.122)]
+}
+
+[sub_resource type="Animation" id="Animation_ejxdo"]
+resource_name = "head_attack"
+length = 1.3
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonControl/Skeleton/torso:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.9, 1.1, 1.3),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 1, 0.5, 0.5),
+"update": 0,
+"values": [0.0, -0.101932, -0.101932, 0.00567474, 0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonControl/Skeleton/torso/head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.9, 1.1, 1.3),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(153.212, -3.4821), Vector2(38.3034, -6.96647), Vector2(38.3034, -6.96647), Vector2(178.464, 0.743843), Vector2(153.212, -3.4821), Vector2(153.212, -3.4821)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonControl/Target/HeadLook:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.9, 1.1, 1.3),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(832.222, 435.263), Vector2(738.205, 567.582), Vector2(738.205, 567.582), Vector2(651.153, 261.157), Vector2(832.222, 435.263), Vector2(832.222, 435.263)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.76, 0.92, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.76, 0.92, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(177, 92), Vector2(48, -1), Vector2(55, -2), Vector2(92, -6), Vector2(177, 92)]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BossSounds")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.402614,
+"stream": ExtResource("30_da6sj")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/5/use_blend = true
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ZombieStateMachine/HeadAttack")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.28),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_head_attack_animation_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbgnq"]
 _data = {
 "RESET": SubResource("Animation_2n82s"),
 "electrocuted": SubResource("Animation_uyr0y"),
 "flame_attack": SubResource("Animation_i0bqt"),
+"head_attack": SubResource("Animation_ejxdo"),
+"roar": SubResource("Animation_8sm4k"),
 "spit_attack": SubResource("Animation_227ja"),
 "stand_still_01": SubResource("Animation_qlkyy"),
 "stand_still_02": SubResource("Animation_p17fh"),
-"zombie_attack_basic": SubResource("Animation_6dyoi"),
+"zombie_attack_both_arms": SubResource("Animation_8tqrr"),
+"zombie_attack_left_arm": SubResource("Animation_qbhnr"),
+"zombie_attack_right_arm": SubResource("Animation_6dyoi"),
 "zombie_attack_spit": SubResource("Animation_dug5d"),
 "zombie_break_window_basic": SubResource("Animation_n4w1o"),
+"zombie_charge": SubResource("Animation_cpsp2"),
 "zombie_headless_death": SubResource("Animation_61oaq"),
 "zombie_headless_death_2": SubResource("Animation_om8mc"),
 "zombie_walk_basic": SubResource("Animation_ufqkj")
@@ -1056,8 +1854,8 @@ height = 140.0
 radius = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cprbq"]
-radius = 55.2357
-height = 253.618
+radius = 98.024
+height = 297.184
 
 [node name="ZombieBoss" type="CharacterBody2D"]
 z_index = 2
@@ -1089,7 +1887,7 @@ position = Vector2(661.599, -362.139)
 position = Vector2(689.456, 160.177)
 
 [node name="HeadLook" type="Node2D" parent="SkeletonControl/Target"]
-position = Vector2(856.597, -38.3031)
+position = Vector2(832.222, 435.263)
 
 [node name="flame" type="Node2D" parent="SkeletonControl/Target"]
 position = Vector2(299.461, 564.1)
@@ -1101,8 +1899,8 @@ position = Vector2(316.871, -591.957)
 modification_stack = ExtResource("3_4hisv")
 
 [node name="torso" type="Bone2D" parent="SkeletonControl/Skeleton"]
-scale = Vector2(0.99982, 0.999828)
-skew = -0.00114202
+scale = Vector2(0.999832, 0.999825)
+skew = -0.0012399
 rest = Transform2D(0.999832, 0, 0.000363882, 0.999824, 0, 0)
 
 [node name="SpitUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
@@ -1119,7 +1917,8 @@ rest = Transform2D(0.468919, -0.883212, 0.883223, 0.468902, 139.4, -205.49)
 position = Vector2(206.471, 99.4994)
 rest = Transform2D(1, 2.79276e-11, -2.79276e-11, 1, 206.471, 99.4994)
 
-[node name="SpitEmitter" parent="SkeletonControl/Skeleton/torso/SpitUpper/SpitLower/Spit" instance=ExtResource("4_653mb")]
+[node name="SpitEmitter" parent="SkeletonControl/Skeleton/torso/SpitUpper/SpitLower/Spit" node_paths=PackedStringArray("health_component") instance=ExtResource("4_653mb")]
+health_component = NodePath("../../../../../../../HealthComponents/HealthComponent - Spit")
 
 [node name="Lower" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/SpitUpper/SpitLower" node_paths=PackedStringArray("health_components")]
 position = Vector2(75.5143, 30.9304)
@@ -1418,8 +2217,8 @@ body_part_to_spawn = ExtResource("16_udnob")
 [node name="legRightUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(87.0525, -13.9284)
 rotation = 0.229244
-scale = Vector2(0.999829, 0.999829)
-skew = -0.00054872
+scale = Vector2(0.999826, 0.999829)
+skew = -0.000562429
 rest = Transform2D(0.97367, 0.227202, -0.227046, 0.973706, 87.0525, -13.9284)
 
 [node name="legRightLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/legRightUpper"]
@@ -1448,8 +2247,8 @@ texture = ExtResource("12_4xiu3")
 [node name="legLegUpper" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(76.6062, 6.96417)
 rotation = -0.373838
-scale = Vector2(0.999825, 0.999829)
-skew = -0.000947833
+scale = Vector2(0.999825, 0.99983)
+skew = -0.000972271
 rest = Transform2D(0.930763, -0.365125, 0.365376, 0.930685, 76.6062, 6.96417)
 
 [node name="legLeftLower" type="Bone2D" parent="SkeletonControl/Skeleton/torso/legLegUpper"]
@@ -1478,9 +2277,9 @@ texture = ExtResource("15_yc1mb")
 
 [node name="head" type="Bone2D" parent="SkeletonControl/Skeleton/torso"]
 position = Vector2(153.212, -3.4821)
-rotation = -0.3378
-scale = Vector2(1.00019, 0.999863)
-skew = 0.000885248
+rotation = 0.112339
+scale = Vector2(0.999844, 1.0007)
+skew = 0.00120711
 rest = Transform2D(0.999695, -0.0255149, 0.0251493, 0.999631, 153.212, -3.47419)
 
 [node name="head" type="Sprite2D" parent="SkeletonControl/Skeleton/torso/head"]
@@ -1516,6 +2315,7 @@ zombie_groan_audio = NodePath("../../ZombieGroans")
 velocity_component = NodePath("../../VelocityComponent")
 
 [node name="GoreVFX" parent="." instance=ExtResource("19_ss42f")]
+unique_name_in_owner = true
 
 [node name="ZombieGroans" parent="." instance=ExtResource("33_sjp7a")]
 unique_name_in_owner = true
@@ -1529,8 +2329,6 @@ libraries = {
 [node name="PlayerHitbox" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 128
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(177, 92)
@@ -1550,7 +2348,7 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="PlayerDetectorCollision" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(136.144, 7.00171)
+position = Vector2(160.261, -7.77968)
 shape = SubResource("CapsuleShape2D_cprbq")
 debug_color = Color(0.67451, 0.494118, 0.333333, 0.419608)
 
@@ -1565,7 +2363,7 @@ script = ExtResource("25_l4aff")
 script = ExtResource("26_bfm67")
 
 [node name="Death" type="Node" parent="ZombieStateMachine"]
-script = ExtResource("28_a8hal")
+script = ExtResource("39_si54c")
 
 [node name="FlameAttack" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("23_urriq")
@@ -1573,24 +2371,37 @@ script = ExtResource("23_urriq")
 [node name="RangedAttack" type="Node" parent="ZombieStateMachine"]
 script = ExtResource("24_yo0er")
 
+[node name="Roar" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("40_x7oi1")
+
+[node name="ChargePlayer" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("43_kqulc")
+
+[node name="HeadAttack" type="Node" parent="ZombieStateMachine"]
+script = ExtResource("44_kep55")
+
 [node name="HealthComponents" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="HealthComponent - Head" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
 unique_name_in_owner = true
-max_health = 1e+09
+max_health = 10.0
 invincible_mode = true
 
 [node name="HealthComponent - Flame" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+unique_name_in_owner = true
 max_health = 1000.0
 
 [node name="HealthComponent - Spit" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+unique_name_in_owner = true
 max_health = 1000.0
 
 [node name="HealthComponent - ArmLeft" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+unique_name_in_owner = true
 max_health = 1000.0
 
 [node name="HealthComponent - ArmRight" parent="HealthComponents" instance=ExtResource("47_2t7uu")]
+unique_name_in_owner = true
 max_health = 1000.0
 
 [node name="PathfindingComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("48_khul8")]
@@ -1644,6 +2455,11 @@ one_shot = true
 [node name="SpitAttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="BossSounds" type="AudioStreamPlayer2D" parent="."]
+volume_db = -3.949
+max_polyphony = 10
+bus = &"GameAudio"
 
 [connection signal="velocity_computed" from="PathfindingComponent/NavigationAgent2D" to="PathfindingComponent" method="_on_navigation_agent_2d_velocity_computed"]
 

@@ -42,7 +42,6 @@ func get_sine():
 
 func _on_sound_interval_timeout():
 	if alarm_on:
-		print('playing sound')
 		alarm_sound.play()
 		sound_timer.start(sound_interval)
 	

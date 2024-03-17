@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://dub0he0sappea"]
+
+[ext_resource type="Script" path="res://Enemies/Boss/boss_body_part.gd" id="1_v1rs4"]
+[ext_resource type="PackedScene" uid="uid://dwb8c16e8xsp1" path="res://VFX/SpawnInAnimator.tscn" id="2_h5qrd"]
+[ext_resource type="Texture2D" uid="uid://csnp48pxr7hid" path="res://Enemies/Boss/images/gore/torso/body_0006_Layer-1.png" id="3_a5q45"]
+[ext_resource type="Texture2D" uid="uid://j02204rvm12x" path="res://Enemies/Boss/images/gore/torso/body_0005_Layer-2.png" id="4_0uh2v"]
+[ext_resource type="Texture2D" uid="uid://cdfakqxeox31r" path="res://Enemies/Boss/images/gore/torso/body_0004_Layer-3.png" id="5_37q4p"]
+[ext_resource type="Texture2D" uid="uid://cogby73plt0vo" path="res://Enemies/Boss/images/gore/torso/body_0003_Layer-4.png" id="6_k4h2m"]
+[ext_resource type="Texture2D" uid="uid://b7fs6rkk13psn" path="res://Enemies/Boss/images/gore/torso/body_0002_Layer-5.png" id="7_djlxc"]
+[ext_resource type="Texture2D" uid="uid://ds05wjjxykwu7" path="res://Enemies/Boss/images/gore/torso/body_0001_Layer-6.png" id="8_dbjg3"]
+[ext_resource type="Texture2D" uid="uid://ck2txeqolh1hl" path="res://Enemies/Boss/images/gore/torso/body_0000_Layer-7.png" id="9_1t0kk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhjov"]
+radius = 6.29823
+height = 59.2444
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iog6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a5q45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0uh2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_37q4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k4h2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_djlxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dbjg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1t0kk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="BossBodyPart_Torso" type="Node2D" node_paths=PackedStringArray("animated_sprites")]
+z_index = 3
+scale = Vector2(2, 2)
+script = ExtResource("1_v1rs4")
+animated_sprites = [NodePath("SpawnInAnimator/WrapperNode/AnimatedSprite2D2")]
+
+[node name="SpawnInAnimator" parent="." instance=ExtResource("2_h5qrd")]
+collision_layer = 16384
+collision_mask = 17
+linear_damp = 2.0
+angular_damp = 1.0
+spawn_animation = 1
+
+[node name="CollisionShape2D" parent="SpawnInAnimator" index="0"]
+position = Vector2(5, 22)
+rotation = -0.326392
+shape = SubResource("CapsuleShape2D_bhjov")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SpawnInAnimator/WrapperNode" index="0"]
+unique_name_in_owner = true
+position = Vector2(1.90735e-06, 4)
+rotation = -0.170045
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_iog6p")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="SpawnInAnimator/WrapperNode/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="SpawnInAnimator"]
